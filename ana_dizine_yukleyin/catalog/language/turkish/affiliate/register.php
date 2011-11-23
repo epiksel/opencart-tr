@@ -16,7 +16,7 @@ $_['text_your_password']        = 'Parolanız';
 $_['text_cheque']               = 'Çek';
 $_['text_paypal']               = 'PayPal';
 $_['text_bank']                 = 'Banka Havalesi/EFT';
-$_['text_agree']                = '<a class="fancybox" href="%s" alt="%s"><b>%s</b></a>\'nı okudum ve kabul ediyorum';
+$_['text_agree']                = '<a class="colorbox" href="%s" alt="%s"><b>%s</b></a>\'nı okudum ve kabul ediyorum';
 
 // Entry
 $_['entry_firstname']      		= 'Ad:';

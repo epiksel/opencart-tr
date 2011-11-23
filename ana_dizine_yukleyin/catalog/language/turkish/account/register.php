@@ -12,7 +12,7 @@ $_['text_your_details']    = 'Kişisel Ayrıntılarınız';
 $_['text_your_address']    = 'Adresiniz';
 $_['text_newsletter']      = 'Bülten Aboneliği';
 $_['text_your_password']   = 'Parolanız';
-$_['text_agree']           = '<a class="fancybox" href="%s" alt="%s"><b>%s</b></a>\'ni okudum ve kabul ediyorum.';
+$_['text_agree']           = '<a class="colorbox" href="%s" alt="%s"><b>%s</b></a>\'ni okudum ve kabul ediyorum.';
 
 // Entry
 $_['entry_firstname']      = 'Ad:';
