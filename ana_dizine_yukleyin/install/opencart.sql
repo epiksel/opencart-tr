@@ -1541,6 +1541,7 @@ CREATE TABLE `oc_order` (
   `shipping_zone_id` int(11) NOT NULL,
   `shipping_address_format` text COLLATE utf8_bin NOT NULL,
   `shipping_method` varchar(128) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `shipping_code` varchar(128) COLLATE utf8_bin NOT NULL DEFAULT '',
   `payment_firstname` varchar(32) COLLATE utf8_bin NOT NULL DEFAULT '',
   `payment_lastname` varchar(32) COLLATE utf8_bin NOT NULL DEFAULT '',
   `payment_company` varchar(32) COLLATE utf8_bin NOT NULL,
@@ -1564,9 +1565,11 @@ CREATE TABLE `oc_order` (
   `currency_id` int(11) NOT NULL,
   `currency_code` varchar(3) COLLATE utf8_bin NOT NULL,
   `currency_value` decimal(15,8) NOT NULL,
+  `ip` varchar(15) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `fraud_score` int(11) NOT NULL DEFAULT '0',
+  `fraud_comment` text COLLATE utf8_bin NOT NULL,
   `date_added` datetime NOT NULL,
   `date_modified` datetime NOT NULL,
-  `ip` varchar(15) COLLATE utf8_bin NOT NULL DEFAULT '',
   PRIMARY KEY (`order_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
@@ -1747,11 +1750,11 @@ CREATE TABLE `oc_product` (
   `points` int(8) NOT NULL DEFAULT '0',
   `tax_class_id` int(11) NOT NULL,
   `date_available` date NOT NULL,
-  `weight` decimal(5,2) NOT NULL DEFAULT '0.00',
+  `weight` decimal(15,8) NOT NULL DEFAULT '0.00',
   `weight_class_id` int(11) NOT NULL DEFAULT '0',
-  `length` decimal(5,2) NOT NULL DEFAULT '0.00',
-  `width` decimal(5,2) NOT NULL DEFAULT '0.00',
-  `height` decimal(5,2) NOT NULL DEFAULT '0.00',
+  `length` decimal(15,8) NOT NULL DEFAULT '0.00',
+  `width` decimal(15,8) NOT NULL DEFAULT '0.00',
+  `height` decimal(15,8) NOT NULL DEFAULT '0.00',
   `length_class_id` int(11) NOT NULL DEFAULT '0',
   `subtract` tinyint(1) NOT NULL DEFAULT '1',
   `minimum` int(11) NOT NULL DEFAULT '1',
@@ -2734,7 +2737,7 @@ CREATE TABLE `oc_tax_rate_to_customer_group` (
   `tax_rate_id` int(11) NOT NULL,
   `customer_group_id` int(11) NOT NULL,
   PRIMARY KEY (`tax_rate_id`,`customer_group_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Dumping data for table `oc_tax_rate_to_customer_group`
