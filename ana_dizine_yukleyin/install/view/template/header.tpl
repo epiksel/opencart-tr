@@ -9,7 +9,7 @@
 </head>
 <body>
 <div id="container">
-  <div id="header"><img src="view/image/logo.png" alt="OpenCart" title="OpenCart" /></div>
+  <div id="header"><img src="view/image/logo.png" alt="OpenCart Türkçe" title="OpenCart Türkçe" /></div>
   <div id="content">
     <div id="content_top"></div>
     <div id="content_middle">
