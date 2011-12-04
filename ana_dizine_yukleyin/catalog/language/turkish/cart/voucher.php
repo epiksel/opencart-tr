@@ -12,4 +12,6 @@ $_['entry_voucher'] = 'Hediye çeki kodunuzu buraya griniz:';
 
 // Error
 $_['error_voucher'] = 'Uyarı: Hediye çeki geçersiz ya da daha önce kullanılmış!';
+$_['error_product'] = 'Uyarı: Alışveriş sepetinizde ürün bulunmamaktadır!';
+$_['error_empty']   = 'Uyarı: Hediye çeki kodu gerekli!';	
 ?>

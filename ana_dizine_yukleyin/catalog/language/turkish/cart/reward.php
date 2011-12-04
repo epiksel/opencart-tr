@@ -12,7 +12,8 @@ $_['text_success']  = 'Başarılı: Ödül puan indirimi başarıyla uygulandı!
 $_['entry_reward']  = 'Puan kullan (Maksimum %s):';
 
 // Error
-$_['error_empty']   = 'Uyarı: Lütfen kullanmak istediğiniz ödül puanını giriniz!';
 $_['error_points']  = 'Uyarı: %s ödül puanı yok!';
 $_['error_maximum'] = 'Uyarı: En fazla uygulanabilir ödül puanı %s!';
+$_['error_product'] = 'Uyarı: Alışveriş sepetinizde ürün bulunmamaktadır!';	
+$_['error_empty']   = 'Uyarı: Lütfen kullanmak istediğiniz ödül puanını giriniz!';
 ?>
