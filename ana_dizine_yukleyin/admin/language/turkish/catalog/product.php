@@ -52,7 +52,7 @@ $_['entry_weight_class']     = 'Ağırlık Birimi:';
 $_['entry_weight']           = 'Ağırlık:';
 $_['entry_length']           = 'Uzunluk Birimi:';
 $_['entry_dimension']        = 'Boyutları (U x G x Y):';
-$_['entry_image']            = 'Resim:<br /><span class="help">Resimi değiştirmek için üzerine tıklayın.</span>';
+$_['entry_image']            = 'Resim:';
 $_['entry_customer_group']   = 'Müşteri Grubu:';
 $_['entry_date_start']       = 'Başlangıç Tarihi:';
 $_['entry_date_end']         = 'Bitiş Tarihi:';
