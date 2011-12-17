@@ -1269,7 +1269,6 @@ INSERT INTO `oc_layout_route` (`layout_route_id`, `layout_id`, `store_id`, `rout
 (30, 6, 0, 'account'),
 (17, 10, 0, 'affiliate/'),
 (29, 3, 0, 'product/category'),
-(27, 1, 3, 'common/home'),
 (26, 1, 0, 'common/home'),
 (20, 2, 0, 'product/product'),
 (24, 11, 0, 'information/information'),

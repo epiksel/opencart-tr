@@ -22,7 +22,7 @@ $_['text_write']        = 'Yorum Yap';
 $_['text_no_reviews']   = 'Bu ürün için daha önce yorum yapılmadı.';
 $_['text_note']         = '<span style="color: #FF0000;">Not:</span> HTML\'ye dönüştürülmez!';
 $_['text_share']        = 'Paylaş';
-$_['text_success']      = 'Yorumunuz için teşekkür ederiz. Onaylandıktan sonra yayınlanacaktır.';
+$_['text_success']      = 'Yorum için teşekkür ederiz. Onaylandıktan sonra yorumunuz yayınlanacaktır.';
 $_['text_upload']       = 'Dosyanız başarıyla yüklendi!';
 $_['text_wait']         = 'Lütfen bekleyiniz!';
 $_['text_tags']         = 'Etiketler:';

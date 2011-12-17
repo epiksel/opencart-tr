@@ -43,7 +43,7 @@ $_['entry_date_available']   = 'Geçerlilik Tarihi:';
 $_['entry_quantity']         = 'Miktarı:';
 $_['entry_minimum']          = 'Asgari Sipariş Miktarı:<br/><span class="help">En az sipariş edilecek ürün miktarı</span>';
 $_['entry_stock_status']     = 'Stok Dışı Durumu:<br/><span class="help">Ürün stokta bittiğinde gösterilecek stok durumu</span>';
-$_['entry_price']            = 'Fiyatı (Vergi Hariç):';
+$_['entry_price']            = 'Fiyatı:';
 $_['entry_tax_class']        = 'Vergi Sınıfı:';
 $_['entry_points']           = 'Puan:<br/><span class="help">Bu ürünü satın almak için gerekli puan. Puan ile satılmasını istemiyorsanız 0 yapınız.</span>';
 $_['entry_option_points']    = 'Puan:';
