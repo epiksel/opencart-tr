@@ -1,0 +1,45 @@
+		///////////////////////////////////////////////
+	   ///			 OpenCart V1.5.x			   ///
+	  ///			Kurulum Aþamalarý			  ///
+	 ///		http://www.e-piksel.com			 ///
+	///		http://opencart-tr.googlecode.com	///
+   ///////////////////////////////////////////////
+
+
+NOT: SADECE YENÝ KURULUM ÝÇÝN KULLANIN!
+KURULU OLAN SÜRÜMÜNÜZÜ YÜKSELTMEK ÝÇÝN GUNCELLEME.TXT DOSYASINA BAKINIZ
+
+
+-------
+KURULUM AÞAMALARI
+-------
+
+1. bu_dizinleri_ana_dizine_yukleyin dizini içindeki tüm dizin ve dosyalarý sunucunuza yükleyiniz.
+   Yükleyeceðiniz dizin sunucu özelliklerine göre deðiþiklik gösterebilir ya da kendi dizinize yüklemek isteyebilirsiniz.
+	
+   örneðin /public_html/store YA DA /public_html
+
+2. Eðer Linux/Unix kullanýyorsanýz aþaðýdaki dizin ve klasörlerin yazýlabilir olduklarýna emin olunuz.
+   chmod 0755 YA DA 0777 image/
+   chmod 0755 YA DA 0777 image/cache/
+   chmod 0755 YA DA 0777 image/data/   
+   chmod 0755 YA DA 0777 system/cache/
+   chmod 0755 YA DA 0777 system/logs/
+   chmod 0755 YA DA 0777 download/
+   chmod 0755 YA DA 0777 config.php
+   chmod 0755 YA DA 0777 admin/config.php
+
+3. Bir kullanýcýya atanmýþ MySQL veritabaný yüklediðinizden emin olunuz.
+   http://wiki.opencart-tr.com/index.php/Veritabaný_Oluþturma
+   
+   ROOT KULLANICI ADINIZI VE ROOT PAROLANIZI KULLANMAYIN
+
+4. Maðaza anasayfanýzý ziyaret ediniz.
+   örneðin. http://www.maðazam.com YA DA http://www.sitem.com/magaza/ YA DA http://magaza.sitem.com
+
+5. Adýmlarý takip ediniz.
+
+6. Kurulumdan sonra install dizinini silmeyi unutmayýnýz
+
+------------------------------------------------
+Türkçe Çeviri: http://www.e-piksel.com - eka7a

@@ -1,0 +1,40 @@
+		///////////////////////////////////////////////
+	   ///			 OpenCart V1.5.x			   ///
+	  ///		  Güncelleme Aþamalarý			  ///
+	 ///		http://www.e-piksel.com			 ///
+	///		http://opencart-tr.googlecode.com	///
+   ///////////////////////////////////////////////
+
+
+NOT: BU GÜNCELLEME BETÝÐÝNÝZ 1.5.0 VE 1.5.0.X SÜRÜMLERÝNDEN 1.5.X SÜRÜMLERÝNE GÜNCELLEME YAPMAK ÝÇÝN KULLANBÝLÝRSÝNÝZ.
+EÐER 1.4.X SÜRÜMÜ KULLANIYORSANIZ BU GÜNCELLEME BETÝÐÝNÝ KULLANMAYINIZ VE AÞAÐIDAKÝ BAÐLANTIDA ANLATILDIÐI ÞEKÝLDE ÖNCE 1.5.0 SÜRÜMÜNE GÜNCELLEMELÝSÝNÝZ.
+http://www.opencart-tr.com/opencart-guncelleme.html/3
+
+1. BAÞLAMADAN ÖNCE TÜM DOSYALARINIZI VE VERÝTABINIZI YEDEKLEYÝNÝZ.
+
+2. http://opencart-tr.googlecode.com sayfasýndan son sürümü indiriniz ve arþiv dosyasýný bilgisayarýnýzda herhangi bir yere açýnýz.
+
+3. Açtýðýnýz dizinde ana_dizine_yükleyin/config.php, ana_dizine_yükleyin/admin/config.php ve ana_dizine_yükleyin/image klasörünü siliniz.
+
+4. "ana_dizine_yukleyin" içindeki tüm dosyalarý sunucunuza yükleyiniz üzerine yazýlsýn mý sorusuna evet deyin
+
+5. Yükleme iþlemi bittikten sonra tarayýcýnýzdan http://www.siteadaresiniz.com/install/ adresini çaðýrýn. Güncelleme yazýlýmý kurulu opencartýnýzý otomatik algýlayacak ve güncelleme sayfasýna yönlendirileceksiniz.
+
+6. Eðer kurulum sayfasý ile karþýlaþýrsanýz config.php ve admin/config.php dosyalarýnýzý kontrol ediniz ya da yedeklerinizden yükleme yaparak yukarýdaki adresi tekrar çaðýrýnýz.
+
+7. Güncelle butonuna basýnýz. Bir kaç saniye sonra güncelleme baþarýlý sayfasý ile karþýlaþacaksýnýz.
+
+8. Hata mesajlarý ile karþýlaþmanýz durumda forumdaki güncelleme konularýný ziyaret ediniz.
+
+9. Token hatalarýný gidermek için tarayýcýnýzdaki tüm önbelleði boþaltýnýz
+
+10. CSS deðiþikleri için Yönetim sayfanýzda Ctrl+F5 ile yenileyin.
+
+11. Yönetim->Kullanýcýlar->Kullanýcý Gruplarý sayfasýndan Yönetici grubu için tüm kutularý iþaretleyin.
+
+12. Sistem->Genel Ayarlar sayfasýndan maðazanýzý düzenle seçeneðine týklayýn ve hiçbir deðiþiklik yapmadan kaydet deyin.(daha sonra kendinize göre özelleþtirebilirsiniz.)
+
+13. CSS deðiþikleri için Katalog sayfanýzda Ctrl+F5 ile yenileyin.
+
+------------------------------------------------
+Türkçe Çeviri: http://www.e-piksel.com - eka7a
