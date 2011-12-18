@@ -4,7 +4,7 @@
 // Text
 $_['text_home']		= 'Anasayfa';
 $_['text_wishlist'] = 'Alışveriş Listem (%s)';
-$_['text_cart']		= 'Alışveriş Sepetim';
+$_['text_cart']		= 'Sepetim';
 $_['text_items']	= '%s ürün - %s';
 $_['text_search']	= 'Ne Aramıştınız...';
 $_['text_welcome']	= 'Hoşgeldin ziyaretçi <a href="%s">giriş yapın</a> ya da <a href="%s">kayıt olun</a>.';
