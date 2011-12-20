@@ -1,40 +1,40 @@
 		///////////////////////////////////////////////
 	   ///			 OpenCart V1.5.x			   ///
-	  ///		  Güncelleme Aşamaları			  ///
+	  ///		  GÃ¼ncelleme AÅŸamalarÄ±			  ///
 	 ///		http://www.e-piksel.com			 ///
 	///		http://opencart-tr.googlecode.com	///
    ///////////////////////////////////////////////
 
 
-NOT: BU GÜNCELLEME BETİĞİNİZ 1.5.0 VE 1.5.0.X SÜRÜMLERİNDEN 1.5.X SÜRÜMLERİNE GÜNCELLEME YAPMAK İÇİN KULLANBİLİRSİNİZ.
-EĞER 1.4.X SÜRÜMÜ KULLANIYORSANIZ BU GÜNCELLEME BETİĞİNİ KULLANMAYINIZ VE AŞAĞIDAKİ BAĞLANTIDA ANLATILDIĞI ŞEKİLDE ÖNCE 1.5.0 SÜRÜMÜNE GÜNCELLEMELİSİNİZ.
+NOT: BU GÃœNCELLEME BETÄ°ÄÄ°NÄ°Z 1.5.0 VE 1.5.0.X SÃœRÃœMLERÄ°NDEN 1.5.X SÃœRÃœMLERÄ°NE GÃœNCELLEME YAPMAK Ä°Ã‡Ä°N KULLANBÄ°LÄ°RSÄ°NÄ°Z.
+EÄER 1.4.X SÃœRÃœMÃœ KULLANIYORSANIZ BU GÃœNCELLEME BETÄ°ÄÄ°NÄ° KULLANMAYINIZ VE AÅAÄIDAKÄ° BAÄLANTIDA ANLATILDIÄI ÅEKÄ°LDE Ã–NCE 1.5.0 SÃœRÃœMÃœNE GÃœNCELLEMELÄ°SÄ°NÄ°Z.
 http://www.opencart-tr.com/opencart-guncelleme.html/3
 
-1. BAŞLAMADAN ÖNCE TÜM DOSYALARINIZI VE VERİTABINIZI YEDEKLEYİNİZ.
+1. BAÅLAMADAN Ã–NCE TÃœM DOSYALARINIZI VE VERÄ°TABINIZI YEDEKLEYÄ°NÄ°Z.
 
-2. http://opencart-tr.googlecode.com sayfasından son sürümü indiriniz ve arşiv dosyasını bilgisayarınızda herhangi bir yere açınız.
+2. http://opencart-tr.googlecode.com sayfasÄ±ndan son sÃ¼rÃ¼mÃ¼ indiriniz ve arÅŸiv dosyasÄ±nÄ± bilgisayarÄ±nÄ±zda herhangi bir yere aÃ§Ä±nÄ±z.
 
-3. Açtığınız dizinde ana_dizine_yükleyin/config.php, ana_dizine_yükleyin/admin/config.php ve ana_dizine_yükleyin/image klasörünü siliniz.
+3. AÃ§tÄ±ÄŸÄ±nÄ±z dizinde ana_dizine_yÃ¼kleyin/config.php, ana_dizine_yÃ¼kleyin/admin/config.php ve ana_dizine_yÃ¼kleyin/image klasÃ¶rÃ¼nÃ¼ siliniz.
 
-4. "ana_dizine_yukleyin" içindeki tüm dosyaları sunucunuza yükleyiniz üzerine yazılsın mı sorusuna evet deyin
+4. "ana_dizine_yukleyin" iÃ§indeki tÃ¼m dosyalarÄ± sunucunuza yÃ¼kleyiniz Ã¼zerine yazÄ±lsÄ±n mÄ± sorusuna evet deyin
 
-5. Yükleme işlemi bittikten sonra tarayıcınızdan http://www.siteadaresiniz.com/install/ adresini çağırın. Güncelleme yazılımı kurulu opencartınızı otomatik algılayacak ve güncelleme sayfasına yönlendirileceksiniz.
+5. YÃ¼kleme iÅŸlemi bittikten sonra tarayÄ±cÄ±nÄ±zdan http://www.siteadaresiniz.com/install/ adresini Ã§aÄŸÄ±rÄ±n. GÃ¼ncelleme yazÄ±lÄ±mÄ± kurulu opencartÄ±nÄ±zÄ± otomatik algÄ±layacak ve gÃ¼ncelleme sayfasÄ±na yÃ¶nlendirileceksiniz.
 
-6. Eğer kurulum sayfası ile karşılaşırsanız config.php ve admin/config.php dosyalarınızı kontrol ediniz ya da yedeklerinizden yükleme yaparak yukarıdaki adresi tekrar çağırınız.
+6. EÄŸer kurulum sayfasÄ± ile karÅŸÄ±laÅŸÄ±rsanÄ±z config.php ve admin/config.php dosyalarÄ±nÄ±zÄ± kontrol ediniz ya da yedeklerinizden yÃ¼kleme yaparak yukarÄ±daki adresi tekrar Ã§aÄŸÄ±rÄ±nÄ±z.
 
-7. Güncelle butonuna basınız. Bir kaç saniye sonra güncelleme başarılı sayfası ile karşılaşacaksınız.
+7. GÃ¼ncelle butonuna basÄ±nÄ±z. Bir kaÃ§ saniye sonra gÃ¼ncelleme baÅŸarÄ±lÄ± sayfasÄ± ile karÅŸÄ±laÅŸacaksÄ±nÄ±z.
 
-8. Hata mesajları ile karşılaşmanız durumda forumdaki güncelleme konularını ziyaret ediniz.
+8. Hata mesajlarÄ± ile karÅŸÄ±laÅŸmanÄ±z durumda forumdaki gÃ¼ncelleme konularÄ±nÄ± ziyaret ediniz.
 
-9. Token hatalarını gidermek için tarayıcınızdaki tüm önbelleği boşaltınız
+9. Token hatalarÄ±nÄ± gidermek iÃ§in tarayÄ±cÄ±nÄ±zdaki tÃ¼m Ã¶nbelleÄŸi boÅŸaltÄ±nÄ±z
 
-10. CSS değişikleri için Yönetim sayfanızda Ctrl+F5 ile yenileyin.
+10. CSS deÄŸiÅŸikleri iÃ§in YÃ¶netim sayfanÄ±zda Ctrl+F5 ile yenileyin.
 
-11. Yönetim->Kullanıcılar->Kullanıcı Grupları sayfasından Yönetici grubu için tüm kutuları işaretleyin.
+11. YÃ¶netim->KullanÄ±cÄ±lar->KullanÄ±cÄ± GruplarÄ± sayfasÄ±ndan YÃ¶netici grubu iÃ§in tÃ¼m kutularÄ± iÅŸaretleyin.
 
-12. Sistem->Genel Ayarlar sayfasından mağazanızı düzenle seçeneğine tıklayın ve hiçbir değişiklik yapmadan kaydet deyin.(daha sonra kendinize göre özelleştirebilirsiniz.)
+12. Sistem->Genel Ayarlar sayfasÄ±ndan maÄŸazanÄ±zÄ± dÃ¼zenle seÃ§eneÄŸine tÄ±klayÄ±n ve hiÃ§bir deÄŸiÅŸiklik yapmadan kaydet deyin.(daha sonra kendinize gÃ¶re Ã¶zelleÅŸtirebilirsiniz.)
 
-13. CSS değişikleri için Katalog sayfanızda Ctrl+F5 ile yenileyin.
+13. CSS deÄŸiÅŸikleri iÃ§in Katalog sayfanÄ±zda Ctrl+F5 ile yenileyin.
 
 ------------------------------------------------
-Türkçe Çeviri: http://www.e-piksel.com - eka7a
+TÃ¼rkÃ§e Ã‡eviri: http://www.e-piksel.com - eka7a

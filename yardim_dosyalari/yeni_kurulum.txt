@@ -1,25 +1,25 @@
 		///////////////////////////////////////////////
 	   ///			 OpenCart V1.5.x			   ///
-	  ///			Kurulum Aþamalarý			  ///
+	  ///			Kurulum AÅŸamalarÄ±			  ///
 	 ///		http://www.e-piksel.com			 ///
 	///		http://opencart-tr.googlecode.com	///
    ///////////////////////////////////////////////
 
 
-NOT: SADECE YENÝ KURULUM ÝÇÝN KULLANIN!
-KURULU OLAN SÜRÜMÜNÜZÜ YÜKSELTMEK ÝÇÝN GUNCELLEME.TXT DOSYASINA BAKINIZ
+NOT: SADECE YENÄ° KURULUM Ä°Ã‡Ä°N KULLANIN!
+KURULU OLAN SÃœRÃœMÃœNÃœZÃœ YÃœKSELTMEK Ä°Ã‡Ä°N GUNCELLEME.TXT DOSYASINA BAKINIZ
 
 
 -------
-KURULUM AÞAMALARI
+KURULUM AÅžAMALARI
 -------
 
-1. bu_dizinleri_ana_dizine_yukleyin dizini içindeki tüm dizin ve dosyalarý sunucunuza yükleyiniz.
-   Yükleyeceðiniz dizin sunucu özelliklerine göre deðiþiklik gösterebilir ya da kendi dizinize yüklemek isteyebilirsiniz.
+1. bu_dizinleri_ana_dizine_yukleyin dizini iÃ§indeki tÃ¼m dizin ve dosyalarÄ± sunucunuza yÃ¼kleyiniz.
+   YÃ¼kleyeceÄŸiniz dizin sunucu Ã¶zelliklerine gÃ¶re deÄŸiÅŸiklik gÃ¶sterebilir ya da kendi dizinize yÃ¼klemek isteyebilirsiniz.
 	
-   örneðin /public_html/store YA DA /public_html
+   Ã¶rneÄŸin /public_html/store YA DA /public_html
 
-2. Eðer Linux/Unix kullanýyorsanýz aþaðýdaki dizin ve klasörlerin yazýlabilir olduklarýna emin olunuz.
+2. EÄŸer Linux/Unix kullanÄ±yorsanÄ±z aÅŸaÄŸÄ±daki dizin ve klasÃ¶rlerin yazÄ±labilir olduklarÄ±na emin olunuz.
    chmod 0755 YA DA 0777 image/
    chmod 0755 YA DA 0777 image/cache/
    chmod 0755 YA DA 0777 image/data/   
@@ -29,17 +29,17 @@ KURULUM AÞAMALARI
    chmod 0755 YA DA 0777 config.php
    chmod 0755 YA DA 0777 admin/config.php
 
-3. Bir kullanýcýya atanmýþ MySQL veritabaný yüklediðinizden emin olunuz.
-   http://wiki.opencart-tr.com/index.php/Veritabaný_Oluþturma
+3. Bir kullanÄ±cÄ±ya atanmÄ±ÅŸ MySQL veritabanÄ± yÃ¼klediÄŸinizden emin olunuz.
+   http://wiki.opencart-tr.com/index.php/VeritabanÄ±_OluÅŸturma
    
    ROOT KULLANICI ADINIZI VE ROOT PAROLANIZI KULLANMAYIN
 
-4. Maðaza anasayfanýzý ziyaret ediniz.
-   örneðin. http://www.maðazam.com YA DA http://www.sitem.com/magaza/ YA DA http://magaza.sitem.com
+4. MaÄŸaza anasayfanÄ±zÄ± ziyaret ediniz.
+   Ã¶rneÄŸin. http://www.maÄŸazam.com YA DA http://www.sitem.com/magaza/ YA DA http://magaza.sitem.com
 
-5. Adýmlarý takip ediniz.
+5. AdÄ±mlarÄ± takip ediniz.
 
-6. Kurulumdan sonra install dizinini silmeyi unutmayýnýz
+6. Kurulumdan sonra install dizinini silmeyi unutmayÄ±nÄ±z
 
 ------------------------------------------------
-Türkçe Çeviri: http://www.e-piksel.com - eka7a
+TÃ¼rkÃ§e Ã‡eviri: http://www.e-piksel.com - eka7a
