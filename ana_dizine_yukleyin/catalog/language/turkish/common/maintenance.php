@@ -6,5 +6,5 @@ $_['heading_title']     = 'Bakım Modu';
 
 // Text
 $_['text_maintenance']  = 'Bakım Modu';
-$_['text_message']      = '<h1 style="text-align:center;">Mağazamızda bakım çalışması yapılmaktadır.<br/>En kısa sürede geri döneceğiz. Lüften daha sonra tekrar kontrol ediniz.</h1>';
+$_['text_message']      = '<h1 style="text-align:center;"><p>Mağazamızda güncelleme çalışması yapılmaktadır.</p><p>Çalışmalarımızı en kısa sürede tamamlayıp geri döneceğiz.</p><p>Lüften daha sonra tekrar kontrol ediniz.</p></h1>';
 ?>

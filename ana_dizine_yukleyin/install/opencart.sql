@@ -1554,6 +1554,7 @@ CREATE TABLE `oc_order` (
   `payment_zone_id` int(11) NOT NULL,
   `payment_address_format` text COLLATE utf8_bin NOT NULL,
   `payment_method` varchar(128) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `payment_code` varchar(128) COLLATE utf8_bin NOT NULL DEFAULT '',
   `comment` text COLLATE utf8_bin NOT NULL,
   `total` decimal(15,4) NOT NULL DEFAULT '0.0000',
   `reward` int(8) NOT NULL,

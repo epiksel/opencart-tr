@@ -47,6 +47,7 @@ $_['text_abandoned_orders']						= 'Terk Edilmiş Siparişler';
 $_['text_default']								= 'Varsayılan';
 $_['text_wait']									= 'Lütfen Bekleyiniz!';
 $_['text_product']								= 'Ürün(ler) Ekle';
+$_['text_update']								= 'Güncelle';
 $_['text_create_invoice_no']					= 'Fatura Num. Oluştur';
 $_['text_reward_add']							= 'Ödül Puanı Ekle';
 $_['text_reward_added']							= 'Başarılı: Ödül puanı eklendi!';

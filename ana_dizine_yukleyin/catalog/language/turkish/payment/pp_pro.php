@@ -4,7 +4,7 @@
 // Text
 $_['text_title']           = 'PayPal(Kredi Kartı ile)';
 $_['text_credit_card']     = 'Kredi Kartı Detayları';
-$_['text_start_date']      = '(Mevcut ise)';
+$_['text_start_date']      = '(mevcut ise)';
 $_['text_issue']           = '(Sadece Maestro ve Solo kartlar)';
 $_['text_wait']            = 'Lütfen Bekleyiniz!';
 
