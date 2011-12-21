@@ -19,13 +19,13 @@ $_['text_list']         = 'Liste';
 $_['text_grid']         = 'Tablo';
 $_['text_sort']         = 'Sırala:';
 $_['text_default']      = 'Varsayılan';
-$_['text_name_asc']     = 'A\'dan - Z\'ye';
-$_['text_name_desc']    = 'Z\'den - A\'ya';
+$_['text_name_asc']     = 'Ürün Adı (A - Z)';
+$_['text_name_desc']    = 'Ürün Adı (Z - A)';
 $_['text_price_asc']    = 'Ucuzdan &gt; Pahalıya';
 $_['text_price_desc']   = 'Pahalıdan &gt; Ucuza';
 $_['text_rating_asc']   = 'Düşük Oylama'; 
 $_['text_rating_desc']  = 'Yüksek Oylama';
-$_['text_model_asc']    = 'Ürün Koduna Göre A - Z';
-$_['text_model_desc']   = 'Ürün Koduna Göre Z - A';
+$_['text_model_asc']    = 'Ürün Kodu (A - Z)';
+$_['text_model_desc']   = 'Ürün Kodu (Z - A)';
 $_['text_limit']        = 'Göster:';
 ?>
