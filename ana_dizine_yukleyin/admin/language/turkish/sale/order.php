@@ -48,6 +48,7 @@ $_['text_default']								= 'Varsayılan';
 $_['text_wait']									= 'Lütfen Bekleyiniz!';
 $_['text_product']								= 'Ürün(ler) Ekle';
 $_['text_update']								= 'Güncelle';
+$_['text_order']                              	= 'Sipariş Detayları';
 $_['text_create_invoice_no']					= 'Fatura Num. Oluştur';
 $_['text_reward_add']							= 'Ödül Puanı Ekle';
 $_['text_reward_added']							= 'Başarılı: Ödül puanı eklendi!';
@@ -112,7 +113,7 @@ $_['text_risk_score']							= 'Risk Score:<span class="help">New fraud score rep
 $_['text_queries_remaining']					= 'Queries Remaining:<span class="help">Number of queries remaining in your account, can be used to alert you when you may need to add more queries to your account.</span>';
 $_['text_maxmind_id']							= 'Maxmind ID:<span class="help">Unique identifier, used to reference transactions when reporting fraudulent activity back to MaxMind. This reporting will help MaxMind improve its service to you and will enable a planned feature to customize the fraud scoring formula based on your chargeback history.</span>';
 $_['text_error']								= 'Error:<span class="help">Returns an error string with a warning message or a reason why the request failed.</span>';
-$_['text_unknown']								= 'Unknown';
+$_['text_unknown']								= 'Bilinmeyen';
 
 // Column
 $_['column_order_id']							= 'Sipariş ID';
@@ -166,6 +167,7 @@ $_['entry_voucher']								= 'Hediye:';
 $_['entry_reward']								= 'Ödül:';
 
 // Error
+$_['error_warning']								= 'Uyarı: Oluşan hatalar için lütfen formu dikkatli kontrol ediniz!';
 $_['error_permission']							= 'Uyarı: Siparişleri düzenleme iznine sahip değilsiniz!';
 $_['error_firstname']							= 'Ad alanı 1 ile 32 karakter arasında olmalı!';
 $_['error_lastname']							= 'Soyad 1 ile 32 karakter arasında olmalı!';
