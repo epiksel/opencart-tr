@@ -18,7 +18,6 @@ $_['text_reviews']      = '%s yorum yapılmış.';
 $_['text_summary']      = 'Özet';
 $_['text_weight']       = 'Ağırlık';
 $_['text_dimension']    = 'Boyutları (U x G x Y)';
-$_['text_remove']       = 'Kaldır';
 $_['text_compare']      = 'Ürün Karşılaştır (%s)';
 $_['text_success']      = 'Başarılı: <a href="%s">%s</a> ürünü <a href="%s">ürün karşılaştırma</a> listenize eklendi!';
 $_['text_remove']       = 'Başarılı: <a href="%s">%s</a> ürünü <a href="%s">ürün karşılaştırma</a> listenizden kaldırıldı!';

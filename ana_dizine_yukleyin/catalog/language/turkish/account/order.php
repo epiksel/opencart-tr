@@ -34,7 +34,7 @@ $_['column_model']          = 'Ürün Kodu';
 $_['column_quantity']       = 'Miktarı';
 $_['column_price']          = 'Fiyatı';
 $_['column_total']          = 'Toplam';
-$_['column_date_added']     = 'Ekleme Tarihi';
+$_['column_date_added']     = 'Tarih';
 $_['column_status']         = 'Durumu';
 $_['column_comment']        = 'Açıklama';
 
