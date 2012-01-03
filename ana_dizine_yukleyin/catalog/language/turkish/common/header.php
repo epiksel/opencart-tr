@@ -5,7 +5,6 @@
 $_['text_home']		= 'Anasayfa';
 $_['text_wishlist'] = 'Alışveriş Listem (%s)';
 $_['text_cart']		= 'Sepetim';
-$_['text_items']	= '%s ürün - %s';
 $_['text_search']	= 'Ne Aramıştınız...';
 $_['text_welcome']	= 'Hoşgeldin ziyaretçi <a href="%s">giriş yapın</a> ya da <a href="%s">kayıt olun</a>.';
 $_['text_logged']	= '<a href="%s">%s</a> olarak oturum açtınız <b>(</b> <a href="%s">Çıkış yap</a> <b>)</b>';
