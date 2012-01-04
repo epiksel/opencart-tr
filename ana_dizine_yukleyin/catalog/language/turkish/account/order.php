@@ -39,5 +39,5 @@ $_['column_status']         = 'Durumu';
 $_['column_comment']        = 'Açıklama';
 
 // Error
-$_['error_warning']         = 'Uyarı: Bu isteiğinizin tamamlanması için en az bir ürün seçmelisiniz!';
+$_['error_warning']         = 'Uyarı: Bu isteğinizin tamamlanması için en az bir ürün seçmelisiniz!';
 ?>
