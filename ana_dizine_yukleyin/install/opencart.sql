@@ -948,6 +948,17 @@ CREATE TABLE `oc_customer_ip` (
 -- Dumping data for table `oc_customer_ip`
 --
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `oc_customer_ip_blacklist`
+--
+
+CREATE TABLE IF NOT EXISTS `oc_customer_ip_blacklist` (
+  `customer_ip_blacklist_id` int(11) NOT NULL AUTO_INCREMENT,
+  `ip` varchar(15) COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`customer_ip_blacklist_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- --------------------------------------------------------
 
