@@ -10,6 +10,8 @@ $_['text_default']          = 'Varsayılan';
 $_['text_approved']			= '%s hesabını onayladınız!';
 $_['text_wait']           	= 'Lütfen Bekleyiniz!';
 $_['text_balance']			= 'Bakiye:';
+$_['text_add_blacklist']    = 'Kara Liste\'ye Ekle';
+$_['text_remove_blacklist'] = 'Karaliste\'den Kaldır';
 
 // Column
 $_['column_name']			= 'Müşteri Adı';
