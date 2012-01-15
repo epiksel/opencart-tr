@@ -16,7 +16,7 @@ $_['column_action']        = 'Eylem';
 
 // Entry
 $_['entry_title']          = 'Para Birimi Adı:';
-$_['entry_code']           = 'Kodu:<br /><span class="help">Bu varsayılan para biriminiz ise değiştirmeyiniz.</span>';
+$_['entry_code']           = 'Kodu:<br /><span class="help">Bu varsayılan para biriminiz ise değiştirmeyiniz. Geçerli bir <a href="http://www.xe.com/iso4217.php" target="_blank">ISO kod</a> olmalı.</span>';
 $_['entry_value']          = 'Değeri:<br /><span class="help">Varsayılan para birimi değerini 1.00000 olarak ayarlayın.</span>';
 $_['entry_symbol_left']    = 'Sol Sembol:';
 $_['entry_symbol_right']   = 'Sağ Sembol:';
