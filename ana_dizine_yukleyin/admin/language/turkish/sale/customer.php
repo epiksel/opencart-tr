@@ -48,7 +48,7 @@ $_['entry_country']			= 'Ülke:';
 $_['entry_zone']			= 'Şehir / Eyalet:';
 $_['entry_default']			= 'Varsayılan Adres:';
 $_['entry_amount']			= 'Miktar:';
-$_['entry_points']			= 'Puan:';
+$_['entry_points']			= 'Ödül Puanı:<br /><span class="help">Puan silmek için başına eksi işareti koyunuz. Örneğin: -100 gibi.</span>';
 $_['entry_description']		= 'Açıklama:';
 
 // Error

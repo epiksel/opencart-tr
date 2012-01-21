@@ -7,10 +7,10 @@ $_['heading_title']      = 'Ürün İadelerim';
 // Text
 $_['text_account']       = 'Hesabım';
 $_['text_return']        = 'Ürün İade Bilgileri';
+$_['text_return_detail'] = 'İade Detayları';
 $_['text_description']   = '<p>Satın aldığınız ürün ile ilgili Teknik destek veya satış personeli tarafından çözülemeyen bir sorununuz varsa, ürün iade talebinde bulunabilirsiniz. İlk adım olarak ürün iade formunu doldurunuz.</p><p>Bu form tam olarak doldurulmalıdır. En kısa sürede cevap verilecektir.</p><p>Ürünleri orjinal ambalajında geri gönderiniz. Yetersiz paketleme ile zarar görmüş ürünleri ürün iade talepleriniz olumsuz sonuçlanabilir. Taşıma sırasında zarar görmesini önlemek için lütfen dış koruyucu kutu kullanın. Yiyecek, içecek ve yazılım ürünlerinin ürün iadesi kabul edilmemektedir.</p>';
 $_['text_order']         = 'Sipariş Bilgileri';
 $_['text_product']       = 'Ürün Bilgileri &amp; Ürün İade Nedeni';
-$_['text_additional']    = 'Ek Bilgiler';
 $_['text_message']       = '<p>Ürün iade talebiniz mağaza sahibine başarıyla gönderildi!</p><p>24 saat içinde sizinle irtibata geçilecektir.';
 $_['text_return_id']     = 'Ürün İade ID:';
 $_['text_order_id']      = 'Sipariş ID:';
@@ -19,13 +19,12 @@ $_['text_status']        = 'Durumu:';
 $_['text_date_added']    = 'Ekleme Tarihi:';
 $_['text_customer']      = 'Mişteri:';
 $_['text_comment']       = 'Ürün İade Açıklamları';
-$_['text_products']      = 'Ürünler:';
 $_['text_history']       = 'Ürün İade Geçmişi';
 $_['text_empty']         = 'Daha önce ürün iade isteğinde bulunmadınız!';
 $_['text_error']         = 'İstediğiniz ürün iadesi bulunamadı!';
 
 // Column
-$_['column_name']        = 'Ürün Adı';
+$_['column_product']     = 'Ürün Adı';
 $_['column_model']       = 'Ürün Kodu';
 $_['column_quantity']    = 'Miktar';
 $_['column_price']       = 'Fiyatı';
@@ -57,8 +56,7 @@ $_['error_firstname']    = 'Ad alanı 1 ile 32 karakter arasında olmalı!';
 $_['error_lastname']     = 'Soyad alanı 1 ile 32 karakter arasında olmalı!';
 $_['error_email']        = 'Geçerli bir E-Posta adresi yazınız!';
 $_['error_telephone']    = 'Telefon alanı 3 ile 32 karakter arasında olmalı!';
-$_['error_product']      = 'En az bir ürün seçmelisiniz!';
-$_['error_name']         = 'Ürün adı 3 ile 255 karakter arasında olmalı!';
+$_['error_product']      = 'Ürün adı alanı 3 ile 255 karakter arasında olmalı!';
 $_['error_model']        = 'Ürün kodu 3 ile 64 karakter arasında olmalı!';
 $_['error_reason']       = 'Ürün iade nedeni seçmelisiniz!';
 $_['error_captcha']      = 'Doğrulama kodu yanlış!';

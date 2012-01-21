@@ -2390,21 +2390,28 @@ INSERT INTO `oc_product_to_store` (`product_id`, `store_id`) VALUES
 --
 
 DROP TABLE IF EXISTS `oc_return`;
-CREATE TABLE `oc_return` (
+CREATE TABLE IF NOT EXISTS `oc_return` (
   `return_id` int(11) NOT NULL AUTO_INCREMENT,
   `order_id` int(11) NOT NULL,
-  `date_ordered` date NOT NULL,
+  `product_id` int(11) NOT NULL,
   `customer_id` int(11) NOT NULL,
   `firstname` varchar(32) COLLATE utf8_bin NOT NULL,
   `lastname` varchar(32) COLLATE utf8_bin NOT NULL,
   `email` varchar(96) COLLATE utf8_bin NOT NULL,
   `telephone` varchar(32) COLLATE utf8_bin NOT NULL,
+  `product` varchar(255) COLLATE utf8_bin NOT NULL,
+  `model` varchar(64) COLLATE utf8_bin NOT NULL,
+  `quantity` int(4) NOT NULL,
+  `opened` tinyint(1) NOT NULL,
+  `return_reason_id` int(11) NOT NULL,
+  `return_action_id` int(11) NOT NULL,
   `return_status_id` int(11) NOT NULL,
   `comment` text COLLATE utf8_bin,
+  `date_ordered` date NOT NULL,
   `date_added` datetime NOT NULL,
   `date_modified` datetime NOT NULL,
   PRIMARY KEY (`return_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Dumping data for table `oc_return`
@@ -2454,33 +2461,6 @@ CREATE TABLE `oc_return_history` (
 --
 -- Dumping data for table `oc_return_history`
 --
-
-
--- --------------------------------------------------------
-
---
--- Table structure for table `oc_return_product`
---
-
-DROP TABLE IF EXISTS `oc_return_product`;
-CREATE TABLE `oc_return_product` (
-  `return_product_id` int(11) NOT NULL AUTO_INCREMENT,
-  `return_id` int(11) NOT NULL,
-  `product_id` int(11) NOT NULL,
-  `name` varchar(255) COLLATE utf8_bin NOT NULL,
-  `model` varchar(64) COLLATE utf8_bin NOT NULL,
-  `quantity` int(4) NOT NULL,
-  `return_reason_id` int(11) NOT NULL,
-  `opened` tinyint(1) NOT NULL,
-  `comment` text COLLATE utf8_bin NOT NULL,
-  `return_action_id` int(11) NOT NULL,
-  PRIMARY KEY (`return_product_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
---
--- Dumping data for table `oc_return_product`
---
-
 
 -- --------------------------------------------------------
 

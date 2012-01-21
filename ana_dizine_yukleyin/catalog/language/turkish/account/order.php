@@ -7,7 +7,7 @@ $_['heading_title']         = 'Sipariş Geçmişim';
 // Text
 $_['text_account']          = 'Hesabım';
 $_['text_order']            = 'Sipariş Bilgileri';
-$_['text_order_detail']     = 'Sipariş Detayı';
+$_['text_order_detail']     = 'Sipariş Detayları';
 $_['text_invoice_no']       = 'Fatura No.:';
 $_['text_order_id']         = 'Sipariş ID:';
 $_['text_status']           = 'Durumu:';
