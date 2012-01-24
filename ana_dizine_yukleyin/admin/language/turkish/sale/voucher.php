@@ -41,4 +41,5 @@ $_['error_to_name']		= 'Alıcı Ad alanı 1 ile 64 karakter arasında olmalı!';
 $_['error_from_name']	= 'Gönderen Ad alanı 1 ile 64 karakter arasında olmalı!';
 $_['error_email']		= 'E-Posta adresi geçersiz!';
 $_['error_amount']		= 'Miktar en az 1 olmalıdır!';
+$_['error_order']       = 'Uyarı: Bu hediye çeki <a href="%s">siparişi</a> silinemez!';
 ?>
