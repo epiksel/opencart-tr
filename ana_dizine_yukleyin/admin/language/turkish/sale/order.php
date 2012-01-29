@@ -63,6 +63,7 @@ $_['text_credit_add']							= 'Kredi Ekle';
 $_['text_credit_added']							= 'Başarılı: Hesaba kredi eklendi!';
 $_['text_credit_remove']						= 'Kredi Kaldır';
 $_['text_credit_removed']						= 'Başarılı: Hesaptan kredi kaldırıldı!';
+$_['text_for']									= '%s için Hediye Çeki %s';
 $_['text_upload']								= 'Dosyanız başarıyla yüklendi!';
 $_['text_country_match']						= 'Country Match:<br /><span class="help">Whether country of IP address matches billing address country (mismatch = higher risk).</span>';
 $_['text_country_code']							= 'Ülke Kodu:<br /><span class="help">IP adresinin ülke kodu</span>';
