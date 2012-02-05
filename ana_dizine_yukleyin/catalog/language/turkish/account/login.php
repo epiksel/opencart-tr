@@ -8,7 +8,6 @@ $_['heading_title']                = 'Oturum Aç';
 $_['text_account']                 = 'Hesabım';
 $_['text_login']                   = 'Oturum Aç';
 $_['text_new_customer']            = 'Yeni Müşteriyim.';
-$_['text_checkout']                = 'Alışveriş Seçenekleri:';
 $_['text_register']                = 'Hesap Oluştur';
 $_['text_register_account']        = 'Hızlı ve güvenli bir alışveriş için yeni bir hesap oluşturun. Böyle sipariş durumunuzu takip edebilir ve önceki siparişlerinize göz atabilirsiniz.';
 $_['text_returning_customer']      = 'Kayıtlı Müşteriyim';

@@ -9,7 +9,7 @@ $_['text_success']     = 'Başarılı: Kullanıcı grupları değiştirildi!';
 
 // Column
 $_['column_name']      = 'Kullanıcı Grup Adı';
-$_['column_action']    = 'Aksiyon';
+$_['column_action']    = 'Eylem';
 
 // Entry
 $_['entry_name']       = 'Kullanıcı Grup Adı:';

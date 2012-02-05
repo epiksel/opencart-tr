@@ -11,9 +11,9 @@ $_['text_success']       = 'Başarılı: SagePay (US) hesap detayları başarıl
 // Entry
 $_['entry_merchant_id']  = 'Merchant ID:';
 $_['entry_merchant_key'] = 'Merchant Key:';
+$_['entry_total']        = 'Toplam:<br /><span class="help">Bu ödeme metodunun aktif olması için toplam sipariş miktarını giriniz</span>';
 $_['entry_order_status'] = 'Order Status:';
 $_['entry_geo_zone']     = 'Geo Zone:';
-$_['entry_total']        = 'Toplam:<br /><span class="help">Bu ödeme metodunun aktif olması için toplam sipariş miktarını giriniz</span>';
 $_['entry_status']       = 'Status:';
 $_['entry_sort_order']   = 'Sort Order:';
 

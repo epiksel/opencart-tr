@@ -31,7 +31,7 @@ $_['column_date_added']   		    = 'Ekleme Tarihi';
 $_['column_total']        		    = 'Toplam';
 $_['column_firstname']    	 	    = 'Adı';
 $_['column_lastname']     		    = 'Soyadı';
-$_['column_action']        		    = 'Aksiyon';
+$_['column_action']        		    = 'Eylem';
 
 // Entry
 $_['entry_range']         		    = 'Sıralama Seç:';

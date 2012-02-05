@@ -20,6 +20,7 @@ $_['column_theme']		= 'Tema';
 $_['column_status']		= 'Durumu';
 $_['column_order_id']	= 'Sipariş ID';
 $_['column_customer']	= 'Müşteri';
+$_['column_date_added'] = 'Ekleme Tarihi';
 $_['column_action']		= 'Eylem';
 
 // Entry

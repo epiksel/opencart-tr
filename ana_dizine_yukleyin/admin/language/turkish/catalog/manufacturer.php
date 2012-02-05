@@ -21,7 +21,7 @@ $_['column_action']      = 'Eylem';
 // Entry
 $_['entry_name']         = 'Üretici Adı:';
 $_['entry_store']        = 'Mağazalar:';
-$_['entry_keyword']      = 'SEO Kelimeleri:';
+$_['entry_keyword']      = 'SEO Kelimeleri:<br /><span class="help">Boşluk kullanmayın ve benzersiz kelimeler kullandığınızdan emin olunuz.</span>';
 $_['entry_image']        = 'Resim:';
 $_['entry_sort_order']   = 'Sıralama:';
 $_['entry_type']         = 'Türü:';

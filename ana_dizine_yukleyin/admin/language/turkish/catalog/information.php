@@ -17,9 +17,9 @@ $_['column_action']     = 'Eylem';
 $_['entry_title']       = 'Bilgi Başlığı:';
 $_['entry_description'] = 'Açıklama:';
 $_['entry_store']       = 'Mağazalar:';
-$_['entry_keyword']     = 'SEO Kelimesi:';
+$_['entry_keyword']     = 'SEO Kelimesi:<br /><span class="help">Boşluk kullanmayın ve benzersiz kelimeler kullandığınızdan emin olunuz.</span>';
 $_['entry_status']      = 'Durumu:';
-$_['entry_sort_order']  = 'Sıralama:<br/><span class="help">Listeden gizlemek için -1 yapınız</span>';
+$_['entry_sort_order']  = 'Sıralama:';
 $_['entry_layout']      = 'Bölümde Geçersiz Kıl:';
 
 // Error

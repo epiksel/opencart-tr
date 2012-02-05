@@ -32,7 +32,7 @@ $_['entry_meta_keyword'] 	 = 'Meta Kelimeleri:';
 $_['entry_meta_description'] = 'Meta Açıklaması:';
 $_['entry_description']      = 'Açıklama:';
 $_['entry_store']            = 'Mağazalar:';
-$_['entry_keyword']          = 'SEO Kelimesi:';
+$_['entry_keyword']          = 'SEO Kelimesi:<br /><span class="help">Boşluk kullanmayın ve benzersiz kelimeler kullandığınızdan emin olunuz.</span>';
 $_['entry_model']            = 'Ürün Kodu:';
 $_['entry_sku']              = 'SKU:';
 $_['entry_upc']              = 'UPC:';

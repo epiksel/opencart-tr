@@ -982,7 +982,6 @@ CREATE TABLE `oc_customer_reward` (
 -- Dumping data for table `oc_customer_reward`
 --
 
-
 -- --------------------------------------------------------
 
 --
@@ -1003,7 +1002,6 @@ CREATE TABLE `oc_customer_transaction` (
 --
 -- Dumping data for table `oc_customer_transaction`
 --
-
 
 -- --------------------------------------------------------
 
@@ -1106,8 +1104,7 @@ CREATE TABLE `oc_geo_zone` (
 --
 
 INSERT INTO `oc_geo_zone` (`geo_zone_id`, `name`, `description`, `date_modified`, `date_added`) VALUES
-(3, 'Türkiye', 'Tüm Türkiye dahil', '2010-02-26 22:33:24', '2009-01-06 23:26:25'),
-(4, 'UK Shipping', 'UK Shipping Zones', '2010-12-15 15:18:13', '2009-06-23 01:14:53');
+(3, 'Türkiye', 'Tüm Türkiye dahil', '2010-02-26 22:33:24', '2009-01-06 23:26:25');
 
 -- --------------------------------------------------------
 
@@ -1766,11 +1763,11 @@ INSERT INTO `oc_order_status` (`order_status_id`, `language_id`, `name`) VALUES
 (7, 1, 'İptal Edildi'),
 (5, 1, 'Tamamlandı'),
 (8, 1, 'Reddedildi'),
-(9, 1, 'İptali Geri Al'),
+(9, 1, 'İptal Geri Aldı'),
 (10, 1, 'Başarısız'),
 (11, 1, 'İade Edildi'),
-(12, 1, 'İadeyi Geri Al'),
-(13, 1, 'Geri Ödeme'),
+(12, 1, 'İade Geri Alındı'),
+(13, 1, 'Geri Ödeme Yapıldı'),
 (1, 1, 'Onay Bekliyor'),
 (16, 1, 'Hükümsüz'),
 (15, 1, 'Hazırlandı'),
@@ -2439,8 +2436,8 @@ CREATE TABLE `oc_return_action` (
 
 INSERT INTO `oc_return_action` (`return_action_id`, `language_id`, `name`) VALUES
 (1, 1, 'İade Edildi'),
-(2, 1, 'Verilen kredi'),
-(3, 1, 'Değişim');
+(2, 1, 'Kredi Geri Alınmış'),
+(3, 1, 'Değişime Gönderildi');
 
 -- --------------------------------------------------------
 
@@ -7039,5 +7036,4 @@ CREATE TABLE `oc_zone_to_geo_zone` (
 --
 
 INSERT INTO `oc_zone_to_geo_zone` (`zone_to_geo_zone_id`, `country_id`, `zone_id`, `geo_zone_id`, `date_added`, `date_modified`) VALUES
-(57, 215, 0, 3, '2010-02-26 22:33:24', '0000-00-00 00:00:00'),
-(65, 222, 0, 4, '2010-12-15 15:18:13', '0000-00-00 00:00:00');
+(57, 215, 0, 3, '2010-02-26 22:33:24', '0000-00-00 00:00:00');

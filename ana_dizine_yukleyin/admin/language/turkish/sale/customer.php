@@ -53,8 +53,8 @@ $_['entry_description']		= 'Açıklama:';
 
 // Error
 $_['error_warning']			= 'Uyarı: Oluşan hatalar için lütfen formu dikkatli kontrol ediniz!';
-$_['error_exists']          = 'Uyarı: E-Posta adresi zaten kayıtlı!';
 $_['error_permission']		= 'Uyarı: Müşteri bilgileri düzenleme iznine sahip değilsiniz!';
+$_['error_exists']          = 'Uyarı: E-Posta adresi zaten kayıtlı!';
 $_['error_firstname']		= 'Ad alanı 1 ile 32 karakter arasında olmalı!';
 $_['error_lastname']		= 'Soyad 1 ile 32 karakter arasında olmalı!';
 $_['error_email']			= 'E-Posta adresi geçersiz!';

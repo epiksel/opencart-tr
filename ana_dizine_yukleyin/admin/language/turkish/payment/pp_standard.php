@@ -6,7 +6,7 @@ $_['heading_title']					 = 'PayPal Website Payments Standart';
 
 // Text
 $_['text_payment']					 = 'Ödeme Metodları';
-$_['text_success']					 = 'Success: You have modified PayPal account details!';
+$_['text_success']					 = 'Başarılı: PayPal hesap detayları başarılı bir şekilde değiştirildi!';
 $_['text_pp_standard']				 = '<a onclick="window.open(\'https://www.paypal.com/uk/mrb/pal=YS4L83BNSEC6A\');"><img src="view/image/payment/paypal.png" alt="PayPal" title="PayPal" style="border: 1px solid #EEEEEE;" /></a>';
 $_['text_authorization']			 = 'Onaylı Ödeme';
 $_['text_sale']						 = 'Direk Ödeme';

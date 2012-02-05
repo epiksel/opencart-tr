@@ -11,7 +11,7 @@ $_['text_success']            = 'Başarılı: Ülkeler başarılı bir şekilde 
 $_['column_name']             = 'Ülke Adı';
 $_['column_iso_code_2']       = 'ISO Kodu (2)';
 $_['column_iso_code_3']       = 'ISO Kodu (3)';
-$_['column_action']           = 'Aksiyon';
+$_['column_action']           = 'Eylem';
 
 // Entry
 $_['entry_name']              = 'Ülke Adı:';

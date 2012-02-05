@@ -8,7 +8,7 @@ $_['heading_title']    = 'Hediye Çeki Satın Alma';
 $_['text_account']     = 'Hesap';
 $_['text_voucher']     = 'Hediye Çeki';
 $_['text_description'] = 'Siparişinizin ödemesini yaptığınızda hediye çeki alıcısına gönderilecektir.';
-$_['text_agree']       = 'Hediye çekinin ürün iade edilemeyeceğini biliyorum ve onaylıyorum';
+$_['text_agree']       = 'Hediye çekinin iade edilemeyeceğini biliyorum ve onaylıyorum';
 $_['text_message']     = '<p>Hediye çeki satın aldığınız için teşekkür ederiz! Siparişiniz tamamlandığında hediye çeki ile ilgili detaylar sahibine e-posta ile gönderilecektir.</p>';
 $_['text_for']         = '%s için %s Hediye Çeki';
 
@@ -27,5 +27,5 @@ $_['error_from_name']  = 'Adınız 1 ile 64 karakter arasında olmalıdır!';
 $_['error_email']      = 'Geçerli bir E-Posta adresi yazınız!';
 $_['error_amount']     = 'Miktar %s ile %s arasında olmalıdır!';
 $_['error_theme']      = 'Bir tema seçiniz!';
-$_['error_agree']      = 'Uyarı: Hediye çeklerinin iadesi olmayacağını kabul etmelisiniz!';
+$_['error_agree']      = 'Uyarı: Hediye çekinin iade olmayacağını kabul etmelisiniz!';
 ?>

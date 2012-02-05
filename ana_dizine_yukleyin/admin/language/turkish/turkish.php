@@ -22,7 +22,7 @@ $_['text_unselect_all']       = 'Tüm Seçimi Kaldır';
 $_['text_all_zones']          = 'Hepsini Kapsa';
 $_['text_default']            = ' <b>(Varsayılan)</b>';
 $_['text_close']              = 'Kapalı';
-$_['text_pagination']         = '{start} ile {end} arası toplam {total} ürün ({pages} Sayfa)';
+$_['text_pagination']         = 'Gösterilen: {start} ile {end} arası, toplam: {total} ({pages} Sayfa)';
 $_['text_no_results']         = 'Gösterilecek sonuç yok!';
 $_['text_separator']          = ' &gt; ';
 $_['text_edit']               = 'Düzenle';
@@ -93,12 +93,14 @@ $_['tab_module']              = 'Modül';
 $_['tab_order']               = 'Sipariş Detayları';
 $_['tab_order_history']       = 'Sipariş Geçmişi';
 $_['tab_payment']             = 'Ödeme Detayları';
-$_['tab_product']             = 'Ürün';
+$_['tab_product']             = 'Ürünler';
 $_['tab_return']              = 'İade Detayları';
 $_['tab_return_history']      = 'İade Geçmişi';
 $_['tab_reward']              = 'Ödül Puanı';
 $_['tab_shipping']            = 'Kargo Adresi';
+$_['tab_total']               = 'Toplamlar';
 $_['tab_transaction']         = 'Alım Satım İşlemleri';
+$_['tab_voucher']             = 'Hediye Çekleri';
 $_['tab_voucher_history']     = 'Hediye Çeki Geçmişi';
 
 // Error

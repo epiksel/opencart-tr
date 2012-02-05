@@ -33,7 +33,7 @@ $_['column_total']    		= 'Toplam';
 
 // Entry
 $_['entry_coupon']			= 'Kupon kodunuzu buraya griniz:';
-$_['entry_voucher']			= 'Hediye çeki kodunuzu buraya griniz:';
+$_['entry_voucher']			= 'Hediye çeki kodunuzu buraya giriniz:';
 $_['entry_reward']			= 'Puan kullan (Maksimum %s):';
 $_['entry_country']			= 'Ülke:';
 $_['entry_zone']			= 'Şehir / Eyalet:';

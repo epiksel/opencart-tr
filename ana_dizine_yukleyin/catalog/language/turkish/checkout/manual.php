@@ -33,5 +33,4 @@ $_['error_maximum']		= 'Uyarı: En fazla uygulanabilir ödül puanı %s!';
 $_['error_to_name']		= 'Alıcı adı 1 ile 64 karakter arasında olmalıdır!';
 $_['error_from_name']	= 'Adınız 1 ile 64 karakter arasında olmalıdır!';
 $_['error_amount']		= 'Miktar %s ile %s arasında olmalıdır!';
-$_['error_theme']		= 'Bir tema seçiniz!';
 ?>

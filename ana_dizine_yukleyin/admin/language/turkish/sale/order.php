@@ -25,8 +25,9 @@ $_['text_comment']								= 'Açıklama:';
 $_['text_affiliate']							= 'Ortak:';
 $_['text_commission']							= 'Komisyon:';
 $_['text_ip']									= 'IP Adresi:';
-$_['text_fraud_score']							= 'Sahtecilik Skoru:';
-$_['text_fraud_comment']						= 'Sahtecilik Detayı:';
+$_['text_forwarded_ip']							= 'İletilen IP:';
+$_['text_user_agent']							= 'Kullanıcı Ajanı:';
+$_['text_accept_language']						= 'Geçerli Dil:';
 $_['text_date_added']							= 'Ekleme Tarihi:';
 $_['text_date_modified']						= 'Güncelleme Tarihi:';
 $_['text_firstname']							= 'Adınız:';
@@ -47,7 +48,7 @@ $_['text_abandoned_orders']						= 'Terk Edilmiş Siparişler';
 $_['text_default']								= 'Varsayılan';
 $_['text_wait']									= 'Lütfen Bekleyiniz!';
 $_['text_product']								= 'Ürün(ler) Ekle';
-$_['text_voucher']                            	= 'Hediye Çeki(leri) Ekle';
+$_['text_voucher']                            	= 'Hediye Çeki Ekle';
 $_['text_refresh']                            	= 'Sipariş Toplamlarını Yenile';
 $_['text_order']                              	= 'Sipariş Detayları';
 $_['text_generate']                           	= 'Oluştur';
@@ -115,7 +116,6 @@ $_['text_risk_score']							= 'Risk Score:<br /><span class="help">New fraud sco
 $_['text_queries_remaining']					= 'Queries Remaining:<br /><span class="help">Number of queries remaining in your account, can be used to alert you when you may need to add more queries to your account.</span>';
 $_['text_maxmind_id']							= 'Maxmind ID:<br /><span class="help">Unique identifier, used to reference transactions when reporting fraudulent activity back to MaxMind. This reporting will help MaxMind improve its service to you and will enable a planned feature to customize the fraud scoring formula based on your chargeback history.</span>';
 $_['text_error']								= 'Error:<br /><span class="help">Returns an error string with a warning message or a reason why the request failed.</span>';
-$_['text_unknown']								= 'Bilinmeyen';
 
 // Column
 $_['column_order_id']							= 'Sipariş ID';
@@ -167,12 +167,10 @@ $_['entry_affiliate']							= 'Ortaklık:';
 $_['entry_order_status']						= 'Sipariş Durumu:';
 $_['entry_notify']								= 'Müşteriye Bildir:';
 $_['entry_comment']								= 'Açıklama:';
-$_['entry_coupon']								= 'Kupon:';
-$_['entry_voucher']								= 'Hediye Çeki:';
 $_['entry_shipping']							= 'Kargo Metodu:';
 $_['entry_payment']								= 'Ödeme Metodu:';
 $_['entry_coupon']								= 'Kupon:';
-$_['entry_voucher']								= 'Hediye:';
+$_['entry_voucher']								= 'Hediye Çeki:';
 $_['entry_reward']								= 'Ödül:';
 
 // Error
