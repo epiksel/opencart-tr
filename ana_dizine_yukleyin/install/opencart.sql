@@ -1763,7 +1763,7 @@ INSERT INTO `oc_order_status` (`order_status_id`, `language_id`, `name`) VALUES
 (7, 1, 'İptal Edildi'),
 (5, 1, 'Tamamlandı'),
 (8, 1, 'Reddedildi'),
-(9, 1, 'İptal Geri Aldı'),
+(9, 1, 'İptal Geri Alındı'),
 (10, 1, 'Başarısız'),
 (11, 1, 'İade Edildi'),
 (12, 1, 'İade Geri Alındı'),
