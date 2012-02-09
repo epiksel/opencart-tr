@@ -66,6 +66,7 @@ $_['button_add_route']        = 'Yol Ekle';
 $_['button_add_rule' ]        = 'Kural Ekle';
 $_['button_add_module']       = 'Modül Ekle';
 $_['button_add_link']         = 'Bağlantı Ekle';
+$_['button_update_total']     = 'Toplamları Güncelle';
 $_['button_approve']          = 'Onayla';
 $_['button_reset']            = 'Sıfırla';
 

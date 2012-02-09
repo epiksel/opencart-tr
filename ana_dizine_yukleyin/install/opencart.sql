@@ -958,8 +958,9 @@ DROP TABLE IF EXISTS `oc_customer_ip_blacklist`;
 CREATE TABLE `oc_customer_ip_blacklist` (
   `customer_ip_blacklist_id` int(11) NOT NULL AUTO_INCREMENT,
   `ip` varchar(15) COLLATE utf8_bin NOT NULL,
-  PRIMARY KEY (`customer_ip_blacklist_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+  PRIMARY KEY (`customer_ip_blacklist_id`),
+  KEY `ip` (`ip`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- --------------------------------------------------------
 
@@ -1549,7 +1550,7 @@ CREATE TABLE `oc_order` (
   `shipping_zone_id` int(11) NOT NULL,
   `shipping_address_format` text COLLATE utf8_bin NOT NULL,
   `shipping_method` varchar(128) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `shipping_code` varchar(128) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `shipping_code` varchar(128) COLLATE utf8_bin NOT NULL,
   `payment_firstname` varchar(32) COLLATE utf8_bin NOT NULL DEFAULT '',
   `payment_lastname` varchar(32) COLLATE utf8_bin NOT NULL DEFAULT '',
   `payment_company` varchar(32) COLLATE utf8_bin NOT NULL,
@@ -1563,10 +1564,9 @@ CREATE TABLE `oc_order` (
   `payment_zone_id` int(11) NOT NULL,
   `payment_address_format` text COLLATE utf8_bin NOT NULL,
   `payment_method` varchar(128) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `payment_code` varchar(128) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `payment_code` varchar(128) COLLATE utf8_bin NOT NULL,
   `comment` text COLLATE utf8_bin NOT NULL,
   `total` decimal(15,4) NOT NULL DEFAULT '0.0000',
-  `reward` int(8) NOT NULL,
   `order_status_id` int(11) NOT NULL DEFAULT '0',
   `affiliate_id` int(11) NOT NULL,
   `commission` decimal(15,4) NOT NULL,
@@ -1574,10 +1574,10 @@ CREATE TABLE `oc_order` (
   `currency_id` int(11) NOT NULL,
   `currency_code` varchar(3) COLLATE utf8_bin NOT NULL,
   `currency_value` decimal(15,8) NOT NULL,
-  `ip` varchar(15) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `forwarded_ip` varchar(15) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `user_agent` varchar(255) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `accept_language` varchar(255) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `ip` varchar(15) COLLATE utf8_bin NOT NULL,
+  `forwarded_ip` varchar(15) COLLATE utf8_bin NOT NULL,
+  `user_agent` varchar(255) COLLATE utf8_bin NOT NULL,
+  `accept_language` varchar(255) COLLATE utf8_bin NOT NULL,
   `date_added` datetime NOT NULL,
   `date_modified` datetime NOT NULL,
   PRIMARY KEY (`order_id`)
@@ -1613,59 +1613,59 @@ CREATE TABLE `oc_order_download` (
 DROP TABLE IF EXISTS `oc_order_fraud`;
 CREATE TABLE `oc_order_fraud` (
   `order_id` int(11) NOT NULL,
-  `member_id` int(11) NOT NULL,
-  `country_match` varchar(3) collate utf8_bin NOT NULL,
-  `country_code` varchar(2) collate utf8_bin NOT NULL,
-  `high_risk_country` varchar(3) collate utf8_bin NOT NULL,
+  `customer_id` int(11) NOT NULL,
+  `country_match` varchar(3) COLLATE utf8_bin NOT NULL,
+  `country_code` varchar(2) COLLATE utf8_bin NOT NULL,
+  `high_risk_country` varchar(3) COLLATE utf8_bin NOT NULL,
   `distance` int(11) NOT NULL,
-  `ip_region` varchar(255) collate utf8_bin NOT NULL,
-  `ip_city` varchar(255) collate utf8_bin NOT NULL,
+  `ip_region` varchar(255) COLLATE utf8_bin NOT NULL,
+  `ip_city` varchar(255) COLLATE utf8_bin NOT NULL,
   `ip_latitude` decimal(10,6) NOT NULL,
   `ip_longitude` decimal(10,6) NOT NULL,
-  `ip_isp` varchar(255) collate utf8_bin NOT NULL,
-  `ip_org` varchar(255) collate utf8_bin NOT NULL,
+  `ip_isp` varchar(255) COLLATE utf8_bin NOT NULL,
+  `ip_org` varchar(255) COLLATE utf8_bin NOT NULL,
   `ip_asnum` int(11) NOT NULL,
-  `ip_user_type` varchar(255) collate utf8_bin NOT NULL,
-  `ip_country_confidence` varchar(3) collate utf8_bin NOT NULL,
-  `ip_region_confidence` varchar(3) collate utf8_bin NOT NULL,
-  `ip_city_confidence` varchar(3) collate utf8_bin NOT NULL,
-  `ip_postal_confidence` varchar(3) collate utf8_bin NOT NULL,
-  `ip_postal_code` varchar(10) collate utf8_bin NOT NULL,
+  `ip_user_type` varchar(255) COLLATE utf8_bin NOT NULL,
+  `ip_country_confidence` varchar(3) COLLATE utf8_bin NOT NULL,
+  `ip_region_confidence` varchar(3) COLLATE utf8_bin NOT NULL,
+  `ip_city_confidence` varchar(3) COLLATE utf8_bin NOT NULL,
+  `ip_postal_confidence` varchar(3) COLLATE utf8_bin NOT NULL,
+  `ip_postal_code` varchar(10) COLLATE utf8_bin NOT NULL,
   `ip_accuracy_radius` int(11) NOT NULL,
-  `ip_net_speed_cell` varchar(255) collate utf8_bin NOT NULL,
+  `ip_net_speed_cell` varchar(255) COLLATE utf8_bin NOT NULL,
   `ip_metro_code` int(3) NOT NULL,
   `ip_area_code` int(3) NOT NULL,
-  `ip_time_zone` varchar(255) collate utf8_bin NOT NULL,
-  `ip_region_name` varchar(255) collate utf8_bin NOT NULL,
-  `ip_domain` varchar(255) collate utf8_bin NOT NULL,
-  `ip_country_name` varchar(255) collate utf8_bin NOT NULL,
-  `ip_continent_code` varchar(2) collate utf8_bin NOT NULL,
-  `ip_corporate_proxy` varchar(3) collate utf8_bin NOT NULL,
-  `anonymous_proxy` varchar(3) collate utf8_bin NOT NULL,
+  `ip_time_zone` varchar(255) COLLATE utf8_bin NOT NULL,
+  `ip_region_name` varchar(255) COLLATE utf8_bin NOT NULL,
+  `ip_domain` varchar(255) COLLATE utf8_bin NOT NULL,
+  `ip_country_name` varchar(255) COLLATE utf8_bin NOT NULL,
+  `ip_continent_code` varchar(2) COLLATE utf8_bin NOT NULL,
+  `ip_corporate_proxy` varchar(3) COLLATE utf8_bin NOT NULL,
+  `anonymous_proxy` varchar(3) COLLATE utf8_bin NOT NULL,
   `proxy_score` int(3) NOT NULL,
-  `is_trans_proxy` varchar(3) collate utf8_bin NOT NULL,
-  `free_mail` varchar(3) collate utf8_bin NOT NULL,
-  `carder_email` varchar(3) collate utf8_bin NOT NULL,
-  `high_risk_username` varchar(3) collate utf8_bin NOT NULL,
-  `high_risk_password` varchar(3) collate utf8_bin NOT NULL,
-  `bin_match` varchar(10) collate utf8_bin NOT NULL,
-  `bin_country` varchar(2) collate utf8_bin NOT NULL,
-  `bin_name_match` varchar(3) collate utf8_bin NOT NULL,
-  `bin_name` varchar(255) collate utf8_bin NOT NULL,
-  `bin_phone_match` varchar(3) collate utf8_bin NOT NULL,
-  `bin_phone` varchar(32) collate utf8_bin NOT NULL,
-  `cust_phone_in_billing_location` varchar(8) collate utf8_bin NOT NULL,
-  `ship_forward` varchar(3) collate utf8_bin NOT NULL,
-  `city_postal_match` varchar(3) collate utf8_bin NOT NULL,
-  `ship_city_postal_match` varchar(3) collate utf8_bin NOT NULL,
+  `is_trans_proxy` varchar(3) COLLATE utf8_bin NOT NULL,
+  `free_mail` varchar(3) COLLATE utf8_bin NOT NULL,
+  `carder_email` varchar(3) COLLATE utf8_bin NOT NULL,
+  `high_risk_username` varchar(3) COLLATE utf8_bin NOT NULL,
+  `high_risk_password` varchar(3) COLLATE utf8_bin NOT NULL,
+  `bin_match` varchar(10) COLLATE utf8_bin NOT NULL,
+  `bin_country` varchar(2) COLLATE utf8_bin NOT NULL,
+  `bin_name_match` varchar(3) COLLATE utf8_bin NOT NULL,
+  `bin_name` varchar(255) COLLATE utf8_bin NOT NULL,
+  `bin_phone_match` varchar(3) COLLATE utf8_bin NOT NULL,
+  `bin_phone` varchar(32) COLLATE utf8_bin NOT NULL,
+  `customer_phone_in_billing_location` varchar(8) COLLATE utf8_bin NOT NULL,
+  `ship_forward` varchar(3) COLLATE utf8_bin NOT NULL,
+  `city_postal_match` varchar(3) COLLATE utf8_bin NOT NULL,
+  `ship_city_postal_match` varchar(3) COLLATE utf8_bin NOT NULL,
   `score` decimal(10,5) NOT NULL,
-  `explanation` text collate utf8_bin NOT NULL,
+  `explanation` text COLLATE utf8_bin NOT NULL,
   `risk_score` decimal(10,5) NOT NULL,
   `queries_remaining` int(11) NOT NULL,
-  `maxmind_id` varchar(8) collate utf8_bin NOT NULL,
-  `error` text collate utf8_bin NOT NULL,
+  `maxmind_id` varchar(8) COLLATE utf8_bin NOT NULL,
+  `error` text COLLATE utf8_bin NOT NULL,
   `date_added` datetime NOT NULL,
-  PRIMARY KEY  (`order_id`)
+  PRIMARY KEY (`order_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 
@@ -1732,6 +1732,7 @@ CREATE TABLE `oc_order_product` (
   `price` decimal(15,4) NOT NULL DEFAULT '0.0000',
   `total` decimal(15,4) NOT NULL DEFAULT '0.0000',
   `tax` decimal(15,4) NOT NULL DEFAULT '0.0000',
+  `reward` int(8) NOT NULL,
   PRIMARY KEY (`order_product_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
@@ -1818,11 +1819,11 @@ CREATE TABLE `oc_product` (
   `points` int(8) NOT NULL DEFAULT '0',
   `tax_class_id` int(11) NOT NULL,
   `date_available` date NOT NULL,
-  `weight` decimal(15,8) NOT NULL DEFAULT '0.00',
+  `weight` decimal(15,8) NOT NULL DEFAULT '0.00000000',
   `weight_class_id` int(11) NOT NULL DEFAULT '0',
-  `length` decimal(15,8) NOT NULL DEFAULT '0.00',
-  `width` decimal(15,8) NOT NULL DEFAULT '0.00',
-  `height` decimal(15,8) NOT NULL DEFAULT '0.00',
+  `length` decimal(15,8) NOT NULL DEFAULT '0.00000000',
+  `width` decimal(15,8) NOT NULL DEFAULT '0.00000000',
+  `height` decimal(15,8) NOT NULL DEFAULT '0.00000000',
   `length_class_id` int(11) NOT NULL DEFAULT '0',
   `subtract` tinyint(1) NOT NULL DEFAULT '1',
   `minimum` int(11) NOT NULL DEFAULT '1',
@@ -2454,7 +2455,7 @@ CREATE TABLE `oc_return_history` (
   `comment` text COLLATE utf8_bin NOT NULL,
   `date_added` datetime NOT NULL,
   PRIMARY KEY (`return_history_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Dumping data for table `oc_return_history`
@@ -2943,7 +2944,7 @@ CREATE TABLE `oc_voucher_history` (
   `amount` decimal(15,4) NOT NULL,
   `date_added` datetime NOT NULL,
   PRIMARY KEY (`voucher_history_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Dumping data for table `oc_voucher_history`
