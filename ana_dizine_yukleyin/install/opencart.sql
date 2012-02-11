@@ -1799,6 +1799,22 @@ CREATE TABLE `oc_order_total` (
 
 -- --------------------------------------------------------
 
+DROP TABLE IF EXISTS `oc_order_voucher`;
+CREATE TABLE `oc_order_voucher` (
+  `order_voucher_id` int(11) NOT NULL AUTO_INCREMENT,
+  `order_id` int(11) NOT NULL,
+  `voucher_id` int(11) NOT NULL,
+  `description` varchar(255) COLLATE utf8_bin NOT NULL,
+  `price` decimal(15,4) NOT NULL,
+  PRIMARY KEY (`order_voucher_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dumping data for table `oc_order_voucher`
+--
+
+-- --------------------------------------------------------
+
 --
 -- Table structure for table `oc_product`
 --
@@ -2911,7 +2927,6 @@ INSERT INTO `oc_user_group` (`user_group_id`, `name`, `permission`) VALUES
 DROP TABLE IF EXISTS `oc_voucher`;
 CREATE TABLE `oc_voucher` (
   `voucher_id` int(11) NOT NULL AUTO_INCREMENT,
-  `order_id` int(11) NOT NULL,
   `code` varchar(10) COLLATE utf8_bin NOT NULL,
   `from_name` varchar(64) COLLATE utf8_bin NOT NULL,
   `from_email` varchar(96) COLLATE utf8_bin NOT NULL,

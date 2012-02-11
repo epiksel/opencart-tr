@@ -19,7 +19,6 @@ $_['text_payment_address']  = 'Fatura Adresi';
 $_['text_payment_method']   = 'Ödeme Metodu:';
 $_['text_products']         = 'Ürünler:';
 $_['text_total']            = 'Toplam:';
-$_['text_for']              = '%s için Hediye Çeki %s';
 $_['text_comment']          = 'Sipariş Açıklamaları';
 $_['text_history']          = 'Sipariş Geçmişi';
 $_['text_empty']            = 'Daha önce hiç sipariş vermediniz!';
