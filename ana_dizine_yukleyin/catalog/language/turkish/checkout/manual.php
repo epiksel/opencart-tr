@@ -2,7 +2,7 @@
 /* Turkceye Ceviren eka7a - http://www.e-piksel.com */
 
 // Text
-$_['text_success']		= '<p>Siparişiniz başarıyla tamamlandı!</p>';
+$_['text_success']		= '<p>Sipariş toplamı başarıyla tekrar hesaplandı!</p>';
 
 // Error
 $_['error_warning']		= 'Uyarı: Oluşan hatalar için lütfen formu dikkatli kontrol ediniz!';
