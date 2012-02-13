@@ -24,4 +24,7 @@ $_['error_voucher']		= 'Uyarı: Hediye çeki geçersiz ya da daha önce kullanı
 $_['error_reward']		= 'Uyarı: Lütfen kullanmak istediğiniz ödül puanını giriniz!';	
 $_['error_points']		= 'Uyarı: %s ödül puanınız yok!';
 $_['error_maximum']		= 'Uyarı: En fazla uygulanabilir ödül puanı %s!';
+$_['error_to_name']     = 'Alıcının adı 1 ile 64 karakter arasında olmalıdır!';
+$_['error_from_name']   = 'Adınız 1 ile 64 karakter arasında olmalıdır!';
+$_['error_amount']      = 'Miktar %s ile %s arasında olmalıdır!';
 ?>

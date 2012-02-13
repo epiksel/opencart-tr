@@ -13,19 +13,19 @@ $_['text_message']     = '<p>Hediye çeki satın aldığınız için teşekkür 
 $_['text_for']         = '%s için %s Hediye Çeki';
 
 // Entry
-$_['entry_to_name']    = 'Alıcı Adı:';
-$_['entry_to_email']   = 'Alıcı E-Posta Adresi:';
+$_['entry_to_name']    = 'Alıcının Adı:';
+$_['entry_to_email']   = 'Alıcının E-Posta Adresi:';
 $_['entry_from_name']  = 'Adınız:';
 $_['entry_from_email'] = 'E-Posta Adresiniz:';
+$_['entry_theme']      = 'Hediye Çeki Teması:';
 $_['entry_message']    = 'Mesajınız:<br /><span class="help">(İsteğe bağlı)</span>';
 $_['entry_amount']     = 'Miktar:<br /><span class="help">( %s ile %s arasında olmalı)</span>';
-$_['entry_theme']      = 'Hediye Çeki Teması:';
 
 // Error
-$_['error_to_name']    = 'Alıcı adı 1 ile 64 karakter arasında olmalıdır!';
+$_['error_to_name']    = 'Alıcının adı 1 ile 64 karakter arasında olmalıdır!';
 $_['error_from_name']  = 'Adınız 1 ile 64 karakter arasında olmalıdır!';
 $_['error_email']      = 'Geçerli bir E-Posta adresi yazınız!';
-$_['error_amount']     = 'Miktar %s ile %s arasında olmalıdır!';
 $_['error_theme']      = 'Bir tema seçiniz!';
+$_['error_amount']     = 'Miktar %s ile %s arasında olmalıdır!';
 $_['error_agree']      = 'Uyarı: Hediye çekinin iade olmayacağını kabul etmelisiniz!';
 ?>

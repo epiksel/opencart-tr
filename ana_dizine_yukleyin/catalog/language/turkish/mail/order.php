@@ -25,7 +25,6 @@ $_['text_new_quantity']			= 'Miktar';
 $_['text_new_price']			= 'Fiyatı';
 $_['text_new_order_total']		= 'Sipariş Toplamı:';
 $_['text_new_total']			= 'Toplam';
-$_['text_for']                  = '%s için Hediye Çeki %s';
 $_['text_new_download']			= 'Ödemeniz onaylandıktan sonra indirilebilir ürünlerinize erişmek için aşağıdaki linke tıklayabilirsiniz:';
 $_['text_new_comment']			= 'Siparişiniz ile ilgili açıklamalar:';
 $_['text_new_footer']			= 'Herhangi bir sorunuz varsa bu e-postayı yanıtlayınız.';
