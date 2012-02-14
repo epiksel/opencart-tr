@@ -16,6 +16,6 @@ $_['text_wishlist']    = 'Alışveriş Listem';
 $_['text_order']       = 'Sipariş Geçmişim';
 $_['text_download']    = 'İndirilebilir Ürünlerim';
 $_['text_return']      = 'Ürün İade Taleplerim';
-$_['text_transaction'] = 'Alım Satım İşlemleri';
+$_['text_transaction'] = 'İşlemlerim';
 $_['text_newsletter']  = 'Bülten Aboneliği';
 ?>

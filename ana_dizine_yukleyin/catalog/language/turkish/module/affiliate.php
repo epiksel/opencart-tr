@@ -14,5 +14,5 @@ $_['text_edit']        = 'Hesabımı Düzenle';
 $_['text_password']    = 'Parola Değiştir';
 $_['text_payment']     = 'Ödeme Seçenekleri';
 $_['text_tracking']    = 'Takip Kodu Oluştur';
-$_['text_transaction'] = 'Alım Satım İşlemleri';
+$_['text_transaction'] = 'İşlemlerim';
 ?>

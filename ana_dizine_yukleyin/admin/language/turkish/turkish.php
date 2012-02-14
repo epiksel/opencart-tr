@@ -100,7 +100,7 @@ $_['tab_return_history']      = 'İade Geçmişi';
 $_['tab_reward']              = 'Ödül Puanı';
 $_['tab_shipping']            = 'Kargo Detayları';
 $_['tab_total']               = 'Toplamlar';
-$_['tab_transaction']         = 'Alım Satım İşlemleri';
+$_['tab_transaction']         = 'İşlemler';
 $_['tab_voucher']             = 'Hediye Çekleri';
 $_['tab_voucher_history']     = 'Hediye Çeki Geçmişi';
 

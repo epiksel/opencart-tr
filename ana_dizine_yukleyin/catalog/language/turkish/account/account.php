@@ -17,6 +17,6 @@ $_['text_order']         = 'Sipariş geçmişimi göster';
 $_['text_download']      = 'İndirebilir Ürünler';
 $_['text_reward']        = 'Ödül Puanlarım'; 
 $_['text_return']        = 'Ürün İade Taleplerimi Göster'; 
-$_['text_transaction']   = 'Alım Satım İşlemleriniz';
+$_['text_transaction']   = 'İşlemlerim';
 $_['text_newsletter']    = 'Bültene abone ol / aboneliği kaldır.';
 ?>
