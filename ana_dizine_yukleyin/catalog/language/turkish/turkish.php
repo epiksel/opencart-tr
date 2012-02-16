@@ -38,6 +38,7 @@ $_['button_reviews']        = 'Yorumlar';
 $_['button_write']          = 'Yorum Yaz';
 $_['button_login']          = 'Oturum Aç';
 $_['button_update']         = 'Güncelle';
+$_['button_remove']         = 'Kaldır';
 $_['button_shopping']       = 'Alışverişe Devam Et';
 $_['button_search']         = 'Arama';
 $_['button_shipping']       = 'Kargoyu Uygula';
