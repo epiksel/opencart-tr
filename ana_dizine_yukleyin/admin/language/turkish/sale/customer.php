@@ -10,15 +10,15 @@ $_['text_default']          = 'Varsayılan';
 $_['text_approved']			= '%s hesabını onayladınız!';
 $_['text_wait']           	= 'Lütfen Bekleyiniz!';
 $_['text_balance']			= 'Bakiye:';
-$_['text_add_blacklist']    = 'Kara Liste\'ye Ekle';
-$_['text_remove_blacklist'] = 'Karaliste\'den Kaldır';
+$_['text_add_blacklist']    = 'Kara Listeye Ekle';
+$_['text_remove_blacklist'] = 'Kara Listeden Kaldır';
 
 // Column
 $_['column_name']			= 'Müşteri Adı';
 $_['column_email']          = 'E-Posta';
 $_['column_customer_group']	= 'Müşteri Grubu';
 $_['column_status']			= 'Durumu';
-$_['column_login']          = 'Mağazada Oturum Aç';
+$_['column_login']          = 'Oturum Aç';
 $_['column_approved']		= 'Onaylandı';
 $_['column_date_added']		= 'Ekleme Tarihi';
 $_['column_description']	= 'Açıklama';
@@ -48,7 +48,7 @@ $_['entry_country']			= 'Ülke:';
 $_['entry_zone']			= 'Şehir / Eyalet:';
 $_['entry_default']			= 'Varsayılan Adres:';
 $_['entry_amount']			= 'Miktar:';
-$_['entry_points']			= 'Ödül Puanı:<br /><span class="help">Puan silmek için başına eksi işareti koyunuz. Örneğin: -100 gibi.</span>';
+$_['entry_points']			= 'Ödül Puanı:<br /><span class="help">Puan silmek için başına eksi işareti koyunuz.</span>';
 $_['entry_description']		= 'Açıklama:';
 
 // Error
@@ -59,7 +59,6 @@ $_['error_firstname']		= 'Ad alanı 1 ile 32 karakter arasında olmalı!';
 $_['error_lastname']		= 'Soyad 1 ile 32 karakter arasında olmalı!';
 $_['error_email']			= 'E-Posta adresi geçersiz!';
 $_['error_telephone']		= 'Telefon alanı 3 ile 32 karakter arasında olmalı!';
-
 $_['error_password']		= 'Parola alanı 3 ile 20 karakter arasında olmalı!';
 $_['error_confirm']			= 'Girdiğiniz parolalar birbirleri ile uyuşmuyor!';
 $_['error_address_1']		= 'Adres 1 alanı 3 ile 128 karakter arasında olmalı!';

@@ -7,8 +7,8 @@ $_['heading_title']       = 'Hesabım';
 // Text
 $_['text_module']         = 'Modüller';
 $_['text_success']        = 'Başarılı: Hesabım modülü güncellendi!';
-$_['text_content_top']    = 'Üst Tarafta';
-$_['text_content_bottom'] = 'Alt Tarafta';
+$_['text_content_top']    = 'Orta Üstte';
+$_['text_content_bottom'] = 'Orta Altta';
 $_['text_column_left']    = 'Sol Blokta';
 $_['text_column_right']   = 'Sağ Blokta';
 

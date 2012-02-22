@@ -2,10 +2,10 @@
 /* Turkceye Ceviren eka7a - http://www.e-piksel.com */
 
 // Heading
-$_['heading_title']    = 'Müşteri IP Karaliste';
+$_['heading_title']    = 'IP Kara Liste';
 
 // Text
-$_['text_success']     = 'Başarılı: Müşteri IP karaliste başarılı bir şekilde değiştirildi!';
+$_['text_success']     = 'Başarılı: IP kara listesi başarılı bir şekilde değiştirildi!';
 
 // Column
 $_['column_ip']        = 'IP';
@@ -16,6 +16,6 @@ $_['column_action']    = 'Eylem';
 $_['entry_ip']         = 'IP:';
 
 // Error
-$_['error_permission'] = 'Uyarı: Müşteri IP karalistesini düzenleme iznine sahip değilsiniz!';
+$_['error_permission'] = 'Uyarı: IP kara listesini düzenleme iznine sahip değilsiniz!';
 $_['error_ip']         = 'IP adresi 1 ile 15 karakter arasında olmalı!';
 ?>

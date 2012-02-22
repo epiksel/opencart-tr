@@ -6,9 +6,9 @@ $_['heading_title']       = 'Carousel';
 
 // Text
 $_['text_module']         = 'Modüller';
-$_['text_success']        = 'Başarılı: Carousel modülü güncellendi!!';
-$_['text_content_top']    = 'Üst Tarafta';
-$_['text_content_bottom'] = 'Alt Tarafta';
+$_['text_success']        = 'Başarılı: Carousel modülü güncellendi!';
+$_['text_content_top']    = 'Orta Üstte';
+$_['text_content_bottom'] = 'Orta Altta';
 $_['text_column_left']    = 'Sol Blokta';
 $_['text_column_right']   = 'Sağ Blokta';
 
