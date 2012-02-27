@@ -16,7 +16,6 @@ $_['text_remove']   = 'Başarılı: Alışveriş listeniz değiştirildi';
 $_['text_empty']    = 'Alışveriş listeniz boş.';
 
 // Column
-$_['column_remove'] = 'Kaldır';
 $_['column_image']  = 'Resim';
 $_['column_name']   = 'Ürün Adı';
 $_['column_model']  = 'Kodu';

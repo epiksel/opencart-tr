@@ -21,12 +21,9 @@ $_['text_products']         = 'Ürünler:';
 $_['text_total']            = 'Toplam:';
 $_['text_comment']          = 'Sipariş Açıklamaları';
 $_['text_history']          = 'Sipariş Geçmişi';
+$_['text_success']          = 'Sipariş ID #%s olan önceki siparişinizdeki ürünleri sepetinize başarıyla eklendi.';
 $_['text_empty']            = 'Daha önce hiç sipariş vermediniz!';
 $_['text_error']            = 'İstediğiniz sipariş bulunamadı!';
-$_['text_action']           = 'Eylem Seçiniz:';
-$_['text_selected']         = 'Seçilenler için';
-$_['text_reorder']          = 'Sepete Ekle';
-$_['text_return']           = 'Ürün İade Et';
 
 // Column
 $_['column_name']           = 'Ürün Adı';
@@ -34,10 +31,8 @@ $_['column_model']          = 'Ürün Kodu';
 $_['column_quantity']       = 'Miktarı';
 $_['column_price']          = 'Fiyatı';
 $_['column_total']          = 'Toplam';
+$_['column_action']         = 'Eylem';
 $_['column_date_added']     = 'Tarih';
 $_['column_status']         = 'Durumu';
 $_['column_comment']        = 'Açıklama';
-
-// Error
-$_['error_warning']         = 'Uyarı: Bu isteğinizin tamamlanması için en az bir ürün seçmelisiniz!';
 ?>

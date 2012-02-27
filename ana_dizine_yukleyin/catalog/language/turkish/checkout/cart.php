@@ -5,15 +5,15 @@
 $_['heading_title']				= 'Alışveriş Sepetim';
 
 // Text
-$_['text_points']				= 'Puanlarım: %s';
-$_['text_items']				= '%s ürün - %s';
 $_['text_success']				= 'Başarılı: <a href="%s">%s</a> başarılı bir şekilde <a href="%s">sepetinize</a> eklendi!';
+$_['text_remove']				= 'Başarılı: Alışveriş sepetiniz güncellendi!';
 $_['text_coupon']				= 'Başarılı: Kupon kodu indirimi başarıyla uygulandı!';
 $_['text_voucher']				= 'Başarılı: Hediye çeki indirimi başarıyla uygulandı!';
 $_['text_reward']				= 'Başarılı: Puan indirimi başarıyla uygulandı!';
 $_['text_shipping']				= 'Başarılı: Kargo hesaplaması siparişinize uygulandı!';
-$_['text_empty']				= 'Alışveriş sepetiniz boş!';
 $_['text_login']				= 'Dikkat: Ürün fiyatlarını görmek için <a href="%s">oturum açın</a> ya da <a href="%s">kayıt olunuz</a>!';
+$_['text_points']				= 'Puanlarım: %s';
+$_['text_items']				= '%s ürün - %s';
 $_['text_next']					= 'Bir sonraki adımda ne yapmak istersiniz?';
 $_['text_next_choice']			= 'Eğer kullanmak istediğiniz bir indirim kodu veya puan varsa ya da kargo maliyetini hesaplamak isterseniz bir seçim yapınız.';
 $_['text_use_coupon']           = 'Kupon Kodu Kullan';
@@ -22,6 +22,7 @@ $_['text_use_reward']           = 'Puan Kullan (Mevcut %s)';
 $_['text_shipping_estimate']	= 'Kargo ve Vergileri Hesaplama';
 $_['text_shipping_detail']		= 'Kargo hesaplaması için hedef giriniz.';
 $_['text_shipping_method']		= 'Lütfen bu siparişinizde kullanmak istediğiniz kargo metodunu seçiniz.';
+$_['text_empty']				= 'Alışveriş sepetiniz boş!';
 
 // Column
 $_['column_image']				= 'Resim';
