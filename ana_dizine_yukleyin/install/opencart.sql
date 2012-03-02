@@ -1664,7 +1664,7 @@ CREATE TABLE `oc_order_fraud` (
   `queries_remaining` int(11) NOT NULL,
   `maxmind_id` varchar(8) COLLATE utf8_bin NOT NULL,
   `error` text COLLATE utf8_bin NOT NULL,
-  `date_added` datetime NOT NULL,
+  `date_added` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`order_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
@@ -2701,7 +2701,8 @@ INSERT INTO `oc_setting` (`setting_id`, `store_id`, `group`, `key`, `value`, `se
 (20537, 0, 'config', 'config_country_id', '215', 0),
 (20538, 0, 'config', 'config_zone_id', '3335', 0),
 (20539, 0, 'config', 'config_language', 'tr', 0),
-(20540, 0, 'config', 'config_admin_language', 'tr', 0);
+(20540, 0, 'config', 'config_admin_language', 'tr', 0),
+(20610, 0, 'config', 'config_order_edit', '100', 0);
 
 -- --------------------------------------------------------
 

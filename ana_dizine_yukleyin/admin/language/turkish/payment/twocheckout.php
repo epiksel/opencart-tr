@@ -11,7 +11,7 @@ $_['text_twocheckout']	 = '<a onclick="window.open(\'https://www.2checkout.com/2
 
 // Entry
 $_['entry_account']      = '2Checkout Account ID:';
-$_['entry_secret']       = 'Secret Word:<br /><span class="help">The secret word to confirm transactions with (must be the same as defined on the merchat account configuration page.</span>';
+$_['entry_secret']       = 'Secret Word:<br /><span class="help">The secret word to confirm transactions with (must be the same as defined on the merchat account configuration page).</span>';
 $_['entry_test']         = 'Test Modu:';
 $_['entry_total']        = 'Toplam:<br /><span class="help">Bu ödeme metodunun aktif olması için toplam sipariş miktarını giriniz</span>';
 $_['entry_order_status'] = 'Sipariş Durumu:';

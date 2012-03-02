@@ -15,7 +15,6 @@ $_['text_sale']						 = 'Direk Ödeme';
 $_['entry_email']					 = 'E-Posta:';
 $_['entry_test']					 = 'Test Modu:';
 $_['entry_transaction']				 = 'Ödeme Metodu:';
-$_['entry_pdt_token']				 = 'PDT Kimlik Simgesi:<br/><span class="help">PDT Kimlik Simge sistemi Ödeme Veri Transferi(PDT) sırasında ek güvenlik ve güvenirlik sağlar. Nasıl etkinleştireceğinizi <a href="https://cms.paypal.com/us/cgi-bin/?&cmd=_render-content&content_ID=developer/howto_html_paymentdatatransfer" alt="">burada</a> bulabilirsiniz.</span>';
 $_['entry_debug']					 = 'Hata Ayıklama Modu:<br/><span class="help">Sistem kayıtlarına hata bilgilerini ekler.</span>';
 $_['entry_total']        			 = 'Toplam:<br /><span class="help">Bu ödeme metodunun aktif olması için toplam sipariş miktarını giriniz</span>';
 $_['entry_canceled_reversal_status'] = 'Değişim İptal Durumu:';
