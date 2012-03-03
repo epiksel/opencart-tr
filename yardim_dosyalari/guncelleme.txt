@@ -5,10 +5,23 @@
 	///		http://opencart-tr.googlecode.com	///
    ///////////////////////////////////////////////
 
+##########################################
+BU YÜKSELTME BETİĞİ 1.5.X SÜRÜMLERİ İÇİN GEÇERLİDİR.
+BU YÜKSELTME BETİĞİ 1.5.X SÜRÜMLERİ İÇİN GEÇERLİDİR.
+BU YÜKSELTME BETİĞİ 1.5.X SÜRÜMLERİ İÇİN GEÇERLİDİR.
+BU YÜKSELTME BETİĞİ 1.5.X SÜRÜMLERİ İÇİN GEÇERLİDİR.
+BU YÜKSELTME BETİĞİ 1.5.X SÜRÜMLERİ İÇİN GEÇERLİDİR.
+BU YÜKSELTME BETİĞİ 1.5.X SÜRÜMLERİ İÇİN GEÇERLİDİR.
+##########################################
 
-NOT: BU GÜNCELLEME BETİĞİNİZ 1.5.0 VE 1.5.0.X SÜRÜMLERİNDEN 1.5.X SÜRÜMLERİNE GÜNCELLEME YAPMAK İÇİN KULLANBİLİRSİNİZ.
-EĞER 1.4.X SÜRÜMÜ KULLANIYORSANIZ BU GÜNCELLEME BETİĞİNİ KULLANMAYINIZ VE AŞAĞIDAKİ BAĞLANTIDA ANLATILDIĞI ŞEKİLDE ÖNCE 1.5.0 SÜRÜMÜNE GÜNCELLEMELİSİNİZ.
-http://www.opencart-tr.com/opencart-guncelleme.html/3
+##########################################
+1.4.X VERSİYONUNDAN 1.5.X VERSİYONUNA YÜKSELTMEK İÇİN KULLANMAYINIZ.
+1.4.X VERSİYONUNDAN 1.5.X VERSİYONUNA YÜKSELTMEK İÇİN KULLANMAYINIZ.
+1.4.X VERSİYONUNDAN 1.5.X VERSİYONUNA YÜKSELTMEK İÇİN KULLANMAYINIZ.
+1.4.X VERSİYONUNDAN 1.5.X VERSİYONUNA YÜKSELTMEK İÇİN KULLANMAYINIZ.
+1.4.X VERSİYONUNDAN 1.5.X VERSİYONUNA YÜKSELTMEK İÇİN KULLANMAYINIZ.
+1.4.X VERSİYONUNDAN 1.5.X VERSİYONUNA YÜKSELTMEK İÇİN KULLANMAYINIZ.
+##########################################
 
 1. BAŞLAMADAN ÖNCE TÜM DOSYALARINIZI VE VERİTABINIZI YEDEKLEYİNİZ.
 
@@ -16,7 +29,7 @@ http://www.opencart-tr.com/opencart-guncelleme.html/3
 
 3. Açtığınız dizinde ana_dizine_yükleyin/config.php, ana_dizine_yükleyin/admin/config.php ve ana_dizine_yükleyin/image klasörünü siliniz.
 
-4. "ana_dizine_yukleyin" içindeki tüm dosyaları sunucunuza yükleyiniz üzerine yazılsın mı sorusuna evet deyin
+4. Yukarıdaki silinmesi gerekenleri sildikten sonra "ana_dizine_yukleyin" içindeki tüm dosyaları sunucunuza yükleyiniz üzerine yazılsın mı sorusuna evet deyin (Dosyalarda yaptığınız değişiklikler kaybolacaktır).
 
 5. Yükleme işlemi bittikten sonra tarayıcınızdan http://www.siteadaresiniz.com/install/ adresini çağırın. Güncelleme yazılımı kurulu opencartınızı otomatik algılayacak ve güncelleme sayfasına yönlendirileceksiniz.
 
@@ -28,13 +41,28 @@ http://www.opencart-tr.com/opencart-guncelleme.html/3
 
 9. Token hatalarını gidermek için tarayıcınızdaki tüm önbelleği boşaltınız
 
-10. CSS değişikleri için Yönetim sayfanızda Ctrl+F5 ile yenileyin.
+10. CSS değişikleri için Yönetim sayfanızda iki kere Ctrl+F5 ile yenileyin.
 
 11. Yönetim->Kullanıcılar->Kullanıcı Grupları sayfasından Yönetici grubu için tüm kutuları işaretleyin.
 
+12. Yönetim->Sistem->Genel Ayarlar-> Seçenek sekmesinden
+	- "Varsayılan Mağaza Vergi Adresi" ve "Varsayılan Müşteri Vergi Adresi" ayarlayınız. Çoğu kullanıcı için kargo adresi seçilebilir.
+	- Hiçbir değişiklik olmasada kaydedin.
+
+13. Yönetim->Sistem->Yerelleştirme->Vergiler->Vergi Oranlarını tekrar gözden geçirin.
+	- Boş vergi oranı adı varsa isim girin kaydedin.
+	- Müşteri grubları için vergi oranlarının seçili olup olmadığını kontrol ediniz.
+
 12. Sistem->Genel Ayarlar sayfasından mağazanızı düzenle seçeneğine tıklayın ve hiçbir değişiklik yapmadan kaydet deyin.(daha sonra kendinize göre özelleştirebilirsiniz.)
 
-13. CSS değişikleri için Katalog sayfanızda Ctrl+F5 ile yenileyin.
+13. CSS değişikleri için Katalog sayfanızda iki kere Ctrl+F5 ile yenileyin.
+
+------------------------------------------------------------------------
+
+SORUN GİDERME:
+	- Eğer yükseltme yazılımı kullandığınızda oluşan hataları forum mesaj yazarak bize bildiriniz.
+	- Eğer üçüncü taraf bir yazılım kullanıyorsanız modül yazarına başvurunuz.
+	- Eğer bir hata(bug) bulursanız, OpenCart resmi sürümünde kontrol ediniz. Resmi sürümde de bu hata mevcutsa resmi sürüm yazarına, sadece Türkçe versiyonda meydana geliyorsa bize bildiriniz.
 
 ------------------------------------------------
 Türkçe Çeviri: http://www.e-piksel.com - eka7a
