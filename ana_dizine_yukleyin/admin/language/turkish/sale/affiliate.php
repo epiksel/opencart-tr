@@ -43,7 +43,7 @@ $_['entry_country']             = 'Ülke:';
 $_['entry_zone']                = 'Şehir / Eyalet:';
 $_['entry_code']                = 'Takip Kodu:<span class="help">Tavsiyelerinizi izlemek için kullanılacak takip kodu</span>';
 $_['entry_commission']          = 'Komisyon Oranı (%):<span class="help">Ortağın her sipariş için aldığı komisyon oranı</span>';
-$_['entry_tax']                 = 'Vergi Dairesi ve Numarası:';
+$_['entry_tax']                 = 'T.C. / Vergi No:';
 $_['entry_payment']             = 'Ödeme Metodu:';
 $_['entry_cheque']              = 'Alacaklı Adı:';
 $_['entry_paypal']              = 'E-Posta adresi:';

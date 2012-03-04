@@ -15,7 +15,7 @@ $_['text_bank']                 = 'Banka Havalesi/EFT';
 $_['text_success']              = 'Başarılı: Hesabınız başarılı bir şekilde güncellendi.';
 
 // Entry
-$_['entry_tax']                 = 'Vergi Dairesi ve Numarası:';
+$_['entry_tax']                 = 'T.C. / Vergi No:';
 $_['entry_payment']             = 'Ödeme Metodu:';
 $_['entry_cheque']              = 'Çek Alacaklı Adı:';
 $_['entry_paypal']              = 'PayPal E-Posta Adresiniz:';
