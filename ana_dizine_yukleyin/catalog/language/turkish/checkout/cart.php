@@ -12,7 +12,7 @@ $_['text_voucher']				= 'Başarılı: Hediye çeki indirimi başarıyla uyguland
 $_['text_reward']				= 'Başarılı: Puan indirimi başarıyla uygulandı!';
 $_['text_shipping']				= 'Başarılı: Kargo hesaplaması siparişinize uygulandı!';
 $_['text_login']				= 'Dikkat: Ürün fiyatlarını görmek için <a href="%s">oturum açın</a> ya da <a href="%s">kayıt olunuz</a>!';
-$_['text_points']				= 'Puanlarım: %s';
+$_['text_points']				= 'Kazanacağınız Puan: %s';
 $_['text_items']				= '%s ürün - %s';
 $_['text_next']					= 'Bir sonraki adımda ne yapmak istersiniz?';
 $_['text_next_choice']			= 'Eğer kullanmak istediğiniz bir indirim kodu veya puan varsa ya da kargo maliyetini hesaplamak isterseniz bir seçim yapınız.';

@@ -7,7 +7,7 @@ $_['heading_title']         = 'United States Postal Service';
 // Text
 $_['text_shipping']         = 'Kargo Metodları';
 $_['text_success']          = 'Success: You have modified United States Postal Service!';
-$_['text_domestic_00']      = 'First-Class Mail Package';
+$_['text_domestic_00']      = 'First-Class Mail Parcel';
 $_['text_domestic_01']      = 'First-Class Mail Large Envelope';
 $_['text_domestic_02']      = 'First-Class Mail Letter';
 $_['text_domestic_03']      = 'First-Class Mail Postcards';

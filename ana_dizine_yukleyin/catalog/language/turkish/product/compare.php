@@ -20,6 +20,6 @@ $_['text_weight']       = 'Ağırlık';
 $_['text_dimension']    = 'Boyutları (U x G x Y)';
 $_['text_compare']      = 'Ürün Karşılaştır (%s)';
 $_['text_success']      = 'Başarılı: <a href="%s">%s</a> ürünü <a href="%s">ürün karşılaştırma</a> listenize eklendi!';
-$_['text_remove']       = 'Başarılı: <a href="%s">%s</a> ürünü <a href="%s">ürün karşılaştırma</a> listeniz değiştirildi!';
+$_['text_remove']       = 'Başarılı: Ürün karşılaştırma listeniz değiştirildi!';
 $_['text_empty']        = 'Karşılaştırmak için bir ürün seçmediniz.';
 ?>
