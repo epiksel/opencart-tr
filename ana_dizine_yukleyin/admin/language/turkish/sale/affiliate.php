@@ -2,7 +2,7 @@
 /* Turkceye Ceviren eka7a - http://www.e-piksel.com */
 
 // Heading
-$_['heading_title']             = 'Ortaklıklar';
+$_['heading_title']             = 'Ortaklar';
 
 // Text
 $_['text_success']              = 'Başarılı: Oraklık başarılı bir şekilde değiştirildi!';
@@ -14,7 +14,7 @@ $_['text_paypal']               = 'PayPal';
 $_['text_bank']                 = 'Havale/EFT';
 
 // Column
-$_['column_name']               = 'Oratak Adı';
+$_['column_name']               = 'Ortak Adı';
 $_['column_email']              = 'E-Posta';
 $_['column_code']               = 'Takip Kodu';
 $_['column_balance']            = 'Bakiye';

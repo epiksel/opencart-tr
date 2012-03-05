@@ -5,7 +5,7 @@
 $_['heading_title']						= 'Yönetim Paneli';
 
 // Text
-$_['text_affiliate']					= 'Ortaklıklar';
+$_['text_affiliate']					= 'Ortaklar';
 $_['text_attribute']					= 'Özellikler';
 $_['text_attribute_group']				= 'Özellik Grupları';
 $_['text_backup']						= 'Yedekle / Geri Yükle';

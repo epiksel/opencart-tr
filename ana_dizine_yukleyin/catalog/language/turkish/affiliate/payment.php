@@ -2,12 +2,12 @@
 /* Turkceye Ceviren eka7a - http://www.e-piksel.com */
 
 // Heading 
-$_['heading_title']             = 'Ödeme Metodu';
+$_['heading_title']             = 'Ödeme Bilgilerim';
 
 // Text
 $_['text_account']              = 'Ortaklık Hesabım';
-$_['text_payment']              = 'Ödeme';
-$_['text_your_payment']         = 'Ödeme Bilgileri';
+$_['text_payment']              = 'Ödeme Bilgilerim';
+$_['text_your_payment']         = 'Ödeme Bilgilerim';
 $_['text_your_password']        = 'Parolanız';
 $_['text_cheque']               = 'Çek';
 $_['text_paypal']               = 'PayPal';
