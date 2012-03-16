@@ -16,7 +16,7 @@ $_['entry_email']					 = 'E-Posta:';
 $_['entry_test']					 = 'Test Modu:';
 $_['entry_transaction']				 = 'Ödeme Metodu:';
 $_['entry_debug']					 = 'Hata Ayıklama Modu:<br/><span class="help">Sistem kayıtlarına hata bilgilerini ekler.</span>';
-$_['entry_total']        			 = 'Toplam:<br /><span class="help">Bu ödeme metodunun aktif olması için toplam sipariş miktarını giriniz</span>';
+$_['entry_total']        			 = 'Toplam:<br /><span class="help">Bu ödeme metodunun aktif olması için toplam sipariş miktarını giriniz.</span>';
 $_['entry_canceled_reversal_status'] = 'Değişim İptal Durumu:';
 $_['entry_completed_status']         = 'Tamamlandı Durumu:';
 $_['entry_denied_status']			 = 'Reddedildi Durumu:';
