@@ -6,7 +6,7 @@ $_['heading_title']        = 'Toplu E-Posta';
 
 // Text
 $_['text_success']         = 'Mesaj başarılı bir şekilde gönderildi!';
-$_['text_sent']            = 'Your message has been successfully sent to %s of %s recipetants!';
+$_['text_sent']            = 'Mesajınız başarılı bir şekilde %s ile %s arasında alıcıya gönderildi!';
 $_['text_default']         = 'Varsayılan';
 $_['text_newsletter']      = 'Tüm Bülten Aboneleri';
 $_['text_customer_all']    = 'Tüm Müşteriler';
