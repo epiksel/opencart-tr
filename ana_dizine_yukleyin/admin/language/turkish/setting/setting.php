@@ -59,6 +59,8 @@ $_['entry_review']       	    = 'Yorumlara izin ver:<br /><span class="help">Yen
 $_['entry_download']            = 'İndirilebilir Ürünlere İzin ver:';
 $_['entry_upload_allowed']      = 'İzin verilen Dosya Türleri:<br /><span class="help">Yüklemesine izin verilen dosya türlerini ekleyiniz. Bir çok tür eklemek için virgül kullanın.</span>';
 $_['entry_cart_weight']         = 'Sepetim Sayfasında Ağırlık Göster:<br /><span class="help">Sepetim sayfasında sepetteki ürünlerin ağırlığını göster</span>';
+$_['entry_voucher_min']			= 'Min. Hediye Çeki:<br /><span class="help">Bir müşterinin en az satın alabileceği hediye çeki miktarını yazınız.</span>';
+$_['entry_voucher_max']			= 'Maks. Hediye Çeki:<br /><span class="help">Bir müşterinin en çok satın alabileceği hediye çeki miktarını yazınız.</span>';
 $_['entry_logo']                = 'Mağaza Logosu:';
 $_['entry_icon']                = 'Favicon:<br /><span class="help">Favicon 16x16 PNG türünden olmalıdır</span>';
 $_['entry_image_category']      = 'Kategori Resim Boyutu:';
@@ -104,6 +106,8 @@ $_['error_email']               = 'E-Posta Adresi geçerli değil!';
 $_['error_telephone']           = 'Telefon 3 ile 32 karakter arasında olmalı!';
 $_['error_title']               = 'Başlık 3 ile 32 karakter arasında olmalı!';
 $_['error_limit']       	    = 'Limit gerekli!';
+$_['error_voucher_min']			= 'Min. hediye çeki miktarı gerekli!';
+$_['error_voucher_max']			= 'Maks. hediye çeki miktarı gerekli!';
 $_['error_image_thumb']         = 'Ürün sayfası için küçük resim boyutu gerekli!';
 $_['error_image_popup']         = 'Ürün sayfası için açılır pencere resim boyutu gerekli!';
 $_['error_image_product']       = 'Ürün listesi için boyutu gerekli!';
