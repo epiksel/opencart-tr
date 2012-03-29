@@ -7,6 +7,7 @@ $_['heading_title']			= 'Klarna';
 // Text
 $_['text_payment']			= 'Ödeme Metodları';
 $_['text_success']			= 'Başarılı: Klarna ödeme modülü güncellendi!';
+$_['text_klarna']			= '<a onclick="window.open(\'http://www.klarna.com\');"><img src="view/image/payment/klarna.png" alt="Klarna" title="Klarna" style="border: 1px solid #EEEEEE;" /></a>';
 $_['text_live']				= 'Live';
 $_['text_beta']				= 'Beta';
 

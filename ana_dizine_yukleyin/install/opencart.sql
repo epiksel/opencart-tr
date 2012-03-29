@@ -32,6 +32,8 @@ CREATE TABLE `oc_address` (
   `firstname` varchar(32) COLLATE utf8_bin NOT NULL DEFAULT '',
   `lastname` varchar(32) COLLATE utf8_bin NOT NULL DEFAULT '',
   `company` varchar(32) COLLATE utf8_bin NOT NULL,
+  `company_no` varchar(32) COLLATE utf8_bin NOT NULL,
+  `company_tax` varchar(32) COLLATE utf8_bin NOT NULL,
   `address_1` varchar(128) COLLATE utf8_bin NOT NULL,
   `address_2` varchar(128) COLLATE utf8_bin NOT NULL,
   `city` varchar(128) COLLATE utf8_bin NOT NULL,
