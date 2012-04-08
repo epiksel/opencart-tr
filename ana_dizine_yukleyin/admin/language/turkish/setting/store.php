@@ -60,10 +60,10 @@ $_['entry_stock_checkout']      = 'Stok Dışı Sipariş:<br /><span class="help
 $_['entry_logo']                = 'Mağaza Logosu:';
 $_['entry_icon']                = 'Favicon:<br /><span class="help">Favicon 16x16 PNG türünden olmalıdır</span>';
 $_['entry_image_category']      = 'Kategori Resim Boyutu:';
-$_['entry_image_thumb']         = 'Ürün Sayfası Küçük Resim Boyutu:';
-$_['entry_image_popup']         = 'Ürün Sayfası Açılır Pencere Resim Boyutu:';
-$_['entry_image_product']       = 'Ürün Sayfası Liste Resim Boyutu:';
-$_['entry_image_additional']    = 'Ürün Sayfası Ek Resimlerin Boyutu:';
+$_['entry_image_thumb']         = 'Ürün Sayfası Büyük Resim Boyutu:';
+$_['entry_image_popup']         = 'Ürün Sayfası Colorbox Boyutu:';
+$_['entry_image_product']       = 'Liste Resim Boyutu:';
+$_['entry_image_additional']    = 'Ürün Sayfası Ek Resim Boyutu:';
 $_['entry_image_related']       = 'Benzer Ürünler Resim Boyutu:';
 $_['entry_image_compare']       = 'Karşılaştırma Resim Boyutu:';
 $_['entry_image_wishlist']      = 'Alışveriş Listem Resim Boyutu:';

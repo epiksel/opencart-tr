@@ -2,7 +2,7 @@
 /* Turkceye Ceviren eka7a - http://www.e-piksel.com */
 
 // Heading 
-$_['heading_title']    = 'Hediye Çeki Satın Alma';
+$_['heading_title']    = 'Hediye Çeki Satın Al';
 
 // Text
 $_['text_account']     = 'Hesap';

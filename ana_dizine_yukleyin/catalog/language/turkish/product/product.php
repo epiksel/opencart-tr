@@ -20,7 +20,7 @@ $_['text_or']           = 'ya da';
 $_['text_reviews']      = '%s yorum'; 
 $_['text_write']        = 'Yorum Yap';
 $_['text_no_reviews']   = 'Bu ürün için daha önce yorum yapılmadı.';
-$_['text_on']           = ' on ';
+$_['text_on']           = ' tarih: ';
 $_['text_note']         = '<span style="color: #FF0000;">Not:</span> HTML\'ye dönüştürülmez!';
 $_['text_share']        = 'Paylaş';
 $_['text_success']      = 'Yorum için teşekkür ederiz. Onaylandıktan sonra yorumunuz yayınlanacaktır.';
