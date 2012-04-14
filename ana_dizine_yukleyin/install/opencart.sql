@@ -32,8 +32,8 @@ CREATE TABLE `oc_address` (
   `firstname` varchar(32) COLLATE utf8_bin NOT NULL DEFAULT '',
   `lastname` varchar(32) COLLATE utf8_bin NOT NULL DEFAULT '',
   `company` varchar(32) COLLATE utf8_bin NOT NULL,
-  `company_no` varchar(32) COLLATE utf8_bin NOT NULL,
-  `company_tax` varchar(32) COLLATE utf8_bin NOT NULL,
+  `company_id` varchar(32) COLLATE utf8_bin NOT NULL,
+  `tax_id` varchar(32) COLLATE utf8_bin NOT NULL,
   `address_1` varchar(128) COLLATE utf8_bin NOT NULL,
   `address_2` varchar(128) COLLATE utf8_bin NOT NULL,
   `city` varchar(128) COLLATE utf8_bin NOT NULL,
@@ -7041,7 +7041,8 @@ INSERT INTO `oc_zone` (`zone_id`, `country_id`, `code`, `name`, `status`) VALUES
 (3964, 190, '9', 'Gorenjska', 1),
 (3965, 190, '10', 'Notranjsko-kraška', 1),
 (3966, 190, '11', 'Goriška', 1),
-(3967, 190, '12', 'Obalno-kraška', 1);
+(3967, 190, '12', 'Obalno-kraška', 1),
+(3968, 33, '', 'Ruse', 1);
 
 -- --------------------------------------------------------
 

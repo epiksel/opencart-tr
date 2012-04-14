@@ -7,7 +7,7 @@ $_['heading_title']      = 'Klarna Part Payment';
 // Text
 $_['text_payment']		 = 'Ödeme Metodları';
 $_['text_success']		 = 'Başarılı: Klarna Part Ödeme modülü güncellendi!';
-$_['text_klarna']	     = '<a onclick="window.open(\'http://www.klarna.com\');"><img src="view/image/payment/klarna.png" alt="Klarna" title="Klarna" style="border: 1px solid #EEEEEE;" /></a>';
+$_['text_klarna_pp']     = '<a onclick="window.open(\'http://www.klarna.com\');"><img src="view/image/payment/klarna.png" alt="Klarna" title="Klarna" style="border: 1px solid #EEEEEE;" /></a>';
 $_['text_live']          = 'Live';
 $_['text_beta']          = 'Beta';
 
@@ -22,6 +22,7 @@ $_['entry_sort_order']	 = 'Sıralama:';
 
 // Error
 $_['error_permission']	 = 'Uyarı: Klarna Part Ödeme metodunu düzenleme iznine sahip değilsiniz!';
+$_['error_xmlrpc']       = 'XML-RPC PHP extension is required to be installed!';
 $_['error_merchant']	 = 'Merchant ID gerekli!';
 $_['error_secret']		 = 'Secret gerekli!';
 ?>

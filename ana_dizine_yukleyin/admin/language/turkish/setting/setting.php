@@ -55,10 +55,10 @@ $_['entry_tax_customer']		= 'Varsayılan Müşteri Vergi Adresi:<br /><span clas
 $_['entry_customer_group']      = 'Müşteri Grubu:<br /><span class="help">Varsayılan Müşteri Grubu</span>';
 $_['entry_customer_price']      = 'Ürün Fıyatlarını Gizle:<br /><span class="help">Fiyatları müşteri giriş yaptıktan sonra gösterir.</span>';
 $_['entry_customer_approval']   = 'Yeni Müşterileri Onayla:<br /><span class="help">Yeni kayıt olan müşteri hesabını onaylanmanız gerekir.</span>';
-$_['entry_company_no_display']	= 'Vergi Dairesini Göster:<br /><span class="help">Fatura adreslerinde vergi dairesini göster</span>';
-$_['entry_company_no_required']	= 'Vergi Dairesi Zorunlu:<br /><span class="help">Fatura adresleri için müşterilerin vergi dairesi girmeleri zorunludur.</span>';
-$_['entry_company_tax_display']	= 'T.C/Vergi Numarası Göster:<br /><span class="help">Fatura adreslerinde t.c./vergi numarasını göster</span>';
-$_['entry_company_tax_required']= 'T.C/Vergi Numarası Zorunlu:<br /><span class="help">Fatura adresleri için müşterilerin t.c./vergi numarası girmeleri zorunludur.</span>';
+$_['entry_company_id_display']	= 'Vergi Dairesini Göster:<br /><span class="help">Fatura adreslerinde vergi dairesini göster</span>';
+$_['entry_company_id_required']	= 'Vergi Dairesi Zorunlu:<br /><span class="help">Fatura adresleri için müşterilerin vergi dairesi girmeleri zorunludur.</span>';
+$_['entry_tax_id_display']		= 'T.C/Vergi Numarası Göster:<br /><span class="help">Fatura adreslerinde t.c./vergi numarasını göster</span>';
+$_['entry_tax_id_required']		= 'T.C/Vergi Numarası Zorunlu:<br /><span class="help">Fatura adresleri için müşterilerin t.c./vergi numarası girmeleri zorunludur.</span>';
 $_['entry_account']             = 'Hesap Koşulları:<br /><span class="help">Müşteri kayıt olurken hesap koşullarını kabul etmelidir.</span>';
 $_['entry_cart_weight']         = 'Sepetim Sayfasında Ağırlık Göster:<br /><span class="help">Sepetim sayfasında sepetteki ürünlerin ağırlığını göster</span>';
 $_['entry_guest_checkout']      = 'Misafir Alışverişi:<br /><span class="help">Müşterinin hesap oluşturmadan alışveriş yapmasını sağlar. İndirilebilir ürünlerde geçerli değildir.</span>';
