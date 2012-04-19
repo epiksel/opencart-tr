@@ -918,17 +918,45 @@ CREATE TABLE `oc_customer` (
 DROP TABLE IF EXISTS `oc_customer_group`;
 CREATE TABLE `oc_customer_group` (
   `customer_group_id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(32) COLLATE utf8_bin NOT NULL,
+  `approval` int(1) NOT NULL,
+  `company_id_display` int(1) NOT NULL,
+  `company_id_required` int(1) NOT NULL,
+  `tax_id_display` int(1) NOT NULL,
+  `tax_id_required` int(1) NOT NULL,
+  `sort_order` int(3) NOT NULL,
   PRIMARY KEY (`customer_group_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `oc_customer_group`
 --
 
-INSERT INTO `oc_customer_group` (`customer_group_id`, `name`) VALUES
-(8, 'Varsayılan'),
-(6, 'Toptancı');
+INSERT INTO `oc_customer_group` (`customer_group_id`, `approval`, `company_id_display`, `company_id_required`, `tax_id_display`, `tax_id_required`, `sort_order`) VALUES
+(1, 0, 0, 0, 1, 1, 1),
+(2, 0, 1, 1, 1, 1, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `oc_customer_group_description`
+--
+
+DROP TABLE IF EXISTS `oc_customer_group_description`;
+CREATE TABLE `oc_customer_group_description` (
+  `customer_group_id` int(11) NOT NULL,
+  `language_id` int(11) NOT NULL,
+  `name` varchar(32) COLLATE utf8_bin NOT NULL,
+  `description` text COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`customer_group_id`,`language_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dumping data for table `oc_customer_group_description`
+--
+
+INSERT INTO `oc_customer_group_description` (`customer_group_id`, `language_id`, `name`, `description`) VALUES
+(1, 1, 'Bireysel', 'Bireysel müşteriler bu grubu seçerek kayıt olabilirler.'),
+(2, 1, 'Kurumsal', 'Kurumsal müşteriler bu grubu seçerek kayıt olabilirler.');
 
 -- --------------------------------------------------------
 
@@ -1556,6 +1584,8 @@ CREATE TABLE `oc_order` (
   `payment_firstname` varchar(32) COLLATE utf8_bin NOT NULL DEFAULT '',
   `payment_lastname` varchar(32) COLLATE utf8_bin NOT NULL DEFAULT '',
   `payment_company` varchar(32) COLLATE utf8_bin NOT NULL,
+  `payment_company_id` varchar(32) COLLATE utf8_bin NOT NULL,
+  `payment_tax_id` varchar(32) COLLATE utf8_bin NOT NULL,  
   `payment_address_1` varchar(128) COLLATE utf8_bin NOT NULL,
   `payment_address_2` varchar(128) COLLATE utf8_bin NOT NULL,
   `payment_city` varchar(128) COLLATE utf8_bin NOT NULL,
@@ -1945,7 +1975,7 @@ INSERT INTO `oc_product_description` (`product_id`, `language_id`, `name`, `desc
 (46, 1, 'Sony VAIO', '&lt;div&gt;\r\n	Unprecedented power. The next generation of processing technology has arrived. Built into the newest VAIO notebooks lies Intel&amp;#39;s latest, most powerful innovation yet: Intel&amp;reg; Centrino&amp;reg; 2 processor technology. Boasting incredible speed, expanded wireless connectivity, enhanced multimedia support and greater energy efficiency, all the high-performance essentials are seamlessly combined into a single chip.&lt;/div&gt;\r\n', '', ''),
 (47, 1, 'HP LP3065', '&lt;p&gt;\r\n	Stop your co-workers in their tracks with the stunning new 30-inch diagonal HP LP3065 Flat Panel Monitor. This flagship monitor features best-in-class performance and presentation features on a huge wide-aspect screen while letting you work as comfortably as possible - you might even forget you&amp;#39;re at the office&lt;/p&gt;\r\n', '', ''),
 (32, 1, 'iPod Touch', '&lt;p&gt;\r\n	&lt;strong&gt;Revolutionary multi-touch interface.&lt;/strong&gt;&lt;br /&gt;\r\n	iPod touch features the same multi-touch screen technology as iPhone. Pinch to zoom in on a photo. Scroll through your songs and videos with a flick. Flip through your library by album artwork with Cover Flow.&lt;/p&gt;\r\n&lt;p&gt;\r\n	&lt;strong&gt;Gorgeous 3.5-inch widescreen display.&lt;/strong&gt;&lt;br /&gt;\r\n	Watch your movies, TV shows, and photos come alive with bright, vivid color on the 320-by-480-pixel display.&lt;/p&gt;\r\n&lt;p&gt;\r\n	&lt;strong&gt;Music downloads straight from iTunes.&lt;/strong&gt;&lt;br /&gt;\r\n	Shop the iTunes Wi-Fi Music Store from anywhere with Wi-Fi.1 Browse or search to find the music youre looking for, preview it, and buy it with just a tap.&lt;/p&gt;\r\n&lt;p&gt;\r\n	&lt;strong&gt;Surf the web with Wi-Fi.&lt;/strong&gt;&lt;br /&gt;\r\n	Browse the web using Safari and watch YouTube videos on the first iPod with Wi-Fi built in&lt;br /&gt;\r\n	&amp;nbsp;&lt;/p&gt;\r\n', '', ''),
-(41, 1, 'iMac', '&lt;div&gt;\r\n	Just when you thought iMac had everything, now there’s even more. More powerful Intel Core 2 Duo processors. And more memory standard. Combine this with Mac OS X Leopard and iLife ’08, and it’s more all-in-one than ever. iMac packs amazing performance into a stunningly slim space.&lt;/div&gt;\r\n', '', ''),
+(41, 1, 'iMac', '&lt;div&gt;\r\n	Just when you thought iMac had everything, now theres even more. More powerful Intel Core 2 Duo processors. And more memory standard. Combine this with Mac OS X Leopard and iLife 08, and its more all-in-one than ever. iMac packs amazing performance into a stunningly slim space.&lt;/div&gt;\r\n', '', ''),
 (33, 1, 'Samsung SyncMaster 941BW', '&lt;div&gt;\r\n	Imagine the advantages of going big without slowing down. The big 19&amp;quot; 941BW monitor combines wide aspect ratio with fast pixel response time, for bigger images, more room to work and crisp motion. In addition, the exclusive MagicBright 2, MagicColor and MagicTune technologies help deliver the ideal image in every situation, while sleek, narrow bezels and adjustable stands deliver style just the way you want it. With the Samsung 941BW widescreen analog/digital LCD monitor, it&amp;#39;s not hard to imagine.&lt;/div&gt;\r\n', '', ''),
 (34, 1, 'iPod Shuffle', '&lt;div&gt;\r\n	&lt;strong&gt;Born to be worn.&lt;/strong&gt;\r\n	&lt;p&gt;\r\n		Clip on the worlds most wearable music player and take up to 240 songs with you anywhere. Choose from five colors including four new hues to make your musical fashion statement.&lt;/p&gt;\r\n	&lt;p&gt;\r\n		&lt;strong&gt;Random meets rhythm.&lt;/strong&gt;&lt;/p&gt;\r\n	&lt;p&gt;\r\n		With iTunes autofill, iPod shuffle can deliver a new musical experience every time you sync. For more randomness, you can shuffle songs during playback with the slide of a switch.&lt;/p&gt;\r\n	&lt;strong&gt;Everything is easy.&lt;/strong&gt;\r\n	&lt;p&gt;\r\n		Charge and sync with the included USB dock. Operate the iPod shuffle controls with one hand. Enjoy up to 12 hours straight of skip-free music playback.&lt;/p&gt;\r\n&lt;/div&gt;\r\n', '', ''),
 (43, 1, 'MacBook', '&lt;div&gt;\r\n	&lt;p&gt;\r\n		&lt;b&gt;Intel Core 2 Duo processor&lt;/b&gt;&lt;/p&gt;\r\n	&lt;p&gt;\r\n		Powered by an Intel Core 2 Duo processor at speeds up to 2.16GHz, the new MacBook is the fastest ever.&lt;/p&gt;\r\n	&lt;p&gt;\r\n		&lt;b&gt;1GB memory, larger hard drives&lt;/b&gt;&lt;/p&gt;\r\n	&lt;p&gt;\r\n		The new MacBook now comes with 1GB of memory standard and larger hard drives for the entire line perfect for running more of your favorite applications and storing growing media collections.&lt;/p&gt;\r\n	&lt;p&gt;\r\n		&lt;b&gt;Sleek, 1.08-inch-thin design&lt;/b&gt;&lt;/p&gt;\r\n	&lt;p&gt;\r\n		MacBook makes it easy to hit the road thanks to its tough polycarbonate case, built-in wireless technologies, and innovative MagSafe Power Adapter that releases automatically if someone accidentally trips on the cord.&lt;/p&gt;\r\n	&lt;p&gt;\r\n		&lt;b&gt;Built-in iSight camera&lt;/b&gt;&lt;/p&gt;\r\n	&lt;p&gt;\r\n		Right out of the box, you can have a video chat with friends or family,2 record a video at your desk, or take fun pictures with Photo Booth&lt;/p&gt;\r\n&lt;/div&gt;\r\n', '', ''),
@@ -2671,42 +2701,42 @@ INSERT INTO `oc_setting` (`setting_id`, `store_id`, `group`, `key`, `value`, `se
 (87, 0, 'config', 'config_checkout_id', '5', 0),
 (88, 0, 'config', 'config_guest_checkout', '1', 0),
 (89, 0, 'config', 'config_account_id', '3', 0),
-(90, 0, 'config', 'config_customer_approval', '0', 0),
 (91, 0, 'config', 'config_customer_price', '0', 0),
-(92, 0, 'config', 'config_customer_group_id', '8', 0),
-(93, 0, 'voucher', 'voucher_sort_order', '8', 0),
-(94, 0, 'voucher', 'voucher_status', '1', 0),
-(95, 0, 'config', 'config_length_class_id', '1', 0),
-(96, 0, 'config', 'config_invoice_prefix', 'FA-2011-00', 0),
-(97, 0, 'config', 'config_tax', '1', 0),
-(98, 0, 'config', 'config_tax_customer', 'payment', 0),
-(99, 0, 'config', 'config_tax_default', 'payment', 0),
-(100, 0, 'config', 'config_admin_limit', '20', 0),
-(101, 0, 'config', 'config_catalog_limit', '15', 0),
-(102, 0, 'free_checkout', 'free_checkout_status', '1', 0),
-(103, 0, 'free_checkout', 'free_checkout_order_status_id', '1', 0),
-(104, 0, 'config', 'config_weight_class_id', '1', 0),
-(105, 0, 'config', 'config_currency_auto', '1', 0),
-(106, 0, 'config', 'config_currency', 'TRY', 0),
-(107, 0, 'slideshow', 'slideshow_module', 'a:1:{i:0;a:7:{s:9:"banner_id";s:1:"7";s:5:"width";s:3:"980";s:6:"height";s:3:"280";s:9:"layout_id";s:1:"1";s:8:"position";s:11:"content_top";s:6:"status";s:1:"1";s:10:"sort_order";s:1:"1";}}', 1),
-(108, 0, 'banner', 'banner_module', 'a:1:{i:0;a:7:{s:9:"banner_id";s:1:"6";s:5:"width";s:3:"182";s:6:"height";s:3:"182";s:9:"layout_id";s:1:"3";s:8:"position";s:11:"column_left";s:6:"status";s:1:"1";s:10:"sort_order";s:1:"3";}}', 1),
-(109, 0, 'config', 'config_name', 'E-Piksel E-Ticaret ve Web Tasarımı', 0),
-(110, 0, 'config', 'config_owner', 'E-Piksel', 0),
-(111, 0, 'config', 'config_address', 'Address 1', 0),
-(112, 0, 'config', 'config_email', 'your@store.com', 0),
-(113, 0, 'config', 'config_telephone', '123456789', 0),
-(114, 0, 'config', 'config_fax', '', 0),
-(115, 0, 'config', 'config_title', 'E-Piksel E-Ticaret ve Web Tasarımı', 0),
-(116, 0, 'config', 'config_meta_description', 'E-Piksel E-Ticaret ve Web Tasarımı', 0),
-(117, 0, 'config', 'config_template', 'default', 0),
-(118, 0, 'config', 'config_layout_id', '4', 0),
-(119, 0, 'config', 'config_country_id', '215', 0),
-(120, 0, 'config', 'config_zone_id', '3335', 0),
-(121, 0, 'config', 'config_language', 'tr', 0),
-(122, 0, 'config', 'config_admin_language', 'tr', 0),
-(123, 0, 'config', 'config_order_edit', '100', 0),
-(124, 0, 'config', 'config_voucher_min', '1', 0),
-(125, 0, 'config', 'config_voucher_max', '1000', 0);
+(92, 0, 'config', 'config_customer_group_id', '1', 0),
+(93, 0, 'config', 'config_customer_group_display', 'a:2:{i:0;s:1:"1";i:1;s:1:"2";}', 1),
+(94, 0, 'voucher', 'voucher_sort_order', '8', 0),
+(95, 0, 'voucher', 'voucher_status', '1', 0),
+(96, 0, 'config', 'config_length_class_id', '1', 0),
+(97, 0, 'config', 'config_invoice_prefix', 'FA-2011-00', 0),
+(98, 0, 'config', 'config_tax', '1', 0),
+(99, 0, 'config', 'config_tax_customer', 'payment', 0),
+(100, 0, 'config', 'config_tax_default', 'payment', 0),
+(101, 0, 'config', 'config_admin_limit', '20', 0),
+(102, 0, 'config', 'config_catalog_limit', '15', 0),
+(103, 0, 'free_checkout', 'free_checkout_status', '1', 0),
+(104, 0, 'free_checkout', 'free_checkout_order_status_id', '1', 0),
+(105, 0, 'config', 'config_weight_class_id', '1', 0),
+(106, 0, 'config', 'config_currency_auto', '1', 0),
+(107, 0, 'config', 'config_currency', 'TRY', 0),
+(108, 0, 'slideshow', 'slideshow_module', 'a:1:{i:0;a:7:{s:9:"banner_id";s:1:"7";s:5:"width";s:3:"980";s:6:"height";s:3:"280";s:9:"layout_id";s:1:"1";s:8:"position";s:11:"content_top";s:6:"status";s:1:"1";s:10:"sort_order";s:1:"1";}}', 1),
+(109, 0, 'banner', 'banner_module', 'a:1:{i:0;a:7:{s:9:"banner_id";s:1:"6";s:5:"width";s:3:"182";s:6:"height";s:3:"182";s:9:"layout_id";s:1:"3";s:8:"position";s:11:"column_left";s:6:"status";s:1:"1";s:10:"sort_order";s:1:"3";}}', 1),
+(110, 0, 'config', 'config_name', 'E-Piksel E-Ticaret ve Web Tasarımı', 0),
+(111, 0, 'config', 'config_owner', 'E-Piksel', 0),
+(112, 0, 'config', 'config_address', 'Address 1', 0),
+(113, 0, 'config', 'config_email', 'your@store.com', 0),
+(114, 0, 'config', 'config_telephone', '123456789', 0),
+(115, 0, 'config', 'config_fax', '', 0),
+(116, 0, 'config', 'config_title', 'E-Piksel E-Ticaret ve Web Tasarımı', 0),
+(117, 0, 'config', 'config_meta_description', 'E-Piksel E-Ticaret ve Web Tasarımı', 0),
+(118, 0, 'config', 'config_template', 'default', 0),
+(119, 0, 'config', 'config_layout_id', '4', 0),
+(120, 0, 'config', 'config_country_id', '215', 0),
+(121, 0, 'config', 'config_zone_id', '3335', 0),
+(122, 0, 'config', 'config_language', 'tr', 0),
+(123, 0, 'config', 'config_admin_language', 'tr', 0),
+(124, 0, 'config', 'config_order_edit', '100', 0),
+(125, 0, 'config', 'config_voucher_min', '1', 0),
+(126, 0, 'config', 'config_voucher_max', '1000', 0);
 
 -- --------------------------------------------------------
 
@@ -6168,7 +6198,7 @@ INSERT INTO `oc_zone` (`zone_id`, `country_id`, `code`, `name`, `status`) VALUES
 (3072, 202, 'M', 'Manzini', 1),
 (3073, 202, 'S', 'Shishelweni', 1),
 (3074, 203, 'K', 'Blekinge', 1),
-(3075, 203, 'W', 'Dalarn', 1),
+(3075, 203, 'W', 'Dalarna', 1),
 (3076, 203, 'X', 'G&auml;vleborg', 1),
 (3077, 203, 'I', 'Gotland', 1),
 (3078, 203, 'N', 'Halland', 1),

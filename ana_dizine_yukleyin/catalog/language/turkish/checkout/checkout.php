@@ -61,6 +61,7 @@ $_['entry_shipping'] 	             = 'Fatura ve Kargo adresimi aynı kullan.';
 // Error
 $_['error_warning']                  = 'Siparişiniz işlenirken bir sorun oluştu! Sorun devam ederse farklı bir ödeme metodu seçip tekar deneyiniz ya da mağaza sahibi ile iletişime geçmek için <a href="%s">buraya tıklayınız</a>.';
 $_['error_login']                    = 'Uyarı: E-Posta Adresi ve/ya da parolanız yanlış';
+$_['error_approved']                 = 'Uyarı: Oturum açabilmek için hesabınızın onaylanması gereklidir.'; 
 $_['error_exists']                   = 'Uyarı: E-Posta adresi ile daha önce kayıt olunmuştur!';
 $_['error_firstname']                = 'Ad alanı 1 ile 32 karakter arasında olmalı!';
 $_['error_lastname']                 = 'Soyad alanı 1 ile 32 karakter arasında olmalı!';

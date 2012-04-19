@@ -7,7 +7,7 @@ $_['heading_title']      = 'Klarna Part Payment';
 // Text
 $_['text_payment']		 = 'Ödeme Metodları';
 $_['text_success']		 = 'Başarılı: Klarna Part Ödeme modülü güncellendi!';
-$_['text_klarna_pp']     = '<a onclick="window.open(\'http://www.klarna.com\');"><img src="view/image/payment/klarna.png" alt="Klarna" title="Klarna" style="border: 1px solid #EEEEEE;" /></a>';
+$_['text_klarna_pp']     = '<a onclick="window.open(\'https://merchants.klarna.com/signup?locale=en&partner_id=d5c87110cebc383a826364769047042e777da5e8&utm_campaign=Platform&utm_medium=Partners&utm_source=Opencart\');"><img src="view/image/payment/klarna.png" alt="Klarna" title="Klarna" style="border: 1px solid #EEEEEE;" /></a>';
 $_['text_live']          = 'Live';
 $_['text_beta']          = 'Beta';
 
