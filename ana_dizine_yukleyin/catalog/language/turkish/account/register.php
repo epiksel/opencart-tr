@@ -22,6 +22,7 @@ $_['entry_lastname']       = 'Soyad:';
 $_['entry_email']          = 'E-Posta:';
 $_['entry_telephone']      = 'Telefon:';
 $_['entry_fax']            = 'Faks:';
+$_['entry_account']        = 'Hesap:';
 $_['entry_company']        = 'Şirket Adı:';
 $_['entry_company_id']     = 'Vergi Dairesi:';
 $_['entry_tax_id']         = 'T.C./Vergi No:';
