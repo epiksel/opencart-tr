@@ -122,7 +122,6 @@ $_['error_image_thumb']				= 'Ürün sayfası için küçük resim boyutu gerekl
 $_['error_image_popup']				= 'Ürün sayfası için açılır pencere resim boyutu gerekli!';
 $_['error_image_product']			= 'Ürün listesi için boyutu gerekli!';
 $_['error_image_category']			= 'Kategori listesi için boyutu gerekli!';
-$_['error_image_manufacturer']		= 'Üretici listesi için resim boyutu gerekli!';
 $_['error_image_additional']		= 'Ürün sayfası ek resimler için resim boyutu gerekli!';
 $_['error_image_related']			= 'Benzer ürün için resim boyutu gerekli!';
 $_['error_image_compare']			= 'Karşılaştırma için resim boyutu gerekli!';
