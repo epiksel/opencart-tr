@@ -8,8 +8,6 @@ $_['heading_title']        = 'Hesap Oluştur';
 $_['text_account']         = 'Hesabım';
 $_['text_register']        = 'Kayıt Ol';
 $_['text_account_already'] = 'Daha önceden kayıt olduysanız, lütfen <a href="%s">Oturum Açma</a> sayfasına gidiniz.';
-$_['text_your_account']    = 'Hesap Türü';
-$_['text_account_type']    = 'Lütfen kayıt olmak için hesap türünüzü seçiniz.';
 $_['text_your_details']    = 'Ayrıntılarınız';
 $_['text_your_address']    = 'Adresiniz';
 $_['text_newsletter']      = 'Bülten Aboneliği';

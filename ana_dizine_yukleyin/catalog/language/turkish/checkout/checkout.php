@@ -23,7 +23,6 @@ $_['text_guest']                     = 'Misafir Alışverişi';
 $_['text_register_account']          = 'Hızlı ve güvenli bir alışveriş için yeni bir hesap oluşturun. Böyle sipariş durumunuzu takip edebilir ve önceki siparişlerinize göz atabilirsiniz.';
 $_['text_forgotten']                 = 'Parolamı unuttum';
 $_['text_your_details']              = 'Kişisel Bilgileriniz';
-$_['text_your_account']              = 'Hesap Türü';
 $_['text_your_address']              = 'Adres Bilgileriniz';
 $_['text_your_password']             = 'Parolanız';
 $_['text_agree']                     = '<a class="colorbox" href="%s" alt="%s"><b>%s</b></a>\'ı okudum ve kabul ediyorum.';
