@@ -31,6 +31,7 @@ $_['error_delete']      = 'Uyarı: En az bir adres yazmalısınız!';
 $_['error_default']     = 'Uyarı: Varsayılan adresinizi silemezsiniz!';
 $_['error_firstname']   = 'Ad alanı 1 ile 32 karakter arasında olmalı!';
 $_['error_lastname']    = 'Soyad alanı 1 ile 32 karakter arasında olmalı!';
+$_['error_vat']         = 'Geçersiz VAT numarası!';
 $_['error_address_1']   = 'Adres alanı 3 ile 128 karakter arasında olmalı!';
 $_['error_postcode']    = 'Posta kodu alanı 2 ile 10 karakter arasında olmalı!';
 $_['error_city']        = 'İlçe / semt alanı 2 ile 128 karakter arasında olmalı!';

@@ -44,6 +44,7 @@ $_['error_password']       = 'Parolanız 4 ile 20 karakter arasında olmalı!';
 $_['error_confirm']        = 'Parolanız birbiriyle uyuşmuyor!';
 $_['error_company_id']     = 'Vergi dairesi gerekli!';
 $_['error_tax_id']         = 'T.C./Vergi no gerekli!';
+$_['error_vat']            = 'Geçersiz VAT numarası!';
 $_['error_address_1']      = 'Adres 1 alanı 3 ile 128 karakter arasında olmalı!';
 $_['error_city']           = 'İlçe / semnt alanı 2 ile 128 karakter arasında olmalı!';
 $_['error_postcode']	   = 'Posta kodu 2 ile 10 karakter arasında olmalı!';

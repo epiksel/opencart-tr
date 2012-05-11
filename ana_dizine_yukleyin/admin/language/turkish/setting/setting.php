@@ -50,6 +50,7 @@ $_['entry_upload_allowed']      = 'İzin verilen Dosya Türleri:<br /><span clas
 $_['entry_voucher_min']			= 'Min. Hediye Çeki:<br /><span class="help">Bir müşterinin en az satın alabileceği hediye çeki miktarını yazınız.</span>';
 $_['entry_voucher_max']			= 'Maks. Hediye Çeki:<br /><span class="help">Bir müşterinin en çok satın alabileceği hediye çeki miktarını yazınız.</span>';
 $_['entry_tax']                 = 'Vergi Oranlarını Göster:';
+$_['entry_vat']					= 'VAT Number Validate:<br /><span class="help">Validate VAT number with http://ec.europa.eu service.</span>';
 $_['entry_tax_default']			= 'Varsayılan Mağaza Vergi Adresi:<br /><span class="help">Mağaza adresi kimse oturum açmadığında vergi hesaplamak için kullanılır. Kargo ya da ödeme adresi için müşterilerinizde kullanılacak varsayılan mağaza adresi seçebilirsiniz.</span>';
 $_['entry_tax_customer']		= 'Varsayılan Müşteri Vergi Adresi:<br /><span class="help">Müşteri oturum açtığında hesaplamalar için kullanılacak vergi adresi. Müşterileriniz için varsayılan kargo ya da fatura adresi seçebilirsiniz</span>';
 $_['entry_customer_group']      = 'Müşteri Grubu:<br /><span class="help">Varsayılan Müşteri Grubu</span>';
