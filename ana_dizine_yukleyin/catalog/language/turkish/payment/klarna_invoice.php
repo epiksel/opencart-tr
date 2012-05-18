@@ -11,9 +11,10 @@ $_['text_female']		= 'Kadın';
 
 // Entry
 $_['entry_gender']		= 'Cinsiyet:';
-$_['entry_dob']			= 'Doğum Tarihi:';
+$_['entry_dob']			= 'PNO/BIRTH DAT:';
 $_['entry_house_no']	= 'Ev No.:';
 $_['entry_house_ext']	= 'Ev Uzt.:';
+$_['entry_mobile']		= 'Cep Telefonu:';
 
 // Error
 $_['error_gender']		= 'Cinsiyet Gerekli!';

@@ -1146,6 +1146,7 @@ INSERT INTO `oc_geo_zone` (`geo_zone_id`, `name`, `description`, `date_modified`
 DROP TABLE IF EXISTS `oc_information`;
 CREATE TABLE `oc_information` (
   `information_id` int(11) NOT NULL AUTO_INCREMENT,
+  `bottom` int(1) NOT NULL DEFAULT '0',
   `sort_order` int(3) NOT NULL DEFAULT '0',
   `status` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`information_id`)
@@ -1155,11 +1156,11 @@ CREATE TABLE `oc_information` (
 -- Dumping data for table `oc_information`
 --
 
-INSERT INTO `oc_information` (`information_id`, `sort_order`, `status`) VALUES
-(3, 3, 1),
-(4, 1, 1),
-(5, 4, 1),
-(6, 2, 1);
+INSERT INTO `oc_information` (`information_id`, `bottom`, `sort_order`, `status`) VALUES
+(3, 1, 3, 1),
+(4, 1, 1, 1),
+(5, 1, 4, 1),
+(6, 1, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -2726,7 +2727,7 @@ INSERT INTO `oc_setting` (`setting_id`, `store_id`, `group`, `key`, `value`, `se
 (94, 0, 'voucher', 'voucher_sort_order', '8', 0),
 (95, 0, 'voucher', 'voucher_status', '1', 0),
 (96, 0, 'config', 'config_length_class_id', '1', 0),
-(97, 0, 'config', 'config_invoice_prefix', 'FA-2011-00', 0),
+(97, 0, 'config', 'config_invoice_prefix', 'FA-2012-00', 0),
 (98, 0, 'config', 'config_tax', '1', 0),
 (99, 0, 'config', 'config_tax_customer', 'payment', 0),
 (100, 0, 'config', 'config_tax_default', 'payment', 0),
@@ -2755,7 +2756,8 @@ INSERT INTO `oc_setting` (`setting_id`, `store_id`, `group`, `key`, `value`, `se
 (123, 0, 'config', 'config_admin_language', 'tr', 0),
 (124, 0, 'config', 'config_order_edit', '100', 0),
 (125, 0, 'config', 'config_voucher_min', '1', 0),
-(126, 0, 'config', 'config_voucher_max', '1000', 0);
+(126, 0, 'config', 'config_voucher_max', '1000', 0),
+(126, 0, 'config', 'config_customer_group_display', 'a:1:{i:0;s:1:\"1\";}', 1);
 
 -- --------------------------------------------------------
 

@@ -49,6 +49,6 @@ $_['error_text']        = 'Uyarı: Yorum alanı 25 ile 1000 karakter arasında o
 $_['error_rating']      = 'Uyarı: Lütfen yorumunuz için oylama seçiniz!';
 $_['error_captcha'] 	= 'Uyarı: Doğrulama kodu yanlış!';
 $_['error_upload']      = 'Dosya gerekli!';
-$_['error_filename']    = 'Dosya adı 3 ile 128 karakter arasında olmalıdır!';
+$_['error_filename']    = 'Dosya adı 3 ile 64 karakter arasında olmalıdır!';
 $_['error_filetype']    = 'İzin verilmeyen dosya türü!';
 ?>
