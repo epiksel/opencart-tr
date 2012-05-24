@@ -37,7 +37,6 @@ $_['column_action']        		    = 'Eylem';
 $_['entry_range']         		    = 'Sıralama Seç:';
 
 // Error
-
 $_['error_install']         		= 'UYARI: INSTALL DİZİNİ HALA MEVCUT VE GÜVENLİK NEDENİ İLE SİLMENİZ TAVSİYE EDİLİR!';
 $_['error_image']                   = 'UYARI: %s Image dizininiz yazılabilir değil!';
 $_['error_image_cache']             = 'UYARI: %s Image/cache dizininiz yazılabilir değil!';

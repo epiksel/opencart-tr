@@ -2,6 +2,7 @@
 /* Turkceye Ceviren eka7a - http://www.e-piksel.com */
 
 // Text
+$_['text_for']			= '%s Gift Certificate for %s';
 $_['text_success']		= '<p>Sipariş toplamı başarıyla tekrar hesaplandı!</p>';
 
 // Error
