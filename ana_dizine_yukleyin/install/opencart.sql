@@ -270,13 +270,13 @@ CREATE TABLE `oc_banner_image` (
 
 INSERT INTO `oc_banner_image` (`banner_image_id`, `banner_id`, `link`, `image`) VALUES
 (54, 7, 'index.php?route=product/product&amp;path=57&amp;product_id=49', 'data/samsung_banner.jpg'),
-(77, 6, '/index.php?route=product/manufacturer/product&amp;manufacturer_id=7', 'data/hp_banner.jpg'),
-(75, 8, '/index.php?route=product/manufacturer/product&amp;manufacturer_id=5', 'data/htc_logo.jpg'),
-(73, 8, '/index.php?route=product/manufacturer/product&amp;manufacturer_id=8', 'data/apple_logo.jpg'),
-(74, 8, '/index.php?route=product/manufacturer/product&amp;manufacturer_id=9', 'data/canon_logo.jpg'),
-(71, 8, '/index.php?route=product/manufacturer/product&amp;manufacturer_id=10', 'data/sony_logo.jpg'),
-(72, 8, '/index.php?route=product/manufacturer/product&amp;manufacturer_id=6', 'data/palm_logo.jpg'),
-(76, 8, '/index.php?route=product/manufacturer/product&amp;manufacturer_id=7', 'data/hp_logo.jpg');
+(77, 6, 'index.php?route=product/manufacturer/product&amp;manufacturer_id=7', 'data/hp_banner.jpg'),
+(75, 8, 'index.php?route=product/manufacturer/product&amp;manufacturer_id=5', 'data/htc_logo.jpg'),
+(73, 8, 'index.php?route=product/manufacturer/product&amp;manufacturer_id=8', 'data/apple_logo.jpg'),
+(74, 8, 'index.php?route=product/manufacturer/product&amp;manufacturer_id=9', 'data/canon_logo.jpg'),
+(71, 8, 'index.php?route=product/manufacturer/product&amp;manufacturer_id=10', 'data/sony_logo.jpg'),
+(72, 8, 'index.php?route=product/manufacturer/product&amp;manufacturer_id=6', 'data/palm_logo.jpg'),
+(76, 8, 'index.php?route=product/manufacturer/product&amp;manufacturer_id=7', 'data/hp_logo.jpg');
 
 -- --------------------------------------------------------
 
