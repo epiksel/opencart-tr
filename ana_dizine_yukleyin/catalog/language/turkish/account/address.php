@@ -2,11 +2,11 @@
 /* Turkceye Ceviren eka7a - http://www.e-piksel.com */
 
 // Heading 
-$_['heading_title']     = 'Adres Defteri';
+$_['heading_title']     = 'Adreslerim';
 
 // Text
 $_['text_account']      = 'Hesabım';
-$_['text_address_book'] = 'Adres Defteri Girdileri';
+$_['text_address_book'] = 'Adreslerim';
 $_['text_edit_address'] = 'Adresi Düzenle';
 $_['text_insert']       = 'Adresinizi başarılı bir şekilde eklediniz';
 $_['text_update']       = 'Adresiniz başarılı bir şekilde güncellediniz';

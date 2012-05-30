@@ -2756,7 +2756,7 @@ INSERT INTO `oc_setting` (`setting_id`, `store_id`, `group`, `key`, `value`, `se
 (123, 0, 'config', 'config_order_edit', '100', 0),
 (124, 0, 'config', 'config_voucher_min', '1', 0),
 (125, 0, 'config', 'config_voucher_max', '1000', 0),
-(126, 0, 'config', 'config_customer_group_display', 'a:1:{i:0;s:1:\"1\";}', 1);
+(126, 0, 'config', 'config_customer_group_display', 'a:2:{i:0;s:1:\"1\";i:1;s:1:\"2\";}', 1);
 
 -- --------------------------------------------------------
 

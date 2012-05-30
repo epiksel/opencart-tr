@@ -18,7 +18,7 @@ $_['text_none']             = ' --- Yok --- ';
 $_['text_select']           = ' --- Seçiniz --- ';
 $_['text_all_zones']        = 'Tüm Şehirler / Eyaletler';
 $_['text_pagination']       = 'Gösterilen: {start} ile {end} arası, toplam: {total} ({pages} Sayfa)';
-$_['text_separator']        = ' <span style="font-size:14px; color:#000;">&raquo;</span> ';
+$_['text_separator']        = ' &raquo; ';
 
 // Buttons
 $_['button_add_address']    = 'Adres Ekle';
