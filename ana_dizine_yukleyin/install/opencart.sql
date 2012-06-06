@@ -269,14 +269,14 @@ CREATE TABLE `oc_banner_image` (
 --
 
 INSERT INTO `oc_banner_image` (`banner_image_id`, `banner_id`, `link`, `image`) VALUES
-(54, 7, 'index.php?route=product/product&amp;path=57&amp;product_id=49', 'data/samsung_banner.jpg'),
-(77, 6, 'index.php?route=product/manufacturer/product&amp;manufacturer_id=7', 'data/hp_banner.jpg'),
-(75, 8, 'index.php?route=product/manufacturer/product&amp;manufacturer_id=5', 'data/htc_logo.jpg'),
-(73, 8, 'index.php?route=product/manufacturer/product&amp;manufacturer_id=8', 'data/apple_logo.jpg'),
-(74, 8, 'index.php?route=product/manufacturer/product&amp;manufacturer_id=9', 'data/canon_logo.jpg'),
-(71, 8, 'index.php?route=product/manufacturer/product&amp;manufacturer_id=10', 'data/sony_logo.jpg'),
-(72, 8, 'index.php?route=product/manufacturer/product&amp;manufacturer_id=6', 'data/palm_logo.jpg'),
-(76, 8, 'index.php?route=product/manufacturer/product&amp;manufacturer_id=7', 'data/hp_logo.jpg');
+(54, 7, 'index.php?route=product/product&amp;path=57&amp;product_id=49', 'data/demo/samsung_banner.jpg'),
+(77, 6, 'index.php?route=product/manufacturer/product&amp;manufacturer_id=7', 'data/demo/hp_banner.jpg'),
+(75, 8, 'index.php?route=product/manufacturer/product&amp;manufacturer_id=5', 'data/demo/htc_logo.jpg'),
+(73, 8, 'index.php?route=product/manufacturer/product&amp;manufacturer_id=8', 'data/demo/apple_logo.jpg'),
+(74, 8, 'index.php?route=product/manufacturer/product&amp;manufacturer_id=9', 'data/demo/canon_logo.jpg'),
+(71, 8, 'index.php?route=product/manufacturer/product&amp;manufacturer_id=10', 'data/demo/sony_logo.jpg'),
+(72, 8, 'index.php?route=product/manufacturer/product&amp;manufacturer_id=6', 'data/demo/palm_logo.jpg'),
+(76, 8, 'index.php?route=product/manufacturer/product&amp;manufacturer_id=7', 'data/demo/hp_logo.jpg');
 
 -- --------------------------------------------------------
 
@@ -320,6 +320,7 @@ CREATE TABLE `oc_category` (
   `parent_id` int(11) NOT NULL DEFAULT '0',
   `top` tinyint(1) NOT NULL,
   `column` int(3) NOT NULL,
+  `product` int(8) NOT NULL,
   `sort_order` int(3) NOT NULL DEFAULT '0',
   `status` tinyint(1) NOT NULL,
   `date_added` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
@@ -334,9 +335,9 @@ CREATE TABLE `oc_category` (
 INSERT INTO `oc_category` (`category_id`, `image`, `parent_id`, `top`, `column`, `sort_order`, `status`, `date_added`, `date_modified`) VALUES
 (25, '', 0, 1, 1, 3, 1, '2009-01-31 01:04:25', '2011-05-30 12:14:55'),
 (27, '', 20, 0, 0, 2, 1, '2009-01-31 01:55:34', '2010-08-22 06:32:15'),
-(20, 'data/compaq_presario.jpg', 0, 1, 1, 1, 1, '2009-01-05 21:49:43', '2011-07-16 02:14:42'),
+(20, 'data/demo/compaq_presario.jpg', 0, 1, 1, 1, 1, '2009-01-05 21:49:43', '2011-07-16 02:14:42'),
 (24, '', 0, 1, 1, 5, 1, '2009-01-20 02:36:26', '2011-05-30 12:15:18'),
-(18, 'data/hp_2.jpg', 0, 1, 0, 2, 1, '2009-01-05 21:49:15', '2011-05-30 12:13:55'),
+(18, 'data/demo/hp_2.jpg', 0, 1, 0, 2, 1, '2009-01-05 21:49:15', '2011-05-30 12:13:55'),
 (17, '', 0, 1, 1, 4, 1, '2009-01-03 21:08:57', '2011-05-30 12:15:11'),
 (28, '', 25, 0, 0, 1, 1, '2009-02-02 13:11:12', '2010-08-22 06:32:46'),
 (26, '', 20, 0, 0, 1, 1, '2009-01-31 01:55:14', '2010-08-22 06:31:45'),
@@ -345,7 +346,7 @@ INSERT INTO `oc_category` (`category_id`, `image`, `parent_id`, `top`, `column`,
 (31, '', 25, 0, 0, 1, 1, '2009-02-03 14:17:24', '2010-08-22 06:33:06'),
 (32, '', 25, 0, 0, 1, 1, '2009-02-03 14:17:34', '2010-08-22 06:33:12'),
 (33, '', 0, 1, 1, 6, 1, '2009-02-03 14:17:55', '2011-05-30 12:15:25'),
-(34, 'data/ipod_touch_4.jpg', 0, 1, 4, 7, 1, '2009-02-03 14:18:11', '2011-05-30 12:15:31'),
+(34, 'data/demo/ipod_touch_4.jpg', 0, 1, 4, 7, 1, '2009-02-03 14:18:11', '2011-05-30 12:15:31'),
 (35, '', 28, 0, 0, 0, 1, '2010-09-17 10:06:48', '2010-09-18 14:02:42'),
 (36, '', 28, 0, 0, 0, 1, '2010-09-17 10:07:13', '2010-09-18 14:02:55'),
 (37, '', 34, 0, 0, 0, 1, '2010-09-18 14:03:39', '2011-04-22 01:55:08'),
@@ -1383,12 +1384,12 @@ CREATE TABLE `oc_manufacturer` (
 --
 
 INSERT INTO `oc_manufacturer` (`manufacturer_id`, `name`, `image`, `sort_order`) VALUES
-(5, 'HTC', 'data/htc_logo.jpg', 0),
-(6, 'Palm', 'data/palm_logo.jpg', 0),
-(7, 'Hewlett-Packard', 'data/hp_logo.jpg', 0),
-(8, 'Apple', 'data/apple_logo.jpg', 0),
-(9, 'Canon', 'data/canon_logo.jpg', 0),
-(10, 'Sony', 'data/sony_logo.jpg', 0);
+(5, 'HTC', 'data/demo/htc_logo.jpg', 0),
+(6, 'Palm', 'data/demo/palm_logo.jpg', 0),
+(7, 'Hewlett-Packard', 'data/demo/hp_logo.jpg', 0),
+(8, 'Apple', 'data/demo/apple_logo.jpg', 0),
+(9, 'Canon', 'data/demo/canon_logo.jpg', 0),
+(10, 'Sony', 'data/demo/sony_logo.jpg', 0);
 
 -- --------------------------------------------------------
 
@@ -1915,25 +1916,25 @@ CREATE TABLE `oc_product` (
 --
 
 INSERT INTO `oc_product` (`product_id`, `model`, `sku`, `upc`, `location`, `quantity`, `stock_status_id`, `image`, `manufacturer_id`, `shipping`, `price`, `points`, `tax_class_id`, `date_available`, `weight`, `weight_class_id`, `length`, `width`, `height`, `length_class_id`, `subtract`, `minimum`, `sort_order`, `status`, `date_added`, `date_modified`, `viewed`) VALUES
-(28, 'Product 1', '', '', '', 939, 7, 'data/htc_touch_hd_1.jpg', 5, 1, '100.0000', 200, 9, '2009-02-03', '146.40', 2, '0.00', '0.00', '0.00', 1, 1, 1, 0, 1, '2009-02-03 16:06:50', '2011-09-30 01:05:39', 0),
-(29, 'Product 2', '', '', '', 999, 6, 'data/palm_treo_pro_1.jpg', 6, 1, '279.9900', 0, 9, '2009-02-03', '133.00', 2, '0.00', '0.00', '0.00', 3, 1, 1, 0, 1, '2009-02-03 16:42:17', '2011-09-30 01:06:08', 0),
-(30, 'Product 3', '', '', '', 7, 6, 'data/canon_eos_5d_1.jpg', 9, 1, '100.0000', 0, 9, '2009-02-03', '0.00', 1, '0.00', '0.00', '0.00', 1, 1, 1, 0, 1, '2009-02-03 16:59:00', '2011-09-30 01:05:23', 0),
-(31, 'Product 4', '', '', '', 1000, 6, 'data/nikon_d300_1.jpg', 0, 1, '80.0000', 0, 9, '2009-02-03', '0.00', 1, '0.00', '0.00', '0.00', 3, 1, 1, 0, 1, '2009-02-03 17:00:10', '2011-09-30 01:06:00', 0),
-(32, 'Product 5', '', '', '', 999, 6, 'data/ipod_touch_1.jpg', 8, 1, '100.0000', 0, 9, '2009-02-03', '5.00', 1, '0.00', '0.00', '0.00', 1, 1, 1, 0, 1, '2009-02-03 17:07:26', '2011-09-30 01:07:22', 0),
-(33, 'Product 6', '', '', '', 1000, 6, 'data/samsung_syncmaster_941bw.jpg', 0, 1, '200.0000', 0, 9, '2009-02-03', '5.00', 1, '0.00', '0.00', '0.00', 2, 1, 1, 0, 1, '2009-02-03 17:08:31', '2011-09-30 01:06:29', 0),
-(34, 'Product 7', '', '', '', 1000, 6, 'data/ipod_shuffle_1.jpg', 8, 1, '100.0000', 0, 9, '2009-02-03', '5.00', 1, '0.00', '0.00', '0.00', 2, 1, 1, 0, 1, '2009-02-03 18:07:54', '2011-09-30 01:07:17', 0),
+(28, 'Product 1', '', '', '', 939, 7, 'data/demo/htc_touch_hd_1.jpg', 5, 1, '100.0000', 200, 9, '2009-02-03', '146.40', 2, '0.00', '0.00', '0.00', 1, 1, 1, 0, 1, '2009-02-03 16:06:50', '2011-09-30 01:05:39', 0),
+(29, 'Product 2', '', '', '', 999, 6, 'data/demo/palm_treo_pro_1.jpg', 6, 1, '279.9900', 0, 9, '2009-02-03', '133.00', 2, '0.00', '0.00', '0.00', 3, 1, 1, 0, 1, '2009-02-03 16:42:17', '2011-09-30 01:06:08', 0),
+(30, 'Product 3', '', '', '', 7, 6, 'data/demo/canon_eos_5d_1.jpg', 9, 1, '100.0000', 0, 9, '2009-02-03', '0.00', 1, '0.00', '0.00', '0.00', 1, 1, 1, 0, 1, '2009-02-03 16:59:00', '2011-09-30 01:05:23', 0),
+(31, 'Product 4', '', '', '', 1000, 6, 'data/demo/nikon_d300_1.jpg', 0, 1, '80.0000', 0, 9, '2009-02-03', '0.00', 1, '0.00', '0.00', '0.00', 3, 1, 1, 0, 1, '2009-02-03 17:00:10', '2011-09-30 01:06:00', 0),
+(32, 'Product 5', '', '', '', 999, 6, 'data/demo/ipod_touch_1.jpg', 8, 1, '100.0000', 0, 9, '2009-02-03', '5.00', 1, '0.00', '0.00', '0.00', 1, 1, 1, 0, 1, '2009-02-03 17:07:26', '2011-09-30 01:07:22', 0),
+(33, 'Product 6', '', '', '', 1000, 6, 'data/demo/samsung_syncmaster_941bw.jpg', 0, 1, '200.0000', 0, 9, '2009-02-03', '5.00', 1, '0.00', '0.00', '0.00', 2, 1, 1, 0, 1, '2009-02-03 17:08:31', '2011-09-30 01:06:29', 0),
+(34, 'Product 7', '', '', '', 1000, 6, 'data/demo/ipod_shuffle_1.jpg', 8, 1, '100.0000', 0, 9, '2009-02-03', '5.00', 1, '0.00', '0.00', '0.00', 2, 1, 1, 0, 1, '2009-02-03 18:07:54', '2011-09-30 01:07:17', 0),
 (35, 'Product 8', '', '', '', 1000, 5, '', 0, 0, '100.0000', 0, 9, '2009-02-03', '5.00', 1, '0.00', '0.00', '0.00', 1, 1, 1, 0, 1, '2009-02-03 18:08:31', '2011-09-30 01:06:17', 0),
-(36, 'Product 9', '', '', '', 994, 6, 'data/ipod_nano_1.jpg', 8, 0, '100.0000', 100, 9, '2009-02-03', '5.00', 1, '0.00', '0.00', '0.00', 2, 1, 1, 0, 1, '2009-02-03 18:09:19', '2011-09-30 01:07:12', 0),
-(40, 'product 11', '', '', '', 970, 5, 'data/iphone_1.jpg', 8, 1, '101.0000', 0, 9, '2009-02-03', '10.00', 1, '0.00', '0.00', '0.00', 1, 1, 1, 0, 1, '2009-02-03 21:07:12', '2011-09-30 01:06:53', 0),
-(41, 'Product 14', '', '', '', 977, 5, 'data/imac_1.jpg', 8, 1, '100.0000', 0, 9, '2009-02-03', '5.00', 1, '0.00', '0.00', '0.00', 1, 1, 1, 0, 1, '2009-02-03 21:07:26', '2011-09-30 01:06:44', 0),
-(42, 'Product 15', '', '', '', 990, 5, 'data/apple_cinema_30.jpg', 8, 1, '100.0000', 400, 9, '2009-02-04', '12.50', 1, '1.00', '2.00', '3.00', 1, 1, 2, 0, 1, '2009-02-03 21:07:37', '2011-09-30 00:46:19', 0),
-(43, 'Product 16', '', '', '', 929, 5, 'data/macbook_1.jpg', 8, 0, '500.0000', 0, 9, '2009-02-03', '0.00', 1, '0.00', '0.00', '0.00', 2, 1, 1, 0, 1, '2009-02-03 21:07:49', '2011-09-30 01:05:46', 0),
-(44, 'Product 17', '', '', '', 1000, 5, 'data/macbook_air_1.jpg', 8, 1, '1000.0000', 0, 9, '2009-02-03', '0.00', 1, '0.00', '0.00', '0.00', 2, 1, 1, 0, 1, '2009-02-03 21:08:00', '2011-09-30 01:05:53', 0),
-(45, 'Product 18', '', '', '', 998, 5, 'data/macbook_pro_1.jpg', 8, 1, '2000.0000', 0, 100, '2009-02-03', '0.00', 1, '0.00', '0.00', '0.00', 2, 1, 1, 0, 1, '2009-02-03 21:08:17', '2011-09-15 22:22:01', 0),
-(46, 'Product 19', '', '', '', 1000, 5, 'data/sony_vaio_1.jpg', 10, 1, '1000.0000', 0, 9, '2009-02-03', '0.00', 1, '0.00', '0.00', '0.00', 2, 1, 1, 0, 1, '2009-02-03 21:08:29', '2011-09-30 01:06:39', 0),
-(47, 'Product 21', '', '', '', 1000, 5, 'data/hp_1.jpg', 7, 1, '100.0000', 400, 9, '2009-02-03', '1.00', 1, '0.00', '0.00', '0.00', 1, 0, 1, 0, 1, '2009-02-03 21:08:40', '2011-09-30 01:05:28', 0),
-(48, 'product 20', 'test 1', '', 'test 2', 995, 5, 'data/ipod_classic_1.jpg', 8, 1, '100.0000', 0, 9, '2009-02-08', '1.00', 1, '0.00', '0.00', '0.00', 2, 1, 1, 0, 1, '2009-02-08 17:21:51', '2011-09-30 01:07:06', 0),
-(49, 'SAM1', '', '', '', 0, 8, 'data/samsung_tab_1.jpg', 0, 1, '199.9900', 0, 9, '2011-04-25', '0.00', 1, '0.00', '0.00', '0.00', 1, 1, 1, 1, 1, '2011-04-26 08:57:34', '2011-09-30 01:06:23', 0);
+(36, 'Product 9', '', '', '', 994, 6, 'data/demo/ipod_nano_1.jpg', 8, 0, '100.0000', 100, 9, '2009-02-03', '5.00', 1, '0.00', '0.00', '0.00', 2, 1, 1, 0, 1, '2009-02-03 18:09:19', '2011-09-30 01:07:12', 0),
+(40, 'product 11', '', '', '', 970, 5, 'data/demo/iphone_1.jpg', 8, 1, '101.0000', 0, 9, '2009-02-03', '10.00', 1, '0.00', '0.00', '0.00', 1, 1, 1, 0, 1, '2009-02-03 21:07:12', '2011-09-30 01:06:53', 0),
+(41, 'Product 14', '', '', '', 977, 5, 'data/demo/imac_1.jpg', 8, 1, '100.0000', 0, 9, '2009-02-03', '5.00', 1, '0.00', '0.00', '0.00', 1, 1, 1, 0, 1, '2009-02-03 21:07:26', '2011-09-30 01:06:44', 0),
+(42, 'Product 15', '', '', '', 990, 5, 'data/demo/apple_cinema_30.jpg', 8, 1, '100.0000', 400, 9, '2009-02-04', '12.50', 1, '1.00', '2.00', '3.00', 1, 1, 2, 0, 1, '2009-02-03 21:07:37', '2011-09-30 00:46:19', 0),
+(43, 'Product 16', '', '', '', 929, 5, 'data/demo/macbook_1.jpg', 8, 0, '500.0000', 0, 9, '2009-02-03', '0.00', 1, '0.00', '0.00', '0.00', 2, 1, 1, 0, 1, '2009-02-03 21:07:49', '2011-09-30 01:05:46', 0),
+(44, 'Product 17', '', '', '', 1000, 5, 'data/demo/macbook_air_1.jpg', 8, 1, '1000.0000', 0, 9, '2009-02-03', '0.00', 1, '0.00', '0.00', '0.00', 2, 1, 1, 0, 1, '2009-02-03 21:08:00', '2011-09-30 01:05:53', 0),
+(45, 'Product 18', '', '', '', 998, 5, 'data/demo/macbook_pro_1.jpg', 8, 1, '2000.0000', 0, 100, '2009-02-03', '0.00', 1, '0.00', '0.00', '0.00', 2, 1, 1, 0, 1, '2009-02-03 21:08:17', '2011-09-15 22:22:01', 0),
+(46, 'Product 19', '', '', '', 1000, 5, 'data/demo/sony_vaio_1.jpg', 10, 1, '1000.0000', 0, 9, '2009-02-03', '0.00', 1, '0.00', '0.00', '0.00', 2, 1, 1, 0, 1, '2009-02-03 21:08:29', '2011-09-30 01:06:39', 0),
+(47, 'Product 21', '', '', '', 1000, 5, 'data/demo/hp_1.jpg', 7, 1, '100.0000', 400, 9, '2009-02-03', '1.00', 1, '0.00', '0.00', '0.00', 1, 0, 1, 0, 1, '2009-02-03 21:08:40', '2011-09-30 01:05:28', 0),
+(48, 'product 20', 'test 1', '', 'test 2', 995, 5, 'data/demo/ipod_classic_1.jpg', 8, 1, '100.0000', 0, 9, '2009-02-08', '1.00', 1, '0.00', '0.00', '0.00', 2, 1, 1, 0, 1, '2009-02-08 17:21:51', '2011-09-30 01:07:06', 0),
+(49, 'SAM1', '', '', '', 0, 8, 'data/demo/samsung_tab_1.jpg', 0, 1, '199.9900', 0, 9, '2011-04-25', '0.00', 1, '0.00', '0.00', '0.00', 1, 1, 1, 1, 1, '2011-04-26 08:57:34', '2011-09-30 01:06:23', 0);
 
 -- --------------------------------------------------------
 
@@ -2029,10 +2030,9 @@ CREATE TABLE `oc_product_discount` (
 --
 
 INSERT INTO `oc_product_discount` (`product_discount_id`, `product_id`, `customer_group_id`, `quantity`, `priority`, `price`, `date_start`, `date_end`) VALUES
-(296, 32, 6, 10, 1, '10.0000', '2010-01-01', '2010-01-31'),
-(440, 42, 8, 30, 1, '66.0000', '0000-00-00', '0000-00-00'),
-(439, 42, 8, 20, 1, '77.0000', '0000-00-00', '0000-00-00'),
-(438, 42, 8, 10, 1, '88.0000', '0000-00-00', '0000-00-00');
+(440, 42, 1, 30, 1, '66.0000', '0000-00-00', '0000-00-00'),
+(439, 42, 1, 20, 1, '77.0000', '0000-00-00', '0000-00-00'),
+(438, 42, 1, 10, 1, '88.0000', '0000-00-00', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -2054,67 +2054,67 @@ CREATE TABLE `oc_product_image` (
 --
 
 INSERT INTO `oc_product_image` (`product_image_id`, `product_id`, `image`) VALUES
-(2345, 30, 'data/canon_eos_5d_2.jpg'),
-(2321, 47, 'data/hp_3.jpg'),
-(2035, 28, 'data/htc_touch_hd_2.jpg'),
-(2351, 41, 'data/imac_3.jpg'),
-(1982, 40, 'data/iphone_6.jpg'),
-(2001, 36, 'data/ipod_nano_5.jpg'),
-(2000, 36, 'data/ipod_nano_4.jpg'),
-(2005, 34, 'data/ipod_shuffle_5.jpg'),
-(2004, 34, 'data/ipod_shuffle_4.jpg'),
-(2011, 32, 'data/ipod_touch_7.jpg'),
-(2010, 32, 'data/ipod_touch_6.jpg'),
-(2009, 32, 'data/ipod_touch_5.jpg'),
-(1971, 43, 'data/macbook_5.jpg'),
-(1970, 43, 'data/macbook_4.jpg'),
-(1974, 44, 'data/macbook_air_4.jpg'),
-(1973, 44, 'data/macbook_air_2.jpg'),
-(1977, 45, 'data/macbook_pro_2.jpg'),
-(1976, 45, 'data/macbook_pro_3.jpg'),
-(1986, 31, 'data/nikon_d300_3.jpg'),
-(1985, 31, 'data/nikon_d300_2.jpg'),
-(1988, 29, 'data/palm_treo_pro_3.jpg'),
-(1995, 46, 'data/sony_vaio_5.jpg'),
-(1994, 46, 'data/sony_vaio_4.jpg'),
-(1991, 48, 'data/ipod_classic_4.jpg'),
-(1990, 48, 'data/ipod_classic_3.jpg'),
-(1981, 40, 'data/iphone_2.jpg'),
-(1980, 40, 'data/iphone_5.jpg'),
-(2344, 30, 'data/canon_eos_5d_3.jpg'),
-(2320, 47, 'data/hp_2.jpg'),
-(2034, 28, 'data/htc_touch_hd_3.jpg'),
-(2350, 41, 'data/imac_2.jpg'),
-(1979, 40, 'data/iphone_3.jpg'),
-(1978, 40, 'data/iphone_4.jpg'),
-(1989, 48, 'data/ipod_classic_2.jpg'),
-(1999, 36, 'data/ipod_nano_2.jpg'),
-(1998, 36, 'data/ipod_nano_3.jpg'),
-(2003, 34, 'data/ipod_shuffle_2.jpg'),
-(2002, 34, 'data/ipod_shuffle_3.jpg'),
-(2008, 32, 'data/ipod_touch_2.jpg'),
-(2007, 32, 'data/ipod_touch_3.jpg'),
-(2006, 32, 'data/ipod_touch_4.jpg'),
-(1969, 43, 'data/macbook_2.jpg'),
-(1968, 43, 'data/macbook_3.jpg'),
-(1972, 44, 'data/macbook_air_3.jpg'),
-(1975, 45, 'data/macbook_pro_4.jpg'),
-(1984, 31, 'data/nikon_d300_4.jpg'),
-(1983, 31, 'data/nikon_d300_5.jpg'),
-(1987, 29, 'data/palm_treo_pro_2.jpg'),
-(1993, 46, 'data/sony_vaio_2.jpg'),
-(1992, 46, 'data/sony_vaio_3.jpg'),
-(2327, 49, 'data/samsung_tab_7.jpg'),
-(2326, 49, 'data/samsung_tab_6.jpg'),
-(2325, 49, 'data/samsung_tab_5.jpg'),
-(2324, 49, 'data/samsung_tab_4.jpg'),
-(2323, 49, 'data/samsung_tab_3.jpg'),
-(2322, 49, 'data/samsung_tab_2.jpg'),
-(2317, 42, 'data/canon_logo.jpg'),
-(2316, 42, 'data/hp_1.jpg'),
-(2315, 42, 'data/compaq_presario.jpg'),
-(2314, 42, 'data/canon_eos_5d_1.jpg'),
-(2313, 42, 'data/canon_eos_5d_2.jpg');
+(2345, 30, 'data/demo/canon_eos_5d_2.jpg'),
+(2321, 47, 'data/demo/hp_3.jpg'),
+(2035, 28, 'data/demo/htc_touch_hd_2.jpg'),
+(2351, 41, 'data/demo/imac_3.jpg'),
+(1982, 40, 'data/demo/iphone_6.jpg'),
+(2001, 36, 'data/demo/ipod_nano_5.jpg'),
+(2000, 36, 'data/demo/ipod_nano_4.jpg'),
+(2005, 34, 'data/demo/ipod_shuffle_5.jpg'),
+(2004, 34, 'data/demo/ipod_shuffle_4.jpg'),
+(2011, 32, 'data/demo/ipod_touch_7.jpg'),
+(2010, 32, 'data/demo/ipod_touch_6.jpg'),
+(2009, 32, 'data/demo/ipod_touch_5.jpg'),
+(1971, 43, 'data/demo/macbook_5.jpg'),
+(1970, 43, 'data/demo/macbook_4.jpg'),
+(1974, 44, 'data/demo/macbook_air_4.jpg'),
+(1973, 44, 'data/demo/macbook_air_2.jpg'),
+(1977, 45, 'data/demo/macbook_pro_2.jpg'),
+(1976, 45, 'data/demo/macbook_pro_3.jpg'),
+(1986, 31, 'data/demo/nikon_d300_3.jpg'),
+(1985, 31, 'data/demo/nikon_d300_2.jpg'),
+(1988, 29, 'data/demo/palm_treo_pro_3.jpg'),
+(1995, 46, 'data/demo/sony_vaio_5.jpg'),
+(1994, 46, 'data/demo/sony_vaio_4.jpg'),
+(1991, 48, 'data/demo/ipod_classic_4.jpg'),
+(1990, 48, 'data/demo/ipod_classic_3.jpg'),
+(1981, 40, 'data/demo/iphone_2.jpg'),
+(1980, 40, 'data/demo/iphone_5.jpg'),
+(2344, 30, 'data/demo/canon_eos_5d_3.jpg'),
+(2320, 47, 'data/demo/hp_2.jpg'),
+(2034, 28, 'data/demo/htc_touch_hd_3.jpg'),
+(2350, 41, 'data/demo/imac_2.jpg'),
+(1979, 40, 'data/demo/iphone_3.jpg'),
+(1978, 40, 'data/demo/iphone_4.jpg'),
+(1989, 48, 'data/demo/ipod_classic_2.jpg'),
+(1999, 36, 'data/demo/ipod_nano_2.jpg'),
+(1998, 36, 'data/demo/ipod_nano_3.jpg'),
+(2003, 34, 'data/demo/ipod_shuffle_2.jpg'),
+(2002, 34, 'data/demo/ipod_shuffle_3.jpg'),
+(2008, 32, 'data/demo/ipod_touch_2.jpg'),
+(2007, 32, 'data/demo/ipod_touch_3.jpg'),
+(2006, 32, 'data/demo/ipod_touch_4.jpg'),
+(1969, 43, 'data/demo/macbook_2.jpg'),
+(1968, 43, 'data/demo/macbook_3.jpg'),
+(1972, 44, 'data/demo/macbook_air_3.jpg'),
+(1975, 45, 'data/demo/macbook_pro_4.jpg'),
+(1984, 31, 'data/demo/nikon_d300_4.jpg'),
+(1983, 31, 'data/demo/nikon_d300_5.jpg'),
+(1987, 29, 'data/demo/palm_treo_pro_2.jpg'),
+(1993, 46, 'data/demo/sony_vaio_2.jpg'),
+(1992, 46, 'data/demo/sony_vaio_3.jpg'),
+(2327, 49, 'data/demo/samsung_tab_7.jpg'),
+(2326, 49, 'data/demo/samsung_tab_6.jpg'),
+(2325, 49, 'data/demo/samsung_tab_5.jpg'),
+(2324, 49, 'data/demo/samsung_tab_4.jpg'),
+(2323, 49, 'data/demo/samsung_tab_3.jpg'),
+(2322, 49, 'data/demo/samsung_tab_2.jpg'),
+(2317, 42, 'data/demo/canon_logo.jpg'),
+(2316, 42, 'data/demo/hp_1.jpg'),
+(2315, 42, 'data/demo/compaq_presario.jpg'),
+(2314, 42, 'data/demo/canon_eos_5d_1.jpg'),
+(2313, 42, 'data/demo/canon_eos_5d_2.jpg');
 
 -- --------------------------------------------------------
 
@@ -2239,44 +2239,25 @@ CREATE TABLE `oc_product_reward` (
 --
 
 INSERT INTO `oc_product_reward` (`product_reward_id`, `product_id`, `customer_group_id`, `points`) VALUES
-(516, 42, 6, 10),
-(515, 42, 8, 100),
-(520, 47, 6, 30),
-(519, 47, 8, 300),
-(380, 28, 6, 400),
-(379, 28, 8, 400),
-(330, 43, 6, 60),
-(329, 43, 8, 600),
-(340, 29, 6, 0),
-(339, 29, 8, 0),
-(344, 48, 6, 0),
-(343, 48, 8, 0),
-(336, 40, 6, 0),
-(335, 40, 8, 0),
-(540, 30, 6, 20),
-(539, 30, 8, 200),
-(332, 44, 6, 70),
-(331, 44, 8, 700),
-(334, 45, 6, 80),
-(333, 45, 8, 800),
-(337, 31, 8, 0),
-(338, 31, 6, 0),
-(426, 35, 6, 0),
-(425, 35, 8, 0),
-(345, 33, 8, 0),
-(346, 33, 6, 0),
-(347, 46, 8, 0),
-(348, 46, 6, 0),
-(546, 41, 6, 0),
-(545, 41, 8, 0),
-(351, 36, 8, 0),
-(352, 36, 6, 0),
-(353, 34, 8, 0),
-(354, 34, 6, 0),
-(355, 32, 8, 0),
-(356, 32, 6, 0),
-(522, 49, 6, 1000),
-(521, 49, 8, 1000);
+(515, 42, 1, 100),
+(519, 47, 1, 300),
+(379, 28, 1, 400),
+(329, 43, 1, 600),
+(339, 29, 1, 0),
+(343, 48, 1, 0),
+(335, 40, 1, 0),
+(539, 30, 1, 200),
+(331, 44, 1, 700),
+(333, 45, 1, 800),
+(337, 31, 1, 0),
+(425, 35, 1, 0),
+(345, 33, 1, 0),
+(347, 46, 1, 0),
+(545, 41, 1, 0),
+(351, 36, 1, 0),
+(353, 34, 1, 0),
+(355, 32, 1, 0),
+(521, 49, 1, 1000);
 
 -- --------------------------------------------------------
 
@@ -2302,9 +2283,9 @@ CREATE TABLE `oc_product_special` (
 --
 
 INSERT INTO `oc_product_special` (`product_special_id`, `product_id`, `customer_group_id`, `priority`, `price`, `date_start`, `date_end`) VALUES
-(419, 42, 8, 1, '90.0000', '0000-00-00', '0000-00-00'),
-(439, 30, 8, 2, '90.0000', '0000-00-00', '0000-00-00'),
-(438, 30, 8, 1, '80.0000', '0000-00-00', '0000-00-00');
+(419, 42, 1, 1, '90.0000', '0000-00-00', '0000-00-00'),
+(439, 30, 1, 2, '90.0000', '0000-00-00', '0000-00-00'),
+(438, 30, 1, 1, '80.0000', '0000-00-00', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -2704,7 +2685,7 @@ INSERT INTO `oc_setting` (`setting_id`, `store_id`, `group`, `key`, `value`, `se
 (70, 0, 'config', 'config_image_thumb_height', '228', 0),
 (71, 0, 'config', 'config_image_thumb_width', '228', 0),
 (72, 0, 'config', 'config_icon', 'data/cart.png', 0),
-(73, 0, 'config', 'config_logo', 'data/logo.png', 0),
+(73, 0, 'config', 'config_logo', 'data/demo/logo.png', 0),
 (74, 0, 'config', 'config_cart_weight', '1', 0),
 (75, 0, 'config', 'config_upload_allowed', 'jpg, JPG, jpeg, gif, png, txt', 0),
 (76, 0, 'config', 'config_review_status', '1', 0),
@@ -2870,10 +2851,10 @@ CREATE TABLE `oc_tax_rate_to_customer_group` (
 --
 
 INSERT INTO `oc_tax_rate_to_customer_group` (`tax_rate_id`, `customer_group_id`) VALUES
-(86, 6),
-(86, 8),
-(87, 6),
-(87, 8);
+(86, 1),
+(87, 1),
+(86, 2),
+(87, 2);
 
 -- --------------------------------------------------------
 
@@ -3047,9 +3028,9 @@ CREATE TABLE `oc_voucher_theme` (
 --
 
 INSERT INTO `oc_voucher_theme` (`voucher_theme_id`, `image`) VALUES
-(8, 'data/canon_eos_5d_2.jpg'),
-(7, 'data/gift-voucher-birthday.jpg'),
-(6, 'data/apple_logo.jpg');
+(8, 'data/demo/canon_eos_5d_2.jpg'),
+(7, 'data/demo/gift-voucher-birthday.jpg'),
+(6, 'data/demo/apple_logo.jpg');
 
 -- --------------------------------------------------------
 

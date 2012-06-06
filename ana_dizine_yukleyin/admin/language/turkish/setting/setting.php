@@ -44,7 +44,6 @@ $_['entry_length_class']        = 'Uzunluk Birimi:';
 $_['entry_weight_class']        = 'Ağırlık Birimi:';
 $_['entry_catalog_limit'] 	    = 'Sayfa Başına Ürün(Katalog):<br /><span class="help">Mağazanız sayfalarında sayfa başına kaç ürün gösterileceğini seçin (Ürünler, Kategoriler, sayfaları gibi)</span>';
 $_['entry_admin_limit']   	    = 'Sayfa Başına Ürün(Yönetim):<br /><span class="help">Yönetim sayfalarında sayfa başına kaç ürün gösterileceğini seçin (Siparişler, Müşteriler, sayfaları gibi)</span>';
-$_['entry_product_count']		= 'Kategori Ürün Sayısı:<br /><span class="help">Üst kategori menüsünde alt kategorilerdeki ürün sayısını göster. <b>Uyarı, alt kategoriler bir çok mağazada aşırı performans düşüklüğüne neden olabilir!</b></span>';
 $_['entry_review']       	    = 'Yorumlara izin ver:<br /><span class="help">Yeni yorumları ve görüntülenmesini aktif/pasif yapın.</span>';
 $_['entry_download']            = 'İndirilebilir Ürünlere İzin ver:';
 $_['entry_upload_allowed']      = 'İzin verilen Dosya Türleri:<br /><span class="help">Yüklemesine izin verilen dosya türlerini ekleyiniz. Bir çok tür eklemek için virgül kullanın.</span>';
