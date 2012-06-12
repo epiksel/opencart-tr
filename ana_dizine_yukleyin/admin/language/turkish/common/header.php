@@ -51,6 +51,7 @@ $_['text_report_sale_return']			= 'Ürün İadeleri';
 $_['text_report_sale_coupon']			= 'Kuponlar';
 $_['text_report_product_viewed']		= 'Görüntüleme';
 $_['text_report_product_purchased']		= 'Satılan';
+$_['text_report_customer_online']		= 'Çevrimiçi Müşteriler';
 $_['text_report_customer_order']		= 'Siparişler';
 $_['text_report_customer_reward']		= 'Ödül Puanları';
 $_['text_report_customer_credit']		= 'Kredi';
