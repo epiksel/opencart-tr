@@ -69,7 +69,6 @@ $_['button_add_link']         = 'Bağlantı Ekle';
 $_['button_update_total']     = 'Toplamları Güncelle';
 $_['button_approve']          = 'Onayla';
 $_['button_reset']            = 'Sıfırla';
-$_['button_sync']			  = 'Ürün Sayısını Eşitle';
 
 // Tab
 $_['tab_address']             = 'Adres';
