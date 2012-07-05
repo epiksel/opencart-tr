@@ -1835,7 +1835,7 @@ INSERT INTO `oc_order_status` (`order_status_id`, `language_id`, `name`) VALUES
 (9, 1, 'İptal Geri Alındı'),
 (10, 1, 'Başarısız'),
 (11, 1, 'İade Edildi'),
-(12, 1, 'İade Geri Alındı'),
+(12, 1, 'Geri Çevirildi'),
 (13, 1, 'Geri Ödeme Yapıldı'),
 (1, 1, 'Onay Bekliyor'),
 (16, 1, 'Hükümsüz'),
