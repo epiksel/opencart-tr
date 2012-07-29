@@ -2,7 +2,7 @@
 /* Turkceye Ceviren eka7a - http://www.e-piksel.com */
 
 // Heading
-$_['heading_title']     = 'Satış Raporu';
+$_['heading_title']     = 'Sipariş Raporu';
 
 // Text
 $_['text_year']         = 'Yıllar';
