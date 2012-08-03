@@ -14,5 +14,6 @@ $_['entry_backup']     = 'Yedekle:';
 
 // Error
 $_['error_permission'] = 'Uyarı: Yedekleri düzenleme iznine sahip değilsiniz!';
+$_['error_backup']     = 'Uyarı: Yedeklemek için en az bir tablo seçmelisiniz!';
 $_['error_empty']      = 'Uyarı: Yüklediğin dosya boş!';
 ?>
