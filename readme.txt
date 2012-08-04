@@ -1,26 +1,6 @@
-/////////////////////////////////
-///       OpenCart V1.5.x     ///
-///  http://www.opencart.com  ///
-/////////////////////////////////
+Türkçe dil ekleme adýmlarý için burayý ziyaret ediniz.
 
+http://forum.opencart.com/viewtopic.php?f=171&t=55245
 
--------
-INSTALL
--------
-
-Go Here for the current install instructions:
-
-  http://www.opencart.com/index.php?route=documentation/documentation&path=4
-
-
--------
-UPGRADE
--------
-
-Go Here for the current upgrade instructions:
-
-  http://www.opencart.com/index.php?route=documentation/documentation&path=98
-
-
-
-EOF
+------------------------------------------------
+Türkçe Çeviri: http://www.e-piksel.com - eka7a
