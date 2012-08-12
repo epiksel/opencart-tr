@@ -74,6 +74,12 @@
             <td>On</td>
             <td align="center"><?php echo extension_loaded('curl') ? '<img src="view/image/good.png" alt="Good" />' : '<img src="view/image/bad.png" alt="Bad" />'; ?></td>
           </tr>
+           <tr>
+            <td>mCrypt:</td>
+            <td><?php echo function_exists('mcrypt_encrypt') ? 'On' : 'Off'; ?></td>
+            <td>On</td>
+            <td align="center"><?php echo function_exists('mcrypt_encrypt') ? '<img src="view/image/good.png" alt="Good" />' : '<img src="view/image/bad.png" alt="Bad" />'; ?></td>
+          </tr>  
           <tr>
             <td>ZIP:</td>
             <td><?php echo extension_loaded('zlib') ? 'On' : 'Off'; ?></td>
