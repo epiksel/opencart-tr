@@ -21,4 +21,5 @@ $_['error_gender']		= 'Cinsiyet Gerekli!';
 $_['error_dob']			= 'Doğum Tarihi Gerekli!';
 $_['error_house_no']	= 'Ev No. Gerekli!';
 $_['error_house_ext']	= 'Ev Uzantısı Gerekli!';
+$_['error_dob']			= 'Foğum Günü Gerekli!';
 ?>

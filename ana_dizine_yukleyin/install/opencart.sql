@@ -747,7 +747,7 @@ INSERT INTO `oc_country` (`country_id`, `name`, `iso_code_2`, `iso_code_3`, `add
 (212, 'Tonga', 'TO', 'TON', '', 0, 1),
 (213, 'Trinidad and Tobago', 'TT', 'TTO', '', 0, 1),
 (214, 'Tunisia', 'TN', 'TUN', '', 0, 1),
-(215, 'Turkey', 'TR', 'TUR', '{firstname} {lastname}\r\n{company}\r\n{address_1}\r\n{address_2}\r\n{city} {postcode}, {zone}\r\n{country}', 0, 1),
+(215, 'Turkey', 'TR', 'TUR', '{firstname} {lastname}\r\n{company}\r\n{address_1}\r\n{address_2}\r\n{city} {postcode}, {zone}\r\n{country}', 1, 1),
 (216, 'Turkmenistan', 'TM', 'TKM', '', 0, 1),
 (217, 'Turks and Caicos Islands', 'TC', 'TCA', '', 0, 1),
 (218, 'Tuvalu', 'TV', 'TUV', '', 0, 1),
@@ -873,8 +873,8 @@ CREATE TABLE `oc_currency` (
 
 INSERT INTO `oc_currency` (`currency_id`, `title`, `code`, `symbol_left`, `symbol_right`, `decimal_place`, `value`, `status`, `date_modified`) VALUES
 (1, 'Türk Lirası', 'TRY', '', 'TL', '2', 1.00000000, 1, '2011-07-16 10:30:52'),
-(2, 'US Dollar', 'USD', '$', '', '2', 1.835000000, 1, '2011-07-16 16:55:46'),
-(3, 'Euro', 'EUR', '', '€', '2', 2.4020001, 1, '2011-07-16 10:30:52');
+(2, 'US Dollar', 'USD', '$', '', '2', 1.801000000, 1, '2011-07-16 16:55:46'),
+(3, 'Euro', 'EUR', '', '€', '2', 2.2220001, 1, '2011-07-16 10:30:52');
 
 -- --------------------------------------------------------
 
@@ -2472,7 +2472,7 @@ CREATE TABLE `oc_return_action` (
 
 INSERT INTO `oc_return_action` (`return_action_id`, `language_id`, `name`) VALUES
 (1, 1, 'İade Edildi'),
-(2, 1, 'Kredi Geri Alınmış'),
+(2, 1, 'Kredi Geri Alındı'),
 (3, 1, 'Değişime Gönderildi');
 
 -- --------------------------------------------------------
@@ -7053,7 +7053,7 @@ INSERT INTO `oc_zone` (`zone_id`, `country_id`, `code`, `name`, `status`) VALUES
 (3965, 190, '10', 'Notranjsko-kraška', 1),
 (3966, 190, '11', 'Goriška', 1),
 (3967, 190, '12', 'Obalno-kraška', 1),
-(3968, 33, '', 'Ruse', 1)),
+(3968, 33, '', 'Ruse', 1),
 (3969, 101, 'ALB', 'Alborz', 1);
 
 -- --------------------------------------------------------
