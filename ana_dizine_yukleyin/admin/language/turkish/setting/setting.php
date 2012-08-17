@@ -101,7 +101,7 @@ $_['entry_fraud_status']		= 'Sahtekârlık Sipariş Durumu:<br /><span class="he
 $_['entry_use_ssl']             = 'SSL Kullan:<br /><span class="help">SSL kullanbilmeniz için hostunuzda SSL sertifikası kurulu olması gerekir. Daha sonra ayarlarına(config.php ve admin/config.php) dosyasına SSL adresini eklemeniz gerekmektedir.</span>';
 $_['entry_seo_url']             = 'SEO URL Kullan:<br /><span class="help">SEO URL kullanmak için apache mod-rewrite modülü kurulu olmalıdır. Kurulu ise htaccess.txt dosya adını .htaccess olarak değiştirin.</span>';
 $_['entry_maintenance']         = 'Bakım Modu:<br /><span class="help">Müşterilerin mağazada gezinmesini engeller. Bunun yerine bakım modu mesajı görüntülenecek. Yönetici oturumunuz açıksa mağazayı görebilirsiniz.</span>';
-$_['entry_encryption']          = 'Şifreleme Anahtarı:<br /><span class="help">Lütfen sipariş işlenirken özel bilgileri şifrelemek için kullanılacak özel anahtarı(private key) giriniz.</span>';
+$_['entry_encryption']          = 'Şifreleme Anahtarı:<br /><span class="help">Lütfen sipariş işlenirken özel bilgileri şifrelemek için kullanılacak gizli bir anahtar giriniz.</span>';
 $_['entry_compression']         = 'Sıkıştırma Seviyesi:<br /><span class="help">Daha verimli(hızlı) aktarım için istemci isteklerinde GZIP sıkıştırma kullanın. Sıkıştırma seviyesi olarak 0 ile 9 arasında bir sayı giriniz. Büyük sayı daha iyi sıkıştırma sağlar.</span>';
 $_['entry_error_display']       = 'Hataları Göster:';
 $_['entry_error_log']           = 'Hata Günlükleri:';
@@ -131,4 +131,5 @@ $_['error_image_compare']			= 'Karşılaştırma için resim boyutu gerekli!';
 $_['error_image_wishlist']			= 'Alışveriş listesi için resim boyutu gerekli!';
 $_['error_image_cart']				= 'Sepet için resim boyutu gerekli!';
 $_['error_error_filename']			= 'Hata Günlüğü dosyaadı gerekli!';
+$_['error_encryption']				= 'Şifreleme anahtarı 3 ile 32 karakter arasında olmalı!';
 ?>
