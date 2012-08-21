@@ -81,6 +81,7 @@ $_['tab_design']              = 'Tasarım';
 $_['tab_discount']            = 'İndirim';
 $_['tab_general']             = 'Genel';
 $_['tab_fraud']               = 'Sahtekârlık';
+$_['tab_ftp']				  = 'FTP';
 $_['tab_ip']                  = 'IP Adresleri';
 $_['tab_links']               = 'Bağlantılar';
 $_['tab_image']               = 'Resim';

@@ -8,7 +8,7 @@ $_['heading_title'] = 'Alışveriş Listem';
 $_['text_account']  = 'Hesabım';
 $_['text_instock']  = 'Stokta Var';
 $_['text_wishlist'] = 'Alışveriş Listem (%s)';
-$_['text_login']    = 'Alışveriş listenizi kaydetmek için <a href="%s">oturum açın</a> ya da <a href="%s">yeni hesap oluşturun.</a> Listenize <a href="%s">%s</a> eklediniz. Tüm listeye <a href="%s">göz atın</a>!';
+$_['text_login']    = 'Alışveriş listenizi kaydetmek için <a href="%s">oturum açın</a> ya da <a href="%s">yeni hesap</a> oluşturun. <a href="%s">%s</a> ürününü <a href="%s">alışveriş listenize</a> eklediniz!';
 $_['text_success']  = 'Başarılı: <a href="%s">%s</a> ürünü <a href="%s">alışveriş</a> listenize eklendi!';
 $_['text_remove']   = 'Başarılı: Alışveriş listeniz değiştirildi';
 $_['text_empty']    = 'Alışveriş listeniz boş.';
