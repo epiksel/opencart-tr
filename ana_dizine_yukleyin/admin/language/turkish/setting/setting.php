@@ -58,10 +58,10 @@ $_['entry_customer_online']		= 'Çevirimiçi Müşteriler:<br /><span class="hel
 $_['entry_customer_group']      = 'Müşteri Grubu:<br /><span class="help">Varsayılan Müşteri Grubu</span>';
 $_['entry_customer_group_display']	= 'Müşteri Gruplarını Göster:<br /><span class="help">Yeni kayıtlarda müşterilerinizin seçebilmesi için müşteri gruplarını göster</span>';
 $_['entry_customer_price']      = 'Ürün Fıyatlarını Gizle:<br /><span class="help">Fiyatları müşteri giriş yaptıktan sonra gösterir.</span>';
-$_['entry_account']             = 'Hesap Koşulları:<br /><span class="help">Müşteri kayıt olurken hesap koşullarını kabul etmelidir.</span>';
+$_['entry_account']             = 'Hesap Koşulları:<br /><span class="help">Müşteri kayıt olurken hesap koşulları kabul edilmelidir.</span>';
 $_['entry_cart_weight']         = 'Sepetim Sayfasında Ağırlık Göster:<br /><span class="help">Sepetim sayfasında sepetteki ürünlerin ağırlığını göster</span>';
 $_['entry_guest_checkout']      = 'Misafir Alışverişi:<br /><span class="help">Müşterinin hesap oluşturmadan alışveriş yapmasını sağlar. İndirilebilir ürünlerde geçerli değildir.</span>';
-$_['entry_checkout']            = 'Satın Alma Koşulları:<br /><span class="help">Müşteri ürün satın alırken satın alma koşullarını kabul etmelidir.</span>';
+$_['entry_checkout']            = 'Satın Alma Koşulları:<br /><span class="help">Müşteri ürün satın alırken satın alma koşulları kabul edilmelidir.</span>';
 $_['entry_order_edit']			= 'Sipariş Düzenleme:<br /><span class="help">Siparişi düzenleyebilmek için gün sayısı giriniz. Bu gereklidir çünkü fiyatlar ve indirimler zamanla değişebilir.</span>';
 $_['entry_invoice_prefix']      = 'Fatura Ön-eki:<br /><span class="help">Fatura numarasına ön-ek ekler (örn. INV-2011-00). Benzersiz ön-ek için Fatura ID 1\'den başlayacaktır.</span>';
 $_['entry_order_status']        = 'Sipariş Durumu:<br /><span class="help">Sipariş işlendiğinde varsayılan sipariş durumunu ayarlayınız</span>';
@@ -70,8 +70,9 @@ $_['entry_stock_display']       = 'Stok Miktarını Göster:<br /><span class="h
 $_['entry_stock_warning']       = 'Stok Uyarısını Göster:<br /><span class="help">Stok dışı sipariş evet ise alışveriş sepetinde stokta olmayan ürünlerde uyarı mesajı gösterilir. (Uyarı: Stok dışı sipariş hayır ise her zaman gösterilir.)</span>';
 $_['entry_stock_checkout']      = 'Stok Dışı Sipariş:<br /><span class="help">Müşteriler stokta olmayan ürünleri sipariş edebilsinler.</span>';
 $_['entry_stock_status']        = 'Stok Durumu:';
-$_['entry_affiliate']           = 'Ortaklık Koşulları:<br /><span class="help">Ortaklık hesabı oluşturmadan önce ortaklık koşullarını kabul etmelidir.</span>';
+$_['entry_affiliate']           = 'Ortaklık Koşulları:<br /><span class="help">Ortaklık hesabı oluşturmadan önce ortaklık koşulları kabul edilmelidir.</span>';
 $_['entry_commission']          = 'Ortaklık Komisyon Oranı (%):<br /><span class="help">Varsayılan komisyon oranı yüzdesi</span>';
+$_['entry_return']				= 'İade Koşulları:<br /><span class="help">Ürün iade talebi oluşturmadan önce iade koşulları kabul edilmelidir.</span>';
 $_['entry_return_status']       = 'Ürün İade Durumu:<br /><span class="help">Ürün iade isteği oluşturulduğunda varsayılan iade durumunu seçiniz.</span>';
 $_['entry_logo']                = 'Mağaza Logosu:';
 $_['entry_icon']                = 'Favicon:<br /><span class="help">Favicon 16x16 PNG türünden olmalıdır</span>';

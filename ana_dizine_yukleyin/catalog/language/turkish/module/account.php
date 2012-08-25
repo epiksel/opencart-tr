@@ -12,6 +12,7 @@ $_['text_forgotten']   = 'Parolamı Unuttum';
 $_['text_account']     = 'Hesabım';
 $_['text_edit']        = 'Hesabımı Düzenle';
 $_['text_password']    = 'Parola Değiştir';
+$_['text_address']     = 'Adres Defterlerim';
 $_['text_wishlist']    = 'Alışveriş Listem';
 $_['text_order']       = 'Sipariş Geçmişim';
 $_['text_download']    = 'İndirilebilir Ürünlerim';

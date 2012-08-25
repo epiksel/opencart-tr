@@ -21,7 +21,7 @@ $_['text_customer']      = 'Mişteri:';
 $_['text_comment']       = 'Ürün İade Açıklamları';
 $_['text_history']       = 'Ürün İade Geçmişi';
 $_['text_empty']         = 'Daha önce ürün iade isteğinde bulunmadınız!';
-$_['text_error']         = 'İstediğiniz ürün iadesi bulunamadı!';
+$_['text_agree']		 = '<a class="colorbox" href="%s" alt="%s"><b>%s</b></a>\'nı okudum ve kabul ediyorum.';
 
 // Column
 $_['column_product']     = 'Ürün Adı';
@@ -51,6 +51,7 @@ $_['entry_fault_detail'] = 'Arıza ya da diğer detaylar:';
 $_['entry_captcha']      = 'Doğrulama kodunu giriniz:';
 
 // Error
+$_['text_error']         = 'İstediğiniz ürün iadesi bulunamadı!';
 $_['error_order_id']     = 'Sipariş ID gerekli!';
 $_['error_firstname']    = 'Ad alanı 1 ile 32 karakter arasında olmalı!';
 $_['error_lastname']     = 'Soyad alanı 1 ile 32 karakter arasında olmalı!';
@@ -60,4 +61,5 @@ $_['error_product']      = 'Ürün adı alanı 3 ile 255 karakter arasında olma
 $_['error_model']        = 'Ürün kodu 3 ile 64 karakter arasında olmalı!';
 $_['error_reason']       = 'Ürün iade nedeni seçmelisiniz!';
 $_['error_captcha']      = 'Doğrulama kodu yanlış!';
+$_['error_agree']		 = 'Uyarı: %s\'nı kabul etmelisiniz!';
 ?>
