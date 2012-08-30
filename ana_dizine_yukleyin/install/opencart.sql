@@ -1012,7 +1012,7 @@ CREATE TABLE `oc_customer_online` (
   `referer` text COLLATE utf8_bin NOT NULL,
   `date_added` datetime NOT NULL,
   PRIMARY KEY (`ip`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- --------------------------------------------------------
 
@@ -2912,7 +2912,7 @@ CREATE TABLE `oc_user` (
   `firstname` varchar(32) COLLATE utf8_bin NOT NULL DEFAULT '',
   `lastname` varchar(32) COLLATE utf8_bin NOT NULL DEFAULT '',
   `email` varchar(96) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `code` varchar(32) COLLATE utf8_bin NOT NULL,
+  `code` varchar(40) COLLATE utf8_bin NOT NULL,
   `ip` varchar(40) COLLATE utf8_bin NOT NULL DEFAULT '',
   `status` tinyint(1) NOT NULL,
   `date_added` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
