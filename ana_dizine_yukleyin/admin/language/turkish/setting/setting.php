@@ -105,7 +105,9 @@ $_['entry_fraud_detection']		= 'Sahtekârlık Tespit Sistemini Kullan:<br /><spa
 $_['entry_fraud_key']			= 'MaxMind Lisans Anahtarı:</span>';
 $_['entry_fraud_score']			= 'MaxMind Risk Puanı:<br /><span class="help">Puan ne kadar yüksekse sahtekârlık olasılığı daha yüksektir. 0 ile 100 arasında bir puan belirleyiniz.</span>';
 $_['entry_fraud_status']		= 'Sahtekârlık Sipariş Durumu:<br /><span class="help">Ayarladığınız risk puanı üzerindeki siparişleriniz durumları otomatik olarak sahtekârlık sipariş durumu atanacaktır.</span>';
-$_['entry_use_ssl']             = 'SSL Kullan:<br /><span class="help">SSL kullanbilmeniz için hostunuzda SSL sertifikası kurulu olması gerekir. Daha sonra ayarlarına(config.php ve admin/config.php) dosyasına SSL adresini eklemeniz gerekmektedir.</span>';
+$_['entry_secure']				= 'SSL Kullan:<br /><span class="help">SSL kullanbilmeniz için hostunuzda SSL sertifikası kurulu olması gerekir. Daha sonra ayarlarına(config.php ve admin/config.php) dosyasına SSL adresini eklemeniz gerekmektedir.</span>';
+$_['entry_shared']				= 'Paylaşılan Oturumları Kullan:<br /><span class="help">Url içine oturum kimliği(session ID) yerleştirin, böylece aynı oturumda farklı etki alanları arasında geçiş yapılabilir.</span>';
+$_['entry_robots']				= 'Robotlar:<br /><span class="help">Web tarayıcısı kullanıcı ajanları listesi paylaşımlı oturumlar ile kullanılmaz. Her kullanıcı ajanı için ayrı satır kullanınız.</span>';
 $_['entry_seo_url']             = 'SEO URL Kullan:<br /><span class="help">SEO URL kullanmak için apache mod-rewrite modülü kurulu olmalıdır. Kurulu ise htaccess.txt dosya adını .htaccess olarak değiştirin.</span>';
 $_['entry_maintenance']         = 'Bakım Modu:<br /><span class="help">Müşterilerin mağazada gezinmesini engeller. Bunun yerine bakım modu mesajı görüntülenecek. Yönetici oturumunuz açıksa mağazayı görebilirsiniz.</span>';
 $_['entry_encryption']          = 'Şifreleme Anahtarı:<br /><span class="help">Lütfen sipariş işlenirken özel bilgileri şifrelemek için kullanılacak gizli bir anahtar giriniz.</span>';

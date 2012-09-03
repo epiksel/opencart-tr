@@ -64,7 +64,7 @@ $_['entry_image_related']			= 'Benzer Ürünler Resim Boyutu:';
 $_['entry_image_compare']			= 'Karşılaştırma Resim Boyutu:';
 $_['entry_image_wishlist']			= 'Alışveriş Listem Resim Boyutu:';
 $_['entry_image_cart']				= 'Sepet Resim Boyutu:';
-$_['entry_use_ssl']					= 'SSL Kullan:<br /><span class="help">SSL kullanbilmeniz için hostunuzda SSL sertifikası kurulu olması gerekir.</span>';
+$_['entry_secure']					= 'SSL Kullan:<br /><span class="help">SSL kullanbilmeniz için hostunuzda SSL sertifikası kurulu olması gerekir.</span>';
 
 // Error
 $_['error_warning']					= 'Uyarı: Oluşan hatalar için lütfen formu dikkatli kontrol ediniz!';

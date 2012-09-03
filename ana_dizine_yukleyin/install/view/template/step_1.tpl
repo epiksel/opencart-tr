@@ -541,7 +541,7 @@
         to attach them to the start of each source file to most effectively
         state the exclusion of warranty; and each file should have at least
         the &ldquo;copyright&rdquo; line and a pointer to where the full notice is found.</p>
-      <pre>    &lt;one line to give the program's name and a brief idea of what it does.&gt;
+      <pre>&lt;one line to give the program's name and a brief idea of what it does.&gt;
     Copyright (C) &lt;year&gt;  &lt;name of author&gt;
  
     This program is free software: you can redistribute it and/or modify
@@ -560,7 +560,7 @@
       <p>Also add information on how to contact you by electronic and paper mail.</p>
       <p>If the program does terminal interaction, make it output a short
         notice like this when it starts in an interactive mode:</p>
-      <pre>    &lt;program&gt;  Copyright (C) &lt;year&gt;  &lt;name of author&gt;
+      <pre>&lt;program&gt;  Copyright (C) &lt;year&gt;  &lt;name of author&gt;
     This program comes with ABSOLUTELY NO WARRANTY; for details type `show w'.
     This is free software, and you are welcome to redistribute it
     under certain conditions; type `show c' for details.
@@ -580,10 +580,8 @@
         &lt;http://www.gnu.org/philosophy/why-not-lgpl.html&gt;.</p>
     </div>
     <div class="buttons">
-      <div class="left">Lisansı kabul ediyorum
-      	<input type="checkbox" name="agree" />
-      </div>
-      <div class="right">
+      <div class="right">Lisansı kabul ediyorum
+      	<input type="checkbox" name="agree" />&nbsp;
         <input type="submit" value="Devam Et" class="button" />
       </div>
     </div>

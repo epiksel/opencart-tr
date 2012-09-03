@@ -54,7 +54,7 @@
         </tr>
       </table>
     </fieldset>
-    <p>2. Lütfen aşağıdaki eklentilerin yüklü olduğundan emin olun.</p>
+    <p>2. Lütfen aşağıdaki PHP eklentilerin yüklü olduğundan emin olun.</p>
     <fieldset>
       <table>
         <tr>
