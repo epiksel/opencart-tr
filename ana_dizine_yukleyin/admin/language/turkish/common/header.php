@@ -25,6 +25,7 @@ $_['text_download']						= 'İndirilebilir Ürünler';
 $_['text_error_log']					= 'Hata Günlükleri';
 $_['text_extension']					= 'Eklentiler';
 $_['text_feed']							= 'Ürün Beslemeleri';
+$_['text_filter']						= 'Süzgeçler';
 $_['text_front']						= 'Mağazaya Git';
 $_['text_geo_zone']						= 'Genel Bölgeler';
 $_['text_help']							= 'Yardım';

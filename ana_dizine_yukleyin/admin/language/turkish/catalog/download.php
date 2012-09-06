@@ -21,7 +21,7 @@ $_['entry_remaining']  = 'Toplam İzin Verilen İndirme:';
 $_['entry_update']     = 'Önceki Müşterileri Güncelle:<br /><span class="help">Daha önce bu ürünü satın alan müşteriler için dosyayı güncelle ve indirme sayısını yenile</span>';
 
 // Error
-$_['error_permission'] = 'Uyarı: Müşteri bilgilerini düzenleme iznine sahip değilsiniz!';
+$_['error_permission'] = 'Uyarı: Dosyaları düzenleme iznine sahip değilsiniz!';
 $_['error_name']       = 'İndirme Adı 3 ile 64 karakter arasında olmalı!';
 $_['error_upload']     = 'Yükleme gerekli!';
 $_['error_filename']   = 'Dosya Adı 3 ile 128 karakter arasında olmalı!';
