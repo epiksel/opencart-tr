@@ -42,7 +42,7 @@ $_['entry_postcode']			= 'Posta Kodu:';
 
 // Error
 $_['error_stock']				= '<span style="color:#F00; font-weight:bold;">***</span> işaretli ürünler stokta yok ya da istenilen miktarda bulunmuyor!';
-$_['error_minimum']				= '%s ürünü için minimum sipariş miktarı %s!';	
+$_['error_minimum']				= '%s ürünü için asgari %s adet sipariş vermeniz gerekiyor!';	
 $_['error_required']			= '%s gerekli!';
 $_['error_product']				= 'Uyarı: Alışveriş sepetinizde ürün bulunmamaktadır!';
 $_['error_coupon']				= 'Uyarı: Kupon kodunuz geçersiz, süresi ya da kullanım limiti dolmuş!';

@@ -5,7 +5,7 @@
 $_['heading_title']     = 'Arama';
  
 // Text
-$_['text_search']       = 'Arama kriterlerine göre ürün karşılaştırma';
+$_['text_search']       = 'Arama kriterlerine uygun ürünler';
 $_['text_keyword']      = 'Aranacak kelime';
 $_['text_category']     = 'Tüm Kategoriler';
 $_['text_sub_category'] = 'Alt kategoriler içinde ara';
