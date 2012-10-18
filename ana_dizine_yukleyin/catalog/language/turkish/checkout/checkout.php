@@ -6,7 +6,7 @@ $_['heading_title']                  = 'Kasaya Git';
 
 // Text
 $_['text_cart']                      = 'Alışveriş Sepetim';
-$_['text_checkout_option']           = 'Adım 1: Ödeme Seçenekleri';
+$_['text_checkout_option']           = 'Adım 1: Hesap Seçenekleri';
 $_['text_checkout_account']          = 'Adım 2: Hesap &amp; Fatura Adresi';
 $_['text_checkout_payment_address']  = 'Adım 2: Fatura Adresi';
 $_['text_checkout_shipping_address'] = 'Adım 3: Kargo Adresi';

@@ -2891,8 +2891,8 @@ CREATE TABLE `oc_tax_class` (
 --
 
 INSERT INTO `oc_tax_class` (`tax_class_id`, `title`, `description`, `date_added`, `date_modified`) VALUES
-(9, 'Katma Değer Vergisi 2', '%18''lik KDV oranına tabi ürünler', '2009-01-06 23:21:53', '2011-09-30 01:10:54'),
-(10, 'Katma Değer Vergisi 1', '% 8''lik KDV oranına tabi ürünler', '2011-09-21 22:19:39', '2011-09-30 01:11:14');
+(9, 'KDV (%18)', '%18''lik KDV oranına tabi ürünler', '2009-01-06 23:21:53', '2011-09-30 01:10:54'),
+(10, 'KDV (%8)', '%8''lik KDV oranına tabi ürünler', '2011-09-21 22:19:39', '2011-09-30 01:11:14');
 
 -- --------------------------------------------------------
 
@@ -5552,7 +5552,7 @@ INSERT INTO `oc_zone` (`zone_id`, `country_id`, `code`, `name`, `status`) VALUES
 (2358, 153, 'TKI', 'Taranaki', 1),
 (2359, 153, 'WGN', 'Wellington', 1),
 (2360, 153, 'WKO', 'Waikato', 1),
-(2361, 153, 'WAI', 'Wairprarapa', 1),
+(2361, 153, 'WAI', 'Wairarapa', 1),
 (2362, 153, 'WTC', 'West Coast', 1),
 (2363, 154, 'AN', 'Atlantico Norte', 1),
 (2364, 154, 'AS', 'Atlantico Sur', 1),
