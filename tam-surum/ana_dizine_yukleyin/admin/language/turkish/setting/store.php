@@ -12,8 +12,8 @@ $_['text_account']					= 'Hesap';
 $_['text_checkout']					= 'Kasaya Git';
 $_['text_stock']					= 'Stok';
 $_['text_image_manager']			= 'Resim Yönetimi';
-$_['text_browse']					= 'Dosyalara Gözat';
-$_['text_clear']					= 'Resimi Temizle';
+$_['text_browse']         	 		= 'Gözat';
+$_['text_clear']          			= 'Temizle';
 $_['text_shipping']					= 'Kargo Adresi';
 $_['text_payment']					= 'Fatura Adresi';
 
