@@ -11,8 +11,8 @@ $_['text_success']        = 'Başarılı: Ürün iadesi başarılı bir şekilde
 $_['text_wait']           = 'Lütfen Bekleyiniz!';
 
 // Text
-$_['text_return_id']      = 'İade ID:';
-$_['text_order_id']       = 'Sipariş ID:';
+$_['text_return_id']      = 'Ürün İade No:';
+$_['text_order_id']       = 'Sipariş No:';
 $_['text_date_ordered']   = 'Sipariş Tarihi:';
 $_['text_customer']       = 'Müşteri:';
 $_['text_email']          = 'E-Posta:';
@@ -28,8 +28,8 @@ $_['text_return_action']  = 'İade Eylemi:';
 $_['text_comment']        = 'Açıklama:';
 
 // Column
-$_['column_return_id']     = 'Ürün İade ID';
-$_['column_order_id']      = 'Sipariş ID';
+$_['column_return_id']     = 'Ürün İade No';
+$_['column_order_id']      = 'Sipariş No';
 $_['column_customer']      = 'Müşteri';
 $_['column_product']       = 'Ürün';
 $_['column_model']         = 'Ürün Kodu';
@@ -42,7 +42,7 @@ $_['column_action']        = 'Eylem';
 
 // Entry
 $_['entry_customer']      = 'Müşteri:';
-$_['entry_order_id']      = 'Sipariş ID:';
+$_['entry_order_id']      = 'Sipariş No:';
 $_['entry_date_ordered']  = 'Sipariş Tarihi:';
 $_['entry_firstname']     = 'Adı:';
 $_['entry_lastname']      = 'Soyadı:';
@@ -61,7 +61,7 @@ $_['entry_action']        = 'İade Eylemi:';
 // Error
 $_['error_warning']       = 'Uyarı: Oluşan hatalar için lütfen formu dikkatli kontrol ediniz!';
 $_['error_permission']    = 'Uyarı: Ürün İadelerini düzenleme iznine sahip değilsiniz!';
-$_['error_order_id']      = 'Sipariş ID gerekli!';
+$_['error_order_id']      = 'Sipariş No gerekli!';
 $_['error_firstname']     = 'Ad alanı 1 ile 32 karakter arasında olmalı!';
 $_['error_lastname']      = 'Soyadı alanı 1 ile 32 karakter arasında olmalı!';
 $_['error_email']         = 'E-Posta adresi geçersiz!';

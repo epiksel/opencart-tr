@@ -6,8 +6,8 @@ $_['heading_title']								= 'Siparişler';
 
 // Text
 $_['text_success']								= 'Başarılı: Siparişler başarılı bir şekilde değiştirildi!';
-$_['text_order_id']								= 'Sipariş ID:';
-$_['text_invoice_no']							= 'Fatura No.:';
+$_['text_order_id']								= 'Sipariş No:';
+$_['text_invoice_no']							= 'Fatura No:';
 $_['text_invoice_date']							= 'Fatura Tarihi:';
 $_['text_store_name']							= 'Mağaza Adı:';
 $_['text_store_url']							= 'Mağaza Adresi:';
@@ -118,7 +118,7 @@ $_['text_maxmind_id']							= 'Maxmind ID:<br /><span class="help">Eşsiz tanım
 $_['text_error']								= 'Hata:<br /><span class="help">İsteğin neden gerçekleştirilemediğine dair bir hata iletisi ya da uyarı mesajı dönderir.</span>';
 
 // Column
-$_['column_order_id']							= 'Sipariş ID';
+$_['column_order_id']							= 'Sipariş No';
 $_['column_customer']							= 'Müşteri';
 $_['column_status']								= 'Durumu';
 $_['column_date_added']							= 'Ekleme Tarihi';

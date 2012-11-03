@@ -3,7 +3,7 @@
 
 // Text
 $_['text_subject']       = '%s - İade Durum Güncellemesi %s';
-$_['text_return_id']     = 'İade ID:';
+$_['text_return_id']     = 'Ürün İade No:';
 $_['text_date_added']    = 'İade Ekleme Tarihi:';
 $_['text_return_status'] = 'Ürün iade isteğiniz aşağıdaki duruma güncellendi:';
 $_['text_comment']       = 'İade isteğiniz için yapılan açıklamalar:';

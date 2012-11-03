@@ -7,7 +7,7 @@ $_['heading_title']   = 'İndirebilir Ürünlerim';
 // Text
 $_['text_account']    = 'Hesabım';
 $_['text_downloads']  = 'İndirebilir Ürünlerim';
-$_['text_order']      = 'Sipariş ID:';
+$_['text_order']      = 'Sipariş No:';
 $_['text_date_added'] = 'Ekleme Tarihi:';
 $_['text_name']       = 'Adı:';
 $_['text_remaining']  = 'Kalan:';

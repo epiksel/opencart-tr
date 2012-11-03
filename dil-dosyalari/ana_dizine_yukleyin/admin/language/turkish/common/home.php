@@ -24,7 +24,7 @@ $_['text_order']        		    = 'Toplam Sipariş';
 $_['text_customer']      		    = 'Toplam Müşteri';
 
 // Column
-$_['column_order']        		    = 'Sipariş ID';
+$_['column_order']        		    = 'Sipariş No';
 $_['column_customer']               = 'Müşteri';
 $_['column_status']       		    = 'Durumu';
 $_['column_date_added']   		    = 'Ekleme Tarihi';

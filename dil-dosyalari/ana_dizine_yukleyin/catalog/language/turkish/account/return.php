@@ -12,8 +12,8 @@ $_['text_description']   = '<p>Satın aldığınız ürün ile ilgili Teknik des
 $_['text_order']         = 'Sipariş Bilgileri';
 $_['text_product']       = 'Ürün Bilgileri &amp; Ürün İade Nedeni';
 $_['text_message']       = '<p>Ürün iade talebiniz mağaza sahibine başarıyla gönderildi!</p><p>24 saat içinde sizinle irtibata geçilecektir.';
-$_['text_return_id']     = 'Ürün İade ID:';
-$_['text_order_id']      = 'Sipariş ID:';
+$_['text_return_id']     = 'Ürün İade No:';
+$_['text_order_id']      = 'Sipariş No:';
 $_['text_date_ordered']  = 'Sipariş Tarihi:';
 $_['text_status']        = 'Durumu:';
 $_['text_date_added']    = 'Ekleme Tarihi:';
@@ -36,7 +36,7 @@ $_['column_date_added']  = 'Ekleme Tarihi';
 $_['column_status']      = 'Durumu';
 
 // Entry
-$_['entry_order_id']     = 'Sipariş ID:';
+$_['entry_order_id']     = 'Sipariş No:';
 $_['entry_date_ordered'] = 'Sipariş Tarihi:';
 $_['entry_firstname']    = 'Adınız:';
 $_['entry_lastname']     = 'Soyadınız:';
@@ -52,7 +52,7 @@ $_['entry_captcha']      = 'Doğrulama kodunu giriniz:';
 
 // Error
 $_['text_error']         = 'İstediğiniz ürün iadesi bulunamadı!';
-$_['error_order_id']     = 'Sipariş ID gerekli!';
+$_['error_order_id']     = 'Sipariş No gerekli!';
 $_['error_firstname']    = 'Ad alanı 1 ile 32 karakter arasında olmalı!';
 $_['error_lastname']     = 'Soyad alanı 1 ile 32 karakter arasında olmalı!';
 $_['error_email']        = 'Geçerli bir E-Posta adresi yazınız!';
