@@ -5,7 +5,7 @@
 $_['heading_title']    = 'Hediye Çeki Satın Al';
 
 // Text
-$_['text_account']     = 'Hesap';
+$_['text_account']     = 'Hesabım';
 $_['text_voucher']     = 'Hediye Çeki';
 $_['text_description'] = 'Siparişinizin ödemesini yaptığınızda hediye çeki alıcısına gönderilecektir.';
 $_['text_agree']       = 'Hediye çekinin iade edilemeyeceğini biliyorum ve onaylıyorum';
