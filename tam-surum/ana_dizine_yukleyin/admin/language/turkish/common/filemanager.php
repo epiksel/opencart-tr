@@ -35,7 +35,7 @@ $_['error_rename']          = 'Uyarı: Dizin yeniden adlandırılamadı!';
 $_['error_file_type']       = 'Uyarı: Hatalı dosya türü!';
 $_['error_file_size']  		= 'Uyarı: Dosya boyutu 300kb büyük veya 1000px Geniş x Yüksek değerlerinden büyük!';
 $_['error_uploaded']        = 'Uyarı: Dosya bilinmeyen nedenden dolayı yüklenemedi!';
-$_['error_permission'] 		= 'Uyarı: İzin Verilmedi!';
+$_['error_permission'] 		= 'Uyarı: İzin verilmedi!';
 
 // Button
 $_['button_folder']         = 'Yeni Klasör';

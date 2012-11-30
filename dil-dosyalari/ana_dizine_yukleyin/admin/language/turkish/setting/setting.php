@@ -110,6 +110,7 @@ $_['entry_shared']				= 'Paylaşılan Oturumları Kullan:<br /><span class="help
 $_['entry_robots']				= 'Robotlar:<br /><span class="help">Web tarayıcısı kullanıcı ajanları listesi paylaşımlı oturumlar ile kullanılmaz. Her kullanıcı ajanı için ayrı satır kullanınız.</span>';
 $_['entry_seo_url']             = 'SEO URL Kullan:<br /><span class="help">SEO URL kullanmak için apache mod-rewrite modülü kurulu olmalıdır. Kurulu ise htaccess.txt dosya adını .htaccess olarak değiştirin.</span>';
 $_['entry_maintenance']         = 'Bakım Modu:<br /><span class="help">Müşterilerin mağazada gezinmesini engeller. Bunun yerine bakım modu mesajı görüntülenecek. Yönetici oturumunuz açıksa mağazayı görebilirsiniz.</span>';
+$_['entry_password']            = 'Parolamı Unuttuma İzin Ver:<br /><span class="help">Yöneticiler için parolamı unuttum seçeneğini kullanmasına izin verin. Sistem hack girişimi algıladığında bu otomatik olarak devre dışı kalacaktır.</span>';
 $_['entry_encryption']          = 'Şifreleme Anahtarı:<br /><span class="help">Lütfen sipariş işlenirken özel bilgileri şifrelemek için kullanılacak gizli bir anahtar giriniz.</span>';
 $_['entry_compression']         = 'Sıkıştırma Seviyesi:<br /><span class="help">Daha verimli(hızlı) aktarım için istemci isteklerinde GZIP sıkıştırma kullanın. Sıkıştırma seviyesi olarak 0 ile 9 arasında bir sayı giriniz. Büyük sayı daha iyi sıkıştırma sağlar.</span>';
 $_['entry_error_display']       = 'Hataları Göster:';
