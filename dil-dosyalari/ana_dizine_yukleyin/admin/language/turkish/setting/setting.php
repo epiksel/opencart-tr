@@ -101,7 +101,7 @@ $_['entry_smtp_timeout']        = 'SMTP Zaman Aşımı:';
 $_['entry_account_mail']        = 'Yeni Hesap Uyarısı:<br /><span class="help">Yeni üye kayıt olduğunda mağaza sahibine e-posta gönder.</span>';
 $_['entry_alert_mail']          = 'Yeni Sipariş Uyarısı:<br /><span class="help">Yeni sipariş oluşturulduğunda mağaza sahibine e-posta gönder</span>';
 $_['entry_alert_emails']		= 'İlave E-Posta Adresleri:<br /><span class="help">E-Posta uyarıları için mağaza e-postası dışında başka e-posta adresleri ekleyebilirsiniz. Birden çok eklemek için virgül ile ayrınız.</span>';
-$_['entry_fraud_detection']		= 'Sahtekârlık Tespit Sistemini Kullan:<br /><span class="help">MaxMind bir sahtekârlık tespit sistemidir. Eğer bir lisans anahtarınız yoksa <a onclick="window.open(\'http://www.maxmind.com/?rId=opencart\');"><u>buradan kayıt</u></a> olarak alabilirsiniz. Aldığınız anahtarı aşağıdaki alana kopyalayınız.</span>';
+$_['entry_fraud_detection']		= 'Sahtekârlık Tespit Sistemini Kullan:<br /><span class="help">MaxMind bir sahtekârlık tespit sistemidir. Eğer bir lisans anahtarınız yoksa <a href="http://www.maxmind.com/?rId=opencart" target="_blank"><u>buradan kayıt</u></a> olarak alabilirsiniz. Aldığınız anahtarı aşağıdaki alana kopyalayınız.</span>';
 $_['entry_fraud_key']			= 'MaxMind Lisans Anahtarı:</span>';
 $_['entry_fraud_score']			= 'MaxMind Risk Puanı:<br /><span class="help">Puan ne kadar yüksekse sahtekârlık olasılığı daha yüksektir. 0 ile 100 arasında bir puan belirleyiniz.</span>';
 $_['entry_fraud_status']		= 'Sahtekârlık Sipariş Durumu:<br /><span class="help">Ayarladığınız risk puanı üzerindeki siparişleriniz durumları otomatik olarak sahtekârlık sipariş durumu atanacaktır.</span>';
@@ -116,7 +116,7 @@ $_['entry_compression']         = 'Sıkıştırma Seviyesi:<br /><span class="he
 $_['entry_error_display']       = 'Hataları Göster:';
 $_['entry_error_log']           = 'Hata Günlükleri:';
 $_['entry_error_filename']      = 'Hata Günlük Dosyaadı:';
-$_['entry_google_analytics']    = 'Google Analytics Kodu:<br /><span class="help">Google Analytics hesabınızda <a onclick="window.open(\'http://www.google.com/analytics/\');"><u>oturum açın</u></a>  sonra web sitesi profili oluşturun ve oluşturduğunuz profil için analyrics kodunu buraya yapıştırın.</span>';
+$_['entry_google_analytics']    = 'Google Analytics Kodu:<br /><span class="help">Google Analytics hesabınızda <a href="http://www.google.com/analytics/" target="_blank"><u>oturum açın</u></a>  sonra web sitesi profili oluşturun ve oluşturduğunuz profil için analyrics kodunu buraya yapıştırın.</span>';
 
 // Error
 $_['error_warning']					= 'Uyarı: Oluşan hatalar için lütfen formu dikkatli kontrol ediniz!';

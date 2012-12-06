@@ -7,7 +7,7 @@ $_['heading_title']       = 'PayPal Express';
 // Text 
 $_['text_payment']        = 'Ödeme Metodları';
 $_['text_success']        = 'Başarılı: PayPal Express hesap detayları başarılı bir şekilde değiştirildi!';
-$_['text_pp_express'] 	  = '<a onclick="window.open(\'https://www.paypal.com/uk/mrb/pal=YS4L83BNSEC6A\');"><img src="view/image/payment/paypal.png" alt="PayPal" title="PayPal" style="border: 1px solid #EEEEEE;" /></a>';
+$_['text_pp_express'] 	  = '<a href=https://www.paypal.com/tr/mrb/pal=YS4L83BNSEC6A" taget="_blank"><img src="view/image/payment/paypal.png" alt="PayPal" title="PayPal" style="border: 1px solid #EEEEEE;" /></a>';
 $_['text_authorization']  = 'Authorization';
 $_['text_sale']           = 'Sale';
 

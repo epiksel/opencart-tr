@@ -7,7 +7,7 @@ $_['heading_title']      			= 'Moneybookers';
 // Text 
 $_['text_payment']       			= 'Ödeme Metodları';
 $_['text_success']       			= 'Başarılı: Moneybookers hesap detayları başarılı bir şekilde değiştirildi!';
-$_['text_moneybookers']	 			= '<a onclick="window.open(\'https://www.moneybookers.com/app/?rid=13624353\');"><img src="view/image/payment/moneybookers.png" alt="Moneybookers" title="Moneybookers" style="border: 1px solid #EEEEEE;" /></a>';
+$_['text_moneybookers']	 			= '<a href="https://www.moneybookers.com/app/?rid=13624353" target="_blank"><img src="view/image/payment/moneybookers.png" alt="Moneybookers" title="Moneybookers" style="border: 1px solid #EEEEEE;" /></a>';
 
 // Entry	
 $_['entry_email']		            = 'E-Posta:';

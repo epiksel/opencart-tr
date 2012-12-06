@@ -7,7 +7,7 @@ $_['heading_title']       = 'PayPal Website Payment Pro';
 // Text 
 $_['text_payment']        = 'Ödeme Metodları';
 $_['text_success']        = 'Başarılı: PayPal Website Payment Pro hesap detayları başarılı bir şekilde değiştirildi!';
-$_['text_pp_pro']	  	  = '<a onclick="window.open(\'https://www.paypal.com/uk/mrb/pal=YS4L83BNSEC6A\');"><img src="view/image/payment/paypal.png" alt="PayPal Website Payment Pro" title="PayPal Website Payment Pro" style="border: 1px solid #EEEEEE;" /></a>';
+$_['text_pp_pro']	  	  = '<a href="https://www.paypal.com/tr/mrb/pal=YS4L83BNSEC6A" target="_blank"><img src="view/image/payment/paypal.png" alt="PayPal Website Payment Pro" title="PayPal Website Payment Pro" style="border: 1px solid #EEEEEE;" /></a>';
 $_['text_authorization']  = 'Authorization';
 $_['text_sale']           = 'Sale';
 

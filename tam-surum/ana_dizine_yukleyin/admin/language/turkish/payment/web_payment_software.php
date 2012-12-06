@@ -7,7 +7,7 @@ $_['heading_title']             = 'Web Payment Software';
 // Text 
 $_['text_payment']              = 'Ödeme Metodları';
 $_['text_success']              = 'Başarılı: Web Payment Software hesap detayları başarılı bir şekilde değiştirildi!';
-$_['text_web_payment_software'] = '<a onclick="window.open(\'http://www.web-payment-software.com/\');"><img src="view/image/payment/wps-logo.jpg" alt="Web Payment Software" title="Web Payment Software" style="border: 1px solid #EEEEEE;" /></a>';
+$_['text_web_payment_software'] = '<a href="http://www.web-payment-software.com/" target="_blank"><img src="view/image/payment/wps-logo.jpg" alt="Web Payment Software" title="Web Payment Software" style="border: 1px solid #EEEEEE;" /></a>';
 $_['text_test']                 = 'Test';
 $_['text_live']                 = 'Live';
 $_['text_authorization']        = 'Authorization';

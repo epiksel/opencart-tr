@@ -41,7 +41,7 @@ $_['entry_jan']              = 'JAN:<br/><span class="help">Japon Makale Numaras
 $_['entry_isbn']             = 'ISBN:<br/><span class="help">Uluslararası Standart Kitap Numarası</span>';
 $_['entry_mpn']              = 'MPN:<br/><span class="help">Üretici Parça Numarası</span>';
 $_['entry_location']         = 'Konum\'u:';
-$_['entry_manufacturer']     = 'Üretici:';
+$_['entry_manufacturer']     = 'Üretici:<br /><span class="help">(Otomatik Tamamlama)</span>';
 $_['entry_date_available']   = 'Geçerlilik Tarihi:';
 $_['entry_shipping']         = 'Kargo Gerekli:';
 $_['entry_quantity']         = 'Miktarı:';
@@ -71,7 +71,7 @@ $_['entry_status']           = 'Durum:';
 $_['entry_sort_order']       = 'Sıralama:';
 $_['entry_category']         = 'Kategoriler:<br /><span class="help">(Otomatik Tamamlama)</span>';
 $_['entry_filter']           = 'Süzgeçler:<br /><span class="help">(Otomatik Tamamlama)</span>';
-$_['entry_download']         = 'İndirilebilir Ürünler:';
+$_['entry_download']         = 'İndirilebilir Ürünler:<br /><span class="help">(Otomatik Tamamlama)</span>';
 $_['entry_related']          = 'Benzer Ürünler:<br /><span class="help">(Otomatik Tamamlama)</span>';
 $_['entry_tag']          	 = 'Ürün Etiketleri:<br /><span class="help">Vilgül ile ayrınız</span>';
 $_['entry_reward']           = 'Ödül Puanı:';

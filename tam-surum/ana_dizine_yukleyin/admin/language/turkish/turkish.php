@@ -44,6 +44,7 @@ $_['button_back']             = 'Geri';
 $_['button_remove']           = 'Kaldır';
 $_['button_backup']           = 'Yedekle';
 $_['button_restore']          = 'Geri Yükle';
+$_['button_repair']           = 'Onar';
 $_['button_upload']           = 'Yükle';
 $_['button_submit']			  = 'Gönder';
 $_['button_invoice']          = 'Fatura Yazdır';

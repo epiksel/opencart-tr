@@ -13,7 +13,7 @@ $_['text_column_left']    = 'Sol Blokta';
 $_['text_column_right']   = 'Sağ Blokta';
 
 // Entry
-$_['entry_code']          = 'Kodu:<br /><span class="help">Goto <a onclick="window.open(\'http://www.google.com/talk/service/badge/New\');"><u>Create a Google Talk chatback badge</u></a> and copy &amp; paste the generated code into the text box.</span>';
+$_['entry_code']          = 'Kodu:<br /><span class="help">Goto <a href="http://www.google.com/talk/service/badge/New" target="_blank"><u>Create a Google Talk chatback badge</u></a> and copy &amp; paste the generated code into the text box.</span>';
 $_['entry_layout']        = 'Bölüm:';
 $_['entry_position']      = 'Pozisyon:';
 $_['entry_status']        = 'Durumu:';
