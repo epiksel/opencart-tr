@@ -5,7 +5,7 @@
 $_['heading_title']     = 'Kullanıcılar';
 
 // Text
-$_['text_success']      = 'Başarılı: Kullanıcılar değiştirildi!';
+$_['text_success']      = 'Başarılı: Kullanıcı bilgileri değiştirildi!';
 
 // Column
 $_['column_username']   = 'Kullanıcı Adı';
@@ -22,7 +22,7 @@ $_['entry_lastname']    = 'Soyadı:';
 $_['entry_email']       = 'E-Posta:';
 $_['entry_user_group']  = 'Kullanıcı Grubu:';
 $_['entry_status']      = 'Durumu:';
-$_['entry_captcha']    = 'Aşağıdaki kutuya kodu girin:';
+$_['entry_captcha']		= 'Aşağıdaki kutuya kodu girin:';
 
 // Error
 $_['error_permission']  = 'Uyarı: Kullanıcıları düzenleme iznine sahip değilsiniz!';

@@ -20,9 +20,11 @@
 	 <li>Yönetim->Genel Ayarlar dan tüm alanları güncelleyin. Hiç birşey değişmemiş olsa bile kaydet butonuna tıklayınız.</li>
 	 <li>CSS değişikliklerini güncellemek için katalog sayfanızdayken Ctrl+F5 ile sayfanızını iki kere yenileyin.</li>
     </ol>
-    <div class="right">
-      <input type="submit" value="Devam Et" class="button" />
-    </div>
+    <div class="buttons">
+	  <div class="right">
+        <input type="submit" value="Devam Et" class="button" />
+      </div>
+	</div>
   </form>
 </div>
 <?php echo $footer; ?>

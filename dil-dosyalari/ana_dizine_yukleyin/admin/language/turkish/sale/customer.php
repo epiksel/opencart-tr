@@ -7,7 +7,7 @@ $_['heading_title']			= 'Müşteriler';
 // Text
 $_['text_success']			= 'Başarılı: Müşteri başarılı bir şekilde değiştirildi!';
 $_['text_default']          = 'Varsayılan';
-$_['text_approved']			= '%s hesabını onayladınız!';
+$_['text_approved']			= '%s hesabı onayladınız!';
 $_['text_wait']           	= 'Lütfen Bekleyiniz!';
 $_['text_balance']			= 'Bakiye:';
 $_['text_add_blacklist']    = 'Kara Listeye Ekle';
