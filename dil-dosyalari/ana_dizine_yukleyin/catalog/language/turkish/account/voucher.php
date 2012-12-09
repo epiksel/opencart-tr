@@ -10,7 +10,7 @@ $_['text_voucher']     = 'Hediye Çeki';
 $_['text_description'] = 'Siparişinizin ödemesini yaptığınızda hediye çeki alıcısına gönderilecektir.';
 $_['text_agree']       = 'Hediye çekinin iade edilemeyeceğini biliyorum ve onaylıyorum';
 $_['text_message']     = '<p>Hediye çeki satın aldığınız için teşekkür ederiz! Siparişiniz tamamlandığında hediye çeki ile ilgili detaylar sahibine e-posta ile gönderilecektir.</p>';
-$_['text_for']         = '%s için %s Hediye Çeki';
+$_['text_for']         = '%s tutarında %s için hediye çeki';
 
 // Entry
 $_['entry_to_name']    = 'Alıcının Adı:';

@@ -29,7 +29,7 @@ $_['text_new_download']			= 'Ödemeniz onaylandıktan sonra indirilebilir ürün
 $_['text_new_comment']			= 'Siparişiniz ile ilgili açıklamalar:';
 $_['text_new_footer']			= 'Herhangi bir sorunuz varsa bu e-postayı yanıtlayınız.';
 $_['text_new_powered']			= 'Altyapı: <a href="http://www.opencart.com">OpenCart</a> - Geliştirici: <a href="http://www.e-piksel.com">E-Piksel</a>.';	
-$_['text_update_subject']		= '%s - Sipariş %s Güncellendi';
+$_['text_update_subject']		= '%s - %s Nolu Sipariş Durumu Güncellendi';
 $_['text_update_order']			= 'Sipariş No:';
 $_['text_update_date_added']	= 'Sipariş Tarihi:';
 $_['text_update_order_status']	= 'Siparişiniz aşağıdaki duruma güncellendi:';

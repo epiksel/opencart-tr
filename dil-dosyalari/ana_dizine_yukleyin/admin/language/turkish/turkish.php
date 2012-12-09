@@ -54,7 +54,6 @@ $_['button_add_banner']       = 'Afiş Ekle';
 $_['button_add_product']      = 'Ürün Ekle';
 $_['button_add_voucher']      = 'Hediye Çeki Ekle';
 $_['button_add_filter']       = 'Süzgeç Ekle';
-$_['button_add_filter_value'] = 'Süzgeç Değeri Ekle';
 $_['button_add_option']       = 'Seçenek Ekle';
 $_['button_add_option_value'] = 'Değer Ekle';
 $_['button_add_discount']     = 'İndirim Ekle';

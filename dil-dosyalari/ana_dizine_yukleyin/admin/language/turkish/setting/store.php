@@ -2,7 +2,7 @@
 /* Turkceye Ceviren eka7a - http://www.e-piksel.com */
 
 // Heading
-$_['heading_title']					= 'Ayarlar';
+$_['heading_title']					= 'Mağazalar';
 
 // Text
 $_['text_success']					= 'Başarılı: Mağazalar başarılı bir şekilde değiştirildi!';
