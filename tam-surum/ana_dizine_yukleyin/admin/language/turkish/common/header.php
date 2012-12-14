@@ -17,6 +17,7 @@ $_['text_country']						= 'Ülkeler';
 $_['text_coupon']						= 'Kuponlar';
 $_['text_currency']						= 'Para Birimi';
 $_['text_customer']						= 'Müşteriler';
+$_['text_customer_field']				= 'Müşteri Alanları';
 $_['text_customer_group']				= 'Müşteri Grubları';
 $_['text_customer_blacklist']			= 'IP Kara Liste';
 $_['text_dashboard']					= 'Kontrol Paneli';

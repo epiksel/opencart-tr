@@ -13,7 +13,7 @@ $_['text_off']           = 'Kapalı';
       
 // Entry
 $_['entry_merchant']     = 'Merchant ID:';
-$_['entry_password']     = 'Payment Response password:<br /><span class="help">This has to be set in the WordPay control panel.</span>';
+$_['entry_password']     = 'Payment Response Password:<br /><span class="help">This has to be set in the WordPay control panel.</span>';
 $_['entry_callback']     = 'Relay Response URL:<br /><span class="help">Bunu WordPay kontrol panelinden ayarlayınız. You will also need to check the "Enable the Shopper Response".</span>';
 $_['entry_test']         = 'Test Modu:';
 $_['entry_total']        = 'Toplam:<br /><span class="help">Bu ödeme metodunun aktif olması için toplam sipariş miktarını giriniz</span>';

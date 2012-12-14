@@ -33,6 +33,7 @@ $_['button_coupon']         = 'Kuponu Kullan';
 $_['button_delete']         = 'Sil';
 $_['button_download']       = 'İndir';
 $_['button_edit']           = 'Düzenle';
+$_['button_filter']         = 'Aramayı Daralt';
 $_['button_new_address']    = 'Yeni Adres';
 $_['button_change_address'] = 'Adresi Değiştir';
 $_['button_reviews']        = 'Yorumlar';
