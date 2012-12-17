@@ -21,6 +21,7 @@ $_['column_status']			= 'Durumu';
 $_['column_login']          = 'Oturum Aç';
 $_['column_approved']		= 'Onaylandı';
 $_['column_date_added']		= 'Ekleme Tarihi';
+$_['column_comment']        = 'Yorum';
 $_['column_description']	= 'Açıklama';
 $_['column_amount']			= 'Miktar';
 $_['column_points']			= 'Puan';
@@ -49,9 +50,10 @@ $_['entry_postcode']		= 'Posta Kodu:';
 $_['entry_country']			= 'Ülke:';
 $_['entry_zone']			= 'Şehir / Eyalet:';
 $_['entry_default']			= 'Varsayılan Adres:';
+$_['entry_comment']         = 'Yorum:';
+$_['entry_description']		= 'Açıklama:';
 $_['entry_amount']			= 'Miktar:';
 $_['entry_points']			= 'Ödül Puanı:<br /><span class="help">Puan silmek için başına eksi işareti koyunuz.</span>';
-$_['entry_description']		= 'Açıklama:';
 
 // Error
 $_['error_warning']			= 'Uyarı: Oluşan hatalar için lütfen formu dikkatli kontrol ediniz!';
