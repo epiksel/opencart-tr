@@ -11,6 +11,7 @@
   <div class="warning"><?php echo $error_warning; ?></div>
   <?php } ?>
   <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data">
+  	<fieldset>
     <p><b>Bu adımları dikkatlice takip ediniz!</b></p>
     <ol>
      <li>Güncelleme yazılımı hataları için forumdaki mesajlara gözatın</li>
@@ -20,6 +21,7 @@
 	 <li>Yönetim->Genel Ayarlar dan tüm alanları güncelleyin. Hiç birşey değişmemiş olsa bile kaydet butonuna tıklayınız.</li>
 	 <li>CSS değişikliklerini güncellemek için katalog sayfanızdayken Ctrl+F5 ile sayfanızını iki kere yenileyin.</li>
     </ol>
+    </fieldset>
     <div class="buttons">
 	  <div class="right">
         <input type="submit" value="Devam Et" class="button" />
