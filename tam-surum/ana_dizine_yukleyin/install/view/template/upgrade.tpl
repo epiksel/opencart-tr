@@ -17,9 +17,9 @@
      <li>Güncelleme yazılımı hataları için forumdaki mesajlara gözatın</li>
 	 <li>Güncellemeden sonra token hatalarını önlemek için tarayıcınızdaki çerezleri temizleyin.</li>
 	 <li>CSS değişikliklerini güncellemek için yönetim sayfanızdayken Ctrl+F5 ile sayfanızını iki kere yenileyin.</li>
-	 <li>Yönetim->Kullanıcılar->Kullanıcı Grupları sayfasından Üst Yönetici grubunu düzenle dedikten sonra tüm kutuları işaretleyin ve kaydedin.</li>
+	 <li>Yönetim -> Kullanıcılar -> Kullanıcı Grupları sayfasından Üst Yönetici grubunu düzenle dedikten sonra tüm kutuları işaretleyin ve kaydedin.</li>
 	 <li>Yönetim->Genel Ayarlar dan tüm alanları güncelleyin. Hiç birşey değişmemiş olsa bile kaydet butonuna tıklayınız.</li>
-	 <li>CSS değişikliklerini güncellemek için katalog sayfanızdayken Ctrl+F5 ile sayfanızını iki kere yenileyin.</li>
+	 <li>CSS değişikliklerini güncellemek için katalog sayfanızdayken Ctrl+F5 ile sayfanızını iki kere yenileyin ya da tarayıcı ayalarlarından tarayıcınızın önbelleğini boşaltınız.</li>
     </ol>
     </fieldset>
     <div class="buttons">

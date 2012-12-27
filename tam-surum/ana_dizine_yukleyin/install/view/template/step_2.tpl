@@ -104,11 +104,24 @@
         </tr>
         <tr>
           <td><?php echo $config_catalog; ?></td>
-          <td><?php echo is_writable($config_catalog) ? '<span class="good">Yazılabilir</span>' : '<span class="bad">Yazılamaz</span>'; ?></td>
+          <td><?php if (!file_exists($config_catalog)) { ?>
+            <span class="bad">Eksik</span>
+            <?php } elseif (!is_writable($config_catalog)) { ?>
+            <span class="bad">Yazılamaz</span></td>
+          <?php } else { ?>
+          <span class="good">Yazılabilir</span>
+          <?php } ?>
+            </td>
         </tr>
         <tr>
           <td><?php echo $config_admin; ?></td>
-          <td><?php echo is_writable($config_admin) ? '<span class="good">Yazılabilir</span>' : '<span class="bad">Yazılamaz</span>'; ?></td>
+          <td><?php if (!file_exists($config_admin)) { ?>
+            <span class="bad">Eksik</span>
+            <?php } elseif (!is_writable($config_admin)) { ?>
+            <span class="bad">Yazılamaz</span></td>
+          <?php } else { ?>
+          <span class="good">Yazılabilir</span>
+          <?php } ?>
         </tr>
       </table>
     </fieldset>

@@ -47,7 +47,6 @@ $_['entry_admin_limit']   	    = 'Sayfa Başına Ürün(Yönetim):<br /><span cl
 $_['entry_product_count']		= 'Kategori Ürün Sayısı:<br /><span class="help">Üst kategori menüsünde alt kategorilerdeki ürün sayısını göster. <b>Uyarı, ürün sayısı bir çok mağazada aşırı performans düşüklüğüne neden olabilir!</b></span>';
 $_['entry_review']       	    = 'Yorumlara izin ver:<br /><span class="help">Yeni yorumları ve görüntülenmesini aktif/pasif yapın.</span>';
 $_['entry_download']            = 'İndirilebilir Ürünlere İzin ver:';
-$_['entry_upload_allowed']      = 'İzin verilen Dosya Türleri:<br /><span class="help">Yüklemesine izin verilen dosya türlerini ekleyiniz. Bir çok tür eklemek için virgül kullanın.</span>';
 $_['entry_voucher_min']			= 'Min. Hediye Çeki:<br /><span class="help">Bir müşterinin en az satın alabileceği hediye çeki miktarını yazınız.</span>';
 $_['entry_voucher_max']			= 'Maks. Hediye Çeki:<br /><span class="help">Bir müşterinin en çok satın alabileceği hediye çeki miktarını yazınız.</span>';
 $_['entry_tax']                 = 'Vergi Oranlarını Göster:';
@@ -109,6 +108,8 @@ $_['entry_secure']				= 'SSL Kullan:<br /><span class="help">SSL kullanbilmeniz 
 $_['entry_shared']				= 'Paylaşılan Oturumları Kullan:<br /><span class="help">Url içine oturum kimliği(session ID) yerleştirin, böylece aynı oturumda farklı etki alanları arasında geçiş yapılabilir.</span>';
 $_['entry_robots']				= 'Robotlar:<br /><span class="help">Web tarayıcısı kullanıcı ajanları listesi paylaşımlı oturumlar ile kullanılmaz. Her kullanıcı ajanı için ayrı satır kullanınız.</span>';
 $_['entry_seo_url']             = 'SEO URL Kullan:<br /><span class="help">SEO URL kullanmak için apache mod-rewrite modülü kurulu olmalıdır. Kurulu ise htaccess.txt dosya adını .htaccess olarak değiştirin.</span>';
+$_['entry_file_extension_allowed']	= 'İzin Verilen Eklenti Türleri:<br /><span class="help">Yüklenmesine izin verilen eklenti türlerini ekleyiniz. Her satıra bir eklenti türü ekleyiniz.</span>';
+$_['entry_file_mime_allowed']		= 'İzin verilen Dosya Türleri:<br /><span class="help">Yüklenmesine izin verilen dosya türlerini ekleyiniz. Her satıra bir dosya türü ekleyiniz.</span>';
 $_['entry_maintenance']         = 'Bakım Modu:<br /><span class="help">Müşterilerin mağazada gezinmesini engeller. Bunun yerine bakım modu mesajı görüntülenecek. Yönetici oturumunuz açıksa mağazayı görebilirsiniz.</span>';
 $_['entry_password']            = 'Parolamı Unuttuma İzin Ver:<br /><span class="help">Yöneticiler için parolamı unuttum seçeneğini kullanmasına izin verin. Sistem hack girişimi algıladığında bu otomatik olarak devre dışı kalacaktır.</span>';
 $_['entry_encryption']          = 'Şifreleme Anahtarı:<br /><span class="help">Lütfen sipariş işlenirken özel bilgileri şifrelemek için kullanılacak gizli bir anahtar giriniz.</span>';
