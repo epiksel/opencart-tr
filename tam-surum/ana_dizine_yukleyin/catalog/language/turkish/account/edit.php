@@ -7,7 +7,7 @@ $_['heading_title']       = 'Hesap Bilgilerim';
 // Text
 $_['text_account']        = 'Hesabım';
 $_['text_edit']           = 'Bilgilerimi Düzenle';
-$_['text_your_details']   = 'Kişisel Ayrıntılarınız';
+$_['text_your_details']   = 'Kişisel Bilgileriniz';
 $_['text_success']        = 'Başarılı: Hesabınız başarılı bir şekilde güncellendi.';
 
 // Entry

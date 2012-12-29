@@ -107,21 +107,20 @@
           <td><?php if (!file_exists($config_catalog)) { ?>
             <span class="bad">Eksik</span>
             <?php } elseif (!is_writable($config_catalog)) { ?>
-            <span class="bad">Yazılamaz</span></td>
+            <span class="bad">Yazılamaz</span>
           <?php } else { ?>
           <span class="good">Yazılabilir</span>
-          <?php } ?>
-            </td>
+          <?php } ?></td>
         </tr>
         <tr>
           <td><?php echo $config_admin; ?></td>
           <td><?php if (!file_exists($config_admin)) { ?>
             <span class="bad">Eksik</span>
             <?php } elseif (!is_writable($config_admin)) { ?>
-            <span class="bad">Yazılamaz</span></td>
+            <span class="bad">Yazılamaz</span>
           <?php } else { ?>
           <span class="good">Yazılabilir</span>
-          <?php } ?>
+          <?php } ?></td>
         </tr>
       </table>
     </fieldset>

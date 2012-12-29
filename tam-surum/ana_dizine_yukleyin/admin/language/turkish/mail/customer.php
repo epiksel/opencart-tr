@@ -2,7 +2,7 @@
 /* Turkceye Ceviren eka7a - http://www.e-piksel.com */
 
 // Text
-$_['text_approve_subject']      = '%s - Heabınız Etkinleştirildi!';
+$_['text_approve_subject']      = '%s - Hesabınız Etkinleştirildi!';
 $_['text_approve_welcome']      = '%s sitemize kayıt olduğunuz için teşekkür ederiz!';
 $_['text_approve_login']        = 'Hesabınız oluşturuldu. E-Posta adresinizi ve şifrenizi kullanarak web sitemizi ziyaret ediniz veya aşağıdaki URL ile giriş yapabilirsiniz:';
 $_['text_approve_services']     = 'Giriş yaptıktan sonra, hesap bilgilerinizi düzenleyebilir veya geçmiş siparişlerinizi inceleyebilirsiniz';
