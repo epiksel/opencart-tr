@@ -2,28 +2,52 @@
 /* Turkceye Ceviren eka7a - http://www.e-piksel.com */
 
 // Heading
-$_['heading_title']			= 'Klarna Part Payment';
+$_['heading_title'] = 'Klarna Invoice';
+
+$_['text_klarna_invoice'] = '<a onclick="window.open(\'https://merchants.klarna.com/signup?locale=en&partner_id=d5c87110cebc383a826364769047042e777da5e8&utm_campaign=Platform&utm_medium=Partners&utm_source=Opencart\');"><img src="https://cdn.klarna.com/public/images/global/logos/v1/basic/global_basic_logo_std_blue-black.png?width=60&eid=opencart" alt="Klarna Invoice" title="Klarna Invoice" style="border: 1px solid #EEEEEE;" /></a>';
 
 // Text
 $_['text_payment']			= 'Ödeme Metodları';
-$_['text_success']			= 'Başarılı: Klarna Part Ödeme modülü güncellendi!';
-$_['text_klarna_invoice']	= '<a href="https://merchants.klarna.com/signup?locale=en&partner_id=d5c87110cebc383a826364769047042e777da5e8&utm_campaign=Platform&utm_medium=Partners&utm_source=Opencart" target="_blank"><img src="view/image/payment/klarna.png" alt="Klarna" title="Klarna" style="border: 1px solid #EEEEEE;" /></a>';
-$_['text_live']          	= 'Live';
-$_['text_beta']          	= 'Beta';
+$_['text_success']			= 'Başarılı: Klarna Ödeme modülü güncellendi!';
+$_['text_log_clear'] = 'Success: Log was cleared';
+$_['text_live'] = 'Live';
+$_['text_beta'] = 'Beta';
+$_['text_settings'] = 'Settings';
+$_['text_log'] = 'Logs';
+$_['text_help'] = 'Help';
+$_['text_enabled'] = 'Enabled';
+$_['text_disabled'] = 'Disabled';
+$_['text_all_zones'] = 'All Zones';
+
+$_['text_sweden'] = 'Sweden';
+$_['text_norway'] = 'Norway';
+$_['text_finland'] = 'Finland';
+$_['text_denmark'] = 'Denmark';
+$_['text_germany'] = 'Germany';
+$_['text_netherlands'] = 'The Netherlands';
+
+$_['text_clear'] = 'Clear';
 
 // Entry
-$_['entry_merchant']     	= 'Klarna Merchant ID:<br /><span class="help">(estore id) to use for the Klarna service (provided by Klarna).</span>';
-$_['entry_secret']       	= 'Klarna Secret:<br /><span class="help">Shared secret to use with the Klarna service (provided by Klarna).</span>';
-$_['entry_server']       	= 'Server:';
-$_['entry_total']        	= 'Toplam:<br /><span class="help">The checkout total the order must reach before this payment method becomes active.</span>';		
-$_['entry_order_status'] 	= 'Sipariş Durumu:';
-$_['entry_geo_zone']     	= 'Genel Gölge:';
-$_['entry_status']		 	= 'Durumu:';
-$_['entry_sort_order']	 	= 'Sıralama:';
+$_['entry_merchant'] = 'Klarna Merchant ID:';
+$_['entry_secret'] = 'Klarna Secret:';
+$_['entry_server'] = 'Server:';
+$_['entry_pending_order_status'] = 'Pending Order Status:';
+$_['entry_accepted_order_status'] = 'Accepted Order Status:';
+$_['entry_geo_zone'] = 'Geo Zone:';
+$_['entry_status'] = 'Status:';
+$_['entry_sort_order'] = 'Sort Order:';
+$_['entry_minimum_amount'] = 'Minimum Amount:';
+
+// Help
+$_['help_minimum_total'] = "Cart's total before the module becomes active";
+$_['help_merchant'] = '(estore id) to use for the Klarna service (provided by Klarna).';
+$_['help_secret'] = 'Shared secret to use with the Klarna service (provided by Klarna).';
 
 // Error
-$_['error_permission']		= 'Uyarı: Klarna Part Ödeme metodunu düzenleme iznine sahip değilsiniz!';
-$_['error_xmlrpc']			= 'XML-RPC PHP extension is required to be installed!';
-$_['error_merchant']		= 'Merchant ID gerekli!';
-$_['error_secret']			= 'Secret gerekli!';
+$_['error_permission'] = 'Warning: You do not have permission to modify payment Klarna Part Payment!';
+$_['error_retrieve_pclass'] = 'Could not retrieve pClass for %s. Error Code: %s; Error Message: %s';
+$_['error_log_clear'] = 'Error: Log file was not cleared. Please check write permissions for the file';
+$_['error_http_error'] = 'HTTP Error - Code: %d; Message: %s';
+$_['error_update'] = 'There were errors updating the module. Please check the log file.';
 ?>
