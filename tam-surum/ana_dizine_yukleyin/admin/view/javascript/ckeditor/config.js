@@ -12,11 +12,12 @@ CKEDITOR.editorConfig = function( config ) {
 	config.resize_enabled = false;
 	config.htmlEncodeOutput = false;
 	config.entities = false;
-	config.extraPlugins = 'syntaxhighlight';
+	config.extraPlugins = 'wordcount,codemirror';
+	config.codemirror_theme = 'rubyblue';
 	config.toolbar = 'Custom';
 
 	config.toolbar_Custom = [
-		['Source','-', 'Code','Preview','-','Templates'],
+		['Source'],
 		['Maximize'],
 		['Bold','Italic','Underline','Strike','-','Subscript','Superscript'],
 		['NumberedList','BulletedList','-','Outdent','Indent'],

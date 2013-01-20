@@ -87,6 +87,7 @@ $_['tab_fraud']               		= 'Sahtekârlık';
 $_['tab_ftp']				  		= 'FTP';
 $_['tab_ip']                  		= 'IP Adresleri';
 $_['tab_links']               		= 'Bağlantılar';
+$_['tab_log']                       = 'Günlük';
 $_['tab_image']               		= 'Resim';
 $_['tab_option']              		= 'Seçenek';
 $_['tab_server']              		= 'Sunucu';
@@ -105,11 +106,6 @@ $_['tab_total']               		= 'Toplamlar';
 $_['tab_transaction']         		= 'İşlemler';
 $_['tab_voucher']             		= 'Hediye Çekleri';
 $_['tab_voucher_history']     		= 'Hediye Çeki Geçmişi';
-
-// Image Resize Type
-$_['img_resize_type_d']				= 'Varsayılan göre'; 
-$_['img_resize_type_w']				= 'Genişliğe göre'; 		 
-$_['img_resize_type_h']				= 'Yüksekliğe göre';
 
 // Error
 $_['error_upload_1']          		= 'Uyarı: Karşıya yüklenen dosya çok büyük - php.ini dosyasındaki upload_max_filesize değerini değiştirin!';

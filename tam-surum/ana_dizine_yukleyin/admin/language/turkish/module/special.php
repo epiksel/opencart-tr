@@ -14,7 +14,7 @@ $_['text_column_right']   = 'Sağ Blokta';
 
 // Entry
 $_['entry_limit']         = 'Limit:';
-$_['entry_image']         = 'Resim (G x Y) ve yeniden boyutlandır:';
+$_['entry_image']         = 'Resim (G x Y):';
 $_['entry_layout']        = 'Bölüm:';
 $_['entry_position']      = 'Pozisyon:';
 $_['entry_status']        = 'Durumu:';

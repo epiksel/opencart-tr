@@ -22,6 +22,7 @@ $_['entry_meta_keyword'] 	 	= 'Meta Kelimeleri:';
 $_['entry_meta_description'] 	= 'Meta Açıklaması:';
 $_['entry_description']      	= 'Açıklama:';
 $_['entry_parent']         		= 'Ana Kategori:';
+$_['entry_filter']				= 'Süzgeçler:<br /><span class="help">(Otomatik Tamamlama)</span>';
 $_['entry_store']            	= 'Mağazalar:';
 $_['entry_keyword']          	= 'SEO Kelimesi:<br /><span class="help">Boşluk kullanmayın ve benzersiz kelimeler kullandığınızdan emin olunuz.</span>';
 $_['entry_image']            	= 'Resim:';

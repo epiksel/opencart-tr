@@ -517,6 +517,23 @@ INSERT INTO `oc_category_path` (`category_id`, `path_id`, `level`) VALUES ('57',
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `oc_category_filter`
+--
+
+DROP TABLE IF EXISTS `oc_category_filter`;
+CREATE TABLE `oc_category_filter` (
+  `category_id` int(11) NOT NULL,
+  `filter_id` int(11) NOT NULL,
+  PRIMARY KEY (`category_id`,`filter_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
+
+--
+-- Dumping data for table `oc_category_filter`
+--
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `oc_category_to_layout`
 --
 
@@ -1403,23 +1420,6 @@ CREATE TABLE `oc_filter_description` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `oc_filter_group_to_category`
---
-
-DROP TABLE IF EXISTS `oc_filter_group_to_category`;
-CREATE TABLE `oc_filter_group_to_category` (
-  `filter_group_id` int(11) NOT NULL,
-  `category_id` int(11) NOT NULL,
-  PRIMARY KEY (`filter_group_id`,`category_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
-
---
--- Dumping data for table `oc_filter_to_category`
---
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `oc_extension`
 --
 
@@ -2195,13 +2195,6 @@ CREATE TABLE `oc_order_total` (
 --
 -- Dumping data for table `oc_order_total`
 --
-
-DROP TABLE IF EXISTS `oc_order_total_klarna`;
-CREATE TABLE `oc_order_total_klarna` (
-    `order_total_id` INT(11) NOT NULL,
-    `tax` decimal(10,4) NOT NULL,
-    PRIMARY KEY (`order_total_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
 
 -- --------------------------------------------------------
 
