@@ -549,7 +549,6 @@ CREATE TABLE `oc_category_to_layout` (
 -- Dumping data for table `oc_category_to_layout`
 --
 
-
 -- --------------------------------------------------------
 
 --
@@ -1303,6 +1302,7 @@ CREATE TABLE `oc_custom_field_value_description` (
   `name` varchar(128) NOT NULL,
   PRIMARY KEY (`custom_field_value_id`,`language_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
+
 --
 -- Dumping data for table `oc_custom_field_value_description`
 --
@@ -1327,7 +1327,7 @@ CREATE TABLE `oc_download` (
 -- Dumping data for table `oc_download`
 --
 
-----------------------------------------------------------
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `oc_download_description`
@@ -2045,7 +2045,6 @@ CREATE TABLE `oc_order_fraud` (
   PRIMARY KEY (`order_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
 
-
 -- --------------------------------------------------------
 
 --
@@ -2395,7 +2394,7 @@ DROP TABLE IF EXISTS `oc_product_filter`;
 CREATE TABLE `oc_product_filter` (
   `product_id` int(11) NOT NULL,
   `filter_id` int(11) NOT NULL,
-   PRIMARY KEY (`product_id`,`filter_id`)
+  PRIMARY KEY (`product_id`,`filter_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
 
 --
@@ -3050,7 +3049,7 @@ INSERT INTO `oc_setting` (`setting_id`, `store_id`, `group`, `key`, `value`, `se
 (94, 0, 'voucher', 'voucher_sort_order', '8', 0),
 (95, 0, 'voucher', 'voucher_status', '1', 0),
 (96, 0, 'config', 'config_length_class_id', '1', 0),
-(97, 0, 'config', 'config_invoice_prefix', 'FA-2012-00', 0),
+(97, 0, 'config', 'config_invoice_prefix', 'FA-2013-00', 0),
 (98, 0, 'config', 'config_tax', '1', 0),
 (99, 0, 'config', 'config_tax_customer', 'payment', 0),
 (100, 0, 'config', 'config_tax_default', 'payment', 0),

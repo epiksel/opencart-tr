@@ -2,7 +2,7 @@
 /* Turkceye Ceviren eka7a - http://www.e-piksel.com */
 
 // Heading
-$_['heading_title']      = 'SagePay (US)';
+$_['heading_title']      = 'Sage Payment Solutions (US)';
 
 // Text 
 $_['text_payment']       = 'Ödeme Metodları'; 

@@ -3,4 +3,7 @@
 
 // Text
 $_['text_title'] = 'Google Checkout';
+
+// Error
+$_['error_shipping'] = 'Kargolama methodu gerekli!';
 ?>

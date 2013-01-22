@@ -14,7 +14,6 @@ $_['column_action']		= 'Eylem';
 
 // Entry
 $_['entry_group']		= 'Süzgeç Grup Adı:';
-$_['entry_category']	= 'Kategori:';
 $_['entry_name']		= 'Süzgeç Adı:';
 $_['entry_sort_order']	= 'Sıralama:';
 
