@@ -24,8 +24,8 @@ $_['column_action']       = 'Eylem';
 
 // Entry
 $_['entry_name']          = 'Kupon Adı:';
-$_['entry_code']          = 'Kod:<br /><span class="help">İndirim kuponu için gerekli kod</span>';
-$_['entry_type']          = 'Türü:<br /><span class="help">Yüzde ya da Sabit miktar</span>';
+$_['entry_code']          = 'Kod:<br /><span class="help">İndirim kuponu için gerekli kod.</span>';
+$_['entry_type']          = 'Türü:<br /><span class="help">Yüzde ya da Sabit miktar.</span>';
 $_['entry_discount']      = 'İndirim:';
 $_['entry_logged']        = 'Müşteri Girişi:<br /><span class="help">Müşteri kuponu kullanabilmesi için giriş yapmasını gerektirir.</span>';
 $_['entry_shipping']      = 'Ücretsiz Kargo:';
