@@ -181,11 +181,12 @@ class ControllerProductCategory extends Controller {
 					'filter_sub_category' => true
 				);
 				
+				$product_total = $this->model_catalog_product->getTotalProducts($data);				
+				
 				$this->data['categories'][] = array(
-					'name'  => $result['name'] . ($this->config->get('config_product_count') ? ' (' . $this->model_catalog_product->getTotalProducts($data) . ')' : ''),
+					'name'  => $result['name'] . ($this->config->get('config_product_count') ? ' (' . $product_total . ')' : ''),
 					'href'  => $this->url->link('product/category', 'path=' . $this->request->get['path'] . '_' . $result['category_id'] . $url)
 				);
-				
 			}
 			
 			$this->data['products'] = array();
