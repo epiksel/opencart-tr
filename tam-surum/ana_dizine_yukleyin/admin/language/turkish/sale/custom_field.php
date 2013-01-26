@@ -26,15 +26,15 @@ $_['text_firstname']        = 'Adı';
 $_['text_lastname']         = 'Soyadı';
 $_['text_email']            = 'E-Posta';
 $_['text_telephone']        = 'Telefon';
-$_['text_fax']              = 'Faks:';
-$_['text_company']          = 'Şirket Adı:';
-$_['text_customer_group']   = 'Müşteri Grubu:';
-$_['text_address_1']        = 'Adres 1:';
-$_['text_address_2']        = 'Adres 2:';
-$_['text_city']             = 'İlçe / Semt:';
-$_['text_postcode']         = 'Posta Kodu:';
-$_['text_country']          = 'Ülke:';
-$_['text_zone']             = 'Şehir / Eyalet:';
+$_['text_fax']              = 'Faks';
+$_['text_company']          = 'Şirket Adı';
+$_['text_customer_group']   = 'Müşteri Grubu';
+$_['text_address_1']        = 'Adres 1';
+$_['text_address_2']        = 'Adres 2';
+$_['text_city']             = 'İlçe / Semt';
+$_['text_postcode']         = 'Posta Kodu';
+$_['text_country']          = 'Ülke';
+$_['text_zone']             = 'Şehir / Eyalet';
 
 // Column
 $_['column_name']           = 'Özel Alan Adı';
@@ -59,5 +59,4 @@ $_['error_permission']     = 'Uyarı: Özel alanları düzenleme yetkisine sahip
 $_['error_name']           = 'Özel alan adı 1 ile 128 karakter arasında olmalıdır!';
 $_['error_type']           = 'Uyarı: Özel alan türü gerekli!';
 $_['error_custom_value']   = 'Özel alan değer adı 1 ile 128 karakter arasında olmalıdır!';
-$_['error_product']        = 'Uyarı: Bu özel alanı silemezsiniz. Bu özel alan %s ürün ile ilişkilidir!';
 ?>
