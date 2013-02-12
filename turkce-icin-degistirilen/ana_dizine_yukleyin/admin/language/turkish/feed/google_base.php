@@ -5,7 +5,7 @@
 $_['heading_title']    = 'Google Base';
 
 // Text
-$_['text_feed']        = 'Ürün Beslemesi';
+$_['text_feed']        = 'Ürün Besleme';
 $_['text_success']     = 'Başarılı: Google Base beslemesi güncellendi!';
 
 // Entry

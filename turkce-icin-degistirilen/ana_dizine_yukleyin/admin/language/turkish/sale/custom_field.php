@@ -52,6 +52,7 @@ $_['entry_customer_group'] = 'Müşteri Grubu:';
 $_['entry_required']       = 'Gerekli:';
 $_['entry_location']       = 'Konum:';
 $_['entry_position']       = 'Pozisyon:';
+$_['entry_status']		   = 'Durum:';
 $_['entry_sort_order']     = 'Sıralama:';
 
 // Error
