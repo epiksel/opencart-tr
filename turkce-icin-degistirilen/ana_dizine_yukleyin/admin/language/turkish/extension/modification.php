@@ -5,7 +5,13 @@
 $_['heading_title']    = 'Modifikasyonlar';
 
 // Text
-$_['text_success']     = 'Başarılı: Eklentiniz kuruldu!';
+$_['text_install']     = 'Kur';
+$_['text_uninstall']   = 'Kaldır';
+
+// Column
+$_['column_name']      = 'Adı';
+$_['column_status']    = 'Durum';
+$_['column_action']    = 'Eylem';
 
 // Error
 $_['error_permission'] = 'Uyarı: Modifikasyonları değiştirme iznine sahip değilsiniz!';

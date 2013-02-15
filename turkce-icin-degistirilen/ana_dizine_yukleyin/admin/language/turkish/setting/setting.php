@@ -100,6 +100,7 @@ $_['entry_smtp_port']           = 'SMTP Port:';
 $_['entry_smtp_timeout']        = 'SMTP Zaman Aşımı:';
 $_['entry_account_mail']        = 'Yeni Hesap Uyarısı:<br /><span class="help">Yeni üye kayıt olduğunda mağaza sahibine e-posta gönder.</span>';
 $_['entry_alert_mail']          = 'Yeni Sipariş Uyarısı:<br /><span class="help">Yeni sipariş oluşturulduğunda mağaza sahibine e-posta gönder</span>';
+$_['entry_review_mail']         = 'Yeni Yorum Uyarısı:<br /><span class="help">Yeni bir yorum yapıldığında mağaza sahibine e-posta gönder.</span>';
 $_['entry_alert_emails']		= 'İlave E-Posta Adresleri:<br /><span class="help">E-Posta uyarıları için mağaza e-postası dışında başka e-posta adresleri ekleyebilirsiniz. Birden çok eklemek için virgül ile ayrınız.</span>';
 $_['entry_fraud_detection']		= 'Sahtekârlık Tespit Sistemini Kullan:<br /><span class="help">MaxMind bir sahtekârlık tespit sistemidir. Eğer bir lisans anahtarınız yoksa <a href="http://www.maxmind.com/?rId=opencart" target="_blank"><u>buradan kayıt</u></a> olarak alabilirsiniz. Aldığınız anahtarı aşağıdaki alana kopyalayınız.</span>';
 $_['entry_fraud_key']			= 'MaxMind Lisans Anahtarı:</span>';
