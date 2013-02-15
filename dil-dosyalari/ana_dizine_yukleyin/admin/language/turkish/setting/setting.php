@@ -35,7 +35,7 @@ $_['entry_meta_description']    = 'Meta Açıklaması:';
 $_['entry_layout']              = 'Varsayılan Bölüm:';
 $_['entry_template']            = 'Şablon Seçiniz:';
 $_['entry_country']             = 'Ülke:';
-$_['entry_zone']                = 'Şehir / Eyalet:';
+$_['entry_zone']                = 'Şehir:';
 $_['entry_language']            = 'Mağaza Dili:';
 $_['entry_admin_language']      = 'Yönetim Dili:';
 $_['entry_currency']            = 'Para Birimi:<br /><span class="help">Varsayılan para birimini değiştirir. Web tarayıcınızın önbelleğini ve çerezleri temizlemeniz gerekir.</span>';

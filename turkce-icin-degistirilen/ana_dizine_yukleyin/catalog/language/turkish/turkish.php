@@ -16,7 +16,7 @@ $_['text_yes']              = 'Evet';
 $_['text_no']               = 'Hayır';
 $_['text_none']             = ' --- Yok --- ';
 $_['text_select']           = ' --- Seçiniz --- ';
-$_['text_all_zones']        = 'Tüm Şehirler / Eyaletler';
+$_['text_all_zones']        = 'Tüm Şehirler';
 $_['text_pagination']       = 'Gösterilen: {start} ile {end} arası, toplam: {total} ({pages} Sayfa)';
 $_['text_separator']        = ' &raquo; ';
 

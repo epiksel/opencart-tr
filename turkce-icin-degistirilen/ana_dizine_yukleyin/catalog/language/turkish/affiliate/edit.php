@@ -24,7 +24,7 @@ $_['entry_address_2']   = 'Adres 2:';
 $_['entry_postcode']    = 'Posta Kodu:';
 $_['entry_city']        = 'İlçe / Semnt:';
 $_['entry_country']     = 'Ülke:';
-$_['entry_zone']        = 'Şehir / Eyalet:';
+$_['entry_zone']        = 'Şehir:';
 
 // Error
 $_['error_exists']      = 'Uyarı: E-Posta adresi ile daha önce kayıt olunmuştur!';
@@ -35,6 +35,6 @@ $_['error_telephone']   = 'Telefon alanı 3 ile 32 karakter arasında olmalı!';
 $_['error_address_1']   = 'Adres alanı 3 ile 128 karakter arasında olmalı!';
 $_['error_city']        = 'İlçe / Semnt alanı 2 ile 128 karakter arasında olmalıdır!';
 $_['error_country']     = 'Lütfen bir ülke seçiniz!';
-$_['error_zone']        = 'Lütfen bir şehir / eyalet seçiniz!';
+$_['error_zone']        = 'Lütfen bir şehir seçiniz!';
 $_['error_postcode']    = 'Posta kodu alanı 2 ile 10 karakter arasında olmalı!';
 ?>

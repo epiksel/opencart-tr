@@ -37,7 +37,7 @@ $_['entry_coupon']				= 'Kupon kodunuzu buraya griniz:';
 $_['entry_voucher']				= 'Hediye çeki kodunuzu buraya giriniz:';
 $_['entry_reward']				= 'Puan kullan (Maksimum %s):';
 $_['entry_country']				= 'Ülke:';
-$_['entry_zone']				= 'Şehir / Eyalet:';
+$_['entry_zone']				= 'Şehir:';
 $_['entry_postcode']			= 'Posta Kodu:';
 
 // Error
@@ -52,7 +52,7 @@ $_['error_points']				= 'Uyarı: %s puanınız yok!';
 $_['error_maximum']				= 'Uyarı: En fazla uygulanabilir puan %s!';
 $_['error_postcode']			= 'Posta kodu 2 ile 10 karakter arasında olmalıdır!';
 $_['error_country']				= 'Lütfen bir ülke seçiniz!';
-$_['error_zone']				= 'Lütfen bir şehir / eyalet seçiniz!';	
+$_['error_zone']				= 'Lütfen bir şehir seçiniz!';	
 $_['error_shipping']			= 'Uyarı: Kargo metodu gerekli!';
 $_['error_no_shipping']			= 'Uyarı: Kullanılabilir kargo metodu yok. Lütfen yardım için bizimle <a href="%s">iletişime</a> geçiniz!';
 ?>

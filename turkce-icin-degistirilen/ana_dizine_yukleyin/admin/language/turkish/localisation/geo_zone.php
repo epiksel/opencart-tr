@@ -16,7 +16,7 @@ $_['column_action']      = 'Eylem';
 $_['entry_name']         = 'Genel Bölge Adı:';
 $_['entry_description']  = 'Açıklama:';
 $_['entry_country']      = 'Ülke:';
-$_['entry_zone']         = 'Şehir / Eyalet:';
+$_['entry_zone']         = 'Şehir:';
 
 // Error
 $_['error_permission']   = 'Uyarı: Genel Bölgeleri düzenleme iznine sahip değilsiniz!';

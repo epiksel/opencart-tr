@@ -36,7 +36,7 @@ $_['entry_meta_description']		= 'Meta Etiket Açıklaması:';
 $_['entry_layout']					= 'Varsayılan Bölüm:';
 $_['entry_template']				= 'Şablon Seçiniz:';
 $_['entry_country']					= 'Ülke:';
-$_['entry_zone']					= 'Şehir / Eyalet:';
+$_['entry_zone']					= 'Şehir:';
 $_['entry_language']				= 'Dil:';
 $_['entry_currency']				= 'Para Birimi:';
 $_['entry_catalog_limit']			= 'Sayfa Başına Ürün(Katalog):<br /><span class="help">Mağazanız sayfalarında sayfa başına kaç ürün gösterileceğini seçin (Ürünler, Kategoriler, sayfaları vb)</span>';

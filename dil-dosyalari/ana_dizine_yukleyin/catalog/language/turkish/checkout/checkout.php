@@ -55,7 +55,7 @@ $_['entry_address_2']                = 'Adres 2:';
 $_['entry_postcode']                 = 'Posta Kodu:';
 $_['entry_city']                     = 'İlçe / Semt:';
 $_['entry_country']                  = 'Ülke:';
-$_['entry_zone']                     = 'Şehir / Eyalet:';
+$_['entry_zone']                     = 'Şehir:';
 $_['entry_newsletter']               = '%s bültene abone olmak istiyorum.';
 $_['entry_shipping'] 	             = 'Fatura ve Kargo adresimi aynı kullan.';
 
@@ -74,7 +74,7 @@ $_['error_address_1']                = 'Adres 1 alanı 3 ile 128 karakter arası
 $_['error_city']                     = 'İlçe / semnt alanı 2 ile 128 karakter arasında olmalı!';
 $_['error_postcode']                 = 'Posta kodu 2 ile 10 karakter arasında olmalı!';
 $_['error_country']                  = 'Lütfen bir ülke seçiniz!';
-$_['error_zone']                     = 'Lütfen bir şehir / eyalet seçiniz!';
+$_['error_zone']                     = 'Lütfen bir şehir seçiniz!';
 $_['error_agree']                    = 'Uyarı: %s\'ni kabul etmelisiniz!';
 $_['error_address']                  = 'Uyarı: Adres seçmelisiniz!';
 $_['error_shipping']                 = 'Uyarı: Kargo metodu gerekli!';

@@ -40,7 +40,7 @@ $_['entry_address_2']           = 'Adres 2:';
 $_['entry_city']                = 'İlçe / Semt:';
 $_['entry_postcode']            = 'Posta Kodu:';
 $_['entry_country']             = 'Ülke:';
-$_['entry_zone']                = 'Şehir / Eyalet:';
+$_['entry_zone']                = 'Şehir:';
 $_['entry_code']                = 'Takip Kodu:<span class="help">Tavsiyelerinizi izlemek için kullanılacak takip kodu</span>';
 $_['entry_commission']          = 'Komisyon Oranı (%):<span class="help">Ortağın her sipariş için aldığı komisyon oranı</span>';
 $_['entry_tax']                 = 'T.C. / Vergi No:';
@@ -68,6 +68,6 @@ $_['error_address_1']           = 'Adres 1 alanı 3 ile 128 karakter arasında o
 $_['error_city']                = 'İlçe / Semt alanı 2 ile 128 karakter arasında olmalı!';
 $_['error_postcode']            = 'Bu ülke için posta kodu 2 ile 10 karakter arasında olmalıdır!';
 $_['error_country']             = 'Lütfen bir ülke seçiniz!';
-$_['error_zone']                = 'Lütfen bir şehir / eyalet seçiniz!';
+$_['error_zone']                = 'Lütfen bir şehir seçiniz!';
 $_['error_code']                = 'Takip kodu gerekli!';
 ?>

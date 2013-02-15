@@ -27,7 +27,7 @@ $_['entry_address_2']      = 'Adres 2:';
 $_['entry_postcode']       = 'Posta Kodu:';
 $_['entry_city']           = 'İlçe / Semt:';
 $_['entry_country']        = 'Ülke:';
-$_['entry_zone']           = 'Şehir / Eyalet:';
+$_['entry_zone']           = 'Şehir:';
 $_['entry_newsletter']     = 'Bülten Aboneliği:';
 $_['entry_password']       = 'Parola:';
 $_['entry_confirm']        = 'Parola(Tekrar):';
@@ -44,6 +44,6 @@ $_['error_address_1']      = 'Adres 1 alanı 3 ile 128 karakter arasında olmal�
 $_['error_city']           = 'İlçe / semt alanı 2 ile 128 karakter arasında olmalı!';
 $_['error_postcode']	   = 'Posta kodu 2 ile 10 karakter arasında olmalı!';
 $_['error_country']        = 'Lütfen bir ülke seçiniz!';
-$_['error_zone']           = 'Lütfen bir şehir / eyalet seçiniz!';
+$_['error_zone']           = 'Lütfen bir şehir seçiniz!';
 $_['error_agree']          = 'Uyarı: %s kabul etmelisiniz!';
 ?>

@@ -82,5 +82,5 @@ $_['text_voucher']						= 'Hediye Çekleri';
 $_['text_voucher_theme']				= 'Hediye Çeki Temaları';
 $_['text_weight_class']					= 'Ağırlık Birimleri';
 $_['text_length_class']					= 'Uzunluk Birimleri';
-$_['text_zone']							= 'Şehirler / Eyaletler';
+$_['text_zone']							= 'Şehirler';
 ?>

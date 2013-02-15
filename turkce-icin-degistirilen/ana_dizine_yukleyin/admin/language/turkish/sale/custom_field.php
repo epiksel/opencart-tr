@@ -34,7 +34,7 @@ $_['text_address_2']        = 'Adres 2';
 $_['text_city']             = 'İlçe / Semt';
 $_['text_postcode']         = 'Posta Kodu';
 $_['text_country']          = 'Ülke';
-$_['text_zone']             = 'Şehir / Eyalet';
+$_['text_zone']             = 'Şehir';
 
 // Column
 $_['column_name']           = 'Özel Alan Adı';
