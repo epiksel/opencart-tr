@@ -19,6 +19,7 @@ $_['text_minimum']      = 'Satın alabilmek için asgari miktar: %s';
 $_['text_or']           = 'ya da';
 $_['text_reviews']      = '%s yorum'; 
 $_['text_write']        = 'Yorum Yap';
+$_['text_login_write']  = 'Lütfen yorum yazmak için <a href="%s">oturum açın</a> ya da <a href="%s">kayıt olun</a>.';
 $_['text_no_reviews']   = 'Bu ürün için daha önce yorum yapılmadı.';
 $_['text_on']           = ' tarih: ';
 $_['text_note']         = '<span style="color: #FF0000;">Not:</span> HTML\'ye dönüştürülmez!';

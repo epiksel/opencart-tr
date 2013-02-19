@@ -33,5 +33,4 @@ $_['error_password']    = 'Parola 4 ile 20 karakter arasında olmalı!';
 $_['error_confirm']     = 'Parolalarınız biribiri ile uyuşmuyor!';
 $_['error_firstname']   = 'Ad 1 ile 32 karakter arasında olmalı!';
 $_['error_lastname']    = 'Soyadı 1 ile 32 karakter arasında olmalı!';
-$_['error_captcha']		= 'Doğrulama kodu uyuşmuyor!';
 ?>

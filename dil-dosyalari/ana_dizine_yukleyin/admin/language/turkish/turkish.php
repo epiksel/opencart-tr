@@ -37,6 +37,7 @@ $_['button_cancel']           		= 'İptal';
 $_['button_clear']            		= 'Günlüğü Temizle';
 $_['button_close']            		= 'Kapat';
 $_['button_filter']           		= 'Süzgeç';
+$_['button_geocode']                = 'Coğrafi Kod';
 $_['button_send']             		= 'Gönder';
 $_['button_edit']             		= 'Düzenle';
 $_['button_copy']             		= 'Kopyala';

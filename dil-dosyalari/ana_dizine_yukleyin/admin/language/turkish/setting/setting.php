@@ -47,6 +47,7 @@ $_['entry_list_description_limit']	= 'Liste Açıklama Limiti (Katalog):<br /><s
 $_['entry_admin_limit']   	    = 'Sayfa Başına Ürün(Yönetim):<br /><span class="help">Yönetim sayfalarında sayfa başına kaç ürün gösterileceğini seçin (Siparişler, Müşteriler, sayfaları vb)</span>';
 $_['entry_product_count']		= 'Kategori Ürün Sayısı:<br /><span class="help">Üst kategori menüsünde alt kategorilerdeki ürün sayısını göster. <b>Uyarı, ürün sayısı bir çok mağazada aşırı performans düşüklüğüne neden olabilir!</b></span>';
 $_['entry_review']       	    = 'Yorumlara izin ver:<br /><span class="help">Yeni yorumları ve daha öncekileri görüntülenmesini aktif/pasif yapın.</span>';
+$_['entry_guest_review']		= 'Misafir Yorumları:<br /><span class="help">Misafir ziyaretçilerin yorum göndermesine izin verin.</span>';
 $_['entry_download']            = 'İndirilebilir Ürünlere İzin ver:';
 $_['entry_voucher_min']			= 'Min. Hediye Çeki:<br /><span class="help">Bir müşterinin en az satın alabileceği hediye çeki miktarını yazınız.</span>';
 $_['entry_voucher_max']			= 'Maks. Hediye Çeki:<br /><span class="help">Bir müşterinin en çok satın alabileceği hediye çeki miktarını yazınız.</span>';

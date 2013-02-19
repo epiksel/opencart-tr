@@ -34,6 +34,7 @@ $_['text_information']					= 'Bilgi Sayfaları';
 $_['text_language']						= 'Diller';
 $_['text_layout']						= 'Bölümler';
 $_['text_localisation']					= 'Yerelleştirme';
+$_['text_location']						= 'Mağaza Konumları';
 $_['text_logged']						= '<span>%s</span> olarak oturum açtınız';
 $_['text_logout']						= 'Oturumu Kapat';
 $_['text_contact']						= 'Toplu E-Posta';
