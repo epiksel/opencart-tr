@@ -6,7 +6,7 @@ $_['heading_title']     = 'Favori Markanızı Bulun';
 
 // Text
 $_['text_brand']        = 'Markalar';
-$_['text_index']        = 'Marka Indeksi:';
+$_['text_index']        = 'Marka İndeksi:';
 $_['text_error']        = 'Marka bulunamadı!';
 $_['text_empty']        = 'Listelenecek bir ürün yok';
 $_['text_quantity']     = 'Miktar:';

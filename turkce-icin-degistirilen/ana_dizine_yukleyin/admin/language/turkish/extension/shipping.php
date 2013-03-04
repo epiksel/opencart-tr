@@ -5,6 +5,7 @@
 $_['heading_title']      = 'Kargo Metodları';
 
 // Text
+$_['text_success']		 = 'Başarılı: Kargo metodları güncellendi!';
 $_['text_install']       = 'Kur';
 $_['text_uninstall']     = 'Kaldır';
 

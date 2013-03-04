@@ -1,4 +1,4 @@
-﻿/**
+/**
  * @license Copyright (c) 2003-2012, CKSource - Frederico Knabben. All rights reserved.
  * For licensing, see LICENSE.html or http://ckeditor.com/license
  */
@@ -14,6 +14,7 @@ CKEDITOR.editorConfig = function( config ) {
 	config.entities = false;
 	config.extraPlugins = 'wordcount,codemirror';
 	config.codemirror_theme = 'rubyblue';
+
 	config.toolbar = 'Custom';
 
 	config.toolbar_Custom = [
@@ -22,13 +23,13 @@ CKEDITOR.editorConfig = function( config ) {
 		['Bold','Italic','Underline','Strike','-','Subscript','Superscript'],
 		['NumberedList','BulletedList','-','Outdent','Indent'],
 		['JustifyLeft','JustifyCenter','JustifyRight','JustifyFull'],
-		['Smiley','PageBreak'],
+		['SpecialChar'],
 		'/',
 		['Undo','Redo'],
-		['Styles','Font','FontSize'],
+		['Font','FontSize'],
 		['TextColor','BGColor'],
 		['Link','Unlink','Anchor'],
-		['Image','Table','HorizontalRule'],
-		['SpecialChar']
+		['Image','Table','HorizontalRule']
 	];
+
 };

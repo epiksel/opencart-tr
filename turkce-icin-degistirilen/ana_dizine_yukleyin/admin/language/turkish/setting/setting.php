@@ -77,7 +77,7 @@ $_['entry_return']				= 'İade Koşulları:<br /><span class="help">Ürün iade 
 $_['entry_return_status']       = 'Ürün İade Durumu:<br /><span class="help">Ürün iade isteği oluşturulduğunda varsayılan iade durumunu seçiniz.</span>';
 $_['entry_logo']                = 'Mağaza Logosu:';
 $_['entry_icon']                = 'Favicon:<br /><span class="help">Favicon 16x16 PNG türünden olmalıdır</span>';
-$_['entry_image_category']      = 'Kategori Resim Boyutu:';
+$_['entry_image_category']      = 'Kategori Açıklama Resim Boyutu:';
 $_['entry_image_thumb']         = 'Ürün Sayfası Büyük Resim Boyutu:';
 $_['entry_image_popup']         = 'Ürün Sayfası Colorbox Boyutu:';
 $_['entry_image_product']       = 'Liste Resim Boyutu:';

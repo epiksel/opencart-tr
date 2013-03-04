@@ -23,8 +23,8 @@ $_['column_url']					= 'Mağaza URL';
 $_['column_action']					= 'Eylem';
 
 // Entry
-$_['entry_url']						= 'Mağaza URL:<br /><span class="help">Mağazanızın tam adersiniz yazınız. Sonuna \'/\' işaretini ekleyi unutmayınız. Örneğin: http://wwww.opencart-tr.com.com/shop/</span>';
-$_['entry_ssl']						= 'SSL URL:<br /><span class="help">Mağazanızın SSL URL adresi. Sonuna \'/\' işaretini ekleyi unutmayınız. Örneğin: http://wwww.opencart-tr.com.com/shop/<br /><br />Yeni mağaza oluşturmak için dizin kullanmayınız. You should always point another domain or sub domain to your hosting.</span>';
+$_['entry_url']						= 'Mağaza URL:<br /><span class="help">Mağazanızın tam adersiniz yazınız. Sonuna \'/\' işaretini ekleyi unutmayınız. Örneğin: http://www.e-piksel.com/shop/<br /><br />Yeni bir mağaza oluşturmak için dizin oluşturmayınız. Hostinginiz her zaman başka bir etki alanı veya alt etki alanını işaret etmelidir.</span>';
+$_['entry_ssl']						= 'SSL URL:<br /><span class="help">Mağazanızın SSL URL adresi. Sonuna \'/\' işaretini ekleyi unutmayınız. Örneğin: https://www.e-piksel.com/shop/<br /><br />Yeni bir mağaza oluşturmak için dizin oluşturmayınız. Hostinginiz her zaman başka bir etki alanı veya alt etki alanını işaret etmelidir.</span>';
 $_['entry_name']					= 'Mağaza Adı:';
 $_['entry_owner']					= 'Mağaza Sahibi:';
 $_['entry_address']					= 'Adres:';
@@ -56,7 +56,7 @@ $_['entry_stock_display']			= 'Görünen Stok:<br /><span class="help">Ürün sa
 $_['entry_stock_checkout']			= 'Stok Dışı Sipariş:<br /><span class="help">Müşteriler stokta olmayan ürünleri sipariş edebilsinler.</span>';
 $_['entry_logo']					= 'Mağaza Logosu:';
 $_['entry_icon']					= 'Favicon:<br /><span class="help">Favicon 16x16 PNG türünden olmalıdır</span>';
-$_['entry_image_category']			= 'Kategori Resim Boyutu:';
+$_['entry_image_category']			= 'Kategori Açıklama Resim Boyutu:';
 $_['entry_image_thumb']				= 'Ürün Sayfası Büyük Resim Boyutu:';
 $_['entry_image_popup']				= 'Ürün Sayfası Colorbox Boyutu:';
 $_['entry_image_product']			= 'Liste Resim Boyutu:';

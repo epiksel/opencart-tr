@@ -2,14 +2,15 @@
 /* Turkceye Ceviren eka7a - http://www.e-piksel.com */
 
 // Heading
-$_['heading_title']     = 'Sipariş Toplamı';
+$_['heading_title']     = 'Sipariş Toplamları';
 
 // Text
+$_['text_success']		= 'Başarılı: Sipariş toplamları güncellendi!';
 $_['text_install']      = 'Kur';
 $_['text_uninstall']    = 'Kaldır';
 
 // Column
-$_['column_name']       = 'Sipariş Toplamı';
+$_['column_name']       = 'Sipariş Toplamları';
 $_['column_status']     = 'Durumu';
 $_['column_sort_order'] = 'Sıralama';
 $_['column_action']     = 'Eylem';

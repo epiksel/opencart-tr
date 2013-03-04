@@ -14,6 +14,10 @@
 /tam-surum/ana_dizine_yukleyin/image/cache/*
 !/tam-surum/ana_dizine_yukleyin/image/cache/index.html
 
+# Modification Files
+/tam-surum/ana_dizine_yukleyin/system/modification/*
+!/tam-surum/ana_dizine_yukleyin/system/modification/index.html
+
 # Templates Files
 /tam-surum/ana_dizine_yukleyin/image/templates/*
 /tam-surum/ana_dizine_yukleyin/image/templates/default.jpg

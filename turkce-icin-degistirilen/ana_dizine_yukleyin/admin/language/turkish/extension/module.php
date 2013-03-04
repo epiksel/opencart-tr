@@ -5,6 +5,7 @@
 $_['heading_title']     = 'Modüller';
 
 // Text
+$_['text_success']		= 'Başarılı: Modüller güncellendi!';
 $_['text_install']      = 'Kur';
 $_['text_uninstall']    = 'Kaldır';
 

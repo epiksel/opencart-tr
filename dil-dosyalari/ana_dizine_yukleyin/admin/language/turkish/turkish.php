@@ -24,7 +24,6 @@ $_['text_default']            		= ' <b>(Varsayılan)</b>';
 $_['text_close']              		= 'Kapalı';
 $_['text_pagination']         		= 'Gösterilen: {start} ile {end} arası, toplam: {total} ({pages} Sayfa)';
 $_['text_no_results']         		= 'Gösterilecek sonuç yok!';
-$_['text_separator']          		= ' &gt; ';
 $_['text_edit']               		= 'Düzenle';
 $_['text_view']						= 'Göster';
 $_['text_home']               		= 'Anasayfa';
