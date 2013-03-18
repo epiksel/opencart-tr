@@ -1806,11 +1806,11 @@ INSERT INTO `oc_manufacturer_to_store` (`manufacturer_id`, `store_id`) VALUES
 DROP TABLE IF EXISTS `oc_modification`;
 CREATE TABLE `oc_modification` (
   `modification_id` int(11) NOT NULL AUTO_INCREMENT,
-  `code` varchar(32) NOT NULL,
   `name` varchar(64) NOT NULL,
   `author` varchar(64) NOT NULL,
   `version` varchar(32) NOT NULL,
-  `xml` text NOT NULL,
+  `code` text NOT NULL,
+  `status` tinyint(1) NOT NULL,
   `date_added` datetime NOT NULL,
   `date_modified` datetime NOT NULL,
   PRIMARY KEY (`modification_id`)
@@ -2225,8 +2225,8 @@ INSERT INTO `oc_order_status` (`order_status_id`, `language_id`, `name`) VALUES
 (9, 1, 'İptal Geri Alındı'),
 (10, 1, 'Başarısız'),
 (11, 1, 'İade Edildi'),
-(12, 1, 'Geri Çevirildi'),
-(13, 1, 'Geri Ödeme Yapıldı'),
+(12, 1, 'İade Talep Edildi'),
+(13, 1, 'Geri Ödeme'),
 (14, 1, 'Süresi Doldu'),
 (15, 1, 'Hazırlandı'),
 (16, 1, 'Hükümsüz');

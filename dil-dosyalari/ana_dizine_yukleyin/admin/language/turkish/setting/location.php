@@ -35,7 +35,7 @@ $_['entry_comment']     	= 'Açıklama:<br ?><span class="help">Bu alana müşte
 
 // Error
 $_['error_permission']		= 'Uyarı: Konumları düzenleme iznine sahip değilsiniz!';
-$_['error_name']        	= 'Mağaza adı en az 1 karakter olmalıdır!';
+$_['error_name']        	= 'Mağaza adı 3 ile 32 karakter arasında olmalıdır!';
 $_['error_address_1']   	= 'Adres 1 alanı 3 ile 128 karakter arasında olmalıdır!';
 $_['error_city']        	= 'Şehir alanı 2 ile 128 karakter arasında olmalıdır!';
 $_['error_postcode']    	= 'Bu şehir için posta kodu 2 ile 10 karakter arasında olmalıdır!';

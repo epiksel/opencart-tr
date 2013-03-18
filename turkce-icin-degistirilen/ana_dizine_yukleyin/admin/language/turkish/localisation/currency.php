@@ -2,10 +2,10 @@
 /* Turkceye Ceviren eka7a - http://www.e-piksel.com */
 
 // Heading
-$_['heading_title']        = 'Para Birimi';  
+$_['heading_title']        = 'Para Birimleri';  
 
 // Text
-$_['text_success']         = 'Başarılı: Para birimleri başarılı bir şekilde değiştirildi!';
+$_['text_success']         = 'Başarılı: Para birimi başarılı bir şekilde değiştirildi!';
 
 // Column
 $_['column_title']         = 'Para Birimi Adı';

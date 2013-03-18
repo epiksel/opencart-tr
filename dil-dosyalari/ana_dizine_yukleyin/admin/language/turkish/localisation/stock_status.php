@@ -2,10 +2,10 @@
 /* Turkceye Ceviren eka7a - http://www.e-piksel.com */
 
 // Heading
-$_['heading_title']    = 'Stok Durumu';
+$_['heading_title']    = 'Stok Durumları';
 
 // Text
-$_['text_success']     = 'Başarılı: Stok Durumları başarılı bir şekilde değiştirildi!';
+$_['text_success']     = 'Başarılı: Stok durumu başarılı bir şekilde değiştirildi!';
 
 // Column
 $_['column_name']      = 'Stok Durum Adı';

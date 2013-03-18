@@ -23,8 +23,8 @@
 /tam-surum/ana_dizine_yukleyin/image/templates/default.jpg
 
 # Download Files
-/tam-surum/ana_dizine_yukleyin/download/*
-!/tam-surum/ana_dizine_yukleyin/download/index.html
+/tam-surum/ana_dizine_yukleyin/system/download/*
+!/tam-surum/ana_dizine_yukleyin/system/download/index.html
 
 !/tam-surum/ana_dizine_yukleyin/data/index.html
 
