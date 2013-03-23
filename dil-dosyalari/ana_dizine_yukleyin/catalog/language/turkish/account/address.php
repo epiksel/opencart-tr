@@ -11,6 +11,7 @@ $_['text_edit_address'] = 'Adresi Düzenle';
 $_['text_insert']       = 'Adresinizi başarılı bir şekilde eklediniz';
 $_['text_update']       = 'Adresiniz başarılı bir şekilde güncellediniz';
 $_['text_delete']       = 'Adresiniz başarılı bir şekilde sildiniz';
+$_['text_empty']		= 'Hesabınıza kayıtlı hiç adres yok.';
 
 // Entry
 $_['entry_firstname']   = 'Ad:';

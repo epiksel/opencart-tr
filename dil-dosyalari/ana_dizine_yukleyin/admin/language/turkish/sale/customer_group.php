@@ -15,8 +15,11 @@ $_['column_action']		= 'Eylem';
 // Entry
 $_['entry_name']		= 'Müşteri Grup Adı:';
 $_['entry_description']	= 'Açıklama:';
-$_['entry_approval']	= 'Yeni Müşterileri Onayla:<br /><span class="help">Müşterilerin oturum açabilmesi için kayıt olduktan sonra yönetici tarafından onaylanması gerekir</span>';
+$_['entry_approval']	= 'Yeni Müşterileri Onayla:';
 $_['entry_sort_order']	= 'Sort Order:';
+
+// Help
+$_['help_approval']     = 'Müşterilerin oturum açabilmesi için kayıt olduktan sonra yönetici tarafından onaylanması gerekir.';
 
 // Error
 $_['error_permission']	= 'Uyarı: Müşteri gruplarını düzenleme iznine sahip değilsiniz!';

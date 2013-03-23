@@ -21,17 +21,22 @@ $_['column_action']     	= 'Eylem';
 
 // Entry
 $_['entry_name']        	= 'Mağaza Adı:';
-$_['entry_address_1']   	= 'Adres 1:<br /><span class="help">örn: 123 King George Drive</span>';
-$_['entry_address_2']   	= 'Adres 2:<br /><span class="help">örn: Hemingway Estate</span>';
-$_['entry_city']        	= 'Şehir:<br /><span class="help">örn: Manchester</span>';
-$_['entry_postcode']    	= 'Posta Kodu:<br /><span class="help">Eğer ülkenizde posta kodu kullanılmıyorsa tekrar şehir adı yazınız.</span>';
+$_['entry_address_1']   	= 'Adres 1:';
+$_['entry_address_2']   	= 'Adres 2:';
+$_['entry_city']        	= 'Şehir:';
+$_['entry_postcode']    	= 'Posta Kodu:';
 $_['entry_country']			= 'Ülke:';
 $_['entry_zone']			= 'Şehir:';
 
-$_['entry_geocode']     	= 'Çoğrafi Kod:<br /><span class="help">Mağazanızın çoğrafi konum kodunu oluşturmak için Çoğrafi kod butonunu kullanabilir ya da elle girebilirsiniz.</span>';
+$_['entry_geocode']     	= 'Çoğrafi Kod:';
 $_['entry_image']			= 'Resim:';
-$_['entry_open']			= 'Çalışma Saatleri:<br /><span class="help">Mağazanızın çalışma saatlerini yazınız.</span>';
-$_['entry_comment']     	= 'Açıklama:<br ?><span class="help">Bu alana müşterileriniz için özel bir not yazabilirsiniz. Örneğin: Mağazamızda çek kabul edilmemek gibi.</span>';
+$_['entry_open']			= 'Çalışma Saatleri:';
+$_['entry_comment']     	= 'Açıklama:';
+
+// Help
+$_['help_geocode']			= 'Mağazanızın çoğrafi konum kodunu oluşturmak için Çoğrafi kod butonunu kullanabilir ya da elle girebilirsiniz.';
+$_['help_open']				= 'Mağazanızın çalışma saatlerini yazınız.';
+$_['help_comment']			= 'Bu alana müşterileriniz için özel bir not yazabilirsiniz. Örneğin: Mağazamızda çek kabul edilmemek gibi.';
 
 // Error
 $_['error_permission']		= 'Uyarı: Konumları düzenleme iznine sahip değilsiniz!';

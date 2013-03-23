@@ -58,6 +58,9 @@ $_['entry_return_status'] = 'İade Durumu:';
 $_['entry_notify']        = 'Müşteriye Bildir:';
 $_['entry_action']        = 'İade Eylemi:';
 
+// Help
+$_['help_product']        = '(Otomatik tamamlama)';
+
 // Error
 $_['error_warning']       = 'Uyarı: Oluşan hatalar için lütfen formu dikkatli kontrol ediniz!';
 $_['error_permission']    = 'Uyarı: Ürün İadelerini düzenleme iznine sahip değilsiniz!';

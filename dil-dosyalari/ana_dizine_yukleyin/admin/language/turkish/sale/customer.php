@@ -51,7 +51,10 @@ $_['entry_default']			= 'Varsayılan Adres:';
 $_['entry_comment']         = 'Açıklama:';
 $_['entry_description']		= 'Açıklama:';
 $_['entry_amount']			= 'Kredi Miktarı:';
-$_['entry_points']			= 'Ödül Puanı:<br /><span class="help">Puan silmek için başına eksi işareti koyunuz.</span>';
+$_['entry_points']			= 'Ödül Puanı:';
+
+// Help
+$_['help_points']           = 'Puan silmek için başına eksi işareti koyunuz.';
 
 // Error
 $_['error_warning']			= 'Uyarı: Oluşan hatalar için lütfen formu dikkatli kontrol ediniz!';

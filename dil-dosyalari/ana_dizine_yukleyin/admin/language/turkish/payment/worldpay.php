@@ -13,14 +13,19 @@ $_['text_off']           = 'Kapalı';
       
 // Entry
 $_['entry_merchant']     = 'Merchant ID:';
-$_['entry_password']     = 'Payment Response Password:<br /><span class="help">Bunu WorldPay kontrol panelinden ayarlayınız.</span>';
-$_['entry_callback']     = 'Relay Response URL:<br /><span class="help">Bunu WorldPay kontrol panelinden ayarlayınız. You will also need to check the "Enable the Shopper Response".</span>';
+$_['entry_password']     = 'Payment Response Password:';
+$_['entry_callback']     = 'Relay Response URL:';
 $_['entry_test']         = 'Test Modu:';
-$_['entry_total']        = 'Toplam:<br /><span class="help">Bu ödeme metodunun aktif olması için toplam sipariş miktarını giriniz</span>';
+$_['entry_total']        = 'Toplam:';
 $_['entry_order_status'] = 'Sipariş Durumu:';
 $_['entry_geo_zone']     = 'Genel Bölge:';
 $_['entry_status']       = 'Durumu:';
 $_['entry_sort_order']   = 'Sıralama:';
+
+// Help
+$_['help_password']      = 'Bunu WorldPay kontrol panelinden ayarlayınız.';
+$_['help_callback']      = 'Bunu WorldPay kontrol panelinden ayarlayınız. You will also need to check the "Enable the Shopper Response".';
+$_['help_total']         = 'Bu ödeme metodunun aktif olması için toplam sipariş miktarını giriniz.';
 
 // Error
 $_['error_permission']   = 'Uyarı: WordPay ödeme metodunu düzenleme iznine sahip değilsiniz!';

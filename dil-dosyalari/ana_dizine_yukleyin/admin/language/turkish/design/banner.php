@@ -22,6 +22,7 @@ $_['entry_title']        = 'Başlık:';
 $_['entry_link']         = 'Bağlantı:';
 $_['entry_image']        = 'Resim:';
 $_['entry_status']       = 'Durumu:';
+$_['entry_sort_order']   = 'Sıralama:';
 
 // Error
 $_['error_permission']   = 'Uyarı: Afişleri düzenleme iznine sahip değilsiniz!';

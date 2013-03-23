@@ -20,11 +20,16 @@ $_['text_product']         = 'Ürünler';
 $_['entry_store']          = 'Kimden:';
 $_['entry_to']             = 'Kime:';
 $_['entry_customer_group'] = 'Müşteri Grubu:';
-$_['entry_customer']       = 'Müşteri:<br /><span class="help">(Otomatik Tamamlama)</span>';
-$_['entry_affiliate']      = 'Ortak:<br /><span class="help">(Otomatik Tamamlama)</span>';
-$_['entry_product']        = 'Ürünler:<br /><span class="help">Sadece listedeki ürünleri sipariş veren müşterilere gönder.(Otomatik Tamamlama)</span>';
+$_['entry_customer']       = 'Müşteri:';
+$_['entry_affiliate']      = 'Ortak:';
+$_['entry_product']        = 'Ürünler:';
 $_['entry_subject']        = 'Konu:';
 $_['entry_message']        = 'Mesaj:';
+
+// Help
+$_['help_customer']       = 'Otomatik Tamamlama';
+$_['help_affiliate']      = 'Otomatik Tamamlama';
+$_['help_product']        = 'Sadece listedeki ürünleri sipariş veren müşterilere gönder. (Otomatik Tamamlama)';
 
 // Error
 $_['error_permission']     = 'Uyarı: E-Posta gönderme iznine sahip değilsiniz!';

@@ -16,7 +16,10 @@ $_['column_action']    = 'Eylem';
 // Entry
 $_['entry_title']      = 'Uzunluk Başlığı:';
 $_['entry_unit']       = 'Uzunluk Birimi:';
-$_['entry_value']      = 'Value:<br /><span class="help">Varsayılan uzunluk birim değerini 1.00000 olarak ayarlayın.</span>';
+$_['entry_value']      = 'Birim Değeri:';
+
+// Help
+$_['help_value']       = 'Varsayılan ağırlık birim değerini 1.00000 olarak ayarlayın.';
 
 // Error
 $_['error_permission'] = 'Uyarı: Uzunluk sınıfı düzenleme iznine sahip değilsiniz!';

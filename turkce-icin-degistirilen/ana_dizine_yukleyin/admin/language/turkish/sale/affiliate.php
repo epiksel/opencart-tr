@@ -41,8 +41,8 @@ $_['entry_city']                = 'İlçe / Semt:';
 $_['entry_postcode']            = 'Posta Kodu:';
 $_['entry_country']             = 'Ülke:';
 $_['entry_zone']                = 'Şehir:';
-$_['entry_code']                = 'Takip Kodu:<span class="help">Tavsiyelerinizi izlemek için kullanılacak takip kodu</span>';
-$_['entry_commission']          = 'Komisyon Oranı (%):<span class="help">Ortağın her sipariş için aldığı komisyon oranı</span>';
+$_['entry_code']                = 'Takip Kodu:';
+$_['entry_commission']          = 'Komisyon Oranı (%):';
 $_['entry_tax']                 = 'T.C. / Vergi No:';
 $_['entry_payment']             = 'Ödeme Metodu:';
 $_['entry_cheque']              = 'Alacaklı Adı:';
@@ -54,6 +54,10 @@ $_['entry_bank_account_name']   = 'Hesap Adı:';
 $_['entry_bank_account_number'] = 'Hesap Numarası:';
 $_['entry_amount']              = 'Miktar:';
 $_['entry_description']         = 'Açıklama:';
+
+// Help
+$_['help_code']					= 'Tavsiyeleri izlemek için kullanılacak takip kodu.';
+$_['help_commission']			= 'Ortağın her sipariş için aldığı komisyon oranı.';
 
 // Error
 $_['error_permission']          = 'Uyarı: Ortaklık bilgileri düzenleme iznine sahip değilsiniz!';

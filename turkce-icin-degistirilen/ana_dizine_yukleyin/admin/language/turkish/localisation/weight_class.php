@@ -16,7 +16,10 @@ $_['column_action']    = 'Eylem';
 // Entry
 $_['entry_title']      = 'Ağırlık Adı:';
 $_['entry_unit']       = 'Ağırlık Birimi:';
-$_['entry_value']      = 'Değeri:<br /><span class="help">Varsayılan ağırlık birim değerini 1.00000 olarak ayarlayın.</span>';
+$_['entry_value']      = 'Birim Değeri:';
+
+// Help
+$_['help_value']       = 'Varsayılan ağırlık birim değerini 1.00000 olarak ayarlayın.';
 
 // Error
 $_['error_permission'] = 'Uyarı: Ağırlık Birimlerini düzenleme iznine sahip değilsiniz!';

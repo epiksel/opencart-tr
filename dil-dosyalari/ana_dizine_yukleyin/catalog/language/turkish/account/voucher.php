@@ -18,8 +18,12 @@ $_['entry_to_email']   = 'Alıcının E-Posta Adresi:';
 $_['entry_from_name']  = 'Adınız:';
 $_['entry_from_email'] = 'E-Posta Adresiniz:';
 $_['entry_theme']      = 'Hediye Çeki Teması:';
-$_['entry_message']    = 'Mesajınız:<br /><span class="help">(İsteğe bağlı)</span>';
-$_['entry_amount']     = 'Miktar:<br /><span class="help">( %s ile %s arasında olmalı)</span>';
+$_['entry_message']    = 'Mesajınız:';
+$_['entry_amount']     = 'Miktar:';
+
+// Help
+$_['help_message']     = '(İsteğe bağlı)';
+$_['help_amount']      = '( %s ile %s arasında olmalı)';
 
 // Error
 $_['error_to_name']    = 'Alıcının adı 1 ile 64 karakter arasında olmalıdır!';

@@ -55,6 +55,9 @@ $_['entry_position']       = 'Pozisyon:';
 $_['entry_status']		   = 'Durum:';
 $_['entry_sort_order']     = 'Sıralama:';
 
+// Help
+$_['help_position']		   = 'Yeni alanın hangi alandan sonra görüneceğini seçiniz.';
+
 // Error
 $_['error_permission']     = 'Uyarı: Özel alanları düzenleme yetkisine sahip değilsiniz!';
 $_['error_name']           = 'Özel alan adı 1 ile 128 karakter arasında olmalıdır!';
