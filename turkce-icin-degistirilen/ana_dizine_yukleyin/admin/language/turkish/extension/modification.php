@@ -15,8 +15,8 @@ $_['column_date_modified']	= 'Düzenleme Tarihi';
 $_['column_action']			= 'Eylem';
 
 // Entry
-$_['entry_code']			= 'Modifikasyon:';
-$_['entry_status']			= 'Durumu:';
+$_['entry_code']			= 'Modifikasyon';
+$_['entry_status']			= 'Durumu';
 
 // Error
 $_['error_permission']		= 'Uyarı: Modifikasyonları değiştirme iznine sahip değilsiniz!';

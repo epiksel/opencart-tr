@@ -13,9 +13,9 @@ $_['column_name']       = 'Bölüm Adı';
 $_['column_action']     = 'Eylem';
 
 // Entry
-$_['entry_name']        = 'Bölüm Adı:';
-$_['entry_store']       = 'Mağaza:';
-$_['entry_route']       = 'Yol:';
+$_['entry_name']        = 'Bölüm Adı';
+$_['entry_store']       = 'Mağaza';
+$_['entry_route']       = 'Yol';
 
 // Error
 $_['error_permission']  = 'Uyarı: Bölümleri düzenleme iznine sahip değilsiniz!';

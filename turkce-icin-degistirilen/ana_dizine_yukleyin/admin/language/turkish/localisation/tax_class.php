@@ -15,12 +15,12 @@ $_['column_title']      = 'Vergi Sınıfı Başlığı';
 $_['column_action']		= 'Eylem';
 
 // Entry
-$_['entry_title']       = 'Vergi Sınıfı Başlığı:';
-$_['entry_description'] = 'Açıklama:';
-$_['entry_rate']        = 'Vergi Oranı:';
-$_['entry_based']       = 'Temel:';
-$_['entry_geo_zone']    = 'Genel Bölge:';
-$_['entry_priority']    = 'Öncelik:';
+$_['entry_title']       = 'Vergi Sınıfı Başlığı';
+$_['entry_description'] = 'Açıklama';
+$_['entry_rate']        = 'Vergi Oranı';
+$_['entry_based']       = 'Temel';
+$_['entry_geo_zone']    = 'Genel Bölge';
+$_['entry_priority']    = 'Öncelik';
 
 // Error
 $_['error_permission']  = 'Uyarı: Vergi oranlarını düzenleme iznine sahip değilsiniz!';

@@ -12,7 +12,7 @@ $_['column_name']      = 'Sipariş Durum Adı';
 $_['column_action']    = 'Eylem';
 
 // Entry
-$_['entry_name']       = 'Sipariş Durum Adı:';
+$_['entry_name']       = 'Sipariş Durum Adı';
 
 // Error
 $_['error_permission'] = 'Uyarı: Sipariş Durumlarını düzenleme iznine sahip değilsiniz!';

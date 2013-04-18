@@ -14,9 +14,9 @@ $_['column_sort_order']      = 'Sıralama';
 $_['column_action']          = 'Eylem';
 
 // Entry
-$_['entry_name']            = 'Özellik Adı:';
-$_['entry_attribute_group'] = 'Özellik Grubu:';
-$_['entry_sort_order']      = 'Sıralama:';
+$_['entry_name']            = 'Özellik Adı';
+$_['entry_attribute_group'] = 'Özellik Grubu';
+$_['entry_sort_order']      = 'Sıralama';
 
 // Error
 $_['error_permission']      = 'Uyarı: Özellikleri düzenleme iznine sahip değilsiniz!';

@@ -12,7 +12,7 @@ $_['column_name']      = 'Ürün İade Eylem Adı';
 $_['column_action']    = 'Eylem';
 
 // Entry
-$_['entry_name']       = 'Ürün İade Eylem Adı:';
+$_['entry_name']       = 'Ürün İade Eylem Adı';
 
 // Error
 $_['error_permission'] = 'Uyarı: Ürün iade eylemlerini düzenleme iznine sahip değilsiniz!';

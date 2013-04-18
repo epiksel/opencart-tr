@@ -15,9 +15,9 @@ $_['column_name']        = 'Tema Adı';
 $_['column_action']      = 'Eylem';
 
 // Entry
-$_['entry_name']         = 'Tema Adı:';
-$_['entry_description']  = 'Tema Açıklaması:';
-$_['entry_image']        = 'Resim:';
+$_['entry_name']         = 'Tema Adı';
+$_['entry_description']  = 'Tema Açıklaması';
+$_['entry_image']        = 'Resim';
 
 // Error
 $_['error_permission']  = 'Uyarı: Hediye çeki temasını düzenleme iznine sahip değilsiniz!';

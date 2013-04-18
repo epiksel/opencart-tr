@@ -18,7 +18,7 @@ $_['text_date']             = 'Tarih';
 $_['text_datetime']         = 'Tarih &amp; Zaman';
 $_['text_time']             = 'Zaman';
 $_['text_customer']         = 'Müşteri Bilgileri';
-$_['text_address']          = 'Adres';
+$_['text_address']          = 'Varsayılan Adres';
 $_['text_payment_address']  = 'Fatura Adresi';
 $_['text_shipping_address']	= 'Kargo Adresi';
 $_['text_begining']         = 'Başında';
@@ -34,7 +34,7 @@ $_['text_address_2']        = 'Adres 2';
 $_['text_city']             = 'İlçe / Semt';
 $_['text_postcode']         = 'Posta Kodu';
 $_['text_country']          = 'Ülke';
-$_['text_zone']             = 'Şehir / Eyalet';
+$_['text_zone']             = 'Şehir';
 
 // Column
 $_['column_name']           = 'Özel Alan Adı';
@@ -44,15 +44,19 @@ $_['column_sort_order']     = 'Sıralama';
 $_['column_action']         = 'Eylem';
 
 // Entry
-$_['entry_name']           = 'Özel Alan Adı:';
-$_['entry_type']           = 'Türü:';
-$_['entry_value']          = 'Değeri:';
-$_['entry_custom_value']   = 'Özel Alan Değer Adı:';
-$_['entry_customer_group'] = 'Müşteri Grubu:';
-$_['entry_required']       = 'Gerekli:';
-$_['entry_location']       = 'Konum:';
-$_['entry_position']       = 'Pozisyon:';
-$_['entry_sort_order']     = 'Sıralama:';
+$_['entry_name']           = 'Özel Alan Adı';
+$_['entry_type']           = 'Türü';
+$_['entry_value']          = 'Değeri';
+$_['entry_custom_value']   = 'Özel Alan Değer Adı';
+$_['entry_customer_group'] = 'Müşteri Grubu';
+$_['entry_required']       = 'Gerekli';
+$_['entry_location']       = 'Konum';
+$_['entry_position']       = 'Pozisyon';
+$_['entry_status']		   = 'Durum';
+$_['entry_sort_order']     = 'Sıralama';
+
+// Help
+$_['help_position']		   = 'Yeni alanın hangi alandan sonra görüneceğini seçiniz.';
 
 // Error
 $_['error_permission']     = 'Uyarı: Özel alanları düzenleme yetkisine sahip değilsiniz!';

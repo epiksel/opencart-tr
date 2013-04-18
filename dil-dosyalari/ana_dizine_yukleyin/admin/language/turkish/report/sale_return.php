@@ -17,8 +17,8 @@ $_['column_date_end']   = 'Bitiş Tarihi';
 $_['column_returns']    = 'İade Sayısı';
 
 // Entry
-$_['entry_date_start']	= 'Başlangıç Tarihi:';
-$_['entry_date_end']	= 'Bitiş Tarihi:';
-$_['entry_group']       = 'Zaman Dilimi:';
-$_['entry_status']      = 'Ürün İade Durumu:';
+$_['entry_date_start']	= 'Başlangıç Tarihi';
+$_['entry_date_end']	= 'Bitiş Tarihi';
+$_['entry_group']       = 'Zaman Dilimi';
+$_['entry_status']      = 'Ürün İade Durumu';
 ?>

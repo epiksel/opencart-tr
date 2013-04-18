@@ -16,13 +16,11 @@ $_['column_date_added'] = 'Ekleme Tarihi';
 $_['column_action']     = 'Eylem';
 
 // Entry
-$_['entry_product']     = 'Ürün:';
-$_['entry_author']      = 'Ekleyen:';
-$_['entry_rating']      = 'Oylama:';
-$_['entry_status']      = 'Durumu:';
-$_['entry_text']        = 'Metin:';
-$_['entry_good']        = 'İyi';
-$_['entry_bad']         = 'Kötü';
+$_['entry_product']     = 'Ürün';
+$_['entry_author']      = 'Ekleyen';
+$_['entry_rating']      = 'Oylama';
+$_['entry_status']      = 'Durumu';
+$_['entry_text']        = 'Metin';
 
 // Help
 $_['help_product']      = '(Otomatik Tamamlama)';

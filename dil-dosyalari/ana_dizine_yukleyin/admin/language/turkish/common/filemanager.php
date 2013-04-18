@@ -14,10 +14,10 @@ $_['text_copy']             = 'Başarılı: Dosya ya da dizin kopyalandı!';
 $_['text_rename']           = 'Başarılı: Dosya ya da dizin yeniden adlandırılıdı!';
 
 // Entry
-$_['entry_folder']          = 'Yeni Klasör:';
-$_['entry_move']            = 'Taşı:';
-$_['entry_copy']            = 'Kopyala:';
-$_['entry_rename']          = 'Yeninden Adlandır:';
+$_['entry_folder']          = 'Yeni Klasör';
+$_['entry_move']            = 'Taşı';
+$_['entry_copy']            = 'Kopyala';
+$_['entry_rename']          = 'Yeninden Adlandır';
 
 // Error
 $_['error_select']          = 'Uyarı: Lütfen dosya ya da dizin seçiniz!';

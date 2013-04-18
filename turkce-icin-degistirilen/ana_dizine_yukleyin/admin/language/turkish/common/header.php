@@ -47,6 +47,7 @@ $_['text_order_status']					= 'Sipariş Durumları';
 $_['text_opencart']						= 'Ana Sayfa';
 $_['text_payment']						= 'Ödeme Metodları';
 $_['text_product']						= 'Ürünler';
+$_['text_profile']						= 'Profil';
 $_['text_reports']						= 'Raporlar';
 $_['text_report_sale_order']			= 'Siparişler';
 $_['text_report_sale_tax']				= 'Vergi';

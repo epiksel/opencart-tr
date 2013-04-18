@@ -14,14 +14,14 @@ $_['column_sort_order'] = 'Sıralama';
 $_['column_action']     = 'Eylem';
 
 // Entry
-$_['entry_name']        = 'Dil Adı:';
-$_['entry_code']        = 'Kodu:';
-$_['entry_locale']      = 'Yer:';
-$_['entry_image']       = 'Bayrak Resimi:';
-$_['entry_directory']   = 'Klasör:';
-$_['entry_filename']    = 'Dosya Adı:';
-$_['entry_status']      = 'Durumu:';
-$_['entry_sort_order']  = 'Sıralama:';
+$_['entry_name']        = 'Dil Adı';
+$_['entry_code']        = 'Kodu';
+$_['entry_locale']      = 'Yer';
+$_['entry_image']       = 'Bayrak Resimi';
+$_['entry_directory']   = 'Klasör';
+$_['entry_filename']    = 'Dosya Adı';
+$_['entry_status']      = 'Durumu';
+$_['entry_sort_order']  = 'Sıralama';
 
 // Help
 $_['help_code']         = 'Bu varsayılan diliniz ise değiştirmeyiniz. örn: tr, en';

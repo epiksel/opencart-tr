@@ -12,7 +12,7 @@ $_['column_name']      = 'Stok Durum Adı';
 $_['column_action']    = 'Eylem';
 
 // Entry
-$_['entry_name']       = 'Stok Durum Adı:';
+$_['entry_name']       = 'Stok Durum Adı';
 
 // Error
 $_['error_permission'] = 'Uyarı: Stok durumlarını düzenleme iznine sahip değilsiniz!';

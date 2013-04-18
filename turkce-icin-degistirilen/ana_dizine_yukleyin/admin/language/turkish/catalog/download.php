@@ -14,14 +14,15 @@ $_['column_remaining'] = 'Toplam izin verilen indirme';
 $_['column_action']    = 'Eylem';
 
 // Entry
-$_['entry_name']       = 'Ürün Adı:';
-$_['entry_filename']   = 'Dosya Adı:';
-$_['entry_mask']       = 'Maske:';
-$_['entry_remaining']  = 'Toplam İzin Verilen İndirme:';
-$_['entry_update']     = 'Önceki Müşterileri Güncelle:';
+$_['entry_name']       = 'Ürün Adı';
+$_['entry_filename']   = 'Dosya Adı';
+$_['entry_mask']       = 'Maske';
+$_['entry_remaining']  = 'Toplam İzin Verilen İndirme';
+$_['entry_update']     = 'Önceki Müşterileri Güncelle';
 
 // Help
-$_['help_filename']    = 'Download dizinine dosya yüklemek için "Yükle" butonuyla ya da FTP kullanarak yükleyebilir ve aşağıda maske adını girebilirsiniz.<br /><br />Ayrıca tavsiye edilir, dosya adı ve maske insanların direk bağlantı adresi girerek dosyalarınızı indirmelerini engeller.';
+$_['help_filename']    = 'Download dizinine dosya yüklemek için "Yükle" butonuyla ya da FTP kullanarak yükleyebilir ve aşağıda maske adını girebilirsiniz.';
+$_['help_mask']        = 'Ayrıca tavsiye edilir, dosya adı ve maske insanların direk bağlantı adresi girerek dosyalarınızı indirmelerini engeller.';
 $_['help_update']      = 'Daha önce bu ürünü satın alan müşteriler için dosyayı güncelle ve indirme sayısını yenile.';
 
 // Error

@@ -9,15 +9,15 @@ $_['text_payment']       = 'Ödeme Metodları';
 $_['text_success']       = 'Başarılı: Google Checkout hesap detayları başarılı bir şekilde değiştirildi!';
 
 // Entry
-$_['entry_merchant_id']  = 'Merchant ID:';
-$_['entry_merchant_key'] = 'Merchant Key:';
-$_['entry_callback']     = 'API callback URL:';
-$_['entry_test']         = 'Test Modu:';
-$_['entry_total']        = 'Toplam:';
-$_['entry_order_status'] = 'Sipariş Durumu:';
-$_['entry_geo_zone']	 = 'Genel Bölge:';
-$_['entry_status']       = 'Durumu:';
-$_['entry_sort_order']	 = 'Sıralama:';
+$_['entry_merchant_id']  = 'Merchant ID';
+$_['entry_merchant_key'] = 'Merchant Key';
+$_['entry_callback']     = 'API callback URL';
+$_['entry_test']         = 'Test Modu';
+$_['entry_total']        = 'Toplam';
+$_['entry_order_status'] = 'Sipariş Durumu';
+$_['entry_geo_zone']	 = 'Genel Bölge';
+$_['entry_status']       = 'Durumu';
+$_['entry_sort_order']	 = 'Sıralama';
 
 // Help
 $_['help_test']          = 'URL for Google to notify you of new orders and changes in order state. Use Notification as HTML.';

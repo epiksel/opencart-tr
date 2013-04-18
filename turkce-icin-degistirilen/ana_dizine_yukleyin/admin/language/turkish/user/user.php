@@ -14,15 +14,14 @@ $_['column_date_added'] = 'Ekleme Tarihi';
 $_['column_action']     = 'Aksion';
 
 // Entry
-$_['entry_username']    = 'Kullanıcı Adı:';
-$_['entry_password']    = 'Parola:';
-$_['entry_confirm']     = 'Parola(tekrar):';
-$_['entry_firstname']   = 'Adı:';
-$_['entry_lastname']    = 'Soyadı:';
-$_['entry_email']       = 'E-Posta:';
-$_['entry_user_group']  = 'Kullanıcı Grubu:';
-$_['entry_status']      = 'Durumu:';
-$_['entry_captcha']		= 'Aşağıdaki kutuya kodu girin:';
+$_['entry_username']    = 'Kullanıcı Adı';
+$_['entry_password']    = 'Parola';
+$_['entry_confirm']     = 'Parola(tekrar)';
+$_['entry_firstname']   = 'Adı';
+$_['entry_lastname']    = 'Soyadı';
+$_['entry_email']       = 'E-Posta';
+$_['entry_user_group']  = 'Kullanıcı Grubu';
+$_['entry_status']      = 'Durumu';
 
 // Error
 $_['error_permission']  = 'Uyarı: Kullanıcıları düzenleme iznine sahip değilsiniz!';

@@ -19,8 +19,8 @@ $_['column_orders']     = 'Sipariş Sayısı';
 $_['column_total']      = 'Toplam';
 
 // Entry
-$_['entry_date_start']	= 'Başlangıç Tarihi:';
-$_['entry_date_end']	= 'Bitiş Tarihi:';
-$_['entry_group']       = 'Zaman Dilimi:';
-$_['entry_status']      = 'Sipariş Durumu:';
+$_['entry_date_start']	= 'Başlangıç Tarihi';
+$_['entry_date_end']	= 'Bitiş Tarihi';
+$_['entry_group']       = 'Zaman Dilimi';
+$_['entry_status']      = 'Sipariş Durumu';
 ?>

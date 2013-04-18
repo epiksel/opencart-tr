@@ -12,15 +12,15 @@ $_['text_declined']      = 'Açık - Daima Başarısız';
 $_['text_off']           = 'Kapalı';
       
 // Entry
-$_['entry_merchant']     = 'Merchant ID:';
-$_['entry_password']     = 'Payment Response Password:';
-$_['entry_callback']     = 'Relay Response URL:';
-$_['entry_test']         = 'Test Modu:';
-$_['entry_total']        = 'Toplam:';
-$_['entry_order_status'] = 'Sipariş Durumu:';
-$_['entry_geo_zone']     = 'Genel Bölge:';
-$_['entry_status']       = 'Durumu:';
-$_['entry_sort_order']   = 'Sıralama:';
+$_['entry_merchant']     = 'Merchant ID';
+$_['entry_password']     = 'Payment Response Password';
+$_['entry_callback']     = 'Relay Response URL';
+$_['entry_test']         = 'Test Modu';
+$_['entry_total']        = 'Toplam';
+$_['entry_order_status'] = 'Sipariş Durumu';
+$_['entry_geo_zone']     = 'Genel Bölge';
+$_['entry_status']       = 'Durumu';
+$_['entry_sort_order']   = 'Sıralama';
 
 // Help
 $_['help_password']      = 'Bunu WorldPay kontrol panelinden ayarlayınız.';

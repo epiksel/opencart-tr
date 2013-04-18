@@ -14,9 +14,9 @@ $_['column_value']     = 'Değeri';
 $_['column_action']    = 'Eylem';
 
 // Entry
-$_['entry_title']      = 'Uzunluk Başlığı:';
-$_['entry_unit']       = 'Uzunluk Birimi:';
-$_['entry_value']      = 'Birim Değeri:';
+$_['entry_title']      = 'Uzunluk Başlığı';
+$_['entry_unit']       = 'Uzunluk Birimi';
+$_['entry_value']      = 'Birim Değeri';
 
 // Help
 $_['help_value']       = 'Varsayılan ağırlık birim değerini 1.00000 olarak ayarlayın.';

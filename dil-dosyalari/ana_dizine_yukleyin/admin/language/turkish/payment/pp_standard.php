@@ -12,24 +12,24 @@ $_['text_authorization']			 = 'Onaylı Ödeme';
 $_['text_sale']						 = 'Direk Ödeme';
 
 // Entry
-$_['entry_email']					 = 'E-Posta:';
-$_['entry_test']					 = 'Test Modu:';
-$_['entry_transaction']				 = 'Ödeme Metodu:';
-$_['entry_debug']					 = 'Hata Ayıklama Modu:';
-$_['entry_total']        			 = 'Toplam:';
-$_['entry_canceled_reversal_status'] = 'Değişim İptal Durumu:';
-$_['entry_completed_status']         = 'Tamamlandı Durumu:';
-$_['entry_denied_status']			 = 'Reddedildi Durumu:';
-$_['entry_expired_status']			 = 'Süresi Geçmiş Durumu:';
-$_['entry_failed_status']			 = 'Başarısız Durumu:';
-$_['entry_pending_status']			 = 'Onay Bekliyor Durumu:';
-$_['entry_processed_status']		 = 'Hazırlanıyor Durumu:';
-$_['entry_refunded_status']			 = 'İade Edildi Durumu:';
-$_['entry_reversed_status']			 = 'İadeyi Geri Al Durumu:';
-$_['entry_voided_status']		     = 'Hükümsüz Durumu:';
-$_['entry_geo_zone']				 = 'Genel Bölge:';
-$_['entry_status']					 = 'Durumu:';
-$_['entry_sort_order']				 = 'Sıralama:';
+$_['entry_email']					 = 'E-Posta';
+$_['entry_test']					 = 'Test Modu';
+$_['entry_transaction']				 = 'Ödeme Metodu';
+$_['entry_debug']					 = 'Hata Ayıklama Modu';
+$_['entry_total']        			 = 'Toplam';
+$_['entry_canceled_reversal_status'] = 'Değişim İptal Durumu';
+$_['entry_completed_status']         = 'Tamamlandı Durumu';
+$_['entry_denied_status']			 = 'Reddedildi Durumu';
+$_['entry_expired_status']			 = 'Süresi Geçmiş Durumu';
+$_['entry_failed_status']			 = 'Başarısız Durumu';
+$_['entry_pending_status']			 = 'Onay Bekliyor Durumu';
+$_['entry_processed_status']		 = 'Hazırlanıyor Durumu';
+$_['entry_refunded_status']			 = 'İade Edildi Durumu';
+$_['entry_reversed_status']			 = 'İadeyi Geri Al Durumu';
+$_['entry_voided_status']		     = 'Hükümsüz Durumu';
+$_['entry_geo_zone']				 = 'Genel Bölge';
+$_['entry_status']					 = 'Durumu';
+$_['entry_sort_order']				 = 'Sıralama';
 
 // Help
 $_['help_debug']					 = 'Sistem kayıtlarına hata bilgilerini ekler.';

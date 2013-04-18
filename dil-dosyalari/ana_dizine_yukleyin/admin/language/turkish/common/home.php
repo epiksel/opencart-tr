@@ -8,14 +8,14 @@ $_['heading_title']       		    = 'Yönetim Paneli';
 $_['text_overview']                 = 'Genel Bakış';
 $_['text_statistics']               = 'İstatistikler';
 $_['text_latest_10_orders']         = 'Son 10 Sipariş';
-$_['text_total_sale']               = 'Toplam Satış:';
-$_['text_total_sale_year']          = 'Bu Yıl Toplam Satış:';
-$_['text_total_order']              = 'Toplam Sipariş:';
-$_['text_total_customer']           = 'Toplam Müşteri:';
-$_['text_total_customer_approval']  = 'Onay Bekleyen Müşteriler:';
-$_['text_total_review_approval']    = 'Onay Bekleyen Yorumlar:';
-$_['text_total_affiliate']          = 'Toplam Ortaklar:';
-$_['text_total_affiliate_approval'] = 'Onay Bekleyen Ortaklar:';
+$_['text_total_sale']               = 'Toplam Satış';
+$_['text_total_sale_year']          = 'Bu Yıl Toplam Satış';
+$_['text_total_order']              = 'Toplam Sipariş';
+$_['text_total_customer']           = 'Toplam Müşteri';
+$_['text_total_customer_approval']  = 'Onay Bekleyen Müşteriler';
+$_['text_total_review_approval']    = 'Onay Bekleyen Yorumlar';
+$_['text_total_affiliate']          = 'Toplam Ortaklar';
+$_['text_total_affiliate_approval'] = 'Onay Bekleyen Ortaklar';
 $_['text_day']            		    = 'Bugün';
 $_['text_week']           		    = 'Bu Hafta';
 $_['text_month']        		    = 'Bu Ay';
@@ -34,7 +34,7 @@ $_['column_lastname']     		    = 'Soyadı';
 $_['column_action']        		    = 'Eylem';
 
 // Entry
-$_['entry_range']         		    = 'Sıralama Seç:';
+$_['entry_range']         		    = 'Sıralama Seç';
 
 // Error
 $_['error_install']         		= 'UYARI: INSTALL DİZİNİ HALA MEVCUT VE GÜVENLİK NEDENİ İLE SİLMENİZ TAVSİYE EDİLİR!';

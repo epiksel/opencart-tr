@@ -13,10 +13,10 @@ $_['column_sort_order']	= 'Sort Order';
 $_['column_action']		= 'Eylem';
 
 // Entry
-$_['entry_name']		= 'Müşteri Grup Adı:';
-$_['entry_description']	= 'Açıklama:';
-$_['entry_approval']	= 'Yeni Müşterileri Onayla:';
-$_['entry_sort_order']	= 'Sort Order:';
+$_['entry_name']		= 'Müşteri Grup Adı';
+$_['entry_description']	= 'Açıklama';
+$_['entry_approval']	= 'Yeni Müşterileri Onayla';
+$_['entry_sort_order']	= 'Sort Order';
 
 // Help
 $_['help_approval']     = 'Müşterilerin oturum açabilmesi için kayıt olduktan sonra yönetici tarafından onaylanması gerekir.';

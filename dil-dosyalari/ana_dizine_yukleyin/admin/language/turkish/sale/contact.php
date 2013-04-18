@@ -17,14 +17,14 @@ $_['text_affiliate']       = 'Ortaklar';
 $_['text_product']         = 'Ürünler';
 
 // Entry
-$_['entry_store']          = 'Kimden:';
-$_['entry_to']             = 'Kime:';
-$_['entry_customer_group'] = 'Müşteri Grubu:';
-$_['entry_customer']       = 'Müşteri:';
-$_['entry_affiliate']      = 'Ortak:';
-$_['entry_product']        = 'Ürünler:';
-$_['entry_subject']        = 'Konu:';
-$_['entry_message']        = 'Mesaj:';
+$_['entry_store']          = 'Kimden';
+$_['entry_to']             = 'Kime';
+$_['entry_customer_group'] = 'Müşteri Grubu';
+$_['entry_customer']       = 'Müşteri';
+$_['entry_affiliate']      = 'Ortak';
+$_['entry_product']        = 'Ürünler';
+$_['entry_subject']        = 'Konu';
+$_['entry_message']        = 'Mesaj';
 
 // Help
 $_['help_customer']       = 'Otomatik Tamamlama';

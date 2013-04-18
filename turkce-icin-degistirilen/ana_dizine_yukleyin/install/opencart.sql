@@ -841,7 +841,7 @@ INSERT INTO `oc_country` (`country_id`, `name`, `iso_code_2`, `iso_code_3`, `add
 (212, 'Tonga', 'TO', 'TON', '', 0, 1),
 (213, 'Trinidad and Tobago', 'TT', 'TTO', '', 0, 1),
 (214, 'Tunisia', 'TN', 'TUN', '', 0, 1),
-(215, 'Türkiye', 'TR', 'TUR', '{firstname} {lastname}\r\n{company}\r\n{address_1}\r\n{address_2}\r\n{city} {postcode}, {zone}\r\n{country}', 1, 1),
+(215, 'Türkiye', 'TR', 'TUR', '{firstname} {lastname}\r\n{company}\r\n{address_1}\r\n{address_2}\r\n{postcode}, {city} - {zone} / {country}', 1, 1),
 (216, 'Turkmenistan', 'TM', 'TKM', '', 0, 1),
 (217, 'Turks and Caicos Islands', 'TC', 'TCA', '', 0, 1),
 (218, 'Tuvalu', 'TV', 'TUV', '', 0, 1),

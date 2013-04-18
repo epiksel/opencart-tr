@@ -28,11 +28,11 @@ $_['column_sort_order']   = 'Sıralama';
 $_['column_action']       = 'Eylem';
 
 // Entry
-$_['entry_name']         = 'Seçenek Adı:';
-$_['entry_type']         = 'Türü:';
-$_['entry_option_value'] = 'Seçenek Değer Adı:';
-$_['entry_image']        = 'Resim:';
-$_['entry_sort_order']   = 'Sıralama:';
+$_['entry_name']         = 'Seçenek Adı';
+$_['entry_type']         = 'Türü';
+$_['entry_option_value'] = 'Seçenek Değer Adı';
+$_['entry_image']        = 'Resim';
+$_['entry_sort_order']   = 'Sıralama';
 
 // Error
 $_['error_permission']   = 'Uyarı: Seçenekleri düzenleme iznine sahip değilsiniz!';

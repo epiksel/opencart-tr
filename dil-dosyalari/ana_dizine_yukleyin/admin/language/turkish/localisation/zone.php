@@ -14,10 +14,10 @@ $_['column_country']         = 'Ülke';
 $_['column_action']          = 'Eylem';
 
 // Entry
-$_['entry_status']           = 'Şehir Durumu:';
-$_['entry_name']             = 'Şehir Adı:';
-$_['entry_code']             = 'Şehir Kodu:';
-$_['entry_country']          = 'Ülke:';
+$_['entry_status']           = 'Şehir Durumu';
+$_['entry_name']             = 'Şehir Adı';
+$_['entry_code']             = 'Şehir Kodu';
+$_['entry_country']          = 'Ülke';
 
 // Error
 $_['error_permission']       = 'Uyarı: Şehirleri düzenleme iznine sahip değilsiniz!';

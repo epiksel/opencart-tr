@@ -9,8 +9,8 @@ $_['text_backup']      = 'Yedeleme İndir';
 $_['text_success']     = 'Başarılı: Veritabanı başarı bir şekilde yedeklendi!';
 
 // Entry
-$_['entry_restore']    = 'Yedekten Geri Yükle:';
-$_['entry_backup']     = 'Yedekle:';
+$_['entry_restore']    = 'Yedekten Geri Yükle';
+$_['entry_backup']     = 'Yedekle';
 
 // Error
 $_['error_permission'] = 'Uyarı: Yedekleri düzenleme iznine sahip değilsiniz!';

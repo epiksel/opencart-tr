@@ -13,14 +13,14 @@ $_['text_successful']    = 'Her zaman başarılı';
 $_['text_fail']          = 'Her zaman başarısız';
 
 // Entry
-$_['entry_merchant']     = 'Merchant ID:';
-$_['entry_password']     = 'Remote Password:';
-$_['entry_test']         = 'Test Modu:';
-$_['entry_total']        = 'Toplam:';
-$_['entry_order_status'] = 'Sipariş Durumu:';
-$_['entry_geo_zone']     = 'Genel Bölge:';
-$_['entry_status']       = 'Durumu:';
-$_['entry_sort_order']   = 'Sıralama:';
+$_['entry_merchant']     = 'Merchant ID';
+$_['entry_password']     = 'Remote Password';
+$_['entry_test']         = 'Test Modu';
+$_['entry_total']        = 'Toplam';
+$_['entry_order_status'] = 'Sipariş Durumu';
+$_['entry_geo_zone']     = 'Genel Bölge';
+$_['entry_status']       = 'Durumu';
+$_['entry_sort_order']   = 'Sıralama';
 
 // Help
 $_['help_password']      = 'Leave empty if you do not have "Digest Key Authentication" enabled on your account.';

@@ -9,8 +9,8 @@ $_['text_feed']        = 'Ürün Besleme';
 $_['text_success']     = 'Başarılı: Google Sitemap beslemesi güncellendi!';
 
 // Entry
-$_['entry_status']     = 'Durumu:';
-$_['entry_data_feed']  = 'Feed Veri Adresi:';
+$_['entry_status']     = 'Durumu';
+$_['entry_data_feed']  = 'Feed Veri Adresi';
 
 // Error
 $_['error_permission'] = 'Uyarı: Google Sitemap düzenleme iznine sahip değilsiniz!';

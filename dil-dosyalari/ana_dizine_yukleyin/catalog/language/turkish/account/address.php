@@ -14,16 +14,16 @@ $_['text_delete']       = 'Adresiniz başarılı bir şekilde sildiniz';
 $_['text_empty']		= 'Hesabınıza kayıtlı hiç adres yok.';
 
 // Entry
-$_['entry_firstname']   = 'Ad:';
-$_['entry_lastname']    = 'Soyad:';
-$_['entry_company']     = 'Şirket Adı:';
-$_['entry_address_1']   = 'Adres 1:';
-$_['entry_address_2']   = 'Adres 2:';
-$_['entry_postcode']    = 'Posta Kodu:';
-$_['entry_city']        = 'İlçe / Semt:';
-$_['entry_country']     = 'Ülke:';
-$_['entry_zone']        = 'Şehir:';
-$_['entry_default']     = 'Varsayılan Adres:';
+$_['entry_firstname']   = 'Ad';
+$_['entry_lastname']    = 'Soyad';
+$_['entry_company']     = 'Şirket Adı';
+$_['entry_address_1']   = 'Adres 1';
+$_['entry_address_2']   = 'Adres 2';
+$_['entry_postcode']    = 'Posta Kodu';
+$_['entry_city']        = 'İlçe / Semt';
+$_['entry_country']     = 'Ülke';
+$_['entry_zone']        = 'Şehir';
+$_['entry_default']     = 'Varsayılan Adres';
 
 // Error
 $_['error_delete']      = 'Uyarı: En az bir adres yazmalısınız!';

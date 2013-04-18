@@ -9,15 +9,15 @@ $_['text_payment']       	= 'Ödeme Metodları';
 $_['text_success']      	= 'Başarılı: Authorize.Net hesap detayları başarılı bir şekilde değiştirildi!';
 
 // Entry
-$_['entry_merchant']     	= 'Merchant ID:';
-$_['entry_key']          	= 'Transaction Key:';
-$_['entry_callback']        = 'Relay Response URL:';
-$_['entry_test']         	= 'Test Modu:';
-$_['entry_total']        	= 'Total:';
-$_['entry_order_status'] 	= 'Sipariş Durumu:';
-$_['entry_geo_zone']     	= 'Genel Bölge:';
-$_['entry_status']       	= 'Durumu:';
-$_['entry_sort_order']   	= 'Sıralama:';
+$_['entry_merchant']     	= 'Merchant ID';
+$_['entry_key']          	= 'Transaction Key';
+$_['entry_callback']        = 'Relay Response URL';
+$_['entry_test']         	= 'Test Modu';
+$_['entry_total']        	= 'Total';
+$_['entry_order_status'] 	= 'Sipariş Durumu';
+$_['entry_geo_zone']     	= 'Genel Bölge';
+$_['entry_status']       	= 'Durumu';
+$_['entry_sort_order']   	= 'Sıralama';
 
 // Help
 $_['help_callback']			= 'Please login and set this at <a href="https://secure.authorize.net" target="_blank" class="txtLink">https://secure.authorize.net</a>.';

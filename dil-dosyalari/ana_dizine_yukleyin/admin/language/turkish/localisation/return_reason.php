@@ -12,7 +12,7 @@ $_['column_name']      = 'Ürün İade Neden Adı';
 $_['column_action']    = 'Eylem';
 
 // Entry
-$_['entry_name']       = 'Ürün İade Neden Adı:';
+$_['entry_name']       = 'Ürün İade Neden Adı';
 
 // Error
 $_['error_permission'] = 'Uyarı: Ürün iade nedenlerini düzenleme iznine sahip değilsiniz!';

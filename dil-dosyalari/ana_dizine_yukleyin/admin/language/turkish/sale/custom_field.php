@@ -44,16 +44,16 @@ $_['column_sort_order']     = 'Sıralama';
 $_['column_action']         = 'Eylem';
 
 // Entry
-$_['entry_name']           = 'Özel Alan Adı:';
-$_['entry_type']           = 'Türü:';
-$_['entry_value']          = 'Değeri:';
-$_['entry_custom_value']   = 'Özel Alan Değer Adı:';
-$_['entry_customer_group'] = 'Müşteri Grubu:';
-$_['entry_required']       = 'Gerekli:';
-$_['entry_location']       = 'Konum:';
-$_['entry_position']       = 'Pozisyon:';
-$_['entry_status']		   = 'Durum:';
-$_['entry_sort_order']     = 'Sıralama:';
+$_['entry_name']           = 'Özel Alan Adı';
+$_['entry_type']           = 'Türü';
+$_['entry_value']          = 'Değeri';
+$_['entry_custom_value']   = 'Özel Alan Değer Adı';
+$_['entry_customer_group'] = 'Müşteri Grubu';
+$_['entry_required']       = 'Gerekli';
+$_['entry_location']       = 'Konum';
+$_['entry_position']       = 'Pozisyon';
+$_['entry_status']		   = 'Durum';
+$_['entry_sort_order']     = 'Sıralama';
 
 // Help
 $_['help_position']		   = 'Yeni alanın hangi alandan sonra görüneceğini seçiniz.';

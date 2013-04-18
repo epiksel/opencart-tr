@@ -13,10 +13,10 @@ $_['column_description'] = 'Açıklama';
 $_['column_action']      = 'Eylem';
 
 // Entry
-$_['entry_name']         = 'Genel Bölge Adı:';
-$_['entry_description']  = 'Açıklama:';
-$_['entry_country']      = 'Ülke:';
-$_['entry_zone']         = 'Şehir:';
+$_['entry_name']         = 'Genel Bölge Adı';
+$_['entry_description']  = 'Açıklama';
+$_['entry_country']      = 'Ülke';
+$_['entry_zone']         = 'Şehir';
 
 // Error
 $_['error_permission']   = 'Uyarı: Genel Bölgeleri düzenleme iznine sahip değilsiniz!';
