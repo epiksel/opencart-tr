@@ -26,7 +26,8 @@ $_['text_pagination']         		= 'Gösterilen: %d ile %d arası, toplam: %d (%d
 $_['text_no_results']         		= 'Gösterilecek sonuç yok!';
 $_['text_edit']               		= 'Düzenle';
 $_['text_view']						= 'Göster';
-$_['text_home']               		= '<i class="icon-home"></i>';
+$_['text_home']               		= '<i class="icon-home icon-large"></i';
+$_['text_loading']                  = 'Yükleniyor...';
 
 // Button
 $_['button_insert']           		= 'Ekle';
