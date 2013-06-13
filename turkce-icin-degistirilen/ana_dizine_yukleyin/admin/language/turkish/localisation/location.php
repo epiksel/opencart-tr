@@ -7,8 +7,6 @@ $_['heading_title']     	= 'Mağaza Konumları';
 // Text
 $_['text_success']      	= 'Başarılı: Mağaza konumu başarılı bir şekilde değiştirildi!'; 
 $_['text_time']         	= 'Çalışma Saatleri';
-$_['text_browse']       	= 'Gözat';
-$_['text_clear']        	= 'Temizle';
 $_['text_image_manager']	= 'Resim Yönetimi';
 $_['text_geocode']			= 'Coğrafi kod aşağıdaki nedenden dolayı başarısız oldu';
 

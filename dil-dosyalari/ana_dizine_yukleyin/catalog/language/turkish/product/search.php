@@ -36,5 +36,5 @@ $_['text_limit']        = 'Göster:';
 
 // Entry
 $_['entry_search']      = 'Arama:';
-$_['entry_description'] = 'Ürün açıklamalarında da ara.';
+$_['entry_description'] = 'Ürün açıklamasında ara.';
 ?>

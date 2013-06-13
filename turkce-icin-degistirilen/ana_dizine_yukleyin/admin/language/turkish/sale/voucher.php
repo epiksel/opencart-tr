@@ -5,10 +5,8 @@
 $_['heading_title']		= 'Hediye Çekleri';
 
 // Text
-$_['text_send']			= 'Gönder';
 $_['text_success']		= 'Başarılı: Hediye çeki başarılı bir şekilde değiştirildi!';
 $_['text_sent']			= 'Başarılı: Hediye çeki e-postası gönderildi!';
-$_['text_wait']			= 'Lütfen Bekleyiniz!';
 
 // Column
 $_['column_name']		= 'Çek Adı';

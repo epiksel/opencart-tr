@@ -7,7 +7,6 @@ $_['heading_title']             = 'Ortaklar';
 // Text
 $_['text_success']              = 'Başarılı: Oraklık başarılı bir şekilde değiştirildi!';
 $_['text_approved']             = '%s hesabını onayladınız!';
-$_['text_wait']                 = 'Lütfen Bekleyiniz!';
 $_['text_balance']              = 'Bakiye';
 $_['text_cheque']               = 'Çek';
 $_['text_paypal']               = 'PayPal';

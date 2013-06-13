@@ -26,14 +26,14 @@ $_['text_pagination']         		= 'Gösterilen: %d ile %d arası, toplam: %d (%d
 $_['text_no_results']         		= 'Gösterilecek sonuç yok!';
 $_['text_edit']               		= 'Düzenle';
 $_['text_view']						= 'Göster';
-$_['text_home']               		= '<i class="icon-home icon-large"></i';
-$_['text_loading']                  = 'Yükleniyor...';
+$_['text_home']               		= '<i class="icon-home icon-large"></i>';
 
 // Button
 $_['button_insert']           		= 'Ekle';
 $_['button_delete']           		= 'Sil';
 $_['button_save']             		= 'Kaydet';
 $_['button_cancel']           		= 'İptal';
+$_['button_continue']               = 'Devam et';
 $_['button_clear']            		= 'Temizle';
 $_['button_close']            		= 'Kapat';
 $_['button_filter']           		= 'Süzgeç';
@@ -110,6 +110,7 @@ $_['tab_voucher']             		= 'Hediye Çekleri';
 $_['tab_voucher_history']     		= 'Hediye Çeki Geçmişi';
 
 // Error
+$_['error_exception']               = 'Hata kodu(%s): %s in %s on line %s';
 $_['error_upload_1']          		= 'Uyarı: Karşıya yüklenen dosya çok büyük - php.ini dosyasındaki upload_max_filesize değerini değiştirin!';
 $_['error_upload_2']          		= 'Uyarı: Karşıya yüklenen dosya HTML formundaki MAX_FILE_SIZE değerinden çok büyük';
 $_['error_upload_3']          		= 'Uyarı: Karşıya yüklenen dosya sadece kısmi olarak yüklendi!';

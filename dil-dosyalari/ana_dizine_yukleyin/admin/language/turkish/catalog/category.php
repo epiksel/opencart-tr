@@ -8,8 +8,6 @@ $_['heading_title']          	= 'Kategori';
 $_['text_success']           	= 'Başarılı: Kategoriler değiştirildi!';
 $_['text_default']           	= 'Varsayılan Mağaza';
 $_['text_image_manager']     	= 'Resim Yönetimi';
-$_['text_browse']         	 	= 'Gözat';
-$_['text_clear']          	 	= 'Temizle';
 
 // Column
 $_['column_name']            	= 'Kategori Adı';

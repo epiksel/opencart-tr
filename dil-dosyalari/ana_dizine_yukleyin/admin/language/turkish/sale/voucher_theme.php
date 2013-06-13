@@ -7,8 +7,6 @@ $_['heading_title']      = 'Hediye Çeki Temaları';
 // Text
 $_['text_success']       = 'Başarılı: Hediye çeki teması başarılı bir şekilde değiştirildi!';
 $_['text_image_manager'] = 'Resim Yönetimi';
-$_['text_browse']        = 'Gözat';
-$_['text_clear']         = 'Temizle';
 
 // Column
 $_['column_name']        = 'Tema Adı';
