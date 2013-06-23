@@ -39,6 +39,7 @@ $_['text_location']						= 'Mağaza Konumları';
 $_['text_logout']						= 'Oturumu Kapat';
 $_['text_contact']						= 'Toplu E-Posta';
 $_['text_modification']					= 'Modifikasyonlar';
+$_['text_marketing']					= 'Pazarlama Takibi';
 $_['text_manufacturer']					= 'Üreticiler';
 $_['text_module']						= 'Modüller';
 $_['text_option']						= 'Seçenekler';
