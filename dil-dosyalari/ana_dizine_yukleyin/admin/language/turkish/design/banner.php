@@ -26,8 +26,4 @@ $_['entry_sort_order']   = 'Sıralama';
 $_['error_permission']   = 'Uyarı: Afişleri düzenleme iznine sahip değilsiniz!';
 $_['error_name']         = 'Afiş Adı 3 ile 64 karakter arasında olmalı!';
 $_['error_title']        = 'Afiş Başlığı 3 ile 64 karakter arasında olmalı!';
-$_['error_default']      = 'Uyarı: Bu bölümü silemezsiniz. Bu bölüm varsayılan mağaza bölümü olarak kullanımaktadır!';
-$_['error_product']      = 'Uyarı: Bu bölümü silemezsiniz. Bu bölüm %s ürün tarafından olarak kullanımaktadır!';
-$_['error_category']     = 'Uyarı: Bu bölümü silemezsiniz. Bu bölüm %s kategori tarafından olarak kullanımaktadır!';
-$_['error_information']  = 'Uyarı: Bu bölümü silemezsiniz. Bu bölüm %s bilgi sayfası tarafından olarak kullanımaktadır!';
 ?>

@@ -2,10 +2,10 @@
 /* Turkceye Ceviren eka7a - http://www.e-piksel.com */
 
 // Heading
-$_['heading_title']     = 'Pazarlama Takibi';
+$_['heading_title']     = 'Pazarlama';
 
 // Text
-$_['text_success']      = 'Başarılı: Pazarlama takibi başarılı bir şekilde değiştirildi!';
+$_['text_success']      = 'Başarılı: Pazarlama başarılı bir şekilde değiştirildi!';
 
 // Column
 $_['column_name']       = 'Kampanya Adı';
@@ -21,10 +21,10 @@ $_['entry_description'] = 'Kampanya Açıklama';
 $_['entry_code']        = 'Takip Kodu';
 
 // Help
-$_['help_code']         = 'Pazarlama kampanya takiplari için kullanılacak kod.';
+$_['help_code']         = 'Pazarlama kampanyalarını takip etmek için kullanılacak kod.';
 
 // Error
-$_['error_permission']  = 'Uyarı: Pazarlama Takip bilgileri düzenleme iznine sahip değilsiniz!';
+$_['error_permission']  = 'Uyarı: Pazarlama bilgileri düzenleme iznine sahip değilsiniz!';
 $_['error_name']        = 'Kampanya Adı 1 ile 32 karakter arasında olmalı!';
 $_['error_code']        = 'Takip kodu gerekli!';
 ?>
