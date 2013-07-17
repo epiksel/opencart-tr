@@ -16,6 +16,6 @@ $_['entry_name']       = 'Ürün İade Eylem Adı';
 
 // Error
 $_['error_permission'] = 'Uyarı: Ürün iade eylemlerini düzenleme iznine sahip değilsiniz!';
-$_['error_name']       = 'Ürün İade Eylem Adı 3 ile 32 karakter arasında olmalı!';
+$_['error_name']       = 'Ürün İade Eylem Adı 3 ile 64 karakter arasında olmalı!';
 $_['error_return']     = 'Uyarı: Bu geri İade eylemini silemezsiniz. Bu ürün iade eylemi %s iadeli ürün tarafından kullanılıyor!';
 ?>

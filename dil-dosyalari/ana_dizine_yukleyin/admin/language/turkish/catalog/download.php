@@ -2,7 +2,7 @@
 /* Turkceye Ceviren eka7a - http://www.e-piksel.com */
 
 // Heading
-$_['heading_title']    = 'İndirilebilir Ürünler';
+$_['heading_title']    = 'Dosyalar';
 
 // Text
 $_['text_success']     = 'Başarılı: Dosya başarılı bir şekilde değiştirildi!';
