@@ -1,117 +1,125 @@
 <?php echo $header; ?>
+<ul class="breadcrumb">
+  <?php foreach ($breadcrumbs as $breadcrumb) { ?>
+  <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
+  <?php } ?>
+</ul>
 <?php if ($error_warning) { ?>
-<div class="warning"><?php echo $error_warning; ?></div>
+<div class="alert alert-error"><?php echo $error_warning; ?></div>
 <?php } ?>
-<?php echo $column_left; ?><?php echo $column_right; ?>
-<div id="content"><?php echo $content_top; ?>
-  <div class="breadcrumb">
-    <?php foreach ($breadcrumbs as $breadcrumb) { ?>
-    <?php echo $breadcrumb['separator']; ?><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a>
-    <?php } ?>
-  </div>
-  <h1><?php echo $heading_title; ?></h1>
-  <p><?php echo $text_account_already; ?></p>
-  <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data">
-    <h2><?php echo $text_your_details; ?></h2>
-    <div class="content">
-      <table class="form">
-        <tr>
-          <td><span class="required">*</span> <?php echo $entry_firstname; ?></td>
-          <td><input type="text" name="firstname" value="<?php echo $firstname; ?>" />
+<div class="row"><?php echo $column_left; ?>
+  <div id="content" class="span9"><?php echo $content_top; ?>
+    <h1><?php echo $heading_title; ?></h1>
+    <p><?php echo $text_account_already; ?></p>
+    <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" class="form-horizontal">
+      <fieldset>
+        <legend><?php echo $text_your_details; ?></legend>
+        <div class="control-group required">
+          <label class="control-label" for="input-firstname"><?php echo $entry_firstname; ?></label>
+          <div class="controls">
+            <input type="text" name="firstname" value="<?php echo $firstname; ?>" placeholder="<?php echo $entry_firstname; ?>" id="input-firstname" />
             <?php if ($error_firstname) { ?>
-            <span class="error"><?php echo $error_firstname; ?></span>
-            <?php } ?></td>
-        </tr>
-        <tr>
-          <td><span class="required">*</span> <?php echo $entry_lastname; ?></td>
-          <td><input type="text" name="lastname" value="<?php echo $lastname; ?>" />
-            <?php if ($error_lastname) { ?>
-            <span class="error"><?php echo $error_lastname; ?></span>
-            <?php } ?></td>
-        </tr>
-        <tr>
-          <td><span class="required">*</span> <?php echo $entry_email; ?></td>
-          <td><input type="text" name="email" value="<?php echo $email; ?>" />
-            <?php if ($error_email) { ?>
-            <span class="error"><?php echo $error_email; ?></span>
-            <?php } ?></td>
-        </tr>
-        <tr>
-          <td><span class="required">*</span> <?php echo $entry_telephone; ?></td>
-          <td><input type="text" name="telephone" value="<?php echo $telephone; ?>" />
-            <?php if ($error_telephone) { ?>
-            <span class="error"><?php echo $error_telephone; ?></span>
-            <?php } ?></td>
-        </tr>
-        <tr>
-          <td><?php echo $entry_fax; ?></td>
-          <td><input type="text" name="fax" value="<?php echo $fax; ?>" /></td>
-        </tr>
-      </table>
-    </div>
-    <h2><?php echo $text_your_address; ?></h2>
-    <div class="content">
-      <table class="form">
-        <tr>
-          <td><?php echo $entry_company; ?></td>
-          <td><input type="text" name="company" value="<?php echo $company; ?>" /></td>
-        </tr>        
-        <tr style="display: <?php echo (count($customer_groups) > 1 ? 'table-row' : 'none'); ?>;">
-          <td><?php echo $entry_customer_group; ?></td>
-          <td><?php foreach ($customer_groups as $customer_group) { ?>
-            <?php if ($customer_group['customer_group_id'] == $customer_group_id) { ?>
-            <input type="radio" name="customer_group_id" value="<?php echo $customer_group['customer_group_id']; ?>" id="customer_group_id<?php echo $customer_group['customer_group_id']; ?>" checked="checked" />
-            <label for="customer_group_id<?php echo $customer_group['customer_group_id']; ?>"><?php echo $customer_group['name']; ?></label>
-            <br />
-            <?php } else { ?>
-            <input type="radio" name="customer_group_id" value="<?php echo $customer_group['customer_group_id']; ?>" id="customer_group_id<?php echo $customer_group['customer_group_id']; ?>" />
-            <label for="customer_group_id<?php echo $customer_group['customer_group_id']; ?>"><?php echo $customer_group['name']; ?></label>
-            <br />
+            <div class="error"><?php echo $error_firstname; ?></div>
             <?php } ?>
-            <?php } ?></td>
-        </tr>      
-        <tr id="company-id-display">
-          <td><span id="company-id-required" class="required">*</span> <?php echo $entry_company_id; ?></td>
-          <td><input type="text" name="company_id" value="<?php echo $company_id; ?>" />
-            <?php if ($error_company_id) { ?>
-            <span class="error"><?php echo $error_company_id; ?></span>
-            <?php } ?></td>
-        </tr>
-        <tr id="tax-id-display">
-          <td><span id="tax-id-required" class="required">*</span> <?php echo $entry_tax_id; ?></td>
-          <td><input type="text" name="tax_id" value="<?php echo $tax_id; ?>" />
-            <?php if ($error_tax_id) { ?>
-            <span class="error"><?php echo $error_tax_id; ?></span>
-            <?php } ?></td>
-        </tr>
-        <tr>
-          <td><span class="required">*</span> <?php echo $entry_address_1; ?></td>
-          <td><input type="text" name="address_1" value="<?php echo $address_1; ?>" />
+          </div>
+        </div>
+        <div class="control-group required">
+          <label class="control-label" for="input-lastname"><?php echo $entry_lastname; ?></label>
+          <div class="controls">
+            <input type="text" name="lastname" value="<?php echo $lastname; ?>" placeholder="<?php echo $entry_lastname; ?>" id="input-lastname" />
+            <?php if ($error_lastname) { ?>
+            <div class="error"><?php echo $error_lastname; ?></div>
+            <?php } ?>
+          </div>
+        </div>
+        <div class="control-group required">
+          <label class="control-label" for="input-email"><?php echo $entry_email; ?></label>
+          <div class="controls">
+            <input type="email" name="email" value="<?php echo $email; ?>" placeholder="<?php echo $entry_email; ?>" id="input-email" />
+            <?php if ($error_email) { ?>
+            <div class="error"><?php echo $error_email; ?></div>
+            <?php } ?>
+          </div>
+        </div>
+        <div class="control-group required">
+          <label class="control-label" for="input-telephone"><?php echo $entry_telephone; ?></label>
+          <div class="controls">
+            <input type="tel" name="telephone" value="<?php echo $telephone; ?>" placeholder="<?php echo $entry_telephone; ?>" id="input-telephone" />
+            <?php if ($error_telephone) { ?>
+            <div class="error"><?php echo $error_telephone; ?></div>
+            <?php } ?>
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="input-fax"><?php echo $entry_fax; ?></label>
+          <div class="controls">
+            <input type="text" name="fax" value="<?php echo $fax; ?>" placeholder="<?php echo $entry_fax; ?>" id="input-fax" />
+          </div>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend><?php echo $text_your_address; ?></legend>
+        <div class="control-group">
+          <label class="control-label" for="input-company"><?php echo $entry_company; ?></label>
+          <div class="controls">
+            <input type="text" name="company" value="<?php echo $company; ?>" placeholder="<?php echo $entry_company; ?>" id="input-company" />
+          </div>
+        </div>
+        <div class="control-group" style="display: <?php echo (count($customer_groups) > 1 ? 'display' : 'none'); ?>;">
+          <div class="control-label"><?php echo $entry_customer_group; ?></div>
+          <div class="controls">
+            <?php foreach ($customer_groups as $customer_group) { ?>
+            <?php if ($customer_group['customer_group_id'] == $customer_group_id) { ?>
+            <label class="radio">
+              <input type="radio" name="customer_group_id" value="<?php echo $customer_group['customer_group_id']; ?>" checked="checked" />
+              <?php echo $customer_group['name']; ?></label>
+            <?php } else { ?>
+            <label class="radio">
+              <input type="radio" name="customer_group_id" value="<?php echo $customer_group['customer_group_id']; ?>" />
+              <?php echo $customer_group['name']; ?></label>
+            <?php } ?>
+            <?php } ?>
+          </div>
+        </div>
+        <div class="control-group required">
+          <label class="control-label" for="input-address-1"><?php echo $entry_address_1; ?></label>
+          <div class="controls">
+            <input type="text" name="address_1" value="<?php echo $address_1; ?>" placeholder="<?php echo $entry_address_1; ?>" id="input-address-1" />
             <?php if ($error_address_1) { ?>
-            <span class="error"><?php echo $error_address_1; ?></span>
-            <?php } ?></td>
-        </tr>
-        <tr>
-          <td><?php echo $entry_address_2; ?></td>
-          <td><input type="text" name="address_2" value="<?php echo $address_2; ?>" /></td>
-        </tr>
-        <tr>
-          <td><span class="required">*</span> <?php echo $entry_city; ?></td>
-          <td><input type="text" name="city" value="<?php echo $city; ?>" />
+            <div class="error"><?php echo $error_address_1; ?></div>
+            <?php } ?>
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="input-address-2" for="input-address-2">
+          <?php echo $entry_address_2; ?>
+          </label>
+          <div class="controls">
+            <input type="text" name="address_2" value="<?php echo $address_2; ?>" placeholder="<?php echo $entry_address_2; ?>" id="input-address-2" />
+          </div>
+        </div>
+        <div class="control-group required">
+          <label class="control-label" for="input-city"><?php echo $entry_city; ?></label>
+          <div class="controls">
+            <input type="text" name="city" value="<?php echo $city; ?>" placeholder="<?php echo $entry_city; ?>" id="input-city" />
             <?php if ($error_city) { ?>
-            <span class="error"><?php echo $error_city; ?></span>
-            <?php } ?></td>
-        </tr>
-        <tr>
-          <td><span id="postcode-required" class="required">*</span> <?php echo $entry_postcode; ?></td>
-          <td><input type="text" name="postcode" value="<?php echo $postcode; ?>" />
+            <div class="error"><?php echo $error_city; ?></div>
+            <?php } ?>
+          </div>
+        </div>
+        <div class="control-group required">
+          <label class="control-label" for="input-postcode"><?php echo $entry_postcode; ?></label>
+          <div class="controls">
+            <input type="text" name="postcode" value="<?php echo $postcode; ?>" placeholder="<?php echo $entry_postcode; ?>" id="input-postcode" />
             <?php if ($error_postcode) { ?>
-            <span class="error"><?php echo $error_postcode; ?></span>
-            <?php } ?></td>
-        </tr>
-        <tr>
-          <td><span class="required">*</span> <?php echo $entry_country; ?></td>
-          <td><select name="country_id">
+            <div class="error"><?php echo $error_postcode; ?></div>
+            <?php } ?>
+          </div>
+        </div>
+        <div class="control-group required">
+          <label class="control-label" for="input-country"><?php echo $entry_country; ?></label>
+          <div class="controls">
+            <select name="country_id" id="input-country">
               <option value=""><?php echo $text_select; ?></option>
               <?php foreach ($countries as $country) { ?>
               <?php if ($country['country_id'] == $country_id) { ?>
@@ -122,114 +130,92 @@
               <?php } ?>
             </select>
             <?php if ($error_country) { ?>
-            <span class="error"><?php echo $error_country; ?></span>
-            <?php } ?></td>
-        </tr>
-        <tr>
-          <td><span class="required">*</span> <?php echo $entry_zone; ?></td>
-          <td><select name="zone_id">
+            <div class="error"><?php echo $error_country; ?></div>
+            <?php } ?>
+          </div>
+        </div>
+        <div class="control-group required">
+          <label class="control-label" for="input-zone"><?php echo $entry_zone; ?></label>
+          <div class="controls">
+            <select name="zone_id" id="input-zone">
             </select>
             <?php if ($error_zone) { ?>
-            <span class="error"><?php echo $error_zone; ?></span>
-            <?php } ?></td>
-        </tr>
-      </table>
-    </div>
-    <h2><?php echo $text_your_password; ?></h2>
-    <div class="content">
-      <table class="form">
-        <tr>
-          <td><span class="required">*</span> <?php echo $entry_password; ?></td>
-          <td><input type="password" name="password" value="<?php echo $password; ?>" />
+            <div class="error"><?php echo $error_zone; ?></div>
+            <?php } ?>
+          </div>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend><?php echo $text_your_password; ?></legend>
+        <div class="control-group required">
+          <label class="control-label" for="input-password"><?php echo $entry_password; ?></label>
+          <div class="controls">
+            <input type="password" name="password" value="<?php echo $password; ?>" placeholder="<?php echo $entry_password; ?>" id="input-password" />
             <?php if ($error_password) { ?>
-            <span class="error"><?php echo $error_password; ?></span>
-            <?php } ?></td>
-        </tr>
-        <tr>
-          <td><span class="required">*</span> <?php echo $entry_confirm; ?></td>
-          <td><input type="password" name="confirm" value="<?php echo $confirm; ?>" />
+            <div class="error"><?php echo $error_password; ?></div>
+            <?php } ?>
+          </div>
+        </div>
+        <div class="control-group required">
+          <label class="control-label" for="input-confirm"><?php echo $entry_confirm; ?></label>
+          <div class="controls">
+            <input type="password" name="confirm" value="<?php echo $confirm; ?>" placeholder="<?php echo $entry_confirm; ?>" id="input-confirm" />
             <?php if ($error_confirm) { ?>
-            <span class="error"><?php echo $error_confirm; ?></span>
-            <?php } ?></td>
-        </tr>
-      </table>
-    </div>
-    <h2><?php echo $text_newsletter; ?></h2>
-    <div class="content">
-      <table class="form">
-        <tr>
-          <td><?php echo $entry_newsletter; ?></td>
-          <td><?php if ($newsletter) { ?>
-            <input type="radio" name="newsletter" value="1" checked="checked" />
-            <?php echo $text_yes; ?>
-            <input type="radio" name="newsletter" value="0" />
-            <?php echo $text_no; ?>
+            <div class="error"><?php echo $error_confirm; ?></div>
+            <?php } ?>
+          </div>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend><?php echo $text_newsletter; ?></legend>
+        <div class="control-group">
+          <div class="control-label"><?php echo $entry_newsletter; ?></div>
+          <div class="controls">
+            <?php if ($newsletter) { ?>
+            <label class="radio">
+              <input type="radio" name="newsletter" value="1" checked="checked" />
+              <?php echo $text_yes; ?></label>
+            <label class="radio">
+              <input type="radio" name="newsletter" value="0" />
+              <?php echo $text_no; ?></label>
             <?php } else { ?>
-            <input type="radio" name="newsletter" value="1" />
-            <?php echo $text_yes; ?>
-            <input type="radio" name="newsletter" value="0" checked="checked" />
-            <?php echo $text_no; ?>
-            <?php } ?></td>
-        </tr>
-      </table>
-    </div>
-    <?php if ($text_agree) { ?>
-    <div class="buttons">
-      <div class="right"><?php echo $text_agree; ?>
-        <?php if ($agree) { ?>
-        <input type="checkbox" name="agree" value="1" checked="checked" />
-        <?php } else { ?>
-        <input type="checkbox" name="agree" value="1" />
-        <?php } ?>
-        <input type="submit" value="<?php echo $button_continue; ?>" class="button" />
+            <label class="radio">
+              <input type="radio" name="newsletter" value="1" />
+              <?php echo $text_yes; ?></label>
+            <label class="radio">
+              <input type="radio" name="newsletter" value="0" checked="checked" />
+              <?php echo $text_no; ?></label>
+            <?php } ?>
+          </div>
+        </div>
+      </fieldset>
+      <?php if ($text_agree) { ?>
+      <div class="buttons clearfix">
+        <div class="pull-right">
+          <?php echo $text_agree; ?>
+          <?php if ($agree) { ?>
+          <input type="checkbox" name="agree" value="1" checked="checked" />
+          <?php } else { ?>
+          <input type="checkbox" name="agree" value="1" />
+          <?php } ?>
+          &nbsp; <input type="submit" value="<?php echo $button_continue; ?>" class="btn btn-primary" />
+        </div>
       </div>
-    </div>
-    <?php } else { ?>
-    <div class="buttons">
-      <div class="right">
-        <input type="submit" value="<?php echo $button_continue; ?>" class="button" />
+      <?php } else { ?>
+      <div class="buttons clearfix">
+        <div class="pull-right">
+          <input type="submit" value="<?php echo $button_continue; ?>" class="btn btn-primary" />
+        </div>
       </div>
-    </div>
-    <?php } ?>
-  </form>
-  <?php echo $content_bottom; ?></div>
+      <?php } ?>
+    </form>
+    <?php echo $content_bottom; ?></div>
+  <?php echo $column_right; ?></div>
 <script type="text/javascript"><!--
-$('input[name=\'customer_group_id\']:checked').live('change', function() {
+$('input[name=\'customer_group_id\']:checked').change(function() {
 	var customer_group = [];
 	
-<?php foreach ($customer_groups as $customer_group) { ?>
-	customer_group[<?php echo $customer_group['customer_group_id']; ?>] = [];
-	customer_group[<?php echo $customer_group['customer_group_id']; ?>]['company_id_display'] = '<?php echo $customer_group['company_id_display']; ?>';
-	customer_group[<?php echo $customer_group['customer_group_id']; ?>]['company_id_required'] = '<?php echo $customer_group['company_id_required']; ?>';
-	customer_group[<?php echo $customer_group['customer_group_id']; ?>]['tax_id_display'] = '<?php echo $customer_group['tax_id_display']; ?>';
-	customer_group[<?php echo $customer_group['customer_group_id']; ?>]['tax_id_required'] = '<?php echo $customer_group['tax_id_required']; ?>';
-<?php } ?>	
 
-	if (customer_group[this.value]) {
-		if (customer_group[this.value]['company_id_display'] == '1') {
-			$('#company-id-display').show();
-		} else {
-			$('#company-id-display').hide();
-		}
-		
-		if (customer_group[this.value]['company_id_required'] == '1') {
-			$('#company-id-required').show();
-		} else {
-			$('#company-id-required').hide();
-		}
-		
-		if (customer_group[this.value]['tax_id_display'] == '1') {
-			$('#tax-id-display').show();
-		} else {
-			$('#tax-id-display').hide();
-		}
-		
-		if (customer_group[this.value]['tax_id_required'] == '1') {
-			$('#tax-id-required').show();
-		} else {
-			$('#tax-id-required').hide();
-		}	
-	}
 });
 
 $('input[name=\'customer_group_id\']:checked').trigger('change');
@@ -240,16 +226,16 @@ $('select[name=\'country_id\']').bind('change', function() {
 		url: 'index.php?route=account/register/country&country_id=' + this.value,
 		dataType: 'json',
 		beforeSend: function() {
-			$('select[name=\'country_id\']').after('<span class="wait">&nbsp;<img src="catalog/view/theme/default/image/loading.gif" alt="" /></span>');
+			$('select[name=\'country_id\']').after(' <i class="icon-spinner icon-spin"></i>');
 		},
 		complete: function() {
-			$('.wait').remove();
+			$('.icon-spinner').remove();
 		},			
 		success: function(json) {
 			if (json['postcode_required'] == '1') {
-				$('#postcode-required').show();
+				$('#input-postcode').parent().parent().addClass('required');
 			} else {
-				$('#postcode-required').hide();
+				$('#input-postcode').parent().parent().removeClass('required');
 			}
 			
 			html = '<option value=""><?php echo $text_select; ?></option>';
@@ -280,9 +266,13 @@ $('select[name=\'country_id\']').trigger('change');
 //--></script> 
 <script type="text/javascript"><!--
 $(document).ready(function() {
-	$('.colorbox').colorbox({
-		width: 640,
-		height: 480
+	$('.agree').magnificPopup({
+		delegate: 'li a', // child items selector, by clicking on it popup will open
+		type: 'image',
+		gallery: {
+			enabled: true
+		}
+		// other options
 	});
 });
 //--></script> 

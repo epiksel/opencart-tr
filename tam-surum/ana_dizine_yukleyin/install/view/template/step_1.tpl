@@ -10,7 +10,7 @@
 </div>
 <div id="content">
   <?php if ($error_warning) { ?>
-  <div class="warning"><?php echo $error_warning; ?></div>
+  <div class="alert alert-error"><i class="icon-exclamation-sign"></i> <?php echo $error_warning; ?> <button type="button" class="close" data-dismiss="alert">&times;</button></div>
   <?php } ?>
   <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data">
     <div class="terms">
@@ -582,7 +582,7 @@
     <div class="buttons">
       <div class="right">Lisansı kabul ediyorum
       	<input type="checkbox" name="agree" />&nbsp;
-        <input type="submit" value="Devam Et" class="button" />
+        <input type="submit" value="Devam Et" class="btn" />
       </div>
     </div>
   </form>

@@ -9,11 +9,14 @@ $_['text_shipping']    = 'Kargo Metodları';
 $_['text_success']     = 'Başarılı: Ağırlık orantılı kargo başarılı bir şekilde değiştirildi!';
 
 // Entry
-$_['entry_rate']       = 'Değer:<br /><span class="help">Örnek: 5:10.00,7:12.00 Ağırlık:Fiyat,Ağırlık:Fiyat, gibi.. En yüksek ağırlığı ayarlamayı unutmayınız.</span>';
-$_['entry_tax_class']  = 'Vergi Oranı:';
-$_['entry_geo_zone']   = 'Genel Bölge:';
-$_['entry_status']     = 'Durumu:';
-$_['entry_sort_order'] = 'Sıralama:';
+$_['entry_rate']       = 'Değer';
+$_['entry_tax_class']  = 'Vergi Oranı';
+$_['entry_geo_zone']   = 'Genel Bölge';
+$_['entry_status']     = 'Durumu';
+$_['entry_sort_order'] = 'Sıralama';
+
+// Help
+$_['help_rate']        = 'Örnek: 5:10.00,7:12.00 Ağırlık:Fiyat,Ağırlık:Fiyat, gibi.. En yüksek ağırlığı ayarlamayı unutmayınız.';
 
 // Error
 $_['error_permission'] = 'Uyarı: Ağırlık orantılı kargo düzenleme iznine sahip değilsiniz!';

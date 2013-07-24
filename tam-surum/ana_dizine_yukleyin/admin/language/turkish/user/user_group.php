@@ -12,9 +12,9 @@ $_['column_name']      = 'Kullanıcı Grup Adı';
 $_['column_action']    = 'Eylem';
 
 // Entry
-$_['entry_name']       = 'Kullanıcı Grup Adı:';
-$_['entry_access']     = 'Erişim İzinleri:';
-$_['entry_modify']     = 'Değiştirme İzinleri:';
+$_['entry_name']       = 'Kullanıcı Grup Adı';
+$_['entry_access']     = 'Erişim İzinleri';
+$_['entry_modify']     = 'Değiştirme İzinleri';
 
 // Error
 $_['error_permission'] = 'Uyarı: Kullanıcı Gruplarını düzenleme iznine sahip değilsiniz!';

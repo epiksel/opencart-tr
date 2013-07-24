@@ -13,9 +13,9 @@ $_['column_customer']  = 'Müşteri';
 $_['column_action']    = 'Eylem';
 
 // Entry
-$_['entry_ip']         = 'IP:';
+$_['entry_ip']         = 'IP';
 
 // Error
 $_['error_permission'] = 'Uyarı: Engellenen IP adreslerini düzenleme iznine sahip değilsiniz!';
-$_['error_ip']         = 'IP adresi 1 ile 15 karakter arasında olmalı!';
+$_['error_ip']         = 'IP adresi 1 ile 40 karakter arasında olmalı!';
 ?>

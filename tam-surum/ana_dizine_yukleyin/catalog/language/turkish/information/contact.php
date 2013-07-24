@@ -6,6 +6,7 @@ $_['heading_title']  = 'İletişim';
 
 // Text
 $_['text_location']  = 'Mağaza Bilgilerimiz';
+$_['text_open']      = 'Çalışma Saatleri';
 $_['text_contact']   = 'İletişim Formu';
 $_['text_address']   = 'Adres:';
 $_['text_email']     = 'E-Posta:';

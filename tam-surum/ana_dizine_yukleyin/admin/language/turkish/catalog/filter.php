@@ -13,9 +13,9 @@ $_['column_sort_order']	= 'Sıralama';
 $_['column_action']		= 'Eylem';
 
 // Entry
-$_['entry_group']		= 'Süzgeç Grup Adı:';
-$_['entry_name']		= 'Süzgeç Adı:';
-$_['entry_sort_order']	= 'Sıralama:';
+$_['entry_group']		= 'Süzgeç Grup Adı';
+$_['entry_name']		= 'Süzgeç Adı';
+$_['entry_sort_order']	= 'Sıralama';
 
 // Error
 $_['error_permission']	= 'Uyarı: Süzgeçleri düzenleme iznine sahip değilsiniz!';

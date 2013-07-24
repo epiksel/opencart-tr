@@ -13,14 +13,18 @@ $_['text_successful']    = 'Her zaman başarılı';
 $_['text_fail']          = 'Her zaman başarısız';
 
 // Entry
-$_['entry_merchant']     = 'Merchant ID:';
-$_['entry_password']     = 'Remote Password:<br /><span class="help">Leave empty if you do not have "Digest Key Authentication" enabled on your account.</span>';
-$_['entry_test']         = 'Test Modu:';
-$_['entry_total']        = 'Toplam:<br /><span class="help">Bu ödeme metodunun aktif olması için toplam sipariş miktarını giriniz</span>';
-$_['entry_order_status'] = 'Sipariş Durumu:';
-$_['entry_geo_zone']     = 'Genel Bölge:';
-$_['entry_status']       = 'Durumu:';
-$_['entry_sort_order']   = 'Sıralama:';
+$_['entry_merchant']     = 'Merchant ID';
+$_['entry_password']     = 'Remote Password';
+$_['entry_test']         = 'Test Modu';
+$_['entry_total']        = 'Toplam';
+$_['entry_order_status'] = 'Sipariş Durumu';
+$_['entry_geo_zone']     = 'Genel Bölge';
+$_['entry_status']       = 'Durumu';
+$_['entry_sort_order']   = 'Sıralama';
+
+// Help
+$_['help_password']      = 'Leave empty if you do not have "Digest Key Authentication" enabled on your account.';
+$_['help_total']         = 'Bu ödeme metodunun aktif olması için toplam sipariş miktarını giriniz.';
 
 // Error
 $_['error_permission']   = 'Uyarı: PayPoint ödeme metodunu düzenleme iznine sahip değilsiniz!';

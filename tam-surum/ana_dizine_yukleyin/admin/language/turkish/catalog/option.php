@@ -19,8 +19,6 @@ $_['text_date']           = 'Tarih';
 $_['text_datetime']       = 'Tarih &amp; Zaman';
 $_['text_time']           = 'Zaman';
 $_['text_image_manager']  = 'Resim Yönetimi';
-$_['text_browse']         = 'Gözat';
-$_['text_clear']          = 'Temizle';
 
 // Column
 $_['column_name']         = 'Seçenek Adı';
@@ -28,11 +26,11 @@ $_['column_sort_order']   = 'Sıralama';
 $_['column_action']       = 'Eylem';
 
 // Entry
-$_['entry_name']         = 'Seçenek Adı:';
-$_['entry_type']         = 'Türü:';
-$_['entry_option_value'] = 'Seçenek Değer Adı:';
-$_['entry_image']        = 'Resim:';
-$_['entry_sort_order']   = 'Sıralama:';
+$_['entry_name']         = 'Seçenek Adı';
+$_['entry_type']         = 'Türü';
+$_['entry_option_value'] = 'Seçenek Değer Adı';
+$_['entry_image']        = 'Resim';
+$_['entry_sort_order']   = 'Sıralama';
 
 // Error
 $_['error_permission']   = 'Uyarı: Seçenekleri düzenleme iznine sahip değilsiniz!';

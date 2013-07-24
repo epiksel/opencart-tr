@@ -13,11 +13,14 @@ $_['text_column_left']    = 'Sol Blokta';
 $_['text_column_right']   = 'Sağ Blokta';
 
 // Entry
-$_['entry_code']          = 'Kodu:<br /><span class="help">Goto <a href="http://www.google.com/talk/service/badge/New" target="_blank"><u>Create a Google Talk chatback badge</u></a> and copy &amp; paste the generated code into the text box.</span>';
-$_['entry_layout']        = 'Bölüm:';
-$_['entry_position']      = 'Pozisyon:';
-$_['entry_status']        = 'Durumu:';
-$_['entry_sort_order']    = 'Sıralama:';
+$_['entry_code']          = 'Kodu';
+$_['entry_layout']        = 'Bölüm';
+$_['entry_position']      = 'Pozisyon';
+$_['entry_status']        = 'Durumu';
+$_['entry_sort_order']    = 'Sıralama';
+
+// Help
+$_['help_code']           = 'Goto <a href="http://www.google.com/talk/service/badge/New" target="_blank"><u>Create a Google Talk chatback badge</u></a> and copy &amp; paste the generated code into the text box.';
 
 // Error
 $_['error_permission']    = 'Uyarı: Google Talk modülünü değiştirme iznine sahip değilsiniz!';

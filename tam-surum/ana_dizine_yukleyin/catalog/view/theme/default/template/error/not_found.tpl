@@ -1,14 +1,16 @@
-<?php echo $header; ?><?php echo $column_left; ?><?php echo $column_right; ?>
-<div id="content"><?php echo $content_top; ?>
-  <div class="breadcrumb">
-    <?php foreach ($breadcrumbs as $breadcrumb) { ?>
-    <?php echo $breadcrumb['separator']; ?><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a>
-    <?php } ?>
-  </div>
-  <h1><?php echo $heading_title; ?></h1>
-  <div class="content"><?php echo $text_error; ?></div>
-  <div class="buttons">
-    <div class="right"><a href="<?php echo $continue; ?>" class="button"><?php echo $button_continue; ?></a></div>
-  </div>
-  <?php echo $content_bottom; ?></div>
+<?php echo $header; ?>
+<ul class="breadcrumb">
+  <?php foreach ($breadcrumbs as $breadcrumb) { ?>
+  <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
+  <?php } ?>
+</ul>
+<div class="row"> <?php echo $column_left; ?>
+  <div id="content" class="span9"><?php echo $content_top; ?>
+    <h1><?php echo $heading_title; ?></h1>
+    <p><?php echo $text_error; ?></p>
+    <div class="buttons clearfix">
+      <div class="pull-right"><a href="<?php echo $continue; ?>" class="btn btn-primary"><?php echo $button_continue; ?></a></div>
+    </div>
+    <?php echo $content_bottom; ?></div>
+  <?php echo $column_right; ?></div>
 <?php echo $footer; ?>

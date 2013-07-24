@@ -6,7 +6,7 @@ $_['heading_title']      = 'Product Returns';
 $_['text_account']       = 'Account';
 $_['text_return']        = 'Return Information';
 $_['text_return_detail'] = 'Return Details';
-$_['text_description']   = '<p>Please complete the form below to request an RMA number.</p>';
+$_['text_description']   = 'Please complete the form below to request an RMA number.';
 $_['text_order']         = 'Order Information';
 $_['text_product']       = 'Product Information &amp; Reason for Return';
 $_['text_message']       = '<p>Thank you for submitting your return request. Your request has been sent to the relevant department for processing.</p><p> You will be notified via e-mail as to the status of your request.</p>';
@@ -15,13 +15,17 @@ $_['text_order_id']      = 'Order ID:';
 $_['text_date_ordered']  = 'Order Date:';
 $_['text_status']        = 'Status:';
 $_['text_date_added']    = 'Date Added:';
-$_['text_customer']      = 'Customer:';
 $_['text_comment']       = 'Return Comments';
 $_['text_history']       = 'Return History';
 $_['text_empty']         = 'You have not made any previous returns!';
 $_['text_agree']         = 'I have read and agree to the <a class="colorbox" href="%s" alt="%s"><b>%s</b></a>';
 
 // Column
+$_['column_return_id']   = 'Return ID';
+$_['column_order_id']    = 'Order ID';
+$_['column_status']      = 'Status';
+$_['column_date_added']  = 'Date Added';
+$_['column_customer']    = 'Customer';
 $_['column_product']     = 'Product Name';
 $_['column_model']       = 'Model';
 $_['column_quantity']    = 'Quantity';

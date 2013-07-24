@@ -11,9 +11,11 @@ if (version_compare(phpversion(), '5.1.0', '<') == true) {
 if (ini_get('register_globals')) {
 	ini_set('session.use_cookies', 'On');
 	ini_set('session.use_trans_sid', 'Off');
-		
-	session_set_cookie_params(0, '/');
-	session_start();
+	
+	if (!isset($_COOKIE[session_name()]) || !preg_match('/^[a-z0-9]{32}$/', $_COOKIE[session_name()])) {
+		session_set_cookie_params(0, '/');
+		session_start();
+	}
 	
 	$globals = array($_REQUEST, $_SESSION, $_SERVER, $_FILES);
 
@@ -27,12 +29,12 @@ if (ini_get('register_globals')) {
 // Magic Quotes Fix
 if (ini_get('magic_quotes_gpc')) {
 	function clean($data) {
-   		if (is_array($data)) {
-  			foreach ($data as $key => $value) {
-    			$data[clean($key)] = clean($value);
-  			}
+		if (is_array($data)) {
+			foreach ($data as $key => $value) {
+				$data[clean($key)] = clean($value);
+			}
 		} else {
-  			$data = stripslashes($data);
+			$data = stripslashes($data);
 		}
 	
 		return $data;
@@ -73,10 +75,6 @@ if (!isset($_SERVER['HTTP_HOST'])) {
 	$_SERVER['HTTP_HOST'] = getenv('HTTP_HOST');
 }
 
-// Helper
-require_once(DIR_SYSTEM . 'helper/json.php'); 
-require_once(DIR_SYSTEM . 'helper/utf8.php'); 
-
 // Engine
 require_once(DIR_SYSTEM . 'engine/action.php'); 
 require_once(DIR_SYSTEM . 'engine/controller.php');
@@ -85,7 +83,18 @@ require_once(DIR_SYSTEM . 'engine/loader.php');
 require_once(DIR_SYSTEM . 'engine/model.php');
 require_once(DIR_SYSTEM . 'engine/registry.php');
 
-// Common
+// Library
+function __autoload($class) {
+	$file = DIR_SYSTEM . 'library/' . strtolower($class) . '.php';
+	
+	if (file_exists($file)) {
+		include($file);
+	} else {
+		trigger_error('Error: Could not load class ' . $class . '.php!');
+		exit();
+	}
+}
+
 require_once(DIR_SYSTEM . 'library/cache.php');
 require_once(DIR_SYSTEM . 'library/url.php');
 require_once(DIR_SYSTEM . 'library/config.php');
@@ -101,4 +110,8 @@ require_once(DIR_SYSTEM . 'library/request.php');
 require_once(DIR_SYSTEM . 'library/response.php');
 require_once(DIR_SYSTEM . 'library/session.php');
 require_once(DIR_SYSTEM . 'library/template.php');
+
+// Helper
+require_once(DIR_SYSTEM . 'helper/json.php'); 
+require_once(DIR_SYSTEM . 'helper/utf8.php'); 
 ?>

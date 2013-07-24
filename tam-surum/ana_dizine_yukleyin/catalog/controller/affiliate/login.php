@@ -25,28 +25,25 @@ class ControllerAffiliateLogin extends Controller {
       	$this->data['breadcrumbs'] = array();
 
       	$this->data['breadcrumbs'][] = array(
-        	'text'      => $this->language->get('text_home'),
-			'href'      => $this->url->link('common/home'),       	
-        	'separator' => false
+        	'text' => $this->language->get('text_home'),
+			'href' => $this->url->link('common/home')
       	);
  
       	$this->data['breadcrumbs'][] = array(
-        	'text'      => $this->language->get('text_account'),
-			'href'      => $this->url->link('affiliate/account', '', 'SSL'),
-        	'separator' => $this->language->get('text_separator')
+        	'text' => $this->language->get('text_account'),
+			'href' => $this->url->link('affiliate/account', '', 'SSL')
       	);
 		
       	$this->data['breadcrumbs'][] = array(
-        	'text'      => $this->language->get('text_login'),
-			'href'      => $this->url->link('affiliate/login', '', 'SSL'),      	
-        	'separator' => $this->language->get('text_separator')
+        	'text' => $this->language->get('text_login'),
+			'href' => $this->url->link('affiliate/login', '', 'SSL')
       	);
 				
     	$this->data['heading_title'] = $this->language->get('heading_title');
 		
 		$this->data['text_description'] = sprintf($this->language->get('text_description'), $this->config->get('config_name'), $this->config->get('config_name'), $this->config->get('config_commission') . '%');
 		$this->data['text_new_affiliate'] = $this->language->get('text_new_affiliate');
-    	$this->data['text_register_account'] = $this->language->get('text_register_account'); 	
+		$this->data['text_register_account'] = $this->language->get('text_register_account'); 	
 		$this->data['text_returning_affiliate'] = $this->language->get('text_returning_affiliate');
 		$this->data['text_i_am_returning_affiliate'] = $this->language->get('text_i_am_returning_affiliate');
     	$this->data['text_forgotten'] = $this->language->get('text_forgotten');

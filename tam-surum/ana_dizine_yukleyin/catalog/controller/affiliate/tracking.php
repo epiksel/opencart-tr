@@ -14,29 +14,29 @@ class ControllerAffiliateTracking extends Controller {
       	$this->data['breadcrumbs'] = array();
 
       	$this->data['breadcrumbs'][] = array(
-        	'text'      => $this->language->get('text_home'),
-			'href'      => $this->url->link('common/home'),
-        	'separator' => false
+        	'text' => $this->language->get('text_home'),
+			'href' => $this->url->link('common/home')
       	); 
 
       	$this->data['breadcrumbs'][] = array(       	
-        	'text'      => $this->language->get('text_account'),
-			'href'      => $this->url->link('affiliate/account', '', 'SSL'),
-        	'separator' => $this->language->get('text_separator')
+        	'text' => $this->language->get('text_account'),
+			'href' => $this->url->link('affiliate/account', '', 'SSL')
       	);
 
       	$this->data['breadcrumbs'][] = array(       	
-        	'text'      => $this->language->get('heading_title'),
-			'href'      => $this->url->link('affiliate/tracking', '', 'SSL'),
-        	'separator' => $this->language->get('text_separator')
+        	'text' => $this->language->get('heading_title'),
+			'href' => $this->url->link('affiliate/tracking', '', 'SSL')
       	);
 		
     	$this->data['heading_title'] = $this->language->get('heading_title');
 		
 		$this->data['text_description'] = sprintf($this->language->get('text_description'), $this->config->get('config_name'));
-		$this->data['text_code'] = $this->language->get('text_code');
-		$this->data['text_generator'] = $this->language->get('text_generator');
-		$this->data['text_link'] = $this->language->get('text_link');
+		
+		$this->data['entry_code'] = $this->language->get('entry_code');
+		$this->data['entry_generator'] = $this->language->get('entry_generator');
+		$this->data['entry_link'] = $this->language->get('entry_link');
+		
+		$this->data['help_generator'] = $this->language->get('help_generator');
 		
 		$this->data['button_continue'] = $this->language->get('button_continue');
 
@@ -71,7 +71,7 @@ class ControllerAffiliateTracking extends Controller {
 			$data = array(
 				'filter_name' => $this->request->get['filter_name'],
 				'start'       => 0,
-				'limit'       => 20
+				'limit'       => 5
 			);
 			
 			$results = $this->model_catalog_product->getProducts($data);

@@ -7,17 +7,15 @@ $_['heading_title']      = 'Hediye Çeki Temaları';
 // Text
 $_['text_success']       = 'Başarılı: Hediye çeki teması başarılı bir şekilde değiştirildi!';
 $_['text_image_manager'] = 'Resim Yönetimi';
-$_['text_browse']        = 'Gözat';
-$_['text_clear']         = 'Temizle';
 
 // Column
 $_['column_name']        = 'Tema Adı';
 $_['column_action']      = 'Eylem';
 
 // Entry
-$_['entry_name']         = 'Tema Adı:';
-$_['entry_description']  = 'Tema Açıklaması:';
-$_['entry_image']        = 'Resim:';
+$_['entry_name']         = 'Tema Adı';
+$_['entry_description']  = 'Tema Açıklaması';
+$_['entry_image']        = 'Resim';
 
 // Error
 $_['error_permission']  = 'Uyarı: Hediye çeki temasını düzenleme iznine sahip değilsiniz!';

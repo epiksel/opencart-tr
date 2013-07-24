@@ -5,12 +5,12 @@
 $_['heading_title']    = 'Google Base';
 
 // Text
-$_['text_feed']        = 'Ürün Beslemesi';
+$_['text_feed']        = 'Ürün Besleme';
 $_['text_success']     = 'Başarılı: Google Base beslemesi güncellendi!';
 
 // Entry
-$_['entry_status']     = 'Durumu:';
-$_['entry_data_feed']  = 'Feed Veri Adresi:';
+$_['entry_status']     = 'Durumu';
+$_['entry_data_feed']  = 'Feed Veri Adresi';
 
 // Error
 $_['error_permission'] = 'Uyarı: Google Base düzenleme iznine sahip değilsiniz!';

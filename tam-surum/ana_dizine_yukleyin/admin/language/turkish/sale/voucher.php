@@ -5,10 +5,8 @@
 $_['heading_title']		= 'Hediye Çekleri';
 
 // Text
-$_['text_send']			= 'Gönder';
 $_['text_success']		= 'Başarılı: Hediye çeki başarılı bir şekilde değiştirildi!';
 $_['text_sent']			= 'Başarılı: Hediye çeki e-postası gönderildi!';
-$_['text_wait']			= 'Lütfen Bekleyiniz!';
 
 // Column
 $_['column_name']		= 'Çek Adı';
@@ -24,15 +22,18 @@ $_['column_date_added'] = 'Ekleme Tarihi';
 $_['column_action']		= 'Eylem';
 
 // Entry
-$_['entry_code']		= 'Kod:<br /><span class="help">Hediye çeki için gerekli kod</span>';
-$_['entry_from_name']	= 'Gönderici Adı:';
-$_['entry_from_email']	= 'Gönderici E-Postası:';
-$_['entry_to_name']		= 'Alıcının Adı:';
-$_['entry_to_email']	= 'Alıcının E-Postası:';
-$_['entry_theme']		= 'Hediye Çeki Teması:';
-$_['entry_message']		= 'Mesajınız:';
-$_['entry_amount']		= 'Miktar:';
-$_['entry_status']		= 'Durum:';
+$_['entry_code']		= 'Kod';
+$_['entry_from_name']	= 'Gönderici Adı';
+$_['entry_from_email']	= 'Gönderici E-Postası';
+$_['entry_to_name']		= 'Alıcının Adı';
+$_['entry_to_email']	= 'Alıcının E-Postası';
+$_['entry_theme']		= 'Hediye Çeki Teması';
+$_['entry_message']		= 'Mesajınız';
+$_['entry_amount']		= 'Miktar';
+$_['entry_status']		= 'Durum';
+
+// Help
+$_['help_code']         = 'Hediye çeki için gerekli kod.';
 
 // Error
 $_['error_permission']	= 'Uyarı: Hediye çeklerini düzenleme iznine sahip değilsiniz!';

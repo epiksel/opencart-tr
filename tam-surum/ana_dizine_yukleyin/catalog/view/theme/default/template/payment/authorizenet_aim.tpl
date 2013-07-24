@@ -30,7 +30,7 @@
   </table>
 </div>
 <div class="buttons">
-  <div class="right"><input type="button" value="<?php echo $button_confirm; ?>" id="button-confirm" class="button" /></div>
+  <div class="right"><input type="button" value="<?php echo $button_confirm; ?>" id="button-confirm" class="btn" /></div>
 </div>
 <script type="text/javascript"><!--
 $('#button-confirm').bind('click', function() {
@@ -40,7 +40,7 @@ $('#button-confirm').bind('click', function() {
 		data: $('#payment :input'),
 		dataType: 'json',		
 		beforeSend: function() {
-			$('#button-confirm').attr('disabled', true);
+			$('#button-confirm').prop('disabled', true);
 			$('#payment').before('<div class="attention"><img src="catalog/view/theme/default/image/loading.gif" alt="" /> <?php echo $text_wait; ?></div>');
 		},
 		complete: function() {

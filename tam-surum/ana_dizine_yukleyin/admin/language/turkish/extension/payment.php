@@ -5,6 +5,7 @@
 $_['heading_title']      = 'Ödeme Metodları';
 
 // Text
+$_['text_success']		 = 'Başarılı: Ödeme metodları güncellendi!';
 $_['text_install']       = 'Kur';
 $_['text_uninstall']     = 'Kaldır';
 

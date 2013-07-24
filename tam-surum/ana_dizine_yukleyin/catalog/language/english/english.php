@@ -9,21 +9,21 @@ $_['decimal_point']         = '.';
 $_['thousand_point']        = ',';
 
 // Text
-$_['text_home']             = 'Home';
+$_['text_home']             = '<i class="icon-home"></i>';
 $_['text_yes']              = 'Yes';
 $_['text_no']               = 'No';
 $_['text_none']             = ' --- None --- ';
 $_['text_select']           = ' --- Please Select --- ';
 $_['text_all_zones']        = 'All Zones';
 $_['text_pagination']       = 'Showing {start} to {end} of {total} ({pages} Pages)';
-$_['text_separator']        = ' &raquo; ';
+$_['text_loading']          = 'Loading...';
 
 // Buttons
 $_['button_add_address']    = 'Add Address';
 $_['button_back']           = 'Back';
 $_['button_continue']       = 'Continue';
 $_['button_cart']           = 'Add to Cart';
-$_['button_compare']        = 'Add to Compare';
+$_['button_compare']        = 'Compare this Product';
 $_['button_wishlist']       = 'Add to Wish List';
 $_['button_checkout']       = 'Checkout';
 $_['button_confirm']        = 'Confirm Order';
@@ -52,6 +52,7 @@ $_['button_reward']         = 'Apply Points';
 $_['button_quote']          = 'Get Quotes';
 
 // Error
+$_['error_exception']       = 'Error Code(%s): %s in %s on line %s';
 $_['error_upload_1']        = 'Warning: The uploaded file exceeds the upload_max_filesize directive in php.ini!';
 $_['error_upload_2']        = 'Warning: The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form!';
 $_['error_upload_3']        = 'Warning: The uploaded file was only partially uploaded!';

@@ -2,7 +2,7 @@
 /* Turkceye Ceviren eka7a - http://www.e-piksel.com */
 
 // Heading
-$_['heading_title']						= 'Yönetim Paneli';
+$_['heading_title']						= 'OpenCart';
 
 // Text
 $_['text_affiliate']					= 'Ortaklar';
@@ -15,14 +15,14 @@ $_['text_category']						= 'Kategoriler';
 $_['text_confirm']						= 'Silme/Kaldırma işlemi geri alınamaz. Onaylıyor musunuz?';
 $_['text_country']						= 'Ülkeler';
 $_['text_coupon']						= 'Kuponlar';
-$_['text_currency']						= 'Para Birimi';
+$_['text_currency']						= 'Para Birimleri';
 $_['text_customer']						= 'Müşteriler';
 $_['text_customer_group']				= 'Müşteri Grupları';
 $_['text_customer_ban_ip']				= 'Engellenen IP Adresleri';
 $_['text_dashboard']					= 'Kontrol Paneli';
 $_['text_custom_field']					= 'Özel Alanlar';
 $_['text_design']						= 'Tasarım';
-$_['text_download']						= 'İndirilebilir Ürünler';
+$_['text_download']						= 'Dosyalar';
 $_['text_error_log']					= 'Hata Günlükleri';
 $_['text_extension']					= 'Eklentiler';
 $_['text_feed']							= 'Ürün Beslemeleri';
@@ -31,21 +31,23 @@ $_['text_front']						= 'Mağazaya Git';
 $_['text_geo_zone']						= 'Genel Bölgeler';
 $_['text_help']							= 'Yardım';
 $_['text_information']					= 'Bilgi Sayfaları';
+$_['text_installer']					= 'Eklenti Yükleyicisi';
 $_['text_language']						= 'Diller';
 $_['text_layout']						= 'Bölümler';
 $_['text_localisation']					= 'Yerelleştirme';
-$_['text_logged']						= '<span>%s</span> olarak oturum açtınız';
+$_['text_location']						= 'Mağaza Konumları';
 $_['text_logout']						= 'Oturumu Kapat';
 $_['text_contact']						= 'Toplu E-Posta';
-$_['text_manager']						= 'Eklenti Yönetimi';
+$_['text_modification']					= 'Modifikasyonlar';
 $_['text_manufacturer']					= 'Üreticiler';
 $_['text_module']						= 'Modüller';
 $_['text_option']						= 'Seçenekler';
 $_['text_order']						= 'Siparişler';
-$_['text_order_status']					= 'Sipariş Durumu';
+$_['text_order_status']					= 'Sipariş Durumları';
 $_['text_opencart']						= 'Ana Sayfa';
 $_['text_payment']						= 'Ödeme Metodları';
 $_['text_product']						= 'Ürünler';
+$_['text_profile']						= 'Profil';
 $_['text_reports']						= 'Raporlar';
 $_['text_report_sale_order']			= 'Siparişler';
 $_['text_report_sale_tax']				= 'Vergi';
@@ -54,6 +56,7 @@ $_['text_report_sale_return']			= 'Ürün İadeleri';
 $_['text_report_sale_coupon']			= 'Kuponlar';
 $_['text_report_product_viewed']		= 'Görüntüleme';
 $_['text_report_product_purchased']		= 'Satılan';
+$_['text_report_customer_activity']		= 'Müşteri Faaliyeti';
 $_['text_report_customer_online']		= 'Çevrimiçi Müşteriler';
 $_['text_report_customer_order']		= 'Siparişler';
 $_['text_report_customer_reward']		= 'Ödül Puanları';
@@ -67,7 +70,8 @@ $_['text_return_status']				= 'Ürün İade Durumları';
 $_['text_sale']							= 'Satış';
 $_['text_shipping']						= 'Kargo Metodları';
 $_['text_setting']						= 'Mağazalar';
-$_['text_stock_status']					= 'Stok Durumu';
+$_['text_stock_status']					= 'Stok Durumları';
+$_['text_store']						= 'Mağazaya Git';
 $_['text_support']						= 'Destek Forumu(İngilizce)';
 $_['text_system']						= 'Sistem';
 $_['text_tax']							= 'Vergiler';
@@ -82,5 +86,5 @@ $_['text_voucher']						= 'Hediye Çekleri';
 $_['text_voucher_theme']				= 'Hediye Çeki Temaları';
 $_['text_weight_class']					= 'Ağırlık Birimleri';
 $_['text_length_class']					= 'Uzunluk Birimleri';
-$_['text_zone']							= 'Şehirler / Eyaletler';
+$_['text_zone']							= 'Şehirler';
 ?>

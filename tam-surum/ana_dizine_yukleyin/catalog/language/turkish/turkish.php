@@ -11,22 +11,22 @@ $_['decimal_point']         = ',';
 $_['thousand_point']        = '.';
 
 // Text
-$_['text_home']             = 'Anasayfa';
+$_['text_home']             = '<i class="icon-home"></i>';
 $_['text_yes']              = 'Evet';
 $_['text_no']               = 'Hayır';
 $_['text_none']             = ' --- Yok --- ';
 $_['text_select']           = ' --- Seçiniz --- ';
-$_['text_all_zones']        = 'Tüm Şehirler / Eyaletler';
+$_['text_all_zones']        = 'Tüm Şehirler';
 $_['text_pagination']       = 'Gösterilen: {start} ile {end} arası, toplam: {total} ({pages} Sayfa)';
-$_['text_separator']        = ' &raquo; ';
+$_['text_loading']          = 'Yükleniyor...';
 
 // Buttons
 $_['button_add_address']    = 'Adres Ekle';
 $_['button_back']           = 'Geri';
 $_['button_continue']       = 'Devam';
 $_['button_cart']		    = 'Sepete Ekle';
-$_['button_compare']        = 'Ürün Karşılaştır';
-$_['button_wishlist']       = 'A. Listeme Ekle';
+$_['button_compare']        = 'Karşılaştırma listesine ekle';
+$_['button_wishlist']       = 'Alışveriş Listeme Ekle';
 $_['button_checkout']       = 'Alışverişi Tamamla';
 $_['button_confirm']        = 'Siparişi Onaylıyorum';
 $_['button_coupon']         = 'Kuponu Kullan';
@@ -54,6 +54,7 @@ $_['button_reward']         = 'Puanı Kullan';
 $_['button_quote']          = 'Kargo Seçeneklerini Göster';
 
 // Error
+$_['error_exception']       = 'Hata Kodu(%s): %s dosya %s satır %s';
 $_['error_upload_1']        = 'Uyarı: Karşıya yüklenen dosya çok büyük - php.ini dosyasındaki upload_max_filesize değerini değiştirin!';
 $_['error_upload_2']        = 'Uyarı: Karşıya yüklenen dosya HTML formundaki MAX_FILE_SIZE değerinden çok büyük';
 $_['error_upload_3']        = 'Uyarı: Karşıya yüklenen dosya sadece kısmi olarak yüklendi!';

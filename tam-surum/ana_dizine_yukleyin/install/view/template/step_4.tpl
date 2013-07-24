@@ -9,9 +9,9 @@
   </ul>
 </div>
 <div id="content">
-  <div class="warning">install dizinini silmeyi unutmayınız!</div>
+  <div class="alert alert-error">install dizinini silmeyi unutmayınız!</div>
   <p>Tebrikler! OpenCart Türkçe başarılı bir şekilde kuruldu.</p>
-  <div class="success">
+  <div class="alert alert-success">
     <div><a href="../"><img src="view/image/screenshot_1.png" alt="" /></a><br />
       <a href="../">Mağazaya Git</a></div>
     <div><a href="../admin/"><img src="view/image/screenshot_2.png" alt="" /></a><br />

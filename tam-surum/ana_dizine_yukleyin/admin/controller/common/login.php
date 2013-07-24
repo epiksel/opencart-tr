@@ -8,7 +8,7 @@ class ControllerCommonLogin extends Controller {
 		$this->document->setTitle($this->language->get('heading_title'));
 
 		if ($this->user->isLogged() && isset($this->request->get['token']) && ($this->request->get['token'] == $this->session->data['token'])) {
-			$this->redirect($this->url->link('common/home', 'token=' . $this->session->data['token'], 'SSL'));
+			$this->redirect($this->url->link('common/dashboard', 'token=' . $this->session->data['token'], 'SSL'));
 		}
 
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) { 
@@ -17,7 +17,7 @@ class ControllerCommonLogin extends Controller {
 			if (isset($this->request->post['redirect'])) {
 				$this->redirect($this->request->post['redirect'] . '&token=' . $this->session->data['token']);
 			} else {
-				$this->redirect($this->url->link('common/home', 'token=' . $this->session->data['token'], 'SSL'));
+				$this->redirect($this->url->link('common/dashboard', 'token=' . $this->session->data['token'], 'SSL'));
 			}
 		}
 		
@@ -109,5 +109,58 @@ class ControllerCommonLogin extends Controller {
 			return false;
 		}
 	}
+	
+	public function check() {
+		$route = '';
+		
+		if (isset($this->request->get['route'])) {
+			$part = explode('/', $this->request->get['route']);
+			
+			if (isset($part[0])) {
+				$route .= $part[0];
+			}
+			
+			if (isset($part[1])) {
+				$route .= '/' . $part[1];
+			}
+		}
+		
+		$ignore = array(
+			'common/login',
+			'common/forgotten',
+			'common/reset'
+		);	
+		
+		if (!$this->user->isLogged() && !in_array($route, $ignore)) {
+			return $this->forward('common/login');
+		}
+		
+		if (isset($this->request->get['route'])) {
+			$ignore = array(
+				'common/login',
+				'common/logout',
+				'common/forgotten',
+				'common/reset',
+				'error/not_found',
+				'error/permission'
+			);
+						
+			$config_ignore = array();
+			
+			if ($this->config->get('config_token_ignore')) {
+				$config_ignore = unserialize($this->config->get('config_token_ignore'));
+			}
+				
+			$ignore = array_merge($ignore, $config_ignore);
+						
+			if (!in_array($route, $ignore) && (!isset($this->request->get['token']) || !isset($this->session->data['token']) || ($this->request->get['token'] != $this->session->data['token']))) {
+				return $this->forward('common/login');
+			}
+		} else {
+			if (!isset($this->request->get['token']) || !isset($this->session->data['token']) || ($this->request->get['token'] != $this->session->data['token'])) {
+				return $this->forward('common/login');
+			}
+		}
+	}	
 }  
 ?>

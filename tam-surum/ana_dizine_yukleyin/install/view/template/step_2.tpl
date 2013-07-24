@@ -10,7 +10,7 @@
 </div>
 <div id="content">
   <?php if ($error_warning) { ?>
-  <div class="warning"><?php echo $error_warning; ?></div>
+  <div class="alert alert-error"><i class="icon-exclamation-sign"></i> <?php echo $error_warning; ?> <button type="button" class="close" data-dismiss="alert">&times;</button></div>
   <?php } ?>
   <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data">
     <p>1. Lütfen aşağıdaki PHP ayarlarının sağlandığından emin olunuz.</p>
@@ -108,9 +108,9 @@
             <span class="bad">Eksik</span>
             <?php } elseif (!is_writable($config_catalog)) { ?>
             <span class="bad">Yazılamaz</span>
-          <?php } else { ?>
-          <span class="good">Yazılabilir</span>
-          <?php } ?></td>
+            <?php } else { ?>
+            <span class="good">Yazılabilir</span>
+            <?php } ?></td>
         </tr>
         <tr>
           <td><?php echo $config_admin; ?></td>
@@ -118,9 +118,9 @@
             <span class="bad">Eksik</span>
             <?php } elseif (!is_writable($config_admin)) { ?>
             <span class="bad">Yazılamaz</span>
-          <?php } else { ?>
-          <span class="good">Yazılabilir</span>
-          <?php } ?></td>
+            <?php } else { ?>
+            <span class="good">Yazılabilir</span>
+            <?php } ?></td>
         </tr>
       </table>
     </fieldset>
@@ -140,6 +140,10 @@
           <td><?php echo is_writable($logs) ? '<span class="good">Yazılabilir</span>' : '<span class="bad">Yazılamaz</span>'; ?></td>
         </tr>
         <tr>
+          <td><?php echo $download . '/'; ?></td>
+          <td><?php echo is_writable($download) ? '<span class="good">Yazılabilir</span>' : '<span class="bad">Yazılamaz</span>'; ?></td>
+        </tr>
+        <tr>
           <td><?php echo $image . '/'; ?></td>
           <td><?php echo is_writable($image) ? '<span class="good">Yazılabilir</span>' : '<span class="bad">Yazılamaz</span>'; ?></td>
         </tr>
@@ -151,18 +155,14 @@
           <td><?php echo $image_data . '/'; ?></td>
           <td><?php echo is_writable($image_data) ? '<span class="good">Yazılabilir</span>' : '<span class="bad">Yazılamaz</span>'; ?></td>
         </tr>
-        <tr>
-          <td><?php echo $download . '/'; ?></td>
-          <td><?php echo is_writable($download) ? '<span class="good">Yazılabilir</span>' : '<span class="bad">Yazılamaz</span>'; ?></td>
-        </tr>
       </table>
     </fieldset>
     <div class="buttons">
-      <div class="left"><a href="<?php echo $back; ?>" class="button">Geri</a></div>
+      <div class="left"><a href="<?php echo $back; ?>" class="btn">Geri</a></div>
       <div class="right">
-        <input type="submit" value="Devam Et" class="button" />
+        <input type="submit" value="Devam Et" class="btn" />
       </div>
     </div>
   </form>
 </div>
-<?php echo $footer; ?>
+<?php echo $footer; ?> 

@@ -12,16 +12,19 @@ $_['text_authorization']  = 'Authorization';
 $_['text_sale']           = 'Sale';
 
 // Entry
-$_['entry_username']      = 'API Kullanıcı Adı:';
-$_['entry_password']      = 'API Parolası:';
-$_['entry_signature']     = 'API İmzası:';
-$_['entry_test']          = 'Test Modu:';
-$_['entry_method']        = 'Transaction Method:';
-$_['entry_total']         = 'Toplam:<br /><span class="help">Bu ödeme metodunun aktif olması için toplam sipariş miktarını giriniz</span>';
-$_['entry_order_status']  = 'Sipariş Durumu:';
-$_['entry_geo_zone']      = 'Genel Bölge:';
-$_['entry_status']        = 'Durumu:';
-$_['entry_sort_order']    = 'Sıralama:';
+$_['entry_username']      = 'API Kullanıcı Adı';
+$_['entry_password']      = 'API Parolası';
+$_['entry_signature']     = 'API İmzası';
+$_['entry_test']          = 'Test Modu';
+$_['entry_method']        = 'Transaction Method';
+$_['entry_total']         = 'Toplam';
+$_['entry_order_status']  = 'Sipariş Durumu';
+$_['entry_geo_zone']      = 'Genel Bölge';
+$_['entry_status']        = 'Durumu';
+$_['entry_sort_order']    = 'Sıralama';
+
+// Help
+$_['help_total']          = 'Bu ödeme metodunun aktif olması için toplam sipariş miktarını giriniz.';
 
 // Error
 $_['error_permission']    = 'Uyarı: PayPal Express Checkout ödeme metodunu düzenleme iznine sahip değilsiniz!';

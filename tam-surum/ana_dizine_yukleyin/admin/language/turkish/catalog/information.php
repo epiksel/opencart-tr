@@ -14,14 +14,18 @@ $_['column_sort_order'] = 'Sıralama';
 $_['column_action']     = 'Eylem';
 
 // Entry
-$_['entry_title']       = 'Bilgi Başlığı:';
-$_['entry_description'] = 'Açıklama:';
-$_['entry_store']       = 'Mağazalar:';
-$_['entry_keyword']     = 'SEO Kelimesi:<br /><span class="help">Boşluk kullanmayın ve benzersiz kelimeler kullandığınızdan emin olunuz.</span>';
-$_['entry_bottom']		= 'Alt:<br/><span class="help">Alt bölümde göster.</span>';
-$_['entry_status']      = 'Durumu:';
-$_['entry_sort_order']  = 'Sıralama:';
-$_['entry_layout']      = 'Bu Bölüm Gibi Davran:';
+$_['entry_title']       = 'Bilgi Başlığı';
+$_['entry_description'] = 'Açıklama';
+$_['entry_store']       = 'Mağazalar';
+$_['entry_keyword']     = 'SEO Kelimesi';
+$_['entry_bottom']		= 'Alt';
+$_['entry_status']      = 'Durumu';
+$_['entry_sort_order']  = 'Sıralama';
+$_['entry_layout']      = 'Bu Bölüm Gibi Davran';
+
+// Help
+$_['help_keyword']		= 'Boşluk kullanmayın ve benzersiz kelimeler kullandığınızdan emin olunuz.';
+$_['help_bottom']       = 'Katalog sayfasında alt bölümde göster.';
 
 // Error
 $_['error_warning']     = 'Uyarı: Oluşan hatalar için lütfen formu dikkatli kontrol ediniz!';

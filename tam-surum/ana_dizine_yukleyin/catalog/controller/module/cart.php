@@ -34,15 +34,15 @@ class ControllerModuleCart extends Controller {
 		
 					$this->{'model_total_' . $result['code']}->getTotal($total_data, $total, $taxes);
 				}
-				
-				$sort_order = array(); 
-			  
-				foreach ($total_data as $key => $value) {
-					$sort_order[$key] = $value['sort_order'];
-				}
-	
-				array_multisort($sort_order, SORT_ASC, $total_data);			
-			}		
+			}
+			
+			$sort_order = array(); 
+		  
+			foreach ($total_data as $key => $value) {
+				$sort_order[$key] = $value['sort_order'];
+			}
+
+			array_multisort($sort_order, SORT_ASC, $total_data);			
 		}
 		
 		$this->data['totals'] = $total_data;
@@ -71,9 +71,9 @@ class ControllerModuleCart extends Controller {
 			
 			foreach ($product['option'] as $option) {
 				if ($option['type'] != 'file') {
-					$value = $option['option_value'];	
+					$value = $option['value'];	
 				} else {
-					$filename = $this->encryption->decrypt($option['option_value']);
+					$filename = $this->encryption->decrypt($option['value']);
 					
 					$value = utf8_substr($filename, 0, utf8_strrpos($filename, '.'));
 				}				

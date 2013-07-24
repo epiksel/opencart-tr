@@ -2,17 +2,17 @@
 /* Turkceye Ceviren eka7a - http://www.e-piksel.com */
 
 // Heading
-$_['heading_title']    = 'Sipariş Durumu';
+$_['heading_title']    = 'Sipariş Durumları';
 
 // Text
-$_['text_success']     = 'Başarılı: Sipariş durumları başarılı bir şekilde değiştirildi!';
+$_['text_success']     = 'Başarılı: Sipariş durumu başarılı bir şekilde değiştirildi!';
 
 // Column
 $_['column_name']      = 'Sipariş Durum Adı';
 $_['column_action']    = 'Eylem';
 
 // Entry
-$_['entry_name']       = 'Sipariş Durum Adı:';
+$_['entry_name']       = 'Sipariş Durum Adı';
 
 // Error
 $_['error_permission'] = 'Uyarı: Sipariş Durumlarını düzenleme iznine sahip değilsiniz!';

@@ -12,16 +12,19 @@ $_['text_seller']        = 'Seller / Personal Account';
 $_['text_merchant']      = 'Merchant Account';
       
 // Entry
-$_['entry_email']        = 'E-Posta:';
-$_['entry_account']      = 'Hesap Türü:';
-$_['entry_merchant']     = 'Merchant ID:';
-$_['entry_template']     = 'Pass Template:';
-$_['entry_test']         = 'Test Modu:';
-$_['entry_total']        = 'Toplam:<br /><span class="help">Bu ödeme metodunun aktif olması için toplam sipariş miktarını giriniz</span>';
-$_['entry_order_status'] = 'Sipariş Durumu:';
-$_['entry_geo_zone']     = 'Genel Bölge:';
-$_['entry_status']       = 'Durumu:';
-$_['entry_sort_order']   = 'Sıralama:';
+$_['entry_email']        = 'E-Posta';
+$_['entry_account']      = 'Hesap Türü';
+$_['entry_merchant']     = 'Merchant ID';
+$_['entry_template']     = 'Pass Template';
+$_['entry_test']         = 'Test Modu';
+$_['entry_total']        = 'Toplam';
+$_['entry_order_status'] = 'Sipariş Durumu';
+$_['entry_geo_zone']     = 'Genel Bölge';
+$_['entry_status']       = 'Durumu';
+$_['entry_sort_order']   = 'Sıralama';
+
+// Help
+$_['help_total']         = 'Bu ödeme metodunun aktif olması için toplam sipariş miktarını giriniz.';
 
 // Error
 $_['error_permission']   = 'Uyarı: NOCHEX ödeme metodunu düzenleme iznine sahip değilsiniz!';

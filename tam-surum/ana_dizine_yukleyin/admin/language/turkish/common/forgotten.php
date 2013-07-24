@@ -11,9 +11,9 @@ $_['text_email']      = 'Kayıt olurken yazdığınız e-posta adresinizi yazın
 $_['text_success']    = 'Yönetici e-posta adresinize yeni parolanız için bir bağlantı gönderildi.';
 
 // Entry
-$_['entry_email']     = 'E-Posta Adresiniz:';
-$_['entry_password']  = 'Yeni Parolanız:';
-$_['entry_confirm']   = 'Yeni Parola(tekrar):';
+$_['entry_email']     = 'E-Posta Adresiniz';
+$_['entry_password']  = 'Yeni Parolanız';
+$_['entry_confirm']   = 'Yeni Parola(tekrar)';
 
 // Error
 $_['error_email']     = 'Uyarı: E-Posta adresi bulunamadı. Lütfen tekrar deneyiniz!';
