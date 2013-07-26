@@ -5,7 +5,7 @@
 $_['heading_title']     = 'Vergi Sınıfları';
 
 // Text
-$_['text_shipping']		= 'Kargo Adresi';
+$_['text_shipping']		= 'Teslimat Adresi';
 $_['text_payment']		= 'Fatura Adresi';
 $_['text_store']		= 'Mağaza Adresi';
 $_['text_success']		= 'Başarılı: Vergi oranları başarılı bir şekilde değiştirildi!';

@@ -14,7 +14,7 @@ $_['text_stock']					= 'Stok';
 $_['text_image_manager']			= 'Resim Yönetimi';
 $_['text_browse']         	 		= 'Gözat';
 $_['text_clear']          			= 'Temizle';
-$_['text_shipping']					= 'Kargo Adresi';
+$_['text_shipping']					= 'Teslimat Adresi';
 $_['text_payment']					= 'Fatura Adresi';
 
 // Column

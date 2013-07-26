@@ -46,7 +46,7 @@ BU YÜKSELTME BETİĞİ 1.5.X SÜRÜMLERİ İÇİN GEÇERLİDİR.
 11. Yönetim->Kullanıcılar->Kullanıcı Grupları sayfasından Yönetici grubu için tüm kutuları işaretleyin.
 
 12. Yönetim->Sistem->Genel Ayarlar-> Seçenek sekmesinden
-	- "Varsayılan Mağaza Vergi Adresi" ve "Varsayılan Müşteri Vergi Adresi" ayarlayınız. Çoğu kullanıcı için kargo adresi seçilebilir.
+	- "Varsayılan Mağaza Vergi Adresi" ve "Varsayılan Müşteri Vergi Adresi" ayarlayınız. Çoğu kullanıcı için teslimat adresi seçilebilir.
 	- Hiçbir değişiklik olmasada kaydedin.
 
 13. Yönetim->Sistem->Yerelleştirme->Vergiler->Vergi Oranlarını tekrar gözden geçirin.

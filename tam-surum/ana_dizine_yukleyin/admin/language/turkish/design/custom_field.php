@@ -20,7 +20,7 @@ $_['text_time']             = 'Zaman';
 $_['text_customer']         = 'Müşteri';
 $_['text_address']          = 'Adres';
 $_['text_payment_address']  = 'Fatura Adresi';
-$_['text_shipping_address'] = 'Kargo Adresi';
+$_['text_shipping_address'] = 'Teslimat Adresi';
 
 // Column
 $_['column_name']           = 'Özel Alan Adı';
