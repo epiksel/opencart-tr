@@ -12,7 +12,7 @@ $_['text_account']					= 'Hesap';
 $_['text_checkout']					= 'Kasaya Git';
 $_['text_stock']					= 'Stok';
 $_['text_image_manager']			= 'Resim Yönetimi';
-$_['text_shipping']					= 'Kargo Adresi';
+$_['text_shipping']					= 'Teslimat Adresi';
 $_['text_payment']					= 'Fatura Adresi';
 
 // Column

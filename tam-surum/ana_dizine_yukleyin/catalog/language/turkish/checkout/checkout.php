@@ -9,7 +9,7 @@ $_['text_cart']                      = 'Alışveriş Sepetim';
 $_['text_checkout_option']           = 'Adım 1: Hesap Seçenekleri';
 $_['text_checkout_account']          = 'Adım 2: Hesap &amp; Fatura Adresi';
 $_['text_checkout_payment_address']  = 'Adım 2: Fatura Adresi';
-$_['text_checkout_shipping_address'] = 'Adım 3: Kargo Adresi';
+$_['text_checkout_shipping_address'] = 'Adım 3: Teslimat Adresi';
 $_['text_checkout_shipping_method']  = 'Adım 4: Kargo Metodu';
 $_['text_checkout_payment_method']   = 'Adım 5: Ödeme Metodu';
 $_['text_checkout_confirm']          = 'Adım 6: Siparişi Onayla';
@@ -57,7 +57,7 @@ $_['entry_city']                     = 'İlçe / Semt:';
 $_['entry_country']                  = 'Ülke:';
 $_['entry_zone']                     = 'Şehir:';
 $_['entry_newsletter']               = '%s bültene abone olmak istiyorum.';
-$_['entry_shipping'] 	             = 'Fatura ve Kargo adresimi aynı kullan.';
+$_['entry_shipping'] 	             = 'Fatura ve Teslimat adresimi aynı kullan.';
 
 // Error
 $_['error_warning']                  = 'Siparişiniz işlenirken bir sorun oluştu! Sorun devam ederse farklı bir ödeme metodu seçip tekar deneyiniz ya da mağaza sahibi ile iletişime geçmek için <a href="%s">buraya tıklayınız</a>.';
