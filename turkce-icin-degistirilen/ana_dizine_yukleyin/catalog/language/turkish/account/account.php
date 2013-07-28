@@ -18,5 +18,5 @@ $_['text_download']      = 'Dosyalarım';
 $_['text_reward']        = 'Puanlarım'; 
 $_['text_return']        = 'Ürün İade Taleplerim'; 
 $_['text_transaction']   = 'Bakiye İşlemlerim';
-$_['text_newsletter']    = 'Bültene Abone Ol / Aboneliği Kaldır.';
+$_['text_newsletter']    = 'Bültene Abone Ol / Kaldır.';
 ?>
