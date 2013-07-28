@@ -72,6 +72,7 @@ $_['button_add_link']         		= 'Bağlantı Ekle';
 $_['button_update_total']     		= 'Toplamları Güncelle';
 $_['button_approve']          		= 'Onayla';
 $_['button_reset']            		= 'Sıfırla';
+$_['button_add_profile']            = 'Profil Ekle';
 
 // Tab
 $_['tab_address']             		= 'Adres';
@@ -101,11 +102,13 @@ $_['tab_payment']             		= 'Fatura Detayları';
 $_['tab_product']             		= 'Ürünler';
 $_['tab_return']              		= 'İade Detayları';
 $_['tab_reward']              		= 'Ödül Puanı';
+$_['tab_profile']                   = 'Profiller';
 $_['tab_shipping']            		= 'Kargo Detayları';
 $_['tab_total']               		= 'Toplamlar';
 $_['tab_transaction']         		= 'İşlemler';
 $_['tab_voucher']             		= 'Hediye Çekleri';
 $_['tab_voucher_history']     		= 'Hediye Çeki Geçmişi';
+$_['tab_price']                     = 'Fiyatı';
 
 // Error
 $_['error_upload_1']          		= 'Uyarı: Karşıya yüklenen dosya çok büyük - php.ini dosyasındaki upload_max_filesize değerini değiştirin!';

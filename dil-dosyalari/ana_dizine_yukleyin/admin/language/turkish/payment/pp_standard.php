@@ -2,18 +2,18 @@
 /* Turkceye Ceviren eka7a - http://www.e-piksel.com */
 
 // Heading
-$_['heading_title']					 = 'PayPal Website Payments Standart';
+$_['heading_title']					 = 'PayPal Payments Standard';
 
 // Text
 $_['text_payment']					 = 'Ödeme Metodları';
-$_['text_success']					 = 'Başarılı: PayPal hesap detayları başarılı bir şekilde değiştirildi!';
-$_['text_pp_standard']				 = '<a href="https://www.paypal.com/tr/mrb/pal=YS4L83BNSEC6A" target="_blank"><img src="view/image/payment/paypal.png" alt="PayPal" title="PayPal" style="border: 1px solid #EEEEEE;" /></a>';
+$_['text_success']					 = 'Başarılı: PayPal Payments Standard hesap detayları başarılı bir şekilde değiştirildi!';
+$_['text_pp_standard']				 = '<a onclick="window.open(\'https://www.paypal.com/uk/mrb/pal=YS4L83BNSEC6A\');"><img src="view/image/payment/paypal.png" alt="PayPal Payments Standard" title="PayPal Payments Standard" style="border: 1px solid #EEEEEE;" /></a>';
 $_['text_authorization']			 = 'Onaylı Ödeme';
 $_['text_sale']						 = 'Direk Ödeme';
 
 // Entry
 $_['entry_email']					 = 'E-Posta:';
-$_['entry_test']					 = 'Test Modu:';
+$_['entry_test']					 = 'Test(Sandbox) Modu:';
 $_['entry_transaction']				 = 'Ödeme Metodu:';
 $_['entry_debug']					 = 'Hata Ayıklama Modu:<br/><span class="help">Sistem kayıtlarına hata bilgilerini ekler.</span>';
 $_['entry_total']        			 = 'Toplam:<br /><span class="help">Bu ödeme metodunun aktif olması için toplam sipariş miktarını giriniz.</span>';
@@ -32,6 +32,6 @@ $_['entry_status']					 = 'Durumu:';
 $_['entry_sort_order']				 = 'Sıralama:';
 
 // Error
-$_['error_permission']				 = 'Uyarı: PayPal ödeme metodunu düzenleme iznine sahip değilsiniz!';
+$_['error_permission']				 = 'Uyarı: PayPal Payments Standard ödeme metodunu düzenleme iznine sahip değilsiniz!';
 $_['error_email']					 = 'E-Posta Gerekli!'; 
 ?>

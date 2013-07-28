@@ -32,6 +32,21 @@ $_['text_shipping_method']           = 'Siparişinizde kullanılacak kargo metod
 $_['text_payment_method']            = 'Siparişinizde kullanılacak ödeme metodunu seçiniz.';
 $_['text_comments']                  = 'Siparişiniz Hakkında Bir Açıklama Ekleyebilirsiniz';
 
+$_['text_recurring_item']            = 'Recurring item';
+$_['text_payment_profile']           = 'Payment Profile';
+$_['text_trial_description']         = '%s every %d %s(s) for %d payment(s) then';
+$_['text_payment_description']       = '%s every %d %s(s) for %d payment(s)';
+$_['text_payment_until_canceled_description'] = '%s every %d %s(s) until canceled';
+$_['text_day']                       = 'day';
+$_['text_week']                      = 'week';
+$_['text_semi_month']                = 'half-month';
+$_['text_month']                     = 'month';
+$_['text_year']                      = 'year';
+
+$_['text_trial']					 = '%s every %s %s for %s payments then ';
+$_['text_recurring']                 = '%s every %s %s';
+$_['text_length']                    = ' for %s payments';
+
 // Column
 $_['column_name']                    = 'Ürün Adı';
 $_['column_model']                   = 'Ürün Kodu';

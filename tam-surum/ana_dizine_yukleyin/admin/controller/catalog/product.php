@@ -73,6 +73,8 @@ class ControllerCatalogProduct extends Controller {
 	
     	if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
 			$this->model_catalog_product->editProduct($this->request->get['product_id'], $this->request->post);
+
+            $this->openbay->productUpdateListen($this->request->get['product_id'], $this->request->post);
 			
 			$this->session->data['success'] = $this->language->get('text_success');
 			
@@ -126,6 +128,7 @@ class ControllerCatalogProduct extends Controller {
 		if (isset($this->request->post['selected']) && $this->validateDelete()) {
 			foreach ($this->request->post['selected'] as $product_id) {
 				$this->model_catalog_product->deleteProduct($product_id);
+                $this->openbay->deleteProduct($product_id);
 	  		}
 
 			$this->session->data['success'] = $this->language->get('text_success');
@@ -587,7 +590,28 @@ class ControllerCatalogProduct extends Controller {
 		$this->data['entry_customer_group'] = $this->language->get('entry_customer_group');
 		$this->data['entry_reward'] = $this->language->get('entry_reward');
 		$this->data['entry_layout'] = $this->language->get('entry_layout');
-				
+		$this->data['entry_profile'] = $this->language->get('entry_profile');
+
+		$this->data['text_recurring_help'] = $this->language->get('text_recurring_help');
+		$this->data['text_recurring_title'] = $this->language->get('text_recurring_title');
+		$this->data['text_recurring_trial'] = $this->language->get('text_recurring_trial');
+		$this->data['entry_recurring'] = $this->language->get('entry_recurring');
+		$this->data['entry_recurring_price'] = $this->language->get('entry_recurring_price');
+		$this->data['entry_recurring_freq'] = $this->language->get('entry_recurring_freq');
+		$this->data['entry_recurring_cycle'] = $this->language->get('entry_recurring_cycle');
+		$this->data['entry_recurring_length'] = $this->language->get('entry_recurring_length');
+		$this->data['entry_trial'] = $this->language->get('entry_trial');
+		$this->data['entry_trial_price'] = $this->language->get('entry_trial_price');
+		$this->data['entry_trial_freq'] = $this->language->get('entry_trial_freq');
+		$this->data['entry_trial_length'] = $this->language->get('entry_trial_length');
+		$this->data['entry_trial_cycle'] = $this->language->get('entry_trial_cycle');
+
+		$this->data['text_length_day'] = $this->language->get('text_length_day');
+		$this->data['text_length_week'] = $this->language->get('text_length_week');
+		$this->data['text_length_month'] = $this->language->get('text_length_month');
+		$this->data['text_length_month_semi'] = $this->language->get('text_length_month_semi');
+		$this->data['text_length_year'] = $this->language->get('text_length_year');
+
     	$this->data['button_save'] = $this->language->get('button_save');
     	$this->data['button_cancel'] = $this->language->get('button_cancel');
 		$this->data['button_add_attribute'] = $this->language->get('button_add_attribute');
@@ -597,11 +621,13 @@ class ControllerCatalogProduct extends Controller {
 		$this->data['button_add_special'] = $this->language->get('button_add_special');
 		$this->data['button_add_image'] = $this->language->get('button_add_image');
 		$this->data['button_remove'] = $this->language->get('button_remove');
+		$this->data['button_add_profile'] = $this->language->get('button_add_profile');
 		
     	$this->data['tab_general'] = $this->language->get('tab_general');
     	$this->data['tab_data'] = $this->language->get('tab_data');
 		$this->data['tab_attribute'] = $this->language->get('tab_attribute');
 		$this->data['tab_option'] = $this->language->get('tab_option');		
+		$this->data['tab_profile'] = $this->language->get('tab_profile');
 		$this->data['tab_discount'] = $this->language->get('tab_discount');
 		$this->data['tab_special'] = $this->language->get('tab_special');
     	$this->data['tab_image'] = $this->language->get('tab_image');		
@@ -835,6 +861,18 @@ class ControllerCatalogProduct extends Controller {
 			$this->data['price'] = $product_info['price'];
 		} else {
       		$this->data['price'] = '';
+    	}
+		
+        $this->load->model('catalog/profile');
+        
+        $this->data['profiles'] = $this->model_catalog_profile->getProfiles();
+        
+        if (isset($this->request->post['product_profiles'])) {
+      		$this->data['product_profiles'] = $this->request->post['product_profiles'];
+    	} elseif (!empty($product_info)) {
+			$this->data['product_profiles'] = $this->model_catalog_product->getProfiles($product_info['product_id']);
+		} else {
+      		$this->data['product_profiles'] = array();
     	}
 		
 		$this->load->model('localisation/tax_class');

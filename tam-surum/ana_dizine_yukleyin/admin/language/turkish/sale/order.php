@@ -5,6 +5,8 @@
 $_['heading_title']								= 'Siparişler';
 
 // Text
+$_['text_amazon_order_id']                    	= 'Amazon Sipariş ID:';
+$_['text_name']                               	= 'Adı:';
 $_['text_success']								= 'Başarılı: Siparişler başarılı bir şekilde değiştirildi!';
 $_['text_order_id']								= 'Sipariş No:';
 $_['text_invoice_no']							= 'Fatura No:';

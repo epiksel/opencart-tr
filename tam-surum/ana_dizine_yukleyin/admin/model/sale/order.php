@@ -301,6 +301,7 @@ class ModelSaleOrder extends Model {
 		$this->db->query("DELETE FROM " . DB_PREFIX . "customer_transaction WHERE order_id = '" . (int)$order_id . "'");
 		$this->db->query("DELETE FROM " . DB_PREFIX . "customer_reward WHERE order_id = '" . (int)$order_id . "'");
 		$this->db->query("DELETE FROM " . DB_PREFIX . "affiliate_transaction WHERE order_id = '" . (int)$order_id . "'");
+		$this->db->query("DELETE `or`, ort FROM " . DB_PREFIX . "order_recurring `or`, " . DB_PREFIX . "order_recurring_transaction ort WHERE order_id = '" . (int)$order_id . "' AND ort.order_recurring_id = `or`.order_recurring_id");
 	}
 
 	public function getOrder($order_id) {
@@ -382,8 +383,35 @@ class ModelSaleOrder extends Model {
 				$language_filename = '';
 				$language_directory = '';
 			}
+            
+            $amazonOrderId = '';
+            
+            if ($this->config->get('amazon_status') == 1) {
+                $amazon_query = $this->db->query("
+                    SELECT `amazon_order_id`
+                    FROM `" . DB_PREFIX . "amazon_order`
+                    WHERE `order_id` = " . (int) $order_query->row['order_id'] . "
+                    LIMIT 1")->row;
+
+                if (isset($amazon_query['amazon_order_id']) && !empty($amazon_query['amazon_order_id'])) {
+                    $amazonOrderId = $amazon_query['amazon_order_id'];
+                }
+            }
+            
+            if ($this->config->get('amazonus_status') == 1) {
+                $amazon_query = $this->db->query("
+                        SELECT `amazonus_order_id`
+                        FROM `" . DB_PREFIX . "amazonus_order`
+                        WHERE `order_id` = " . (int) $order_query->row['order_id'] . "
+                        LIMIT 1")->row;
+
+                if (isset($amazon_query['amazonus_order_id']) && !empty($amazon_query['amazonus_order_id'])) {
+                    $amazonOrderId = $amazon_query['amazonus_order_id'];
+                }
+            }
 			
 			return array(
+                'amazon_order_id'         => $amazonOrderId,
 				'order_id'                => $order_query->row['order_id'],
 				'invoice_no'              => $order_query->row['invoice_no'],
 				'invoice_prefix'          => $order_query->row['invoice_prefix'],
@@ -720,6 +748,9 @@ class ModelSaleOrder extends Model {
 			$mail->setText(html_entity_decode($message, ENT_QUOTES, 'UTF-8'));
 			$mail->send();
 		}
+        
+        $this->load->model('payment/amazon_checkout');
+        $this->model_payment_amazon_checkout->orderStatusChange($order_id, $data);
 	}
 		
 	public function getOrderHistories($order_id, $start = 0, $limit = 10) {

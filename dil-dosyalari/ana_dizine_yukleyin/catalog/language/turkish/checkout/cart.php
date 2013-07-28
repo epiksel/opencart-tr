@@ -24,6 +24,22 @@ $_['text_shipping_detail']		= 'Kargo hesaplaması için hedef giriniz.';
 $_['text_shipping_method']		= 'Lütfen bu siparişinizde kullanmak istediğiniz kargo metodunu seçiniz.';
 $_['text_empty']				= 'Alışveriş sepetiniz boş!';
 
+$_['text_until_cancelled']		= 'until cancelled';
+$_['text_recurring_item']		= 'Recurring item';
+$_['text_payment_profile']		= 'Payment Profile';
+$_['text_trial_description']	= '%s every %d %s(s) for %d payment(s) then';
+$_['text_payment_description']	= '%s every %d %s(s) for %d payment(s)';
+$_['text_payment_until_canceled_description']	= '%s every %d %s(s) until canceled';
+$_['text_day']					= 'day';
+$_['text_week']					= 'week';
+$_['text_semi_month']			= 'half-month';
+$_['text_month']				= 'month';
+$_['text_year']					= 'year';
+
+$_['text_trial']				= '%s every %s %s for %s payments then ';
+$_['text_recurring']			= '%s every %s %s';
+$_['text_length']				= ' for %s payments';
+
 // Column
 $_['column_image']				= 'Resim';
 $_['column_name']				= 'Ürün Adı';
@@ -55,4 +71,5 @@ $_['error_country']				= 'Lütfen bir ülke seçiniz!';
 $_['error_zone']				= 'Lütfen bir şehir / eyalet seçiniz!';	
 $_['error_shipping']			= 'Uyarı: Kargo metodu gerekli!';
 $_['error_no_shipping']			= 'Uyarı: Kullanılabilir kargo metodu yok. Lütfen yardım için bizimle <a href="%s">iletişime</a> geçiniz!';
+$_['error_profile_required']	= 'Please select a payment profile!';
 ?>
