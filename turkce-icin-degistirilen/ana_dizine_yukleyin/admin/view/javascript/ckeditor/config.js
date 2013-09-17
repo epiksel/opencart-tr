@@ -3,7 +3,7 @@
  * For licensing, see LICENSE.html or http://ckeditor.com/license
  */
 
-CKEDITOR.editorConfig = function( config ) {
+CKEDITOR.editorConfig = function (config) {
 	// Define changes to default configuration here.
 	// For the complete reference:
 	// http://docs.ckeditor.com/#!/api/CKEDITOR.config
@@ -14,23 +14,23 @@ CKEDITOR.editorConfig = function( config ) {
 	config.entities = false;
 	config.extraPlugins = 'wordcount,codemirror';
 	config.codemirror_theme = 'rubyblue';
-
+	config.wordcount = { showWordCount: true, showCharCount: true, countHTML: false, charLimit: 'unlimited', wordLimit: 'unlimited' };
 	config.toolbar = 'Custom';
 
 	config.toolbar_Custom = [
 		['Source', '-', 'Preview'],
-		['Bold','Italic','Underline','Strike','-','Subscript','Superscript','-', 'RemoveFormat'],
-		['NumberedList','BulletedList','-','Outdent','Indent', '-', 'Blockquote'],
-		['JustifyLeft','JustifyCenter','JustifyRight','JustifyFull'],
-		['Link', 'Unlink','Anchor'],
+		['Bold', 'Italic', 'Underline', 'Strike', '-', 'Subscript', 'Superscript', '-', 'RemoveFormat'],
+		['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote'],
+		['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyFull'],
+		['Link', 'Unlink', 'Anchor'],
 		['SpecialChar'],
 		'/',
-		['Undo','Redo'],
+		['Undo', 'Redo'],
 		['Format', 'Styles'],
-		['Font','FontSize'],
-		['TextColor','BGColor'],
-		['Image', 'Flash','Table', 'Iframe', 'HorizontalRule'],
-		['Maximize', '-', 'ShowBlocks'],
+		['Font', 'FontSize'],
+		['TextColor', 'BGColor'],
+		['Image', 'Flash', 'Table', 'Iframe', 'HorizontalRule'],
+		['Maximize', '-', 'ShowBlocks']
 	];
 
 };

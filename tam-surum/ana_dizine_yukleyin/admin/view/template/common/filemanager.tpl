@@ -4,72 +4,59 @@
 <meta charset="UTF-8" />
 <title><?php echo $title; ?></title>
 <base href="<?php echo $base; ?>" />
-<script type="text/javascript" src="//code.jquery.com/jquery-2.0.0.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-2.0.3.min.js"></script>
 <link href="view/javascript/bootstrap/css/bootstrap.css" rel="stylesheet" media="screen" />
-<link href="view/javascript/bootstrap/css/bootstrap-responsive.css" rel="stylesheet" />
 <script src="view/javascript/bootstrap/js/bootstrap.js"></script>
 <link rel="stylesheet" href="view/javascript/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
 <style type="text/css">
-body {
+html, body, label, input, textarea, select, td {
 	font-size: 12px;
-}
-.container-fluid {
-	width: 900px;
-	border: 1px solid #000;
-	margin: auto;
-}
-#menu {
-	margin-bottom: 10px;
-}
-#directory {
-	float: left;
-	margin-right: 5px;
-	width: 160px;
-}
-#file {
-	margin-left: 200px;
 }
 </style>
 </head>
 <body>
-<div class="container-fluid">
-  <div id="menu">
-    <div class="row-fluid">
-      <div class="span12">
-        <button id="button-create" class="btn"><i class="icon-folder-close"></i> <?php echo $button_folder; ?></button>
-        <button id="button-upload" class="btn"><i class="icon-upload"></i></button>
-        <button id="button-refresh" class="btn"><i class="icon-refresh"></i></button>
-      </div>
+<div class="btn-toolbar">
+  <button id="button-create" class="btn btn-default"><i class="icon-folder-close"></i> <?php echo $button_folder; ?></button>
+  <button id="button-upload" class="btn btn-default"><i class="icon-upload"></i> <?php echo $button_upload; ?></button>
+  <button id="button-refresh" class="btn btn-default"><i class="icon-refresh"></i> <?php echo $button_refresh; ?></button>
+</div>
+<div class="col-6">
+  <div class="row">
+    <div class="col-sm-3">
+      <ul class="list-unstyled">
+        <li><a href=""><i class="icon-folder-close icon-large"></i> test</a></li>
+      </ul>
+      <div class="list-group"> <a class="list-group-item">test</a> <a class="list-group-item">test</a> <a class="list-group-item">test</a> </div>
     </div>
-  </div>
-  <div id="directory" class="well well-small">
-    <ul class="nav nav-list">
-      <li><a href=""><i class="icon-caret-right"></i> Image</a></li>
-    </ul>
-  </div>
-  <div id="file">
-    <table class="table table-striped table-bordered table-hover">
-      <thead>
-        <tr>
-        <td></td>
-          <td>Name</td>
-          <td>Size</td>
-          <td>Type</td>
-          <td>Date Modified</td>
-          <td>Action</td>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-        <td><input type="checkbox" name="" value="" /></td>
-          <td><i class="icon-folder-close"></i> Test</td>
-          <td>13kb</td>
-          <td>jPeg</td>
-          <td>1/2/1999</td>
-          <td><i title="<?php echo $button_rename; ?>" class="icon-edit"></i> <i title="<?php echo $button_move; ?>" class="icon-remove-sign"></i> <i title="<?php echo $button_delete; ?>" class="icon-trash"></i></td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="col-sm-9">
+      <table class="table table-striped table-bordered table-hover">
+        <thead>
+          <tr>
+            <td class="text-center"><input type="checkbox" name="" value="" /></td>
+            <td>Name</td>
+            <td>Size</td>
+            <td>Type</td>
+            <td>Date Modified</td>
+            <td>Action</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="text-center"><input type="checkbox" name="" value="" /></td>
+            <td>Test</td>
+            <td>13kb</td>
+            <td>jPeg</td>
+            <td>1/2/1999</td>
+            <td><a href="#" title="<?php echo $button_move; ?>" class="btn btn-primary"><i class="icon-remove-sign"></i></a>
+              <button type="button" title="<?php echo $button_rename; ?>" class="btn btn-default"><i class="icon-edit"></i></button>
+              <button type="button" title="<?php echo $button_delete; ?>" class="btn btn-default"><i class="icon-trash"></i></button></td>
+          </tr>
+        </tbody>
+      </table>
+      <ul class="pagination">
+        <li><a>1</a></li>
+      </ul>
+    </div>
   </div>
 </div>
 <div id="upload" style="display: none;">
@@ -102,13 +89,14 @@ $('#directory').delegate('a', 'click', function(e) {
 			},
 			success: function(json) {
 				$(node).find('> .icon-folder-close').attr('class', 'icon-folder-open');
+				
 				$(node).parent().find('ul').remove();
 				
 				if (json) {
 					html = '<ul>';
 					
 					for (i = 0; i < json.length; i++) {
-						html += '<li><a href="' + json[i]['directory'] + '"><i class="icon-folder-close"></i> ' + json[i]['name'] + '</a> </li>';
+						html += '<li><a href="' + json[i]['directory'] + '"><i class="icon-folder-close"></i> ' + json[i]['name'] + '</a></li>';
 					}
 					
 					html += '</ul>';
@@ -126,36 +114,6 @@ $('#directory').delegate('a', 'click', function(e) {
 	}
 });
 
-function handleDragStart(e) {
-  this.style.opacity = '0.4';  // this / e.target is the source node.
-}
-
-function handleDragOver(e) {
-  if (e.preventDefault) {
-    e.preventDefault(); // Necessary. Allows us to drop.
-  }
-
-  e.dataTransfer.dropEffect = 'move';  // See the section on the DataTransfer object.
-
-  return false;
-}
-
-function handleDragEnter(e) {
-  // this / e.target is the current hover target.
-  this.classList.add('over');
-}
-
-function handleDragLeave(e) {
-  this.classList.remove('over');  // this / e.target is previous target element.
-}
-
-var cols = document.querySelectorAll('#columns .column');
-[].forEach.call(cols, function(col) {
-  col.addEventListener('dragstart', handleDragStart, false);
-  col.addEventListener('dragenter', handleDragEnter, false);
-  col.addEventListener('dragover', handleDragOver, false);
-  col.addEventListener('dragleave', handleDragLeave, false);
-});
 
 /*
 $.ajax({

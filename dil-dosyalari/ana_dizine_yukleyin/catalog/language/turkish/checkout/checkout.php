@@ -1,7 +1,7 @@
 <?php
 /* Turkceye Ceviren eka7a - http://www.e-piksel.com */
 
-// Heading 
+// Heading
 $_['heading_title']                  = 'Kasaya Git';
 
 // Text
@@ -25,7 +25,7 @@ $_['text_forgotten']                 = 'Parolamı unuttum';
 $_['text_your_details']              = 'Kişisel Bilgileriniz';
 $_['text_your_address']              = 'Adres Bilgileriniz';
 $_['text_your_password']             = 'Parolanız';
-$_['text_agree']                     = '<a class="colorbox" href="%s" alt="%s"><b>%s</b></a>\'ı okudum ve kabul ediyorum.';
+$_['text_agree']                     = '<a href="%s" alt="%s" class="agree"><b>%s</b></a>\'ı okudum ve kabul ediyorum.';
 $_['text_address_new']               = 'Yeni bir adres ekleyiniz.';
 $_['text_address_existing']          = 'Varolan bir fatura adresi seçiniz.';
 $_['text_shipping_method']           = 'Siparişinizde kullanılacak kargo metodunu seçiniz.';
@@ -37,32 +37,32 @@ $_['column_name']                    = 'Ürün Adı';
 $_['column_model']                   = 'Ürün Kodu';
 $_['column_quantity']                = 'Miktar';
 $_['column_price']                   = 'Fiyatı';
-$_['column_total']                   = 'Toplam';
+$_['column_total']                   = 'Tutarı';
 
 // Entry
-$_['entry_email_address']            = 'E-Posta Adresi:';
-$_['entry_email']                    = 'E-Posta:';
-$_['entry_password']                 = 'Parola:';
-$_['entry_confirm']                  = 'Parola(tekrar):';
-$_['entry_firstname']                = 'Adınız:';
-$_['entry_lastname']                 = 'Soyadınız:';
-$_['entry_telephone']                = 'Telefon:';
-$_['entry_fax']                      = 'Faks:';
-$_['entry_company']                  = 'Şirket Adı:';
-$_['entry_customer_group']           = 'Müşteri Grubu:';
-$_['entry_address_1']                = 'Adres 1:';
+$_['entry_email_address']            = 'E-Posta Adresi';
+$_['entry_email']                    = 'E-Posta';
+$_['entry_password']                 = 'Parola';
+$_['entry_confirm']                  = 'Parola(tekrar)';
+$_['entry_firstname']                = 'Ad:';
+$_['entry_lastname']                 = 'Soyad';
+$_['entry_telephone']                = 'Telefon';
+$_['entry_fax']                      = 'Faks';
+$_['entry_company']                  = 'Şirket Adı';
+$_['entry_customer_group']           = 'Müşteri Grubu';
+$_['entry_address_1']                = 'Adres 1';
 $_['entry_address_2']                = 'Adres 2:';
-$_['entry_postcode']                 = 'Posta Kodu:';
-$_['entry_city']                     = 'İlçe / Semt:';
-$_['entry_country']                  = 'Ülke:';
-$_['entry_zone']                     = 'Şehir:';
+$_['entry_postcode']                 = 'Posta Kodu';
+$_['entry_city']                     = 'İlçe / Semt';
+$_['entry_country']                  = 'Ülke';
+$_['entry_zone']                     = 'Şehir';
 $_['entry_newsletter']               = '%s bültene abone olmak istiyorum.';
 $_['entry_shipping'] 	             = 'Fatura ve Teslimat adresimi aynı kullan.';
 
 // Error
 $_['error_warning']                  = 'Siparişiniz işlenirken bir sorun oluştu! Sorun devam ederse farklı bir ödeme metodu seçip tekar deneyiniz ya da mağaza sahibi ile iletişime geçmek için <a href="%s">buraya tıklayınız</a>.';
 $_['error_login']                    = 'Uyarı: E-Posta Adresi ve/ya da parolanız yanlış';
-$_['error_approved']                 = 'Uyarı: Oturum açabilmek için hesabınızın onaylanması gereklidir.'; 
+$_['error_approved']                 = 'Uyarı: Oturum açabilmek için hesabınızın onaylanması gereklidir.';
 $_['error_exists']                   = 'Uyarı: E-Posta adresi ile daha önce kayıt olunmuştur!';
 $_['error_firstname']                = 'Ad alanı 1 ile 32 karakter arasında olmalı!';
 $_['error_lastname']                 = 'Soyad alanı 1 ile 32 karakter arasında olmalı!';

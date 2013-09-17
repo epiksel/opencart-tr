@@ -161,9 +161,6 @@ class ControllerProductManufacturer extends Controller {
 			$this->data['text_tax'] = $this->language->get('text_tax');
 			$this->data['text_points'] = $this->language->get('text_points');
 			$this->data['text_compare'] = sprintf($this->language->get('text_compare'), (isset($this->session->data['compare']) ? count($this->session->data['compare']) : 0));
-			$this->data['text_display'] = $this->language->get('text_display');
-			$this->data['text_list'] = $this->language->get('text_list');
-			$this->data['text_grid'] = $this->language->get('text_grid');
 			$this->data['text_sort'] = $this->language->get('text_sort');
 			$this->data['text_limit'] = $this->language->get('text_limit');
 
@@ -171,6 +168,8 @@ class ControllerProductManufacturer extends Controller {
 			$this->data['button_wishlist'] = $this->language->get('button_wishlist');
 			$this->data['button_compare'] = $this->language->get('button_compare');
 			$this->data['button_continue'] = $this->language->get('button_continue');
+			$this->data['button_list'] = $this->language->get('button_list');
+			$this->data['button_grid'] = $this->language->get('button_grid');
 
 			$this->data['compare'] = $this->url->link('product/compare');
 
@@ -313,11 +312,11 @@ class ControllerProductManufacturer extends Controller {
 
 			sort($limits);
 
-			foreach($limits as $limits){
+			foreach($limits as $value) {
 				$this->data['limits'][] = array(
-					'text'  => $limits,
-					'value' => $limits,
-					'href'  => $this->url->link('product/manufacturer/info', 'manufacturer_id=' . $this->request->get['manufacturer_id'] . $url . '&limit=' . $limits)
+					'text'  => $value,
+					'value' => $value,
+					'href'  => $this->url->link('product/manufacturer/info', 'manufacturer_id=' . $this->request->get['manufacturer_id'] . $url . '&limit=' . $value)
 				);
 			}
 

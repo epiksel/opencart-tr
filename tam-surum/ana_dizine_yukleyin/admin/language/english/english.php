@@ -24,6 +24,7 @@ $_['text_pagination']               = 'Showing %d to %d of %d (%d Pages)';
 $_['text_no_results']               = 'No results!';
 $_['text_edit']                     = 'Edit';
 $_['text_view']                     = 'View';
+$_['text_confirm']                  = 'Confirm';
 $_['text_home']                     = '<i class="icon-home"></i>';
 
 // Button
@@ -105,7 +106,10 @@ $_['tab_shipping']                  = 'Shipping Details';
 $_['tab_total']                     = 'Totals';
 $_['tab_transaction']               = 'Transactions';
 $_['tab_voucher']                   = 'Vouchers';
-$_['tab_voucher_history']           = 'Voucher History';
+$_['tab_sale']                      = 'Sales';
+$_['tab_marketing']                 = 'Marketing';
+$_['tab_online']                    = 'People Online';
+$_['tab_activity']                  = 'Recent Activity';
 
 // Error
 $_['error_exception']               = 'Error Code(%s): %s in %s on line %s';

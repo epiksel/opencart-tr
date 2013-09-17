@@ -702,7 +702,7 @@ class ModelSaleOrder extends Model {
 			$mail->setTo($order_info['email']);
 			$mail->setFrom($this->config->get('config_email'));
 			$mail->setSender($order_info['store_name']);
-			$mail->setSubject(html_entity_decode($subject, ENT_QUOTES, 'UTF-8'));
+			$mail->setSubject($subject);
 			$mail->setText(html_entity_decode($message, ENT_QUOTES, 'UTF-8'));
 			$mail->send();
 		}
@@ -738,10 +738,10 @@ class ModelSaleOrder extends Model {
 		$implode = array();
 		
 		foreach ($products as $product_id) {
-			$implode[] = "op.product_id = '" . $product_id . "'";
+			$implode[] = "op.product_id = '" . (int)$product_id . "'";
 		}
 		
-		$query = $this->db->query("SELECT DISTINCT email FROM `" . DB_PREFIX . "order` o LEFT JOIN " . DB_PREFIX . "order_product op ON (o.order_id = op.order_id) WHERE (" . implode(" OR ", $implode) . ") AND o.order_status_id <> '0' LIMIT " . $start . "," . $end);	
+		$query = $this->db->query("SELECT DISTINCT email FROM `" . DB_PREFIX . "order` o LEFT JOIN " . DB_PREFIX . "order_product op ON (o.order_id = op.order_id) WHERE (" . implode(" OR ", $implode) . ") AND o.order_status_id <> '0' LIMIT " . (int)$start . "," . (int)$end);	
 	
 		return $query->rows;
 	}
@@ -750,7 +750,7 @@ class ModelSaleOrder extends Model {
 		$implode = array();
 		
 		foreach ($products as $product_id) {
-			$implode[] = "op.product_id = '" . $product_id . "'";
+			$implode[] = "op.product_id = '" . (int)$product_id . "'";
 		}
 		
 		$query = $this->db->query("SELECT DISTINCT email FROM `" . DB_PREFIX . "order` o LEFT JOIN " . DB_PREFIX . "order_product op ON (o.order_id = op.order_id) WHERE (" . implode(" OR ", $implode) . ") AND o.order_status_id <> '0'");

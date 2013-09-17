@@ -6,22 +6,22 @@ $_['heading_title']  = 'İletişim';
 
 // Text
 $_['text_location']  = 'Mağaza Bilgilerimiz';
-$_['text_open']      = 'Çalışma Saatleri';
 $_['text_contact']   = 'İletişim Formu';
 $_['text_address']   = 'Adres:';
-$_['text_email']     = 'E-Posta:';
 $_['text_telephone'] = 'Telefon:';
 $_['text_fax']       = 'Faks:';
+$_['text_open']      = 'Çalışma Saatleri';
+$_['text_email']     = 'E-Posta:';
 $_['text_message']   = '<p>Mesajınız başarıyla gönderildi!</p><p>En kısa sürede size geri dönüş yapılacaktır.</p>';
 
-// Entry Fields
-$_['entry_name']     = 'Adınız:';
-$_['entry_email']    = 'E-Posta Adresiniz:';
-$_['entry_enquiry']  = 'Mesajınız:';
+// Entry
+$_['entry_name']     = 'Adınız';
+$_['entry_email']    = 'E-Posta';
+$_['entry_enquiry']  = 'Mesajınız';
 $_['entry_captcha']  = 'Doğrulama kodunu giriniz:';
 
 // Email
-$_['email_subject']  = '%s\'den Mesajınız var';
+$_['email_subject']  = '%s Mesaj Gönderdi';
 
 // Errors
 $_['error_name']     = 'Ad 3 ile 32 karakter arasında olmalı!';

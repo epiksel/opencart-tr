@@ -355,6 +355,7 @@ class ControllerMarketingAffiliate extends Controller {
 			$action = array();
 		
 			$action[] = array(
+				'icon' => 'pencil',
 				'text' => $this->language->get('text_edit'),
 				'href' => $this->url->link('marketing/affiliate/update', 'token=' . $this->session->data['token'] . '&affiliate_id=' . $result['affiliate_id'] . $url, 'SSL')
 			);
@@ -379,6 +380,7 @@ class ControllerMarketingAffiliate extends Controller {
 		$this->data['text_yes'] = $this->language->get('text_yes');
 		$this->data['text_no'] = $this->language->get('text_no');		
 		$this->data['text_no_results'] = $this->language->get('text_no_results');
+		$this->data['text_confirm'] = $this->language->get('text_confirm');
 		$this->data['text_none'] = $this->language->get('text_none');
 
 		$this->data['column_name'] = $this->language->get('column_name');
@@ -974,7 +976,7 @@ class ControllerMarketingAffiliate extends Controller {
 		
 		$country_info = $this->model_localisation_country->getCountry($this->request->post['country_id']);
 		
-		if ($country_info && $country_info['postcode_required'] && (utf8_strlen($this->request->post['postcode']) < 2) || (utf8_strlen($this->request->post['postcode']) > 10)) {
+		if ($country_info && $country_info['postcode_required'] && (utf8_strlen($this->request->post['postcode']) < 2 || utf8_strlen($this->request->post['postcode']) > 10)) {
 			$this->error['postcode'] = $this->language->get('error_postcode');
 		}
 		

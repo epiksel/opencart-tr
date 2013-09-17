@@ -49,7 +49,9 @@ class ControllerSettingSetting extends Controller {
 		$this->data['entry_address'] = $this->language->get('entry_address');
 		$this->data['entry_email'] = $this->language->get('entry_email');
 		$this->data['entry_telephone'] = $this->language->get('entry_telephone');
-		$this->data['entry_fax'] = $this->language->get('entry_fax');		
+		$this->data['entry_fax'] = $this->language->get('entry_fax');	
+		$this->data['entry_location'] = $this->language->get('entry_location');
+		$this->data['entry_locations'] = $this->language->get('entry_locations');
 		$this->data['entry_title'] = $this->language->get('entry_title');
 		$this->data['entry_meta_description'] = $this->language->get('entry_meta_description');
 		$this->data['entry_layout'] = $this->language->get('entry_layout');
@@ -68,7 +70,6 @@ class ControllerSettingSetting extends Controller {
 		$this->data['entry_product_count'] = $this->language->get('entry_product_count');
 		$this->data['entry_review'] = $this->language->get('entry_review');
 		$this->data['entry_guest_review'] = $this->language->get('entry_guest_review');
-		$this->data['entry_download'] = $this->language->get('entry_download');
 		$this->data['entry_voucher_min'] = $this->language->get('entry_voucher_min');
 		$this->data['entry_voucher_max'] = $this->language->get('entry_voucher_max');
 		$this->data['entry_tax'] = $this->language->get('entry_tax');
@@ -144,6 +145,8 @@ class ControllerSettingSetting extends Controller {
 		$this->data['entry_error_filename'] = $this->language->get('entry_error_filename');
 		$this->data['entry_google_analytics'] = $this->language->get('entry_google_analytics');
 		
+		$this->data['help_location'] = $this->language->get('help_location');
+		$this->data['help_locations'] = $this->language->get('help_locations');
 		$this->data['help_currency'] = $this->language->get('help_currency');
 		$this->data['help_currency_auto'] = $this->language->get('help_currency_auto');
 		$this->data['help_catalog_limit'] = $this->language->get('help_catalog_limit');
@@ -232,8 +235,8 @@ class ControllerSettingSetting extends Controller {
 		} else {
 			$this->data['error_owner'] = '';
 		}
-
- 		if (isset($this->error['address'])) {
+		
+		if (isset($this->error['address_1'])) {
 			$this->data['error_address'] = $this->error['address'];
 		} else {
 			$this->data['error_address'] = '';
@@ -257,6 +260,18 @@ class ControllerSettingSetting extends Controller {
 			$this->data['error_title'] = '';
 		}
 		
+		if (isset($this->error['country'])) {
+			$this->data['error_country'] = $this->error['country'];
+		} else {
+			$this->data['error_country'] = '';
+		}
+		
+		if (isset($this->error['zone'])) {
+			$this->data['error_zone'] = $this->error['zone'];
+		} else {
+			$this->data['error_zone'] = '';
+		}
+				
   		if (isset($this->error['customer_group_display'])) {
 			$this->data['error_customer_group_display'] = $this->error['customer_group_display'];
 		} else {
@@ -420,8 +435,8 @@ class ControllerSettingSetting extends Controller {
 		} else {
 			$this->data['config_owner'] = $this->config->get('config_owner');
 		}
-
-		if (isset($this->request->post['config_address'])) {
+		
+		if (isset($this->request->post['config_address_1'])) {
 			$this->data['config_address'] = $this->request->post['config_address'];
 		} else {
 			$this->data['config_address'] = $this->config->get('config_address');
@@ -443,8 +458,26 @@ class ControllerSettingSetting extends Controller {
 			$this->data['config_fax'] = $this->request->post['config_fax'];
 		} else {
 			$this->data['config_fax'] = $this->config->get('config_fax');
+		}	
+		
+		$this->load->model('localisation/location');
+		
+		$this->data['locations'] = $this->model_localisation_location->getLocations();
+		
+		if (isset($this->request->post['config_location_id'])) {
+			$this->data['config_location_id'] = $this->request->post['config_location_id'];
+		} else {
+			$this->data['config_location_id'] = $this->config->get('config_location_id');
 		}
-
+		
+		if (isset($this->request->post['config_location'])) {
+			$this->data['config_location'] = $this->request->post['config_location'];
+		} elseif ($this->config->get('config_location')) {
+			$this->data['config_location'] = $this->config->get('config_location');
+		} else {
+			$this->data['config_location'] = array();			
+		}		
+						
 		if (isset($this->request->post['config_title'])) {
 			$this->data['config_title'] = $this->request->post['config_title'];
 		} else {
@@ -480,7 +513,7 @@ class ControllerSettingSetting extends Controller {
 		foreach ($directories as $directory) {
 			$this->data['templates'][] = basename($directory);
 		}					
-				
+
 		if (isset($this->request->post['config_country_id'])) {
 			$this->data['config_country_id'] = $this->request->post['config_country_id'];
 		} else {
@@ -495,8 +528,8 @@ class ControllerSettingSetting extends Controller {
 			$this->data['config_zone_id'] = $this->request->post['config_zone_id'];
 		} else {
 			$this->data['config_zone_id'] = $this->config->get('config_zone_id');
-		}		
-		
+		}	
+						
 		if (isset($this->request->post['config_language'])) {
 			$this->data['config_language'] = $this->request->post['config_language'];
 		} else {
@@ -583,12 +616,6 @@ class ControllerSettingSetting extends Controller {
 			$this->data['config_guest_review'] = $this->request->post['config_guest_review'];
 		} else {
 			$this->data['config_guest_review'] = $this->config->get('config_guest_review');
-		}
-		
-		if (isset($this->request->post['config_download'])) {
-			$this->data['config_download'] = $this->request->post['config_download'];
-		} else {
-			$this->data['config_download'] = $this->config->get('config_download');
 		}
 		
 		if (isset($this->request->post['config_voucher_min'])) {

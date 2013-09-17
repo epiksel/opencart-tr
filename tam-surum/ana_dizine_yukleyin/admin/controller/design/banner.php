@@ -172,9 +172,8 @@ class ControllerDesignBanner extends Controller {
 		$results = $this->model_design_banner->getBanners($data);
 		
 		foreach ($results as $result) {
-			$action = array();
-			
-			$action[] = array(
+			$action = array();			$action[] = array(
+				'icon' => 'pencil',
 				'text' => $this->language->get('text_edit'),
 				'href' => $this->url->link('design/banner/update', 'token=' . $this->session->data['token'] . '&banner_id=' . $result['banner_id'] . $url, 'SSL')
 			);
@@ -191,6 +190,7 @@ class ControllerDesignBanner extends Controller {
 		$this->data['heading_title'] = $this->language->get('heading_title');
 		
 		$this->data['text_no_results'] = $this->language->get('text_no_results');
+		$this->data['text_confirm'] = $this->language->get('text_confirm');
 		
 		$this->data['column_name'] = $this->language->get('column_name');
 		$this->data['column_status'] = $this->language->get('column_status');

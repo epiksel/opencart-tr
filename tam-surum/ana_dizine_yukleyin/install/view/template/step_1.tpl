@@ -10,7 +10,7 @@
 </div>
 <div id="content">
   <?php if ($error_warning) { ?>
-  <div class="alert alert-error"><i class="icon-exclamation-sign"></i> <?php echo $error_warning; ?> <button type="button" class="close" data-dismiss="alert">&times;</button></div>
+  <div class="alert alert-danger"><i class="icon-exclamation-sign"></i> <?php echo $error_warning; ?> <button type="button" class="close" data-dismiss="alert">&times;</button></div>
   <?php } ?>
   <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data">
     <div class="terms">
@@ -543,17 +543,17 @@
         the &ldquo;copyright&rdquo; line and a pointer to where the full notice is found.</p>
       <pre>&lt;one line to give the program's name and a brief idea of what it does.&gt;
     Copyright (C) &lt;year&gt;  &lt;name of author&gt;
- 
+
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
- 
+
     This program is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU General Public License for more details.
- 
+
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.
 </pre>

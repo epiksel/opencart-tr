@@ -1,7 +1,7 @@
 <?php
 /* Turkceye Ceviren eka7a - http://www.e-piksel.com */
 
-// Heading 
+// Heading
 $_['heading_title']                 = 'Ortaklık Programı';
 
 // Text
@@ -15,8 +15,8 @@ $_['text_i_am_returning_affiliate'] = 'Ortaklık için daha önce kayıt oldum.'
 $_['text_forgotten']                = 'Parolamı Unuttum';
 
 // Entry
-$_['entry_email']                   = 'Ortaklık E-Posta:';
-$_['entry_password']                = 'Parola:';
+$_['entry_email']                   = 'Ortaklık E-Posta';
+$_['entry_password']                = 'Parola';
 
 // Error
 $_['error_login']                  = 'Uyarı: E-Posta adresi ya da parolanız yanlış';

@@ -175,6 +175,7 @@ class ControllerSaleCustomerBanIp extends Controller {
 			$action = array();
 		
 			$action[] = array(
+				'icon' => 'pencil',
 				'text' => $this->language->get('text_edit'),
 				'href' => $this->url->link('sale/customer_ban_ip/update', 'token=' . $this->session->data['token'] . '&customer_ban_ip_id=' . $result['customer_ban_ip_id'] . $url, 'SSL')
 			);
@@ -192,6 +193,7 @@ class ControllerSaleCustomerBanIp extends Controller {
 		$this->data['heading_title'] = $this->language->get('heading_title');
 
 		$this->data['text_no_results'] = $this->language->get('text_no_results');
+		$this->data['text_confirm'] = $this->language->get('text_confirm');
 
 		$this->data['column_ip'] = $this->language->get('column_ip');
 		$this->data['column_customer'] = $this->language->get('column_customer');

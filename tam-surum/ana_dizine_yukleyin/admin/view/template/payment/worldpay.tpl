@@ -1,52 +1,53 @@
 <?php echo $header; ?>
-<div id="content">
+<div id="content" class="container">
   <ul class="breadcrumb">
     <?php foreach ($breadcrumbs as $breadcrumb) { ?>
     <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
     <?php } ?>
   </ul>
   <?php if ($error_warning) { ?>
-  <div class="alert alert-error"><i class="icon-exclamation-sign"></i> <?php echo $error_warning; ?>
+  <div class="alert alert-danger"><i class="icon-exclamation-sign"></i> <?php echo $error_warning; ?>
     <button type="button" class="close" data-dismiss="alert">&times;</button>
   </div>
   <?php } ?>
-  <div class="box">
-    <div class="box-heading">
-      <h1><i class="icon-edit icon-large"></i> <?php echo $heading_title; ?></h1>
-      <div class="buttons">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <div class="pull-right">
         <button type="submit" form="form-worldpay" class="btn btn-primary"><i class="icon-ok"></i> <?php echo $button_save; ?></button>
-        <a href="<?php echo $cancel; ?>" class="btn"><i class="icon-remove"></i> <?php echo $button_cancel; ?></a></div>
+        <a href="<?php echo $cancel; ?>" class="btn btn-danger"><i class="icon-remove"></i> <?php echo $button_cancel; ?></a></div>
+      <h1 class="panel-title"><i class="icon-edit"></i> <?php echo $heading_title; ?></h1>
     </div>
-    <div class="box-content">
+    <div class="panel-body">
       <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form-worldpay" class="form-horizontal">
-        <div class="control-group required">
-          <label class="control-label" for="input-merchant"><?php echo $entry_merchant; ?></label>
-          <div class="controls">
-            <input type="text" name="worldpay_merchant" value="<?php echo $worldpay_merchant; ?>" placeholder="<?php echo $entry_merchant; ?>" id="input-merchant" />
+        <div class="form-group required">
+          <label class="col-sm-2 control-label" for="input-merchant"><?php echo $entry_merchant; ?></label>
+          <div class="col-sm-10">
+            <input type="text" name="worldpay_merchant" value="<?php echo $worldpay_merchant; ?>" placeholder="<?php echo $entry_merchant; ?>" id="input-merchant" class="form-control" />
             <?php if ($error_merchant) { ?>
-            <span class="error"><?php echo $error_merchant; ?></span>
+            <div class="text-danger"><?php echo $error_merchant; ?></div>
             <?php } ?>
           </div>
         </div>
-        <div class="control-group required">
-          <label class="control-label" for="input-password"><?php echo $entry_password; ?> <span class="help-block"><?php echo $help_password; ?></span></label>
-          <div class="controls">
-            <input type="text" name="worldpay_password" value="<?php echo $worldpay_password; ?>" placeholder="<?php echo $entry_password; ?>" id="input-password" />
+        <div class="form-group required">
+          <label class="col-sm-2 control-label" for="input-password"><?php echo $entry_password; ?></label>
+          <div class="col-sm-10">
+            <input type="text" name="worldpay_password" value="<?php echo $worldpay_password; ?>" placeholder="<?php echo $entry_password; ?>" id="input-password" class="form-control" />
+            <span class="help-block"><?php echo $help_password; ?></span>
             <?php if ($error_password) { ?>
-            <span class="error"><?php echo $error_password; ?></span>
+            <div class="text-danger"><?php echo $error_password; ?></div>
             <?php } ?>
           </div>
         </div>
-        <div class="control-group">
-          <label class="control-label" for="input-callback"><?php echo $entry_callback; ?> <span class="help-block"><?php echo $help_callback; ?></span></label>
-          <div class="controls">
-            <textarea cols="40" rows="5" id="input-callback" readonly="readonly"><?php echo $callback; ?></textarea>
-          </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label" for="input-callback"><?php echo $entry_callback; ?></label>
+          <div class="col-sm-10">
+            <textarea rows="5" readonly="readonly" id="input-callback" class="form-control"><?php echo $callback; ?></textarea>
+            <span class="help-block"><?php echo $help_callback; ?></span> </div>
         </div>
-        <div class="control-group">
-          <label class="control-label" for="input-test"><?php echo $entry_test; ?></label>
-          <div class="controls">
-            <select name="worldpay_test" id="input-test">
+        <div class="form-group">
+          <label class="col-sm-2 control-label" for="input-test"><?php echo $entry_test; ?></label>
+          <div class="col-sm-10">
+            <select name="worldpay_test" id="input-test" class="form-control">
               <?php if ($worldpay_test == '0') { ?>
               <option value="0" selected="selected"><?php echo $text_off; ?></option>
               <?php } else { ?>
@@ -65,16 +66,16 @@
             </select>
           </div>
         </div>
-        <div class="control-group">
-          <label class="control-label" for="input-total"><?php echo $entry_total; ?> <span class="help-block"><?php echo $help_total; ?></span></label>
-          <div class="controls">
-            <input type="text" name="worldpay_total" value="<?php echo $worldpay_total; ?>" placeholder="<?php echo $entry_total; ?>" id="input-total" />
-          </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label" for="input-total"><?php echo $entry_total; ?></label>
+          <div class="col-sm-10">
+            <input type="text" name="worldpay_total" value="<?php echo $worldpay_total; ?>" placeholder="<?php echo $entry_total; ?>" id="input-total" class="form-control" />
+            <span class="help-block"><?php echo $help_total; ?></span> </div>
         </div>
-        <div class="control-group">
-          <label class="control-label" for="input-order-status"><?php echo $entry_order_status; ?></label>
-          <div class="controls">
-            <select name="worldpay_order_status_id" id="input-order-status">
+        <div class="form-group">
+          <label class="col-sm-2 control-label" for="input-order-status"><?php echo $entry_order_status; ?></label>
+          <div class="col-sm-10">
+            <select name="worldpay_order_status_id" id="input-order-status" class="form-control">
               <?php foreach ($order_statuses as $order_status) { ?>
               <?php if ($order_status['order_status_id'] == $worldpay_order_status_id) { ?>
               <option value="<?php echo $order_status['order_status_id']; ?>" selected="selected"><?php echo $order_status['name']; ?></option>
@@ -85,10 +86,10 @@
             </select>
           </div>
         </div>
-        <div class="control-group">
-          <label class="control-label" for="input-geo-zone"><?php echo $entry_geo_zone; ?></label>
-          <div class="controls">
-            <select name="worldpay_geo_zone_id" id="input-geo-zone">
+        <div class="form-group">
+          <label class="col-sm-2 control-label" for="input-geo-zone"><?php echo $entry_geo_zone; ?></label>
+          <div class="col-sm-10">
+            <select name="worldpay_geo_zone_id" id="input-geo-zone" class="form-control">
               <option value="0"><?php echo $text_all_zones; ?></option>
               <?php foreach ($geo_zones as $geo_zone) { ?>
               <?php if ($geo_zone['geo_zone_id'] == $worldpay_geo_zone_id) { ?>
@@ -100,10 +101,10 @@
             </select>
           </div>
         </div>
-        <div class="control-group">
-          <label class="control-label" for="input-status"><?php echo $entry_status; ?></label>
-          <div class="controls">
-            <select name="worldpay_status" id="input-status">
+        <div class="form-group">
+          <label class="col-sm-2 control-label" for="input-status"><?php echo $entry_status; ?></label>
+          <div class="col-sm-10">
+            <select name="worldpay_status" id="input-status" class="form-control">
               <?php if ($worldpay_status) { ?>
               <option value="1" selected="selected"><?php echo $text_enabled; ?></option>
               <option value="0"><?php echo $text_disabled; ?></option>
@@ -114,10 +115,10 @@
             </select>
           </div>
         </div>
-        <div class="control-group">
-          <label class="control-label" for="input-sort-order"><?php echo $entry_sort_order; ?></label>
-          <div class="controls">
-            <input type="text" name="worldpay_sort_order" value="<?php echo $worldpay_sort_order; ?>" placeholder="<?php echo $entry_sort_order; ?>" id="input-sort-order" class="input-mini" />
+        <div class="form-group">
+          <label class="col-sm-2 control-label" for="input-sort-order"><?php echo $entry_sort_order; ?></label>
+          <div class="col-sm-10">
+            <input type="text" name="worldpay_sort_order" value="<?php echo $worldpay_sort_order; ?>" placeholder="<?php echo $entry_sort_order; ?>" id="input-sort-order" class="form-control" />
           </div>
         </div>
       </form>

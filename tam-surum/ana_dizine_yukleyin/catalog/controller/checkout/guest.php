@@ -8,7 +8,7 @@ class ControllerCheckoutGuest extends Controller {
 		$this->data['text_your_details'] = $this->language->get('text_your_details');
 		$this->data['text_your_account'] = $this->language->get('text_your_account');
 		$this->data['text_your_address'] = $this->language->get('text_your_address');
-		$this->data['text_modify'] = $this->language->get('text_modify');
+		$this->data['text_loading'] = $this->language->get('text_loading');
 		
 		$this->data['entry_firstname'] = $this->language->get('entry_firstname');
 		$this->data['entry_lastname'] = $this->language->get('entry_lastname');
@@ -98,7 +98,7 @@ class ControllerCheckoutGuest extends Controller {
 		if (isset($this->session->data['payment_address']['postcode'])) {
 			$this->data['postcode'] = $this->session->data['payment_address']['postcode'];							
 		} elseif (isset($this->session->data['shipping_address']['postcode'])) {
-			$this->data['postcode'] = $this->session->data['shipping_postcode'];			
+			$this->data['postcode'] = $this->session->data['shipping_address']['postcode'];			
 		} else {
 			$this->data['postcode'] = '';
 		}
@@ -210,7 +210,7 @@ class ControllerCheckoutGuest extends Controller {
 			
 			$country_info = $this->model_localisation_country->getCountry($this->request->post['country_id']);
 			
-			if ($country_info && $country_info['postcode_required'] && (utf8_strlen($this->request->post['postcode']) < 2) || (utf8_strlen($this->request->post['postcode']) > 10)) {
+			if ($country_info && $country_info['postcode_required'] && (utf8_strlen($this->request->post['postcode']) < 2 || utf8_strlen($this->request->post['postcode']) > 10)) {
 				$json['error']['postcode'] = $this->language->get('error_postcode');
 			}
 	

@@ -1,28 +1,28 @@
 <?php echo $header; ?>
-<div id="content">
+<div id="content" class="container">
   <ul class="breadcrumb">
     <?php foreach ($breadcrumbs as $breadcrumb) { ?>
     <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
     <?php } ?>
   </ul>
   <?php if ($error_warning) { ?>
-  <div class="alert alert-error"><i class="icon-exclamation-sign"></i> <?php echo $error_warning; ?>
+  <div class="alert alert-danger"><i class="icon-exclamation-sign"></i> <?php echo $error_warning; ?>
     <button type="button" class="close" data-dismiss="alert">&times;</button>
   </div>
   <?php } ?>
-  <div class="box">
-    <div class="box-heading">
-      <h1><i class="icon-edit icon-large"></i> <?php echo $heading_title; ?></h1>
-      <div class="buttons">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <div class="pull-right">
         <button type="submit" form="form-shipping" class="btn btn-primary"><i class="icon-ok"></i> <?php echo $button_save; ?></button>
-        <a href="<?php echo $cancel; ?>" class="btn"><i class="icon-remove"></i> <?php echo $button_cancel; ?></a></div>
+        <a href="<?php echo $cancel; ?>" class="btn btn-danger"><i class="icon-remove"></i> <?php echo $button_cancel; ?></a></div>
+      <h1 class="panel-title"><i class="icon-edit"></i> <?php echo $heading_title; ?></h1>
     </div>
-    <div class="box-content">
+    <div class="panel-body">
       <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form-shipping" class="form-horizontal">
-        <div class="control-group">
-          <label class="control-label" for="input-estimator"><?php echo $entry_estimator; ?></label>
-          <div class="controls">
-            <select name="shipping_estimator" id="input-estimator">
+        <div class="form-group">
+          <label class="col-sm-2 control-label" for="input-estimator"><?php echo $entry_estimator; ?></label>
+          <div class="col-sm-10">
+            <select name="shipping_estimator" id="input-estimator" class="form-control">
               <?php if ($shipping_estimator) { ?>
               <option value="1" selected="selected"><?php echo $text_enabled; ?></option>
               <option value="0"><?php echo $text_disabled; ?></option>
@@ -33,10 +33,10 @@
             </select>
           </div>
         </div>
-        <div class="control-group">
-          <label class="control-label" for="input-status"><?php echo $entry_status; ?></label>
-          <div class="controls">
-            <select name="shipping_status" id="input-status">
+        <div class="form-group">
+          <label class="col-sm-2 control-label" for="input-status"><?php echo $entry_status; ?></label>
+          <div class="col-sm-10">
+            <select name="shipping_status" id="input-status" class="form-control">
               <?php if ($shipping_status) { ?>
               <option value="1" selected="selected"><?php echo $text_enabled; ?></option>
               <option value="0"><?php echo $text_disabled; ?></option>
@@ -47,10 +47,10 @@
             </select>
           </div>
         </div>
-        <div class="control-group">
-          <label class="control-label" for="input-sort-order"><?php echo $entry_sort_order; ?></label>
-          <div class="controls">
-            <input type="text" name="shipping_sort_order" value="<?php echo $shipping_sort_order; ?>" placeholder="<?php echo $entry_sort_order; ?>" id="input-sort-order" class="input-mini" />
+        <div class="form-group">
+          <label class="col-sm-2 control-label" for="input-sort-order"><?php echo $entry_sort_order; ?></label>
+          <div class="col-sm-10">
+            <input type="text" name="shipping_sort_order" value="<?php echo $shipping_sort_order; ?>" placeholder="<?php echo $entry_sort_order; ?>" id="input-sort-order" class="form-control" />
           </div>
         </div>
       </form>

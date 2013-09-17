@@ -2,5 +2,5 @@
 /* Turkceye Ceviren eka7a - http://www.e-piksel.com */
 
 // Heading 
-$_['heading_title']  = 'Canlý Destek';
+$_['heading_title']  = 'CanlÄ± Destek';
 ?>

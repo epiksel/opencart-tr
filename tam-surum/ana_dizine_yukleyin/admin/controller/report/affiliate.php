@@ -68,6 +68,7 @@ class ControllerReportAffiliate extends Controller {
 			$action = array();
 		
 			$action[] = array(
+				'icon' => 'pencil',
 				'text' => $this->language->get('text_edit'),
 				'href' => $this->url->link('marketing/affiliate/update', 'token=' . $this->session->data['token'] . '&affiliate_id=' . $result['affiliate_id'] . $url, 'SSL')
 			);
@@ -86,6 +87,7 @@ class ControllerReportAffiliate extends Controller {
  		$this->data['heading_title'] = $this->language->get('heading_title');
 		 
 		$this->data['text_no_results'] = $this->language->get('text_no_results');
+		$this->data['text_confirm'] = $this->language->get('text_confirm');
 		
 		$this->data['column_affiliate'] = $this->language->get('column_affiliate');
 		$this->data['column_email'] = $this->language->get('column_email');

@@ -1,7 +1,7 @@
 <?php
 /* Turkceye Ceviren eka7a - http://www.e-piksel.com */
 
-// Heading 
+// Heading
 $_['heading_title']			= 'Modifikasyonlar';
 
 // Text
@@ -19,6 +19,7 @@ $_['column_action']			= 'Eylem';
 // Entry
 $_['entry_name']			= 'Modifikasyon Adı';
 $_['entry_author']			= 'Yazar';
+$_['entry_version']			= 'Versiyon';
 $_['entry_code']			= 'Modifikasyon';
 $_['entry_status']			= 'Durumu';
 $_['entry_sort_order']		= 'Sıralama';

@@ -18,6 +18,6 @@ $_['column_image']  = 'Resim';
 $_['column_name']   = 'Ürün Adı';
 $_['column_model']  = 'Kodu';
 $_['column_stock']  = 'Stok';
-$_['column_price']  = 'Birim Fiyatı';
+$_['column_price']  = 'Fiyatı';
 $_['column_action'] = 'Eylem';
 ?>

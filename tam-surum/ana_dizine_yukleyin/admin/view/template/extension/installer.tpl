@@ -1,48 +1,50 @@
 <?php echo $header; ?>
-<div id="content">
+<div id="content" class="container">
   <ul class="breadcrumb">
     <?php foreach ($breadcrumbs as $breadcrumb) { ?>
     <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
     <?php } ?>
   </ul>
   <?php if ($error_warning) { ?>
-  <div class="alert alert-error"><i class="icon-exclamation-sign"></i> <?php echo $error_warning; ?>
+  <div class="alert alert-danger"><i class="icon-exclamation-sign"></i> <?php echo $error_warning; ?>
     <button type="button" class="close" data-dismiss="alert">&times;</button>
   </div>
   <?php } ?>
-  <div class="box">
-    <div class="box-heading">
-      <h1><i class="icon-puzzle-piece icon-large"></i> <?php echo $heading_title; ?></h1>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h1 class="panel-title"><i class="icon-puzzle-piece"></i> <?php echo $heading_title; ?></h1>
     </div>
-    <div class="box-content form-horizontal">
-      <div class="control-group">
-        <label class="control-label" for="button-upload"><?php echo $entry_upload; ?> <span class="help-block"><?php echo $help_upload; ?></span></label>
-        <div class="controls">
-          <button type="button" id="button-upload" class="btn btn-primary" onclick="$('input[name=\'file\']').val(''); $('input[name=\'file\']').click();"><i class="icon-upload"></i> <?php echo $button_upload; ?></button>
-          <?php if ($error_warning) { ?>
-          <button type="button" id="button-clear" class="btn btn-danger"><i class="icon-eraser"></i> <?php echo $button_clear; ?></button>
-          <?php } else { ?>
-          <button type="button" id="button-clear" disabled="disabled" class="btn btn-danger"><i class="icon-eraser"></i> <?php echo $button_clear; ?></button>
-          <?php } ?>
+    <div class="panel-body">
+      <form class="form-horizontal">
+        <div class="form-group">
+          <label class="col-sm-2 control-label" for="button-upload"><?php echo $entry_upload; ?> </label>
+          <div class="col-sm-10">
+            <button type="button" id="button-upload" class="btn btn-primary" onclick="$('input[name=\'file\']').val(''); $('input[name=\'file\']').click();"><i class="icon-upload"></i> <?php echo $button_upload; ?></button>
+            <?php if ($error_warning) { ?>
+            <button type="button" id="button-clear" class="btn btn-danger"><i class="icon-eraser"></i> <?php echo $button_clear; ?></button>
+            <?php } else { ?>
+            <button type="button" id="button-clear" disabled="disabled" class="btn btn-danger"><i class="icon-eraser"></i> <?php echo $button_clear; ?></button>
+            <?php } ?>
+            <span class="help-block"><?php echo $help_upload; ?></span></div>
         </div>
-      </div>
-      <div id="progress" class="control-group">
-        <div class="control-label"><?php echo $entry_progress; ?></div>
-        <div class="controls">
-          <div class="progress progress-striped">
-            <div class="bar" style="width: 0%;"></div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label"><?php echo $entry_progress; ?></label>
+          <div class="col-sm-10">
+            <div class="progress">
+              <div class="progress-bar" style="width: 0%;"></div>
+            </div>
+            <div class="progress-text"></div>
           </div>
-          <span class="help-block"></span></div>
-      </div>
-      <div class="control-group">
-        <div class="control-label"><?php echo $entry_overwrite; ?></div>
-        <div class="controls">
-          <textarea rows="10" readonly="readonly" id="overwrite" class="input-xxlarge"></textarea>
-          <br />
-          <br />
-          <button type="button" id="button-continue" class="btn" disabled="disabled"><i class="icon-ok"></i> <?php echo $button_continue; ?></button>
         </div>
-      </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label"><?php echo $entry_overwrite; ?></label>
+          <div class="col-sm-10">
+            <textarea rows="10" readonly="readonly" id="overwrite" class="form-control"></textarea>
+            <br />
+            <button type="button" id="button-continue" class="btn btn-primary" disabled="disabled"><i class="icon-ok"></i> <?php echo $button_continue; ?></button>
+          </div>
+        </div>
+      </form>
     </div>
   </div>
 </div>
@@ -58,11 +60,9 @@ var total = 0;
 $('#file').on('change', function() {
 	// Reset everything
 	$('.alert').remove();
-	$('#progress .bar').css('width', '0%');
-	$('#progress .progress').addClass('progress-striped active');
-	$('#progress').removeClass('error success');
-	$('#progress .progress').removeClass('progress-danger progress-success');		
-	$('#progress .help-block').html('');
+	$('.progress-bar').css('width', '0%');
+	$('.progress-bar').removeClass('progress-bar-danger progress-bar-success');		
+	$('.progress-text').html('');
 	
 	$.ajax({
         url: 'index.php?route=extension/installer/upload&token=<?php echo $token; ?>',
@@ -82,10 +82,8 @@ $('#file').on('change', function() {
 		},		
 		success: function(json) {
 			if (json['error']) {
-				$('#progress').addClass('error');
-				$('#progress .progress-danger').addClass('progress-danger');				
-				
-				$('#progress .help-block').html(json['error']);
+				$('#progress-bar').addClass('progress-bar-danger');				
+				$('#progress-text').html('<div class="text-danger">' + json['error'] + '</div>');
 			}
 			
 			if (json['step']) {
@@ -123,8 +121,8 @@ function next() {
 	data = step.shift();
 	
 	if (data) {
-		$('#progress .bar').css('width', (100 - (step.length / total) * 100) + '%');
-		$('#progress .help-block').html(data.text);
+		$('.progress-bar').css('width', (100 - (step.length / total) * 100) + '%');
+		$('.progress-text').html('<span class="text-info">' + data['text'] + '</span>');
 		
 		$.ajax({
 			url: data.url,
@@ -133,23 +131,14 @@ function next() {
 			data: 'path=' + data.path,
 			success: function(json) {
 				if (json['error']) {
-					$('#progress .progress').removeClass('progress-striped active');
-					
-					$('#progress').addClass('error');
-					$('#progress .progress').addClass('progress-danger');
-					
-					$('#progress .help-block').html(json['error']);
-					
-					$('#button-clear').prop('disabled', false);
+					$('.progress-bar').addClass('progress-bar-danger');
+					$('.progress-text').html('<div class="text-danger">' + json['error'] + '</div>');
+					$('.button-clear').prop('disabled', false);
 				} 
 				
 				if (json['success']) {
-					$('#progress .progress').removeClass('progress-striped active');
-					
-					$('#progress').addClass('success');
-					$('#progress .progress').addClass('progress-success');
-					
-					$('#progress .help-block').html(json['success']);
+					$('#progress-bar').addClass('progress-bar-success');
+					$('#progress-text').html('<span class="text-success">' + json['success'] + '</span>');
 				}
 									
 				if (!json['error'] && !json['success']) {
@@ -178,11 +167,11 @@ $('#button-clear').bind('click', function() {
 			$('.alert').remove();
 				
 			if (json['error']) {
-				$('.box').before('<div class="alert alert-error">' + json['error'] + ' <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+				$('.box').before('<div class="alert alert-danger"><i class="icon-exclamation-sign"></i> ' + json['error'] + ' <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
 			} 
 		
 			if (json['success']) {
-				$('.box').before('<div class="alert alert-success">' + json['success'] + ' <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+				$('.box').before('<div class="alert alert-success"><i class="icon-ok-sign"></i> ' + json['success'] + ' <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
 				
 				$('#button-clear').prop('disabled', true);
 			}

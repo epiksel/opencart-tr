@@ -5,7 +5,7 @@ class ControllerCheckoutGuestShipping extends Controller {
 		
 		$this->data['text_select'] = $this->language->get('text_select');
 		$this->data['text_none'] = $this->language->get('text_none');
-		$this->data['text_modify'] = $this->language->get('text_modify');
+		$this->data['text_loading'] = $this->language->get('text_loading');
 
 		$this->data['entry_firstname'] = $this->language->get('entry_firstname');
 		$this->data['entry_lastname'] = $this->language->get('entry_lastname');
@@ -127,7 +127,7 @@ class ControllerCheckoutGuestShipping extends Controller {
 			
 			$country_info = $this->model_localisation_country->getCountry($this->request->post['country_id']);
 			
-			if ($country_info && $country_info['postcode_required'] && (utf8_strlen($this->request->post['postcode']) < 2) || (utf8_strlen($this->request->post['postcode']) > 10)) {
+			if ($country_info && $country_info['postcode_required'] && (utf8_strlen($this->request->post['postcode']) < 2 || utf8_strlen($this->request->post['postcode']) > 10)) {
 				$json['error']['postcode'] = $this->language->get('error_postcode');
 			}
 	

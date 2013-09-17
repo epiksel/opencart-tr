@@ -1,45 +1,49 @@
 <?php echo $header; ?>
-<div id="content">
+<div id="content" class="container">
   <ul class="breadcrumb">
     <?php foreach ($breadcrumbs as $breadcrumb) { ?>
     <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
     <?php } ?>
   </ul>
   <?php if ($error_warning) { ?>
-  <div class="alert alert-error"><i class="icon-exclamation-sign"></i> <?php echo $error_warning; ?>
+  <div class="alert alert-danger"><i class="icon-exclamation-sign"></i> <?php echo $error_warning; ?>
     <button type="button" class="close" data-dismiss="alert">&times;</button>
   </div>
   <?php } ?>
-  <div class="box">
-    <div class="box-heading">
-      <h1><i class="icon-edit icon-large"></i> <?php echo $heading_title; ?></h1>
-      <div class="buttons">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <div class="pull-right">
         <button type="submit" form="form-theme-voucher" class="btn btn-primary"><i class="icon-ok"></i> <?php echo $button_save; ?></button>
-        <a href="<?php echo $cancel; ?>" class="btn"><i class="icon-remove"></i> <?php echo $button_cancel; ?></a></div>
+        <a href="<?php echo $cancel; ?>" class="btn btn-danger"><i class="icon-remove"></i> <?php echo $button_cancel; ?></a></div>
+      <h1 class="panel-title"><i class="icon-edit"></i> <?php echo $heading_title; ?></h1>
     </div>
-    <div class="box-content">
+    <div class="panel-body">
       <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form-theme-voucher" class="form-horizontal">
-        <div class="control-group required">
-          <div class="control-label"><?php echo $entry_name; ?></div>
-          <div class="controls">
+        <div class="form-group required">
+          <label class="col-sm-2 control-label"><?php echo $entry_name; ?></label>
+          <div class="col-sm-10">
             <?php foreach ($languages as $language) { ?>
-            <input type="text" name="voucher_theme_description[<?php echo $language['language_id']; ?>][name]" value="<?php echo isset($voucher_theme_description[$language['language_id']]) ? $voucher_theme_description[$language['language_id']]['name'] : ''; ?>" placeholder="<?php echo $entry_name; ?>" />
-            <img src="view/image/flags/<?php echo $language['image']; ?>" title="<?php echo $language['name']; ?>" /><br />
+            <div class="input-group"><span class="input-group-addon"><img src="view/image/flags/<?php echo $language['image']; ?>" title="<?php echo $language['name']; ?>" /></span>
+              <input type="text" name="voucher_theme_description[<?php echo $language['language_id']; ?>][name]" value="<?php echo isset($voucher_theme_description[$language['language_id']]) ? $voucher_theme_description[$language['language_id']]['name'] : ''; ?>" placeholder="<?php echo $entry_name; ?>" class="form-control" />
+            </div>
             <?php if (isset($error_name[$language['language_id']])) { ?>
-            <span class="error"><?php echo $error_name[$language['language_id']]; ?></span><br />
+            <div class="text-danger"><?php echo $error_name[$language['language_id']]; ?></div>
             <?php } ?>
             <?php } ?>
           </div>
         </div>
-        <div class="control-group">
-          <label class="control-label" for="input-image"><?php echo $entry_image; ?></label>
-          <div class="controls">
-            <div class="image"><img src="<?php echo $thumb; ?>" alt="" class="img-polaroid" />
-              <input type="hidden" name="image" value="<?php echo $image; ?>" />
-              <div class="image-option"><a href="#" title="<?php echo $button_edit; ?>" data-toggle="modal" data-target="#modal"><span class="icon-pencil"></span></a> <a href="#" title="<?php echo $button_clear; ?>" onclick="$(this).parent().parent().find('img').attr('src', '<?php echo $no_image; ?>'); $(this).parent().parent().find('input').attr('value', ''); return false;"><span class="icon-trash"></span></a></div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label" for="input-image"><?php echo $entry_image; ?></label>
+          <div class="col-sm-10"><img src="<?php echo $thumb; ?>" alt="" class="img-thumbnail" />
+            <input type="hidden" name="image" value="<?php echo $image; ?>" />
+            <br />
+            <br />
+            <div class="btn-group">
+              <button type="button" data-toggle="modal" data-target="#modal" class="btn btn-default"><span class="icon-pencil"></span> <?php echo $button_edit; ?></button>
+              <button type="button" onclick="$(this).parent().parent().find('img').attr('src', '<?php echo $no_image; ?>'); $(this).parent().parent().find('input').attr('value', '');" class="btn btn-danger"><span class="icon-trash"></span> <?php echo $button_clear; ?></button>
             </div>
             <?php if ($error_image) { ?>
-            <span class="error"><?php echo $error_image; ?></span>
+            <div class="text-danger"><?php echo $error_image; ?></div>
             <?php } ?>
           </div>
         </div>

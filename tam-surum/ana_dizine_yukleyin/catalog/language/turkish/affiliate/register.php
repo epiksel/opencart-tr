@@ -1,7 +1,7 @@
 <?php
 /* Turkceye Ceviren eka7a - http://www.e-piksel.com */
 
-// Heading 
+// Heading
 $_['heading_title']             = 'Ortaklık Programı';
 
 // Text
@@ -16,33 +16,33 @@ $_['text_your_password']        = 'Parolanız';
 $_['text_cheque']               = 'Çek';
 $_['text_paypal']               = 'PayPal';
 $_['text_bank']                 = 'Banka Havalesi/EFT';
-$_['text_agree']                = '<a class="colorbox" href="%s" alt="%s"><b>%s</b></a>\'nı okudum ve kabul ediyorum';
+$_['text_agree']                = '<a href="%s" alt="%s" class="agree"><b>%s</b></a>\'nı okudum ve kabul ediyorum';
 
 // Entry
-$_['entry_firstname']      		= 'Ad:';
-$_['entry_lastname']       		= 'Soyad:';
-$_['entry_email']          		= 'E-Posta:';
-$_['entry_telephone']      		= 'Telefon:';
-$_['entry_fax']            		= 'Faks:';
-$_['entry_company']        		= 'Şirket Adı:';
-$_['entry_website']             = 'Web Siteniz:';
-$_['entry_address_1']      		= 'Adres 1:';
-$_['entry_address_2']      		= 'Adres 2:';
-$_['entry_postcode']       		= 'Posta Kodu:';
-$_['entry_city']           		= 'İlçe / Semt:';
-$_['entry_country']        		= 'Ülke:';
-$_['entry_zone']           		= 'Şehir:';
-$_['entry_tax']                 = 'T.C. / Vergi No:';
-$_['entry_payment']             = 'Ödeme Metodu:';
-$_['entry_cheque']              = 'Çek Alacaklı Adı:';
-$_['entry_paypal']              = 'PayPal E-Posta Adresiniz:';
-$_['entry_bank_name']           = 'Banka Adı:';
-$_['entry_bank_branch_number']  = 'Şube Numarası:';
-$_['entry_bank_swift_code']     = 'SWIFT Kodu:';
-$_['entry_bank_account_name']   = 'Hesap Adı:';
-$_['entry_bank_account_number'] = 'IBAN/Hesap Numarası:';
-$_['entry_password']            = 'Parola:';
-$_['entry_confirm']             = 'Parola(tekar):';
+$_['entry_firstname']      		= 'Ad';
+$_['entry_lastname']       		= 'Soyad';
+$_['entry_email']          		= 'E-Posta';
+$_['entry_telephone']      		= 'Telefon';
+$_['entry_fax']            		= 'Faks';
+$_['entry_company']        		= 'Şirket Adı';
+$_['entry_website']             = 'Web Siteniz';
+$_['entry_address_1']      		= 'Adres 1';
+$_['entry_address_2']      		= 'Adres 2';
+$_['entry_postcode']       		= 'Posta Kodu';
+$_['entry_city']           		= 'İlçe / Semt';
+$_['entry_country']        		= 'Ülke';
+$_['entry_zone']           		= 'Şehir';
+$_['entry_tax']                 = 'T.C. / Vergi No';
+$_['entry_payment']             = 'Ödeme Metodu';
+$_['entry_cheque']              = 'Çek Alacaklı Adı';
+$_['entry_paypal']              = 'PayPal E-Posta';
+$_['entry_bank_name']           = 'Banka Adı';
+$_['entry_bank_branch_number']  = 'Şube Numarası';
+$_['entry_bank_swift_code']     = 'SWIFT Kodu';
+$_['entry_bank_account_name']   = 'Hesap Adı';
+$_['entry_bank_account_number'] = 'IBAN/Hesap Numarası';
+$_['entry_password']            = 'Parola';
+$_['entry_confirm']             = 'Parola(tekar)';
 
 // Error
 $_['error_exists']              = 'Uyarı: E-Posta adresi ile daha önce kayıt olunmuştur!';

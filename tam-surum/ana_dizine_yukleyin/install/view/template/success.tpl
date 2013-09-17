@@ -7,7 +7,7 @@
   </ul>
 </div>
 <div id="content">
-  <div class="alert alert-error">install dizinini silmeyi unutmayınız!</div>
+  <div class="alert alert-danger">install dizinini silmeyi unutmayınız!</div>
   <p>Tebrikler! OpenCart Türkçe başarılı bir şekilde güncellendi.</p>
   <div class="alert alert-success">
     <div><a href="../"><img src="view/image/screenshot_1.png" alt="" /></a><br />

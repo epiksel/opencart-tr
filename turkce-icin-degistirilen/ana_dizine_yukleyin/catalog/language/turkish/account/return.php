@@ -1,7 +1,7 @@
 <?php
 /* Turkceye Ceviren eka7a - http://www.e-piksel.com */
 
-// Heading 
+// Heading
 $_['heading_title']      = 'Ürün İade Taleplerim';
 
 // Text
@@ -20,7 +20,7 @@ $_['text_date_added']    = 'Ekleme Tarihi:';
 $_['text_comment']       = 'Ürün İade Açıklamları';
 $_['text_history']       = 'Ürün İade Geçmişi';
 $_['text_empty']         = 'Daha önce ürün iade isteğinde bulunmadınız!';
-$_['text_agree']		 = '<a class="colorbox" href="%s" alt="%s"><b>%s</b></a>\'nı okudum ve kabul ediyorum.';
+$_['text_agree']		 = '<a href="%s" alt="%s" class="agree"><b>%s</b></a>\'nı okudum ve kabul ediyorum.';
 
 // Column
 $_['column_return_id']   = 'İade No';
@@ -38,19 +38,19 @@ $_['column_date_added']  = 'Ekleme Tarihi';
 $_['column_status']      = 'Durumu';
 
 // Entry
-$_['entry_order_id']     = 'Sipariş No:';
-$_['entry_date_ordered'] = 'Sipariş Tarihi:';
-$_['entry_firstname']    = 'Adınız:';
-$_['entry_lastname']     = 'Soyadınız:';
-$_['entry_email']        = 'E-Posta:';
-$_['entry_telephone']    = 'Telefon:';
-$_['entry_product']      = 'Ürün Adı:';
-$_['entry_model']        = 'Ürün Kodu:';
-$_['entry_quantity']     = 'Miktar:';
-$_['entry_reason']       = 'Ürün İade Nedeni:';
-$_['entry_opened']       = 'Ürün Açıldı:';
-$_['entry_fault_detail'] = 'Arıza ya da diğer detaylar:';
-$_['entry_captcha']      = 'Doğrulama kodunu giriniz:';
+$_['entry_order_id']     = 'Sipariş No';
+$_['entry_date_ordered'] = 'Sipariş Tarihi';
+$_['entry_firstname']    = 'Adınız';
+$_['entry_lastname']     = 'Soyadınız';
+$_['entry_email']        = 'E-Posta';
+$_['entry_telephone']    = 'Telefon';
+$_['entry_product']      = 'Ürün Adı';
+$_['entry_model']        = 'Ürün Kodu';
+$_['entry_quantity']     = 'Miktar';
+$_['entry_reason']       = 'Ürün İade Nedeni';
+$_['entry_opened']       = 'Ürün Açıldı';
+$_['entry_fault_detail'] = 'Arıza ya da diğer detaylar';
+$_['entry_captcha']      = 'Doğrulama kodunu giriniz';
 
 // Error
 $_['text_error']         = 'İstediğiniz ürün iadesi bulunamadı!';

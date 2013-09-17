@@ -26,6 +26,7 @@ $_['text_pagination']         		= 'Gösterilen: %d ile %d arası, toplam: %d (%d
 $_['text_no_results']         		= 'Gösterilecek sonuç yok!';
 $_['text_edit']               		= 'Düzenle';
 $_['text_view']						= 'Göster';
+$_['text_confirm']                  = 'Confirm';
 $_['text_home']               		= '<i class="icon-home"></i>';
 
 // Button
@@ -107,7 +108,10 @@ $_['tab_shipping']            		= 'Kargo Detayları';
 $_['tab_total']               		= 'Toplamlar';
 $_['tab_transaction']         		= 'İşlemler';
 $_['tab_voucher']             		= 'Hediye Çekleri';
-$_['tab_voucher_history']     		= 'Hediye Çeki Geçmişi';
+$_['tab_sale']                      = 'Satışlar';
+$_['tab_marketing']                 = 'Pazarlama';
+$_['tab_online']                    = 'Çevirimiçi';
+$_['tab_activity']                  = 'Son Aktiviteler';
 
 // Error
 $_['error_exception']               = 'Hata kodu(%s): %s dosya %s satır %s';

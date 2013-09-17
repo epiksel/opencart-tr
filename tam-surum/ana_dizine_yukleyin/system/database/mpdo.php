@@ -6,7 +6,7 @@
 *      please set zend_optimizerplus.dups_fix=1 in your php.ini "
 */
 
-final class mPDO {
+final class DBmPDO {
     private $pdo = null;
     private $statement = null;
 
@@ -61,11 +61,13 @@ final class mPDO {
         try{
             if ($this->statement && $this->statement->execute($params)){
                 $data = array();
-                while ($row = $this->statement->fetch(PDO::FETCH_ASSOC)){
+                
+				while ($row = $this->statement->fetch(PDO::FETCH_ASSOC)){
                     $data[] = $row;
                 }
+				
                 $result = new stdClass();
-                $result->row = ( isset($data[0]) ? $data[0] : array() );
+                $result->row = (isset($data[0]) ? $data[0] : array());
                 $result->rows = $data;
                 $result->num_rows = $this->statement->rowCount();
             }

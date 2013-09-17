@@ -320,6 +320,7 @@ class ControllerSaleOrder extends Controller {
 			
 			if (strtotime($result['date_added']) > strtotime('-' . (int)$this->config->get('config_order_edit') . ' day')) {
 				$action[] = array(
+					'icon' => 'pencil',
 					'text' => $this->language->get('text_edit'),
 					'href' => $this->url->link('sale/order/update', 'token=' . $this->session->data['token'] . '&order_id=' . $result['order_id'] . $url, 'SSL')
 				);
@@ -340,6 +341,7 @@ class ControllerSaleOrder extends Controller {
 		$this->data['heading_title'] = $this->language->get('heading_title');
 
 		$this->data['text_no_results'] = $this->language->get('text_no_results');
+		$this->data['text_confirm'] = $this->language->get('text_confirm');
 		$this->data['text_missing'] = $this->language->get('text_missing');
 
 		$this->data['column_order_id'] = $this->language->get('column_order_id');
@@ -1173,7 +1175,7 @@ class ControllerSaleOrder extends Controller {
 		
 		$country_info = $this->model_localisation_country->getCountry($this->request->post['payment_country_id']);
 	
-		if ($country_info && $country_info['postcode_required'] && (utf8_strlen($this->request->post['payment_postcode']) < 2) || (utf8_strlen($this->request->post['payment_postcode']) > 10)) {
+		if ($country_info && $country_info['postcode_required'] && (utf8_strlen($this->request->post['payment_postcode']) < 2 || utf8_strlen($this->request->post['payment_postcode']) > 10)) {
 			$this->error['payment_postcode'] = $this->language->get('error_postcode');
 		}
 
@@ -1231,7 +1233,7 @@ class ControllerSaleOrder extends Controller {
 			
 			$country_info = $this->model_localisation_country->getCountry($this->request->post['shipping_country_id']);
 			
-			if ($country_info && $country_info['postcode_required'] && (utf8_strlen($this->request->post['shipping_postcode']) < 2) || (utf8_strlen($this->request->post['shipping_postcode']) > 10)) {
+			if ($country_info && $country_info['postcode_required'] && (utf8_strlen($this->request->post['shipping_postcode']) < 2 || utf8_strlen($this->request->post['shipping_postcode']) > 10)) {
 				$this->error['shipping_postcode'] = $this->language->get('error_postcode');
 			}
 	

@@ -1,37 +1,37 @@
 <?php echo $header; ?>
-<div id="content">
+<div id="content" class="container">
   <ul class="breadcrumb">
     <?php foreach ($breadcrumbs as $breadcrumb) { ?>
     <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
     <?php } ?>
   </ul>
   <?php if ($error_warning) { ?>
-  <div class="alert alert-error"><i class="icon-exclamation-sign"></i> <?php echo $error_warning; ?>
+  <div class="alert alert-danger"><i class="icon-exclamation-sign"></i> <?php echo $error_warning; ?>
     <button type="button" class="close" data-dismiss="alert">&times;</button>
   </div>
   <?php } ?>
-  <div class="box">
-    <div class="box-heading">
-      <h1><i class="icon-edit icon-large"></i> <?php echo $heading_title; ?></h1>
-      <div class="buttons">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <div class="pull-right">
         <button type="submit" form="form-user" class="btn btn-primary"><i class="icon-ok"></i> <?php echo $button_save; ?></button>
-        <a href="<?php echo $cancel; ?>" class="btn"><i class="icon-remove"></i> <?php echo $button_cancel; ?></a></div>
+        <a href="<?php echo $cancel; ?>" class="btn btn-danger"><i class="icon-remove"></i> <?php echo $button_cancel; ?></a></div>
+      <h1 class="panel-title"><i class="icon-edit"></i> <?php echo $heading_title; ?></h1>
     </div>
-    <div class="box-content">
+    <div class="panel-body">
       <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form-user" class="form-horizontal">
-        <div class="control-group required">
-          <label class="control-label" for="input-username"><?php echo $entry_username; ?></label>
-          <div class="controls">
-            <input type="text" name="username" value="<?php echo $username; ?>" placeholder="<?php echo $entry_username; ?>" id="input-username" />
+        <div class="form-group required">
+          <label class="col-sm-2 control-label" for="input-username"><?php echo $entry_username; ?></label>
+          <div class="col-sm-10">
+            <input type="text" name="username" value="<?php echo $username; ?>" placeholder="<?php echo $entry_username; ?>" id="input-username" class="form-control" />
             <?php if ($error_username) { ?>
-            <span class="error"><?php echo $error_username; ?></span>
+            <div class="text-danger"><?php echo $error_username; ?></div>
             <?php } ?>
           </div>
         </div>
-        <div class="control-group">
-          <label class="control-label" for="input-user-group"><?php echo $entry_user_group; ?></label>
-          <div class="controls">
-            <select name="user_group_id" id="input-user-group">
+        <div class="form-group">
+          <label class="col-sm-2 control-label" for="input-user-group"><?php echo $entry_user_group; ?></label>
+          <div class="col-sm-10">
+            <select name="user_group_id" id="input-user-group" class="form-control">
               <?php foreach ($user_groups as $user_group) { ?>
               <?php if ($user_group['user_group_id'] == $user_group_id) { ?>
               <option value="<?php echo $user_group['user_group_id']; ?>" selected="selected"><?php echo $user_group['name']; ?></option>
@@ -42,61 +42,64 @@
             </select>
           </div>
         </div>
-        <div class="control-group required">
-          <label class="control-label" for="input-firstname"><?php echo $entry_firstname; ?></label>
-          <div class="controls">
-            <input type="text" name="firstname" value="<?php echo $firstname; ?>" placeholder="<?php echo $entry_firstname; ?>" id="input-firstname" />
+        <div class="form-group required">
+          <label class="col-sm-2 control-label" for="input-firstname"><?php echo $entry_firstname; ?></label>
+          <div class="col-sm-10">
+            <input type="text" name="firstname" value="<?php echo $firstname; ?>" placeholder="<?php echo $entry_firstname; ?>" id="input-firstname" class="form-control" />
             <?php if ($error_firstname) { ?>
-            <span class="error"><?php echo $error_firstname; ?></span>
+            <div class="text-danger"><?php echo $error_firstname; ?></div>
             <?php } ?>
           </div>
         </div>
-        <div class="control-group required">
-          <label class="control-label" for="input-lastname"><?php echo $entry_lastname; ?></label>
-          <div class="controls">
-            <input type="text" name="lastname" value="<?php echo $lastname; ?>" placeholder="<?php echo $entry_lastname; ?>" id="input-lastname" />
+        <div class="form-group required">
+          <label class="col-sm-2 control-label" for="input-lastname"><?php echo $entry_lastname; ?></label>
+          <div class="col-sm-10">
+            <input type="text" name="lastname" value="<?php echo $lastname; ?>" placeholder="<?php echo $entry_lastname; ?>" id="input-lastname" class="form-control" />
             <?php if ($error_lastname) { ?>
-            <span class="error"><?php echo $error_lastname; ?></span>
+            <div class="text-danger"><?php echo $error_lastname; ?></div>
             <?php } ?>
           </div>
         </div>
-        <div class="control-group">
-          <label class="control-label" for="input-email"><?php echo $entry_email; ?></label>
-          <div class="controls">
-            <input type="text" name="email" value="<?php echo $email; ?>" placeholder="<?php echo $entry_email; ?>" id="input-email" />
+        <div class="form-group">
+          <label class="col-sm-2 control-label" for="input-email"><?php echo $entry_email; ?></label>
+          <div class="col-sm-10">
+            <input type="text" name="email" value="<?php echo $email; ?>" placeholder="<?php echo $entry_email; ?>" id="input-email" class="form-control" />
           </div>
         </div>
-        <div class="control-group">
-          <label class="control-label" for="input-name"><?php echo $entry_image; ?></label>
-          <div class="controls">
-            <div class="image"> <img src="<?php echo $thumb; ?>" alt="" class="img-polaroid" />
-              <input type="hidden" name="image" value="<?php echo $image; ?>" />
-              <div class="image-option"><a href="#" title="<?php echo $button_edit; ?>" data-toggle="modal" data-target="#modal"><span class="icon-pencil"></span></a> <a href="#" title="<?php echo $button_clear; ?>" onclick="$(this).parent().parent().find('img').attr('src', '<?php echo $no_image; ?>'); $(this).parent().parent().find('input').attr('value', ''); return false;"><span class="icon-trash"></span></a></div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label" for="input-name"><?php echo $entry_image; ?></label>
+          <div class="col-sm-10"><img src="<?php echo $thumb; ?>" alt="" class="img-thumbnail" />
+            <input type="hidden" name="image" value="<?php echo $image; ?>" />
+            <br />
+            <br />
+            <div class="btn-group">
+              <button type="button" data-toggle="modal" data-target="#modal" class="btn btn-default"><span class="icon-pencil"></span> <?php echo $button_edit; ?></button>
+              <button type="button" title="" onclick="$(this).parent().parent().find('img').attr('src', '<?php echo $no_image; ?>'); $(this).parent().parent().find('input').attr('value', ''); " class="btn btn-danger"><span class="icon-trash"></span> <?php echo $button_clear; ?></button>
             </div>
           </div>
         </div>
-        <div class="control-group">
-          <label class="control-label" for="input-password"><?php echo $entry_password; ?></label>
-          <div class="controls">
-            <input type="password" name="password" value="<?php echo $password; ?>" placeholder="<?php echo $entry_password; ?>" id="input-password" />
+        <div class="form-group">
+          <label class="col-sm-2 control-label" for="input-password"><?php echo $entry_password; ?></label>
+          <div class="col-sm-10">
+            <input type="password" name="password" value="<?php echo $password; ?>" placeholder="<?php echo $entry_password; ?>" id="input-password" class="form-control" />
             <?php if ($error_password) { ?>
-            <span class="error"><?php echo $error_password; ?></span>
+            <div class="text-danger"><?php echo $error_password; ?></div>
             <?php  } ?>
           </div>
         </div>
-        <div class="control-group">
-          <label class="control-label" for="input-confirm"><?php echo $entry_confirm; ?></label>
-          <div class="controls">
-            <input type="password" name="confirm" value="<?php echo $confirm; ?>" placeholder="<?php echo $entry_confirm; ?>" id="input-confirm" />
+        <div class="form-group">
+          <label class="col-sm-2 control-label" for="input-confirm"><?php echo $entry_confirm; ?></label>
+          <div class="col-sm-10">
+            <input type="password" name="confirm" value="<?php echo $confirm; ?>" placeholder="<?php echo $entry_confirm; ?>" id="input-confirm" class="form-control" />
             <?php if ($error_confirm) { ?>
-            <span class="error"><?php echo $error_confirm; ?></span>
+            <div class="text-danger"><?php echo $error_confirm; ?></div>
             <?php  } ?>
           </div>
         </div>
-        <div class="control-group">
-          <label class="control-label" for="input-status"><?php echo $entry_status; ?></label>
-          <div class="controls">
-            <select name="status" id="input-status">
+        <div class="form-group">
+          <label class="col-sm-2 control-label" for="input-status"><?php echo $entry_status; ?></label>
+          <div class="col-sm-10">
+            <select name="status" id="input-status" class="form-control">
               <?php if ($status) { ?>
               <option value="0"><?php echo $text_disabled; ?></option>
               <option value="1" selected="selected"><?php echo $text_enabled; ?></option>

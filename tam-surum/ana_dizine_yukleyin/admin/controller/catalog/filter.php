@@ -175,6 +175,7 @@ class ControllerCatalogFilter extends Controller {
 			$action = array();
 			
 			$action[] = array(
+				'icon' => 'pencil',
 				'text' => $this->language->get('text_edit'),
 				'href' => $this->url->link('catalog/filter/update', 'token=' . $this->session->data['token'] . '&filter_group_id=' . $result['filter_group_id'] . $url, 'SSL')
 			);
@@ -191,6 +192,7 @@ class ControllerCatalogFilter extends Controller {
 		$this->data['heading_title'] = $this->language->get('heading_title');
 		
 		$this->data['text_no_results'] = $this->language->get('text_no_results');
+		$this->data['text_confirm'] = $this->language->get('text_confirm');
 		
 		$this->data['column_group'] = $this->language->get('column_group');
 		$this->data['column_sort_order'] = $this->language->get('column_sort_order');

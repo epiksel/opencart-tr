@@ -175,6 +175,7 @@ class ControllerCatalogInformation extends Controller {
 			$action = array();
 						
 			$action[] = array(
+				'icon' => 'pencil',
 				'text' => $this->language->get('text_edit'),
 				'href' => $this->url->link('catalog/information/update', 'token=' . $this->session->data['token'] . '&information_id=' . $result['information_id'] . $url, 'SSL')
 			);
@@ -191,6 +192,7 @@ class ControllerCatalogInformation extends Controller {
 		$this->data['heading_title'] = $this->language->get('heading_title');
 
 		$this->data['text_no_results'] = $this->language->get('text_no_results');
+		$this->data['text_confirm'] = $this->language->get('text_confirm');
 
 		$this->data['column_title'] = $this->language->get('column_title');
 		$this->data['column_sort_order'] = $this->language->get('column_sort_order');

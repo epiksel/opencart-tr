@@ -1,10 +1,10 @@
 $(document).ready(function() {
     /* Search */
-    $('.button-search').on('click', function() {
+    $('header input[name=\'search\']').parent().find('button').on('click', function() {
         url = $('base').attr('href') + 'index.php?route=product/search';
-                 
-        var search = $('input[name=\'search\']').prop('value');
         
+		var search = $('header input[name=\'search\']').val();
+		         
         if (search) {
             url += '&search=' + encodeURIComponent(search);
         }
@@ -12,93 +12,57 @@ $(document).ready(function() {
         location = url;
     });
 
-    $('#search input[name=\'search\']').keydown(function(e) {
+    $('header input[name=\'search\']').on('keydown', function(e) {
         if (e.keyCode == 13) {
-            url = $('base').attr('href') + 'index.php?route=product/search';
-             
-            var search = $('input[name=\'search\']').prop('value');
-            
-            if (search) {
-                url += '&search=' + encodeURIComponent(search);
-            }
-            
-            location = url;
+            $('header input[name=\'search\']').parent().find('button').trigger('click');
         }
     });
 
-    // Cart Dropdown
-    $(document).on('click', '#cart > .dropdown-toggle', function() {
-        $('#cart').load('/index.php?route=module/cart #cart > *');
-    });
-    
-    // Notifications.
-    $('.success img, .warning img, .attention img, .information img').click(function() {
-        $(this).parent().fadeOut('slow', function() {
-            $(this).remove();
-        });
-    });
-
-    // Language Dropdown
-    $('#language-menu li a').on('click', function(){
-
-        var languageVal = $(this).children('img').html();
-        $('#language-choice').html(languageVal);
-
-    });
-
-    // Navigation - Columns
-    $('.main-navbar .dropdown-menu').each(function(){
-
-        var menu = $('.main-navbar').offset();
-        var dropdown = $(this).parent().offset();
-
-        var i = (dropdown.left + $(this).outerWidth()) - (menu.left + $('.main-navbar').outerWidth());
-
-        if (i > 0) {
-            $(this).css('margin-left', '-' + (i + 5) + 'px');
-        }
-
-    });
-
-    // every 3 product-thumbs gets put into .row div
-    $('.layout-row-3').each(function(){
-
-        var divs = $(this).children();
-        for(var i = 0; i < divs.length; i+=3) {
-          divs.slice(i, i+3).wrapAll("<div class='row'></div>");
-        }
-
-    });
-
-    // every 4 product-thumbs gets put into .row div
-    $('.layout-row-4').each(function(){
-
-        var divs = $(this).children();
-        for(var i = 0; i < divs.length; i+=4) {
-          divs.slice(i, i+4).wrapAll("<div class='row'></div>");
-        }
-
-    });
-    
-    // change product-grid to product-list
-    $('#list-view').click(function() {
-
-        $('.product-grid').removeClass('product-grid').addClass('product-list');
-        $('.product-thumb').addClass('clearfix');
-
-    });
-    // change product-list to product-grid
-    $('#grid-view').click(function() {
-
-        $('.product-list').removeClass('product-list').addClass('product-grid');
-        $('.product-thumb').removeClass('clearfix');
-
-    });
-
-    // tooltips on hover
-
-
-   $('[data-toggle=\'tooltip\']').tooltip();
+	// Navigation - Columns
+	$('.main-navbar .dropdown-menu').each(function(){
+		var menu = $('.main-navbar').offset();
+		var dropdown = $(this).parent().offset();
+		
+		var i = (dropdown.left + $(this).outerWidth()) - (menu.left + $('.main-navbar').outerWidth());
+		
+		if (i > 0) {
+			$(this).css('margin-left', '-' + (i + 5) + 'px');
+		}
+	});
+	
+	// every 3 product-thumbs gets put into .row div
+	$('.layout-row-3').each(function(){
+		var divs = $(this).children();
+		
+		for (var i = 0; i < divs.length; i+=3) {
+			divs.slice(i, i+3).wrapAll('<div class="row"></div>');
+		}
+	});
+	
+	// every 4 product-thumbs gets put into .row div
+	$('.layout-row-4').each(function(){
+		var divs = $(this).children();
+		
+		for (var i = 0; i < divs.length; i += 4) {
+			divs.slice(i, i+4).wrapAll("<div class='row'></div>");
+		}
+	});
+	
+	// change product-grid to product-list
+	$('#list-view').click(function() {
+	$('.product-grid').removeClass('product-grid').addClass('product-list');
+	$('.product-thumb').addClass('clearfix');
+	
+	});
+	
+	// change product-list to product-grid
+	$('#grid-view').click(function() {
+	$('.product-list').removeClass('product-list').addClass('product-grid');
+	$('.product-thumb').removeClass('clearfix');
+	});
+	
+	// tooltips on hover
+	$('[data-toggle=\'tooltip\']').tooltip({container: 'body'});
 });
 
 function getURLVar(key) {
@@ -134,17 +98,14 @@ function addToCart(product_id, quantity) {
         data: 'product_id=' + product_id + '&quantity=' + quantity,
         dataType: 'json',
         success: function(json) {
-            $('.success, .warning, .attention, .information, .error').remove();
+            $('.alert, .text-danger').remove();
             
             if (json['redirect']) {
-                window.location = json['redirect'];
+                location = json['redirect'];
             }
             
             if (json['success']) {
-
-                $('#notification').html('<div class="alert alert-success"><button type="button" class="close" data-dismiss="alert">&times;</button>' + json['success'] + '</div>');
-                
-                $('.success').fadeIn('slow');
+                $('.breadcrumb').after('<div class="alert alert-success">' + json['success'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');
                 
                 $('#cart-total').html(json['total']);
                 
@@ -161,12 +122,10 @@ function addToWishList(product_id) {
         data: 'product_id=' + product_id,
         dataType: 'json',
         success: function(json) {
-            $('.success, .warning, .attention, .information').remove();
+            $('.alert').remove();
                         
             if (json['success']) {
-                $('#notification').html('<div class="alert alert-success"><button type="button" class="close" data-dismiss="alert">&times;</button>' + json['success'] + '</div>');
-                
-                $('.success').fadeIn('slow');
+                $('.breadcrumb').after('<div class="alert alert-success">' + json['success'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');
                 
                 $('#wishlist-total').html(json['total']);
                 
@@ -183,12 +142,10 @@ function addToCompare(product_id) {
         data: 'product_id=' + product_id,
         dataType: 'json',
         success: function(json) {
-            $('.success, .warning, .attention, .information').remove();
+            $('.alert').remove();
                         
             if (json['success']) {
-                $('#notification').html('<div class="alert alert-success"><button type="button" class="close" data-dismiss="alert">&times;</button>' + json['success'] + '</div>');
-                
-                $('.success').fadeIn('slow');
+                $('.breadcrumb').after('<div class="alert alert-success">' + json['success'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');
                 
                 $('#compare-total').html(json['total']);
                 
@@ -198,6 +155,39 @@ function addToCompare(product_id) {
     });
 }
 
+/* Agree to Terms */
+$(document).delegate('.agree', 'click', function(event) {
+	event.preventDefault();
+	
+	$('#modal-agree').remove(); 
+	
+	var element = this;
+	
+    $.ajax({
+        url: $(element).attr('href'),
+        type: 'get',
+        dataType: 'html',
+        success: function(data) {
+			html  = '<div id="modal-agree" class="modal">';
+			html += '  <div class="modal-dialog">';
+			html += '    <div class="modal-content">';
+			html += '      <div class="modal-header">'; 
+			html += '        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>';
+			html += '        <h4 class="modal-title">' + $(element).text() + '</h4>';
+			html += '      </div>';
+			html += '      <div class="modal-body">' + data + '</div>';
+			html += '    </div';
+			html += '  </div>';
+			html += '</div>';
+			
+			$('body').append(html);
+			
+			$('#modal-agree').modal('show')
+        }
+    });
+});
+
+/* Autocomplete */
 (function($) {
 	function Autocomplete(element, options) {
 		this.element = element;
@@ -292,7 +282,7 @@ function addToCompare(product_id) {
 				}
 				
 				for (i in category) {
-					html += '<li class="disabled"><a href="#"><b>' + category[i]['name'] + '</b></a></li>';
+					html += '<li class="dropdown-header">' + category[i]['name'] + '</li>';
 					
 					for (j = 0; j < category[i]['item'].length; j++) {
 						html += '<li data-value="' + category[i]['item'][j]['value'] + '"><a href="#">&nbsp;&nbsp;&nbsp;' + category[i]['item'][j]['label'] + '</a></li>';
@@ -307,7 +297,6 @@ function addToCompare(product_id) {
 			}
 			
 			$(this.element).siblings('ul.dropdown-menu').html(html);
-
 		}
 	};
 

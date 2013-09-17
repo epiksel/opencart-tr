@@ -18,7 +18,7 @@ $_['text_date_added']    = 'Date Added:';
 $_['text_comment']       = 'Return Comments';
 $_['text_history']       = 'Return History';
 $_['text_empty']         = 'You have not made any previous returns!';
-$_['text_agree']         = 'I have read and agree to the <a class="colorbox" href="%s" alt="%s"><b>%s</b></a>';
+$_['text_agree']         = 'I have read and agree to the <a href="%s" alt="%s" class="agree"><b>%s</b></a>';
 
 // Column
 $_['column_return_id']   = 'Return ID';
@@ -38,19 +38,19 @@ $_['column_date_added']  = 'Date Added';
 $_['column_status']      = 'Status';
 
 // Entry
-$_['entry_order_id']     = 'Order ID:';
-$_['entry_date_ordered'] = 'Order Date:';
-$_['entry_firstname']    = 'First Name:';
-$_['entry_lastname']     = 'Last Name:';
-$_['entry_email']        = 'E-Mail:';
-$_['entry_telephone']    = 'Telephone:';
-$_['entry_product']      = 'Product Name:';
-$_['entry_model']        = 'Product Code:';
-$_['entry_quantity']     = 'Quantity:';
-$_['entry_reason']       = 'Reason for Return:';
-$_['entry_opened']       = 'Product is opened:';
-$_['entry_fault_detail'] = 'Faulty or other details:';
-$_['entry_captcha']      = 'Enter the code in the box below:';
+$_['entry_order_id']     = 'Order ID';
+$_['entry_date_ordered'] = 'Order Date';
+$_['entry_firstname']    = 'First Name';
+$_['entry_lastname']     = 'Last Name';
+$_['entry_email']        = 'E-Mail';
+$_['entry_telephone']    = 'Telephone';
+$_['entry_product']      = 'Product Name';
+$_['entry_model']        = 'Product Code';
+$_['entry_quantity']     = 'Quantity';
+$_['entry_reason']       = 'Reason for Return';
+$_['entry_opened']       = 'Product is opened';
+$_['entry_fault_detail'] = 'Faulty or other details';
+$_['entry_captcha']      = 'Enter the code in the box below';
 
 // Error
 $_['text_error']         = 'The returns you requested could not be found!';

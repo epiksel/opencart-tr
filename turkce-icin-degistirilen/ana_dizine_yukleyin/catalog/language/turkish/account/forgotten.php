@@ -1,7 +1,7 @@
 <?php
 /* Turkceye Ceviren eka7a - http://www.e-piksel.com */
 
-// Heading 
+// Heading
 $_['heading_title']   = 'Parolamı Unutum?';
 
 // Text
@@ -12,7 +12,7 @@ $_['text_email']      = 'Kayıt olurken yazdığınız e-posta adresinizi yazın
 $_['text_success']    = 'Başarılı: Yeni parolanız e-posta adresinize gönderildi.';
 
 // Entry
-$_['entry_email']     = 'E-Posta Adresiniz:';
+$_['entry_email']     = 'E-Posta Adresiniz';
 
 // Error
 $_['error_email']     = 'Uyarı: E-Posta adresi bulunamadı. Lütfen tekrar deneyiniz!';

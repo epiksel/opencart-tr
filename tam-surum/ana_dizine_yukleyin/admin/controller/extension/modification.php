@@ -251,6 +251,7 @@ class ControllerExtensionModification extends Controller {
 			$action = array();
 			
 			$action[] = array(
+				'icon' => 'pencil',
 				'text' => $this->language->get('text_edit'),
 				'href' => $this->url->link('extension/modification/update', 'token=' . $this->session->data['token'] . '&modification_id=' . $result['modification_id'] . $url, 'SSL')
 			);
@@ -271,6 +272,7 @@ class ControllerExtensionModification extends Controller {
 		$this->data['heading_title'] = $this->language->get('heading_title');
 		
 		$this->data['text_no_results'] = $this->language->get('text_no_results');
+		$this->data['text_confirm'] = $this->language->get('text_confirm');
 
 		$this->data['column_name'] = $this->language->get('column_name');
 		$this->data['column_author'] = $this->language->get('column_author');
@@ -358,6 +360,7 @@ class ControllerExtensionModification extends Controller {
 		
 		$this->data['entry_name'] = $this->language->get('entry_name');
 		$this->data['entry_author'] = $this->language->get('entry_author');
+		$this->data['entry_version'] = $this->language->get('entry_version');
     	$this->data['entry_code'] = $this->language->get('entry_code');
 		$this->data['entry_status'] = $this->language->get('entry_status');
 		$this->data['entry_sort_order'] = $this->language->get('entry_sort_order');
@@ -431,6 +434,14 @@ class ControllerExtensionModification extends Controller {
 			$this->data['author'] = $modification_info['author'];
 		} else {
 			$this->data['author'] = '';
+		}
+
+		if (isset($this->request->post['version'])) {
+			$this->data['version'] = $this->request->post['version'];
+		} elseif (!empty($modification_info)) {
+			$this->data['version'] = $modification_info['version'];
+		} else {
+			$this->data['version'] = '';
 		}
 						
 		if (isset($this->request->post['code'])) {

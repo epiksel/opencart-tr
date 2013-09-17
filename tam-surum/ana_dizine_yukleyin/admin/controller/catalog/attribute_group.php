@@ -175,6 +175,7 @@ class ControllerCatalogAttributeGroup extends Controller {
 			$action = array();
 			
 			$action[] = array(
+				'icon' => 'pencil',
 				'text' => $this->language->get('text_edit'),
 				'href' => $this->url->link('catalog/attribute_group/update', 'token=' . $this->session->data['token'] . '&attribute_group_id=' . $result['attribute_group_id'] . $url, 'SSL')
 			);
@@ -191,6 +192,7 @@ class ControllerCatalogAttributeGroup extends Controller {
 		$this->data['heading_title'] = $this->language->get('heading_title');
 
 		$this->data['text_no_results'] = $this->language->get('text_no_results');
+		$this->data['text_confirm'] = $this->language->get('text_confirm');
 
 		$this->data['column_name'] = $this->language->get('column_name');
 		$this->data['column_sort_order'] = $this->language->get('column_sort_order');

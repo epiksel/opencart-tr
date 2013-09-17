@@ -175,6 +175,7 @@ class ControllerLocalisationReturnStatus extends Controller {
 			$action = array();
 			
 			$action[] = array(
+				'icon' => 'pencil',
 				'text' => $this->language->get('text_edit'),
 				'href' => $this->url->link('localisation/return_status/update', 'token=' . $this->session->data['token'] . '&return_status_id=' . $result['return_status_id'] . $url, 'SSL')
 			);
@@ -190,6 +191,7 @@ class ControllerLocalisationReturnStatus extends Controller {
 		$this->data['heading_title'] = $this->language->get('heading_title');
 
 		$this->data['text_no_results'] = $this->language->get('text_no_results');
+		$this->data['text_confirm'] = $this->language->get('text_confirm');
 
 		$this->data['column_name'] = $this->language->get('column_name');
 		$this->data['column_action'] = $this->language->get('column_action');		

@@ -1,66 +1,97 @@
 <?php echo $header; ?>
-<ul class="breadcrumb">
-  <?php foreach ($breadcrumbs as $breadcrumb) { ?>
-  <li> <a href="<?php echo $breadcrumb['href']; ?>"> <?php echo $breadcrumb['text']; ?> </a> </li>
-  <?php } ?>
-</ul>
-<div class="row"><?php echo $column_left; ?>
-  <div class="span12">
-    <div id="content"><?php echo $content_top; ?>
+<div class="container">
+  <ul class="breadcrumb">
+    <?php foreach ($breadcrumbs as $breadcrumb) { ?>
+    <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
+    <?php } ?>
+  </ul>
+  <div class="row"><?php echo $column_left; ?>
+    <?php if ($column_left && $column_right) { ?>
+    <?php $cols = 6; ?>
+    <?php } elseif ($column_left || $column_right) { ?>
+    <?php $cols = 9; ?>
+    <?php } else { ?>
+    <?php $cols = 12; ?>
+    <?php } ?>
+    <div id="content" class="col-sm-<?php echo $cols; ?>"><?php echo $content_top; ?>
       <h1><?php echo $heading_title; ?></h1>
-      <div class="row">
-        <div class="span4">
-          <h3><?php echo $text_location; ?></h3>
-          <div class="contact-info">
-            <div class="content">
-              <address>
-              <?php echo $text_address; ?><br>
-              <?php echo $store; ?><br>
-              <?php echo $address; ?><br>
-              <?php if ($telephone) { ?>
-              <?php echo $text_telephone; ?><br>
-              <?php echo $telephone; ?><br>
-              <?php } ?>
-              <?php if ($fax) { ?>
-              <?php echo $text_fax; ?><br>
-              <?php echo $fax; ?><br>
-              <?php } ?>
-              </address>
-            </div>
+      <h3><?php echo $text_location; ?></h3>
+      
+      <?php foreach ($locations as $location) { ?>
+      <div class="panel-group" id="accordion">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title"></h4>
+          </div>
+          <div class="panel-collapse collapse" id="">
+            <div class="panel-body"></div>
           </div>
         </div>
-        <div class="span8">
-          <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data">
-            <fieldset>
-              <h3><?php echo $text_contact; ?></h3>
-              <label><?php echo $entry_name; ?></label>
-              <input type="text" name="name" value="<?php echo $name; ?>" />
+      </div>      
+      <?php } ?>
+      
+      <address>
+      <strong></strong><br>
+      <?php echo $store; ?><br>
+      <?php echo $address; ?><br>
+      <?php if ($telephone) { ?>
+      <abbr title="<?php echo $text_telephone; ?>"><?php echo $text_telephone; ?></abbr><br>
+      <?php echo $telephone; ?><br>
+      <?php } ?>
+      <?php if ($fax) { ?>
+      <?php echo $text_fax; ?><br>
+      <?php echo $fax; ?><br>
+      <?php } ?>
+      </address>
+      <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" class="form-horizontal">
+        <fieldset>
+          <h3><?php echo $text_contact; ?></h3>
+          <div class="form-group required">
+            <label class="col-sm-2 control-label" for="input-name"><?php echo $entry_name; ?></label>
+            <div class="col-sm-10">
+              <input type="text" name="name" value="<?php echo $name; ?>" id="input-name" class="form-control" />
               <?php if ($error_name) { ?>
-              <div class="alert alert-error"><?php echo $error_name; ?></div>
+              <div class="text-danger"><?php echo $error_name; ?></div>
               <?php } ?>
-              <label><?php echo $entry_email; ?></label>
-              <input type="text" name="email" value="<?php echo $email; ?>" />
+            </div>
+          </div>
+          <div class="form-group required">
+            <label class="col-sm-2 control-label" for="input-email"><?php echo $entry_email; ?></label>
+            <div class="col-sm-10">
+              <input type="text" name="email" value="<?php echo $email; ?>" id="input-email" class="form-control" />
               <?php if ($error_email) { ?>
-              <div class="alert alert-error"><?php echo $error_email; ?></div>
+              <div class="text-danger"><?php echo $error_email; ?></div>
               <?php } ?>
-              <label><?php echo $entry_enquiry; ?></label>
-              <textarea name="enquiry" cols="40" rows="10" style="width: 99%;"><?php echo $enquiry; ?></textarea>
+            </div>
+          </div>
+          <div class="form-group required">
+            <label class="col-sm-2 control-label" for="input-enquiry"><?php echo $entry_enquiry; ?></label>
+            <div class="col-sm-10">
+              <textarea name="enquiry" rows="10" id="input-enquiry" class="form-control"><?php echo $enquiry; ?></textarea>
               <?php if ($error_enquiry) { ?>
-              <div class="alert alert-error"><?php echo $error_enquiry; ?></div>
+              <div class="text-danger"><?php echo $error_enquiry; ?></div>
               <?php } ?>
+            </div>
+          </div>
+          <div class="form-group required">
+            <label class="col-sm-2 control-label" for="input-captcha"><?php echo $entry_captcha; ?></label>
+            <div class="col-sm-10">
+              <input type="text" name="captcha" value="<?php echo $captcha; ?>" id="input-captcha" class="form-control" />
               <img class="captcha" src="index.php?route=information/contact/captcha" alt="" />
-              <label><?php echo $entry_captcha; ?></label>
-              <input type="text" name="captcha" value="<?php echo $captcha; ?>" />
               <?php if ($error_captcha) { ?>
-              <div class="alert alert-error"><?php echo $error_captcha; ?></div>
+              <div class="text-danger"><?php echo $error_captcha; ?></div>
               <?php } ?>
-              <hr>
-              <input class="btn btn-primary" type="submit" value="<?php echo $button_continue; ?>" />
-            </fieldset>
-          </form>
+            </div>
+          </div>
+        </fieldset>
+        <div class="buttons">
+          <div class="pull-right">
+            <input class="btn btn-primary" type="submit" value="<?php echo $button_continue; ?>" />
+          </div>
         </div>
-      </div>
-      <?php echo $content_bottom; ?> </div>
-  </div>
-  <?php echo $column_right; ?> </div>
+      </form>
+    </div>
+    <?php echo $content_bottom; ?></div>
+  <?php echo $column_right; ?></div>
+</div>
 <?php echo $footer; ?>

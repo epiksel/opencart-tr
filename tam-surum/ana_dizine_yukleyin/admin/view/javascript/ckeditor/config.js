@@ -14,6 +14,13 @@ CKEDITOR.editorConfig = function( config ) {
 	config.entities = false;
 	config.extraPlugins = 'wordcount,codemirror';
 	config.codemirror_theme = 'rubyblue';
+	config.wordcount = {
+    	showWordCount: true,
+		showCharCount: true,
+		countHTML: false,
+		charLimit: 'unlimited',
+		wordLimit: 'unlimited'
+	};
 
 	config.toolbar = 'Custom';
 

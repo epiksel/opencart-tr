@@ -1,7 +1,7 @@
 <?php
 /* Turkceye Ceviren eka7a - http://www.e-piksel.com */
 
-// Heading 
+// Heading
 $_['heading_title']                = 'Oturum Aç';
 
 // Text
@@ -15,10 +15,10 @@ $_['text_i_am_returning_customer'] = 'Daha önce kayıt oldum.';
 $_['text_forgotten']		       = 'Parolamı Unuttum';
 
 // Entry
-$_['entry_email']		           = 'E-Posta Adresi:';
-$_['entry_password']               = 'Parola:';
+$_['entry_email']		           = 'E-Posta Adresi';
+$_['entry_password']               = 'Parola';
 
 // Error
-$_['error_login']                  = 'Uyarı: E-Posta Adresi ya da parolanız yanlış';
-$_['error_approved']               = 'Uyarı: Hesabınıza giriş yapabilmek için önce hesabınızın onaylanması gerekmektedir.';
+$_['error_login']                  = 'Uyarı: E-Posta adresiniz ya da parolanız yanlış!';
+$_['error_approved']               = 'Uyarı: Giriş yapabilmeniz için önce hesabınızın onaylanması gerekiyor!';
 ?>

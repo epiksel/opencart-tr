@@ -28,6 +28,8 @@ $_['entry_address']             = 'Adres';
 $_['entry_email']               = 'E-Posta';
 $_['entry_telephone']           = 'Telefon';
 $_['entry_fax']                 = 'Faks';
+$_['entry_location']			= 'Mağaza Konumu';
+$_['entry_locations']			= 'Mağaza Konumları';
 $_['entry_title']               = 'Başlık';
 $_['entry_meta_description']    = 'Meta Açıklaması';
 $_['entry_layout']              = 'Varsayılan Bölüm';
@@ -46,7 +48,6 @@ $_['entry_admin_limit']   	    = 'Sayfa Başına Ürün(Yönetim)';
 $_['entry_product_count']		= 'Kategori Ürün Sayısı';
 $_['entry_review']       	    = 'Yorumlara izin ver';
 $_['entry_guest_review']		= 'Misafir Yorumları';
-$_['entry_download']            = 'Dosyalara İzin ver';
 $_['entry_voucher_min']			= 'Min. Hediye Çeki';
 $_['entry_voucher_max']			= 'Maks. Hediye Çeki';
 $_['entry_tax']                 = 'Vergi Oranlarını Göster';
@@ -123,6 +124,8 @@ $_['entry_error_filename']      = 'Hata Günlük Dosyaadı';
 $_['entry_google_analytics']    = 'Google Analytics Kodu';
 
 // Help
+$_['help_location']                = 'Varsayılan mağaza konumu ve detayları iletişim sayfasında en üste gösterilecek ';
+$_['help_locations']               = 'Diğer mağaza konumlarından iletişim sayfasında göstermek istiyorsanız seçebilirsiniz.';
 $_['help_currency']                = 'Varsayılan para birimini değiştirir. Web tarayıcınızın önbelleğini ve çerezleri temizlemeniz gerekir.';
 $_['help_currency_auto']           = 'Para birimlerini günlük olarak otomatik güncelle.';
 $_['help_catalog_limit'] 	       = 'Mağazanız sayfalarında sayfa başına kaç ürün gösterileceğini seçin (ürünler, kategoriler vb)';
@@ -166,7 +169,7 @@ $_['help_alert_emails']            = 'E-Posta uyarıları için mağaza e-postas
 $_['help_fraud_detection']         = 'MaxMind bir sahtekârlık tespit sistemidir. Eğer bir lisans anahtarınız yoksa <a href="http://www.maxmind.com/?rId=epiksel" target="_blank"><u>buradan kayıt</u></a> olarak alabilirsiniz. Aldığınız anahtarı aşağıdaki alana kopyalayınız.';
 $_['help_fraud_score']             = 'Puan ne kadar yüksekse sahtekârlık olasılığı daha yüksektir. 0 ile 100 arasında bir puan belirleyiniz.';
 $_['help_fraud_status']            = 'Ayarladığınız risk puanı üzerindeki siparişleriniz durumları otomatik olarak sahtekârlık sipariş durumu atanacaktır.';
-$_['help_secure']                  = 'SSL kullanbilmeniz için hostunuzda SSL sertifikası kurulu olması gerekir. Daha sonra ayarlarına(config.php ve admin/config.php) dosyasına SSL adresini eklemeniz gerekmektedir.';
+$_['help_secure']                  = 'SSL kullanbilmeniz için hostunuzda SSL sertifikası kurulu olması gerekir. Daha sonra config.php ve admin/config.php dosyasına SSL adresini eklemeniz gerekmektedir.';
 $_['help_shared']                  = 'Mağazalar arasında oturum kimliği(session ID) paylaşmayı deneyin. Böylece sepeti farklı etki alanları arasında geçiş yaptırabilirsiniz.';
 $_['help_robots']                  = 'Web tarayıcısı kullanıcı ajanları listesi paylaşımlı oturumlar ile kullanılmaz. Her kullanıcı ajanı için ayrı satır kullanınız.';
 $_['help_seo_url']                 = 'SEO URL kullanmak için apache mod-rewrite modülü kurulu olmalıdır. Kurulu ise htaccess.txt dosya adını .htaccess olarak değiştirin.';

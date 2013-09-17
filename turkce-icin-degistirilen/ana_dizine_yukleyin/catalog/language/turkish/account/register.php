@@ -1,7 +1,7 @@
 <?php
 /* Turkceye Ceviren eka7a - http://www.e-piksel.com */
 
-// Heading 
+// Heading
 $_['heading_title']        = 'Hesap Oluştur';
 
 // Text
@@ -12,25 +12,25 @@ $_['text_your_details']    = 'Ayrıntılarınız';
 $_['text_your_address']    = 'Adresiniz';
 $_['text_newsletter']      = 'Bülten Aboneliği';
 $_['text_your_password']   = 'Parolanız';
-$_['text_agree']           = '<a class="agree" href="%s" alt="%s"><b>%s</b></a>\'ni okudum ve kabul ediyorum.';
+$_['text_agree']           = '<a href="%s" alt="%s" class="agree"><b>%s</b></a>\'ni okudum ve kabul ediyorum.';
 
 // Entry
-$_['entry_firstname']      = 'Ad:';
-$_['entry_lastname']       = 'Soyad:';
-$_['entry_email']          = 'E-Posta:';
-$_['entry_telephone']      = 'Telefon:';
-$_['entry_fax']            = 'Faks:';
-$_['entry_company']        = 'Şirket Adı:';
-$_['entry_customer_group'] = 'Müşteri Grubu:';
-$_['entry_address_1']      = 'Adres 1:';
-$_['entry_address_2']      = 'Adres 2:';
-$_['entry_postcode']       = 'Posta Kodu:';
-$_['entry_city']           = 'İlçe / Semt:';
-$_['entry_country']        = 'Ülke:';
-$_['entry_zone']           = 'Şehir:';
-$_['entry_newsletter']     = 'Bülten Aboneliği:';
-$_['entry_password']       = 'Parola:';
-$_['entry_confirm']        = 'Parola(Tekrar):';
+$_['entry_firstname']      = 'Ad';
+$_['entry_lastname']       = 'Soyad';
+$_['entry_email']          = 'E-Posta';
+$_['entry_telephone']      = 'Telefon';
+$_['entry_fax']            = 'Faks';
+$_['entry_company']        = 'Şirket Adı';
+$_['entry_customer_group'] = 'Müşteri Grubu';
+$_['entry_address_1']      = 'Adres 1';
+$_['entry_address_2']      = 'Adres 2';
+$_['entry_postcode']       = 'Posta Kodu';
+$_['entry_city']           = 'İlçe / Semt';
+$_['entry_country']        = 'Ülke';
+$_['entry_zone']           = 'Şehir';
+$_['entry_newsletter']     = 'Bülten Aboneliği';
+$_['entry_password']       = 'Parola';
+$_['entry_confirm']        = 'Parola(Tekrar)';
 
 // Error
 $_['error_exists']         = 'Uyarı: E-Posta adresi ile daha önce kayıt olunmuştur!';

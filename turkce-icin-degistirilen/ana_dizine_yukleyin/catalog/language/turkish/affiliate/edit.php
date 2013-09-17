@@ -1,7 +1,7 @@
 <?php
 /* Turkceye Ceviren eka7a - http://www.e-piksel.com */
 
-// Heading 
+// Heading
 $_['heading_title']     = 'Hesap Bilgilerim';
 
 // Text
@@ -13,18 +13,18 @@ $_['text_success']      = 'Başarılı: Hesabınız başarılı bir şekilde gü
 
 // Entry
 $_['entry_firstname']   = 'Ad:';
-$_['entry_lastname']    = 'Soyad:';
-$_['entry_email']       = 'E-Posta:';
-$_['entry_telephone']   = 'Telefon:';
-$_['entry_fax']         = 'Faks:';
-$_['entry_company']     = 'Şirket Adı:';
-$_['entry_website']     = 'Web Siteniz:';
-$_['entry_address_1']   = 'Adres 1:';
-$_['entry_address_2']   = 'Adres 2:';
-$_['entry_postcode']    = 'Posta Kodu:';
-$_['entry_city']        = 'İlçe / Semnt:';
-$_['entry_country']     = 'Ülke:';
-$_['entry_zone']        = 'Şehir:';
+$_['entry_lastname']    = 'Soyad';
+$_['entry_email']       = 'E-Posta';
+$_['entry_telephone']   = 'Telefon';
+$_['entry_fax']         = 'Faks';
+$_['entry_company']     = 'Şirket Adı';
+$_['entry_website']     = 'Web Siteniz';
+$_['entry_address_1']   = 'Adres 1';
+$_['entry_address_2']   = 'Adres 2';
+$_['entry_postcode']    = 'Posta Kodu';
+$_['entry_city']        = 'İlçe / Semnt';
+$_['entry_country']     = 'Ülke';
+$_['entry_zone']        = 'Şehir';
 
 // Error
 $_['error_exists']      = 'Uyarı: E-Posta adresi ile daha önce kayıt olunmuştur!';
