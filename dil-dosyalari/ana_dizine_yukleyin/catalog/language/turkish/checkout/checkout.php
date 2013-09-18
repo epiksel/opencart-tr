@@ -36,7 +36,7 @@ $_['text_comments']                  = 'Siparişiniz Hakkında Bir Açıklama Ek
 $_['column_name']                    = 'Ürün Adı';
 $_['column_model']                   = 'Ürün Kodu';
 $_['column_quantity']                = 'Adet';
-$_['column_price']                   = 'Fiyatı';
+$_['column_price']                   = 'Birim Fiyatı';
 $_['column_total']                   = 'Tutarı';
 
 // Entry
