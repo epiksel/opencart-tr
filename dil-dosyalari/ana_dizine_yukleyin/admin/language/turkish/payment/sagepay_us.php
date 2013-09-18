@@ -18,7 +18,7 @@ $_['entry_status']       = 'Status';
 $_['entry_sort_order']   = 'Sort Order';
 
 // Help
-$_['help_total']         = 'Bu ödeme metodunun aktif olması için toplam sipariş miktarını giriniz.';
+$_['help_total']         = 'Bu ödeme metodunun aktif olması için toplam sipariş tutarını giriniz.';
 
 // Error
 $_['error_permission']   = 'Uyarı: SagePay (US) ödeme metodunu düzenleme iznine sahip değilsiniz!';

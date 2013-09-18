@@ -20,7 +20,7 @@ $_['entry_sort_order']   = 'Sıralama';
 
 // Help
 $_['help_password']      = 'Just use some random password. This will be used to make sure the payment information is not interfered with after being sent to the payment gateway.';
-$_['help_total']         = 'Bu ödeme metodunun aktif olması için toplam sipariş miktarını giriniz.';
+$_['help_total']         = 'Bu ödeme metodunun aktif olması için toplam sipariş tutarını giriniz.';
 
 // Error
 $_['error_permission']   = 'Uyarı: PayMate ödeme metodunu düzenleme iznine sahip değilsiniz!';

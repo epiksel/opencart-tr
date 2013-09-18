@@ -25,7 +25,7 @@ $_['entry_sort_order']    = 'Sıralama';
 
 // Help
 $_['help_test']          = 'Use the live or testing (sandbox) gateway server to process transactions?';
-$_['help_total']         = 'Bu ödeme metodunun aktif olması için toplam sipariş miktarını giriniz.';
+$_['help_total']         = 'Bu ödeme metodunun aktif olması için toplam sipariş tutarını giriniz.';
 
 // Error
 $_['error_permission']    = 'Uyarı: PayPal Direct Checkout ödeme metodunu düzenleme iznine sahip değilsiniz!';

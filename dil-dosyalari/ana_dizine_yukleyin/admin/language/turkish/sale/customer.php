@@ -22,7 +22,7 @@ $_['column_approved']		= 'Onaylandı';
 $_['column_date_added']		= 'Ekleme Tarihi';
 $_['column_comment']        = 'Açıklama';
 $_['column_description']	= 'Açıklama';
-$_['column_amount']			= 'Miktar';
+$_['column_amount']			= 'Tutar';
 $_['column_points']			= 'Puan';
 $_['column_ip']				= 'IP';
 $_['column_total']			= 'Toplam Hesap';
@@ -49,7 +49,7 @@ $_['entry_zone']			= 'Şehir';
 $_['entry_default']			= 'Varsayılan Adres';
 $_['entry_comment']         = 'Açıklama';
 $_['entry_description']		= 'Açıklama';
-$_['entry_amount']			= 'Kredi Miktarı';
+$_['entry_amount']			= 'Kredi Tutarı';
 $_['entry_points']			= 'Ödül Puanı';
 
 // Help

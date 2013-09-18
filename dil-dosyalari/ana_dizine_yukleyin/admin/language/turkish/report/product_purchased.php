@@ -12,7 +12,7 @@ $_['column_date_start'] = 'Başlangıç Tarihi';
 $_['column_date_end']   = 'Bitiş Tarihi';
 $_['column_name']       = 'Ürün Adı';
 $_['column_model']      = 'Ürün Kodu';
-$_['column_quantity']   = 'Miktar';
+$_['column_quantity']   = 'Adet';
 $_['column_total']      = 'Toplam';
 
 // Entry

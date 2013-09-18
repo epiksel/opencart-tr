@@ -29,7 +29,7 @@ $_['help_user']          = 'If you set up one or more additional users on the ac
 $_['help_password']      = 'The 6 to 32 character password that you defined while registering for the account.';
 $_['help_partner']       = 'The ID provided to you by the authorised PayPal Reseller who registered you for the Payflow SDK. If you purchased your account directly from PayPal, use PayPalUK.';
 $_['help_test']          = 'Use the live or testing (sandbox) gateway server to process transactions?';
-$_['help_total']         = 'Bu ödeme metodunun aktif olması için toplam sipariş miktarını giriniz.';
+$_['help_total']         = 'Bu ödeme metodunun aktif olması için toplam sipariş tutarını giriniz.';
 
 // Error
 $_['error_permission']   = 'Uyarı: PayPal Website Payment Pro (UK) ödeme metodunu düzenleme iznine sahip değilsiniz!';

@@ -21,7 +21,7 @@ $_['entry_sort_order']   	= 'Sıralama';
 
 // Help
 $_['help_callback']			= 'Please login and set this at <a href="https://secure.authorize.net" target="_blank" class="txtLink">https://secure.authorize.net</a>.';
-$_['help_total']		 	= 'Bu ödeme metodunun aktif olması için toplam sipariş miktarını giriniz.';
+$_['help_total']		 	= 'Bu ödeme metodunun aktif olması için toplam sipariş tutarını giriniz.';
 
 // Error 
 $_['error_permission']   	= 'Uyarı: Authorize.Net ödeme metodunu düzenleme iznine sahip değilsiniz!';

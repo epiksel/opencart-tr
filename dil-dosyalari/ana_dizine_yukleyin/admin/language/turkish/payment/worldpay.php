@@ -25,7 +25,7 @@ $_['entry_sort_order']   = 'Sıralama';
 // Help
 $_['help_password']      = 'Bunu WorldPay kontrol panelinden ayarlayınız.';
 $_['help_callback']      = 'Bunu WorldPay kontrol panelinden ayarlayınız. You will also need to check the "Enable the Shopper Response".';
-$_['help_total']         = 'Bu ödeme metodunun aktif olması için toplam sipariş miktarını giriniz.';
+$_['help_total']         = 'Bu ödeme metodunun aktif olması için toplam sipariş tutarını giriniz.';
 
 // Error
 $_['error_permission']   = 'Uyarı: WordPay ödeme metodunu düzenleme iznine sahip değilsiniz!';

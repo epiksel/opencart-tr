@@ -6,7 +6,7 @@ $_['heading_title']     = 'Kampanyalı Ürünler';
 
 // Text
 $_['text_empty']        = 'Şuan kampanyalı ürün bulunmamaktadır.';
-$_['text_quantity']     = 'Miktar:';
+$_['text_quantity']     = 'Adet:';
 $_['text_manufacturer'] = 'Marka:';
 $_['text_model']        = 'Ürün Kodu:';
 $_['text_points']       = 'Puan:';

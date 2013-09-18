@@ -13,8 +13,8 @@ $_['error_email']       = 'Geçerli bir E-Posta adresi yazınız!';
 $_['error_postcode']    = 'Posta kodu 2 ile 10 karakter arasında olmalı!';
 $_['error_country']     = 'Lütfen bir ülke seçiniz';
 $_['error_zone']        = 'Lütfen bir şehir seçiniz!!';
-$_['error_stock']		= '*** İşaretli ürünler stokta yok ya da istenilen miktarda bulunmuyor!';
-$_['error_minimum']		= '%s ürünü için minimum sipariş miktarı %s!';
+$_['error_stock']		= '*** İşaretli ürünler stokta yok ya da istenilen adet bulunmuyor!';
+$_['error_minimum']		= '%s ürünü için minimum sipariş adedi %s!';
 $_['error_store']       = 'Ürün seçtiğiniz mağazadan satın alınamaz!';
 $_['error_required']	= '%s gerekli!';
 $_['error_shipping']    = 'Uyarı: Kargo metodu gerekli!';
@@ -28,5 +28,5 @@ $_['error_points']		= 'Uyarı: %s puanınız yok!';
 $_['error_maximum']		= 'Uyarı: En fazla uygulanabilir puan %s!';
 $_['error_to_name']     = 'Alıcının adı 1 ile 64 karakter arasında olmalıdır!';
 $_['error_from_name']   = 'Adınız 1 ile 64 karakter arasında olmalıdır!';
-$_['error_amount']      = 'Miktar %s ile %s arasında olmalıdır!';
+$_['error_amount']      = 'Tutar %s ile %s arasında olmalıdır!';
 ?>

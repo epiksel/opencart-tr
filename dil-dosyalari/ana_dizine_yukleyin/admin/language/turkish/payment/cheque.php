@@ -17,7 +17,7 @@ $_['entry_status']       = 'Durumu';
 $_['entry_sort_order']   = 'Sıralama';
 
 // Help
-$_['help_total']		 = 'Bu ödeme metodunun aktif olması için toplam sipariş miktarını giriniz.';
+$_['help_total']		 = 'Bu ödeme metodunun aktif olması için toplam sipariş tutarını giriniz.';
 
 // Error
 $_['error_permission']   = 'Uyarı: Çek / Havale ödeme metodunu düzenleme iznine sahip değilsiniz!';
