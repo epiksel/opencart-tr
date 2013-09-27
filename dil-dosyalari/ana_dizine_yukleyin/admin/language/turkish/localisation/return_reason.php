@@ -2,20 +2,20 @@
 /* Turkceye Ceviren eka7a - http://www.e-piksel.com */
 
 // Heading
-$_['heading_title']    = 'Ürün İade Nedenleri';
+$_['heading_title']    = 'İade Nedenleri';
 
 // Text
-$_['text_success']     = 'Başarılı: Ürün iade nedeni başarılı bir şekilde değiştirildi!';
+$_['text_success']     = 'Başarılı: İade nedeni başarılı bir şekilde değiştirildi!';
 
 // Column
-$_['column_name']      = 'Ürün İade Neden Adı';
+$_['column_name']      = 'İade Neden Adı';
 $_['column_action']    = 'Eylem';
 
 // Entry
-$_['entry_name']       = 'Ürün İade Neden Adı';
+$_['entry_name']       = 'İade Neden Adı';
 
 // Error
-$_['error_permission'] = 'Uyarı: Ürün iade nedenlerini düzenleme iznine sahip değilsiniz!';
-$_['error_name']       = 'Ürün iade neden adı 3 ile 128 karakter arasında olmalı!';
-$_['error_return']     = 'Uyarı: Bu ürün iade nedenini silemezsiniz. Bu ürün iade nedeni %s iadeli ürün tarafından kullanılıyor!';
+$_['error_permission'] = 'Uyarı: İade nedenlerini düzenleme iznine sahip değilsiniz!';
+$_['error_name']       = 'İade neden adı 3 ile 128 karakter arasında olmalı!';
+$_['error_return']     = 'Uyarı: Bu iade nedenini silemezsiniz. Bu iade nedeni %s iadeli ürün tarafından kullanılıyor!';
 ?>

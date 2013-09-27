@@ -12,13 +12,13 @@ $_['text_day']          = 'Günler';
 $_['text_all_status']   = 'Tüm Durumlar';
 
 // Column
-$_['column_date_start'] = 'Başlangıç Tarihi';
-$_['column_date_end']   = 'Bitiş Tarihi';
+$_['column_date_start'] = 'Başlangıç';
+$_['column_date_end']   = 'Bitiş';
 $_['column_returns']    = 'İade Sayısı';
 
 // Entry
-$_['entry_date_start']	= 'Başlangıç Tarihi';
-$_['entry_date_end']	= 'Bitiş Tarihi';
-$_['entry_group']       = 'Zaman Dilimi';
-$_['entry_status']      = 'Ürün İade Durumu';
+$_['entry_date_start']	= 'Başlangıç';
+$_['entry_date_end']	= 'Bitiş';
+$_['entry_group']       = 'Dilimi';
+$_['entry_status']      = 'Durumu';
 ?>

@@ -3,7 +3,7 @@
 
 // Text
 $_['text_for']			= '%s Gift Certificate for %s';
-$_['text_success']		= '<p>Sipariş toplamı başarıyla tekrar hesaplandı!</p>';
+$_['text_success']		= 'Sipariş toplamı başarıyla tekrar hesaplandı!';
 
 // Error
 $_['error_warning']		= 'Uyarı: Oluşan hatalar için lütfen formu dikkatli kontrol ediniz!';
@@ -23,7 +23,7 @@ $_['error_payment']     = 'Uyarı: Ödeme metodu gerekli!';
 $_['error_no_payment']  = 'Uyarı: Ödeme metodu mevcut değil.';
 $_['error_coupon']		= 'Uyarı: Kupon kodunuz geçersiz, süresi ya da kullanım limiti dolmuş!';
 $_['error_voucher']		= 'Uyarı: Hediye çeki geçersiz ya da daha önce kullanılmış!';
-$_['error_reward']		= 'Uyarı: Lütfen kullanmak istediğiniz puanı giriniz!';	
+$_['error_reward']		= 'Uyarı: Lütfen kullanmak istediğiniz puanı giriniz!';
 $_['error_points']		= 'Uyarı: %s puanınız yok!';
 $_['error_maximum']		= 'Uyarı: En fazla uygulanabilir puan %s!';
 $_['error_to_name']     = 'Alıcının adı 1 ile 64 karakter arasında olmalıdır!';
