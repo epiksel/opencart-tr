@@ -96,6 +96,7 @@ $_['tab_store']               		= 'Mağaza';
 $_['tab_special']             		= 'Kampanya';
 $_['tab_local']               		= 'Yerel';
 $_['tab_mail']                		= 'E-Posta';
+$_['tab_marketplace_links']         = 'Pazar Yeri';
 $_['tab_module']              		= 'Modül';
 $_['tab_order']               		= 'Sipariş Detayları';
 $_['tab_payment']             		= 'Fatura Detayları';

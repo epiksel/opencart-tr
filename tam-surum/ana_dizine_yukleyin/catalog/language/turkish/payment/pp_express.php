@@ -6,6 +6,9 @@ $_['text_title']                    = 'PayPal Express';
 $_['button_continue']               = 'Devam Et';
 $_['text_cart']                     = 'Sepetim';
 $_['text_shipping_updated']         = 'Teslimat servisi güncellendi';
+$_['text_trial']                    = '%s every %s %s for %s payments then ';
+$_['text_recurring']                = '%s every %s %s';
+$_['text_length']                   = ' for %s payments';
 
 // Standard checkout error page
 $_['error_heading_title']           = 'Bir hata oluştu';
@@ -18,8 +21,4 @@ $_['express_button_confirm']        = 'Onayla';
 $_['express_button_login']          = 'PayPal için devam ediliyor';
 $_['express_button_shipping']       = 'Teslimat Güncelle';
 $_['express_entry_coupon']          = 'Kupon kodu giriniz:';
-
-$_['text_trial']                    = '%s every %s %s for %s payments then ';
-$_['text_recurring']                = '%s every %s %s';
-$_['text_length']                   = ' for %s payments';
 ?>

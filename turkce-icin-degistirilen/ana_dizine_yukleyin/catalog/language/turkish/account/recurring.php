@@ -2,14 +2,14 @@
 /* Turkceye Ceviren eka7a - http://www.e-piksel.com */
 
 // Heading 
-$_['heading_title'] = 'Recurring payments';
+$_['heading_title'] = 'Yenilenen Ödemeler';
 
 // Text
 $_['text_empty'] = 'No recurring payment profiles found';
 $_['text_product'] = 'Product: ';
 $_['text_order'] = 'Order: ';
 $_['text_quantity'] = 'Quantity: ';
-$_['text_account'] = 'Account';
+$_['text_account'] = 'Hesabım';
 $_['text_action'] = 'Action';
 $_['text_recurring'] = 'Recurring payment';
 $_['text_transactions'] = 'Transactions';
