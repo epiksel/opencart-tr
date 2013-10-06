@@ -99,6 +99,6 @@ $_['help_tag']          	 = 'Vilgül ile ayrınız';
 // Error
 $_['error_warning']     	 = 'Uyarı: Oluşan hatalar için lütfen formu dikkatli kontrol ediniz!';
 $_['error_permission']       = 'Uyarı: Ürünleri düzenleme iznine sahip değilsiniz!';
-$_['error_name']             = 'Ürün Adı en az 3 en fazla 255 karakterden oluşmalı!';
-$_['error_model']            = 'Ürün Adı en az 3 en fazla 64 karakterden oluşmalı!';
+$_['error_name']             = 'Ürün Adı 3 ile 255 karakter arasında olmalıdır!';
+$_['error_model']            = 'Ürün kodu 3 ile 64 karakter arasında olmalıdır!';
 ?>
