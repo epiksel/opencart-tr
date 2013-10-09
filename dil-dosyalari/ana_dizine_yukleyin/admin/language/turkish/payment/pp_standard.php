@@ -37,5 +37,5 @@ $_['help_total']					 = 'Bu ödeme metodunun aktif olması için toplam sipariş
 
 // Error
 $_['error_permission']				 = 'Uyarı: PayPal Payments Standard ödeme metodunu düzenleme iznine sahip değilsiniz!';
-$_['error_email']					 = 'E-Posta Gerekli!'; 
+$_['error_email']					 = 'E-Posta Gerekli!';
 ?>

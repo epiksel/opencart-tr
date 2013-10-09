@@ -3003,7 +3003,7 @@ CREATE TABLE `oc_return_status` (
 
 INSERT INTO `oc_return_status` (`return_status_id`, `language_id`, `name`) VALUES
 (1, 1, 'Beklemede'),
-(3, 1, 'Tamam'),
+(3, 1, 'Tamamlandı'),
 (2, 1, 'Ürünler Bekleniyor');
 
 -- --------------------------------------------------------

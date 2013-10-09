@@ -57,7 +57,7 @@ $_['entry_city']                     = 'İlçe / Semt';
 $_['entry_country']                  = 'Ülke';
 $_['entry_zone']                     = 'Şehir';
 $_['entry_newsletter']               = '%s bültene abone olmak istiyorum.';
-$_['entry_shipping'] 	             = 'Fatura ve Teslimat adresimi aynı kullan.';
+$_['entry_shipping'] 	             = 'Fatura ve Teslimat adresim aynı.';
 
 // Error
 $_['error_warning']                  = 'Siparişiniz işlenirken bir sorun oluştu! Sorun devam ederse farklı bir ödeme metodu seçip tekar deneyiniz ya da mağaza sahibi ile iletişime geçmek için <a href="%s">buraya tıklayınız</a>.';
