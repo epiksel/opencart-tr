@@ -9,7 +9,6 @@ $_['text_success']           = 'Başarılı: Ürünler başarılı bir şekilde 
 $_['text_plus']              = '+';
 $_['text_minus']             = '-';
 $_['text_default']       	 = 'Varsayılan Mağaza';
-$_['text_image_manager']     = 'Resim Yönetimi';
 $_['text_option']            = 'Seçenek';
 $_['text_option_value']      = 'Seçenek Değeri';
 $_['text_percent']           = 'Yüzde';
@@ -26,10 +25,10 @@ $_['column_action']          = 'Eylem';
 
 // Entry
 $_['entry_name']             = 'Ürün Adı';
+$_['entry_description']      = 'Açıklama';
+$_['entry_meta_title'] 	     = 'Meta Başlığı';
 $_['entry_meta_keyword'] 	 = 'Meta Kelimeleri';
 $_['entry_meta_description'] = 'Meta Açıklaması';
-$_['entry_description']      = 'Açıklama';
-$_['entry_store']            = 'Mağazalar';
 $_['entry_keyword']          = 'SEO Kelimesi';
 $_['entry_model']            = 'Ürün Kodu';
 $_['entry_sku']              = 'SKU';
@@ -40,6 +39,7 @@ $_['entry_isbn']             = 'ISBN';
 $_['entry_mpn']              = 'MPN';
 $_['entry_location']         = 'Konum\'u';
 $_['entry_manufacturer']     = 'Üretici';
+$_['entry_store']            = 'Mağazalar';
 $_['entry_date_available']   = 'Geçerlilik Tarihi';
 $_['entry_shipping']         = 'Kargo Gerekli';
 $_['entry_quantity']         = 'Adet';
@@ -99,6 +99,7 @@ $_['help_tag']          	 = 'Vilgül ile ayrınız';
 // Error
 $_['error_warning']     	 = 'Uyarı: Oluşan hatalar için lütfen formu dikkatli kontrol ediniz!';
 $_['error_permission']       = 'Uyarı: Ürünleri düzenleme iznine sahip değilsiniz!';
-$_['error_name']             = 'Ürün Adı 3 ile 255 karakter arasında olmalıdır!';
+$_['error_name']             = 'Ürün adı 3 ile 255 karakter arasında olmalıdır!';
+$_['error_meta_title']       = 'Meta başlığı 3 ile 255 karakter arasında olmalıdır!';
 $_['error_model']            = 'Ürün kodu 3 ile 64 karakter arasında olmalıdır!';
 ?>

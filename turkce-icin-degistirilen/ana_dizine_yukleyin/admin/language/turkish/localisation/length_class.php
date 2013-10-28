@@ -22,7 +22,7 @@ $_['entry_value']      = 'Birim Değeri';
 $_['help_value']       = 'Varsayılan ağırlık birim değerini 1.00000 olarak ayarlayın.';
 
 // Error
-$_['error_permission'] = 'Uyarı: Uzunluk sınıfı düzenleme iznine sahip değilsiniz!';
+$_['error_permission'] = 'Uyarı: Uzunluk sınıflarını düzenleme iznine sahip değilsiniz!';
 $_['error_title']      = 'Uzunluk Başlığı 3 ile 32 karakter arasında olmalı!';
 $_['error_unit']       = 'Uzunluk Birimi 1 ile 4 karakter arasında olmalı!';
 $_['error_default']    = 'Uyarı: Bu uzunluğu silemezsiniz. Bu uzunluk mağzanızın varsayılan uzunluk birimidir!';

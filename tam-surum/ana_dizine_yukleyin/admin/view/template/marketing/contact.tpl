@@ -8,9 +8,9 @@
   <div class="panel panel-default">
     <div class="panel-heading">
       <div class="pull-right">
-        <button id="button-send" class="btn btn-primary" onclick="send('index.php?route=marketing/contact/send&token=<?php echo $token; ?>');"><i class="icon-envelope"></i> <?php echo $button_send; ?></button>
-        <a href="<?php echo $cancel; ?>" class="btn btn-danger"><i class="icon-remove"></i> <?php echo $button_cancel; ?></a></div>
-      <h1 class="panel-title"><i class="icon-envelope"></i> <?php echo $heading_title; ?></h1>
+        <button id="button-send" class="btn btn-primary" onclick="send('index.php?route=marketing/contact/send&token=<?php echo $token; ?>');"><i class="fa fa-envelope"></i> <?php echo $button_send; ?></button>
+        <a href="<?php echo $cancel; ?>" class="btn btn-danger"><i class="fa fa-times"></i> <?php echo $button_cancel; ?></a></div>
+      <h1 class="panel-title"><i class="fa fa-envelope"></i> <?php echo $heading_title; ?></h1>
     </div>
     <div class="panel-body">
       <form class="form-horizontal">
@@ -92,14 +92,7 @@
 </div>
 <script type="text/javascript" src="view/javascript/ckeditor/ckeditor.js"></script> 
 <script type="text/javascript"><!--
-CKEDITOR.replace('input-message', {
-	filebrowserBrowseUrl: 'index.php?route=common/filemanager&token=<?php echo $token; ?>',
-	filebrowserImageBrowseUrl: 'index.php?route=common/filemanager&token=<?php echo $token; ?>',
-	filebrowserFlashBrowseUrl: 'index.php?route=common/filemanager&token=<?php echo $token; ?>',
-	filebrowserUploadUrl: 'index.php?route=common/filemanager&token=<?php echo $token; ?>',
-	filebrowserImageUploadUrl: 'index.php?route=common/filemanager&token=<?php echo $token; ?>',
-	filebrowserFlashUploadUrl: 'index.php?route=common/filemanager&token=<?php echo $token; ?>'
-});
+CKEDITOR.replace('input-message');
 //--></script> 
 <script type="text/javascript"><!--	
 $('select[name=\'to\']').on('change', function() {
@@ -132,11 +125,11 @@ $('input[name=\'customers\']').autocomplete({
 		
 		$('#customer' + item['value']).remove();
 		
-		$('#customer').append('<div id="customer' + item['value'] + '"><i class="icon-minus-sign"></i> ' + item['label'] + '<input type="hidden" name="customer[]" value="' + item['value'] + '" /></div>');	
+		$('#customer').append('<div id="customer' + item['value'] + '"><i class="fa fa-minus-circle"></i> ' + item['label'] + '<input type="hidden" name="customer[]" value="' + item['value'] + '" /></div>');	
 	}	
 });
 
-$('#customer').delegate('.icon-minus-sign', 'click', function() {
+$('#customer').delegate('.fa-minus-sign', 'click', function() {
 	$(this).parent().remove();
 });
 
@@ -161,11 +154,11 @@ $('input[name=\'affiliates\']').autocomplete({
 		
 		$('#affiliate' + item['value']).remove();
 		
-		$('#affiliate').append('<div id="affiliate' + item['value'] + '"><i class="icon-minus-sign"></i> ' + item['label'] + '<input type="hidden" name="affiliate[]" value="' + item['value'] + '" /></div>');	
+		$('#affiliate').append('<div id="affiliate' + item['value'] + '"><i class="fa fa-minus-circle"></i> ' + item['label'] + '<input type="hidden" name="affiliate[]" value="' + item['value'] + '" /></div>');	
 	}	
 });
 
-$('#affiliate').delegate('.icon-minus-sign', 'click', function() {
+$('#affiliate').delegate('.fa-minus-sign', 'click', function() {
 	$(this).parent().remove();
 });
 
@@ -190,11 +183,11 @@ $('input[name=\'products\']').autocomplete({
 		
 		$('#product' + item['value']).remove();
 		
-		$('#product').append('<div id="product' + item['value'] + '"><i class="icon-minus-sign"></i> ' + item['label'] + '<input type="hidden" name="product[]" value="' + item['value'] + '" /></div>');	
+		$('#product').append('<div id="product' + item['value'] + '"><i class="fa fa-minus-circle"></i> ' + item['label'] + '<input type="hidden" name="product[]" value="' + item['value'] + '" /></div>');	
 	}	
 });
 
-$('#product').delegate('.icon-minus-sign', 'click', function() {
+$('#product').delegate('.fa-minus-sign', 'click', function() {
 	$(this).parent().remove();
 });
 
@@ -207,11 +200,11 @@ function send(url) {
 		data: $('select, input, textarea'),		
 		dataType: 'json',
 		beforeSend: function() {
-			$('#button-send i').replaceWith('<i class="icon-spinner icon-spin"></i>');
+			$('#button-send i').replaceWith('<i class="fa fa-spinner fa-spin"></i>');
 			$('#button-send').prop('disabled', true);
 		},
 		complete: function() {
-			$('#button-send i').replaceWith('<i class="icon-envelope"></i>');
+			$('#button-send i').replaceWith('<i class="fa fa-envelope"></i>');
 			$('#button-send').prop('disabled', false);
 		},				
 		success: function(json) {
@@ -219,7 +212,7 @@ function send(url) {
 			
 			if (json['error']) {
 				if (json['error']['warning']) {
-					$('.box').before('<div class="alert alert-danger"><i class="icon-exclamation-sign"></i> ' + json['error']['warning'] + '</div>');
+					$('.panel').before('<div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> ' + json['error']['warning'] + '</div>');
 				}
 				
 				if (json['error']['subject']) {
@@ -233,13 +226,13 @@ function send(url) {
 			
 			if (json['next']) {
 				if (json['success']) {
-					$('.box').before('<div class="alert alert-success"><i class="icon-ok-sign"></i>  ' + json['success'] + '</div>');
+					$('.panel').before('<div class="alert alert-success"><i class="fa fa-check-circle"></i>  ' + json['success'] + '</div>');
 					
 					send(json['next']);
 				}		
 			} else {
 				if (json['success']) {
-					$('.box').before('<div class="alert alert-success"><i class="icon-ok-sign"></i> ' + json['success'] + '</div>');
+					$('.panel').before('<div class="alert alert-success"><i class="fa fa-check-circle"></i> ' + json['success'] + '</div>');
 				}					
 			}				
 		}

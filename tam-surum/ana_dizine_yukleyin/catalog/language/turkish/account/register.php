@@ -7,8 +7,8 @@ $_['heading_title']        = 'Hesap Oluştur';
 // Text
 $_['text_account']         = 'Hesabım';
 $_['text_register']        = 'Kayıt Ol';
-$_['text_account_already'] = 'Daha önceden kayıt olduysanız, lütfen <a href="%s">Oturum Açma</a> sayfasına gidiniz.';
-$_['text_your_details']    = 'Ayrıntılarınız';
+$_['text_account_already'] = 'Eğer daha önce kayıt olduysanız, lütfen <a href="%s">oturum açma</a> sayfasına gidiniz.';
+$_['text_your_details']    = 'Üyelik Bilgileri';
 $_['text_your_address']    = 'Adresiniz';
 $_['text_newsletter']      = 'Bülten Aboneliği';
 $_['text_your_password']   = 'Parolanız';
@@ -46,4 +46,5 @@ $_['error_postcode']	   = 'Posta kodu 2 ile 10 karakter arasında olmalı!';
 $_['error_country']        = 'Lütfen bir ülke seçiniz!';
 $_['error_zone']           = 'Lütfen bir şehir seçiniz!';
 $_['error_agree']          = 'Uyarı: %s kabul etmelisiniz!';
+$_['error_custom_field']   = '%s gerekli!';
 ?>

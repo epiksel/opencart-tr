@@ -1,5 +1,5 @@
 /**
- * @license Copyright (c) 2003-2013, CKSource - Frederico Knabben. All rights reserved.
+ * @license Copyright (c) 2003-2012, CKSource - Frederico Knabben. All rights reserved.
  * For licensing, see LICENSE.html or http://ckeditor.com/license
  */
 
@@ -7,14 +7,14 @@ CKEDITOR.editorConfig = function (config) {
 	// Define changes to default configuration here.
 	// For the complete reference:
 	// http://docs.ckeditor.com/#!/api/CKEDITOR.config
+	config.language = 'en';
 	config.filebrowserWindowWidth = '800';
 	config.filebrowserWindowHeight = '500';
 	config.resize_enabled = true;
 	config.htmlEncodeOutput = false;
 	config.entities = false;
-	config.extraPlugins = 'wordcount,codemirror';
-	config.codemirror_theme = 'rubyblue';
-	config.wordcount = { showWordCount: true, showCharCount: true, countHTML: false, charLimit: 'unlimited', wordLimit: 'unlimited' };
+	config.extraPlugins = 'opencart';//codemirror,
+	//config.codemirror_theme = 'rubyblue';
 	config.toolbar = 'Custom';
 
 	config.toolbar_Custom = [
@@ -29,7 +29,7 @@ CKEDITOR.editorConfig = function (config) {
 		['Format', 'Styles'],
 		['Font', 'FontSize'],
 		['TextColor', 'BGColor'],
-		['Image', 'Flash', 'Table', 'Iframe', 'HorizontalRule'],
+		['Image', 'OpenCart', 'Flash', 'Table', 'Iframe', 'HorizontalRule'],
 		['Maximize', '-', 'ShowBlocks']
 	];
 

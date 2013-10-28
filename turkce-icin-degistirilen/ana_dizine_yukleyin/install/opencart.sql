@@ -40,7 +40,6 @@ CREATE TABLE `oc_address` (
 -- Dumping data for table `oc_address`
 --
 
-
 -- --------------------------------------------------------
 
 --
@@ -87,7 +86,6 @@ CREATE TABLE `oc_affiliate` (
 -- Dumping data for table `oc_affiliate`
 --
 
-
 -- --------------------------------------------------------
 
 --
@@ -108,7 +106,6 @@ CREATE TABLE `oc_affiliate_transaction` (
 --
 -- Dumping data for table `oc_affiliate_transaction`
 --
-
 
 -- --------------------------------------------------------
 
@@ -377,6 +374,7 @@ CREATE TABLE `oc_category_description` (
   `language_id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `description` text NOT NULL,
+  `meta_title` varchar(255) NOT NULL,
   `meta_description` varchar(255) NOT NULL,
   `meta_keyword` varchar(255) NOT NULL,
   PRIMARY KEY (`category_id`,`language_id`),
@@ -1057,13 +1055,13 @@ CREATE TABLE `oc_customer_activity` (
 
 DROP TABLE IF EXISTS `oc_customer_field`;
 CREATE TABLE `oc_customer_field` (
+  `customer_field_id` int(11) NOT NULL,
   `customer_id` int(11) NOT NULL,
-  `custom_field_id` int(11) NOT NULL,
   `custom_field_value_id` int(11) NOT NULL,
   `name` int(128) NOT NULL,
   `value` text NOT NULL,
   `sort_order` int(3) NOT NULL,
-  PRIMARY KEY (`customer_id`,`custom_field_id`,`custom_field_value_id`)
+  PRIMARY KEY (`customer_field_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
@@ -1237,8 +1235,7 @@ CREATE TABLE `oc_custom_field` (
   `custom_field_id` int(11) NOT NULL AUTO_INCREMENT,
   `type` varchar(32) NOT NULL,
   `value` text NOT NULL,
-  `location` varchar(32) NOT NULL,
-  `position` varchar(15) NOT NULL,
+  `location` text NOT NULL,
   `status` tinyint(1) NOT NULL,
   `sort_order` int(3) NOT NULL,
   PRIMARY KEY (`custom_field_id`)
@@ -1282,23 +1279,6 @@ CREATE TABLE `oc_custom_field_description` (
 
 --
 -- Dumping data for table `oc_custom_field_description`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `oc_custom_field_to_customer_group`
---
-
-DROP TABLE IF EXISTS `oc_custom_field_to_customer_group`;
-CREATE TABLE `oc_custom_field_to_customer_group` (
-  `custom_field_id` int(11) NOT NULL,
-  `customer_group_id` int(11) NOT NULL,
-  PRIMARY KEY (`custom_field_id`,`customer_group_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
---
--- Dumping data for table `oc_custom_field_to_customer_group`
 --
 
 -- --------------------------------------------------------
@@ -1548,6 +1528,9 @@ CREATE TABLE `oc_information_description` (
   `language_id` int(11) NOT NULL,
   `title` varchar(64) NOT NULL,
   `description` text NOT NULL,
+  `meta_title` varchar(255) NOT NULL,
+  `meta_description` varchar(255) NOT NULL,
+  `meta_keyword` varchar(255) NOT NULL,
   PRIMARY KEY (`information_id`,`language_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
@@ -1748,12 +1731,14 @@ DROP TABLE IF EXISTS `oc_location`;
 CREATE TABLE `oc_location` (
   `location_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(32) NOT NULL,
+  `telephone` varchar(32) NOT NULL,
+  `fax` varchar(32) NOT NULL,
   `address_1` varchar(128) NOT NULL,
   `address_2` varchar(128) NOT NULL,
   `city` varchar(128) NOT NULL,
   `postcode` varchar(10) NOT NULL,
   `country_id` int(11) NOT NULL DEFAULT '0',
-  `zone_id` int(11) NOT NULL DEFAULT '0',  
+  `zone_id` int(11) NOT NULL DEFAULT '0',
   `geocode` varchar(32) NOT NULL,
   `image` varchar(255) DEFAULT NULL,
   `open` text NOT NULL,
@@ -1849,10 +1834,8 @@ CREATE TABLE `oc_modification` (
   `author` varchar(64) NOT NULL,
   `version` varchar(32) NOT NULL,
   `code` text NOT NULL,
-  `sort_order` int(3) NOT NULL DEFAULT '0',
   `status` tinyint(1) NOT NULL,
   `date_added` datetime NOT NULL,
-  `date_modified` datetime NOT NULL,
   PRIMARY KEY (`modification_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
@@ -2154,13 +2137,14 @@ CREATE TABLE `oc_order_fraud` (
 
 DROP TABLE IF EXISTS `oc_order_field`;
 CREATE TABLE `oc_order_field` (
+  `order_field_id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
   `custom_field_id` int(11) NOT NULL,
   `custom_field_value_id` int(11) NOT NULL,
   `name` int(128) NOT NULL,
   `value` text NOT NULL,
   `sort_order` int(3) NOT NULL,
-  PRIMARY KEY (`order_id`,`custom_field_id`,`custom_field_value_id`)
+  PRIMARY KEY (`order_field_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
@@ -2424,9 +2408,10 @@ CREATE TABLE `oc_product_description` (
   `language_id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `description` text NOT NULL,
+  `tag` text NOT NULL,
+  `meta_title` varchar(255) NOT NULL,
   `meta_description` varchar(255) NOT NULL,
   `meta_keyword` varchar(255) NOT NULL,
-  `tag` text NOT NULL,
   PRIMARY KEY (`product_id`,`language_id`),
   KEY `name` (`name`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;

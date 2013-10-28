@@ -11,7 +11,7 @@ $_['text_success']       = 'Başarılı: Kapıda Ödeme hesap detayları başar�
 // Entry
 $_['entry_total']        = 'Toplam';
 $_['entry_order_status'] = 'Sipariş Durumu';
-$_['entry_geo_zone']     = 'Genel Bölge';
+$_['entry_geo_zone']     = 'Bölge';
 $_['entry_status']       = 'Durumu';
 $_['entry_sort_order']   = 'Sıralama';
 

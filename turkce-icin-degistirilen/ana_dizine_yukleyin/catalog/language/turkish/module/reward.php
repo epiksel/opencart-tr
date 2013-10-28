@@ -2,7 +2,7 @@
 /* Turkceye Ceviren eka7a - http://www.e-piksel.com */
 
 // Heading
-$_['heading_reward'] = 'Puan Kullan (Mevcut %s)';
+$_['heading_title'] = 'Puan Kullan (Mevcut %s)';
 
 // Text
 $_['text_success']   = 'Başarılı: Puan indirimi sepetinize başarıyla uygulandı!';

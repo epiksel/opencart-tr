@@ -26,8 +26,8 @@ $_['text_your_details']              = 'Kişisel Bilgileriniz';
 $_['text_your_address']              = 'Adres Bilgileriniz';
 $_['text_your_password']             = 'Parolanız';
 $_['text_agree']                     = '<a href="%s" alt="%s" class="agree"><b>%s</b></a>\'ı okudum ve kabul ediyorum.';
-$_['text_address_new']               = 'Yeni bir adres ekleyiniz.';
-$_['text_address_existing']          = 'Varolan bir fatura adresi seçiniz.';
+$_['text_address_new']               = 'Yeni adres ekleyiniz.';
+$_['text_address_existing']          = 'Varolan fatura adresi seçiniz.';
 $_['text_shipping_method']           = 'Siparişinizde kullanılacak kargo metodunu seçiniz.';
 $_['text_payment_method']            = 'Siparişinizde kullanılacak ödeme metodunu seçiniz.';
 $_['text_comments']                  = 'Siparişiniz Hakkında Bir Açıklama Ekleyebilirsiniz';
@@ -35,8 +35,8 @@ $_['text_comments']                  = 'Siparişiniz Hakkında Bir Açıklama Ek
 // Column
 $_['column_name']                    = 'Ürün Adı';
 $_['column_model']                   = 'Ürün Kodu';
-$_['column_quantity']                = 'Miktar';
-$_['column_price']                   = 'Fiyatı';
+$_['column_quantity']                = 'Adet';
+$_['column_price']                   = 'Birim Fiyatı';
 $_['column_total']                   = 'Tutarı';
 
 // Entry
@@ -57,7 +57,7 @@ $_['entry_city']                     = 'İlçe / Semt';
 $_['entry_country']                  = 'Ülke';
 $_['entry_zone']                     = 'Şehir';
 $_['entry_newsletter']               = '%s bültene abone olmak istiyorum.';
-$_['entry_shipping'] 	             = 'Fatura ve Teslimat adresimi aynı kullan.';
+$_['entry_shipping'] 	             = 'Fatura ve Teslimat adresim aynı.';
 
 // Error
 $_['error_warning']                  = 'Siparişiniz işlenirken bir sorun oluştu! Sorun devam ederse farklı bir ödeme metodu seçip tekar deneyiniz ya da mağaza sahibi ile iletişime geçmek için <a href="%s">buraya tıklayınız</a>.';
@@ -71,7 +71,7 @@ $_['error_telephone']                = 'Telefon alanı 3 ile 32 karakter arasın
 $_['error_password']                 = 'Parolanız 3 ile 20 karakter arasında olmalı!';
 $_['error_confirm']                  = 'Parolanız birbiriyle uyuşmuyor!';
 $_['error_address_1']                = 'Adres 1 alanı 3 ile 128 karakter arasında olmalı!';
-$_['error_city']                     = 'İlçe / semnt alanı 2 ile 128 karakter arasında olmalı!';
+$_['error_city']                     = 'İlçe / semt alanı 2 ile 128 karakter arasında olmalı!';
 $_['error_postcode']                 = 'Posta kodu 2 ile 10 karakter arasında olmalı!';
 $_['error_country']                  = 'Lütfen bir ülke seçiniz!';
 $_['error_zone']                     = 'Lütfen bir şehir seçiniz!';
@@ -81,4 +81,5 @@ $_['error_shipping']                 = 'Uyarı: Kargo metodu gerekli!';
 $_['error_no_shipping']              = 'Uyarı: Kargo metodu mevcut değil. Lütfen <a href="%s">iletişim</a> için bize ulaşın!';
 $_['error_payment']                  = 'Uyarı: Ödeme metodu gerekli!';
 $_['error_no_payment']               = 'Uyarı: Ödeme metodu mevcut değil. Lütfen <a href="%s">iletişim</a> için bize ulaşın!';
+$_['error_custom_field']             = '%s gerekli!';
 ?>

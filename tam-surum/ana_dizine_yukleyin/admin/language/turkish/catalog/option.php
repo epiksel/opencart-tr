@@ -18,7 +18,6 @@ $_['text_file']           = 'Dosya';
 $_['text_date']           = 'Tarih';
 $_['text_datetime']       = 'Tarih &amp; Zaman';
 $_['text_time']           = 'Zaman';
-$_['text_image_manager']  = 'Resim Yönetimi';
 
 // Column
 $_['column_name']         = 'Seçenek Adı';

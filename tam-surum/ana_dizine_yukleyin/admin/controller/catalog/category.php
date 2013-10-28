@@ -33,6 +33,7 @@ class ControllerCatalogCategory extends Controller {
 			$this->redirect($this->url->link('catalog/category', 'token=' . $this->session->data['token'] . $url, 'SSL')); 
 		}
 
+		
 		$this->getForm();
 	}
 
@@ -213,20 +214,20 @@ class ControllerCatalogCategory extends Controller {
 
 		$this->data['text_none'] = $this->language->get('text_none');
 		$this->data['text_default'] = $this->language->get('text_default');
-		$this->data['text_image_manager'] = $this->language->get('text_image_manager');	
 		$this->data['text_enabled'] = $this->language->get('text_enabled');
     	$this->data['text_disabled'] = $this->language->get('text_disabled');
 		$this->data['text_percent'] = $this->language->get('text_percent');
 		$this->data['text_amount'] = $this->language->get('text_amount');
 				
 		$this->data['entry_name'] = $this->language->get('entry_name');
-		$this->data['entry_meta_keyword'] = $this->language->get('entry_meta_keyword');
-		$this->data['entry_meta_description'] = $this->language->get('entry_meta_description');
 		$this->data['entry_description'] = $this->language->get('entry_description');
+		$this->data['entry_meta_title'] = $this->language->get('entry_meta_title');
+		$this->data['entry_meta_description'] = $this->language->get('entry_meta_description');
+		$this->data['entry_meta_keyword'] = $this->language->get('entry_meta_keyword');
+		$this->data['entry_keyword'] = $this->language->get('entry_keyword');
 		$this->data['entry_parent'] = $this->language->get('entry_parent');
 		$this->data['entry_filter'] = $this->language->get('entry_filter');
 		$this->data['entry_store'] = $this->language->get('entry_store');
-		$this->data['entry_keyword'] = $this->language->get('entry_keyword');
 		$this->data['entry_image'] = $this->language->get('entry_image');
 		$this->data['entry_top'] = $this->language->get('entry_top');
 		$this->data['entry_column'] = $this->language->get('entry_column');		
@@ -241,8 +242,6 @@ class ControllerCatalogCategory extends Controller {
 		
 		$this->data['button_save'] = $this->language->get('button_save');
 		$this->data['button_cancel'] = $this->language->get('button_cancel');
-		$this->data['button_edit'] = $this->language->get('button_edit');
-		$this->data['button_clear'] = $this->language->get('button_clear');
 
     	$this->data['tab_general'] = $this->language->get('tab_general');
     	$this->data['tab_data'] = $this->language->get('tab_data');
@@ -259,7 +258,13 @@ class ControllerCatalogCategory extends Controller {
 		} else {
 			$this->data['error_name'] = array();
 		}
-
+		
+ 		if (isset($this->error['meta_title'])) {
+			$this->data['error_meta_title'] = $this->error['meta_title'];
+		} else {
+			$this->data['error_meta_title'] = array();
+		}	
+		
   		$this->data['breadcrumbs'] = array();
 
    		$this->data['breadcrumbs'][] = array(
@@ -439,6 +444,10 @@ class ControllerCatalogCategory extends Controller {
 			if ((utf8_strlen($value['name']) < 2) || (utf8_strlen($value['name']) > 255)) {
 				$this->error['name'][$language_id] = $this->language->get('error_name');
 			}
+		
+      		if ((utf8_strlen($value['meta_title']) < 1) || (utf8_strlen($value['meta_title']) > 255)) {
+        		$this->error['meta_title'][$language_id] = $this->language->get('error_meta_title');
+      		}	
 		}
 		
 		if ($this->error && !isset($this->error['warning'])) {

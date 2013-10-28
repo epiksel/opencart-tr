@@ -25,13 +25,19 @@ class ModelAccountCustomField extends Model {
 				'name'               => $custom_field['name'],
 				'type'               => $custom_field['type'],
 				'value'              => $custom_field['value'],
-				'required'           => $custom_field['required'],
+				'required'           => ($custom_field['required'] > 0 ? true : false),
 				'location'           => $custom_field['location'],
-				'position'           => $custom_field['position']
+				'sort_order'         => $custom_field['sort_order']
 			);			
 		}
 		
 		return $custom_field_data;
 	}
+	
+	public function getCustomField($custom_field_id) {
+		$query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "custom_field` WHERE custom_field_id = '" . (int)$custom_field_id . "'");
+		
+		return $query->row;		
+	}	
 }
 ?>

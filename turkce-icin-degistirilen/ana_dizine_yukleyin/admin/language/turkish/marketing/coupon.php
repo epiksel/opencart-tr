@@ -7,18 +7,18 @@ $_['heading_title']       = 'Kuponlar';
 // Text
 $_['text_success']        = 'Başarılı: Kupon başarılı bir şekilde değiştirildi!';
 $_['text_percent']        = 'Yüzde(%)';
-$_['text_amount']         = 'Sabit Miktar';
+$_['text_amount']         = 'Sabit Tutar';
 
 // Column
 $_['column_name']         = 'Kupon Adı';
 $_['column_code']         = 'Kod';
 $_['column_discount']     = 'İndirim';
-$_['column_date_start']   = 'Başlangıç Tarihi';
-$_['column_date_end']     = 'Bitiş Tarihi';
+$_['column_date_start']   = 'Başlangıç';
+$_['column_date_end']     = 'Bitiş';
 $_['column_status']       = 'Durumu';
 $_['column_order_id']     = 'Sipariş No';
 $_['column_customer']     = 'Müşteri';
-$_['column_amount']       = 'Miktar';
+$_['column_amount']       = 'Tutar';
 $_['column_date_added']   = 'Ekleme Tarihi';
 $_['column_action']       = 'Eylem';
 
@@ -40,7 +40,7 @@ $_['entry_status']        = 'Durumu';
 
 // Help
 $_['help_code']			  = 'İndirim kuponu için gerekli kod.';
-$_['help_type']           = 'Yüzde ya da Sabit miktar.';
+$_['help_type']           = 'Yüzde ya da sabit tutar.';
 $_['help_logged']         = 'Müşteri kuponu kullanabilmesi için giriş yapmasını gerektirir.';
 $_['help_total']          = 'Toplam sipariş tutarı belirtilen rakam üzerindeyse indirim kuponunu kullanılsın.';
 $_['help_category']       = 'Seçtiğiniz kategori altındaki ürünlerden seçiniz.';

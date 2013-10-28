@@ -12,7 +12,7 @@ $_['entry_cc_owner']       = 'Kart Sahibi';
 $_['entry_cc_type']        = 'Kart Türü';
 $_['entry_cc_number']      = 'Kart Numarası';
 $_['entry_cc_start_date']  = 'Başlangıç Tarihi';
-$_['entry_cc_expire_date'] = 'Son Tullanma Tarihi';
+$_['entry_cc_expire_date'] = 'Son Kullanma Tarihi';
 $_['entry_cc_cvv2']        = 'Güvenlik Kodu (CVV2)';
 $_['entry_cc_issue']       = 'Kart Basım Numarası';
 ?>

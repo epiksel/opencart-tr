@@ -189,7 +189,6 @@ class ControllerSettingStore extends Controller {
 		$this->data['text_account'] = $this->language->get('text_account');
 		$this->data['text_checkout'] = $this->language->get('text_checkout');
 		$this->data['text_stock'] = $this->language->get('text_stock');				
-		$this->data['text_image_manager'] = $this->language->get('text_image_manager');
 		$this->data['text_shipping'] = $this->language->get('text_shipping');	
 		$this->data['text_payment'] = $this->language->get('text_payment');	
 				
@@ -236,6 +235,7 @@ class ControllerSettingStore extends Controller {
 		$this->data['entry_image_compare'] = $this->language->get('entry_image_compare');
 		$this->data['entry_image_wishlist'] = $this->language->get('entry_image_wishlist');
 		$this->data['entry_image_cart'] = $this->language->get('entry_image_cart');
+		$this->data['entry_image_location'] = $this->language->get('entry_image_location');
 		$this->data['entry_width'] = $this->language->get('entry_width');
 		$this->data['entry_height'] = $this->language->get('entry_height');	
 		$this->data['entry_secure'] = $this->language->get('entry_secure');
@@ -260,8 +260,6 @@ class ControllerSettingStore extends Controller {
 				
 		$this->data['button_save'] = $this->language->get('button_save');
 		$this->data['button_cancel'] = $this->language->get('button_cancel');
-		$this->data['button_edit'] = $this->language->get('button_edit');
-		$this->data['button_clear'] = $this->language->get('button_clear');
 		
 		$this->data['tab_general'] = $this->language->get('tab_general');
 		$this->data['tab_store'] = $this->language->get('tab_store');
@@ -378,6 +376,12 @@ class ControllerSettingStore extends Controller {
 			$this->data['error_image_cart'] = '';
 		}
 		
+ 		if (isset($this->error['image_location'])) {
+			$this->data['error_image_location'] = $this->error['image_location'];
+		} else {
+			$this->data['error_image_location'] = '';
+		}
+				
 		if (isset($this->error['catalog_limit'])) {
 			$this->data['error_catalog_limit'] = $this->error['catalog_limit'];
 		} else {
@@ -885,7 +889,23 @@ class ControllerSettingStore extends Controller {
 		} else {
 			$this->data['config_image_cart_height'] = 80;
 		}
-
+		
+		if (isset($this->request->post['config_image_location_width'])) {
+			$this->data['config_image_location_width'] = $this->request->post['config_image_location_width'];
+		} elseif (isset($store_info['config_image_location_width'])) {
+			$this->data['config_image_location_width'] = $store_info['config_image_location_width'];			
+		} else {
+			$this->data['config_image_location_width'] = 240;
+		}
+		
+		if (isset($this->request->post['config_image_location_height'])) {
+			$this->data['config_image_location_height'] = $this->request->post['config_image_location_height'];
+		} elseif (isset($store_info['config_image_location_height'])) {
+			$this->data['config_image_location_height'] = $store_info['config_image_location_height'];			
+		} else {
+			$this->data['config_image_location_height'] = 180;
+		}
+		
 		if (isset($this->request->post['config_secure'])) {
 			$this->data['config_secure'] = $this->request->post['config_secure'];
 		} elseif (isset($store_info['config_secure'])) {
@@ -976,6 +996,10 @@ class ControllerSettingStore extends Controller {
 			$this->error['image_cart'] = $this->language->get('error_image_cart');
 		}
 		
+		if (!$this->request->post['config_image_location_width'] || !$this->request->post['config_image_location_height']) {
+			$this->error['image_location'] = $this->language->get('error_image_location');
+		}		
+				
 		if (!$this->request->post['config_catalog_limit']) {
 			$this->error['catalog_limit'] = $this->language->get('error_limit');
 		}

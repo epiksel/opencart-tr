@@ -6,16 +6,16 @@
     <?php } ?>
   </ul>
   <?php if ($error_warning) { ?>
-  <div class="alert alert-danger"><i class="icon-exclamation-sign"></i> <?php echo $error_warning; ?>
+  <div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> <?php echo $error_warning; ?>
     <button type="button" class="close" data-dismiss="alert">&times;</button>
   </div>
   <?php } ?>
   <div class="panel panel-default">
     <div class="panel-heading">
       <div class="pull-right">
-        <button type="submit" form="form-custom-field" class="btn btn-primary"><i class="icon-ok"></i> <?php echo $button_save; ?></button>
-        <a href="<?php echo $cancel; ?>" class="btn btn-danger"><i class="icon-remove"></i> <?php echo $button_cancel; ?></a></div>
-      <h1 class="panel-title"><i class="icon-edit"></i> <?php echo $heading_title; ?></h1>
+        <button type="submit" form="form-custom-field" class="btn btn-primary"><i class="fa fa-check"></i> <?php echo $button_save; ?></button>
+        <a href="<?php echo $cancel; ?>" class="btn btn-danger"><i class="fa fa-times"></i> <?php echo $button_cancel; ?></a></div>
+      <h1 class="panel-title"><i class="fa fa-edit"></i> <?php echo $heading_title; ?></h1>
     </div>
     <div class="panel-body">
       <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form-custom-field" class="form-horizontal">
@@ -99,6 +99,24 @@
           </div>
         </div>
         <div class="form-group">
+          <label class="col-sm-2 control-label"><?php echo $entry_location; ?></label>
+          <div class="col-sm-10">
+             <?php foreach ($locations as $location) { ?>
+             <div class="checkbox">
+              <label>
+                <?php if (in_array($location['value'], $custom_field_location)) { ?>
+                <input type="checkbox" name="location[]" value="<?php echo $location['value']; ?>" checked="checked" />
+                <?php echo $location['text']; ?>
+                <?php } else { ?>
+                <input type="checkbox" name="location[]" value="<?php echo $location['value']; ?>" />
+                <?php echo $location['text']; ?>
+                <?php } ?>
+              </label>
+            </div>      
+            <?php } ?>
+          </div>
+        </div>
+        <div class="form-group">
           <label class="col-sm-2 control-label"><?php echo $entry_customer_group; ?></label>
           <div class="col-sm-10">
             <?php $customer_group_row = 0; ?>
@@ -137,110 +155,6 @@
             <?php $customer_group_row++; ?>
             <?php } ?>
           </div>
-        </div>
-        <div class="form-group">
-          <label class="col-sm-2 control-label" for="input-location"><?php echo $entry_location; ?></label>
-          <div class="col-sm-10">
-            <select name="location" id="input-location" class="form-control">
-              <?php if ($location == 'customer') { ?>
-              <option value="customer" selected="selected"><?php echo $text_customer; ?></option>
-              <?php } else { ?>
-              <option value="customer"><?php echo $text_customer; ?></option>
-              <?php } ?>
-              <?php if ($location == 'address') { ?>
-              <option value="address" selected="selected"><?php echo $text_address; ?></option>
-              <?php } else { ?>
-              <option value="address"><?php echo $text_address; ?></option>
-              <?php } ?>
-              <?php if ($location == 'payment_address') { ?>
-              <option value="payment_address" selected="selected"><?php echo $text_payment_address; ?></option>
-              <?php } else { ?>
-              <option value="payment_address"><?php echo $text_payment_address; ?></option>
-              <?php } ?>
-              <?php if ($location == 'shipping_address') { ?>
-              <option value="shipping_address" selected="selected"><?php echo $text_shipping_address; ?></option>
-              <?php } else { ?>
-              <option value="shipping_address"><?php echo $text_shipping_address; ?></option>
-              <?php } ?>
-            </select>
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-sm-2 control-label" for="input-position"><?php echo $entry_position; ?></label>
-          <div class="col-sm-10">
-            <select name="position" id="input-position" class="form-control">
-              <?php if ($position == 'begining') { ?>
-              <option value="begining" selected="selected"><?php echo $text_begining; ?></option>
-              <?php } else { ?>
-              <option value="begining"><?php echo $text_begining; ?></option>
-              <?php } ?>
-              <?php if ($position == 'firstname') { ?>
-              <option value="firstname" selected="selected"><?php echo $text_firstname; ?></option>
-              <?php } else { ?>
-              <option value="firstname"><?php echo $text_firstname; ?></option>
-              <?php } ?>
-              <?php if ($position == 'lastname') { ?>
-              <option value="lastname" selected="selected"><?php echo $text_lastname; ?></option>
-              <?php } else { ?>
-              <option value="lastname"><?php echo $text_lastname; ?></option>
-              <?php } ?>
-              <?php if ($position == 'email') { ?>
-              <option value="email" selected="selected"><?php echo $text_email; ?></option>
-              <?php } else { ?>
-              <option value="email"><?php echo $text_email; ?></option>
-              <?php } ?>
-              <?php if ($position == 'telephone') { ?>
-              <option value="telephone" selected="selected"><?php echo $text_telephone; ?></option>
-              <?php } else { ?>
-              <option value="telephone"><?php echo $text_telephone; ?></option>
-              <?php } ?>
-              <?php if ($position == 'fax') { ?>
-              <option value="fax" selected="selected"><?php echo $text_fax; ?></option>
-              <?php } else { ?>
-              <option value="fax"><?php echo $text_fax; ?></option>
-              <?php } ?>
-              <?php if ($position == 'company') { ?>
-              <option value="company" selected="selected"><?php echo $text_company; ?></option>
-              <?php } else { ?>
-              <option value="company"><?php echo $text_company; ?></option>
-              <?php } ?>
-              <?php if ($position == 'customer_group_id') { ?>
-              <option value="customer_group_id" selected="selected"><?php echo $text_customer_group; ?></option>
-              <?php } else { ?>
-              <option value="customer_group_id"><?php echo $text_customer_group; ?></option>
-              <?php } ?>
-              <?php if ($position == 'address_1') { ?>
-              <option value="address_1" selected="selected"><?php echo $text_address_1; ?></option>
-              <?php } else { ?>
-              <option value="address_1"><?php echo $text_address_1; ?></option>
-              <?php } ?>
-              <?php if ($position == 'address_2') { ?>
-              <option value="address_2" selected="selected"><?php echo $text_address_2; ?></option>
-              <?php } else { ?>
-              <option value="address_2"><?php echo $text_address_2; ?></option>
-              <?php } ?>
-              <?php if ($position == 'city') { ?>
-              <option value="city" selected="selected"><?php echo $text_city; ?></option>
-              <?php } else { ?>
-              <option value="city"><?php echo $text_city; ?></option>
-              <?php } ?>
-              <?php if ($position == 'postcode') { ?>
-              <option value="postcode" selected="selected"><?php echo $text_postcode; ?></option>
-              <?php } else { ?>
-              <option value="postcode"><?php echo $text_postcode; ?></option>
-              <?php } ?>
-              <?php if ($position == 'country_id') { ?>
-              <option value="country_id" selected="selected"><?php echo $text_country; ?></option>
-              <?php } else { ?>
-              <option value="country_id"><?php echo $text_country; ?></option>
-              <?php } ?>
-              <?php if ($position == 'zone_id') { ?>
-              <option value="zone_id" selected="selected"><?php echo $text_zone; ?></option>
-              <?php } else { ?>
-              <option value="zone_id"><?php echo $text_zone; ?></option>
-              <?php } ?>
-            </select>
-            <span class="help-block"><?php echo $help_position; ?></span> </div>
         </div>
         <div class="form-group">
           <label class="col-sm-2 control-label" for="input-status"><?php echo $entry_status; ?></label>
@@ -284,7 +198,7 @@
                 <?php } ?>
                 <?php } ?></td>
               <td class="text-right"><input type="text" name="custom_field_value[<?php echo $custom_field_value_row; ?>][sort_order]" value="<?php echo $custom_field_value['sort_order']; ?>" placeholder="<?php echo $entry_sort_order; ?>" class="form-control" /></td>
-              <td class="text-left"><button onclick="$('#custom-field-value-row<?php echo $custom_field_value_row; ?>').remove();" class="btn btn-danger"><i class="icon-minus-sign"></i> <?php echo $button_remove; ?></button></td>
+              <td class="text-left"><button onclick="$('#custom-field-value-row<?php echo $custom_field_value_row; ?>').remove();" class="btn btn-danger"><i class="fa fa-minus-circle"></i> <?php echo $button_remove; ?></button></td>
             </tr>
             <?php $custom_field_value_row++; ?>
             <?php } ?>
@@ -292,7 +206,7 @@
           <tfoot>
             <tr>
               <td colspan="2"></td>
-              <td class="text-left"><button type="button" onclick="addCustomFieldValue();" class="btn btn-primary"><i class="icon-plus-sign"></i> <?php echo $button_add_custom_field_value; ?></button></td>
+              <td class="text-left"><button type="button" onclick="addCustomFieldValue();" class="btn btn-primary"><i class="fa fa-plus-circle"></i> <?php echo $button_custom_field_value_add; ?></button></td>
             </tr>
           </tfoot>
         </table>
@@ -300,7 +214,6 @@
     </div>
   </div>
 </div>
-<script type="text/javascript" src="view/javascript/jquery/ui/jquery-ui-timepicker-addon.js"></script> 
 <script type="text/javascript"><!--
 $('select[name=\'type\']').on('change', function() {
 	if (this.value == 'select' || this.value == 'radio' || this.value == 'checkbox') {
@@ -324,6 +237,17 @@ $('select[name=\'type\']').on('change', function() {
 
 $('select[name=\'type\']').trigger('change');
 
+$('input[name^=\'location\']').on('change', function() {
+	
+	if (this.value == 'account') {
+		//$('#custom-field-value').show();
+		//$('#display-value').hide();
+	}
+	
+	
+	
+});
+
 var custom_field_value_row = <?php echo $custom_field_value_row; ?>;
 
 function addCustomFieldValue() {
@@ -336,7 +260,7 @@ function addCustomFieldValue() {
 	<?php } ?>
 	html += '  </td>';
 	html += '  <td class="text-right"><input type="text" name="custom_field_value[' + custom_field_value_row + '][sort_order]" value="" placeholder="<?php echo $entry_sort_order; ?>" class="form-control" /></td>';
-	html += '  <td class="text-left"><button type="button" onclick="$(\'#custom-field-value-row' + custom_field_value_row + '\').remove();" class="btn btn-danger"><i class="icon-minus-sign"></i> <?php echo $button_remove; ?></button></td>';
+	html += '  <td class="text-left"><button type="button" onclick="$(\'#custom-field-value-row' + custom_field_value_row + '\').remove();" class="btn btn-danger"><i class="fa fa-minus-circle"></i> <?php echo $button_remove; ?></button></td>';
 	html += '</tr>';	
 	
 	$('#custom-field-value tbody').append(html);

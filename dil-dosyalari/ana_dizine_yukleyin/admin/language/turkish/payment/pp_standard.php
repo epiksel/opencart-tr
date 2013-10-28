@@ -27,7 +27,7 @@ $_['entry_processed_status']		 = 'Hazırlanıyor Durumu';
 $_['entry_refunded_status']			 = 'İade Edildi Durumu';
 $_['entry_reversed_status']			 = 'İadeyi Geri Al Durumu';
 $_['entry_voided_status']		     = 'Hükümsüz Durumu';
-$_['entry_geo_zone']				 = 'Genel Bölge';
+$_['entry_geo_zone']				 = 'Bölge';
 $_['entry_status']					 = 'Durumu';
 $_['entry_sort_order']				 = 'Sıralama';
 

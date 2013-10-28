@@ -6,16 +6,16 @@
     <?php } ?>
   </ul>
   <?php if ($error_warning) { ?>
-  <div class="alert alert-danger"><i class="icon-exclamation-sign"></i> <?php echo $error_warning; ?>
+  <div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> <?php echo $error_warning; ?>
     <button type="button" class="close" data-dismiss="alert">&times;</button>
   </div>
   <?php } ?>
   <div class="panel panel-default">
     <div class="panel-heading">
       <div class="pull-right">
-        <button type="submit" form="form-download" class="btn btn-primary"><i class="icon-ok"></i> <?php echo $button_save; ?></button>
-        <a href="<?php echo $cancel; ?>" class="btn btn-danger"><i class="icon-remove"></i> <?php echo $button_cancel; ?></a></div>
-      <h1 class="panel-title"><i class="icon-edit"></i> <?php echo $heading_title; ?></h1>
+        <button type="submit" form="form-download" class="btn btn-primary"><i class="fa fa-check"></i> <?php echo $button_save; ?></button>
+        <a href="<?php echo $cancel; ?>" class="btn btn-danger"><i class="fa fa-times"></i> <?php echo $button_cancel; ?></a></div>
+      <h1 class="panel-title"><i class="fa fa-edit"></i> <?php echo $heading_title; ?></h1>
     </div>
     <div class="panel-body">
       <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form-download" class="form-horizontal">
@@ -38,7 +38,7 @@
             <div class="input-group">
               <input type="text" name="filename" value="<?php echo $filename; ?>" placeholder="<?php echo $entry_filename; ?>" id="input-filename" class="form-control" />
               <span class="input-group-btn">
-              <button type="button" onclick="$('input[name=\'file\']').click();" id="button-upload" class="btn btn-primary"><i class="icon-upload"></i> <?php echo $button_upload; ?></button>
+              <button type="button" id="button-upload" class="btn btn-primary"><i class="fa fa-upload"></i> <?php echo $button_upload; ?></button>
               </span></div>
             <span class="help-block"><?php echo $help_filename; ?></span>
             <?php if ($error_filename) { ?>
@@ -78,45 +78,48 @@
     </div>
   </div>
 </div>
-<div style="display: none;">
-  <form enctype="multipart/form-data">
-    <input type="file" name="file" id="file" />
-  </form>
-</div>
 <script type="text/javascript"><!--
-$('#file').on('change', function() {
-    $.ajax({
-        url: 'index.php?route=catalog/download/upload&token=<?php echo $token; ?>',
-        type: 'post',		
-		dataType: 'json',
-		data: new FormData($(this).parent()[0]),
-		cache: false,
-		contentType: false,
-		processData: false,		
-		beforeSend: function() {
-			$('#button-upload i').replaceWith('<i class="icon-spinner icon-spin"></i>');
-			$('#button-upload').prop('disabled', true);
-		},	
-		complete: function() {
-			$('#button-upload i').replaceWith('<i class="icon-upload"></i>');
-			$('#button-upload').prop('disabled', false);
-		},		
-		success: function(json) {
-			if (json['error']) {
-				alert(json['error']);
+$('#button-upload').on('click', function() {
+	$('#form-upload').remove();
+	
+	$('body').prepend('<form enctype="multipart/form-data" id="form-upload" style="display: none;"><input type="file" name="file" /></form>');
+
+	$('#form-upload input[name=\'file\']').trigger('click');
+	
+	$('#form-upload input[name=\'file\']').on('change', function() {
+		$.ajax({
+			url: 'index.php?route=catalog/download/upload&token=<?php echo $token; ?>',
+			type: 'post',		
+			dataType: 'json',
+			data: new FormData($(this).parent()[0]),
+			cache: false,
+			contentType: false,
+			processData: false,		
+			beforeSend: function() {
+				$('#button-upload i').replaceWith('<i class="fa fa-spinner fa-spin"></i>');
+				$('#button-upload').prop('disabled', true);
+			},	
+			complete: function() {
+				$('#button-upload i').replaceWith('<i class="fa fa-upload"></i>');
+				$('#button-upload').prop('disabled', false);
+			},		
+			success: function(json) {
+				if (json['error']) {
+					alert(json['error']);
+				}
+							
+				if (json['success']) {
+					alert(json['success']);
+					
+					$('input[name=\'filename\']').attr('value', json['filename']);
+					$('input[name=\'mask\']').attr('value', json['mask']);
+				}
+			},			
+			error: function(xhr, ajaxOptions, thrownError) {
+				alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
 			}
-						
-			if (json['success']) {
-				alert(json['success']);
-				
-				$('input[name=\'filename\']').attr('value', json['filename']);
-				$('input[name=\'mask\']').attr('value', json['mask']);
-			}
-		},			
-		error: function(xhr, ajaxOptions, thrownError) {
-			alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-		}
-    });
+		});
+	});
 });
 //--></script> 
 <?php echo $footer; ?>

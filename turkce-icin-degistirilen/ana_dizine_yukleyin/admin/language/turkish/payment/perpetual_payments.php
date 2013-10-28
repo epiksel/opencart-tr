@@ -20,7 +20,7 @@ $_['entry_sort_order']   = 'Sort Order';
 
 // Help
 $_['help_test']          = 'Use this module in Test (YES) or Production mode (NO)?';
-$_['help_total']         = 'Bu ödeme metodunun aktif olması için toplam sipariş miktarını giriniz.';
+$_['help_total']         = 'Bu ödeme metodunun aktif olması için toplam sipariş tutarını giriniz.';
 
 // Error
 $_['error_permission']   = 'Warning: You do not have permission to modify payment Perpetual Payments!';

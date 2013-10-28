@@ -2,7 +2,7 @@
 /* Turkceye Ceviren eka7a - http://www.e-piksel.com */
 
 // Heading
-$_['heading_title']     = 'Pazarlama Takip';
+$_['heading_title']     = 'Pazarlama';
 
 // Text
 $_['text_success']      = 'Başarılı: Pazarlama takibi başarılı bir şekilde değiştirildi!';

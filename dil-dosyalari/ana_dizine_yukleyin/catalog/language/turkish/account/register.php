@@ -46,4 +46,5 @@ $_['error_postcode']	   = 'Posta kodu 2 ile 10 karakter arasında olmalı!';
 $_['error_country']        = 'Lütfen bir ülke seçiniz!';
 $_['error_zone']           = 'Lütfen bir şehir seçiniz!';
 $_['error_agree']          = 'Uyarı: %s kabul etmelisiniz!';
+$_['error_custom_field']   = '%s gerekli!';
 ?>

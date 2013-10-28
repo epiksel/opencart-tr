@@ -18,7 +18,7 @@ $_['entry_description']  = 'Tema Açıklaması';
 $_['entry_image']        = 'Resim';
 
 // Error
-$_['error_permission']  = 'Uyarı: Hediye çeki temasını düzenleme iznine sahip değilsiniz!';
+$_['error_permission']  = 'Uyarı: Hediye çeki temalarını düzenleme iznine sahip değilsiniz!';
 $_['error_name']        = 'Tema adı 3 ile 32 karakter arasında olmalıdır!';
 $_['error_image']       = 'Resim gerekli!';
 $_['error_voucher']     = 'Uyarı: Bu hediye çeki temasını silemezsiniz %s hediye çeki tarafından kullanılmaktadır!';

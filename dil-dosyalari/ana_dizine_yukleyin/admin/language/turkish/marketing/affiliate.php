@@ -59,7 +59,7 @@ $_['help_code']					= 'Tavsiyeleri izlemek için kullanılacak takip kodu.';
 $_['help_commission']			= 'Ortağın her sipariş için aldığı komisyon oranı.';
 
 // Error
-$_['error_permission']          = 'Uyarı: Ortaklık bilgileri düzenleme iznine sahip değilsiniz!';
+$_['error_permission']          = 'Uyarı: Ortakları düzenleme iznine sahip değilsiniz!';
 $_['error_exists']              = 'Uyarı: E-Posta adresi zaten kayıtlı!';
 $_['error_firstname']           = 'Ad alanı 1 ile 32 karakter arasında olmalı!';
 $_['error_lastname']            = 'Soyadı alanı 1 ile 32 karakter arasında olmalı!';

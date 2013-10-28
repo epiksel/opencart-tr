@@ -19,11 +19,11 @@ $_['entry_title']       = 'Vergi Sınıfı Başlığı';
 $_['entry_description'] = 'Açıklama';
 $_['entry_rate']        = 'Vergi Oranı';
 $_['entry_based']       = 'Temel';
-$_['entry_geo_zone']    = 'Genel Bölge';
+$_['entry_geo_zone']    = 'Bölge';
 $_['entry_priority']    = 'Öncelik';
 
 // Error
-$_['error_permission']  = 'Uyarı: Vergi oranlarını düzenleme iznine sahip değilsiniz!';
+$_['error_permission']  = 'Uyarı: Vergi sınıflarını düzenleme iznine sahip değilsiniz!';
 $_['error_title']       = 'Vergi sınıf başlığı 3 ile 32 karakter arasında olmalı!';
 $_['error_description'] = 'Açıklama 3 ile 255 karakter arasında olmalı!';
 $_['error_product']     = 'Uyarı: Bu vergi oranını silemezsiniz. Bu vergi oranı %s ürün tarafından kullanılıyor!';

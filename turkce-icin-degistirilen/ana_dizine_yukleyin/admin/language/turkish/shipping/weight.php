@@ -11,7 +11,7 @@ $_['text_success']     = 'Başarılı: Ağırlık orantılı kargo başarılı b
 // Entry
 $_['entry_rate']       = 'Değer';
 $_['entry_tax_class']  = 'Vergi Oranı';
-$_['entry_geo_zone']   = 'Genel Bölge';
+$_['entry_geo_zone']   = 'Bölge';
 $_['entry_status']     = 'Durumu';
 $_['entry_sort_order'] = 'Sıralama';
 

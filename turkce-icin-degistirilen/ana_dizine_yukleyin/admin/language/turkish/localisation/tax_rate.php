@@ -13,7 +13,7 @@ $_['text_success']		   = 'Başarılı: Vergi oranları başarılı bir şekilde 
 $_['column_name']          = 'Vergi Adı';
 $_['column_rate']          = 'Vergi Oranı';
 $_['column_type']          = 'Türü';
-$_['column_geo_zone']      = 'Genel Bölge';
+$_['column_geo_zone']      = 'Bölge';
 $_['column_date_added']    = 'Ekleme Tarihi';
 $_['column_date_modified'] = 'Değiştirme Tarihi';
 $_['column_action']        = 'Eylem';
@@ -23,7 +23,7 @@ $_['entry_name']           = 'Vergi Adı';
 $_['entry_rate']           = 'Vergi Oranı';
 $_['entry_type']           = 'Türü';
 $_['entry_customer_group'] = 'Müşteri Grubu';
-$_['entry_geo_zone']       = 'Genel Bölge';
+$_['entry_geo_zone']       = 'Bölge';
 
 // Error
 $_['error_permission']     = 'Uyarı: Vergi oranlarını düzenleme iznine sahip değilsiniz!';

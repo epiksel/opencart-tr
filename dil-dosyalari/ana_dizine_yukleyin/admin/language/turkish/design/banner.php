@@ -7,7 +7,6 @@ $_['heading_title']      = 'Afişler';
 // Text
 $_['text_success']       = 'Başarılı: Afiş başarılı bir şekilde değiştirildi!';
 $_['text_default']       = 'Varsayılan';
-$_['text_image_manager'] = 'Resim Yönetimi';
 
 // Column
 $_['column_name']        = 'Afiş Adı';

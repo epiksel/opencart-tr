@@ -57,7 +57,7 @@ $_['help_points']           = 'Puan silmek için başına eksi işareti koyunuz.
 
 // Error
 $_['error_warning']			= 'Uyarı: Oluşan hatalar için lütfen formu dikkatli kontrol ediniz!';
-$_['error_permission']		= 'Uyarı: Müşteri bilgileri düzenleme iznine sahip değilsiniz!';
+$_['error_permission']		= 'Uyarı: Müşterileri düzenleme iznine sahip değilsiniz!';
 $_['error_exists']          = 'Uyarı: E-Posta adresi zaten kayıtlı!';
 $_['error_firstname']		= 'Ad alanı 1 ile 32 karakter arasında olmalı!';
 $_['error_lastname']		= 'Soyad 1 ile 32 karakter arasında olmalı!';
@@ -65,7 +65,6 @@ $_['error_email']			= 'E-Posta adresi geçersiz!';
 $_['error_telephone']		= 'Telefon alanı 3 ile 32 karakter arasında olmalı!';
 $_['error_password']		= 'Parola alanı 3 ile 20 karakter arasında olmalı!';
 $_['error_confirm']			= 'Girdiğiniz parolalar birbirleri ile uyuşmuyor!';
-$_['error_vat']				= 'VAT numarası geçersiz!';
 $_['error_address_1']		= 'Adres 1 alanı 3 ile 128 karakter arasında olmalı!';
 $_['error_city']			= 'İlçe / Semt alanı 2 ile 128 karakter arasında olmalı!';
 $_['error_postcode']		= 'Posta kodu 2 ile 10 karakter arasında olmalı!';

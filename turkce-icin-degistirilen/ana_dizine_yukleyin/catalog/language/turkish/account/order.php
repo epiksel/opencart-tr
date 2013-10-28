@@ -1,7 +1,7 @@
 <?php
 /* Turkceye Ceviren eka7a - http://www.e-piksel.com */
 
-// Heading 
+// Heading
 $_['heading_title']         = 'Sipariş Geçmişim';
 
 // Text
@@ -27,9 +27,9 @@ $_['column_product']        = 'Ürünler';
 $_['column_customer']       = 'Müşteri';
 $_['column_name']           = 'Ürün Adı';
 $_['column_model']          = 'Ürün Kodu';
-$_['column_quantity']       = 'Miktarı';
-$_['column_price']          = 'Fiyatı';
-$_['column_total']          = 'Toplam';
+$_['column_quantity']       = 'Adet';
+$_['column_price']          = 'Birim Fiyatı';
+$_['column_total']          = 'Tutarı';
 $_['column_action']         = 'Eylem';
 $_['column_date_added']     = 'Tarih';
 $_['column_status']         = 'Sipariş Durumu';

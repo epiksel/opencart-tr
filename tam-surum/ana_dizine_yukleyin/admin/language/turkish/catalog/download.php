@@ -14,7 +14,7 @@ $_['column_remaining'] = 'Toplam izin verilen indirme';
 $_['column_action']    = 'Eylem';
 
 // Entry
-$_['entry_name']       = 'Ürün Adı';
+$_['entry_name']       = 'İndirme Adı';
 $_['entry_filename']   = 'Dosya Adı';
 $_['entry_mask']       = 'Maske';
 $_['entry_remaining']  = 'Toplam İzin Verilen İndirme';
@@ -32,6 +32,6 @@ $_['error_upload']     = 'Yükleme gerekli!';
 $_['error_filename']   = 'Dosya Adı 3 ile 128 karakter arasında olmalı!';
 $_['error_exists']     = 'Dosya mevcut değil!';
 $_['error_mask']       = 'Maske Adı 3 ile 128 karakter arasında olmalı!';
-$_['error_filetype']   = 'Geçersiz dosya tipi!';
+$_['error_filetype']   = 'Geçersiz dosya türü!';
 $_['error_product']    = 'Uyarı: Bu dosyayı silemezsiniz. Bu dosya %s ürün ile ilişkili!';
 ?>

@@ -11,7 +11,7 @@ $_['text_success']     = 'Başarılı: Sabit Kargo Fiyatı başarılı bir şeki
 // Entry
 $_['entry_cost']       = 'Fiyatı';
 $_['entry_tax_class']  = 'Vergi Oranı';
-$_['entry_geo_zone']   = 'Genel Bölge';
+$_['entry_geo_zone']   = 'Bölge';
 $_['entry_status']     = 'Durumu';
 $_['entry_sort_order'] = 'Sıralama';
 

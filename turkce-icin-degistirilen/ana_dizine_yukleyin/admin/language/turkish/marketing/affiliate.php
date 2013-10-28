@@ -21,7 +21,7 @@ $_['column_status']             = 'Durumu';
 $_['column_approved']           = 'Onaylandı';
 $_['column_date_added']         = 'Ekleme Tarihi';
 $_['column_description']        = 'Açıklama';
-$_['column_amount']             = 'Miktar';
+$_['column_amount']             = 'Tutar';
 $_['column_action']             = 'Eylem';
 
 // Entry
@@ -51,7 +51,7 @@ $_['entry_bank_branch_number']  = 'ABA/BSB Numarası (Şube Sayısı)';
 $_['entry_bank_swift_code']     = 'SWIFT Kodu';
 $_['entry_bank_account_name']   = 'Hesap Adı';
 $_['entry_bank_account_number'] = 'Hesap Numarası';
-$_['entry_amount']              = 'Miktar';
+$_['entry_amount']              = 'Tutar';
 $_['entry_description']         = 'Açıklama';
 
 // Help
@@ -59,7 +59,7 @@ $_['help_code']					= 'Tavsiyeleri izlemek için kullanılacak takip kodu.';
 $_['help_commission']			= 'Ortağın her sipariş için aldığı komisyon oranı.';
 
 // Error
-$_['error_permission']          = 'Uyarı: Ortaklık bilgileri düzenleme iznine sahip değilsiniz!';
+$_['error_permission']          = 'Uyarı: Ortakları düzenleme iznine sahip değilsiniz!';
 $_['error_exists']              = 'Uyarı: E-Posta adresi zaten kayıtlı!';
 $_['error_firstname']           = 'Ad alanı 1 ile 32 karakter arasında olmalı!';
 $_['error_lastname']            = 'Soyadı alanı 1 ile 32 karakter arasında olmalı!';

@@ -32,5 +32,5 @@ $_['error_store']          	  = 'Uyarı: Bu ülkeyi silemezsiniz. Bu ükle %s ma
 $_['error_address']           = 'Uyarı: Bu ülkeyi silemezsiniz. Bu ükle %s adres defterinde kullanılıyor!';
 $_['error_affiliate']         = 'Uyarı: Bu ülkeyi silemezsiniz. Bu ükle %s ortak tarafından kullanılıyor!';
 $_['error_zone']              = 'Uyarı: Bu ülkeyi silemezsiniz. Bu ülke %s şehirde kullanılıyor!';
-$_['error_zone_to_geo_zone']  = 'Uyarı: Bu ülkeyi silemezsiniz. Bu ülke %s genel bölgede kullanılıyor!';
+$_['error_zone_to_geo_zone']  = 'Uyarı: Bu ülkeyi silemezsiniz. Bu ülke %s bölgede kullanılıyor!';
 ?>

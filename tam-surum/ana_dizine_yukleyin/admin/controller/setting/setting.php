@@ -38,7 +38,6 @@ class ControllerSettingSetting extends Controller {
 		$this->data['text_stock'] = $this->language->get('text_stock');
 		$this->data['text_affiliate'] = $this->language->get('text_affiliate');
 		$this->data['text_return'] = $this->language->get('text_return');
-		$this->data['text_image_manager'] = $this->language->get('text_image_manager');
 		$this->data['text_shipping'] = $this->language->get('text_shipping');	
 		$this->data['text_payment'] = $this->language->get('text_payment');					
 		$this->data['text_mail'] = $this->language->get('text_mail');
@@ -106,6 +105,7 @@ class ControllerSettingSetting extends Controller {
 		$this->data['entry_image_compare'] = $this->language->get('entry_image_compare');
 		$this->data['entry_image_wishlist'] = $this->language->get('entry_image_wishlist');
 		$this->data['entry_image_cart'] = $this->language->get('entry_image_cart');	
+		$this->data['entry_image_location'] = $this->language->get('entry_image_location');	
 		$this->data['entry_width'] = $this->language->get('entry_width');
 		$this->data['entry_height'] = $this->language->get('entry_height');	
 		$this->data['entry_ftp_host'] = $this->language->get('entry_ftp_host');
@@ -205,8 +205,6 @@ class ControllerSettingSetting extends Controller {
 		
 		$this->data['button_save'] = $this->language->get('button_save');
 		$this->data['button_cancel'] = $this->language->get('button_cancel');
-		$this->data['button_edit'] = $this->language->get('button_edit');
-		$this->data['button_clear'] = $this->language->get('button_clear');
 		
 		$this->data['tab_general'] = $this->language->get('tab_general');
 		$this->data['tab_store'] = $this->language->get('tab_store');
@@ -367,7 +365,13 @@ class ControllerSettingSetting extends Controller {
 		} else {
 			$this->data['error_image_cart'] = '';
 		}
-				
+		
+ 		if (isset($this->error['image_location'])) {
+			$this->data['error_image_location'] = $this->error['image_location'];
+		} else {
+			$this->data['error_image_location'] = '';
+		}
+						
 		if (isset($this->error['error_filename'])) {
 			$this->data['error_error_filename'] = $this->error['error_filename'];
 		} else {
@@ -937,7 +941,19 @@ class ControllerSettingSetting extends Controller {
 		} else {
 			$this->data['config_image_cart_height'] = $this->config->get('config_image_cart_height');
 		}		
-				
+		
+		if (isset($this->request->post['config_image_location_width'])) {
+			$this->data['config_image_location_width'] = $this->request->post['config_image_location_width'];
+		} else {
+			$this->data['config_image_location_width'] = $this->config->get('config_image_location_width');
+		}
+		
+		if (isset($this->request->post['config_image_location_height'])) {
+			$this->data['config_image_location_height'] = $this->request->post['config_image_location_height'];
+		} else {
+			$this->data['config_image_location_height'] = $this->config->get('config_image_location_height');
+		}
+						
 		if (isset($this->request->post['config_ftp_host'])) {
 			$this->data['config_ftp_host'] = $this->request->post['config_ftp_host'];
 		} elseif ($this->config->get('config_ftp_host')) {
@@ -1249,6 +1265,10 @@ class ControllerSettingSetting extends Controller {
 		if (!$this->request->post['config_image_cart_width'] || !$this->request->post['config_image_cart_height']) {
 			$this->error['image_cart'] = $this->language->get('error_image_cart');
 		}
+		
+		if (!$this->request->post['config_image_location_width'] || !$this->request->post['config_image_location_height']) {
+			$this->error['image_location'] = $this->language->get('error_image_location');
+		}		
 		
 		if ($this->request->post['config_ftp_status']) {
 			if (!$this->request->post['config_ftp_host']) {

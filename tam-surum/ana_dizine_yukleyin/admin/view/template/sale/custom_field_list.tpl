@@ -6,26 +6,21 @@
     <?php } ?>
   </ul>
   <?php if ($error_warning) { ?>
-  <div class="alert alert-danger"><i class="icon-exclamation-sign"></i> <?php echo $error_warning; ?>
+  <div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> <?php echo $error_warning; ?>
     <button type="button" class="close" data-dismiss="alert">&times;</button>
   </div>
   <?php } ?>
   <?php if ($success) { ?>
-  <div class="alert alert-success"><i class="icon-ok-sign"></i> <?php echo $success; ?>
+  <div class="alert alert-success"><i class="fa fa-check-circle"></i> <?php echo $success; ?>
     <button type="button" class="close" data-dismiss="alert">&times;</button>
   </div>
   <?php } ?>
   <div class="panel panel-default">
     <div class="panel-heading">
-      <div class="pull-right"><a href="<?php echo $insert; ?>" class="btn btn-primary"><i class="icon-plus"></i> <?php echo $button_insert; ?></a>
-        <div class="btn-group">
-          <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown"><i class="icon-trash"></i> <?php echo $button_delete; ?> <i class="icon-caret-down"></i></button>
-          <ul class="dropdown-menu pull-right">
-            <li><a onclick="$('#form-custom-field').submit();"><?php echo $text_confirm; ?></a></li>
-          </ul>
-        </div>
+      <div class="pull-right"><a href="<?php echo $insert; ?>" class="btn btn-primary"><i class="fa fa-plus"></i> <?php echo $button_insert; ?></a>
+        <button type="button" class="btn btn-danger" onclick="confirm('<?php echo $text_confirm; ?>') ? $('#form-custom-field').submit() : false;"><i class="fa fa-trash-o"></i> <?php echo $button_delete; ?></button>
       </div>
-      <h1 class="panel-title"><i class="icon-list"></i> <?php echo $heading_title; ?></h1>
+      <h1 class="panel-title"><i class="fa fa-list"></i> <?php echo $heading_title; ?></h1>
     </div>
     <div class="panel-body">
       <form action="<?php echo $delete; ?>" method="post" enctype="multipart/form-data" id="form-custom-field">
@@ -44,11 +39,7 @@
                   <?php } else { ?>
                   <a href="<?php echo $sort_type; ?>"><?php echo $column_type; ?></a>
                   <?php } ?></td>
-                <td class="text-left"><?php if ($sort == 'cf.location') { ?>
-                  <a href="<?php echo $sort_location; ?>" class="<?php echo strtolower($order); ?>"><?php echo $column_location; ?></a>
-                  <?php } else { ?>
-                  <a href="<?php echo $sort_location; ?>"><?php echo $column_location; ?></a>
-                  <?php } ?></td>
+                <td class="text-left"><?php echo $column_location; ?></td>
                 <td class="text-right"><?php if ($sort == 'cf.sort_order') { ?>
                   <a href="<?php echo $sort_sort_order; ?>" class="<?php echo strtolower($order); ?>"><?php echo $column_sort_order; ?></a>
                   <?php } else { ?>
@@ -71,7 +62,7 @@
                 <td class="text-left"><?php echo $custom_field['location']; ?></td>
                 <td class="text-right"><?php echo $custom_field['sort_order']; ?></td>
                 <td class="text-right"><?php foreach ($custom_field['action'] as $action) { ?>
-                  <a href="<?php echo $action['href']; ?>" data-toggle="tooltip" title="<?php echo $action['text']; ?>" class="btn btn-primary"><i class="icon-<?php echo $action['icon']; ?> icon-large"></i></a>
+                  <a href="<?php echo $action['href']; ?>" data-toggle="tooltip" title="<?php echo $action['text']; ?>" class="btn btn-primary"><i class="fa fa-<?php echo $action['icon']; ?> fa-large"></i></a>
                   <?php } ?></td>
               </tr>
               <?php } ?>

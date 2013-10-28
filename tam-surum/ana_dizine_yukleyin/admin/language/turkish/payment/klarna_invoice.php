@@ -31,7 +31,7 @@ $_['entry_sort_order']      = 'Sort Order';
 // Help
 $_['help_merchant']         = '(estore id) to use for the Klarna service (provided by Klarna).';
 $_['help_secret']           = 'Shared secret to use with the Klarna service (provided by Klarna).';
-$_['help_total']			= 'Bu ödeme metodunun aktif olması için toplam sipariş miktarını giriniz.';
+$_['help_total']			= 'Bu ödeme metodunun aktif olması için toplam sipariş tutarını giriniz.';
 
 // Error
 $_['error_permission']      = 'Warning: You do not have permission to modify payment Klarna Part Payment!';

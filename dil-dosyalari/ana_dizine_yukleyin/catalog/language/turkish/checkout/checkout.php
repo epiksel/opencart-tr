@@ -81,4 +81,5 @@ $_['error_shipping']                 = 'Uyarı: Kargo metodu gerekli!';
 $_['error_no_shipping']              = 'Uyarı: Kargo metodu mevcut değil. Lütfen <a href="%s">iletişim</a> için bize ulaşın!';
 $_['error_payment']                  = 'Uyarı: Ödeme metodu gerekli!';
 $_['error_no_payment']               = 'Uyarı: Ödeme metodu mevcut değil. Lütfen <a href="%s">iletişim</a> için bize ulaşın!';
+$_['error_custom_field']             = '%s gerekli!';
 ?>

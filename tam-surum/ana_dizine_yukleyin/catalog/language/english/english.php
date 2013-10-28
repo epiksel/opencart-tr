@@ -9,7 +9,7 @@ $_['decimal_point']         = '.';
 $_['thousand_point']        = ',';
 
 // Text
-$_['text_home']             = '<i class="icon-home"></i>';
+$_['text_home']             = '<i class="fa fa-home"></i>';
 $_['text_yes']              = 'Yes';
 $_['text_no']               = 'No';
 $_['text_none']             = ' --- None --- ';
@@ -19,7 +19,7 @@ $_['text_pagination']       = 'Showing %d to %d of %d (%d Pages)';
 $_['text_loading']          = 'Loading...';
 
 // Buttons
-$_['button_add_address']    = 'Add Address';
+$_['button_address_add']    = 'Add Address';
 $_['button_back']           = 'Back';
 $_['button_continue']       = 'Continue';
 $_['button_cart']           = 'Add to Cart';
@@ -53,6 +53,7 @@ $_['button_reward']         = 'Apply Points';
 $_['button_quote']          = 'Get Quotes';
 $_['button_list']           = 'List';
 $_['button_grid']           = 'Grid';
+$_['button_map']            = 'View Google Map';
 
 // Error
 $_['error_exception']       = 'Error Code(%s): %s in %s on line %s';

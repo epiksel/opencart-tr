@@ -15,7 +15,7 @@ $_['entry_callback']        = 'Relay Response URL';
 $_['entry_test']         	= 'Test Modu';
 $_['entry_total']        	= 'Total';
 $_['entry_order_status'] 	= 'Sipariş Durumu';
-$_['entry_geo_zone']     	= 'Genel Bölge';
+$_['entry_geo_zone']     	= 'Bölge';
 $_['entry_status']       	= 'Durumu';
 $_['entry_sort_order']   	= 'Sıralama';
 

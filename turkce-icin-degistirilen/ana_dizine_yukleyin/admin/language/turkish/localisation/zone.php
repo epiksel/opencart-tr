@@ -26,5 +26,5 @@ $_['error_default']          = 'Uyarı: Bu şehri silemezsiniz. Bu şehir varsay
 $_['error_store']            = 'Uyarı: Bu şehri silemezsiniz. Bu şehir %s mağaza tarafından kullanılıyor!';
 $_['error_address']          = 'Uyarı: Bu şehri silemezsiniz. Bu şehir %s adres defteri tarafından kullanılıyor!';
 $_['error_affiliate']        = 'Uyarı: Bu şehri silemezsiniz. Bu şehir %s ortak tarafından kullanılıyor!';
-$_['error_zone_to_geo_zone'] = 'Uyarı: Bu şehri silemezsiniz. Bu şehir %s genel bölge tarafından kullanılıyor!';
+$_['error_zone_to_geo_zone'] = 'Uyarı: Bu şehri silemezsiniz. Bu şehir %s bölge tarafından kullanılıyor!';
 ?>

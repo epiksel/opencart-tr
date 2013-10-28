@@ -14,7 +14,7 @@ $_['column_code']		= 'Kod';
 $_['column_from']		= 'Kimden';
 $_['column_to']			= 'Kime';
 $_['column_theme']		= 'Tema';
-$_['column_amount']		= 'Miktar';
+$_['column_amount']		= 'Tutar';
 $_['column_status']		= 'Durumu';
 $_['column_order_id']	= 'Sipariş No';
 $_['column_customer']	= 'Müşteri';
@@ -29,7 +29,7 @@ $_['entry_to_name']		= 'Alıcının Adı';
 $_['entry_to_email']	= 'Alıcının E-Postası';
 $_['entry_theme']		= 'Hediye Çeki Teması';
 $_['entry_message']		= 'Mesajınız';
-$_['entry_amount']		= 'Miktar';
+$_['entry_amount']		= 'Tutar';
 $_['entry_status']		= 'Durum';
 
 // Help
@@ -42,6 +42,6 @@ $_['error_code']		= 'Kod alanı 3 ile 10 karakter arasında olmalı!';
 $_['error_to_name']		= 'Alıcının Adı 1 ile 64 karakter arasında olmalı!';
 $_['error_from_name']	= 'Gönderici Adı 1 ile 64 karakter arasında olmalı!';
 $_['error_email']		= 'E-Posta adresi geçersiz!';
-$_['error_amount']		= 'Miktar en az 1 olmalıdır!';
+$_['error_amount']		= 'Tutar en az 1 olmalıdır!';
 $_['error_order']       = 'Uyarı: Bu hediye çeki <a href="%s">sipariş</a> tarafından kullanıldığı için silinemez!';
 ?>

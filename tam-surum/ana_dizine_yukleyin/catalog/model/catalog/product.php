@@ -6,7 +6,7 @@ class ModelCatalogProduct extends Model {
 
 	public function getProduct($product_id) {
 		if ($this->customer->isLogged()) {
-			$customer_group_id = $this->customer->getCustomerGroupId();
+			$customer_group_id = $this->customer->getGroupId();
 		} else {
 			$customer_group_id = $this->config->get('config_customer_group_id');
 		}	
@@ -18,6 +18,7 @@ class ModelCatalogProduct extends Model {
 				'product_id'       => $query->row['product_id'],
 				'name'             => $query->row['name'],
 				'description'      => $query->row['description'],
+				'meta_title'       => $query->row['meta_title'],
 				'meta_description' => $query->row['meta_description'],
 				'meta_keyword'     => $query->row['meta_keyword'],
 				'tag'              => $query->row['tag'],
@@ -63,7 +64,7 @@ class ModelCatalogProduct extends Model {
 
 	public function getProducts($data = array()) {
 		if ($this->customer->isLogged()) {
-			$customer_group_id = $this->customer->getCustomerGroupId();
+			$customer_group_id = $this->customer->getGroupId();
 		} else {
 			$customer_group_id = $this->config->get('config_customer_group_id');
 		}	
@@ -227,7 +228,7 @@ class ModelCatalogProduct extends Model {
 
 	public function getProductSpecials($data = array()) {
 		if ($this->customer->isLogged()) {
-			$customer_group_id = $this->customer->getCustomerGroupId();
+			$customer_group_id = $this->customer->getGroupId();
 		} else {
 			$customer_group_id = $this->config->get('config_customer_group_id');
 		}	
@@ -283,7 +284,7 @@ class ModelCatalogProduct extends Model {
 
 	public function getLatestProducts($limit) {
 		if ($this->customer->isLogged()) {
-			$customer_group_id = $this->customer->getCustomerGroupId();
+			$customer_group_id = $this->customer->getGroupId();
 		} else {
 			$customer_group_id = $this->config->get('config_customer_group_id');
 		}	
@@ -317,7 +318,7 @@ class ModelCatalogProduct extends Model {
 
 	public function getBestSellerProducts($limit) {
 		if ($this->customer->isLogged()) {
-			$customer_group_id = $this->customer->getCustomerGroupId();
+			$customer_group_id = $this->customer->getGroupId();
 		} else {
 			$customer_group_id = $this->config->get('config_customer_group_id');
 		}	
@@ -408,7 +409,7 @@ class ModelCatalogProduct extends Model {
 
 	public function getProductDiscounts($product_id) {
 		if ($this->customer->isLogged()) {
-			$customer_group_id = $this->customer->getCustomerGroupId();
+			$customer_group_id = $this->customer->getGroupId();
 		} else {
 			$customer_group_id = $this->config->get('config_customer_group_id');
 		}	
@@ -454,7 +455,7 @@ class ModelCatalogProduct extends Model {
 
 	public function getTotalProducts($data = array()) {
 		if ($this->customer->isLogged()) {
-			$customer_group_id = $this->customer->getCustomerGroupId();
+			$customer_group_id = $this->customer->getGroupId();
 		} else {
 			$customer_group_id = $this->config->get('config_customer_group_id');
 		}	
@@ -570,7 +571,7 @@ class ModelCatalogProduct extends Model {
 
 	public function getTotalProductSpecials() {
 		if ($this->customer->isLogged()) {
-			$customer_group_id = $this->customer->getCustomerGroupId();
+			$customer_group_id = $this->customer->getGroupId();
 		} else {
 			$customer_group_id = $this->config->get('config_customer_group_id');
 		}		

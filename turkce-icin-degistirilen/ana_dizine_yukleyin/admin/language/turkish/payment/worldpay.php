@@ -18,14 +18,14 @@ $_['entry_callback']     = 'Relay Response URL';
 $_['entry_test']         = 'Test Modu';
 $_['entry_total']        = 'Toplam';
 $_['entry_order_status'] = 'Sipariş Durumu';
-$_['entry_geo_zone']     = 'Genel Bölge';
+$_['entry_geo_zone']     = 'Bölge';
 $_['entry_status']       = 'Durumu';
 $_['entry_sort_order']   = 'Sıralama';
 
 // Help
 $_['help_password']      = 'Bunu WorldPay kontrol panelinden ayarlayınız.';
 $_['help_callback']      = 'Bunu WorldPay kontrol panelinden ayarlayınız. You will also need to check the "Enable the Shopper Response".';
-$_['help_total']         = 'Bu ödeme metodunun aktif olması için toplam sipariş miktarını giriniz.';
+$_['help_total']         = 'Bu ödeme metodunun aktif olması için toplam sipariş tutarını giriniz.';
 
 // Error
 $_['error_permission']   = 'Uyarı: WordPay ödeme metodunu düzenleme iznine sahip değilsiniz!';

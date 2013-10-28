@@ -85,6 +85,12 @@ class ControllerAccountEdit extends Controller {
 		} else {
 			$this->data['error_telephone'] = '';
 		}	
+		
+		if (isset($this->error['custom_field'])) {
+			$this->data['error_custom_field'] = $this->error['custom_field'];
+		} else {
+			$this->data['error_custom_field'] = array();
+		}
 
 		$this->data['action'] = $this->url->link('account/edit', '', 'SSL');
 
@@ -94,7 +100,7 @@ class ControllerAccountEdit extends Controller {
 
 		if (isset($this->request->post['firstname'])) {
 			$this->data['firstname'] = $this->request->post['firstname'];
-		} elseif (isset($customer_info)) {
+		} elseif (!empty($customer_info)) {
 			$this->data['firstname'] = $customer_info['firstname'];
 		} else {
 			$this->data['firstname'] = '';
@@ -102,7 +108,7 @@ class ControllerAccountEdit extends Controller {
 
 		if (isset($this->request->post['lastname'])) {
 			$this->data['lastname'] = $this->request->post['lastname'];
-		} elseif (isset($customer_info)) {
+		} elseif (!empty($customer_info)) {
 			$this->data['lastname'] = $customer_info['lastname'];
 		} else {
 			$this->data['lastname'] = '';
@@ -110,7 +116,7 @@ class ControllerAccountEdit extends Controller {
 
 		if (isset($this->request->post['email'])) {
 			$this->data['email'] = $this->request->post['email'];
-		} elseif (isset($customer_info)) {
+		} elseif (!empty($customer_info)) {
 			$this->data['email'] = $customer_info['email'];
 		} else {
 			$this->data['email'] = '';
@@ -118,7 +124,7 @@ class ControllerAccountEdit extends Controller {
 
 		if (isset($this->request->post['telephone'])) {
 			$this->data['telephone'] = $this->request->post['telephone'];
-		} elseif (isset($customer_info)) {
+		} elseif (!empty($customer_info)) {
 			$this->data['telephone'] = $customer_info['telephone'];
 		} else {
 			$this->data['telephone'] = '';
@@ -126,10 +132,36 @@ class ControllerAccountEdit extends Controller {
 
 		if (isset($this->request->post['fax'])) {
 			$this->data['fax'] = $this->request->post['fax'];
-		} elseif (isset($customer_info)) {
+		} elseif (!empty($customer_info)) {
 			$this->data['fax'] = $customer_info['fax'];
 		} else {
 			$this->data['fax'] = '';
+		}
+		
+		// Custom Fields
+		$this->load->model('account/custom_field');
+		
+		$this->data['custom_fields'] = array();
+		
+		if (isset($this->request->post['custom_field']) || !empty($customer_info)) {
+			if (isset($this->request->post['custom_field'])) {
+				$custom_field_info = $this->request->post['custom_field'];		
+			} elseif (!empty($customer_info)) {
+				$custom_field_info = unserialize($customer_info['custom_field']);
+			} else {
+				$custom_field_info = array();
+			}
+			
+			// If a post request then get a list of all fields that should have been posted for validation checking.
+			$custom_fields = $this->model_account_custom_field->getCustomFields('account', $this->customer->getGroupId());
+			
+			foreach ($custom_fields as $custom_field) {
+				$this->data['custom_fields'][] = array(
+					'custom_field_id' => $custom_field['custom_field_id'],
+					'type'            => $custom_field['type'],
+					'value'           => isset($custom_field_info[$custom_field['custom_field_id']]) ? $custom_field_info[$custom_field['custom_field_id']] : ''
+				);
+			}		
 		}
 
 		$this->data['back'] = $this->url->link('account/account', '', 'SSL');
@@ -172,12 +204,31 @@ class ControllerAccountEdit extends Controller {
 		if ((utf8_strlen($this->request->post['telephone']) < 3) || (utf8_strlen($this->request->post['telephone']) > 32)) {
 			$this->error['telephone'] = $this->language->get('error_telephone');
 		}
-
+		
+		// Custom Field Validation
+		$this->load->model('account/custom_field');
+		
+		$custom_fields = $this->model_account_custom_field->getCustomFields('account', $this->customer->getGroupId());
+		
+		foreach ($custom_fields as $custom_field) {
+			if ($custom_field['required'] && empty($this->request->post['custom_field'][$custom_field['custom_field_id']])) {
+				$this->error['custom_field'][$custom_field['custom_field_id']] = sprintf($this->language->get('error_custom_field'), $custom_field['name']);
+			}
+		}
+		
 		if (!$this->error) {
 			return true;
 		} else {
 			return false;
 		}
 	}
+	
+	public function custom_field() {
+		$this->load->model('account/custom_field');
+
+		$json = $this->model_account_custom_field->getCustomFields('account', $this->customer->getGroupId());
+
+		$this->response->setOutput(json_encode($json));
+	}	
 }
 ?>

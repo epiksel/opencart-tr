@@ -16,13 +16,13 @@ $_['entry_display']      = 'Direct Checkout';
 $_['entry_test']         = 'Test Modu';
 $_['entry_total']        = 'Toplam';
 $_['entry_order_status'] = 'Sipariş Durumu';
-$_['entry_geo_zone']     = 'Genel Bölge';
+$_['entry_geo_zone']     = 'Bölge';
 $_['entry_status']       = 'Durumu';
 $_['entry_sort_order']   = 'Sıralama';
 
 // Help
 $_['help_secret']        = 'The secret word to confirm transactions with (must be the same as defined on the merchat account configuration page).';
-$_['help_total']         = 'Bu ödeme metodunun aktif olması için toplam sipariş miktarını giriniz.';
+$_['help_total']         = 'Bu ödeme metodunun aktif olması için toplam sipariş tutarını giriniz.';
 
 // Error
 $_['error_permission']   = 'Uyarı: 2Checkout ödeme metodunu düzenleme iznine sahip değilsiniz!';

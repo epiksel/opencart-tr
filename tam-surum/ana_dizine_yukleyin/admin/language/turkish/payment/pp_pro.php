@@ -19,13 +19,13 @@ $_['entry_test']          = 'Test Modu';
 $_['entry_transaction']   = 'Transaction Method';
 $_['entry_total']         = 'Toplam';
 $_['entry_order_status']  = 'Sipariş Durumu';
-$_['entry_geo_zone']      = 'Genel Bölge';
+$_['entry_geo_zone']      = 'Bölge';
 $_['entry_status']        = 'Durumu';
 $_['entry_sort_order']    = 'Sıralama';
 
 // Help
 $_['help_test']          = 'Use the live or testing (sandbox) gateway server to process transactions?';
-$_['help_total']         = 'Bu ödeme metodunun aktif olması için toplam sipariş miktarını giriniz.';
+$_['help_total']         = 'Bu ödeme metodunun aktif olması için toplam sipariş tutarını giriniz.';
 
 // Error
 $_['error_permission']    = 'Uyarı: PayPal Direct Checkout ödeme metodunu düzenleme iznine sahip değilsiniz!';

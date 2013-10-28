@@ -7,7 +7,6 @@ $_['heading_title']      = 'Üreticiler';
 // Text
 $_['text_success']       = 'Başarılı: Üretici başarılı bir şekilde değiştirildi!';
 $_['text_default']       = 'Varsayılan Mağaza';
-$_['text_image_manager'] = 'Resim Yönetimi';
 $_['text_percent']       = 'Yüzde';
 $_['text_amount']        = 'Sabit Tutar';
 

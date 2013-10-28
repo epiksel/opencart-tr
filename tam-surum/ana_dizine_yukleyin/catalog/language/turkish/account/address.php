@@ -1,7 +1,7 @@
 <?php
 /* Turkceye Ceviren eka7a - http://www.e-piksel.com */
 
-// Heading 
+// Heading
 $_['heading_title']     = 'Adreslerim';
 
 // Text
@@ -11,7 +11,7 @@ $_['text_edit_address'] = 'Adresi Düzenle';
 $_['text_insert']       = 'Adresinizi başarılı bir şekilde eklediniz';
 $_['text_update']       = 'Adresiniz başarılı bir şekilde güncellediniz';
 $_['text_delete']       = 'Adresiniz başarılı bir şekilde sildiniz';
-$_['text_empty']		= 'Hesabınıza kayıtlı hiç adres yok.';
+$_['text_empty']		= 'Hesabınızda kayıtlı hiç adres yok.';
 
 // Entry
 $_['entry_firstname']   = 'Ad';

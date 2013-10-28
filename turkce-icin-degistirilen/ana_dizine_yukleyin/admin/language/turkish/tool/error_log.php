@@ -2,11 +2,11 @@
 /* Turkceye Ceviren eka7a - http://www.e-piksel.com */
 
 // Heading
-$_['heading_title'] = 'Hata Günlüğü';
-
-// Alert
-$_['alert_filesize'] = 'Dikkat: Dosya boyutu %d MB';
+$_['heading_title']	= 'Hata Kayıtları';
 
 // Text
-$_['text_success'] = 'Başarılı: Hata günlüğü başarılı bir şekilde temizlendi!';
+$_['text_success']	= 'Başarılı: Hata kayıtları başarılı bir şekilde temizlendi!';
+
+// Error
+$_['error_warning']	= 'Uyarı: Hata kayıt %s dosyanız %s!';
 ?>

@@ -7,7 +7,7 @@ $_['heading_title']      = 'Bakiye İşlemlerim';
 // Column
 $_['column_date_added']  = 'Ekleme Tarihi';
 $_['column_description'] = 'Açıklama';
-$_['column_amount']      = 'Miktar (%s)';
+$_['column_amount']      = 'Tutar (%s)';
 
 // Text
 $_['text_account']       = 'Hesabım';

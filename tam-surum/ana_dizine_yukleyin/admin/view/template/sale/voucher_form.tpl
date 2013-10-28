@@ -6,7 +6,7 @@
     <?php } ?>
   </ul>
   <?php if ($error_warning) { ?>
-  <div class="alert alert-danger"><i class="icon-exclamation-sign"></i> <?php echo $error_warning; ?>
+  <div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> <?php echo $error_warning; ?>
     <button type="button" class="close" data-dismiss="alert">&times;</button>
   </div>
   <?php } ?>
@@ -14,18 +14,18 @@
     <div class="panel-heading">
       <div class="pull-right">
         <?php if ($voucher_id) { ?>
-        <button type="button" id="button-send" class="btn"><i class="icon-envelope"></i> <?php echo $button_send; ?></button>
+        <button type="button" id="button-send" class="btn btn-default"><i class="fa fa-envelope"></i> <?php echo $button_send; ?></button>
         <?php } ?>
-        <button type="submit" form="form-voucher" class="btn btn-primary"><i class="icon-ok"></i> <?php echo $button_save; ?></button>
-        <a href="<?php echo $cancel; ?>" class="btn btn-danger"><i class="icon-remove"></i> <?php echo $button_cancel; ?></a></div>
-      <h1 class="panel-title"><i class="icon-edit"></i> <?php echo $heading_title; ?></h1>
+        <button type="submit" form="form-voucher" class="btn btn-primary"><i class="fa fa-check"></i> <?php echo $button_save; ?></button>
+        <a href="<?php echo $cancel; ?>" class="btn btn-danger"><i class="fa fa-times"></i> <?php echo $button_cancel; ?></a></div>
+      <h1 class="panel-title"><i class="fa fa-edit"></i> <?php echo $heading_title; ?></h1>
     </div>
     <div class="panel-body">
       <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form-voucher" class="form-horizontal">
         <ul class="nav nav-tabs">
           <li class="active"><a href="#tab-general" data-toggle="tab"><?php echo $tab_general; ?></a></li>
           <?php if ($voucher_id) { ?>
-          <li><a href="#tab-history" data-toggle="tab"><?php echo $tab_voucher_history; ?></a></li>
+          <li><a href="#tab-history" data-toggle="tab"><?php echo $tab_history; ?></a></li>
           <?php } ?>
         </ul>
         <div class="tab-content">
@@ -139,22 +139,22 @@ $('#button-send').on('click', function() {
 		dataType: 'json',
 		data: 'voucher_id=<?php echo $voucher_id; ?>',
 		beforeSend: function() {
-			$('#button-send i').replaceWith('<i class="icon-spinner icon-spin"></i>');
+			$('#button-send i').replaceWith('<i class="fa fa-spinner fa-spin"></i>');
 			$('#button-send').prop('disabled', true);
 		},	
 		complete: function() {
-			$('#button-send i').replaceWith('<i class="icon-envelope"></i>');
+			$('#button-send i').replaceWith('<i class="fa fa-envelope"></i>');
 			$('#button-send').prop('disabled', false);
 		},
 		success: function(json) {
 			$('.alert').remove();
 			
 			if (json['error']) {
-				$('.box').before('<div class="alert alert-danger"><i class="icon-exclamation-sign"></i> ' + json['error'] + '</div>');
+				$('.panel').before('<div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> ' + json['error'] + '</div>');
 			}
 			
 			if (json['success']) {
-				$('.box').before('<div class="alert alert-success"><i class="icon-ok-sign"></i>  ' + json['success'] + '</div>');
+				$('.panel').before('<div class="alert alert-success"><i class="fa fa-check-circle"></i>  ' + json['success'] + '</div>');
 			}		
 		},
 		error: function(xhr, ajaxOptions, thrownError) {
@@ -164,10 +164,10 @@ $('#button-send').on('click', function() {
 })
 //--></script> 
 <script type="text/javascript"><!--
-$('#history .pagination a').on('click', function() {
+$('#history').delegate('.pagination a', 'click', function(e) {
+	e.preventDefault();
+
 	$('#history').load(this.href);
-	
-	return false;
 });			
 
 $('#history').load('index.php?route=sale/voucher/history&token=<?php echo $token; ?>&voucher_id=<?php echo $voucher_id; ?>');

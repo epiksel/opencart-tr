@@ -13,6 +13,6 @@ $_['column_date_added'] = 'Ekleme Tarihi';
 // Entry
 $_['entry_customer']    = 'Müşteri';
 $_['entry_ip']          = 'IP';
-$_['entry_date_start']  = 'Başlama Tarihi';
-$_['entry_date_end']    = 'Bitiş Tarihi';
+$_['entry_date_start']  = 'Başlangıç';
+$_['entry_date_end']    = 'Bitiş';
 ?>

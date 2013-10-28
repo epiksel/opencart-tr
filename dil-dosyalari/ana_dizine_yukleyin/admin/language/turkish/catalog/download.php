@@ -14,7 +14,7 @@ $_['column_remaining'] = 'Toplam izin verilen indirme';
 $_['column_action']    = 'Eylem';
 
 // Entry
-$_['entry_name']       = 'Ürün Adı';
+$_['entry_name']       = 'İndirme Adı';
 $_['entry_filename']   = 'Dosya Adı';
 $_['entry_mask']       = 'Maske';
 $_['entry_remaining']  = 'Toplam İzin Verilen İndirme';

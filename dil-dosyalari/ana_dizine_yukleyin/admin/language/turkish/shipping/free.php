@@ -10,7 +10,7 @@ $_['text_success']     = 'Başarılı: Ücretsiz Kargo başarılı bir şekilde 
 
 // Entry
 $_['entry_total']      = 'Toplam';
-$_['entry_geo_zone']   = 'Genel Bölge';
+$_['entry_geo_zone']   = 'Bölge';
 $_['entry_status']     = 'Durumu';
 $_['entry_sort_order'] = 'Sıralama';
 
