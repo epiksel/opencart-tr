@@ -1,6 +1,40 @@
-Türkçe dil ekleme adımları için burayı ziyaret ediniz.
+		///////////////////////////////////////////////
+	   ///			 OpenCart V1.5.x			   ///
+	  ///		  	Türkçe Dil Ekleme			  ///
+	 ///		http://www.e-piksel.com			 ///
+	///		github.com/e-piksel/opencart-tr		///
+   ///////////////////////////////////////////////
 
-http://forum.opencart.com/viewtopic.php?f=171&t=55245
+   Türkçe Tam sürümü yüklemediyseniz Türkçe dil dosyalarını yükleyerek kolaylıkla sitenize Türkçe dilini ekleyebilirsiniz.
+
+	=== Türkçe Dil Ekleme Adımları ===
+
+	- İndirdiğiniz Türkçe dil dosyalarını opencart'ı yüklediğiniz dizine yükleyiniz.
+	- OpenCart admin panelinden Admin->System->Localisation->Language menüsüne gidiniz.
+	- Buradaki alanlara aşağıdaki bilgiler ile doldurunuz ve kaydedin.
+
+		Language Name: Türkçe
+		Code: tr
+		Locale: tr_TR.UTF-8,tr_TR,tr-tr,turkish
+		Image: tr.png
+		Directory: turkish
+		Filename: turkish
+		Status: Enable
+		Sort Order: Dilin görünmesi istediğiniz sıralama numarası giriniz.
+
+	- Mağazanızın varsayılan dilini Türkçe yapmak için aşağıdaki adımları izleyiniz.
+	- System->Settings->Edit tıklayarak mağazanızın ayarlarını gidin ve Local sekmesine geçiniz.
+
+		Language: ve Administration Language: seçeneklerinden Türkçe seçiniz ve kaydedin.
+
+	Artık sitenizin Yönetim sayfası ve anasayfası Türkçe olacaktır.
+
+	Resmi Türkçe Destek Forumu
+	http://forum.opencart.com/viewtopic.php?f=171
 
 ------------------------------------------------
+
+TÜRKÇE ÇEVİRİ
+E-Piksel E-Ticaret ve Bilgi Teknolojileri
+http://www.e-piksel.com
 Türkçe Çeviri: http://www.e-piksel.com - eka7a
