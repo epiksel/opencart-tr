@@ -7,8 +7,11 @@ OpenCart PHP tabanlı açık kaynak kodlu online alışveriş sepetidir. Tüccar
 ## Türkçe Destek
 
 [Resmi Türkçe Destek Forumu] (http://forum.opencart.com/viewforum.php?f=171)
+
 [E-Piksel E-Ticaret ve Bilgi Teknolojileri] (http://www.e-piksel.com)
+
 [Weblenti OpenCart Dökümanlar] (http://www.weblenti.com)
+
 
 ## Lisans
 
