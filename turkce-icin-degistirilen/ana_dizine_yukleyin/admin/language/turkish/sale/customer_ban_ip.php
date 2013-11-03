@@ -2,7 +2,7 @@
 /* Turkceye Ceviren eka7a - http://www.e-piksel.com */
 
 // Heading
-$_['heading_title']    = 'Engellenen IP Adresleri';
+$_['heading_title']    = 'Engelli IP Adresleri';
 
 // Text
 $_['text_success']     = 'Başarılı: IP adresi başarılı bir şekilde engellendi!';
@@ -16,6 +16,6 @@ $_['column_action']    = 'Eylem';
 $_['entry_ip']         = 'IP';
 
 // Error
-$_['error_permission'] = 'Uyarı: Engellenen IP adreslerini düzenleme iznine sahip değilsiniz!';
+$_['error_permission'] = 'Uyarı: Engelli IP adreslerini düzenleme iznine sahip değilsiniz!';
 $_['error_ip']         = 'IP adresi 1 ile 40 karakter arasında olmalı!';
 ?>

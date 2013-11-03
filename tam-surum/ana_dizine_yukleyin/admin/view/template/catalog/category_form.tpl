@@ -91,7 +91,7 @@
                   <button class="btn btn-info" type="button"><i class="fa fa-question-circle fa-large"></i></button>
                   </span> </div>
                 <span class="help-block"><?php echo $help_filter; ?></span>
-                <div id="category-filter" class="well">
+                <div id="category-filter" class="well well-sm">
                   <?php foreach ($category_filters as $category_filter) { ?>
                   <div id="category-filter<?php echo $category_filter['filter_id']; ?>"><i class="fa fa-minus-circle"></i> <?php echo $category_filter['name']; ?>
                     <input type="hidden" name="category_filter[]" value="<?php echo $category_filter['filter_id']; ?>" />
@@ -142,7 +142,11 @@
             <div class="form-group">
               <label class="col-sm-2 control-label"><?php echo $entry_image; ?></label>
               <div class="col-sm-10">
-                <img src="<?php echo $thumb; ?>" alt="" id="thumb" class="img-thumbnail" />
+                <?php if ($thumb) { ?>
+                <a href="" id="thumb-image" class="img-thumbnail img-edit"><img src="<?php echo $thumb; ?>" alt="" title="" /></a>
+                <?php } else { ?>
+                <a href="" id="thumb-image" class="img-thumbnail img-edit"><i class="fa fa-camera fa-5x"></i></a>
+                <?php } ?>
                 <input type="hidden" name="image" value="<?php echo $image; ?>" id="input-image" />
               </div>
             </div>
@@ -233,10 +237,9 @@
   </div>
 </div>
 <script type="text/javascript" src="view/javascript/ckeditor/ckeditor.js"></script> 
-<script type="text/javascript" src="view/javascript/ckeditor/ckeditor.js"></script> 
 <script type="text/javascript"><!--
 <?php foreach ($languages as $language) { ?>
-$('#input-description<?php echo $language['language_id']; ?>').ckeditor();
+CKEDITOR.replace('input-description<?php echo $language['language_id']; ?>');
 <?php } ?>
 //--></script> 
 <script type="text/javascript"><!--
@@ -293,39 +296,6 @@ $('input[name=\'filter\']').autocomplete({
 
 $('#category-filter').delegate('.fa-minus-sign', 'click', function() {
 	$(this).parent().remove();
-});
-//--></script> 
-<script type="text/javascript"><!--
-$('#thumb').popover({
-	html: true,
-	placement: 'right',
-	trigger: 'click',
-	title: 'Edit Image',
-	content: function() {
-		return '<button type="button" id="button-image" class="btn btn-primary"><i class="fa fa-pencil"></i></button> <button type="button" id="button-clear" class="btn btn-default"><i class="fa fa-trash-o"></i></button>';
-	}
-});
-
-$(document).delegate('#button-image', 'click', function() {
-	$('#modal-image').remove();
-	
-	$.ajax({
-		url: 'index.php?route=common/filemanager&token=<?php echo $token; ?>&target=input-image&thumb=thumb',
-		dataType: 'html',	
-		beforeSend: function() {
-			$('#button-upload i').replaceWith('<i class="fa fa-spinner fa-spin"></i>');
-			$('#button-upload').prop('disabled', true);
-		},
-		complete: function() {
-			$('#button-upload i').replaceWith('<i class="fa fa-upload"></i>');
-			$('#button-upload').prop('disabled', false);
-		},				
-		success: function(html) {
-			$('body').append('<div id="modal-image" class="modal">' + html + '</div>');
-			
-			$('#modal-image').modal('show');
-		}
-	});
 });
 //--></script> 
 <script type="text/javascript"><!--

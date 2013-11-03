@@ -172,20 +172,11 @@ class ControllerCatalogOption extends Controller {
 		$results = $this->model_catalog_option->getOptions($data);
 		
 		foreach ($results as $result) {
-			$action = array();
-			
-			$action[] = array(
-				'icon' => 'pencil',
-				'text' => $this->language->get('text_edit'),
-				'href' => $this->url->link('catalog/option/update', 'token=' . $this->session->data['token'] . '&option_id=' . $result['option_id'] . $url, 'SSL')
-			);
-
 			$this->data['options'][] = array(
 				'option_id'  => $result['option_id'],
 				'name'       => $result['name'],
 				'sort_order' => $result['sort_order'],
-				'selected'   => isset($this->request->post['selected']) && in_array($result['option_id'], $this->request->post['selected']),
-				'action'     => $action
+				'edit'       => $this->url->link('catalog/option/update', 'token=' . $this->session->data['token'] . '&option_id=' . $result['option_id'] . $url, 'SSL')
 			);
 		}
 
@@ -199,8 +190,9 @@ class ControllerCatalogOption extends Controller {
 		$this->data['column_action'] = $this->language->get('column_action');	
 
 		$this->data['button_insert'] = $this->language->get('button_insert');
+		$this->data['button_edit'] = $this->language->get('button_edit');
 		$this->data['button_delete'] = $this->language->get('button_delete');
- 
+		 
  		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
 		} else {
@@ -214,7 +206,13 @@ class ControllerCatalogOption extends Controller {
 		} else {
 			$this->data['success'] = '';
 		}
-
+		
+		if (isset($this->request->post['selected'])) {
+			$this->data['selected'] = (array)$this->request->post['selected'];
+		} else {
+			$this->data['selected'] = array();
+		}
+		
 		$url = '';
 
 		if ($order == 'ASC') {
@@ -391,7 +389,7 @@ class ControllerCatalogOption extends Controller {
 			if (is_file(DIR_IMAGE . $option_value['image'])) {
 				$image = $option_value['image'];
 			} else {
-				$image = 'no_image.jpg';
+				$image = '';
 			}
 			
 			$this->data['option_values'][] = array(
@@ -402,8 +400,6 @@ class ControllerCatalogOption extends Controller {
 				'sort_order'               => $option_value['sort_order']
 			);
 		}
-
-		$this->data['no_image'] = $this->model_tool_image->resize('no_image.jpg', 100, 100);
 
 		$this->template = 'catalog/option_form.tpl';
 		$this->children = array(

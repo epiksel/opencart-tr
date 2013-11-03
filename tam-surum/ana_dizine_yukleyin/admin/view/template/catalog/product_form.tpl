@@ -29,7 +29,7 @@
           <li><a href="#tab-special" data-toggle="tab"><?php echo $tab_special; ?></a></li>
           <li><a href="#tab-image" data-toggle="tab"><?php echo $tab_image; ?></a></li>
           <li><a href="#tab-reward" data-toggle="tab"><?php echo $tab_reward; ?></a></li>
-          <li><a href="#tab-design" data-toggle="tab"><?php echo $tab_design; ?></a></li> 
+          <li><a href="#tab-design" data-toggle="tab"><?php echo $tab_design; ?></a></li>
         </ul>
         <div class="tab-content">
           <div class="tab-pane active" id="tab-general">
@@ -230,18 +230,6 @@
                 <span class="help-block"><?php echo $help_keyword; ?></span> </div>
             </div>
             <div class="form-group">
-              <label class="col-sm-2 control-label" for="input-image"><?php echo $entry_image; ?></label>
-              <div class="col-sm-10"><img src="<?php echo $thumb; ?>" alt="" class="img-thumbnail" />
-                <input type="hidden" name="image" value="<?php echo $image; ?>" />
-                <br />
-                <br />
-                <div class="btn-group">
-                  <button type="button" data-toggle="modal" data-target="#modal" class="btn btn-default"><span class="fa fa-pencil"></span> <?php echo $button_edit; ?></button>
-                  <button type="button" onclick="$(this).parent().parent().find('img').attr('src', '<?php echo $no_image; ?>'); $(this).parent().parent().find('input').attr('value', '');" class="btn btn-danger"><span class="fa fa-trash-o"></span> <?php echo $button_clear; ?></button>
-                </div>
-              </div>
-            </div>
-            <div class="form-group">
               <label class="col-sm-2 control-label" for="input-available"><?php echo $entry_date_available; ?></label>
               <div class="col-sm-3">
                 <input type="date" name="date_available" value="<?php echo $date_available; ?>" placeholder="<?php echo $entry_date_available; ?>" id="input-available" class="form-control" />
@@ -331,9 +319,12 @@
               <div class="col-sm-10">
                 <input type="text" name="category" value="" placeholder="<?php echo $entry_category; ?>" id="input-category" class="form-control" />
                 <span class="help-block"><?php echo $help_category; ?></span>
-                <div id="product-category" class="well">
+                <div id="product-category" class="well well-sm">
                   <?php foreach ($product_categories as $product_category) { ?>
-                  <div id="product-category<?php echo $product_category['category_id']; ?>"><i class="fa fa-minus-circle"></i> <?php echo $product_category['name']; ?>
+                  <div id="product-category<?php echo $product_category['category_id']; ?>">
+                    <p>
+                      <button type="button" class="btn btn-danger btn-xs"><i class="fa fa-minus-circle"></i></button>
+                      &nbsp;&nbsp;<?php echo $product_category['name']; ?></p>
                     <input type="hidden" name="product_category[]" value="<?php echo $product_category['category_id']; ?>" />
                   </div>
                   <?php } ?>
@@ -345,7 +336,7 @@
               <div class="col-sm-10">
                 <input type="text" name="filter" value="" placeholder="<?php echo $entry_filter; ?>" id="input-filter" class="form-control" />
                 <span class="help-block"><?php echo $help_filter; ?></span>
-                <div id="product-filter" class="well">
+                <div id="product-filter" class="well well-sm">
                   <?php foreach ($product_filters as $product_filter) { ?>
                   <div id="product-filter<?php echo $product_filter['filter_id']; ?>"><i class="fa fa-minus-circle"></i> <?php echo $product_filter['name']; ?>
                     <input type="hidden" name="product_filter[]" value="<?php echo $product_filter['filter_id']; ?>" />
@@ -388,9 +379,11 @@
               <div class="col-sm-10">
                 <input type="text" name="download" value="" placeholder="<?php echo $entry_download; ?>" id="input-download" class="form-control" />
                 <span class="help-block"><?php echo $help_download; ?></span>
-                <div id="product-download" class="well">
+                <div id="product-download" class="well well-sm">
                   <?php foreach ($product_downloads as $product_download) { ?>
-                  <div id="product-download<?php echo $product_download['download_id']; ?>"><i class="fa fa-minus-circle"></i> <?php echo $product_download['name']; ?>
+                  <div id="product-download<?php echo $product_download['download_id']; ?>">
+                    <button type="button" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button>
+                    <?php echo $product_download['name']; ?>
                     <input type="hidden" name="product_download[]" value="<?php echo $product_download['download_id']; ?>" />
                   </div>
                   <?php } ?>
@@ -402,7 +395,7 @@
               <div class="col-sm-10">
                 <input type="text" name="related" value="" placeholder="<?php echo $entry_related; ?>" id="input-related" class="form-control" />
                 <span class="help-block"><?php echo $help_related; ?></span>
-                <div id="product-related" class="well">
+                <div id="product-related" class="well well-sm">
                   <?php foreach ($product_relateds as $product_related) { ?>
                   <div id="product-related<?php echo $product_related['product_id']; ?>"><i class="fa fa-minus-circle"></i> <?php echo $product_related['name']; ?>
                     <input type="hidden" name="product_related[]" value="<?php echo $product_related['product_id']; ?>" />
@@ -429,7 +422,7 @@
                     <td class="text-left"><input type="text" name="product_attribute[<?php echo $attribute_row; ?>][name]" value="<?php echo $product_attribute['name']; ?>" placeholder="<?php echo $entry_attribute; ?>" class="form-control" />
                       <input type="hidden" name="product_attribute[<?php echo $attribute_row; ?>][attribute_id]" value="<?php echo $product_attribute['attribute_id']; ?>" /></td>
                     <td class="text-left"><?php foreach ($languages as $language) { ?>
-                      <div class="input-group"> <span class="input-group-addon"><img src="view/image/flags/<?php echo $language['image']; ?>" title="<?php echo $language['name']; ?>" /></span>
+                      <div class="input-group"><span class="input-group-addon"><img src="view/image/flags/<?php echo $language['image']; ?>" title="<?php echo $language['name']; ?>" /></span>
                         <textarea name="product_attribute[<?php echo $attribute_row; ?>][product_attribute_description][<?php echo $language['language_id']; ?>][text]" rows="5" placeholder="<?php echo $entry_text; ?>" class="form-control"><?php echo isset($product_attribute['product_attribute_description'][$language['language_id']]) ? $product_attribute['product_attribute_description'][$language['language_id']]['text'] : ''; ?></textarea>
                       </div>
                       <?php } ?></td>
@@ -730,12 +723,22 @@
             </div>
           </div>
           <div class="tab-pane" id="tab-image">
+            <div class="form-group">
+              <label class="col-sm-2 control-label" for="input-image"><?php echo $entry_image; ?></label>
+              <div class="col-sm-10">
+                <?php if ($thumb) { ?>
+                <a href="" id="thumb-image" class="img-thumbnail img-edit"><img src="<?php echo $thumb; ?>" alt="" title="" /></a>
+                <?php } else { ?>
+                <a href="" id="thumb-image" class="img-thumbnail img-edit"><i class="fa fa-camera fa-5x"></i></a>
+                <?php } ?>
+                <input type="hidden" name="image" value="<?php echo $image; ?>" id="input-image" />
+              </div>
+            </div>
             <div class="table-responsive">
               <table id="images" class="table table-striped table-bordered table-hover">
                 <thead>
                   <tr>
                     <td class="text-left"><?php echo $entry_image; ?></td>
-                    <td></td>
                     <td class="text-right"><?php echo $entry_sort_order; ?></td>
                     <td></td>
                   </tr>
@@ -744,12 +747,12 @@
                   <?php $image_row = 0; ?>
                   <?php foreach ($product_images as $product_image) { ?>
                   <tr id="image-row<?php echo $image_row; ?>">
-                    <td class="text-left"><img src="<?php echo $product_image['thumb']; ?>" alt="" class="img-thumbnail" />
-                      <input type="hidden" name="product_image[<?php echo $image_row; ?>][image]" value="<?php echo $product_image['image']; ?>" /></td>
-                    <td class="text-left"><div class="btn-group">
-                        <button type="button" data-toggle="modal" data-target="#modal" class="btn btn-default"><span class="fa fa-pencil"></span> <?php echo $button_edit; ?></button>
-                        <button type="button" onclick="$('image-row<?php echo $image_row; ?> img').find('img').attr('src', '<?php echo $no_image; ?>'); $('image-row<?php echo $image_row; ?>').parent().parent().find('input').attr('value', '');" class="btn btn-danger"><span class="fa fa-trash-o"></span> <?php echo $button_clear; ?></button>
-                      </div></td>
+                    <td class="text-left"><?php if ($product_image['thumb']) { ?>
+                      <a href="" id="thumb-image<?php echo $image_row; ?>" class="img-thumbnail img-edit"><img src="<?php echo $product_image['thumb']; ?>" alt="" title="" /></a>
+                      <?php } else { ?>
+                      <a href="" id="thumb-image<?php echo $image_row; ?>" class="img-thumbnail img-edit"><i class="fa fa-camera fa-5x"></i></a>
+                      <?php } ?>
+                      <input type="hidden" name="product_image[<?php echo $image_row; ?>][image]" value="<?php echo $product_image['image']; ?>" id="input-image<?php echo $image_row; ?>" /></td>
                     <td class="text-right"><input type="text" name="product_image[<?php echo $image_row; ?>][sort_order]" value="<?php echo $product_image['sort_order']; ?>" placeholder="<?php echo $entry_sort_order; ?>" class="form-control" /></td>
                     <td class="text-left"><button type="button" onclick="$('#image-row<?php echo $image_row; ?>').remove();" class="btn btn-danger"><i class="fa fa-minus-circle"></i> <?php echo $button_remove; ?></button></td>
                   </tr>
@@ -758,7 +761,7 @@
                 </tbody>
                 <tfoot>
                   <tr>
-                    <td colspan="3"></td>
+                    <td colspan="2"></td>
                     <td class="text-left"><button type="button" onclick="addImage();" class="btn btn-primary"><i class="fa fa-plus-circle"></i> <?php echo $button_image_add; ?></button></td>
                   </tr>
                 </tfoot>
@@ -1242,39 +1245,11 @@ function addSpecial() {
 }
 //--></script> 
 <script type="text/javascript"><!--
-function image_upload(field, thumb) {
-	$('#dialog').remove();
-	
-	$('#content').prepend('<div id="dialog" style="padding: 3px 0px 0px 0px;"><iframe src="index.php?route=common/filemanager&token=<?php echo $token; ?>&field=' + encodeURIComponent(field) + '" style="padding:0; margin: 0; display: block; width: 100%; height: 100%;" frameborder="no" scrolling="auto"></iframe></div>');
-	
-	$('#dialog').dialog({
-		title: '<?php echo $text_image_manager; ?>',
-		close: function (event, ui) {
-			if ($('#' + field).attr('value')) {
-				$.ajax({
-					url: 'index.php?route=common/filemanager/image&token=<?php echo $token; ?>&image=' + encodeURIComponent($('#' + field).attr('value')),
-					dataType: 'text',
-					success: function(text) {
-						$('#' + thumb).replaceWith('<img src="' + text + '" alt="" id="' + thumb + '" />');
-					}
-				});
-			}
-		},	
-		bgiframe: false,
-		width: 800,
-		height: 400,
-		resizable: false,
-		modal: false
-	});
-};
-//--></script> 
-<script type="text/javascript"><!--
 var image_row = <?php echo $image_row; ?>;
 
 function addImage() {
 	html  = '<tr id="image-row' + image_row + '">';
-	html += '  <td class="text-left"><img src="<?php echo $no_image; ?>" alt="" class="img-thumbnail" /><input type="hidden" name="product_image[' + image_row + '][image]" value="" /></td>';
-	html += '  <td class="text-left"><div class="btn-group"><button type="button" data-toggle="modal" data-target="#modal" class="btn btn-default"><span class="fa fa-pencil"></span> <?php echo $button_edit; ?></button><button type="button" onclick="$(this).parent().parent().find(\'img\').attr(\'src\', \'<?php echo $no_image; ?>\'); $(this).parent().parent().find(\'input\').attr(\'value\', \'\');" class="btn btn-danger"><span class="fa fa-trash-o"></span> <?php echo $button_clear; ?></button></div></td>';
+	html += '  <td class="text-left"><a href="" id="thumb-image' + image_row + '" class="img-thumbnail img-edit"><i class="fa fa-camera fa-5x"></i></a><input type="hidden" name="product_image[' + image_row + '][image]" value="" id="input-image' + image_row + '" /></td>';
 	html += '  <td class="text-right"><input type="text" name="product_image[' + image_row + '][sort_order]" value="" placeholder="<?php echo $entry_sort_order; ?>" class="form-control" /></td>';
 	html += '  <td class="text-left"><button type="button" onclick="$(\'#image-row' + image_row  + '\').remove();" class="btn btn-danger"><i class="fa fa-minus-circle"></i> <?php echo $button_remove; ?></button></td>';
 	html += '</tr>';

@@ -7,18 +7,16 @@ $_['heading_title']			= 'Müşteriler';
 // Text
 $_['text_success']			= 'Başarılı: Müşteri başarılı bir şekilde değiştirildi!';
 $_['text_default']          = 'Varsayılan';
-$_['text_approved']			= '%s hesabı onayladınız!';
 $_['text_balance']			= 'Bakiye';
 $_['text_add_ban_ip']       = 'IP Engelle';
 $_['text_remove_ban_ip']    = 'IP Engeli Kaldır';
+$_['text_login']            = 'Oturum Aç';
 
 // Column
 $_['column_name']			= 'Müşteri Adı';
 $_['column_email']          = 'E-Posta';
 $_['column_customer_group']	= 'Müşteri Grubu';
 $_['column_status']			= 'Durumu';
-$_['column_login']          = 'Oturum Aç';
-$_['column_approved']		= 'Onaylandı';
 $_['column_date_added']		= 'Ekleme Tarihi';
 $_['column_comment']        = 'Açıklama';
 $_['column_description']	= 'Açıklama';
@@ -51,6 +49,10 @@ $_['entry_comment']         = 'Açıklama';
 $_['entry_description']		= 'Açıklama';
 $_['entry_amount']			= 'Kredi Tutarı';
 $_['entry_points']			= 'Ödül Puanı';
+$_['entry_name']            = 'Müşteri Adı';
+$_['entry_approved']        = 'Onaylandı';
+$_['entry_ip']              = 'IP';
+$_['entry_date_added']      = 'Ekleme Tarihi';
 
 // Help
 $_['help_points']           = 'Puan silmek için başına eksi işareti koyunuz.';

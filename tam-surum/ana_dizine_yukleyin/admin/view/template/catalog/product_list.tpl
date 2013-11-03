@@ -24,6 +24,49 @@
       <h1 class="panel-title"><i class="fa fa-list"></i> <?php echo $heading_title; ?></h1>
     </div>
     <div class="panel-body">
+      <div class="well">
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="form-group">
+              <label class="control-label" for="input-name"><?php echo $entry_name; ?></label>
+              <input type="text" name="filter_name" value="<?php echo $filter_name; ?>" placeholder="<?php echo $entry_name; ?>" id="input-name" class="form-control" />
+            </div>
+            <div class="form-group">
+              <label class="control-label" for="input-model"><?php echo $entry_model; ?></label>
+              <input type="text" name="filter_model" value="<?php echo $filter_model; ?>" placeholder="<?php echo $entry_model; ?>" id="input-model" class="form-control" />
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="form-group">
+              <label class="control-label" for="input-price"><?php echo $entry_price; ?></label>
+              <input type="text" name="filter_price" value="<?php echo $filter_price; ?>" placeholder="<?php echo $entry_price; ?>" id="input-price" class="form-control" />
+            </div>
+            <div class="form-group">
+              <label class="control-label" for="input-quantity"><?php echo $entry_quantity; ?></label>
+              <input type="text" name="filter_quantity" value="<?php echo $filter_quantity; ?>" placeholder="<?php echo $entry_quantity; ?>" id="input-quantity" class="form-control" />
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="form-group">
+              <label class="control-label" for="input-status"><?php echo $entry_status; ?></label>
+              <select name="filter_status" id="input-status" class="form-control">
+                <option value="*"></option>
+                <?php if ($filter_status) { ?>
+                <option value="1" selected="selected"><?php echo $text_enabled; ?></option>
+                <?php } else { ?>
+                <option value="1"><?php echo $text_enabled; ?></option>
+                <?php } ?>
+                <?php if (($filter_status !== null) && !$filter_status) { ?>
+                <option value="0" selected="selected"><?php echo $text_disabled; ?></option>
+                <?php } else { ?>
+                <option value="0"><?php echo $text_disabled; ?></option>
+                <?php } ?>
+              </select>
+            </div>
+            <button type="button" id="button-filter" class="btn btn-primary pull-right"><i class="fa fa-search"></i> <?php echo $button_filter; ?></button>
+          </div>
+        </div>
+      </div>
       <form action="<?php echo $delete; ?>" method="post" enctype="multipart/form-data" id="form-product">
         <div class="table-responsive">
           <table class="table table-striped table-bordered table-hover">
@@ -60,37 +103,19 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td></td>
-                <td></td>
-                <td><input type="text" name="filter_name" value="<?php echo $filter_name; ?>" class="form-control" /></td>
-                <td><input type="text" name="filter_model" value="<?php echo $filter_model; ?>" class="form-control" /></td>
-                <td align="left"><input type="text" name="filter_price" value="<?php echo $filter_price; ?>" class="form-control" /></td>
-                <td align="right"><input type="text" name="filter_quantity" value="<?php echo $filter_quantity; ?>" class="form-control" /></td>
-                <td><select name="filter_status" class="form-control">
-                    <option value="*"></option>
-                    <?php if ($filter_status) { ?>
-                    <option value="1" selected="selected"><?php echo $text_enabled; ?></option>
-                    <?php } else { ?>
-                    <option value="1"><?php echo $text_enabled; ?></option>
-                    <?php } ?>
-                    <?php if (($filter_status !== null) && !$filter_status) { ?>
-                    <option value="0" selected="selected"><?php echo $text_disabled; ?></option>
-                    <?php } else { ?>
-                    <option value="0"><?php echo $text_disabled; ?></option>
-                    <?php } ?>
-                  </select></td>
-                <td><button type="button" id="button-filter" class="btn btn-primary pull-right"><i class="fa fa-search"></i> <?php echo $button_filter; ?></button></td>
-              </tr>
               <?php if ($products) { ?>
               <?php foreach ($products as $product) { ?>
               <tr>
-                <td class="text-center"><?php if ($product['selected']) { ?>
+                <td class="text-center"><?php if (in_array($product['product_id'], $selected)) { ?>
                   <input type="checkbox" name="selected[]" value="<?php echo $product['product_id']; ?>" checked="checked" />
                   <?php } else { ?>
                   <input type="checkbox" name="selected[]" value="<?php echo $product['product_id']; ?>" />
                   <?php } ?></td>
-                <td class="text-center"><img src="<?php echo $product['image']; ?>" alt="<?php echo $product['name']; ?>" class="img-thumbnail" /></td>
+                <td class="text-center"><?php if ($product['image']) { ?>
+                  <img src="<?php echo $product['image']; ?>" alt="<?php echo $product['name']; ?>" class="img-thumbnail" />
+                  <?php } else { ?>
+                  <span class="img-thumbnail"><i class="fa fa-camera fa-5x"></i></span>
+                  <?php } ?></td>
                 <td class="text-left"><?php echo $product['name']; ?></td>
                 <td class="text-left"><?php echo $product['model']; ?></td>
                 <td class="text-left"><?php if ($product['special']) { ?>
@@ -107,9 +132,7 @@
                   <span class="label label-success"><?php echo $product['quantity']; ?></span>
                   <?php } ?></td>
                 <td class="text-left"><?php echo $product['status']; ?></td>
-                <td class="text-right"><?php foreach ($product['action'] as $action) { ?>
-                  <a href="<?php echo $action['href']; ?>" data-toggle="tooltip" title="<?php echo $action['text']; ?>" class="btn btn-primary"><i class="fa fa-<?php echo $action['icon']; ?> fa-large"></i></a>
-                  <?php } ?></td>
+                <td class="text-right"><a href="<?php echo $product['edit']; ?>" data-toggle="tooltip" title="<?php echo $button_edit; ?>" class="btn btn-primary"><i class="fa fa-pencil"></i></a></td>
               </tr>
               <?php } ?>
               <?php } else { ?>

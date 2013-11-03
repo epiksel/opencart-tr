@@ -1,14 +1,14 @@
 <?php
 /* Turkceye Ceviren eka7a - http://www.e-piksel.com */
 
-// Heading 
+// Heading
 $_['heading_title']   = 'Parolamı Unutum?';
 
 // Text
 $_['text_forgotten']  = 'Parolamı Unuttum';
 $_['text_your_email'] = 'E-Posta Adresiniz';
-$_['text_email']      = 'Kayıt olurken yazdığınız e-posta adresinizi yazınız. Şifreniz e-posta adresinize gönderilecektir.';
-$_['text_success']    = 'Yönetici e-posta adresinize yeni parolanız için bir bağlantı gönderildi.';
+$_['text_email']      = 'Sıfırlama bağlantısı için kayıtlı e-posta adresinizi yazınız.';
+$_['text_success']    = 'E-Posta adresinize parola sıfırlama bağlantısı gönderildi.';
 
 // Entry
 $_['entry_email']     = 'E-Posta Adresiniz';

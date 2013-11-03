@@ -172,20 +172,11 @@ class ControllerCatalogManufacturer extends Controller {
 		$results = $this->model_catalog_manufacturer->getManufacturers($data);
  
     	foreach ($results as $result) {
-			$action = array();
-			
-			$action[] = array(
-				'icon' => 'pencil',
-				'text' => $this->language->get('text_edit'),
-				'href' => $this->url->link('catalog/manufacturer/update', 'token=' . $this->session->data['token'] . '&manufacturer_id=' . $result['manufacturer_id'] . $url, 'SSL')
-			);
-						
 			$this->data['manufacturers'][] = array(
 				'manufacturer_id' => $result['manufacturer_id'],
 				'name'            => $result['name'],
 				'sort_order'      => $result['sort_order'],
-				'selected'        => isset($this->request->post['selected']) && in_array($result['manufacturer_id'], $this->request->post['selected']),
-				'action'          => $action
+				'edit'            => $this->url->link('catalog/manufacturer/update', 'token=' . $this->session->data['token'] . '&manufacturer_id=' . $result['manufacturer_id'] . $url, 'SSL')
 			);
 		}	
 	
@@ -199,8 +190,9 @@ class ControllerCatalogManufacturer extends Controller {
 		$this->data['column_action'] = $this->language->get('column_action');		
 		
 		$this->data['button_insert'] = $this->language->get('button_insert');
+		$this->data['button_edit'] = $this->language->get('button_edit');
 		$this->data['button_delete'] = $this->language->get('button_delete');
- 
+		 
  		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
 		} else {
@@ -214,7 +206,13 @@ class ControllerCatalogManufacturer extends Controller {
 		} else {
 			$this->data['success'] = '';
 		}
-
+		
+		if (isset($this->request->post['selected'])) {
+			$this->data['selected'] = (array)$this->request->post['selected'];
+		} else {
+			$this->data['selected'] = array();
+		}
+		
 		$url = '';
 
 		if ($order == 'ASC') {
@@ -378,10 +376,8 @@ class ControllerCatalogManufacturer extends Controller {
 		} elseif (!empty($manufacturer_info) && $manufacturer_info['image'] && is_file(DIR_IMAGE . $manufacturer_info['image'])) {
 			$this->data['thumb'] = $this->model_tool_image->resize($manufacturer_info['image'], 100, 100);
 		} else {
-			$this->data['thumb'] = $this->model_tool_image->resize('no_image.jpg', 100, 100);
+			$this->data['thumb'] = '';
 		}
-		
-		$this->data['no_image'] = $this->model_tool_image->resize('no_image.jpg', 100, 100);
 		
 		if (isset($this->request->post['sort_order'])) {
       		$this->data['sort_order'] = $this->request->post['sort_order'];

@@ -6,6 +6,7 @@ $_['heading_title']								= 'Siparişler';
 
 // Text
 $_['text_success']								= 'Başarılı: Siparişler başarılı bir şekilde değiştirildi!';
+$_['text_order_detail']							= 'Sipariş Detayları';
 $_['text_order_id']								= 'Sipariş No';
 $_['text_invoice_no']							= 'Fatura No';
 $_['text_invoice_date']							= 'Fatura Tarihi';
@@ -162,7 +163,11 @@ $_['entry_shipping']							= 'Kargo Metodu';
 $_['entry_payment']								= 'Ödeme Metodu';
 $_['entry_coupon']								= 'Kupon';
 $_['entry_voucher']								= 'Hediye Çeki';
-$_['entry_reward']								= 'Ödül';
+$_['entry_reward']								= 'Ödül Puanı';
+$_['entry_order_id']							= 'Sipariş No';
+$_['entry_total']								= 'Toplam';
+$_['entry_date_added']							= 'Ekleme Tarihi';
+$_['entry_date_modified']						= 'Değiştirme Tarihi';
 
 // Help
 $_['help_country_match']                      	= 'IP adresinin bulunduğu ülke ile fatura adresindeki ülke bilgisinin aynı olup olmadığını gösterir(Eş Değilse= Büyük Risk).';

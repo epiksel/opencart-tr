@@ -6,12 +6,12 @@
     </div>
     <div class="modal-body">
       <div class="row">
-        <div class="col-xs-5"><a href="<?php echo $parent; ?>" title="<?php echo $button_parent; ?>" id="button-parent" class="btn btn-default"><i class="fa fa-level-up"></i></a>
+        <div class="col-sm-5"><a href="<?php echo $parent; ?>" title="<?php echo $button_parent; ?>" id="button-parent" class="btn btn-default"><i class="fa fa-level-up"></i></a>
           <button type="button" title="<?php echo $button_upload; ?>" id="button-upload" class="btn btn-primary" onhover="alert('hi');"><i class="fa fa-upload"></i></button>
           <button type="button" title="<?php echo $button_folder; ?>" id="button-folder" class="btn btn-default"><i class="fa fa-folder"></i></button>
           <button type="button" title="<?php echo $button_delete; ?>" id="button-delete" class="btn btn-danger"><i class="fa fa-trash-o"></i></button>
         </div>
-        <div class="col-xs-7">
+        <div class="col-sm-7">
           <div class="input-group">
             <input type="text" name="search" value="<?php echo $filter_name; ?>" placeholder="<?php echo $entry_search; ?>" class="form-control">
             <span class="input-group-btn">
@@ -23,28 +23,22 @@
       <?php foreach (array_chunk($images, 4) as $image) { ?>
       <div class="row">
         <?php foreach ($image as $image) { ?>
-        <div class="col-sm-3">
+        <div class="col-sm-3 text-center">
           <?php if ($image['type'] == 'directory') { ?>
-          <div class="text-center"><a href="<?php echo $image['href']; ?>" class="directory"><i class="fa fa-folder fa-5x"></i></a>
-            <div class="caption">
-              <p>
-                <label class="checkbox-inline">
-                  <input type="checkbox" name="delete[]" value="<?php echo $image['path']; ?>" />
-                  <?php echo $image['name']; ?></label>
-              </p>
-            </div>
-          </div>
+          <div style="width: 100px; height: 80px; padding-top: 20px; text-align: center;"><a href="<?php echo $image['href']; ?>" class="directory" style="vertical-align: middle;"><i class="fa fa-folder fa-5x"></i></a></div>
+          <p>
+            <label class="checkbox-inline">
+              <input type="checkbox" name="path[]" value="<?php echo $image['path']; ?>" />
+              <?php echo $image['name']; ?></label>
+          </p>
           <?php } ?>
           <?php if ($image['type'] == 'image') { ?>
           <a href="<?php echo $image['href']; ?>" class="thumbnail"><img src="<?php echo $image['thumb']; ?>" alt="<?php echo $image['name']; ?>" title="<?php echo $image['name']; ?>" /></a>
-          <div class="caption">
-            <p>
-              <label class="checkbox-inline">
-                <input type="checkbox" name="delete[]" value="<?php echo $image['path']; ?>" />
-                <?php echo $image['name']; ?></label>
-                <input type="hidden" name="image" value="<?php echo $image['image']; ?>" />
-            </p>
-          </div>
+          <p>
+            <label class="checkbox-inline">
+              <input type="checkbox" name="path[]" value="<?php echo $image['path']; ?>" />
+              <?php echo $image['name']; ?></label>
+          </p>
           <?php } ?>
         </div>
         <?php } ?>
@@ -60,11 +54,11 @@ $('a.thumbnail').on('click', function(e) {
 	e.preventDefault();
 	
 	<?php if ($thumb) { ?>
-	$('#<?php echo $thumb; ?>').attr('src', $(this).find('img').attr('src'));
+	$('#<?php echo $thumb; ?>').html('<img src="' + $(this).find('img').attr('src') + '" alt="" title="" />');
 	<?php } ?>
 	
 	<?php if ($target) { ?>
-	$('#<?php echo $target; ?>').attr('value', $(this).find('img').attr('href'));
+	$('#<?php echo $target; ?>').attr('value', $(this).parent().find('input').attr('value'));
 	<?php } ?>
 	
 	<?php if ($ckeditor) { ?>
@@ -187,13 +181,13 @@ $('#button-folder').on('shown.bs.popover', function() {
 	});	
 });
 
-$('#button-delete').on('click', function(e) {
+$('#modal-image #button-delete').on('click', function(e) {
 	if (confirm('<?php echo $text_confirm; ?>')) {
 		$.ajax({
 			url: 'index.php?route=common/filemanager/delete&token=<?php echo $token; ?>',
 			type: 'post',		
 			dataType: 'json',
-			data: $('input[name^=\'delete\']:checked'),
+			data: $('input[name^=\'path\']:checked'),
 			beforeSend: function() {
 				$('#button-delete i').replaceWith('<i class="fa fa-spinner fa-spin"></i>');
 				$('#button-delete').prop('disabled', true);

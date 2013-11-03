@@ -24,8 +24,6 @@ $_['text_default']            		= ' <b>(Varsayılan)</b>';
 $_['text_close']              		= 'Kapalı';
 $_['text_pagination']         		= 'Gösterilen: %d ile %d arası, toplam: %d (%d Sayfa)';
 $_['text_no_results']         		= 'Gösterilecek sonuç yok!';
-$_['text_edit']               		= 'Düzenle';
-$_['text_view']						= 'Göster';
 $_['text_confirm']                  = 'Emin misiniz?';
 $_['text_home']               		= '<i class="fa fa-home"></i>';
 
@@ -86,6 +84,9 @@ $_['button_credit_remove']          = 'Kredi Kaldır';
 $_['button_parent']                 = 'Ana';
 $_['button_folder']                 = 'Yeni Klasör';
 $_['button_search']                 = 'Ara';
+$_['button_view']                   = 'Göster';
+$_['button_install']                = 'Kur';
+$_['button_uninstall']              = 'Kaldır';
 
 // Tab
 $_['tab_address']             		= 'Adres';

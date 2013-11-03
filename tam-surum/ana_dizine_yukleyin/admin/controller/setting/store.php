@@ -103,21 +103,12 @@ class ControllerSettingStore extends Controller {
 		$this->data['delete'] = $this->url->link('setting/store/delete', 'token=' . $this->session->data['token'], 'SSL');	
 
 		$this->data['stores'] = array();
-		
-		$action = array();
-					
-		$action[] = array(
-			'icon' => 'pencil',
-			'text' => $this->language->get('text_edit'),
-			'href' => $this->url->link('setting/setting', 'token=' . $this->session->data['token'], 'SSL')
-		);
 					
 		$this->data['stores'][] = array(
 			'store_id' => 0,
 			'name'     => $this->config->get('config_name') . $this->language->get('text_default'),
 			'url'      => HTTP_CATALOG,
-			'selected' => isset($this->request->post['selected']) && in_array(0, $this->request->post['selected']),
-			'action'   => $action
+			'edit'     => $this->url->link('setting/setting', 'token=' . $this->session->data['token'], 'SSL')
 		);
 					
 		$store_total = $this->model_setting_store->getTotalStores();
@@ -125,20 +116,11 @@ class ControllerSettingStore extends Controller {
 		$results = $this->model_setting_store->getStores();
  
     	foreach ($results as $result) {
-			$action = array();
-						
-			$action[] = array(
-				'icon' => 'pencil',
-				'text' => $this->language->get('text_edit'),
-				'href' => $this->url->link('setting/store/update', 'token=' . $this->session->data['token'] . '&store_id=' . $result['store_id'], 'SSL')
-			);
-						
 			$this->data['stores'][] = array(
 				'store_id' => $result['store_id'],
 				'name'     => $result['name'],
 				'url'      => $result['url'],
-				'selected' => isset($this->request->post['selected']) && in_array($result['store_id'], $this->request->post['selected']),
-				'action'   => $action
+				'edit'     => $this->url->link('setting/store/update', 'token=' . $this->session->data['token'] . '&store_id=' . $result['store_id'], 'SSL')
 			);
 		}	
 	
@@ -152,6 +134,7 @@ class ControllerSettingStore extends Controller {
 		$this->data['column_action'] = $this->language->get('column_action');		
 		
 		$this->data['button_insert'] = $this->language->get('button_insert');
+		$this->data['button_edit'] = $this->language->get('button_edit');
 		$this->data['button_delete'] = $this->language->get('button_delete');
  
  		if (isset($this->error['warning'])) {
@@ -167,7 +150,13 @@ class ControllerSettingStore extends Controller {
 		} else {
 			$this->data['success'] = '';
 		}
-
+		
+		if (isset($this->request->post['selected'])) {
+			$this->data['selected'] = (array)$this->request->post['selected'];
+		} else {
+			$this->data['selected'] = array();
+		}
+		
 		$this->template = 'setting/store_list.tpl';
 		$this->children = array(
 			'common/header',
@@ -727,7 +716,7 @@ class ControllerSettingStore extends Controller {
 		if (isset($store_info['config_logo']) && file_exists(DIR_IMAGE . $store_info['config_logo']) && is_file(DIR_IMAGE . $store_info['config_logo'])) {
 			$this->data['logo'] = $this->model_tool_image->resize($store_info['config_logo'], 100, 100);		
 		} else {
-			$this->data['logo'] = $this->model_tool_image->resize('no_image.jpg', 100, 100);
+			$this->data['logo'] = '';
 		}
 
 		if (isset($this->request->post['config_icon'])) {
@@ -741,10 +730,8 @@ class ControllerSettingStore extends Controller {
 		if (isset($store_info['config_icon']) && file_exists(DIR_IMAGE . $store_info['config_icon']) && is_file(DIR_IMAGE . $store_info['config_icon'])) {
 			$this->data['icon'] = $this->model_tool_image->resize($store_info['config_icon'], 100, 100);
 		} else {
-			$this->data['icon'] = $this->model_tool_image->resize('no_image.jpg', 100, 100);
+			$this->data['icon'] = '';
 		}
-		
-		$this->data['no_image'] = $this->model_tool_image->resize('no_image.jpg', 100, 100);
 		
 		if (isset($this->request->post['config_image_category_height'])) {
 			$this->data['config_image_category_height'] = $this->request->post['config_image_category_height'];

@@ -16,6 +16,7 @@ $_['column_version']	= 'Versiyon';
 $_['column_status']		= 'Durumu';
 $_['column_sort_order']	= 'Sıralama';
 $_['column_date_added']	= 'Ekleme Tarihi';
+$_['column_action']     = 'Eylem';
 
 // Error
 $_['error_permission']	= 'Uyarı: Modifikasyonları değiştirme iznine sahip değilsiniz!';

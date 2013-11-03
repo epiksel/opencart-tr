@@ -38,16 +38,14 @@
               <?php if ($categories) { ?>
               <?php foreach ($categories as $category) { ?>
               <tr>
-                <td class="text-center"><?php if ($category['selected']) { ?>
+                <td class="text-center"><?php if (in_array($category['category_id'], $selected)) { ?>
                   <input type="checkbox" name="selected[]" value="<?php echo $category['category_id']; ?>" checked="checked" />
                   <?php } else { ?>
                   <input type="checkbox" name="selected[]" value="<?php echo $category['category_id']; ?>" />
                   <?php } ?></td>
                 <td class="text-left"><?php echo $category['name']; ?></td>
                 <td class="text-right"><?php echo $category['sort_order']; ?></td>
-                <td class="text-right"><?php foreach ($category['action'] as $action) { ?>
-                  <a href="<?php echo $action['href']; ?>" class="btn btn-default"><i class="fa fa-<?php echo $action['icon']; ?>"></i> <?php echo $action['text']; ?></a>
-                  <?php } ?></td>
+                <td class="text-right"><a href="<?php echo $category['edit']; ?>" data-toggle="tooltip" title="<?php echo $button_edit; ?>" class="btn btn-primary"><i class="fa fa-pencil"></i></a></td>
               </tr>
               <?php } ?>
               <?php } else { ?>

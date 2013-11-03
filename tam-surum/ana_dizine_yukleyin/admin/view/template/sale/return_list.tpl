@@ -23,6 +23,60 @@
       <h1 class="panel-title"><i class="fa fa-list"></i> <?php echo $heading_title; ?></h1>
     </div>
     <div class="panel-body">
+      <div class="well">
+        <div class="row">
+          <div class="col-sm-3">
+            <div class="form-group">
+              <label class="control-label" for="input-return-id"><?php echo $entry_return_id; ?></label>
+              <input type="text" name="filter_return_id" value="<?php echo $filter_return_id; ?>" placeholder="<?php echo $entry_return_id; ?>" id="input-return-id" class="form-control" />
+            </div>
+            <div class="form-group">
+              <label class="control-label" for="input-order-id"><?php echo $entry_order_id; ?></label>
+              <input type="text" name="filter_order_id" value="<?php echo $filter_order_id; ?>" placeholder="<?php echo $entry_order_id; ?>" id="input-order-id" class="form-control" />
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="form-group">
+              <label class="control-label" for="input-customer"><?php echo $entry_customer; ?></label>
+              <input type="text" name="filter_customer" value="<?php echo $filter_customer; ?>" placeholder="<?php echo $entry_customer; ?>" id="input-customer" class="form-control" />
+            </div>
+            <div class="form-group">
+              <label class="control-label" for="input-product"><?php echo $entry_product; ?></label>
+              <input type="text" name="filter_product" value="<?php echo $filter_product; ?>" placeholder="<?php echo $entry_product; ?>" id="input-product" class="form-control" />
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="form-group">
+              <label class="control-label" for="input-model"><?php echo $entry_model; ?></label>
+              <input type="text" name="filter_model" value="<?php echo $filter_model; ?>" placeholder="<?php echo $entry_model; ?>" id="input-model" class="form-control" />
+            </div>
+            <div class="form-group">
+              <label class="control-label" for="input-return-status"><?php echo $entry_return_status; ?></label>
+              <select name="filter_return_status_id" id="input-return-status" class="form-control">
+                <option value="*"></option>
+                <?php foreach ($return_statuses as $return_status) { ?>
+                <?php if ($return_status['return_status_id'] == $filter_return_status_id) { ?>
+                <option value="<?php echo $return_status['return_status_id']; ?>" selected="selected"><?php echo $return_status['name']; ?></option>
+                <?php } else { ?>
+                <option value="<?php echo $return_status['return_status_id']; ?>"><?php echo $return_status['name']; ?></option>
+                <?php } ?>
+                <?php } ?>
+              </select>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="form-group">
+              <label class="control-label" for="input-date-added"><?php echo $entry_date_added; ?></label>
+              <input type="date" name="filter_date_added" value="<?php echo $filter_date_added; ?>" placeholder="<?php echo $entry_date_added; ?>" id="input-date-added" class="form-control" />
+            </div>
+            <div class="form-group">
+              <label class="control-label" for="input-date-modified"><?php echo $entry_date_modified; ?></label>
+              <input type="date" name="filter_date_modified" value="<?php echo $filter_date_modified; ?>" placeholder="<?php echo $entry_date_modified; ?>" id="input-date-modified" class="form-control" />
+            </div>
+            <button type="button" id="button-filter" class="btn btn-primary pull-right"><i class="fa fa-search"></i> <?php echo $button_filter; ?></button>
+          </div>
+        </div>
+      </div>
       <form action="<?php echo $delete; ?>" method="post" enctype="multipart/form-data" id="form-return">
         <div class="table-responsive">
           <table class="table table-striped table-bordered table-hover">
@@ -73,31 +127,10 @@
               </tr>
             </thead>
             <tbody>
-              <tr class="filter">
-                <td></td>
-                <td align="right"><input type="text" name="filter_return_id" value="<?php echo $filter_return_id; ?>" class="form-control" /></td>
-                <td align="right"><input type="text" name="filter_order_id" value="<?php echo $filter_order_id; ?>" class="form-control" /></td>
-                <td><input type="text" name="filter_customer" value="<?php echo $filter_customer; ?>" class="form-control" /></td>
-                <td><input type="text" name="filter_product" value="<?php echo $filter_product; ?>" class="form-control" /></td>
-                <td><input type="text" name="filter_model" value="<?php echo $filter_model; ?>" class="form-control" /></td>
-                <td><select name="filter_return_status_id" class="form-control">
-                    <option value="*"></option>
-                    <?php foreach ($return_statuses as $return_status) { ?>
-                    <?php if ($return_status['return_status_id'] == $filter_return_status_id) { ?>
-                    <option value="<?php echo $return_status['return_status_id']; ?>" selected="selected"><?php echo $return_status['name']; ?></option>
-                    <?php } else { ?>
-                    <option value="<?php echo $return_status['return_status_id']; ?>"><?php echo $return_status['name']; ?></option>
-                    <?php } ?>
-                    <?php } ?>
-                  </select></td>
-                <td><input type="date" name="filter_date_added" value="<?php echo $filter_date_added; ?>" class="form-control" /></td>
-                <td><input type="date" name="filter_date_modified" value="<?php echo $filter_date_modified; ?>" class="form-control" /></td>
-                <td class="text-right"><button type="button" id="button-filter" class="btn btn-primary pull-right"><i class="fa fa-search"></i> <?php echo $button_filter; ?></button></td>
-              </tr>
               <?php if ($returns) { ?>
               <?php foreach ($returns as $return) { ?>
               <tr>
-                <td class="text-center"><?php if ($return['selected']) { ?>
+                <td class="text-center"><?php if (in_array($return['return_id'], $selected)) { ?>
                   <input type="checkbox" name="selected[]" value="<?php echo $return['return_id']; ?>" checked="checked" />
                   <?php } else { ?>
                   <input type="checkbox" name="selected[]" value="<?php echo $return['return_id']; ?>" />
@@ -110,9 +143,7 @@
                 <td class="text-left"><?php echo $return['status']; ?></td>
                 <td class="text-left"><?php echo $return['date_added']; ?></td>
                 <td class="text-left"><?php echo $return['date_modified']; ?></td>
-                <td class="text-right"><?php foreach ($return['action'] as $action) { ?>
-                  <a href="<?php echo $action['href']; ?>" data-toggle="tooltip" title="<?php echo $action['text']; ?>" class="btn btn-primary"><i class="fa fa-<?php echo $action['icon']; ?> fa-large"></i></a>
-                  <?php } ?></td>
+                <td class="text-right"><a href="<?php echo $return['view']; ?>" data-toggle="tooltip" title="<?php echo $button_view; ?>" class="btn btn-info"><i class="fa fa-eye"></i></a> <a href="<?php echo $return['edit']; ?>" data-toggle="tooltip" title="<?php echo $button_edit; ?>" class="btn btn-primary"><i class="fa fa-pencil"></i></a></td>
               </tr>
               <?php } ?>
               <?php } else { ?>

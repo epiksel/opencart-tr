@@ -53,6 +53,9 @@ $_['entry_bank_account_name']   = 'Hesap Adı';
 $_['entry_bank_account_number'] = 'Hesap Numarası';
 $_['entry_amount']              = 'Tutar';
 $_['entry_description']         = 'Açıklama';
+$_['entry_name']                = 'Ortak Adı';
+$_['entry_approved']            = 'Onaylandı';
+$_['entry_date_added']          = 'Ekleme Tarihi';
 
 // Help
 $_['help_code']					= 'Tavsiyeleri izlemek için kullanılacak takip kodu.';

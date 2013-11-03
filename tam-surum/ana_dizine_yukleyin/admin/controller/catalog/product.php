@@ -344,18 +344,10 @@ class ControllerCatalogProduct extends Controller {
 		$results = $this->model_catalog_product->getProducts($data);
 				    	
 		foreach ($results as $result) {
-			$action = array();
-			
-			$action[] = array(
-				'icon' => 'pencil',
-				'text' => $this->language->get('text_edit'),
-				'href' => $this->url->link('catalog/product/update', 'token=' . $this->session->data['token'] . '&product_id=' . $result['product_id'] . $url, 'SSL')
-			);
-			
 			if (is_file(DIR_IMAGE . $result['image'])) {
 				$image = $this->model_tool_image->resize($result['image'], 40, 40);
 			} else {
-				$image = $this->model_tool_image->resize('no_image.jpg', 40, 40);
+				$image = '';
 			}
 	
 			$special = false;
@@ -379,8 +371,7 @@ class ControllerCatalogProduct extends Controller {
 				'special'    => $special,
 				'quantity'   => $result['quantity'],
 				'status'     => ($result['status'] ? $this->language->get('text_enabled') : $this->language->get('text_disabled')),
-				'selected'   => isset($this->request->post['selected']) && in_array($result['product_id'], $this->request->post['selected']),
-				'action'     => $action
+				'edit'       => $this->url->link('catalog/product/update', 'token=' . $this->session->data['token'] . '&product_id=' . $result['product_id'] . $url, 'SSL')
 			);
     	}
 		
@@ -398,12 +389,19 @@ class ControllerCatalogProduct extends Controller {
 		$this->data['column_quantity'] = $this->language->get('column_quantity');		
 		$this->data['column_status'] = $this->language->get('column_status');		
 		$this->data['column_action'] = $this->language->get('column_action');		
-				
+		
+		$this->data['entry_name'] = $this->language->get('entry_name');		
+		$this->data['entry_model'] = $this->language->get('entry_model');		
+		$this->data['entry_price'] = $this->language->get('entry_price');		
+		$this->data['entry_quantity'] = $this->language->get('entry_quantity');		
+		$this->data['entry_status'] = $this->language->get('entry_status');
+
 		$this->data['button_copy'] = $this->language->get('button_copy');		
 		$this->data['button_insert'] = $this->language->get('button_insert');		
+		$this->data['button_edit'] = $this->language->get('button_edit');
 		$this->data['button_delete'] = $this->language->get('button_delete');		
 		$this->data['button_filter'] = $this->language->get('button_filter');
-		 
+				 
  		$this->data['token'] = $this->session->data['token'];
 		
  		if (isset($this->error['warning'])) {
@@ -419,7 +417,13 @@ class ControllerCatalogProduct extends Controller {
 		} else {
 			$this->data['success'] = '';
 		}
-
+		
+		if (isset($this->request->post['selected'])) {
+			$this->data['selected'] = (array)$this->request->post['selected'];
+		} else {
+			$this->data['selected'] = array();
+		}
+		
 		$url = '';
 
 		if (isset($this->request->get['filter_name'])) {
@@ -579,7 +583,6 @@ class ControllerCatalogProduct extends Controller {
 		$this->data['entry_required'] = $this->language->get('entry_required');
 		$this->data['entry_sort_order'] = $this->language->get('entry_sort_order');
 		$this->data['entry_status'] = $this->language->get('entry_status');
-		$this->data['entry_customer_group'] = $this->language->get('entry_customer_group');
 		$this->data['entry_date_start'] = $this->language->get('entry_date_start');
 		$this->data['entry_date_end'] = $this->language->get('entry_date_end');
 		$this->data['entry_priority'] = $this->language->get('entry_priority');
@@ -810,24 +813,6 @@ class ControllerCatalogProduct extends Controller {
 			$this->data['keyword'] = $product_info['keyword'];
 		} else {
 			$this->data['keyword'] = '';
-		}
-		
-		if (isset($this->request->post['image'])) {
-			$this->data['image'] = $this->request->post['image'];
-		} elseif (!empty($product_info)) {
-			$this->data['image'] = $product_info['image'];
-		} else {
-			$this->data['image'] = '';
-		}
-		
-		$this->load->model('tool/image');
-		
-		if (isset($this->request->post['image']) && is_file(DIR_IMAGE . $this->request->post['image'])) {
-			$this->data['thumb'] = $this->model_tool_image->resize($this->request->post['image'], 100, 100);
-		} elseif (!empty($product_info) && $product_info['image'] && is_file(DIR_IMAGE . $product_info['image'])) {
-			$this->data['thumb'] = $this->model_tool_image->resize($product_info['image'], 100, 100);
-		} else {
-			$this->data['thumb'] = $this->model_tool_image->resize('no_image.jpg', 100, 100);
 		}
 		
     	if (isset($this->request->post['shipping'])) {
@@ -1144,7 +1129,25 @@ class ControllerCatalogProduct extends Controller {
 		} else {
 			$this->data['product_specials'] = array();
 		}
+
+		if (isset($this->request->post['image'])) {
+			$this->data['image'] = $this->request->post['image'];
+		} elseif (!empty($product_info)) {
+			$this->data['image'] = $product_info['image'];
+		} else {
+			$this->data['image'] = '';
+		}
 		
+		$this->load->model('tool/image');
+		
+		if (isset($this->request->post['image']) && is_file(DIR_IMAGE . $this->request->post['image'])) {
+			$this->data['thumb'] = $this->model_tool_image->resize($this->request->post['image'], 100, 100);
+		} elseif (!empty($product_info) && $product_info['image'] && is_file(DIR_IMAGE . $product_info['image'])) {
+			$this->data['thumb'] = $this->model_tool_image->resize($product_info['image'], 100, 100);
+		} else {
+			$this->data['thumb'] = '';
+		}
+				
 		// Images
 		if (isset($this->request->post['product_image'])) {
 			$product_images = $this->request->post['product_image'];
@@ -1160,7 +1163,7 @@ class ControllerCatalogProduct extends Controller {
 			if (is_file(DIR_IMAGE . $product_image['image'])) {
 				$image = $product_image['image'];
 			} else {
-				$image = 'no_image.jpg';
+				$image = '';
 			}
 			
 			$this->data['product_images'][] = array(
@@ -1169,8 +1172,6 @@ class ControllerCatalogProduct extends Controller {
 				'sort_order' => $product_image['sort_order']
 			);
 		}
-
-		$this->data['no_image'] = $this->model_tool_image->resize('no_image.jpg', 100, 100);
 
 		// Downloads
 		$this->load->model('catalog/download');

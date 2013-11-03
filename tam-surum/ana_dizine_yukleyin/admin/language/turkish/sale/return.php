@@ -10,7 +10,7 @@ $_['text_unopened']       = 'Kapatıldı';
 $_['text_success']        = 'Başarılı: Ürün iadesi başarılı bir şekilde değiştirildi!';
 
 // Text
-$_['text_return_id']      = 'Ürün İade No';
+$_['text_return_id']      = 'İade No';
 $_['text_order_id']       = 'Sipariş No';
 $_['text_date_ordered']   = 'Sipariş Tarihi';
 $_['text_customer']       = 'Müşteri';
@@ -27,7 +27,7 @@ $_['text_return_status']  = 'İade Durumu';
 $_['text_comment']        = 'Açıklama';
 
 // Column
-$_['column_return_id']     = 'Ürün İade No';
+$_['column_return_id']     = 'İade No';
 $_['column_order_id']      = 'Sipariş No';
 $_['column_customer']      = 'Müşteri';
 $_['column_product']       = 'Ürün';
@@ -56,6 +56,9 @@ $_['entry_return_reason'] = 'İade Nedeni';
 $_['entry_return_action'] = 'İade Eylemi';
 $_['entry_return_status'] = 'İade Durumu';
 $_['entry_notify']        = 'Müşteriye Bildir';
+$_['entry_return_id']     = 'İade No';
+$_['entry_date_added']    = 'Ekleme Tarihi';
+$_['entry_date_modified'] = 'Değiştirme Tarihi';
 
 // Help
 $_['help_product']        = '(Otomatik tamamlama)';

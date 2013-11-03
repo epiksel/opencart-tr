@@ -6,8 +6,6 @@ $_['heading_title']		= 'Ürün Beslemeleri';
 
 // Text
 $_['text_success']		= 'Başarılı: Ürün beslemeleri güncellendi!';
-$_['text_install']		= 'Kur';
-$_['text_uninstall']	= 'Kaldır';
 
 // Column
 $_['column_name']		= 'Ürün Besleme Adı';

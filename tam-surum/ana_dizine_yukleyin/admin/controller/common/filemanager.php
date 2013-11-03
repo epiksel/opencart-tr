@@ -1,23 +1,21 @@
 <?php
 class ControllerCommonFileManager extends Controller {
-	public $image = '';
-	
 	public function index() {
 		$this->language->load('common/filemanager');
-				
-		// Make sure we have the correct directory	
-		if (isset($this->request->get['directory'])) {
-			$directory = rtrim(DIR_IMAGE . 'catalog/' . str_replace(array('../', '..\\', '..'), '', $this->request->get['directory']), '/');
-		} else {
-			$directory = DIR_IMAGE . 'catalog';
-		}
 				
 		if (isset($this->request->get['filter_name'])) {
 			$filter_name = rtrim(str_replace(array('../', '..\\', '..', '*'), '', $this->request->get['filter_name']), '/');
 		} else {
 			$filter_name = null;
 		}
-						
+		
+		// Make sure we have the correct directory	
+		if (isset($this->request->get['directory'])) {
+			$directory = rtrim(DIR_IMAGE . 'catalog/' . str_replace(array('../', '..\\', '..'), '', $this->request->get['directory']), '/');
+		} else {
+			$directory = DIR_IMAGE . 'catalog';
+		}	
+							
 		if (isset($this->request->get['page'])) {
 			$page = $this->request->get['page'];
 		} else {
@@ -40,27 +38,41 @@ class ControllerCommonFileManager extends Controller {
 		foreach ($images as $image) {
 			$name = str_split(basename($image), 14);
 			
-			// Find which protocol to use to pass the full image link back to
-			if (isset($this->request->server['HTTPS']) && (($this->request->server['HTTPS'] == 'on') || ($this->request->server['HTTPS'] == '1'))) {
-				$server = HTTPS_SERVER;
-			} else {
-				$server = HTTP_SERVER;
-			}
-					
 			if (is_dir($image)) {
+				$url = '';
+				
+				if (isset($this->request->get['target'])) {
+					$url .= '&target=' . $this->request->get['target'];
+				}
+				
+				if (isset($this->request->get['thumb'])) {
+					$url .= '&thumb=' . $this->request->get['thumb'];
+				}
+					
+				if (isset($this->request->get['ckeditor'])) {
+					$url .= '&ckeditor=' . $this->request->get['ckeditor'];
+				}	
+						
 				$this->data['images'][] = array(
 					'thumb' => '',
 					'name'  => implode(' ', $name),
 					'type'  => 'directory',
-					'path'  => utf8_substr($image, utf8_strlen(DIR_IMAGE . 'catalog/')),
-					'href'  => $this->url->link('common/filemanager', 'token=' . $this->session->data['token'] . '&directory=' . utf8_substr($image, utf8_strlen(DIR_IMAGE . 'catalog/')), 'SSL')
+					'path'  => utf8_substr($image, utf8_strlen(DIR_IMAGE)),
+					'href'  => $this->url->link('common/filemanager', 'token=' . $this->session->data['token'] . '&directory=' . utf8_substr($image, utf8_strlen(DIR_IMAGE . 'catalog/')) . $url, 'SSL')
 				);				
 			} elseif (is_file($image)) {
+				// Find which protocol to use to pass the full image link back
+				if (isset($this->request->server['HTTPS']) && (($this->request->server['HTTPS'] == 'on') || ($this->request->server['HTTPS'] == '1'))) {
+					$server = HTTPS_CATALOG;
+				} else {
+					$server = HTTP_CATALOG;
+				}
+						
 				$this->data['images'][] = array(
-					'thumb' => $this->model_tool_image->resize(utf8_substr($image, utf8_strlen(DIR_IMAGE)), 60, 60),
+					'thumb' => $this->model_tool_image->resize(utf8_substr($image, utf8_strlen(DIR_IMAGE)), 100, 100),
 					'name'  => implode(' ', $name),
 					'type'  => 'image',
-					'path'  => utf8_substr($image, utf8_strlen(DIR_IMAGE . 'catalog/')),
+					'path'  => utf8_substr($image, utf8_strlen(DIR_IMAGE)),
 					'href'  => $server . 'image/' . utf8_substr($image, utf8_strlen(DIR_IMAGE))
 				);				
 			}
@@ -79,7 +91,7 @@ class ControllerCommonFileManager extends Controller {
 		$this->data['button_folder'] = $this->language->get('button_folder');
 		$this->data['button_delete'] = $this->language->get('button_delete');
 		$this->data['button_search'] = $this->language->get('button_search');
-		
+				
 		$this->data['token'] = $this->session->data['token'];
 		
 		if (isset($this->request->get['directory'])) {
@@ -93,13 +105,15 @@ class ControllerCommonFileManager extends Controller {
 		} else {
 			$this->data['filter_name'] = '';
 		}
-				
+		
+		// Return the target ID for the file manager to set the value 		
 		if (isset($this->request->get['target'])) {
 			$this->data['target'] = $this->request->get['target'];
 		} else {
 			$this->data['target'] = '';
 		}
 		
+		// Return the thumbnail for the file manager to show a thumbnail
 		if (isset($this->request->get['thumb'])) {
 			$this->data['thumb'] = $this->request->get['thumb'];
 		} else {
@@ -111,7 +125,9 @@ class ControllerCommonFileManager extends Controller {
 		} else {
 			$this->data['ckeditor'] = '';
 		}
-								
+		
+		$this->data['delete'] = $this->url->link('catalog/category/delete', 'token=' . $this->session->data['token'] . $url, 'SSL');
+						
 		$url = '';
 		
 		if (isset($this->request->get['directory'])) {
@@ -121,7 +137,19 @@ class ControllerCommonFileManager extends Controller {
 				$url .= '&directory=' . substr($this->request->get['directory'], 0, $pos);
 			}	
 		}
+			
+		if (isset($this->request->get['target'])) {
+			$url .= '&target=' . $this->request->get['target'];
+		}
 		
+		if (isset($this->request->get['thumb'])) {
+			$url .= '&thumb=' . $this->request->get['thumb'];
+		}
+			
+		if (isset($this->request->get['ckeditor'])) {
+			$url .= '&ckeditor=' . $this->request->get['ckeditor'];
+		}	
+									
 		$this->data['parent'] = $this->url->link('common/filemanager', 'token=' . $this->session->data['token'] . $url, 'SSL');
 		
 		$url = '';
@@ -133,7 +161,19 @@ class ControllerCommonFileManager extends Controller {
 		if (isset($this->request->get['filter_name'])) {
 			$url .= '&filter_name=' . urlencode(html_entity_decode($this->request->get['filter_name'], ENT_QUOTES, 'UTF-8'));
 		}
-					
+		
+		if (isset($this->request->get['target'])) {
+			$url .= '&target=' . $this->request->get['target'];
+		}
+		
+		if (isset($this->request->get['thumb'])) {
+			$url .= '&thumb=' . $this->request->get['thumb'];
+		}
+			
+		if (isset($this->request->get['ckeditor'])) {
+			$url .= '&ckeditor=' . $this->request->get['ckeditor'];
+		}	
+							
 		$pagination = new Pagination();
 		$pagination->total = $image_total;
 		$pagination->page = $page;
@@ -278,22 +318,15 @@ class ControllerCommonFileManager extends Controller {
 			$json['error'] = $this->language->get('error_permission');  
 		}
 		
-		if (isset($this->request->post['delete'])) {
-			$paths = $this->request->post['delete'];
+		if (isset($this->request->post['path'])) {
+			$paths = $this->request->post['path'];
 		} else {
 			$paths = array();	
 		}
 		
 		// Loop through each path to run validations
 		foreach ($paths as $path) {			
-			$path = rtrim(DIR_IMAGE . 'catalog/' . str_replace(array('../', '..\\', '..'), '', $path), '/');
-			
-			// Check path exsists
-			if (!file_exists($path)) {
-				$json['error'] = $this->language->get('error_missing');
-				
-				break;
-			}
+			$path = rtrim(DIR_IMAGE . str_replace(array('../', '..\\', '..'), '', $path), '/');
 			
 			// Check path exsists
 			if ($path == DIR_IMAGE . 'catalog') {
@@ -306,7 +339,7 @@ class ControllerCommonFileManager extends Controller {
 		if (!$json) {
 			// Loop through each path
 			foreach ($paths as $path) {		
-				$path = rtrim(DIR_IMAGE . 'catalog/' . str_replace(array('../', '..\\', '..'), '', $path), '/');
+				$path = rtrim(DIR_IMAGE . str_replace(array('../', '..\\', '..'), '', $path), '/');
 				
 				// If path is just a file delete it
 				if (is_file($path)) {

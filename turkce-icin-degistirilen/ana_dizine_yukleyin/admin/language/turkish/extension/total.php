@@ -6,8 +6,6 @@ $_['heading_title']     = 'Sipariş Toplamları';
 
 // Text
 $_['text_success']		= 'Başarılı: Sipariş toplamları güncellendi!';
-$_['text_install']      = 'Kur';
-$_['text_uninstall']    = 'Kaldır';
 
 // Column
 $_['column_name']       = 'Sipariş Toplamları';

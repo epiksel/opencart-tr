@@ -22,8 +22,6 @@ $_['text_default']                  = ' <b>(Default)</b>';
 $_['text_close']                    = 'Close';
 $_['text_pagination']               = 'Showing %d to %d of %d (%d Pages)';
 $_['text_no_results']               = 'No results!';
-$_['text_edit']                     = 'Edit';
-$_['text_view']                     = 'View';
 $_['text_confirm']                  = 'Are you sure?';
 $_['text_home']                     = '<i class="fa fa-home"></i>';
 
@@ -66,7 +64,6 @@ $_['button_image_add']              = 'Add Image';
 $_['button_geo_zone_add']           = 'Add Geo Zone';
 $_['button_history_add']            = 'Add History';
 $_['button_transaction_add']        = 'Add Transaction';
-$_['button_reward_add']             = 'Add Reward Points';
 $_['button_route_add']              = 'Add Route';
 $_['button_rule_add']               = 'Add Rule';
 $_['button_module_add']             = 'Add Module';
@@ -84,6 +81,9 @@ $_['button_credit_remove']          = 'Remove Credit';
 $_['button_parent']                 = 'Parent';
 $_['button_folder']                 = 'New Folder';
 $_['button_search']                 = 'Search';
+$_['button_view']                   = 'View';
+$_['button_install']                = 'Install';
+$_['button_uninstall']              = 'Uninstall';
 
 // Tab
 $_['tab_address']                   = 'Address';

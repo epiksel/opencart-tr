@@ -2,7 +2,6 @@
 <html dir="<?php echo $direction; ?>" lang="<?php echo $lang; ?>">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title><?php echo $title; ?></title>
 <base href="<?php echo $base; ?>" />
 <?php if ($description) { ?>
@@ -32,17 +31,30 @@
 <header id="header" class="navbar navbar-inverse navbar-static-top">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"><span class="fa fa-bar"></span><span class="fa fa-bar"></span><span class="fa fa-bar"></span></button>
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
       <a href="<?php echo $home; ?>" class="navbar-brand"><img src="view/image/logo.png" alt="<?php echo $heading_title; ?>" title="<?php echo $heading_title; ?>" /></a></div>
     <?php if ($logged) { ?>
     <div class="collapse navbar-collapse navbar-ex1-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li><a data-toggle="dropdown"><img src="<?php echo $profile_image; ?>" alt="<?php echo $profile_name; ?>" /><i class="fa fa-caret-down"></i> <?php echo $profile_name; ?><br />
+        <li><a data-toggle="dropdown"><i class="fa fa-bell-o fa-2x"></i> <span class="label label-danger">4</span></a>
+          <ul class="dropdown-menu">
+          </ul>
+        </li>
+        <li><a data-toggle="dropdown">
+          <?php if ($profile_image) { ?>
+          <img src="<?php echo $profile_image; ?>" alt="<?php echo $profile_name; ?>" />
+          <?php } ?>
+          <i class="fa fa-caret-down"></i> <?php echo $profile_name; ?><br />
           <small><?php echo $profile_group; ?></small></a>
           <ul class="dropdown-menu">
             <li><a href="<?php echo $profile; ?>"><?php echo $text_profile; ?></a></li>
             <li><a href="<?php echo $setting; ?>"><?php echo $text_setting; ?></a></li>
             <li><a href="<?php echo $logout; ?>"><?php echo $text_logout; ?></a></li>
+            <li class="divider"></li>
+            <li class="dropdown-header"><?php echo $text_help; ?></li>
+            <li><a href="http://www.opencart.com" target="_blank"><?php echo $text_opencart; ?></a></li>
+            <li><a href="http://docs.opencart.com" target="_blank"><?php echo $text_documentation; ?></a></li>
+            <li><a href="http://forum.opencart.com" target="_blank"><?php echo $text_support; ?></a></li>
           </ul>
         </li>
       </ul>
@@ -51,15 +63,15 @@
   </div>
 </header>
 <?php if ($logged) { ?>
-<nav id="menu" class="navbar navbar-static-top">
+<nav id="menu" class="navbar navbar-default navbar-static-top">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex2-collapse"><span class="fa fa-bar"></span><span class="fa fa-bar"></span><span class="fa fa-bar"></span></button>
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex2-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
     </div>
     <div class="collapse navbar-collapse navbar-ex2-collapse">
       <ul class="nav navbar-nav">
         <li id="dashboard"><a href="<?php echo $home; ?>"><?php echo $text_dashboard; ?></a></li>
-        <li id="catalog" class="dropdown"><a data-toggle="dropdown"><?php echo $text_catalog; ?></a>
+        <li id="catalog" class="dropdown"><a data-toggle="dropdown"><?php echo $text_catalog; ?> <span class="visible-xs"><i class="fa fa-caret-down"></i></span></a>
           <ul class="dropdown-menu">
             <li><a href="<?php echo $category; ?>"><?php echo $text_category; ?></a></li>
             <li><a href="<?php echo $product; ?>"><?php echo $text_product; ?></a></li>
@@ -195,13 +207,6 @@
                 <li><a href="<?php echo $report_affiliate; ?>"><?php echo $text_affiliate; ?></a></li>
               </ul>
             </li>
-          </ul>
-        </li>
-        <li class="dropdown"><a data-toggle="dropdown"><?php echo $text_help; ?></a>
-          <ul class="dropdown-menu">
-            <li><a href="http://www.opencart.com" target="_blank"><?php echo $text_opencart; ?></a></li>
-            <li><a href="http://docs.opencart.com" target="_blank"><?php echo $text_documentation; ?></a></li>
-            <li><a href="http://forum.opencart.com" target="_blank"><?php echo $text_support; ?></a></li>
           </ul>
         </li>
       </ul>

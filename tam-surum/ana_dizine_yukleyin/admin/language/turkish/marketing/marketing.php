@@ -20,6 +20,7 @@ $_['entry_name']        = 'Kampanya Adı';
 $_['entry_description'] = 'Kampanya Açıklama';
 $_['entry_code']        = 'Takip Kodu';
 $_['entry_example']     = 'Örnek';
+$_['entry_date_added']  = 'Ekleme Tarihi';
 
 // Help
 $_['help_code']         = 'Pazarlama kampanyalarını takip etmek için kullanılacak kod.';
