@@ -87,6 +87,7 @@ $_['button_search']                 = 'Ara';
 $_['button_view']                   = 'Göster';
 $_['button_install']                = 'Kur';
 $_['button_uninstall']              = 'Kaldır';
+$_['button_link']                   = 'Link';
 
 // Tab
 $_['tab_address']             		= 'Adres';

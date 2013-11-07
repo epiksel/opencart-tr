@@ -22,8 +22,8 @@ $_['entry_message']    = 'Mesajınız';
 $_['entry_amount']     = 'Tutar';
 
 // Help
-$_['help_message']     = '(İsteğe bağlı)';
-$_['help_amount']      = '( %s ile %s arasında olmalı)';
+$_['help_message']     = 'İsteğe bağlı';
+$_['help_amount']      = '%s ile %s arasında olmalı';
 
 // Error
 $_['error_to_name']    = 'Alıcının adı 1 ile 64 karakter arasında olmalıdır!';
