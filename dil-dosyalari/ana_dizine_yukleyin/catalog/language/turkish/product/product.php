@@ -17,7 +17,7 @@ $_['text_option']       = 'Mevcut Seçenekler:';
 $_['text_qty']          = 'Miktar:';
 $_['text_minimum']      = 'Satın alabilmek için asgari miktar: %s';
 $_['text_or']           = 'ya da';
-$_['text_reviews']      = '%s yorum'; 
+$_['text_reviews']      = '%s yorum';
 $_['text_write']        = 'Yorum Yap';
 $_['text_no_reviews']   = 'Bu ürün için daha önce yorum yapılmadı.';
 $_['text_on']           = ' tarih: ';
@@ -49,7 +49,7 @@ $_['entry_captcha'] 	= 'Doğrulama kodunu giriniz:';
 
 // Tabs
 $_['tab_description']   = 'Açıklama';
-$_['tab_attribute']     = 'Özellikler'; 
+$_['tab_attribute']     = 'Özellikler';
 $_['tab_review']        = 'Yorumlar (%s)';
 $_['tab_related']       = 'Benzer Ürünler';
 
