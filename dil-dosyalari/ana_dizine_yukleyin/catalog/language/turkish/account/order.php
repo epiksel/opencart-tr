@@ -32,6 +32,6 @@ $_['column_price']          = 'Birim Fiyatı';
 $_['column_total']          = 'Tutarı';
 $_['column_action']         = 'Eylem';
 $_['column_date_added']     = 'Tarih';
-$_['column_status']         = 'Sipariş Durumu';
+$_['column_status']         = 'Durumu';
 $_['column_comment']        = 'Açıklama';
 ?>

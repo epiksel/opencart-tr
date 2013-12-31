@@ -6,7 +6,7 @@ $_['heading_title']					= 'Mağazalar';
 
 // Text
 $_['text_success']					= 'Başarılı: Mağazalar başarılı bir şekilde değiştirildi!';
-$_['text_items']					= 'Ürünler';
+$_['text_items']					= 'Öğeler';
 $_['text_tax']						= 'Vergiler';
 $_['text_account']					= 'Hesap';
 $_['text_checkout']					= 'Kasaya Git';
@@ -63,13 +63,13 @@ $_['entry_image_compare']			= 'Karşılaştırma Resim Boyutu';
 $_['entry_image_wishlist']			= 'Alışveriş Listem Resim Boyutu';
 $_['entry_image_cart']				= 'Sepetim Sayfası Resim Boyutu';
 $_['entry_image_location']			= 'Mağaza Resim Boyutu';
-$_['entry_width']               	= 'Genişlik';
-$_['entry_height']              	= 'Yükseklik';
+$_['entry_width']					= 'Genişlik';
+$_['entry_height']					= 'Yükseklik';
 $_['entry_secure']					= 'SSL Kullan';
 
 // Help
-$_['help_url']						= 'Mağazanızın tam adersiniz yazınız. Sonuna \'/\' işaretini ekleyi unutmayınız. Örneğin: http://www.e-piksel.com/shop/<br /><br />Yeni bir mağaza oluşturmak için dizin oluşturmayınız. Hostinginiz her zaman başka bir etki alanı veya alt etki alanını işaret etmelidir.';
-$_['help_ssl']						= 'Mağazanızın SSL URL adresi. Sonuna \'/\' işaretini ekleyi unutmayınız. Örneğin: https://www.e-piksel.com/shop/<br /><br />Yeni bir mağaza oluşturmak için dizin oluşturmayınız. Hostinginiz her zaman başka bir etki alanı veya alt etki alanını işaret etmelidir.';
+$_['help_url']						= 'Mağazanızın tam adresini yazınız. Sonuna \'/\' işaretini eklemeyi unutmayınız. Örneğin: http://www.e-piksel.com/shop/<br /><br />Yeni bir mağaza oluşturmak için dizin oluşturmayınız. Hostinginiz her zaman başka bir etki alanı veya alt etki alanını işaret etmelidir.';
+$_['help_ssl']						= 'Mağazanızın SSL URL adresi. Sonuna \'/\' işaretini eklemeyi unutmayınız. Örneğin: https://www.e-piksel.com/shop/<br /><br />Yeni bir mağaza oluşturmak için dizin oluşturmayınız. Hostinginiz her zaman başka bir etki alanı veya alt etki alanını işaret etmelidir.';
 $_['help_catalog_limit']			= 'Mağazanız sayfalarında sayfa başına kaç ürün gösterileceğini seçin (ürünler, kategoriler vb)';
 $_['help_list_description_limit']	= 'Liste görünümde kısa açıklama karakter limiti. (kategoriler, kampanyalar vb)';
 $_['help_tax_default']				= 'Mağaza adresi kimse oturum açmadığında vergi hesaplamak için kullanılır. Kargo ya da ödeme adresi için müşterilerinizde kullanılacak varsayılan mağaza adresi seçebilirsiniz.';

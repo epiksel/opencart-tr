@@ -2,11 +2,11 @@
 /* Turkceye Ceviren eka7a - http://www.e-piksel.com */
 
 // Heading
-$_['heading_title']             = 'Ortaklık Programı';
+$_['heading_title']             = 'Yeni Ortak - Ortaklık Programı';
 
 // Text
-$_['text_account']              = 'Ortaklık Hesabım';
-$_['text_register']             = 'Ortaklık Kaydı Oluştur';
+$_['text_account']              = 'Ortaklık Hesabı';
+$_['text_register']             = 'Yeni Ortak';
 $_['text_account_already']      = 'Daha önceden ortaklık hesabı açtıysanız, lütfen giriş sayfasından <a href="%s">oturum açınız</a>.';
 $_['text_signup']               = 'Yeni bir ortaklık hesabı açmak için aşağıdaki tüm gerekli alanları doldurunuz:';
 $_['text_your_details']         = 'Kişisel Bilgileriniz';

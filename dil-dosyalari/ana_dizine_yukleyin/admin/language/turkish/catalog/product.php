@@ -80,7 +80,7 @@ $_['entry_layout']           = 'Bu Bölüm Gibi Davran';
 
 // Help
 $_['help_keyword']           = 'Boşluk kullanmayın ve benzersiz kelimeler kullandığınızdan emin olunuz.';
-$_['help_sku']               = 'Stok Saklama Birimi';
+$_['help_sku']               = 'Stok Tutma Birimi';
 $_['help_upc']               = 'Evrensel Ürün Kodu';
 $_['help_ean']               = 'Avrupa Makale Numarası';
 $_['help_jan']               = 'Japon Makale Numarası';

@@ -2,7 +2,7 @@
 /* Turkceye Ceviren eka7a - http://www.e-piksel.com */
 
 // Heading
-$_['heading_title']          	= 'Kategori';
+$_['heading_title']          	= 'Kategoriler';
 
 // Text
 $_['text_success']           	= 'Başarılı: Kategoriler değiştirildi!';
