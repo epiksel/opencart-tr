@@ -4,9 +4,9 @@
 // Heading
 $_['heading_title']     = 'Çevrimiçi Müşteri Raporu';
 
-// Text 
+// Text
 $_['text_guest']        = 'Misafir';
- 
+
 // Column
 $_['column_ip']         = 'IP';
 $_['column_customer']   = 'Müşteri';

@@ -19,8 +19,8 @@ $_['text_currency']						= 'Para Birimi';
 $_['text_customer']						= 'Müşteriler';
 $_['text_customer_group']				= 'Müşteri Grupları';
 $_['text_customer_ban_ip']				= 'Engellenen IP Adresleri';
-$_['text_dashboard']					= 'Kontrol Paneli';
 $_['text_custom_field']					= 'Özel Alanlar';
+$_['text_dashboard']					= 'Kontrol Paneli';
 $_['text_design']						= 'Tasarım';
 $_['text_download']						= 'İndirilebilir Ürünler';
 $_['text_error_log']					= 'Hata Günlükleri';
@@ -91,7 +91,6 @@ $_['text_openbay_items']				= 'Ögeleri Yönet';
 $_['text_openbay_ebay']					= 'eBay';
 $_['text_openbay_amazon']				= 'Amazon (EU)';
 $_['text_openbay_amazonus']				= 'Amazon (US)';
-$_['text_openbay_play']					= 'Play.com (EU)';
 $_['text_openbay_settings']				= 'Ayarlar';
 $_['text_openbay_links']				= 'Öğe Bağlantıları';
 $_['text_openbay_report_price']			= 'Fiyatlandırma Raporu';
@@ -99,5 +98,5 @@ $_['text_openbay_order_import']			= 'Sipariş Aktar';
 
 $_['text_paypal_manage']				= 'PayPal';
 $_['text_paypal_search']				= 'Arama';
-$_['text_recurring_profile']			= 'Yenilenen Profiller';
+$_['text_recurring_profile']			= 'Tekrarlayan Profiller';
 ?>

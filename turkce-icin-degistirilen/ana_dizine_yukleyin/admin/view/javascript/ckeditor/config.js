@@ -12,7 +12,7 @@ CKEDITOR.editorConfig = function( config ) {
 	config.resize_enabled = true;
 	config.htmlEncodeOutput = false;
 	config.entities = false;
-	config.extraPlugins = 'wordcount,codemirror';
+	config.extraPlugins = 'codemirror';
 	config.codemirror_theme = 'rubyblue';
 
 	config.toolbar = 'Custom';

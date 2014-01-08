@@ -3,7 +3,7 @@
 
 // Heading
 $_['heading_title']     = 'Ürün Karşılaştırma';
- 
+
 // Text
 $_['text_product']      = 'Ürün Detayları';
 $_['text_name']         = 'Ürün';

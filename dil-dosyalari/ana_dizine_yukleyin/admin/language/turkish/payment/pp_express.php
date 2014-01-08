@@ -4,7 +4,7 @@
 // Heading
 $_['heading_title']       				= 'PayPal Express Checkout';
 
-// Text 
+// Text
 $_['text_payment']        				= 'Ödeme Metodları';
 $_['text_success']        				= 'Başarılı: PayPal Express hesap detayları başarılı bir şekilde değiştirildi!';
 $_['text_pp_express'] 	  				= '<a href=https://www.paypal.com/tr/mrb/pal=YS4L83BNSEC6A" taget="_blank"><img src="view/image/payment/paypal.png" alt="PayPal" title="PayPal" style="border: 1px solid #EEEEEE;" /></a>';
@@ -28,11 +28,11 @@ $_['entry_signature']     				= 'API İmzası:';
 $_['entry_test']          				= 'Test(Sandbox) Modu:';
 $_['entry_method']       				= 'İşlem Yöntemi:';
 $_['entry_order_status']  				= 'Sipariş Durumu:';
-$_['entry_geo_zone']      				= 'Genel Bölge:';
+$_['entry_geo_zone']      				= 'Bölge:';
 $_['entry_status']        				= 'Durumu:';
 $_['entry_sort_order']    				= 'Sıralama:';
 $_['entry_icon_sort_order']             = 'Simge Sıralama:';
-$_['entry_debug']                       = 'Hata Günlüğü:';
+$_['entry_debug']                       = 'Hata Kayıtları:';
 $_['entry_total']         				= 'Toplam:<br /><span class="help">Bu ödeme metodunun aktif olması için toplam sipariş miktarını giriniz</span>';
 $_['entry_currency']                    = 'Varsayılan Para Birimi<span class="help">İşlem aramaları için kullanılır</span>';
 $_['entry_profile_cancellation']        = 'Müşterilerin profilleri iptal etmesine izin ver.';
@@ -61,8 +61,8 @@ $_['entry_page_colour']                 = 'Sayfa Arkaplan Rengi:<span class="hel
 
 // Error
 $_['error_permission']					= 'Uyarı: PayPal Express Checkout ödeme metodunu düzenleme iznine sahip değilsiniz!';
-$_['error_username']      				= 'API kullanıcı adı gerekli!'; 
-$_['error_password']      				= 'API parolası gerekli!'; 
+$_['error_username']      				= 'API kullanıcı adı gerekli!';
+$_['error_password']      				= 'API parolası gerekli!';
 $_['error_signature']     				= 'API imzası gerekli!';
 $_['error_data']                        = 'Eksik veri isteği!';
 $_['error_timeout']                     = 'İstek zaman aşımına uğradı!';

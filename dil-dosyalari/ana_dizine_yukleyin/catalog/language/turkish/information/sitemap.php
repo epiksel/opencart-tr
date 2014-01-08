@@ -3,7 +3,7 @@
 
 // Heading
 $_['heading_title']    = 'Site Haritası';
- 
+
 // Text
 $_['text_special']     = 'Kampanyalar';
 $_['text_account']     = 'Hesabım';

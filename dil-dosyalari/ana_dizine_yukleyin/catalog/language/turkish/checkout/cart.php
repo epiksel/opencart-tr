@@ -1,7 +1,7 @@
 <?php
 /* Turkceye Ceviren eka7a - http://www.e-piksel.com */
 
-// Heading  
+// Heading
 $_['heading_title']				= 'Alışveriş Sepetim';
 
 // Text
@@ -25,20 +25,20 @@ $_['text_shipping_method']		= 'Lütfen bu siparişinizde kullanmak istediğiniz 
 $_['text_empty']				= 'Alışveriş sepetiniz boş!';
 
 $_['text_until_cancelled']		= 'until cancelled';
-$_['text_recurring_item']		= 'Recurring item';
-$_['text_payment_profile']		= 'Payment Profile';
-$_['text_trial_description']	= '%s every %d %s(s) for %d payment(s) then';
-$_['text_payment_description']	= '%s every %d %s(s) for %d payment(s)';
+$_['text_recurring_item']		= 'Tekrarlanan Ödeme';
+$_['text_payment_profile']		= 'Ödeme Profili';
+$_['text_trial_description']	= '%s her %d %s için toplam %d ödemeden sonra';
+$_['text_payment_description']	= '%s her %d %s için toplam %d ödeme';
 $_['text_payment_until_canceled_description']	= '%s every %d %s(s) until canceled';
-$_['text_day']					= 'day';
-$_['text_week']					= 'week';
-$_['text_semi_month']			= 'half-month';
-$_['text_month']				= 'month';
-$_['text_year']					= 'year';
+$_['text_day']					= 'gün';
+$_['text_week']					= 'hafta';
+$_['text_semi_month']			= 'yarı ay';
+$_['text_month']				= 'ay';
+$_['text_year']					= 'yıl';
 
-$_['text_trial']				= '%s every %s %s for %s payments then ';
-$_['text_recurring']			= '%s every %s %s';
-$_['text_length']				= ' for %s payments';
+$_['text_trial']				= '%s her %s %s için toplam %s ödemeden sonra ';
+$_['text_recurring']			= '%s her %s %s';
+$_['text_length']				= ' için %s ödeme';
 
 // Column
 $_['column_image']				= 'Resim';
@@ -58,18 +58,18 @@ $_['entry_postcode']			= 'Posta Kodu:';
 
 // Error
 $_['error_stock']				= '<span style="color:#F00; font-weight:bold;">***</span> işaretli ürünler stokta yok ya da istenilen miktarda bulunmuyor!';
-$_['error_minimum']				= '%s ürünü için asgari %s adet sipariş vermeniz gerekiyor!';	
+$_['error_minimum']				= '%s ürünü için asgari %s adet sipariş vermeniz gerekiyor!';
 $_['error_required']			= '%s gerekli!';
 $_['error_product']				= 'Uyarı: Alışveriş sepetinizde ürün bulunmamaktadır!';
 $_['error_coupon']				= 'Uyarı: Kupon kodunuz geçersiz, süresi ya da kullanım limiti dolmuş!';
 $_['error_voucher']				= 'Uyarı: Hediye çeki geçersiz ya da daha önce kullanılmış!';
-$_['error_reward']				= 'Uyarı: Lütfen kullanmak istediğiniz puanı giriniz!';	
+$_['error_reward']				= 'Uyarı: Lütfen kullanmak istediğiniz puanı giriniz!';
 $_['error_points']				= 'Uyarı: %s puanınız yok!';
 $_['error_maximum']				= 'Uyarı: En fazla uygulanabilir puan %s!';
 $_['error_postcode']			= 'Posta kodu 2 ile 10 karakter arasında olmalıdır!';
 $_['error_country']				= 'Lütfen bir ülke seçiniz!';
-$_['error_zone']				= 'Lütfen bir şehir / eyalet seçiniz!';	
+$_['error_zone']				= 'Lütfen bir şehir / eyalet seçiniz!';
 $_['error_shipping']			= 'Uyarı: Kargo metodu gerekli!';
 $_['error_no_shipping']			= 'Uyarı: Kullanılabilir kargo metodu yok. Lütfen yardım için bizimle <a href="%s">iletişime</a> geçiniz!';
-$_['error_profile_required']	= 'Please select a payment profile!';
+$_['error_profile_required']	= 'Lütfen ödeme profili seçiniz!';
 ?>

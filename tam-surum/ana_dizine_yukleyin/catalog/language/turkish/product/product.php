@@ -17,7 +17,7 @@ $_['text_option']       = 'Mevcut Seçenekler:';
 $_['text_qty']          = 'Miktar:';
 $_['text_minimum']      = 'Satın alabilmek için asgari miktar: %s';
 $_['text_or']           = 'ya da';
-$_['text_reviews']      = '%s yorum'; 
+$_['text_reviews']      = '%s yorum';
 $_['text_write']        = 'Yorum Yap';
 $_['text_no_reviews']   = 'Bu ürün için daha önce yorum yapılmadı.';
 $_['text_on']           = ' tarih: ';
@@ -28,10 +28,10 @@ $_['text_upload']       = 'Dosyanız başarıyla yüklendi!';
 $_['text_wait']         = 'Lütfen bekleyiniz!';
 $_['text_tags']         = 'Etiketler:';
 $_['text_error']        = 'Ürün bulunamadı!';
-$_['text_payment_profile']	= 'Ödeme Profilleri';
 
-$_['text_trial_description']	= '%s every %d %s(s) for %d payment(s) then';
-$_['text_payment_description']	= '%s every %d %s(s) for %d payment(s)';
+$_['text_payment_profile']		= 'Ödeme Profilleri';
+$_['text_trial_description']	= '%s her %d %s için toplam %d ödemeden sonra';
+$_['text_payment_description']	= '%s her %d %s için toplam %d ödeme';
 $_['text_payment_until_canceled_description'] = '%s every %d %s(s) until canceled';
 $_['text_day']					= 'gün';
 $_['text_week']					= 'hafta';
@@ -49,7 +49,7 @@ $_['entry_captcha'] 	= 'Doğrulama kodunu giriniz:';
 
 // Tabs
 $_['tab_description']   = 'Açıklama';
-$_['tab_attribute']     = 'Özellikler'; 
+$_['tab_attribute']     = 'Özellikler';
 $_['tab_review']        = 'Yorumlar (%s)';
 $_['tab_related']       = 'Benzer Ürünler';
 

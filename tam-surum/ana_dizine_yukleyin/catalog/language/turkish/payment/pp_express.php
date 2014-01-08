@@ -17,7 +17,7 @@ $_['error_too_many_failures']       = 'Ödemeniz bir çok defa başarısız oldu
 // Express confirm page
 $_['express_text_title']            = 'Siparişi Onayla';
 $_['express_button_coupon']         = 'Ekle';
-$_['express_button_confirm']        = 'Onayla';
+$_['express_button_confirm']        = 'Siparişi Onaylıyorum';
 $_['express_button_login']          = 'PayPal için devam ediliyor';
 $_['express_button_shipping']       = 'Teslimat Güncelle';
 $_['express_entry_coupon']          = 'Kupon kodu giriniz:';

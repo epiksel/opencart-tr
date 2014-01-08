@@ -4,13 +4,13 @@
 // Heading
 $_['heading_title']      = 'WordPay';
 
-// Text 
+// Text
 $_['text_payment']       = 'Ödeme Metodları';
 $_['text_success']       = 'Başarılı: WordPay hesap detayları başarılı bir şekilde değiştirildi!';
 $_['text_successful']    = 'Açık - Daima Başarılı';
 $_['text_declined']      = 'Açık - Daima Başarısız';
 $_['text_off']           = 'Kapalı';
-      
+
 // Entry
 $_['entry_merchant']     = 'Merchant ID:';
 $_['entry_password']     = 'Payment Response Password:<br /><span class="help">This has to be set in the WordPay control panel.</span>';

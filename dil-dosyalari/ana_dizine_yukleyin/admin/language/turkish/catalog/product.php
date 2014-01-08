@@ -18,7 +18,7 @@ $_['text_percent']           = 'Yüzde';
 $_['text_amount']            = 'Sabit Tutar';
 
 $_['text_recurring_help']    = 'Yinelenen tutarlar, sıklık ve döngüleri tarafından hesaplanır.<br />Örneğin eğer sıklık olarak "hafta" ve döngü olarak "2" kullanıyorsanız, müşteri her iki haftada bir fatura edilecektir.<br />The length is the number of times the user will make a payment, set this to 0 if you want payments until they are cancelled.';
-$_['text_recurring_title']   = 'Yenilenen Ödemeler';
+$_['text_recurring_title']   = 'Tekrarlayan Ödemeler';
 $_['text_recurring_trial']   = 'Deneme Süresi';
 $_['text_length_day']        = 'Gün';
 $_['text_length_week']       = 'Hafta';
@@ -87,16 +87,16 @@ $_['entry_reward']           = 'Ödül Puanı:';
 $_['entry_layout']           = 'Bölümde Geçersiz Kıl:';
 $_['entry_profile']          = 'Profil:';
 
-$_['entry_recurring']        = 'Yenilenen Fatura:';
-$_['entry_recurring_price']  = 'Yenileme Ücreti:';
-$_['entry_recurring_freq']   = 'Yenileme Sıklığı:';
-$_['entry_recurring_cycle']  = 'Yenileme Döngüsü:<span class="help">Fatura döngüsü, 1 ya da daha fazla</span>';
-$_['entry_recurring_length'] = 'Yenileme Uzunluğu:<span class="help">0 = iptal edilene kadar</span>';
+$_['entry_recurring']        = 'Tekrarlayan Fatura:';
+$_['entry_recurring_price']  = 'Tekrarlama Ücreti:';
+$_['entry_recurring_freq']   = 'Tekrarlama Sıklığı:';
+$_['entry_recurring_cycle']  = 'Tekrarlama Döngüsü:<span class="help">Fatura döngüsü, 1 ya da daha fazla</span>';
+$_['entry_recurring_length'] = 'Tekrarlama Uzunluğu:<span class="help">0 = iptal edilene kadar</span>';
 $_['entry_trial']            = 'Deneme Süresi:';
-$_['entry_trial_price']      = 'Deneme Yenileme Fiyatı:';
-$_['entry_trial_freq']       = 'Deneme Yenileme Sıklığı:';
-$_['entry_trial_cycle']      = 'Deneme Yenileme Döngüsü:<span class="help">Fatura döngüsü, 1 ya da daha fazla</span>';
-$_['entry_trial_length']     = 'Deneme Yenileme Uzunluğu:';
+$_['entry_trial_price']      = 'Deneme Tekrarlama Fiyatı:';
+$_['entry_trial_freq']       = 'Deneme Tekrarlama Sıklığı:';
+$_['entry_trial_cycle']      = 'Deneme Tekrarlama Döngüsü:<span class="help">Fatura döngüsü, 1 ya da daha fazla</span>';
+$_['entry_trial_length']     = 'Deneme Tekrarlama Uzunluğu:';
 
 // Error
 $_['error_warning']     	 = 'Uyarı: Oluşan hatalar için lütfen formu dikkatli kontrol ediniz!';

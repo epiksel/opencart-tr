@@ -1,7 +1,7 @@
 <?php
 /* Turkceye Ceviren eka7a - http://www.e-piksel.com */
 
-// Heading 
+// Heading
 $_['heading_title']                  = 'Kasaya Git';
 
 // Text
@@ -32,20 +32,20 @@ $_['text_shipping_method']           = 'Siparişinizde kullanılacak kargo metod
 $_['text_payment_method']            = 'Siparişinizde kullanılacak ödeme metodunu seçiniz.';
 $_['text_comments']                  = 'Siparişiniz Hakkında Bir Açıklama Ekleyebilirsiniz';
 
-$_['text_recurring_item']            = 'Recurring item';
-$_['text_payment_profile']           = 'Payment Profile';
-$_['text_trial_description']         = '%s every %d %s(s) for %d payment(s) then';
-$_['text_payment_description']       = '%s every %d %s(s) for %d payment(s)';
+$_['text_recurring_item']            = 'Tekrarlayan Ödeme';
+$_['text_payment_profile']           = 'Ödeme Profili';
+$_['text_trial_description']         = '%s her %d %s için toplam %d ödemeden sonra';
+$_['text_payment_description']       = '%s her %d %s için toplam %d ödeme';
 $_['text_payment_until_canceled_description'] = '%s every %d %s(s) until canceled';
-$_['text_day']                       = 'day';
-$_['text_week']                      = 'week';
-$_['text_semi_month']                = 'half-month';
-$_['text_month']                     = 'month';
-$_['text_year']                      = 'year';
+$_['text_day']                       = 'gün';
+$_['text_week']                      = 'hafta';
+$_['text_semi_month']                = 'yarı ay';
+$_['text_month']                     = 'ay';
+$_['text_year']                      = 'yıl';
 
-$_['text_trial']					 = '%s every %s %s for %s payments then ';
-$_['text_recurring']                 = '%s every %s %s';
-$_['text_length']                    = ' for %s payments';
+$_['text_trial']					 = '%s her %s %s için toplam %s ödemeden sonra ';
+$_['text_recurring']                 = '%s her %s %s';
+$_['text_length']                    = ' için %s ödeme';
 
 // Column
 $_['column_name']                    = 'Ürün Adı';
@@ -79,7 +79,7 @@ $_['entry_shipping'] 	             = 'Fatura ve Teslimat adresimi aynı kullan.'
 // Error
 $_['error_warning']                  = 'Siparişiniz işlenirken bir sorun oluştu! Sorun devam ederse farklı bir ödeme metodu seçip tekar deneyiniz ya da mağaza sahibi ile iletişime geçmek için <a href="%s">buraya tıklayınız</a>.';
 $_['error_login']                    = 'Uyarı: E-Posta Adresi ve/ya da parolanız yanlış';
-$_['error_approved']                 = 'Uyarı: Oturum açabilmek için hesabınızın onaylanması gereklidir.'; 
+$_['error_approved']                 = 'Uyarı: Oturum açabilmek için hesabınızın onaylanması gereklidir.';
 $_['error_exists']                   = 'Uyarı: E-Posta adresi ile daha önce kayıt olunmuştur!';
 $_['error_firstname']                = 'Ad alanı 1 ile 32 karakter arasında olmalı!';
 $_['error_lastname']                 = 'Soyad alanı 1 ile 32 karakter arasında olmalı!';

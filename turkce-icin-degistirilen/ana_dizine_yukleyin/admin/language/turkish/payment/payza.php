@@ -4,10 +4,10 @@
 // Heading
 $_['heading_title']      = 'Payza';
 
-// Text 
+// Text
 $_['text_payment']       = 'Ödeme Metodları';
 $_['text_success']       = 'Başarılı: Payza hesap detayları başarılı bir şekilde değiştirildi!';
-      
+
 // Entry
 $_['entry_merchant']     = 'Merchant ID:';
 $_['entry_security']     = 'Güvenlik Kodu:';

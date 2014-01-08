@@ -1,7 +1,7 @@
 <?php
 /* Turkceye Ceviren eka7a - http://www.e-piksel.com */
 
-// Heading 
+// Heading
 $_['heading_title']    = 'Hesabım';
 
 // Text
@@ -19,5 +19,5 @@ $_['text_download']    = 'İndirilebilir Ürünlerim';
 $_['text_return']      = 'Ürün İade Taleplerim';
 $_['text_transaction'] = 'Bakiye İşlemlerim';
 $_['text_newsletter']  = 'Bülten Aboneliği';
-$_['text_recurring']   = 'Yenilenen Ödemeler';
+$_['text_recurring']   = 'Tekrarlayan Ödemeler';
 ?>
