@@ -1,0 +1,42 @@
+# Config and Htaccess Files
+/tam-surum/ana_dizine_yukleyin/.htaccess
+/tam-surum/ana_dizine_yukleyin/config.php
+/tam-surum/ana_dizine_yukleyin/admin/config.php
+
+# System Cache Files
+/tam-surum/ana_dizine_yukleyin/system/cache/*
+!/tam-surum/ana_dizine_yukleyin/system/cache/index.html
+
+# Image File
+!/tam-surum/ana_dizine_yukleyin/image/no_image.jpg
+
+# Image Cache Files
+/tam-surum/ana_dizine_yukleyin/image/cache/*
+!/tam-surum/ana_dizine_yukleyin/image/cache/index.html
+
+# Modification Files
+/tam-surum/ana_dizine_yukleyin/system/modification/*
+!/tam-surum/ana_dizine_yukleyin/system/modification/index.html
+
+# Templates Files
+/tam-surum/ana_dizine_yukleyin/image/templates/*
+/tam-surum/ana_dizine_yukleyin/image/templates/default.jpg
+
+# Download Files
+/tam-surum/ana_dizine_yukleyin/system/download/*
+!/tam-surum/ana_dizine_yukleyin/system/download/index.html
+
+!/tam-surum/ana_dizine_yukleyin/data/index.html
+
+# Flags 
+# remove sharp char if you want to add flags to gitignore
+# /tam-surum/ana_dizine_yukleyin/flags/*
+
+# Log Files
+/tam-surum/ana_dizine_yukleyin/system/logs/*
+!/tam-surum/ana_dizine_yukleyin/system/logs/index.html
+
+# If you want to ignore install file use following lines [on development mode]
+# /tam-surum/ana_dizine_yukleyin/backup.install/*
+# /tam-surum/ana_dizine_yukleyin/install/*
+
