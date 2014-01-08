@@ -17,5 +17,5 @@ $_['entry_name']       = 'İade Eylem Adı';
 // Error
 $_['error_permission'] = 'Uyarı: İade eylemlerini düzenleme iznine sahip değilsiniz!';
 $_['error_name']       = 'İade Eylem Adı 3 ile 64 karakter arasında olmalı!';
-$_['error_return']     = 'Uyarı: Bu geri İade eylemini silemezsiniz. Bu iade eylemi %s iadeli ürün tarafından kullanılıyor!';
+$_['error_return']     = 'Uyarı: Bu geri İade eylemini silemezsiniz, %s iadeli ürün tarafından kullanılıyor!';
 ?>

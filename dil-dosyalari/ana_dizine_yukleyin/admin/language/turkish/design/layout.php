@@ -20,9 +20,9 @@ $_['entry_route']       = 'Yol';
 // Error
 $_['error_permission']  = 'Uyarı: Bölümleri düzenleme iznine sahip değilsiniz!';
 $_['error_name']        = 'Bölüm Adı 3 ile 64 karakter arasında olmalı!';
-$_['error_default']     = 'Uyarı: Bu bölümü silemezsiniz. Bu bölüm varsayılan mağaza bölümü olarak kullanılıyor!';
-$_['error_store']       = 'Uyarı: Bu bölümü silemezsiniz. Bu bölüm %s mağaza tarafından kullanılıyor!';
-$_['error_product']     = 'Uyarı: Bu bölümü silemezsiniz. Bu bölüm %s ürün tarafından kullanılıyor!';
-$_['error_category']    = 'Uyarı: Bu bölümü silemezsiniz. Bu bölüm %s kategori tarafından kullanılıyor!';
-$_['error_information'] = 'Uyarı: Bu bölümü silemezsiniz. Bu bölüm %s bilgi sayfası tarafından kullanılıyor!';
+$_['error_default']     = 'Uyarı: Bu bölümü silemezsiniz, varsayılan mağaza bölümü olarak kullanılıyor!';
+$_['error_store']       = 'Uyarı: Bu bölümü silemezsiniz, %s mağaza tarafından kullanılıyor!';
+$_['error_product']     = 'Uyarı: Bu bölümü silemezsiniz, %s ürün tarafından kullanılıyor!';
+$_['error_category']    = 'Uyarı: Bu bölümü silemezsiniz, %s kategori tarafından kullanılıyor!';
+$_['error_information'] = 'Uyarı: Bu bölümü silemezsiniz, %s bilgi sayfası tarafından kullanılıyor!';
 ?>

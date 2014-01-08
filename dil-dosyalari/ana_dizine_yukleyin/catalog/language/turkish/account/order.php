@@ -2,7 +2,7 @@
 /* Turkceye Ceviren eka7a - http://www.e-piksel.com */
 
 // Heading
-$_['heading_title']         = 'Sipariş Geçmişim';
+$_['heading_title']         = 'Siparişlerim';
 
 // Text
 $_['text_account']          = 'Hesabım';

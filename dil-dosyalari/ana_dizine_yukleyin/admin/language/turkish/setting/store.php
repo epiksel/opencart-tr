@@ -109,5 +109,5 @@ $_['error_image_wishlist']			= 'Alışveriş listesi için resim boyutları gere
 $_['error_image_cart']				= 'Sepetim sayfası için resim boyutları gerekli!';
 $_['error_image_location']			= 'Mağaza resim boyutları gerekli!';
 $_['error_default']					= 'Uyarı: Varsayılan mağazayı silemezsiniz!';
-$_['error_store']					= 'Uyarı: Bu mağazayı silemezsiniz. Bu mağaza %s sipariş tarafından kullanılıyor!';
+$_['error_store']					= 'Uyarı: Bu mağazayı silemezsiniz, %s sipariş tarafından kullanılıyor!';
 ?>

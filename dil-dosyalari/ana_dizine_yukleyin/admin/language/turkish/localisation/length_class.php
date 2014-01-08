@@ -25,6 +25,6 @@ $_['help_value']       = 'Varsayılan ağırlık birim değerini 1.00000 olarak 
 $_['error_permission'] = 'Uyarı: Uzunluk sınıflarını düzenleme iznine sahip değilsiniz!';
 $_['error_title']      = 'Uzunluk Başlığı 3 ile 32 karakter arasında olmalı!';
 $_['error_unit']       = 'Uzunluk Birimi 1 ile 4 karakter arasında olmalı!';
-$_['error_default']    = 'Uyarı: Bu uzunluğu silemezsiniz. Bu uzunluk mağzanızın varsayılan uzunluk birimidir!';
-$_['error_product']    = 'Uyarı: Bu uzunluğu silemezsiniz. Bu uzunluk birimi %s ürün tarafından kullanılıyor!';
+$_['error_default']    = 'Uyarı: Bu uzunluğu silemezsiniz, varsayılan uzunluk birimi tarafından kullanılıyor!';
+$_['error_product']    = 'Uyarı: Bu uzunluğu silemezsiniz, %s ürün tarafından kullanılıyor!';
 ?>

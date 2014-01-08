@@ -29,5 +29,5 @@ $_['help_keyword']		 = 'Boşluk kullanmayın ve benzersiz kelimeler kullandığ�
 // Error
 $_['error_permission']   = 'Uyarı: Üreticileri düzenleme iznine sahip değilsiniz!';
 $_['error_name']         = 'Üretici Adı 3 ile 64 karakter arasında olmalı!';
-$_['error_product']      = 'Uyarı: Bu üreticiyi silemezsiniz. Bu üretici %s ürün ile ilişkilidir!';
+$_['error_product']      = 'Uyarı: Bu üreticiyi silemezsiniz, %s ürün tarafından kullanılıyor!';
 ?>

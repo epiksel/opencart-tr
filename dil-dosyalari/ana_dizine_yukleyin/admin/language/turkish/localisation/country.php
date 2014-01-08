@@ -27,10 +27,10 @@ $_['help_address_format']     = 'Ad = {firstname}<br />Soyad = {lastname}<br />�
 // Error
 $_['error_permission']        = 'Uyarı: Ülkeleri düzenleme iznine sahip değilsiniz!';
 $_['error_name']              = 'Ülke Adı 3 ile 128 karakter arasında olmalı!';
-$_['error_default']           = 'Uyarı: Bu ülkeyi silemezsiniz. Bu ükle varsayılan mağaza tarafından kullanılıyor!';
-$_['error_store']          	  = 'Uyarı: Bu ülkeyi silemezsiniz. Bu ükle %s mağaza tarafından kullanılıyor!';
-$_['error_address']           = 'Uyarı: Bu ülkeyi silemezsiniz. Bu ükle %s adres defterinde kullanılıyor!';
-$_['error_affiliate']         = 'Uyarı: Bu ülkeyi silemezsiniz. Bu ükle %s ortak tarafından kullanılıyor!';
-$_['error_zone']              = 'Uyarı: Bu ülkeyi silemezsiniz. Bu ülke %s şehirde kullanılıyor!';
-$_['error_zone_to_geo_zone']  = 'Uyarı: Bu ülkeyi silemezsiniz. Bu ülke %s bölgede kullanılıyor!';
+$_['error_default']           = 'Uyarı: Bu ülkeyi silemezsiniz, varsayılan mağaza tarafından kullanılıyor!';
+$_['error_store']          	  = 'Uyarı: Bu ülkeyi silemezsiniz, %s mağaza tarafından kullanılıyor!';
+$_['error_address']           = 'Uyarı: Bu ülkeyi silemezsiniz, %s adres defterinde kullanılıyor!';
+$_['error_affiliate']         = 'Uyarı: Bu ülkeyi silemezsiniz, %s ortak tarafından kullanılıyor!';
+$_['error_zone']              = 'Uyarı: Bu ülkeyi silemezsiniz, %s şehirde kullanılıyor!';
+$_['error_zone_to_geo_zone']  = 'Uyarı: Bu ülkeyi silemezsiniz, %s bölgede kullanılıyor!';
 ?>
