@@ -7,13 +7,13 @@
   </ul>
   <div class="row"><?php echo $column_left; ?>
     <?php if ($column_left && $column_right) { ?>
-    <?php $cols = 6; ?>
+    <?php $class = 'col-sm-6'; ?>
     <?php } elseif ($column_left || $column_right) { ?>
-    <?php $cols = 9; ?>
+    <?php $class = 'col-sm-9'; ?>
     <?php } else { ?>
-    <?php $cols = 12; ?>
-    <?php } ?>  
-    <div id="content" class="col-sm-<?php echo $cols; ?>"><?php echo $content_top; ?>
+    <?php $class = 'col-sm-12'; ?>
+    <?php } ?>
+    <div id="content" class="<?php echo $class; ?>"><?php echo $content_top; ?>
       <h1><?php echo $heading_title; ?></h1>
       <p><?php echo $text_total; ?> <b><?php echo $total; ?></b>.</p>
       <div class="table-responsive">
@@ -46,7 +46,10 @@
           </tbody>
         </table>
       </div>
-      <div class="text-right"><?php echo $pagination; ?></div>
+      <div class="row">
+        <div class="col-sm-6 text-left"><?php echo $pagination; ?></div>
+        <div class="col-sm-6 text-right"><?php echo $results; ?></div>
+      </div>
       <div class="buttons clearfix">
         <div class="pull-right"><a href="<?php echo $continue; ?>" class="btn btn-primary"><?php echo $button_continue; ?></a></div>
       </div>

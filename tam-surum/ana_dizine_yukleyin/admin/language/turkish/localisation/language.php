@@ -2,10 +2,10 @@
 /* Turkceye Ceviren eka7a - http://www.e-piksel.com */
 
 // Heading
-$_['heading_title']     = 'Diller';  
+$_['heading_title']     = 'Diller';
 
 // Text
-$_['text_success']      = 'Başarılı: Diller başarılı bir şekilde değiştirildi!'; 
+$_['text_success']      = 'Başarılı: Diller başarılı bir şekilde değiştirildi!';
 
 // Column
 $_['column_name']       = 'Dil Adı';
@@ -39,8 +39,7 @@ $_['error_locale']      = 'Yer gerekli!';
 $_['error_image']       = 'Resim Dosya Adı 3 ile 64 karakter arasında olmalı!';
 $_['error_directory']   = 'Klasör gerekli!';
 $_['error_filename']    = 'Dosya Adı 3 ile 64 karakter arasında olmalı!';
-$_['error_default']     = 'Uyarı: Bu dili silemezsiniz. Bu dil mağazanızın varsayılan dilidir!';
-$_['error_admin']       = 'Uyarı: Bu dili silemezsiniz. Bu dil hala yönetim dili olarak kullanılıyor!';
-$_['error_store']       = 'Uyarı: Bu dili silemezsiniz. Bu dil %s mağaza tarafından kullanılıyor!';
-$_['error_order']       = 'Uyarı: Bu dili silemezsiniz. Bu dil %s sipariş tarafından kullanılıyor!';
-?>
+$_['error_default']     = 'Uyarı: Bu dili silemezsiniz, varsayılan mağaza tarafından kullanılıyor!';
+$_['error_admin']       = 'Uyarı: Bu dili silemezsiniz, yönetim dili olarak kullanılıyor!';
+$_['error_store']       = 'Uyarı: Bu dili silemezsiniz, %s mağaza tarafından kullanılıyor!';
+$_['error_order']       = 'Uyarı: Bu dili silemezsiniz, %s sipariş tarafından kullanılıyor!';

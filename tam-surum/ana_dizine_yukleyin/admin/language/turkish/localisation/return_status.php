@@ -17,6 +17,5 @@ $_['entry_name']       = 'İade Durumu Adı';
 // Error
 $_['error_permission'] = 'Uyarı: İade durumlarını düzenleme iznine sahip değilsiniz!';
 $_['error_name']       = 'İade durumu adı 3 ile 32 karakter arasında olmalı!';
-$_['error_default']    = 'Uyarı: Bu iade durumunu silemezsiniz. Bu iade durumu varsayılan iade durumu tarafından kullanılıyor!';
-$_['error_return']     = 'Uyarı: Bu iade durumunu silemezsiniz. Bu iade durumu %s iade tarafından kullanılıyor!';
-?>
+$_['error_default']    = 'Uyarı: Bu iade durumunu silemezsiniz, varsayılan iade durumu tarafından kullanılıyor!';
+$_['error_return']     = 'Uyarı: Bu iade durumunu silemezsiniz, %s iade tarafından kullanılıyor!';

@@ -4,7 +4,7 @@
 // Heading
 $_['heading_title']      	= 'Authorize.Net (AIM)';
 
-// Text 
+// Text
 $_['text_payment']       	= 'Ödeme Metodları';
 $_['text_success']      	= 'Başarılı: Authorize.Net hesap detayları başarılı bir şekilde değiştirildi!';
 $_['text_test']          	= 'Test';
@@ -28,8 +28,7 @@ $_['entry_sort_order']   	= 'Sıralama';
 // Help
 $_['help_total']		 	= 'Bu ödeme metodunun aktif olması için toplam sipariş tutarını giriniz.';
 
-// Error 
+// Error
 $_['error_permission']   	= 'Uyarı: Authorize.Net ödeme metodunu düzenleme iznine sahip değilsiniz!';
 $_['error_login']        	= 'Login ID gerekli!';
 $_['error_key']          	= 'Transaction Key gerekli!';
-?>

@@ -1,5 +1,5 @@
-<?php echo $header; ?>
-<div id="content" class="container">
+<?php echo $header; ?><?php echo $menu; ?>
+<div id="content">
   <ul class="breadcrumb">
     <?php foreach ($breadcrumbs as $breadcrumb) { ?>
     <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
@@ -9,8 +9,8 @@
     <div class="panel-heading">
       <div class="pull-right">
         <button id="button-send" class="btn btn-primary" onclick="send('index.php?route=marketing/contact/send&token=<?php echo $token; ?>');"><i class="fa fa-envelope"></i> <?php echo $button_send; ?></button>
-        <a href="<?php echo $cancel; ?>" class="btn btn-danger"><i class="fa fa-times"></i> <?php echo $button_cancel; ?></a></div>
-      <h1 class="panel-title"><i class="fa fa-envelope"></i> <?php echo $heading_title; ?></h1>
+        <a href="<?php echo $cancel; ?>" data-toggle="tooltip" title="<?php echo $button_cancel; ?>" class="btn"><i class="fa fa-reply"></i></a></div>
+      <h1 class="panel-title"><i class="fa fa-envelope fa-lg"></i> <?php echo $heading_title; ?></h1>
     </div>
     <div class="panel-body">
       <form class="form-horizontal">
@@ -54,16 +54,15 @@
           <div class="col-sm-10">
             <input type="text" name="customers" value="" placeholder="<?php echo $entry_customer; ?>" id="input-customer" class="form-control" />
             <span class="help-block"><?php echo $help_customer; ?></span>
-            <br />
-            <div id="customer" class="well well-sm"></div>
+            <div id="customer" class="well well-sm" style="height: 150px; overflow: auto;"></div>
           </div>
         </div>
         <div class="form-group to" id="to-affiliate">
-          <label class="col-sm-2 control-label" for="input-affiliate"><?php echo $entry_affiliate; ?> <span class="help-block"><?php echo $help_affiliate; ?></span></label>
+          <label class="col-sm-2 control-label" for="input-affiliate"><?php echo $entry_affiliate; ?></label>
           <div class="col-sm-10">
             <input type="text" name="affiliates" value="" placeholder="<?php echo $entry_affiliate; ?>" id="input-affiliate" class="form-control" />
-            <br />
-            <div id="affiliate" class="well well-sm"></div>
+            <span class="help-block"><?php echo $help_affiliate; ?></span>
+            <div id="affiliate" class="well well-sm" style="height: 150px; overflow: auto;"></div>
           </div>
         </div>
         <div class="form-group to" id="to-product">
@@ -71,7 +70,7 @@
           <div class="col-sm-10">
             <input type="text" name="products" value="" placeholder="<?php echo $entry_product; ?>" id="input-product" class="form-control" />
             <span class="help-block"><?php echo $help_product; ?></span>
-            <div id="product" class="well well-sm"></div>
+            <div id="product" class="well well-sm" style="height: 150px; overflow: auto;"></div>
           </div>
         </div>
         <div class="form-group required">
@@ -129,7 +128,7 @@ $('input[name=\'customers\']').autocomplete({
 	}	
 });
 
-$('#customer').delegate('.fa-minus-sign', 'click', function() {
+$('#customer').delegate('.fa-minus-circle', 'click', function() {
 	$(this).parent().remove();
 });
 
@@ -158,7 +157,7 @@ $('input[name=\'affiliates\']').autocomplete({
 	}	
 });
 
-$('#affiliate').delegate('.fa-minus-sign', 'click', function() {
+$('#affiliate').delegate('.fa-minus-circle', 'click', function() {
 	$(this).parent().remove();
 });
 
@@ -187,7 +186,7 @@ $('input[name=\'products\']').autocomplete({
 	}	
 });
 
-$('#product').delegate('.fa-minus-sign', 'click', function() {
+$('#product').delegate('.fa-minus-circle', 'click', function() {
 	$(this).parent().remove();
 });
 

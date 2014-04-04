@@ -1,5 +1,5 @@
-<?php echo $header; ?>
-<div id="content" class="container">
+<?php echo $header; ?><?php echo $menu; ?>
+<div id="content">
   <ul class="breadcrumb">
     <?php foreach ($breadcrumbs as $breadcrumb) { ?>
     <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
@@ -17,11 +17,11 @@
   <?php } ?>
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h1 class="panel-title"><i class="fa fa-puzzle-piece"></i> <?php echo $heading_title; ?></h1>
+      <h1 class="panel-title"><i class="fa fa-puzzle-piece fa-lg"></i> <?php echo $heading_title; ?></h1>
     </div>
     <div class="panel-body">
       <div class="table-responsive">
-        <table class="table table-striped table-bordered table-hover">
+        <table class="table table-bordered table-hover">
           <thead>
             <tr>
               <td class="text-left"><?php echo $column_name; ?></td>

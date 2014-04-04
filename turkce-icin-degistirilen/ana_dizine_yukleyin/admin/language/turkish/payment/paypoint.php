@@ -29,4 +29,3 @@ $_['help_total']         = 'Bu ödeme metodunun aktif olması için toplam sipar
 // Error
 $_['error_permission']   = 'Uyarı: PayPoint ödeme metodunu düzenleme iznine sahip değilsiniz!';
 $_['error_merchant']     = 'Merchant ID Gerekli!';
-?>

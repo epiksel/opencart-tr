@@ -17,4 +17,3 @@ $_['text_airmail']               = 'Airmail';
 $_['text_international_signed']  = 'International Signed';
 $_['text_airsure']               = 'Airsure';
 $_['text_surface']               = 'Surface';
-?>

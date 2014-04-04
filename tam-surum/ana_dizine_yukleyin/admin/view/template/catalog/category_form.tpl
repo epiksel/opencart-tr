@@ -1,5 +1,5 @@
-<?php echo $header; ?>
-<div id="content" class="container">
+<?php echo $header; ?><?php echo $menu; ?>
+<div id="content">
   <ul class="breadcrumb">
     <?php foreach ($breadcrumbs as $breadcrumb) { ?>
     <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
@@ -13,9 +13,9 @@
   <div class="panel panel-default">
     <div class="panel-heading">
       <div class="pull-right">
-        <button type="submit" form="form-category" class="btn btn-primary"><i class="fa fa-check"></i> <?php echo $button_save; ?></button>
-        <a href="<?php echo $cancel; ?>" class="btn btn-danger"><i class="fa fa-times"></i> <?php echo $button_cancel; ?></a></div>
-      <h1 class="panel-title"><i class="fa fa-edit"></i> <?php echo $heading_title; ?></h1>
+        <button type="submit" form="form-category" data-toggle="tooltip" title="<?php echo $button_save; ?>" class="btn"><i class="fa fa-check-circle"></i></button>
+        <a href="<?php echo $cancel; ?>" data-toggle="tooltip" title="<?php echo $button_cancel; ?>" class="btn"><i class="fa fa-reply"></i></a></div>
+      <h1 class="panel-title"><i class="fa fa-pencil-square fa-lg"></i> <?php echo $heading_title; ?></h1>
     </div>
     <div class="panel-body">
       <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form-category" class="form-horizontal">
@@ -85,13 +85,9 @@
             <div class="form-group">
               <label class="col-sm-2 control-label" for="input-filter"><?php echo $entry_filter; ?></label>
               <div class="col-sm-10">
-                <div class="input-group">
-                  <input type="text" name="filter" value="" placeholder="<?php echo $entry_filter; ?>" id="input-filter" class="form-control" />
-                  <span class="input-group-btn">
-                  <button class="btn btn-info" type="button"><i class="fa fa-question-circle fa-large"></i></button>
-                  </span> </div>
+                <input type="text" name="filter" value="" placeholder="<?php echo $entry_filter; ?>" id="input-filter" class="form-control" />
                 <span class="help-block"><?php echo $help_filter; ?></span>
-                <div id="category-filter" class="well well-sm">
+                <div id="category-filter" class="well well-sm" style="height: 150px; overflow: auto;">
                   <?php foreach ($category_filters as $category_filter) { ?>
                   <div id="category-filter<?php echo $category_filter['filter_id']; ?>"><i class="fa fa-minus-circle"></i> <?php echo $category_filter['name']; ?>
                     <input type="hidden" name="category_filter[]" value="<?php echo $category_filter['filter_id']; ?>" />
@@ -132,11 +128,7 @@
             <div class="form-group">
               <label class="col-sm-2 control-label" for="input-keyword"><?php echo $entry_keyword; ?></label>
               <div class="col-sm-10">
-                <div class="input-group">
-                  <input type="text" name="keyword" value="<?php echo $keyword; ?>" placeholder="<?php echo $entry_keyword; ?>" id="input-keyword" class="form-control" />
-                  <span class="input-group-btn">
-                  <button class="btn btn-info" type="button"><i class="fa fa-question-circle fa-large"></i></button>
-                  </span></div>
+                <input type="text" name="keyword" value="<?php echo $keyword; ?>" placeholder="<?php echo $entry_keyword; ?>" id="input-keyword" class="form-control" />
                 <span class="help-block"><?php echo $help_keyword; ?></span></div>
             </div>
             <div class="form-group">
@@ -166,7 +158,7 @@
               <label class="col-sm-2 control-label" for="input-column"><?php echo $entry_column; ?></label>
               <div class="col-sm-10">
                 <input type="text" name="column" value="<?php echo $column; ?>" placeholder="<?php echo $entry_column; ?>" id="input-column" class="form-control" />
-                <span class="help-block"><?php echo $help_column; ?></span> </div>
+                <span class="help-block"><?php echo $help_column; ?></span></div>
             </div>
             <div class="form-group">
               <label class="col-sm-2 control-label" for="input-sort-order"><?php echo $entry_sort_order; ?></label>
@@ -191,7 +183,7 @@
           </div>
           <div class="tab-pane" id="tab-design">
             <div class="table-responsive">
-              <table class="table table-striped table-bordered table-hover">
+              <table class="table table-bordered table-hover">
                 <thead>
                   <tr>
                     <td class="text-left"><?php echo $entry_store; ?></td>
@@ -294,7 +286,7 @@ $('input[name=\'filter\']').autocomplete({
 	}	
 });
 
-$('#category-filter').delegate('.fa-minus-sign', 'click', function() {
+$('#category-filter').delegate('.fa-minus-circle', 'click', function() {
 	$(this).parent().remove();
 });
 //--></script> 

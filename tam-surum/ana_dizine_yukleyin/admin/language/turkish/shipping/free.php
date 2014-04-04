@@ -19,4 +19,3 @@ $_['help_total']       = 'Ücretsiz kargo modülünü kullanılabilir duruma get
 
 // Error
 $_['error_permission'] = 'Uyarı: Ücretsiz kargoyu düzenleme iznine sahip değilsiniz!';
-?>

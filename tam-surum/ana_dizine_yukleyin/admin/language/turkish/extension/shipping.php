@@ -15,4 +15,3 @@ $_['column_action']      = 'Eylem';
 
 // Error
 $_['error_permission']  = 'Uyarı: Kargo Metodlarını değiştirme iznine sahip değilsiniz!';
-?>

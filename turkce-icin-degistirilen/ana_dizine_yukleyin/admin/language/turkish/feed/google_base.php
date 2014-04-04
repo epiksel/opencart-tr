@@ -14,4 +14,3 @@ $_['entry_data_feed']  = 'Feed Veri Adresi';
 
 // Error
 $_['error_permission'] = 'Uyarı: Google Base düzenleme iznine sahip değilsiniz!';
-?>

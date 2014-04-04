@@ -18,4 +18,3 @@ $_['column_action']     = 'Eylem';
 // Entry
 $_['entry_ip']          = 'IP';
 $_['entry_customer']    = 'Müşteri';
-?>

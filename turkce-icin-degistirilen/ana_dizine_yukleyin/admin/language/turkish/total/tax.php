@@ -14,4 +14,3 @@ $_['entry_sort_order'] = 'Sıralama';
 
 // Error
 $_['error_permission'] = 'Uyarı: Uyarı: Vergiler toplamını düzenleme iznine sahip değilsiniz!!';
-?>

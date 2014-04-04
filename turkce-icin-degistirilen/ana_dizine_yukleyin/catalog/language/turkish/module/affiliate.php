@@ -15,4 +15,3 @@ $_['text_password']    = 'Parola Değiştir';
 $_['text_payment']     = 'Ödeme Bilgilerim';
 $_['text_tracking']    = 'Takip Kodu Oluştur';
 $_['text_transaction'] = 'Bakiye İşlemlerim';
-?>

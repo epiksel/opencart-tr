@@ -40,4 +40,3 @@ $_['error_account']     		= 'Uyarı: Bu bilgi sayfası silemezsiniz mağazada gi
 $_['error_checkout']    		= 'Uyarı: Bu bilgi sayfası silemezsiniz mağazada satış sözleşmesi olarak kullanılıyor.';
 $_['error_affiliate']   		= 'Uyarı: Bu bilgi sayfası silemezsiniz mağazada ortaklık şartları olarak kullanılıyor.!';
 $_['error_store']       		= 'Uyarı: Bu bilgi sayfası silemezsiniz %s Mağaza tarafından kullanılıyor!';
-?>

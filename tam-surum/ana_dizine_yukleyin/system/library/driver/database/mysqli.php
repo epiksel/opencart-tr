@@ -15,29 +15,27 @@ final class DBMySQLi {
 	public function query($sql) {
 		$query = $this->link->query($sql);
 
-		if (!$this->link->errno){
-			if (isset($query->num_rows)) {
+		if (!$this->link->errno) {
+			if ($query instanceof mysqli_result) {
 				$data = array();
 
-				while ($row = $query->fetch_array()) {
+				while ($row = $query->fetch_assoc()) {
 					$data[] = $row;
 				}
-				
+
 				$result = new stdClass();
 				$result->num_rows = $query->num_rows;
 				$result->row = isset($data[0]) ? $data[0] : array();
 				$result->rows = $data;
-				
-				unset($data);
-				
+
 				$query->close();
-				
+
 				return $result;
-			} else{
+			} else {
 				return true;
 			}
 		} else {
-			trigger_error('Error: ' . $this->link->error . '<br />Error No: ' . $this->link->errno . '<br />' . $sql);
+			trigger_error('Error: ' . $this->link->error  . '<br />Error No: ' . $this->link->errno . '<br />' . $sql);
 		}
 	}
 
@@ -57,4 +55,3 @@ final class DBMySQLi {
 		$this->link->close();
 	}
 }
-?>

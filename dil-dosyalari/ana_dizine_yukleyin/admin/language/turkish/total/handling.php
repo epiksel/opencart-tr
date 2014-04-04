@@ -20,4 +20,3 @@ $_['help_total']       = 'Bu sipariş toplamı aktif olmadan önce sipariş topl
 
 // Error
 $_['error_permission'] = 'Uyarı: Kullanım ücreti toplamını düzenleme iznine sahip değilsiniz!';
-?>

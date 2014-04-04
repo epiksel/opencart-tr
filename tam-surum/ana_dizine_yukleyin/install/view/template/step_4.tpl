@@ -1,21 +1,25 @@
 <?php echo $header; ?>
-<h1>Adım 4 - Tamamlandı!</h1>
-<div id="column-right">
-  <ul>
-    <li>Lisans</li>
-    <li>Ön Yükleme</li>
-    <li>Yapılandırma</li>
-    <li><b>Tamamlandı</b></li>
-  </ul>
-</div>
-<div id="content">
-  <div class="alert alert-danger">install dizinini silmeyi unutmayınız!</div>
-  <p>Tebrikler! OpenCart Türkçe başarılı bir şekilde kuruldu.</p>
-  <div class="alert alert-success">
-    <div><a href="../"><img src="view/image/screenshot_1.png" alt="" /></a><br />
-      <a href="../">Mağazaya Git</a></div>
-    <div><a href="../admin/"><img src="view/image/screenshot_2.png" alt="" /></a><br />
-      <a href="../admin/">Yönetim Paneline Git</a></div>
+<div class="container">
+  <h1><?php echo $heading_step_4; ?></h1>
+  <div class="alert alert-danger"><?php echo $text_forget; ?></div>
+  <div class="row">
+    <div class="col-sm-9">
+      <p><?php echo $text_congratulation; ?></p>
+      <div class="row">
+        <div class="col-sm-6"><a href="../"><img src="view/image/screenshot-1.png" alt="" class="img-thumbnail" /></a><br />
+          <a href="../"><?php echo $text_shop; ?></a></div>
+        <div class="col-sm-6"><a href="../admin/"><img src="view/image/screenshot-2.png" alt="" class="img-thumbnail" /></a><br />
+          <a href="../admin/"><?php echo $text_login; ?></a></div>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <ul class="list-group">
+        <li class="list-group-item"><?php echo $text_license; ?></li>
+        <li class="list-group-item"><?php echo $text_installation; ?></li>
+        <li class="list-group-item"><?php echo $text_configuration; ?></li>
+        <li class="list-group-item"><b><?php echo $text_finished; ?></b></li>
+      </ul>
+    </div>
   </div>
 </div>
 <?php echo $footer; ?>

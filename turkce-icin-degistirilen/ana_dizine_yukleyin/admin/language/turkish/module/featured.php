@@ -29,4 +29,3 @@ $_['help_product']        = '(Otomatik Tamamlama)';
 // Error
 $_['error_permission']    = 'Uyarı: Sizin için Seçtiklerimiz modülünü değiştirme iznine sahip değilsiniz!';
 $_['error_image']         = 'Resim genişlik &amp; yükseklik boyutları gerekli!';
-?>

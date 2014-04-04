@@ -24,7 +24,6 @@ $_['help_approval']     = 'Müşterilerin oturum açabilmesi için kayıt oldukt
 // Error
 $_['error_permission']	= 'Uyarı: Müşteri gruplarını düzenleme iznine sahip değilsiniz!';
 $_['error_name']		= 'Uyarı: Müşteri Grup Adı 3 ile 32 karakter arasında olmalı!';
-$_['error_default']		= 'Uyarı: Bu müşteri grubunu silemezsiniz. Bu Müşteri Grubu varsayılan mağaza tarafından kullanılıyor!';
-$_['error_store']		= 'Uyarı: Bu müşteri grubunu silemezsiniz. Bu Müşteri Grubu %s mağaza tarafından kullanılıyor!';
-$_['error_customer']	= 'Uyarı: Bu müşteri grubunu silemezsiniz. Bu Müşteri Grubu %s müşteri tarafından kullanılıyor!';
-?>
+$_['error_default']		= 'Uyarı: Bu müşteri grubunu silemezsiniz, varsayılan mağaza tarafından kullanılıyor!';
+$_['error_store']		= 'Uyarı: Bu müşteri grubunu silemezsiniz, %s mağaza tarafından kullanılıyor!';
+$_['error_customer']	= 'Uyarı: Bu müşteri grubunu silemezsiniz, %s müşteri tarafından kullanılıyor!';

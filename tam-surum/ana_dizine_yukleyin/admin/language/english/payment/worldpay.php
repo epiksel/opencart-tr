@@ -5,6 +5,7 @@ $_['heading_title']      = 'WorldPay';
 // Text 
 $_['text_payment']       = 'Payment';
 $_['text_success']       = 'Success: You have modified WorldPay account details!';
+$_['text_worldpay']    = '<a target="_BLANK" href="https://business.worldpay.com/partner/opencart"><img src="view/image/payment/worldpay.png" alt="Worldpay" title="Worldpay" style="border: 1px solid #EEEEEE;" /></a>';
 $_['text_successful']    = 'On - Always Successful';
 $_['text_declined']      = 'On - Always Declined';
 $_['text_off']           = 'Off';
@@ -29,4 +30,3 @@ $_['help_total']         = 'The checkout total the order must reach before this 
 $_['error_permission']   = 'Warning: You do not have permission to modify payment WorldPay!';
 $_['error_merchant']     = 'Merchant ID Required!';
 $_['error_password']     = 'Password Required!';
-?>

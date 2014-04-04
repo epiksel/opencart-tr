@@ -12,4 +12,3 @@ $_['entry_voucher'] = 'Hediye çeki kodunuzu buraya giriniz:';
 
 // Error
 $_['error_voucher'] = 'Uyarı: Hediye çeki geçersiz ya da bakiye kadar kullanıldı!';
-?>

@@ -1,5 +1,5 @@
-<?php echo $header; ?>
-<div id="content" class="container">
+<?php echo $header; ?><?php echo $menu; ?>
+<div id="content">
   <ul class="breadcrumb">
     <?php foreach ($breadcrumbs as $breadcrumb) { ?>
     <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
@@ -13,9 +13,9 @@
   <div class="panel panel-default">
     <div class="panel-heading">
       <div class="pull-right">
-        <button type="submit" form="form-featured" class="btn btn-primary"><i class="fa fa-check"></i> <?php echo $button_save; ?></button>
-        <a href="<?php echo $cancel; ?>" class="btn btn-danger"><i class="fa fa-times"></i> <?php echo $button_cancel; ?></a></div>
-      <h1 class="panel-title"><i class="fa fa-edit"></i> <?php echo $heading_title; ?></h1>
+        <button type="submit" form="form-featured" data-toggle="tooltip" title="<?php echo $button_save; ?>" class="btn"><i class="fa fa-check-circle"></i></button>
+        <a href="<?php echo $cancel; ?>" data-toggle="tooltip" title="<?php echo $button_cancel; ?>" class="btn"><i class="fa fa-reply"></i></a></div>
+      <h1 class="panel-title"><i class="fa fa-puzzle-piece fa-lg"></i> <?php echo $heading_title; ?></h1>
     </div>
     <div class="panel-body">
       <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form-featured" class="form-horizontal">
@@ -24,7 +24,7 @@
           <div class="col-sm-10">
             <input type="text" name="product" value="" placeholder="<?php echo $entry_product; ?>" id="input-product" class="form-control" />
             <span class="help-block"><?php echo $help_product; ?></span>
-            <div id="featured-product" class="well well-sm">
+            <div id="featured-product" class="well well-sm" style="height: 150px; overflow: auto;">
               <?php foreach ($products as $product) { ?>
               <div id="featured-product<?php echo $product['product_id']; ?>"><i class="fa fa-minus-circle"></i> <?php echo $product['name']; ?>
                 <input type="hidden" value="<?php echo $product['product_id']; ?>" />
@@ -142,7 +142,7 @@ $('input[name=\'product\']').autocomplete({
 	}	
 });
 
-$('#featured-product').delegate('.fa-minus-sign', 'click', function() {
+$('#featured-product').delegate('.fa-minus-circle', 'click', function() {
 	$(this).parent().remove();
 
 	data = $.map($('#featured-product input'), function(element){

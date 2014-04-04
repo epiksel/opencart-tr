@@ -7,6 +7,7 @@ $_['direction']             = 'ltr';
 $_['date_format_short']     = 'd/m/Y';
 $_['date_format_long']      = 'l dS F Y';
 $_['time_format']           = 'h:i:s A';
+$_['datetime_format']       = 'd/m/Y H:i:s';
 $_['decimal_point']         = ',';
 $_['thousand_point']        = '.';
 
@@ -67,4 +68,3 @@ $_['error_upload_6']        = 'Uyarı: Geçici klasör eksik!';
 $_['error_upload_7']        = 'Uyarı: Dosyayı diske yazma basarısız oldu!';
 $_['error_upload_8']        = 'Uyarı: Bu uzantı türdeki dosyaları yükleyemezsiniz!';
 $_['error_upload_999']      = 'Uyarı: Kod hatası mümkün olabilir!';
-?>

@@ -27,4 +27,3 @@ $_['error_permission']  = 'Uyarı: Vergi sınıflarını düzenleme iznine sahip
 $_['error_title']       = 'Vergi sınıf başlığı 3 ile 32 karakter arasında olmalı!';
 $_['error_description'] = 'Açıklama 3 ile 255 karakter arasında olmalı!';
 $_['error_product']     = 'Uyarı: Bu vergi oranını silemezsiniz, %s ürün tarafından kullanılıyor!';
-?>

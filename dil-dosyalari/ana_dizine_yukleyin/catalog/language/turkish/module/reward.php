@@ -14,4 +14,3 @@ $_['entry_reward']   = 'Puan Kullan (En Yüksek %s)';
 $_['error_reward']   = 'Uyarı: Lütfen kullanmak istediğiniz puanı giriniz!';
 $_['error_points']   = 'Uyarı: %s puanınız yok!';
 $_['error_maximum']  = 'Uyarı: Kullanbileceğiniz en yüksek puan %s!';
-?>

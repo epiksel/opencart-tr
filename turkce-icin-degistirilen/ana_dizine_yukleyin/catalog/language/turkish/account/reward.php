@@ -1,7 +1,7 @@
 <?php
 /* Turkceye Ceviren eka7a - http://www.e-piksel.com */
 
-// Heading 
+// Heading
 $_['heading_title']      = 'Puanlarım';
 
 // Column
@@ -14,4 +14,3 @@ $_['text_account']       = 'Hesabım';
 $_['text_reward']        = 'Puanlarım';
 $_['text_total']         = 'Toplam puanınız:';
 $_['text_empty']         = 'Hiç puanınız yok!';
-?>

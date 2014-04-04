@@ -10,13 +10,13 @@
   <?php } ?>
   <div class="row"><?php echo $column_left; ?>
     <?php if ($column_left && $column_right) { ?>
-    <?php $cols = 6; ?>
+    <?php $class = 'col-sm-6'; ?>
     <?php } elseif ($column_left || $column_right) { ?>
-    <?php $cols = 9; ?>
+    <?php $class = 'col-sm-9'; ?>
     <?php } else { ?>
-    <?php $cols = 12; ?>
-    <?php } ?>  
-    <div id="content" class="col-sm-<?php echo $cols; ?>"><?php echo $content_top; ?>
+    <?php $class = 'col-sm-12'; ?>
+    <?php } ?>
+    <div id="content" class="<?php echo $class; ?>"><?php echo $content_top; ?>
       <h1><?php echo $heading_title; ?></h1>
       <p><?php echo $text_description; ?></p>
       <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" class="form-horizontal">
@@ -70,7 +70,9 @@
           <div class="form-group">
             <label class="col-sm-2 control-label" for="input-date-ordered"><?php echo $entry_date_ordered; ?></label>
             <div class="col-sm-3">
-              <input type="date" name="date_ordered" value="<?php echo $date_ordered; ?>" placeholder="<?php echo $entry_date_ordered; ?>" id="input-date-ordered" class="form-control date" />
+              <div class="input-group date"><input type="text" name="date_ordered" value="<?php echo $date_ordered; ?>" placeholder="<?php echo $entry_date_ordered; ?>" data-format="YYYY-MM-DD" id="input-date-ordered" class="form-control" /><span class="input-group-btn">
+                <button type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button>
+                </span></div>
             </div>
           </div>
         </fieldset>
@@ -184,16 +186,8 @@
     <?php echo $column_right; ?></div>
 </div>
 <script type="text/javascript"><!--
-$(document).ready(function() {
-	$('.date').datepicker({dateFormat: 'yy-mm-dd'});
+$('.date').datetimepicker({
+	pickTime: false
 });
-//--></script> 
-<script type="text/javascript"><!--
-$(document).ready(function() {
-	$('.colorbox').colorbox({
-		width: 640,
-		height: 480
-	});
-});
-//--></script> 
+//--></script>
 <?php echo $footer; ?> 

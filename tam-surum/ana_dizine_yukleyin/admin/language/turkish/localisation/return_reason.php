@@ -17,5 +17,4 @@ $_['entry_name']       = 'İade Neden Adı';
 // Error
 $_['error_permission'] = 'Uyarı: İade nedenlerini düzenleme iznine sahip değilsiniz!';
 $_['error_name']       = 'İade neden adı 3 ile 128 karakter arasında olmalı!';
-$_['error_return']     = 'Uyarı: Bu iade nedenini silemezsiniz. Bu iade nedeni %s iadeli ürün tarafından kullanılıyor!';
-?>
+$_['error_return']     = 'Uyarı: Bu iade nedenini silemezsiniz, %s iadeli ürün tarafından kullanılıyor!';

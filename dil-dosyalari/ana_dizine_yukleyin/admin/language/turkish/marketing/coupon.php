@@ -1,7 +1,7 @@
 <?php
 /* Turkceye Ceviren eka7a - http://www.e-piksel.com */
 
-// Heading  
+// Heading
 $_['heading_title']       = 'Kuponlar';
 
 // Text
@@ -53,4 +53,3 @@ $_['error_permission']    = 'Uyarı: Kuponları düzenleme iznine sahip değilsi
 $_['error_exists']        = 'Uyarı: Kupon kodu zaten kullanımda!';
 $_['error_name']          = 'Kupon Adı 3 ile 128 karakter arasında olmalı!';
 $_['error_code']          = 'Kupon kodu 3 ile 10 karakter arasında olmalı!';
-?>

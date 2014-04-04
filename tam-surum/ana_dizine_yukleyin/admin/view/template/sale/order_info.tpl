@@ -1,5 +1,5 @@
-<?php echo $header; ?>
-<div id="content" class="container">
+<?php echo $header; ?><?php echo $menu; ?>
+<div id="content">
   <ul class="breadcrumb">
     <?php foreach ($breadcrumbs as $breadcrumb) { ?>
     <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
@@ -7,8 +7,10 @@
   </ul>
   <div class="panel panel-default">
     <div class="panel-heading">
-      <div class="pull-right"><a href="<?php echo $invoice; ?>" target="_blank" class="btn btn-info"><i class="fa fa-print"></i> <?php echo $button_invoice; ?></a> <a href="<?php echo $cancel; ?>" class="btn btn-danger"><i class="fa fa-times"></i> <?php echo $button_cancel; ?></a></div>
-      <h1 class="panel-title"><i class="fa fa-info-circle"></i> <?php echo $heading_title; ?></h1>
+      <div class="pull-right">
+        <button type="button" id="button-restock" data-toggle="tooltip" data-placement="left" title="<?php echo $button_restock; ?>" class="btn"><i class="fa fa-undo"></i></button>
+        <a href="<?php echo $invoice; ?>" target="_blank" data-toggle="tooltip" title="<?php echo $button_invoice; ?>" class="btn"><i class="fa fa-print"></i></a> <a href="<?php echo $cancel; ?>" data-toggle="tooltip" title="<?php echo $button_cancel; ?>" class="btn"><i class="fa fa-reply"></i></a></div>
+      <h1 class="panel-title"><i class="fa fa-info-circle fa-lg"></i> <?php echo $heading_title; ?></h1>
     </div>
     <div class="panel-body">
       <ul class="nav nav-tabs">
@@ -25,7 +27,7 @@
       </ul>
       <div class="tab-content">
         <div class="tab-pane active" id="tab-order">
-          <table class="table table-striped table-bordered">
+          <table class="table table-bordered">
             <tr>
               <td><?php echo $text_order_id; ?></td>
               <td>#<?php echo $order_id; ?></td>
@@ -63,15 +65,9 @@
               <td><?php echo $customer_group; ?></td>
             </tr>
             <?php } ?>
-            <?php if ($customer_group) { ?>
-            <tr>
-              <td><?php echo $text_customer_group; ?></td>
-              <td><?php echo $customer_group; ?></td>
-            </tr>
-            <?php } ?>
             <tr>
               <td><?php echo $text_email; ?></td>
-               <td><a href="mailto:<?php echo $email; ?>"><?php echo $email; ?></a></td>
+              <td><a href="mailto:<?php echo $email; ?>"><?php echo $email; ?></a></td>
             </tr>
             <tr>
               <td><?php echo $text_telephone; ?></td>
@@ -85,15 +81,7 @@
             <?php } ?>
             <tr>
               <td><?php echo $text_total; ?></td>
-              <td><?php echo $total; ?>
-                <?php if ($customer && $credit) { ?>
-                <?php if (!$credit_total) { ?>
-                <span id="credit"><b>[</b> <a id="credit-add"><?php echo $button_credit_add; ?></a> <b>]</b></span>
-                <button id="button-credit-add" class="btn btn-success btn-xs"><i class="fa fa-plus-circle"></i> <?php echo $button_credit_add; ?></button>
-                <?php } else { ?>
-                <button id="button-credit-remove" class="btn btn-danger btn-xs"><i class="fa fa-minus-circle"></i> <?php echo $button_credit_remove; ?></button>
-                <?php } ?>
-                <?php } ?></td>
+              <td><?php echo $total; ?></td>
             </tr>
             <?php if ($customer && $reward) { ?>
             <tr>
@@ -168,7 +156,7 @@
           </table>
         </div>
         <div class="tab-pane" id="tab-payment">
-          <table class="table table-striped table-bordered">
+          <table class="table table-bordered">
             <tr>
               <td><?php echo $text_firstname; ?></td>
               <td><?php echo $payment_firstname; ?></td>
@@ -222,10 +210,10 @@
               <td><?php echo $payment_method; ?></td>
             </tr>
           </table>
-        </div>
+          <?php echo $payment_action; ?></div>
         <?php if ($shipping_method) { ?>
         <div class="tab-pane" id="tab-shipping">
-          <table class="table table-striped table-bordered">
+          <table class="table table-bordered">
             <tr>
               <td><?php echo $text_firstname; ?></td>
               <td><?php echo $shipping_firstname; ?></td>
@@ -284,7 +272,7 @@
         </div>
         <?php } ?>
         <div class="tab-pane" id="tab-product">
-          <table class="table table-striped table-bordered">
+          <table class="table table-bordered">
             <thead>
               <tr>
                 <td class="text-left"><?php echo $column_product; ?></td>
@@ -329,27 +317,6 @@
               <?php } ?>
             </tbody>
           </table>
-          <?php if ($downloads) { ?>
-          <h3><?php echo $text_download; ?></h3>
-          <table class="table table-striped table-bordered">
-            <thead>
-              <tr>
-                <td class="text-left"><b><?php echo $column_download; ?></b></td>
-                <td class="text-left"><b><?php echo $column_filename; ?></b></td>
-                <td class="text-right"><b><?php echo $column_remaining; ?></b></td>
-              </tr>
-            </thead>
-            <tbody>
-              <?php foreach ($downloads as $download) { ?>
-              <tr>
-                <td class="text-left"><?php echo $download['name']; ?></td>
-                <td class="text-left"><?php echo $download['filename']; ?></td>
-                <td class="text-right"><?php echo $download['remaining']; ?></td>
-              </tr>
-              <?php } ?>
-            </tbody>
-          </table>
-          <?php } ?>
         </div>
         <div class="tab-pane " id="tab-history">
           <div id="history"></div>
@@ -388,7 +355,7 @@
         </div>
         <?php if ($maxmind_id) { ?>
         <div class="tab-pane" id="tab-fraud">
-          <table class="table table-striped table-bordered">
+          <table class="table table-bordered">
             <?php if ($country_match) { ?>
             <tr>
               <td><?php echo $text_country_match; ?></td>
@@ -723,50 +690,18 @@ $(document).delegate('#button-invoice', 'click', function() {
 	});
 });
 
-$(document).delegate('#button-credit-add', 'click', function() {
+$(document).delegate('#button-restock', 'click', function() {
 	$.ajax({
-		url: 'index.php?route=sale/order/addcredit&token=<?php echo $token; ?>&order_id=<?php echo $order_id; ?>',
-		type: 'post',
+		url: 'index.php?route=sale/order/restock&token=<?php echo $token; ?>&order_id=<?php echo $order_id; ?>',
 		dataType: 'json',
 		beforeSend: function() {
-			$('#button-credit-add i').replaceWith('<i class="fa fa-spinner fa-spin"></i>');
-			$('#button-credit-add').prop('disabled', true);			
+			$('#button-restock i').replaceWith('<i class="fa fa-spinner fa-spin"></i>');
+			$('#button-restock').prop('disabled', true);			
 		},
 		complete: function() {
-			$('#button-credit-add i').replaceWith('<i class="fa fa-plus-circle"></i>');
-			$('#button-credit-add').prop('disabled', false);
-		},			
-		success: function(json) {
-			$('.alert').remove();
-			
-			if (json['error']) {
-				$('.panel').before('<div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> ' + json['error'] + '</div>');
-			}
-			
-			if (json['success']) {
-                $('.panel').before('<div class="alert alert-success"><i class="fa fa-check-circle"></i> ' + json['success'] + '</div>');
-				
-				$('.alert-success').fadeIn('slow');
-				
-				$('#button-credit-add').replaceWith('<button id="button-credit-remove" class="btn btn-danger btn-xs"><i class="fa fa-minus-circle"></i> <?php echo $button_credit_remove; ?></button>');
-			}
-		}
-	});
-});
-
-$(document).delegate('#button-credit-remove', 'click', function() {
-	$.ajax({
-		url: 'index.php?route=sale/order/removecredit&token=<?php echo $token; ?>&order_id=<?php echo $order_id; ?>',
-		type: 'post',
-		dataType: 'json',
-		beforeSend: function() {
-			$('#button-credit-remove i').replaceWith('<i class="fa fa-spinner fa-spin"></i>');
-			$('#button-credit-remove').prop('disabled', true);			
+			$('#button-restock i').replaceWith('<i class="fa fa-reply"></i>');
+			$('#button-restock').prop('disabled', false);
 		},
-		complete: function() {
-			$('#button-credit-remove i').replaceWith('<i class="fa fa-minus-circle"></i>');
-			$('#button-credit-remove').prop('disabled', false);
-		},			
 		success: function(json) {
 			$('.alert').remove();
 						
@@ -776,8 +711,6 @@ $(document).delegate('#button-credit-remove', 'click', function() {
 			
 			if (json['success']) {
                 $('.panel').before('<div class="alert alert-success"><i class="fa fa-check-circle"></i> ' + json['success'] + '</div>');
-				
-				$('#button-credit-remove').replaceWith('<button id="button-credit-add" class="btn btn-success btn-xs"><i class="fa fa-plus-circle"></i> <?php echo $button_credit_add; ?></button>');
 			}
 		}
 	});
@@ -793,7 +726,7 @@ $(document).delegate('#button-reward-add', 'click', function() {
 			$('#button-reward-add').prop('disabled', true);				
 		},
 		complete: function() {
-			$('#button-reward-add i').replaceWith('<i class="fa fa-minus-circle"></i>');
+			$('#button-reward-add i').replaceWith('<i class="fa fa-plus-circle"></i>');
 			$('#button-reward-add').prop('disabled', false);
 		},									
 		success: function(json) {
@@ -933,4 +866,4 @@ $('#button-history').on('click', function() {
 	});
 });
 //--></script> 
-<?php echo $footer; ?>
+<?php echo $footer; ?> 

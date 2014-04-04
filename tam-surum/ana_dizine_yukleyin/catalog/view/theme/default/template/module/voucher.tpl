@@ -1,5 +1,3 @@
-<?php if ($status) { ?>
-
 <div class="panel panel-default">
   <div class="panel-heading">
     <h4 class="panel-title"><a href="#collapse-voucher" data-toggle="collapse" data-parent="#accordion" class="accordion-toggle"><?php echo $heading_title; ?> <i class="fa fa-caret-down"></i></a></h4>
@@ -14,34 +12,33 @@
         </span> </div>
       <script type="text/javascript"><!--
 $('#button-voucher').on('click', function() {
-	$.ajax({
-		url: 'index.php?route=module/voucher/voucher',
-		type: 'post',
-		data: 'voucher=' + encodeURIComponent($('input[name=\'voucher\']').val()),
-		dataType: 'json',    
-		beforeSend: function() {
-			$('#button-voucher').button('loading');
-		},
-		complete: function() {
-			$('#button-voucher').button('reset');
-		},
-		success: function(json) {
-			$('.alert').remove();   
+  $.ajax({
+    url: 'index.php?route=module/voucher/voucher',
+    type: 'post',
+    data: 'voucher=' + encodeURIComponent($('input[name=\'voucher\']').val()),
+    dataType: 'json',
+    beforeSend: function() {
+      $('#button-voucher').button('loading');
+    },
+    complete: function() {
+      $('#button-voucher').button('reset');
+    },
+    success: function(json) {
+      $('.alert').remove();
 
-			if (json['error']) {
-				$('.breadcrumb').after('<div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> ' + json['error'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');
-		
-				$('html, body').animate({ scrollTop: 0 }, 'slow'); 
-			}  
+      if (json['error']) {
+        $('.breadcrumb').after('<div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> ' + json['error'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');
 
-			if (json['redirect']) {
-				location = json['redirect'];
-			}
-		}
-	});
+        $('html, body').animate({ scrollTop: 0 }, 'slow');
+      }
+
+      if (json['redirect']) {
+        location = json['redirect'];
+      }
+    }
+  });
 });
 //--></script> 
     </div>
   </div>
 </div>
-<?php } ?>

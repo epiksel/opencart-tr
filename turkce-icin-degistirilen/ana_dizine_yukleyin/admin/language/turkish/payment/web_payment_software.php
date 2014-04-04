@@ -4,7 +4,7 @@
 // Heading
 $_['heading_title']             = 'Web Payment Software';
 
-// Text 
+// Text
 $_['text_payment']              = 'Ödeme Metodları';
 $_['text_success']              = 'Başarılı: Web Payment Software hesap detayları başarılı bir şekilde değiştirildi!';
 $_['text_web_payment_software'] = '<a href="http://www.web-payment-software.com/" target="_blank"><img src="view/image/payment/wps-logo.jpg" alt="Web Payment Software" title="Web Payment Software" style="border: 1px solid #EEEEEE;" /></a>';
@@ -20,15 +20,14 @@ $_['entry_mode']                = 'Transaction Mode';
 $_['entry_method']              = 'Transaction Method';
 $_['entry_total']               = 'Toplam';
 $_['entry_order_status']        = 'Sipariş Durumu';
-$_['entry_geo_zone']            = 'Bölge'; 
+$_['entry_geo_zone']            = 'Bölge';
 $_['entry_status']              = 'Durumu';
 $_['entry_sort_order']          = 'Sıralama';
 
 // Help
 $_['help_total']                = 'Bu ödeme metodunun aktif olması için toplam sipariş tutarını giriniz.';
 
-// Error 
+// Error
 $_['error_permission']          = 'Warning: You do not have permission to modify payment Web Payment Software!';
 $_['error_login']               = 'Login ID gerekli!';
 $_['error_key']                 = 'Transaction Key gerekli!';
-?>

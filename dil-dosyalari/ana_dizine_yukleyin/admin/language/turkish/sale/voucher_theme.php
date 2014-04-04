@@ -22,4 +22,3 @@ $_['error_permission']  = 'Uyarı: Hediye çeki temalarını düzenleme iznine s
 $_['error_name']        = 'Tema adı 3 ile 32 karakter arasında olmalıdır!';
 $_['error_image']       = 'Resim gerekli!';
 $_['error_voucher']     = 'Uyarı: Bu hediye çeki temasını silemezsiniz %s hediye çeki tarafından kullanılıyor!';
-?>

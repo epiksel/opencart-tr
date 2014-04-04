@@ -14,4 +14,3 @@ $_['entry_sort_order'] = 'Sıralama';
 
 // Error
 $_['error_permission'] = 'Uyarı: Hediye çeki toplamını düzenleme iznine sahip değilsiniz!';
-?>

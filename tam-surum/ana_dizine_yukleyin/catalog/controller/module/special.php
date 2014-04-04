@@ -1,30 +1,30 @@
 <?php
 class ControllerModuleSpecial extends Controller {
-	protected function index($setting) {
-		$this->language->load('module/special');
+	public function index($setting) {
+		$this->load->language('module/special');
  
-      	$this->data['heading_title'] = $this->language->get('heading_title');
+      	$data['heading_title'] = $this->language->get('heading_title');
 		
-		$this->data['text_tax'] = $this->language->get('text_tax');
+		$data['text_tax'] = $this->language->get('text_tax');
 
-		$this->data['button_cart'] = $this->language->get('button_cart');
-		$this->data['button_wishlist'] = $this->language->get('button_wishlist');
-		$this->data['button_compare'] = $this->language->get('button_compare');
+		$data['button_cart'] = $this->language->get('button_cart');
+		$data['button_wishlist'] = $this->language->get('button_wishlist');
+		$data['button_compare'] = $this->language->get('button_compare');
 		
 		$this->load->model('catalog/product');
 		
 		$this->load->model('tool/image');
 
-		$this->data['products'] = array();
+		$data['products'] = array();
 		
-		$data = array(
+		$filter_data = array(
 			'sort'  => 'pd.name',
 			'order' => 'ASC',
 			'start' => 0,
 			'limit' => $setting['limit']
 		);
 
-		$results = $this->model_catalog_product->getProductSpecials($data);
+		$results = $this->model_catalog_product->getProductSpecials($filter_data);
 
 		foreach ($results as $result) {
 			if ($result['image']) {
@@ -57,11 +57,11 @@ class ControllerModuleSpecial extends Controller {
 				$rating = false;
 			}
 			
-			$this->data['products'][] = array(
+			$data['products'][] = array(
 				'product_id'  => $result['product_id'],
 				'thumb'   	  => $image,
 				'name'    	  => $result['name'],
-				'description' => utf8_substr(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8')), 0, $this->config->get('config_list_description_limit')) . '..',
+				'description' => utf8_substr(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8')), 0, $this->config->get('config_product_description_length')) . '..',
 				'price'   	  => $price,
 				'special' 	  => $special,
 				'tax'         => $tax,
@@ -71,12 +71,9 @@ class ControllerModuleSpecial extends Controller {
 		}
 
 		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/module/special.tpl')) {
-			$this->template = $this->config->get('config_template') . '/template/module/special.tpl';
+			return $this->load->view($this->config->get('config_template') . '/template/module/special.tpl', $data);
 		} else {
-			$this->template = 'default/template/module/special.tpl';
+			return $this->load->view('default/template/module/special.tpl', $data);
 		}
-
-		$this->render();
 	}
 }
-?>

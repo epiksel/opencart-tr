@@ -4,7 +4,7 @@
 // Heading
 $_['heading_title']      = 'Çek / Havale';
 
-// Text 
+// Text
 $_['text_payment']       = 'Ödeme Metodları';
 $_['text_success']       = 'Başarılı: Çek ödeme detayları güncellendi!';
 
@@ -22,4 +22,3 @@ $_['help_total']		 = 'Bu ödeme metodunun aktif olması için toplam sipariş tu
 // Error
 $_['error_permission']   = 'Uyarı: Çek / Havale ödeme metodunu düzenleme iznine sahip değilsiniz!';
 $_['error_payable']      = 'Ödenen kişi gerekli!';
-?>

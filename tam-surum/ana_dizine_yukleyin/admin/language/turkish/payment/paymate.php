@@ -4,11 +4,11 @@
 // Heading
 $_['heading_title']      = 'PayMate';
 
-// Text 
+// Text
 $_['text_payment']       = 'Ödeme Metodları';
 $_['text_success']       = 'Başarılı: PayMate hesap detayları başarılı bir şekilde değiştirildi!';
 
-// Entry 
+// Entry
 $_['entry_username']     = 'Kullanıcı Adı';
 $_['entry_password']     = 'Parola';
 $_['entry_test']         = 'Test Modu';
@@ -26,4 +26,3 @@ $_['help_total']         = 'Bu ödeme metodunun aktif olması için toplam sipar
 $_['error_permission']   = 'Uyarı: PayMate ödeme metodunu düzenleme iznine sahip değilsiniz!';
 $_['error_username']     = 'Kullanıcı Adı gerekli!';
 $_['error_password']     = 'Parola gerekli!';
-?>

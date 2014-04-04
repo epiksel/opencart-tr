@@ -10,13 +10,13 @@
   <?php } ?>
   <div class="row"><?php echo $column_left; ?>
     <?php if ($column_left && $column_right) { ?>
-    <?php $cols = 6; ?>
+    <?php $class = 'col-sm-6'; ?>
     <?php } elseif ($column_left || $column_right) { ?>
-    <?php $cols = 9; ?>
+    <?php $class = 'col-sm-9'; ?>
     <?php } else { ?>
-    <?php $cols = 12; ?>
+    <?php $class = 'col-sm-12'; ?>
     <?php } ?>
-    <div id="content" class="col-sm-<?php echo $cols; ?>"><?php echo $content_top; ?>
+    <div id="content" class="<?php echo $class; ?>"><?php echo $content_top; ?>
       <h2><?php echo $text_my_account; ?></h2>
       <ul class="list-unstyled">
         <li><a href="<?php echo $edit; ?>"><?php echo $text_edit; ?></a></li>
@@ -33,6 +33,7 @@
         <?php } ?>
         <li><a href="<?php echo $return; ?>"><?php echo $text_return; ?></a></li>
         <li><a href="<?php echo $transaction; ?>"><?php echo $text_transaction; ?></a></li>
+        <li><a href="<?php echo $recurring; ?>"><?php echo $text_recurring; ?></a></li>
       </ul>
       <h2><?php echo $text_my_newsletter; ?></h2>
       <ul class="list-unstyled">
@@ -41,4 +42,4 @@
       <?php echo $content_bottom; ?></div>
     <?php echo $column_right; ?></div>
 </div>
-<?php echo $footer; ?> 
+<?php echo $footer; ?>

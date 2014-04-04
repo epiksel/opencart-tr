@@ -3,4 +3,3 @@
 
 // Text
 $_['text_footer'] = 'Altyapı: <a href="http://www.opencart.com">OpenCart</a> Geliştirici: <a href="http://www.e-piksel.com" title="E-Piksel E-Ticaret ve Bilgi Teknolojileri">E-Piksel</a> &copy; 2009 - ' . date('Y') . ' Tüm Hakları Saklıdır.<br />Sürüm %s';
-?>

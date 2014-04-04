@@ -25,4 +25,3 @@ $_['help_code']           = 'Sohbet kutusu oluşturmak için HTML kodu kopyalay�
 // Error
 $_['error_permission']    = 'Uyarı: Canlı Sohbet modülünü değiştirme iznine sahip değilsiniz!';
 $_['error_code']          = 'Kod gerekli!';
-?>

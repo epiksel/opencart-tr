@@ -4,6 +4,7 @@
 // Text
 $_['text_subject']			= '%s - Ortaklık Programı';
 $_['text_welcome']			= '%s ortaklık programına kayıt olduğunuz için teşekkür ederiz!';
+$_['text_login']			= 'Your account has now been created and you can log in by using your email address and password by visiting our website or at the following URL:';
 $_['text_approval']			= 'Giriş yapmadan önce hesabınızın onaylanması gerekmektedir. Onaylandıktan sonra aşağıdaki URL kullanarak giriş yapabilirsiniz:';
 $_['text_services']			= 'Giriş yaptıktan sonra, takip kodu oluşturabilir, ödeme bilgilerinizi ve hesap bilgilerinizi düzenleyebilirsiniz';
 $_['text_thanks']			= 'Teşekkürler,';
@@ -17,4 +18,7 @@ $_['text_company']			= 'Şirket:';
 $_['text_email']			= 'E-Posta:';
 $_['text_telephone']		= 'Telefon:';
 $_['text_website']			= 'Web Sitesi:';
-?>
+$_['text_order_id']             = 'Order ID:';
+$_['text_transaction_subject']  = '%s - Affiliate Commission';
+$_['text_transaction_received'] = 'You have received %s commission!';
+$_['text_transaction_total']    = 'Your total amount of commission is now %s.';

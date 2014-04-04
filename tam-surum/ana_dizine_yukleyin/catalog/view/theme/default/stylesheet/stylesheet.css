@@ -44,13 +44,12 @@ legend {
 	font-size: 18px;
 	padding: 7px 0px
 }
-label, input, button, select, textarea {
+label {
 	font-size: 12px;
 	font-weight: normal;
 }
-select.form-control, textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"] {
+select.form-control, textarea.form-control, input[type="text"].form-control, input[type="password"].form-control, input[type="datetime"].form-control, input[type="datetime-local"].form-control, input[type="date"].form-control, input[type="month"].form-control, input[type="time"].form-control, input[type="week"].form-control, input[type="number"].form-control, input[type="email"].form-control, input[type="url"].form-control, input[type="search"].form-control, input[type="tel"].form-control, input[type="color"].form-control {
 	font-size: 12px;
-	height: 31px;
 }
 .input-group input, .input-group select, .input-group .dropdown-menu, .input-group .popover {
 	font-size: 12px;
@@ -61,7 +60,7 @@ select.form-control, textarea, input[type="text"], input[type="password"], input
 }
 /* Fix some bootstrap issues */
 span.hidden-xs, span.hidden-sm, span.hidden-md, span.hidden-lg {
-	display: inline !important;
+	display: inline;
 }
 
 .nav-tabs {
@@ -116,7 +115,8 @@ div.required .control-label:before {
 	margin-bottom: 10px;
 }
 #search .input-lg {
-	min-height: 40px;
+	height: 40px;
+	line-height: 20px;
 	padding: 0 10px;
 }
 #search .btn-lg {
@@ -232,7 +232,11 @@ div.required .control-label:before {
 	text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
 }
 #menu .btn-navbar {
-	font-size: 12px;
+	font-size: 15px;
+	font-stretch: expanded;
+	color: #FFF;
+	padding: 2px 18px;
+	float: right;
 	background-color: #229ac8;
 	background-image: linear-gradient(to bottom, #23a1d1, #1f90bb);
 	background-repeat: repeat-x;
@@ -242,6 +246,21 @@ div.required .control-label:before {
 	color: #ffffff;
 	background-color: #229ac8;
 }
+#menu .navbar-collapse {
+	overflow: visible !important;
+}
+@media (max-width: 767px) {
+	#menu {
+		border-radius: 4px;
+	}
+	#menu div.dropdown-inner > ul.list-unstyled {
+		display: block;
+	}
+	#menu div.dropdown-menu {
+		margin-left: 0 !important;
+	}
+}
+/* content */
 #content {
 	min-height: 600px;
 }
@@ -307,12 +326,16 @@ footer h5 {
 	-o-transform: rotate(-45deg);
 	transform: rotate(-45deg);
 }
+.pagination {
+	margin: 0;
+}
 /* buttons */
 .buttons {
 	margin: 1em 0;
 	overflow: auto;
 }
 .btn {
+	padding: 7px 12px;
 	font-size: 12px;
 	border: 1px solid #cccccc;
 	border-radius: 4px;
@@ -325,6 +348,7 @@ footer h5 {
 	font-size: 10.2px;
 }
 .btn-lg {
+	padding: 10px 16px;
 	font-size: 15px;
 }
 .btn-group > .btn, .btn-group > .dropdown-menu, .btn-group > .popover {
@@ -454,13 +478,11 @@ footer h5 {
 }
 /* product list */
 .product-thumb {
-	margin-bottom: 20px;
-	position: relative;
 	border: 1px solid #ddd;
+	margin-bottom: 20px;
 	overflow: auto;
 }
 .product-thumb .image {
-	padding: 5px;
 	text-align: center;
 }
 .product-thumb .image a {
@@ -473,10 +495,42 @@ footer h5 {
 	margin-left: auto;
 	margin-right: auto;	
 }
+.product-grid .product-thumb .image {
+	float: none;
+}
+@media (min-width: 767px) {
+.product-list .product-thumb .image {
+	float: left;
+	padding: 15px;
+}
+}
+.product-thumb h4 {
+	font-weight: bold;
+}
 .product-thumb .caption {
 	padding: 0 20px;
-	min-height: 200px;
+	min-height: 180px;
 }
+.product-list .product-thumb .caption {
+	margin-left: 230px;
+}
+@media (max-width: 1200px) {
+.product-grid .product-thumb .caption {
+	min-height: 210px;
+	padding: 0 10px;
+}	
+}
+@media (max-width: 767px) {
+.product-list .product-thumb .caption {
+	min-height: 0;
+	margin-left: 0;
+	padding: 0 10px;
+}
+.product-grid .product-thumb .caption {
+	min-height: 0;
+}
+}
+
 .product-thumb .rating {
 	padding-bottom: 10px;
 }
@@ -493,6 +547,9 @@ footer h5 {
 }
 .rating .fa-star + .fa-star-o {
 	color: #E69500;
+}
+h2.price {
+	margin: 0;
 }
 .product-thumb .price {
 	color: #444;
@@ -513,11 +570,23 @@ footer h5 {
 .product-thumb .button-group {
 	border-top: 1px solid #ddd;
 	background-color: #eee;
+	overflow: auto;
+}
+.product-list .product-thumb .button-group {
+	border-left: 1px solid #ddd;
+}
+.product-list .product-thumb .button-group {
+	border-left: 1px solid #ddd;
+}
+@media (max-width: 768px) {
+.product-list .product-thumb .button-group {
+	border-left: none;
+}
 }
 .product-thumb .button-group button {
 	width: 60%;
 	border: none;
-	display: block;
+	display: inline-block;
 	float: left;
 	background-color: #eee;
 	color: #888;
@@ -536,51 +605,35 @@ footer h5 {
 	text-decoration: none;
 	cursor: pointer;
 }
-
-
-
-
-.product-list .col-sm-3 {
-	float: none;
-	width: auto;
+@media (max-width: 1200px) {
+.product-thumb .button-group button, .product-thumb .button-group button + button {
+	width: 33.33%;
 }
-.product-list .product-thumb {
-	padding-bottom: 20px;
 }
-.product-list .product-thumb .image {
-	padding: 0 2%;
-	float: left;
-	width: 26%;
+@media (max-width: 767px) {	
+.product-thumb .button-group button, .product-thumb .button-group button + button {
+	width: 33.33%;
 }
-.product-list .product-thumb .caption {
+}
+
+
+
+
+.thumbnails {
+	overflow: auto;
+	clear: both;
+	list-style: none;
 	padding: 0;
-	float: left;
-	width: 70%;
-}
-.product-list .product-thumb .button-group {
-	float: left;
-	width: 70%;
-	width: 250px;
-	border: 1px solid #DDD;
-}
-
-
-/*
-.category-info .image img {
-	float: left;
-}
-.product-filter {
-	padding: 20px 0;
-}
-.product-filter select {
 	margin: 0;
 }
-.product-filter .limit {
+.thumbnails > li {
 	margin-left: 20px;
-	float: right;
 }
-.product-filter .sort {
-	float: right;
+.thumbnails {
+	margin-left: -20px;
+}
+.thumbnails > img {
+	width: 100%;
 }
 .image-additional a {
 	margin-bottom: 20px;
@@ -595,32 +648,21 @@ footer h5 {
 	float: left;
 	margin-left: 20px;
 }
-.thumbnails>li {
-	margin-left: 20px;
-}
-.thumbnails {
-	margin-left: -20px;
-}
-.thumbnail > img {
-	width: 100%;
-}
-h2.price {
-	margin: 0;
-}
-*/
-@media (max-width: 1200px) {
 
 
-.product-thumb .button-group button, .product-thumb .button-group button + button {
-	width: 33.33%;
-}
-}
 
-@media (max-width: 768px) {
-	.navbar {
-		border-radius: 4px;
-	}
-	.product-thumb .button-group button, .product-thumb .button-group button + button {
-		width: 33.33%;
-	}
+
+.flexslider .slides img {
+	width: inherit;
+}
+.slides {
+	padding: 0;
+	margin:0;
+	list-style: none;
+}
+.slides li {
+	text-align: center;
+}
+.slides li img {
+	text-align: center;
 }

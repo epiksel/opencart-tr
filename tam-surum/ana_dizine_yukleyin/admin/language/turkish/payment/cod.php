@@ -20,4 +20,3 @@ $_['help_total']		 = 'Bu ödeme metodunun aktif olması için toplam sipariş tu
 
 // Error
 $_['error_permission']   = 'Uyarı: Kapıda Ödeme ile ödeme metodunu düzenleme iznine sahip değilsiniz!';
-?>

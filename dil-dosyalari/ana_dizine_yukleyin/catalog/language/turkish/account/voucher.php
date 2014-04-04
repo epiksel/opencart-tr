@@ -32,4 +32,3 @@ $_['error_email']      = 'Geçerli bir E-Posta adresi yazınız!';
 $_['error_theme']      = 'Bir tema seçiniz!';
 $_['error_amount']     = 'Tutar %s ile %s arasında olmalıdır!';
 $_['error_agree']      = 'Uyarı: Hediye çekinin iade olmayacağını kabul etmelisiniz!';
-?>

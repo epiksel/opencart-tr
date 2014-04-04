@@ -74,4 +74,3 @@ $_['error_password']                           = 'Password Required!';
 $_['error_account']                            = 'Account Required!';
 $_['error_meter']                              = 'Meter Required!';
 $_['error_postcode']                           = 'Post Code Required!';
-?>

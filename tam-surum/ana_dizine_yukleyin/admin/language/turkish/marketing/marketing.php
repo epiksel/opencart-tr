@@ -30,4 +30,3 @@ $_['help_example']      = 'Sistem sitenizin bağlantı sonuna takip kodu ekleyer
 $_['error_permission']  = 'Uyarı: Pazarlama takip bilgileri düzenleme iznine sahip değilsiniz!';
 $_['error_name']        = 'Kampanya Adı 1 ile 32 karakter arasında olmalı!';
 $_['error_code']        = 'Takip kodu gerekli!';
-?>

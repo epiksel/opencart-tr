@@ -9,4 +9,3 @@ $_['text_order_status']	= 'Siparişiniz aşağıdaki duruma güncellendi:';
 $_['text_comment']		= 'Siparişiniz hakkındaki açıklamalar:';
 $_['text_link']			= 'Siparişinizi görüntülemek için bağlantıya tıklayın:';
 $_['text_footer']		= 'Siparişiniz ile ilgili bir sorunuz varsa bu e-postayı cevaplanıyız.';
-?>

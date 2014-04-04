@@ -17,4 +17,3 @@ $_['text_checkout']    = 'Kasaya Git';
 $_['text_search']      = 'Arama';
 $_['text_information'] = 'Bilgiler';
 $_['text_contact']     = 'İletişim';
-?>

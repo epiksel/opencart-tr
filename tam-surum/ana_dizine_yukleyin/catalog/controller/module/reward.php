@@ -1,8 +1,6 @@
 <?php
 class ControllerModuleReward extends Controller {
 	public function index() {
-		$this->language->load('module/reward');
-					
 		$points = $this->customer->getRewardPoints();
 		
 		$points_total = 0;
@@ -12,34 +10,34 @@ class ControllerModuleReward extends Controller {
 				$points_total += $product['points'];
 			}
 		}
-					
-		$this->data['heading_title'] = sprintf($this->language->get('heading_title'), $points);
 		
-		$this->data['text_loading'] = $this->language->get('text_loading');
-	
-		$this->data['entry_reward'] = sprintf($this->language->get('entry_reward'), $points_total);
+		if ($points && $points_total && $this->config->get('reward_status')) {
+			$this->load->language('module/reward');			
+			
+			$data['heading_title'] = sprintf($this->language->get('heading_title'), $points);
+			
+			$data['text_loading'] = $this->language->get('text_loading');
 		
-		$this->data['button_reward'] = $this->language->get('button_reward');
-		
-		$this->data['status'] = ($points && $points_total && $this->config->get('reward_status'));
-		
-		if (isset($this->session->data['reward'])) {
-			$this->data['reward'] = $this->session->data['reward'];
-		} else {
-			$this->data['reward'] = '';
+			$data['entry_reward'] = sprintf($this->language->get('entry_reward'), $points_total);
+			
+			$data['button_reward'] = $this->language->get('button_reward');
+			
+			if (isset($this->session->data['reward'])) {
+				$data['reward'] = $this->session->data['reward'];
+			} else {
+				$data['reward'] = '';
+			}
+						
+			if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/module/reward.tpl')) {
+				return $this->load->view($this->config->get('config_template') . '/template/module/reward.tpl', $data);
+			} else {
+				return $this->load->view('default/template/module/reward.tpl', $data);
+			}
 		}
-		
-		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/module/reward.tpl')) {
-			$this->template = $this->config->get('config_template') . '/template/module/reward.tpl';
-		} else {
-			$this->template = 'default/template/module/reward.tpl';
-		}
-					
-		$this->response->setOutput($this->render());		
 	}
 	
 	public function reward() {
-		$this->language->load('voucher/reward');
+		$this->load->language('module/reward');
 		
 		$json = array();
 		
@@ -68,12 +66,11 @@ class ControllerModuleReward extends Controller {
 		if (!$json) {
 			$this->session->data['reward'] = abs($this->request->post['reward']);
 				
-			$this->session->data['success'] = $this->language->get('text_reward');
+			$this->session->data['success'] = $this->language->get('text_success');
 				
-			$json['redirect'] = $this->url->link('checkout/cart');		
+			$json['redirect'] = $this->url->link($this->request->post['redirect']);
 		}
 		
 		$this->response->setOutput(json_encode($json));		
 	}
 }
-?>

@@ -1,7 +1,7 @@
 <?php
 /* Turkceye Ceviren eka7a - http://www.e-piksel.com */
 
-// Heading 
+// Heading
 $_['heading_title']      = 'Bakiye İşlemlerim';
 
 // Column
@@ -14,4 +14,3 @@ $_['text_account']       = 'Hesabım';
 $_['text_transaction']   = 'Bakiye İşlemlerim';
 $_['text_total']         = 'Geçerli bakiyeniz:';
 $_['text_empty']         = 'Herhangi bir işleminiz yok!';
-?>

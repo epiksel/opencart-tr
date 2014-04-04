@@ -13,4 +13,3 @@ $_['column_action']     = 'Eylem';
 
 // Error
 $_['error_permission']  = 'Uyarı: Modülleri değiştirme iznine sahip değilsiniz!';
-?>

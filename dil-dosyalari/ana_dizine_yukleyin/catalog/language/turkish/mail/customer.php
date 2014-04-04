@@ -15,7 +15,5 @@ $_['text_website']			= 'Web Sitesi:';
 $_['text_customer_group']	= 'Müşteri Grubu:';
 $_['text_firstname']		= 'Adı:';
 $_['text_lastname']			= 'Soyadı:';
-$_['text_company']			= 'Şirket:';
 $_['text_email']			= 'E-Posta:';
 $_['text_telephone']		= 'Telefon:';
-?>

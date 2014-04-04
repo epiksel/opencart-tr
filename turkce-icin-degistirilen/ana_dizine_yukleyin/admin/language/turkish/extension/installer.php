@@ -1,7 +1,7 @@
 <?php
 /* Turkceye Ceviren eka7a - http://www.e-piksel.com */
 
-// Heading 
+// Heading
 $_['heading_title']			= 'Eklenti Yükleyicisi';
 
 // Text
@@ -35,4 +35,3 @@ $_['error_ftp_login']		= '%s olarak oturum açılamadı!';
 $_['error_ftp_root']		= 'Kök dizin %s olarak ayarlanamadı!';
 $_['error_ftp_directory']	= '%s dizin değiştirilemedi!';
 $_['error_ftp_file']		= '%s dosyası yüklenemedi!';
-?>

@@ -14,4 +14,3 @@ $_['column_action']		= 'Eylem';
 
 // Error
 $_['error_permission']	= 'Uyarı: Ürün Beslemelerini değiştirme iznine sahip değilsiniz!';
-?>

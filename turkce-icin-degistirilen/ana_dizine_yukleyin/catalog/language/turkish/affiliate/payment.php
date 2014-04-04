@@ -24,4 +24,3 @@ $_['entry_bank_branch_number']  = 'Şube Numarası';
 $_['entry_bank_swift_code']     = 'SWIFT Kodu';
 $_['entry_bank_account_name']   = 'Hesap Adı';
 $_['entry_bank_account_number'] = 'IBAN/Hesap Numarası';
-?>

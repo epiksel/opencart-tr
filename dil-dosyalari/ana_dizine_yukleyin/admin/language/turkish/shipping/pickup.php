@@ -4,7 +4,7 @@
 // Heading
 $_['heading_title']    = 'Mağazadan Teslim Al';
 
-// Text 
+// Text
 $_['text_shipping']    = 'Kargo Metodları';
 $_['text_success']     = 'Başarılı: Mağazadan teslim al başarılı bir şekilde değiştirildi!';
 
@@ -15,4 +15,3 @@ $_['entry_sort_order'] = 'Sıralama';
 
 // Error
 $_['error_permission'] = 'Uyarı: Mağazadan teslim al düzenleme iznine sahip değilsiniz!';
-?>

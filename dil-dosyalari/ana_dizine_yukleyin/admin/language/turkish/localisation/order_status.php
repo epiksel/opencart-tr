@@ -21,4 +21,3 @@ $_['error_default']    = 'Uyarı: Bu sipariş durumunu silemezsiniz, varsayılan
 $_['error_download']   = 'Uyarı: Bu sipariş durumunu silemezsiniz, varsayılan indirme durumu tarafından kullanılıyor!';
 $_['error_store']      = 'Uyarı: Bu sipariş durumunu silemezsiniz, %s mağaza tarafından kullanılıyor!';
 $_['error_order']      = 'Uyarı: Bu sipariş durumunu silemezsiniz, %s sipariş tarafından kullanılıyor!';
-?>

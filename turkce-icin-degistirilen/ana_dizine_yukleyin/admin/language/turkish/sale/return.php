@@ -73,4 +73,3 @@ $_['error_email']         = 'E-Posta adresi geçersiz!';
 $_['error_telephone']     = 'Telefon alanı 3 ile 32 karakter arasında olmalı!';
 $_['error_product']       = 'Ürün Ad alanı 3 ile 255 karakter arasında olmalı!';
 $_['error_model']         = 'Ürün model kod alanı 3 ile 64 karakter arasında olmalı!';
-?>

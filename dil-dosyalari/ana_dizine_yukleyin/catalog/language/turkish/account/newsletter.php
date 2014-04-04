@@ -1,7 +1,7 @@
 <?php
 /* Turkceye Ceviren eka7a - http://www.e-piksel.com */
 
-// Heading 
+// Heading
 $_['heading_title']    = 'Bülten Aboneliği';
 
 // Text
@@ -11,4 +11,3 @@ $_['text_success']     = 'Başarılı: Bülten aboneliğiniz başarılı bir şe
 
 // Entry
 $_['entry_newsletter'] = 'Abonelik:';
-?>

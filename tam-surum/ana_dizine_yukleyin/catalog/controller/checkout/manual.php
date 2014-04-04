@@ -1,7 +1,7 @@
 <?php 
 class ControllerCheckoutManual extends Controller {
 	public function index() {
-		$this->language->load('checkout/manual');
+		$this->load->language('checkout/manual');
 		
 		$json = array();
 			
@@ -42,14 +42,30 @@ class ControllerCheckoutManual extends Controller {
 					$this->customer->login($customer_info['email'], '', true);
 					$this->cart->clear();
 				} else {
-					$json['error']['customer'] = $this->language->get('error_customer');
+					$json['error']['warning'] = $this->language->get('error_customer');
 				}
 			} else {
 				// Customer Group
 				$this->config->set('config_customer_group_id', $this->request->post['customer_group_id']);
 			}
+
+			if ((utf8_strlen(trim($this->request->post['firstname'])) < 1) || (utf8_strlen(trim($this->request->post['firstname'])) > 32)) {
+				$json['error']['customer']['firstname'] = $this->language->get('error_firstname');
+			}
 	
-			// Product
+			if ((utf8_strlen(trim($this->request->post['lastname'])) < 1) || (utf8_strlen(trim($this->request->post['lastname'])) > 32)) {
+				$json['error']['customer']['lastname'] = $this->language->get('error_lastname');
+			}
+	
+			if ((utf8_strlen($this->request->post['email']) > 96) || (!preg_match('/^[^\@]+@.*\.[a-z]{2,6}$/i', $this->request->post['email']))) {
+				$json['error']['customer']['email'] = $this->language->get('error_email');
+			}
+			
+			if ((utf8_strlen($this->request->post['telephone']) < 3) || (utf8_strlen($this->request->post['telephone']) > 32)) {
+				$json['error']['customer']['telephone'] = $this->language->get('error_telephone');
+			}
+			
+			// Products
 			$this->load->model('catalog/product');
 			
 			if (isset($this->request->post['order_product'])) {
@@ -76,6 +92,7 @@ class ControllerCheckoutManual extends Controller {
 				}
 			}
 			
+			// Add new product
 			if (isset($this->request->post['product_id'])) {
 				$product_info = $this->model_catalog_product->getProduct($this->request->post['product_id']);
 
@@ -111,7 +128,7 @@ class ControllerCheckoutManual extends Controller {
 			// Stock
 			if (!$this->cart->hasStock() && (!$this->config->get('config_stock_checkout') || $this->config->get('config_stock_warning'))) {
 				$json['error']['product']['stock'] = $this->language->get('error_stock');
-			}		
+			}
 			
 			// Tax
 			if ($this->cart->hasShipping()) {
@@ -157,10 +174,9 @@ class ControllerCheckoutManual extends Controller {
 				
 				foreach ($product['download'] as $download) {
 					$download_data[] = array(
-						'name'      => $download['name'],
-						'filename'  => $download['filename'],
-						'mask'      => $download['mask'],
-						'remaining' => $download['remaining']
+						'name'     => $download['name'],
+						'filename' => $download['filename'],
+						'mask'     => $download['mask']
 					);
 				}
 								
@@ -216,11 +232,11 @@ class ControllerCheckoutManual extends Controller {
 				if ((utf8_strlen($this->request->post['to_email']) > 96) || !preg_match('/^[^\@]+@.*\.[a-z]{2,6}$/i', $this->request->post['to_email'])) {
 					$json['error']['vouchers']['to_email'] = $this->language->get('error_email');
 				}
-			
-				if (($this->request->post['amount'] < 1) || ($this->request->post['amount'] > 1000)) {
-					$json['error']['vouchers']['amount'] = sprintf($this->language->get('error_amount'), $this->currency->format(1, false, 1), $this->currency->format(1000, false, 1) . ' ' . $this->config->get('config_currency'));
+							
+				if (($this->request->post['amount'] < $this->config->get('config_voucher_min')) || ($this->request->post['amount'] > $this->config->get('config_voucher_max'))) {
+					$json['error']['vouchers']['amount'] = sprintf($this->language->get('error_amount'), $this->currency->format($this->config->get('config_voucher_min')), $this->currency->format($this->config->get('config_voucher_max')));
 				}
-			
+				
 				if (!isset($json['error']['vouchers'])) { 
 					$voucher_data = array(
 						'order_id'         => 0,
@@ -280,7 +296,24 @@ class ControllerCheckoutManual extends Controller {
 			// Shipping
 			$json['shipping_method'] = array();
 			
-			if ($this->cart->hasShipping()) {		
+			if ($this->cart->hasShipping()) {
+				// Shipping address
+				if ((utf8_strlen($this->request->post['shipping_firstname']) < 1) || (utf8_strlen($this->request->post['shipping_firstname']) > 32)) {
+					$json['error']['shipping']['firstname'] = $this->language->get('error_firstname');
+				}
+		
+				if ((utf8_strlen($this->request->post['shipping_lastname']) < 1) || (utf8_strlen($this->request->post['shipping_lastname']) > 32)) {
+					$json['error']['shipping']['lastname'] = $this->language->get('error_lastname');
+				}
+				
+				if ((utf8_strlen($this->request->post['shipping_address_1']) < 3) || (utf8_strlen($this->request->post['shipping_address_1']) > 128)) {
+					$json['error']['shipping']['address_1'] = $this->language->get('error_address_1');
+				}
+		
+				if ((utf8_strlen($this->request->post['shipping_city']) < 3) || (utf8_strlen($this->request->post['shipping_city']) > 128)) {
+					$json['error']['shipping']['city'] = $this->language->get('error_city');
+				}
+				
 				$this->load->model('localisation/country');
 				
 				$country_info = $this->model_localisation_country->getCountry($this->request->post['shipping_country_id']);
@@ -346,6 +379,7 @@ class ControllerCheckoutManual extends Controller {
 						'address_format' => $address_format
 					);
 					
+					// Shipping method
 					$results = $this->model_setting_extension->getExtensions('shipping');
 					
 					foreach ($results as $result) {
@@ -385,6 +419,21 @@ class ControllerCheckoutManual extends Controller {
 						}				
 					}					
 				}
+			}
+			
+			// Remove coupon, vouchers reward points history
+			if (isset($this->request->get['order_id'])) {
+				$this->load->model('account/order');
+			
+				$order_totals = $this->model_account_order->getOrderTotals($this->request->get['order_id']);
+				
+				foreach ($order_totals as $order_total) {
+					$this->load->model('total/' . $order_total['code']);
+					
+					if (method_exists($this->{'model_total_' . $order_total['code']}, 'clear')) {
+						$this->{'model_total_' . $order_total['code']}->clear($this->request->get['order_id']);
+					}
+				}			
 			}
 			
 			// Coupon
@@ -439,39 +488,24 @@ class ControllerCheckoutManual extends Controller {
 					}
 				}
 			}
-
-			// Totals
-			$json['order_total'] = array();					
-			$total = 0;
-			$taxes = $this->cart->getTaxes();
-			
-			$sort_order = array(); 
-			
-			$results = $this->model_setting_extension->getExtensions('total');
-			
-			foreach ($results as $key => $value) {
-				$sort_order[$key] = $this->config->get($value['code'] . '_sort_order');
+			 		
+			// Payment address
+			if ((utf8_strlen($this->request->post['payment_firstname']) < 1) || (utf8_strlen($this->request->post['payment_firstname']) > 32)) {
+				$json['error']['payment']['firstname'] = $this->language->get('error_firstname');
+			}
+	
+			if ((utf8_strlen($this->request->post['payment_lastname']) < 1) || (utf8_strlen($this->request->post['payment_lastname']) > 32)) {
+				$json['error']['payment']['lastname'] = $this->language->get('error_lastname');
+			}
+	
+			if ((utf8_strlen($this->request->post['payment_address_1']) < 3) || (utf8_strlen($this->request->post['payment_address_1']) > 128)) {
+				$json['error']['payment']['address_1'] = $this->language->get('error_address_1');
+			}
+	
+			if ((utf8_strlen($this->request->post['payment_city']) < 3) || (utf8_strlen($this->request->post['payment_city']) > 128)) {
+				$json['error']['payment']['city'] = $this->language->get('error_city');
 			}
 			
-			array_multisort($sort_order, SORT_ASC, $results);
-			
-			foreach ($results as $result) {
-				if ($this->config->get($result['code'] . '_status')) {
-					$this->load->model('total/' . $result['code']);
-		
-					$this->{'model_total_' . $result['code']}->getTotal($json['order_total'], $total, $taxes);
-				}	
-			}
-			
-			$sort_order = array(); 
-		  
-			foreach ($json['order_total'] as $key => $value) {
-				$sort_order[$key] = $value['sort_order'];
-			}
-
-			array_multisort($sort_order, SORT_ASC, $json['order_total']);				
-		
-			// Payment
 			if ($this->request->post['payment_country_id'] == '') {
 				$json['error']['payment']['country'] = $this->language->get('error_country');
 			}
@@ -525,6 +559,30 @@ class ControllerCheckoutManual extends Controller {
 					'address_format' => $address_format
 				);
 				
+				// Order totals calculation to get the total amount for the payment gateways
+				$order_total = array();					
+				$total = 0;
+				$taxes = $this->cart->getTaxes();
+				
+				$sort_order = array(); 
+				
+				$results = $this->model_setting_extension->getExtensions('total');
+				
+				foreach ($results as $key => $value) {
+					$sort_order[$key] = $this->config->get($value['code'] . '_sort_order');
+				}
+				
+				array_multisort($sort_order, SORT_ASC, $results);
+				
+				foreach ($results as $result) {
+					if ($this->config->get($result['code'] . '_status')) {
+						$this->load->model('total/' . $result['code']);
+			
+						$this->{'model_total_' . $result['code']}->getTotal($order_total, $total, $taxes);
+					}	
+				}				
+				
+				// Payment method
 				$json['payment_method'] = array();
 								
 				$results = $this->model_setting_extension->getExtensions('payment');
@@ -557,6 +615,37 @@ class ControllerCheckoutManual extends Controller {
 					}
 				}
 			}
+
+			// Order total calculation to be feed back to the admin
+			$json['order_total'] = array();					
+			$total = 0;
+			$taxes = $this->cart->getTaxes();
+			
+			$sort_order = array(); 
+			
+			$results = $this->model_setting_extension->getExtensions('total');
+			
+			foreach ($results as $key => $value) {
+				$sort_order[$key] = $this->config->get($value['code'] . '_sort_order');
+			}
+			
+			array_multisort($sort_order, SORT_ASC, $results);
+			
+			foreach ($results as $result) {
+				if ($this->config->get($result['code'] . '_status')) {
+					$this->load->model('total/' . $result['code']);
+		
+					$this->{'model_total_' . $result['code']}->getTotal($json['order_total'], $total, $taxes);
+				}	
+			}
+			
+			$sort_order = array(); 
+		  
+			foreach ($json['order_total'] as $key => $value) {
+				$sort_order[$key] = $value['sort_order'];
+			}
+
+			array_multisort($sort_order, SORT_ASC, $json['order_total']);				
 			
 			if (!isset($json['error'])) { 
 				$json['success'] = $this->language->get('text_success');
@@ -564,7 +653,31 @@ class ControllerCheckoutManual extends Controller {
 				$json['error']['warning'] = $this->language->get('error_warning');
 			}
 			
-			// Reset everything
+			// Add the coupon, vouchers and reward points back
+			if (isset($this->request->get['order_id'])) {
+				$this->load->model('account/order');
+				
+				$order_info = $this->model_account_order->getOrder($this->request->get['order_id']);
+				
+				if ($order_info) {
+					$order_totals = $this->model_account_order->getOrderTotals($this->request->get['order_id']);
+					
+					foreach ($order_totals as $order_total) {
+						$this->load->model('total/' . $order_total['code']);
+						
+						if (method_exists($this->{'model_total_' . $order_total['code']}, 'confirm')) {
+							$this->{'model_total_' . $order_total['code']}->confirm($order_info, $order_total);
+						}
+					}
+				}
+			}
+			
+			
+			//if () {
+				
+			//}
+			
+			// Reset everything			
 			$this->cart->clear();
 			$this->customer->logout();
 			
@@ -583,4 +696,3 @@ class ControllerCheckoutManual extends Controller {
 		$this->response->setOutput(json_encode($json));	
 	}
 }
-?>

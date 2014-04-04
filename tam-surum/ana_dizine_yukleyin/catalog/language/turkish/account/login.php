@@ -21,4 +21,3 @@ $_['entry_password']               = 'Parola';
 // Error
 $_['error_login']                  = 'Uyarı: E-Posta adresiniz ya da parolanız yanlış!';
 $_['error_approved']               = 'Uyarı: Giriş yapabilmeniz için önce hesabınızın onaylanması gerekiyor!';
-?>

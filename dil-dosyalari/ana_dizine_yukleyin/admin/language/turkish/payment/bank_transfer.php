@@ -4,7 +4,7 @@
 // Heading
 $_['heading_title']      = 'Banka Havale/EFT';
 
-// Text 
+// Text
 $_['text_payment']       = 'Ödeme Metodları';
 $_['text_success']       = 'Başarılı: Banka havalesi detayları güncellendi!';
 
@@ -22,4 +22,3 @@ $_['help_total']		 = 'Bu ödeme metodunun aktif olması için toplam sipariş tu
 // Error
 $_['error_permission']   = 'Uyarı: Banka Havale/EFT ödeme metodunu düzenleme iznine sahip değilsiniz!';
 $_['error_bank']         = 'Banka Havale/EFT hesapları gerekli!';
-?>

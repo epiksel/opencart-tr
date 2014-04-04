@@ -11,4 +11,3 @@ $_['text_failed_message']	= '<p>Unfortunately there was an error processing your
 $_['text_basket']			= 'Sepetim';
 $_['text_checkout']			= 'Kasaya Git';
 $_['text_success']			= 'Başarılı';
-?>

@@ -20,4 +20,3 @@ $_['help_rate']        = 'Örnek: 5:10.00,7:12.00 Ağırlık:Fiyat,Ağırlık:Fi
 
 // Error
 $_['error_permission'] = 'Uyarı: Ağırlık orantılı kargo düzenleme iznine sahip değilsiniz!';
-?>

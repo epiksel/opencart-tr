@@ -1,5 +1,5 @@
-<?php echo $header; ?>
-<div id="content" class="container">
+<?php echo $header; ?><?php echo $menu; ?>
+<div id="content">
   <ul class="breadcrumb">
     <?php foreach ($breadcrumbs as $breadcrumb) { ?>
     <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
@@ -17,29 +17,33 @@
   <?php } ?>
   <div class="panel panel-default">
     <div class="panel-heading">
-      <div class="pull-right"><a href="<?php echo $insert; ?>" class="btn btn-primary"><i class="fa fa-plus"></i> <?php echo $button_insert; ?></a>
-        <button type="button" class="btn btn-danger" onclick="confirm('<?php echo $text_confirm; ?>') ? $('#form-custom-field').submit() : false;"><i class="fa fa-trash-o"></i> <?php echo $button_delete; ?></button>
+      <div class="pull-right"><a href="<?php echo $insert; ?>" data-toggle="tooltip" title="<?php echo $button_insert; ?>" class="btn"><i class="fa fa-plus-circle"></i></a>
+        <button type="button" data-toggle="tooltip" title="<?php echo $button_delete; ?>" class="btn" onclick="confirm('<?php echo $text_confirm; ?>') ? $('#form-custom-field').submit() : false;"><i class="fa fa-times-circle"></i></button>
       </div>
-      <h1 class="panel-title"><i class="fa fa-list"></i> <?php echo $heading_title; ?></h1>
+      <h1 class="panel-title"><i class="fa fa-bars fa-lg"></i> <?php echo $heading_title; ?></h1>
     </div>
     <div class="panel-body">
       <form action="<?php echo $delete; ?>" method="post" enctype="multipart/form-data" id="form-custom-field">
         <div class="table-responsive">
-          <table class="table table-striped table-bordered table-hover">
+          <table class="table table-bordered table-hover">
             <thead>
               <tr>
-                <td width="1" class="text-center"><input type="checkbox" onclick="$('input[name*=\'selected\']').prop('checked', this.checked);" /></td>
+                <td style="width: 1px;" class="text-center"><input type="checkbox" onclick="$('input[name*=\'selected\']').prop('checked', this.checked);" /></td>
                 <td class="text-left"><?php if ($sort == 'cfd.name') { ?>
                   <a href="<?php echo $sort_name; ?>" class="<?php echo strtolower($order); ?>"><?php echo $column_name; ?></a>
                   <?php } else { ?>
                   <a href="<?php echo $sort_name; ?>"><?php echo $column_name; ?></a>
+                  <?php } ?></td>
+                <td class="text-left"><?php if ($sort == 'cf.location') { ?>
+                  <a href="<?php echo $sort_location; ?>" class="<?php echo strtolower($order); ?>"><?php echo $column_location; ?></a>
+                  <?php } else { ?>
+                  <a href="<?php echo $sort_location; ?>"><?php echo $column_location; ?></a>
                   <?php } ?></td>
                 <td class="text-left"><?php if ($sort == 'cf.type') { ?>
                   <a href="<?php echo $sort_type; ?>" class="<?php echo strtolower($order); ?>"><?php echo $column_type; ?></a>
                   <?php } else { ?>
                   <a href="<?php echo $sort_type; ?>"><?php echo $column_type; ?></a>
                   <?php } ?></td>
-                <td class="text-left"><?php echo $column_location; ?></td>
                 <td class="text-right"><?php if ($sort == 'cf.sort_order') { ?>
                   <a href="<?php echo $sort_sort_order; ?>" class="<?php echo strtolower($order); ?>"><?php echo $column_sort_order; ?></a>
                   <?php } else { ?>
@@ -58,8 +62,8 @@
                   <input type="checkbox" name="selected[]" value="<?php echo $custom_field['custom_field_id']; ?>" />
                   <?php } ?></td>
                 <td class="text-left"><?php echo $custom_field['name']; ?></td>
-                <td class="text-left"><?php echo $custom_field['type']; ?></td>
                 <td class="text-left"><?php echo $custom_field['location']; ?></td>
+                <td class="text-left"><?php echo $custom_field['type']; ?></td>
                 <td class="text-right"><?php echo $custom_field['sort_order']; ?></td>
                 <td class="text-right"><a href="<?php echo $custom_field['edit']; ?>" data-toggle="tooltip" title="<?php echo $button_edit; ?>" class="btn btn-primary"><i class="fa fa-pencil"></i></a></td>
               </tr>

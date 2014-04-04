@@ -21,6 +21,7 @@ $_['entry_author']      = 'Ekleyen';
 $_['entry_rating']      = 'Oylama';
 $_['entry_status']      = 'Durumu';
 $_['entry_text']        = 'Metin';
+$_['entry_date_added']  = 'Ekleme Tarihi';
 
 // Help
 $_['help_product']      = '(Otomatik Tamamlama)';
@@ -31,4 +32,3 @@ $_['error_product']     = 'Ürün gerekli!';
 $_['error_author']      = 'Ekleyen adı 3 ile 64 karakter arasında olmalı!';
 $_['error_text']        = 'Yorum metin alanı en az 1 karakter olmalı!';
 $_['error_rating']      = 'İnceleme değerlendirmesi gerekli!';
-?>

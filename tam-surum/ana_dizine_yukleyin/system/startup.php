@@ -3,47 +3,8 @@
 error_reporting(E_ALL);
 
 // Check Version
-if (version_compare(phpversion(), '5.1.0', '<') == true) {
-	exit('PHP5.1+ Required');
-}
-
-// Register Globals
-if (ini_get('register_globals')) {
-	ini_set('session.use_cookies', 'On');
-	ini_set('session.use_trans_sid', 'Off');
-	
-	if (!isset($_COOKIE[session_name()]) || !preg_match('/^[a-z0-9]{32}$/', $_COOKIE[session_name()])) {
-		session_set_cookie_params(0, '/');
-		session_start();
-	}
-	
-	$globals = array($_REQUEST, $_SESSION, $_SERVER, $_FILES);
-
-	foreach ($globals as $global) {
-		foreach(array_keys($global) as $key) {
-			unset(${$key}); 
-		}
-	}
-}
-
-// Magic Quotes Fix
-if (ini_get('magic_quotes_gpc')) {
-	function clean($data) {
-		if (is_array($data)) {
-			foreach ($data as $key => $value) {
-				$data[clean($key)] = clean($value);
-			}
-		} else {
-			$data = stripslashes($data);
-		}
-	
-		return $data;
-	}			
-	
-	$_GET = clean($_GET);
-	$_POST = clean($_POST);
-	$_REQUEST = clean($_REQUEST);
-	$_COOKIE = clean($_COOKIE);
+if (version_compare(phpversion(), '5.3.0', '<') == true) {
+	exit('PHP5.3+ Required');
 }
 
 if (!ini_get('date.timezone')) {
@@ -75,51 +36,57 @@ if (!isset($_SERVER['HTTP_HOST'])) {
 	$_SERVER['HTTP_HOST'] = getenv('HTTP_HOST');
 }
 
-// Engine
-require_once(DIR_SYSTEM . 'engine/action.php'); 
-require_once(DIR_SYSTEM . 'engine/controller.php');
-require_once(DIR_SYSTEM . 'engine/front.php');
-require_once(DIR_SYSTEM . 'engine/loader.php'); 
-require_once(DIR_SYSTEM . 'engine/model.php');
-require_once(DIR_SYSTEM . 'engine/registry.php');
+// Check if SSL
+if (isset($_SERVER['HTTPS']) && (($_SERVER['HTTPS'] == 'on') || ($_SERVER['HTTPS'] == '1'))) {
+	$_SERVER['HTTPS'] = true;
+} elseif (!empty($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https' || !empty($_SERVER['HTTP_X_FORWARDED_SSL']) && $_SERVER['HTTP_X_FORWARDED_SSL'] == 'on') {
+	$_SERVER['HTTPS'] = true;
+} else {
+	$_SERVER['HTTPS'] = false;
+}
 
-// Library
-function __autoload($class) {
-	//foreach () {
-		
-	//}
-	
-	if (substr(0, 5, $class) == 'Controller') {
-		
+// Modification Override
+function modification($filename) {
+	if (!defined('DIR_CATALOG')) {
+		$file = DIR_MODIFICATION . 'catalog_' . str_replace('/', '_', substr($filename, strlen(DIR_APPLICATION))); 
+	} else {
+		$file = DIR_MODIFICATION . 'admin_' .  str_replace('/', '_', substr($filename, strlen(DIR_APPLICATION)));
 	}
 	
+	if (substr($filename, 0, strlen(DIR_SYSTEM)) == DIR_SYSTEM) {
+		$file = DIR_MODIFICATION . 'system_' . str_replace('/', '_', substr($filename, strlen(DIR_SYSTEM)));
+	}
+	
+	if (file_exists($file)) {
+		return $file;
+	} else {
+		return $filename;
+	}
+}
+
+// Autoloader
+function autoload($class) {
 	$file = DIR_SYSTEM . 'library/' . strtolower($class) . '.php';
 	
 	if (file_exists($file)) {
-		include($file);
+		include(modification($file));
 	} else {
 		trigger_error('Error: Could not load class ' . $class . '.php!');
 		exit();
 	}
 }
 
-require_once(DIR_SYSTEM . 'library/cache.php');
-require_once(DIR_SYSTEM . 'library/url.php');
-require_once(DIR_SYSTEM . 'library/config.php');
-require_once(DIR_SYSTEM . 'library/db.php');
-require_once(DIR_SYSTEM . 'library/document.php');
-require_once(DIR_SYSTEM . 'library/encryption.php');
-require_once(DIR_SYSTEM . 'library/image.php');
-require_once(DIR_SYSTEM . 'library/language.php');
-require_once(DIR_SYSTEM . 'library/log.php');
-require_once(DIR_SYSTEM . 'library/mail.php');
-require_once(DIR_SYSTEM . 'library/pagination.php');
-require_once(DIR_SYSTEM . 'library/request.php');
-require_once(DIR_SYSTEM . 'library/response.php');
-require_once(DIR_SYSTEM . 'library/session.php');
-require_once(DIR_SYSTEM . 'library/template.php');
+spl_autoload_register('autoload');
+spl_autoload_extensions('.php');
+
+// Engine
+require_once(modification(DIR_SYSTEM . 'engine/action.php')); 
+require_once(modification(DIR_SYSTEM . 'engine/controller.php'));
+require_once(modification(DIR_SYSTEM . 'engine/front.php'));
+require_once(modification(DIR_SYSTEM . 'engine/loader.php')); 
+require_once(modification(DIR_SYSTEM . 'engine/model.php'));
+require_once(modification(DIR_SYSTEM . 'engine/registry.php'));
 
 // Helper
-require_once(DIR_SYSTEM . 'helper/json.php'); 
-require_once(DIR_SYSTEM . 'helper/utf8.php'); 
-?>
+require_once(DIR_SYSTEM . 'helper/json.php');
+require_once(DIR_SYSTEM . 'helper/utf8.php');

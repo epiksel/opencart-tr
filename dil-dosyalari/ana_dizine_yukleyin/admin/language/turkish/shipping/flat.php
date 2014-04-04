@@ -17,4 +17,3 @@ $_['entry_sort_order'] = 'Sıralama';
 
 // Error
 $_['error_permission'] = 'Uyarı: Sabit kargo fiyatı düzenleme iznine sahip değilsiniz!';
-?>

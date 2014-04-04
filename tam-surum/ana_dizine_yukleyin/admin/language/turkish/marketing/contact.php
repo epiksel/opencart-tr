@@ -35,4 +35,3 @@ $_['help_product']        = 'Sadece listedeki ürünleri sipariş veren müşter
 $_['error_permission']     = 'Uyarı: E-Posta gönderme iznine sahip değilsiniz!';
 $_['error_subject']        = 'E-Posta Konusu gerekli!';
 $_['error_message']        = 'E-Posta Mesajı gerekli!';
-?>

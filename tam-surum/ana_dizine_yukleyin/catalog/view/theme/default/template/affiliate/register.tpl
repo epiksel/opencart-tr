@@ -10,13 +10,13 @@
   <?php } ?>
   <div class="row"><?php echo $column_left; ?>
     <?php if ($column_left && $column_right) { ?>
-    <?php $cols = 6; ?>
+    <?php $class = 'col-sm-6'; ?>
     <?php } elseif ($column_left || $column_right) { ?>
-    <?php $cols = 9; ?>
+    <?php $class = 'col-sm-9'; ?>
     <?php } else { ?>
-    <?php $cols = 12; ?>
-    <?php } ?>    
-    <div id="content" class="col-sm-<?php echo $cols; ?>"><?php echo $content_top; ?>
+    <?php $class = 'col-sm-12'; ?>
+    <?php } ?>
+    <div id="content" class="<?php echo $class; ?>"><?php echo $content_top; ?>
       <h1><?php echo $heading_title; ?></h1>
       <p><?php echo $text_account_already; ?></p>
       <p><?php echo $text_signup; ?></p>
@@ -284,9 +284,9 @@ $('select[name=\'country_id\']').on('change', function() {
 		},			
 		success: function(json) {
 			if (json['postcode_required'] == '1') {
-				$('#input-postcode').parent().parent().addClass('required');
+				$('input[name=\'postcode\']').parent().parent().addClass('required');
 			} else {
-				$('#input-postcode').parent().parent().removeClass('required');
+				$('input[name=\'postcode\']').parent().parent().removeClass('required');
 			}
 			
 			html = '<option value=""><?php echo $text_select; ?></option>';
@@ -323,14 +323,5 @@ $('input[name=\'payment\']').on('change', function() {
 });
 
 $('input[name=\'payment\']:checked').trigger('change');
-//--></script> 
-<script type="text/javascript"><!--
-$(document).ready(function() {
-    $('.colorbox').colorbox({
-        maxWidth: 640,
-        width: "85%",
-        height: 480
-    });
-});
 //--></script> 
 <?php echo $footer; ?>

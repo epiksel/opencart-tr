@@ -34,4 +34,3 @@ $_['text_limit']        = 'Göster:';
 // Entry
 $_['entry_search']      = 'Arama Kriteri';
 $_['entry_description'] = 'Ürün açıklamasında ara.';
-?>

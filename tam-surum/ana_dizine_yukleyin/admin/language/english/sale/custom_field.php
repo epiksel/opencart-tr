@@ -15,25 +15,22 @@ $_['text_file']             = 'File';
 $_['text_date']             = 'Date';
 $_['text_datetime']         = 'Date &amp; Time';
 $_['text_time']             = 'Time';
-$_['text_registration']     = 'Registration';
 $_['text_account']          = 'Account';
 $_['text_address']          = 'Address';
-$_['text_payment_address']  = 'Payment Address';
-$_['text_shipping_address'] = 'Shipping Address';
 
 // Column
 $_['column_name']           = 'Custom Field Name';
-$_['column_type']           = 'Type';
 $_['column_location']       = 'Location';
+$_['column_type']           = 'Type';
 $_['column_sort_order']     = 'Sort Order';
 $_['column_action']         = 'Action';
 
 // Entry
 $_['entry_name']            = 'Custom Field Name';
+$_['entry_location']        = 'Location';
 $_['entry_type']            = 'Type';
 $_['entry_value']           = 'Value';
 $_['entry_custom_value']    = 'Custom Field Value Name';
-$_['entry_location']        = 'Location';
 $_['entry_customer_group']  = 'Customer Group';
 $_['entry_required']        = 'Required';
 $_['entry_status']          = 'Status';
@@ -44,4 +41,3 @@ $_['error_permission']      = 'Warning: You do not have permission to modify cus
 $_['error_name']            = 'Customer Field Name must be between 1 and 128 characters!';
 $_['error_type']            = 'Warning: Custom Field Values required!';
 $_['error_custom_value']    = 'Custom Value Name must be between 1 and 128 characters!';
-?>

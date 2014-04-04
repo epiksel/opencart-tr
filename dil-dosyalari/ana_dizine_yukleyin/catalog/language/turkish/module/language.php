@@ -3,4 +3,3 @@
 
 // Text
 $_['text_language'] = 'Dil';
-?>

@@ -17,4 +17,3 @@ $_['text_order']        = 'Siparişlerim';
 $_['text_wishlist']     = 'Alışveriş Listem';
 $_['text_newsletter']   = 'Bülten Aboneliği';
 $_['text_powered']   	= '%s &copy; %s - Tüm Hakları Saklıdır.<br />Altyapı: <a href="http://www.opencart.com" title="OpenCart">OpenCart</a> - Geliştirici: <a href="http://www.e-piksel.com" title="E-Piksel E-Ticaret ve Bilgi Teknolojileri">E-Piksel</a>';
-?>

@@ -111,7 +111,13 @@ class ModelCatalogProduct extends Model {
 		if (isset($data['keyword'])) {
 			$this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET query = 'product_id=" . (int)$product_id . "', keyword = '" . $this->db->escape($data['keyword']) . "'");
 		}
-						
+
+		if (isset($data['product_profiles'])) {
+			foreach ($data['product_profiles'] as $profile) {
+				$this->db->query("INSERT INTO `" . DB_PREFIX . "product_profile` SET `product_id` = " . (int)$product_id . ", customer_group_id = " . (int)$profile['customer_group_id'] . ", `profile_id` = " . (int)$profile['profile_id']);
+			}
+		}
+
 		$this->cache->delete('product');
 	}
 	
@@ -254,6 +260,14 @@ class ModelCatalogProduct extends Model {
 		if ($data['keyword']) {
 			$this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET query = 'product_id=" . (int)$product_id . "', keyword = '" . $this->db->escape($data['keyword']) . "'");
 		}
+
+		$this->db->query("DELETE FROM `" . DB_PREFIX . "product_profile` WHERE product_id = " . (int)$product_id);
+
+		if (isset($data['product_profiles'])) {
+			foreach ($data['product_profiles'] as $profile) {
+				$this->db->query("INSERT INTO `" . DB_PREFIX . "product_profile` SET `product_id` = " . (int)$product_id . ", customer_group_id = " . (int)$profile['customer_group_id'] . ", `profile_id` = " . (int)$profile['profile_id']);
+			}
+		}
 						
 		$this->cache->delete('product');
 	}
@@ -285,6 +299,7 @@ class ModelCatalogProduct extends Model {
 			$data = array_merge($data, array('product_download' => $this->getProductDownloads($product_id)));
 			$data = array_merge($data, array('product_layout' => $this->getProductLayouts($product_id)));
 			$data = array_merge($data, array('product_store' => $this->getProductStores($product_id)));
+			$data = array_merge($data, array('product_profiles' => $this->getProfiles($product_id)));
 			
 			$this->addProduct($data);
 		}
@@ -308,7 +323,7 @@ class ModelCatalogProduct extends Model {
 		$this->db->query("DELETE FROM " . DB_PREFIX . "product_to_layout WHERE product_id = '" . (int)$product_id . "'");
 		$this->db->query("DELETE FROM " . DB_PREFIX . "product_to_store WHERE product_id = '" . (int)$product_id . "'");
 		$this->db->query("DELETE FROM " . DB_PREFIX . "review WHERE product_id = '" . (int)$product_id . "'");
-		
+		$this->db->query("DELETE FROM " . DB_PREFIX . "product_profile WHERE product_id = " . (int)$product_id);
 		$this->db->query("DELETE FROM " . DB_PREFIX . "url_alias WHERE query = 'product_id=" . (int)$product_id. "'");
 		
 		$this->cache->delete('product');
@@ -336,7 +351,7 @@ class ModelCatalogProduct extends Model {
 		}
 		
 		if (isset($data['filter_quantity']) && $data['filter_quantity'] !== null) {
-			$sql .= " AND p.quantity = '" . $this->db->escape($data['filter_quantity']) . "'";
+			$sql .= " AND p.quantity = '" . (int)$data['filter_quantity'] . "'";
 		}
 		
 		if (isset($data['filter_status']) && $data['filter_status'] !== null) {
@@ -495,7 +510,7 @@ class ModelCatalogProduct extends Model {
 	}
 			
 	public function getProductImages($product_id) {
-		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "product_image WHERE product_id = '" . (int)$product_id . "'");
+		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "product_image WHERE product_id = '" . (int)$product_id . "' ORDER BY sort_order ASC");
 		
 		return $query->rows;
 	}
@@ -571,7 +586,11 @@ class ModelCatalogProduct extends Model {
 		
 		return $product_related_data;
 	}
-	
+
+	public function getProfiles($product_id) {
+		return $this->db->query("SELECT * FROM `" . DB_PREFIX . "product_profile` WHERE product_id = " . (int)$product_id)->rows;
+	}
+
 	public function getTotalProducts($data = array()) {
 		$sql = "SELECT COUNT(DISTINCT p.product_id) AS total FROM " . DB_PREFIX . "product p LEFT JOIN " . DB_PREFIX . "product_description pd ON (p.product_id = pd.product_id)";
 		 
@@ -590,7 +609,7 @@ class ModelCatalogProduct extends Model {
 		}
 		
 		if (isset($data['filter_quantity']) && $data['filter_quantity'] !== null) {
-			$sql .= " AND p.quantity = '" . $this->db->escape($data['filter_quantity']) . "'";
+			$sql .= " AND p.quantity = '" . (int)$data['filter_quantity'] . "'";
 		}
 		
 		if (isset($data['filter_status']) && $data['filter_status'] !== null) {
@@ -655,5 +674,10 @@ class ModelCatalogProduct extends Model {
 
 		return $query->row['total'];
 	}
+	
+	public function getTotalProductsOutOfStock() {
+		$query = $this->db->query("SELECT COUNT(*) AS total FROM " . DB_PREFIX . "product WHERE status <= 0");
+
+		return $query->row['total'];
+	}	
 }
-?>

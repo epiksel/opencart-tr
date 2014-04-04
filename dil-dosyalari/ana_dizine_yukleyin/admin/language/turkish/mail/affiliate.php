@@ -10,4 +10,3 @@ $_['text_approve_thanks']		= 'Teşekküler,';
 $_['text_transaction_subject']	= '%s - Ortaklık Komisyonu';
 $_['text_transaction_received']	= 'Komisyon oranınıza göre kazandığınız bakiye %s dir.';
 $_['text_transaction_total']	= 'Kazandığınız bakiye ile birlikte toplam bakiyeniz %s.';
-?>

@@ -2,7 +2,7 @@
 class ModelTotalCoupon extends Model {
 	public function getTotal(&$total_data, &$total, &$taxes) {
 		if (isset($this->session->data['coupon'])) {
-			$this->language->load('total/coupon');
+			$this->load->language('total/coupon');
 			
 			$this->load->model('checkout/coupon');
 			 
@@ -75,10 +75,14 @@ class ModelTotalCoupon extends Model {
 					$discount_total += $this->session->data['shipping_method']['cost'];				
 				}				
       			
+				// If discount greater than total
+				if ($discount_total > $total) {
+					$discount_total = $total; 
+				}
+				
 				$total_data[] = array(
 					'code'       => 'coupon',
         			'title'      => sprintf($this->language->get('text_coupon'), $this->session->data['coupon']),
-	    			'text'       => $this->currency->format(-$discount_total),
         			'value'      => -$discount_total,
 					'sort_order' => $this->config->get('coupon_sort_order')
       			);
@@ -103,8 +107,11 @@ class ModelTotalCoupon extends Model {
 		$coupon_info = $this->model_checkout_coupon->getCoupon($code);
 			
 		if ($coupon_info) {
-			$this->model_checkout_coupon->redeem($coupon_info['coupon_id'], $order_info['order_id'], $order_info['customer_id'], $order_total['value']);	
+			$this->db->query("INSERT INTO `" . DB_PREFIX . "coupon_history` SET coupon_id = '" . (int)$coupon_info['coupon_id'] . "', order_id = '" . (int)$order_info['order_id'] . "', customer_id = '" . (int)$order_info['customer_id'] . "', amount = '" . (float)$order_total['value'] . "', date_added = NOW()");
 		}						
 	}
+	
+	public function clear($order_id) {
+		$this->db->query("DELETE FROM `" . DB_PREFIX . "coupon_history` WHERE order_id = '" . (int)$order_id . "'");
+	}
 }
-?>

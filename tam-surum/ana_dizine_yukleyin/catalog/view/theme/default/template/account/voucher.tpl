@@ -10,13 +10,13 @@
   <?php } ?>
   <div class="row"><?php echo $column_left; ?>
     <?php if ($column_left && $column_right) { ?>
-    <?php $cols = 6; ?>
+    <?php $class = 'col-sm-6'; ?>
     <?php } elseif ($column_left || $column_right) { ?>
-    <?php $cols = 9; ?>
+    <?php $class = 'col-sm-9'; ?>
     <?php } else { ?>
-    <?php $cols = 12; ?>
+    <?php $class = 'col-sm-12'; ?>
     <?php } ?>
-    <div id="content" class="col-sm-<?php echo $cols; ?>"><?php echo $content_top; ?>
+    <div id="content" class="<?php echo $class; ?>"><?php echo $content_top; ?>
       <h1><?php echo $heading_title; ?></h1>
       <p><?php echo $text_description; ?></p>
       <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" class="form-horizontal">
@@ -83,8 +83,7 @@
           <label class="col-sm-2 control-label" for="input-message"><?php echo $entry_message; ?></label>
           <div class="col-sm-10">
             <textarea name="message" cols="40" rows="5" id="input-message" class="form-control"><?php echo $message; ?></textarea>
-            <span class="help-block"><?php echo $help_message; ?></span>
-          </div>
+            <span class="help-block"><?php echo $help_message; ?></span> </div>
         </div>
         <div class="form-group">
           <label class="col-sm-2 control-label" for="input-amount"><?php echo $entry_amount; ?></label>

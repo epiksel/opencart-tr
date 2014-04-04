@@ -22,4 +22,3 @@ $_['error_directory']	= 'Uyarı: Dizin yok!';
 $_['error_filetype']	= 'Uyarı: Yanlış dosya türü!';
 $_['error_upload']		= 'Uyarı: Dosya bilinmeyen bir nedenden dolayı yüklenemedi!';
 $_['error_delete']		= 'Uyarı: Bu dizini silemezsiniz!';
-?>

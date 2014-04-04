@@ -4,10 +4,10 @@
 // Heading
 $_['heading_title']      = 'Payza';
 
-// Text 
+// Text
 $_['text_payment']       = 'Ödeme Metodları';
 $_['text_success']       = 'Başarılı: Payza hesap detayları başarılı bir şekilde değiştirildi!';
-      
+
 // Entry
 $_['entry_merchant']     = 'Merchant ID';
 $_['entry_security']     = 'Güvenlik Kodu';
@@ -26,4 +26,3 @@ $_['help_total']         = 'Bu ödeme metodunun aktif olması için toplam sipar
 $_['error_permission']   = 'Uyarı: Payza ödeme metodunu düzenleme iznine sahip değilsiniz!';
 $_['error_merchant']     = 'Merchant ID gerekli!';
 $_['error_security']     = 'Security Code gerekli!';
-?>

@@ -34,6 +34,7 @@ $_['entry_status']              = 'Durumu';
 $_['entry_password']            = 'Parola';
 $_['entry_confirm']             = 'Parola(tekrar)';
 $_['entry_company']             = 'Şirket Adı';
+$_['entry_website']             = 'Web Sitesi';
 $_['entry_address_1']           = 'Adres 1';
 $_['entry_address_2']           = 'Adres 2';
 $_['entry_city']                = 'İlçe / Semt';
@@ -76,4 +77,3 @@ $_['error_postcode']            = 'Bu ülke için posta kodu 2 ile 10 karakter a
 $_['error_country']             = 'Lütfen bir ülke seçiniz!';
 $_['error_zone']                = 'Lütfen bir şehir seçiniz!';
 $_['error_code']                = 'Takip kodu gerekli!';
-?>

@@ -27,4 +27,3 @@ $_['text_rating_desc']  = 'Yüksek Oylama';
 $_['text_model_asc']    = 'Ürün Kodu (A - Z)';
 $_['text_model_desc']   = 'Ürün Kodu (Z - A)';
 $_['text_limit']        = 'Göster:';
-?>

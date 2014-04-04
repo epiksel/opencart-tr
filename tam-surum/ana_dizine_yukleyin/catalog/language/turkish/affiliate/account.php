@@ -1,7 +1,7 @@
 <?php
 /* Turkceye Ceviren eka7a - http://www.e-piksel.com */
 
-// Heading 
+// Heading
 $_['heading_title']        = 'Ortaklık Hesabım';
 
 // Text
@@ -14,4 +14,3 @@ $_['text_password']        = 'Parola Değiştir';
 $_['text_payment']         = 'Ödeme Bilgilerimi Değiştir';
 $_['text_tracking']        = 'Takip Kodu Oluşturma Aracı';
 $_['text_transaction']     = 'İşlem Geçmişini Göster';
-?>

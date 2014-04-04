@@ -40,7 +40,7 @@ $_['entry_status']        = 'Status';
 $_['help_code']           = 'The code the customer enters to get the discount.';
 $_['help_type']           = 'Percentage or Fixed Amount.';
 $_['help_logged']         = 'Customer must be logged in to use the coupon.';
-$_['help_total']          = 'The total amount that must reached before the coupon is valid.';
+$_['help_total']          = 'The total amount that must be reached before the coupon is valid.';
 $_['help_category']       = 'Choose all products under selected category.';
 $_['help_product']        = 'Choose specific products the coupon will apply to. Select no products to apply coupon to entire cart.';
 $_['help_uses_total']     = 'The maximum number of times the coupon can be used by any customer. Leave blank for unlimited';
@@ -51,4 +51,3 @@ $_['error_permission']    = 'Warning: You do not have permission to modify coupo
 $_['error_exists']        = 'Warning: Coupon code is already in use!';
 $_['error_name']          = 'Coupon Name must be between 3 and 128 characters!';
 $_['error_code']          = 'Code must be between 3 and 10 characters!';
-?>

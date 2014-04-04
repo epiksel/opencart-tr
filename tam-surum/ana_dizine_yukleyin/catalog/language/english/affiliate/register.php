@@ -14,7 +14,7 @@ $_['text_your_password']        = 'Your Password';
 $_['text_cheque']               = 'Cheque';
 $_['text_paypal']               = 'PayPal';
 $_['text_bank']                 = 'Bank Transfer';
-$_['text_agree']                = 'I have read and agree to the <a href="%s" alt="%s" class="agree"><b>%s</b></a>';
+$_['text_agree']                = 'I have read and agree to the <a href="%s" class="agree"><b>%s</b></a>';
 
 // Entry
 $_['entry_firstname']           = 'First Name';
@@ -56,4 +56,3 @@ $_['error_country']             = 'Please select a country!';
 $_['error_zone']                = 'Please select a region / state!';
 $_['error_postcode']            = 'Postcode must be between 2 and 10 characters!';
 $_['error_agree']               = 'Warning: You must agree to the %s!';
-?>

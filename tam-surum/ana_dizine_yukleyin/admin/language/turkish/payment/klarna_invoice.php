@@ -35,4 +35,3 @@ $_['help_total']			= 'Bu ödeme metodunun aktif olması için toplam sipariş tu
 
 // Error
 $_['error_permission']      = 'Warning: You do not have permission to modify payment Klarna Part Payment!';
-?>

@@ -20,4 +20,3 @@ $_['error_country']        = 'Lütfen bir ülke seçiniz!';
 $_['error_zone']           = 'Lütfen bir şehir seçiniz!';
 $_['error_shipping']       = 'Uyarı: Kargo metodu gerekli!';
 $_['error_no_shipping']    = 'Uyarı: Kullanılabilir kargo metodu yok. Lütfen yardım için bizimle <a href="%s">iletişime</a> geçiniz!';
-?>

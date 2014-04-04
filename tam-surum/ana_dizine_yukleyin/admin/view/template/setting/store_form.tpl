@@ -1,5 +1,5 @@
-<?php echo $header; ?>
-<div id="content" class="container">
+<?php echo $header; ?><?php echo $menu; ?>
+<div id="content">
   <ul class="breadcrumb">
     <?php foreach ($breadcrumbs as $breadcrumb) { ?>
     <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
@@ -18,9 +18,9 @@
   <div class="panel panel-default">
     <div class="panel-heading">
       <div class="pull-right">
-        <button type="submit" form="form-store" class="btn btn-primary"><i class="fa fa-check"></i> <?php echo $button_save; ?></button>
-        <a href="<?php echo $cancel; ?>" class="btn btn-danger"><i class="fa fa-times"></i> <?php echo $button_cancel; ?></a></div>
-      <h1 class="panel-title"><i class="fa fa-edit"></i> <?php echo $heading_title; ?></h1>
+        <button type="submit" form="form-store" data-toggle="tooltip" title="<?php echo $button_save; ?>" class="btn"><i class="fa fa-check-circle"></i></button>
+        <a href="<?php echo $cancel; ?>" data-toggle="tooltip" title="<?php echo $button_cancel; ?>" class="btn"><i class="fa fa-reply"></i></a></div>
+      <h1 class="panel-title"><i class="fa fa-pencil-square fa-lg"></i> <?php echo $heading_title; ?></h1>
     </div>
     <div class="panel-body">
       <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form-store" class="form-horizontal">
@@ -77,6 +77,12 @@
                 <?php } ?>
               </div>
             </div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label" for="input-geocode"><?php echo $entry_geocode; ?></label>
+              <div class="col-sm-10">
+                <input type="text" name="config_geocode" value="<?php echo $config_geocode; ?>" placeholder="<?php echo $entry_geocode; ?>" id="input-geocode" class="form-control" />
+                <span class="help-block"><?php echo $help_geocode; ?></span></div>
+            </div>
             <div class="form-group required">
               <label class="col-sm-2 control-label" for="input-email"><?php echo $entry_email; ?></label>
               <div class="col-sm-10">
@@ -101,14 +107,57 @@
                 <input type="text" name="config_fax" value="<?php echo $config_fax; ?>" placeholder="<?php echo $entry_fax; ?>" id="input-fax" class="form-control" />
               </div>
             </div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label" for="input-image"><?php echo $entry_image; ?></label>
+              <div class="col-sm-10">
+                <?php if ($thumb) { ?>
+                <a href="" id="thumb-image" class="img-thumbnail img-edit"><img src="<?php echo $thumb; ?>" alt="" title="" /></a>
+                <?php } else { ?>
+                <a href="" id="thumb-image" class="img-thumbnail img-edit"><i class="fa fa-camera fa-5x"></i></a>
+                <?php } ?>
+                <input type="hidden" name="image" value="<?php echo $image; ?>" id="input-image" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label" for="input-open"><?php echo $entry_open; ?></label>
+              <div class="col-sm-10">
+                <textarea name="open" rows="5" placeholder="<?php echo $entry_open; ?>" id="input-open" class="form-control"><?php echo $open; ?></textarea>
+                <span class="help-block"><?php echo $help_open; ?></span></div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label" for="input-comment"><?php echo $entry_comment; ?></label>
+              <div class="col-sm-10">
+                <textarea name="comment" rows="5" placeholder="<?php echo $entry_comment; ?>" id="input-comment" class="form-control"><?php echo $comment; ?></textarea>
+                <span class="help-block"><?php echo $help_comment; ?></span></div>
+            </div>
+            <?php if ($locations) { ?>
+            <div class="form-group">
+              <label class="col-sm-2 control-label"><?php echo $entry_location; ?></label>
+              <div class="col-sm-10">
+                <?php foreach ($locations as $location) { ?>
+                <div class="checkbox">
+                  <label>
+                    <?php if (in_array($location['location_id'], $config_location)) { ?>
+                    <input type="checkbox" name="config_location[]" value="<?php echo $location['location_id']; ?>" checked="checked" />
+                    <?php echo $location['name']; ?>
+                    <?php } else { ?>
+                    <input type="checkbox" name="config_location[]" value="<?php echo $location['location_id']; ?>" />
+                    <?php echo $location['name']; ?>
+                    <?php } ?>
+                  </label>
+                </div>
+                <?php } ?>
+                <span class="help-block"><?php echo $help_location; ?></span></div>
+            </div>
+            <?php } ?>
           </div>
           <div class="tab-pane" id="tab-store">
             <div class="form-group required">
-              <label class="col-sm-2 control-label" for="input-title"><?php echo $entry_title; ?></label>
+              <label class="col-sm-2 control-label" for="input-meta-title"><?php echo $entry_meta_title; ?></label>
               <div class="col-sm-10">
-                <input type="text" name="config_title" value="<?php echo $config_title; ?>" placeholder="<?php echo $entry_title; ?>" id="input-title" class="form-control" />
-                <?php if ($error_title) { ?>
-                <div class="text-danger"><?php echo $error_title; ?></div>
+                <input type="text" name="config_meta_title" value="<?php echo $config_meta_title; ?>" placeholder="<?php echo $entry_meta_title; ?>" id="input-meta-title" class="form-control" />
+                <?php if ($error_meta_title) { ?>
+                <div class="text-danger"><?php echo $error_meta_title; ?></div>
                 <?php } ?>
               </div>
             </div>
@@ -196,29 +245,29 @@
                   <?php } ?>
                   <?php } ?>
                 </select>
-              </div>
+                <span class="help-block"><?php echo $help_currency; ?></span></div>
             </div>
           </div>
           <div class="tab-pane" id="tab-option">
             <fieldset>
               <legend><?php echo $text_items; ?></legend>
               <div class="form-group required">
-                <label class="col-sm-2 control-label" for="input-catalog-limit"><?php echo $entry_catalog_limit; ?></label>
+                <label class="col-sm-2 control-label" for="input-catalog-limit"><?php echo $entry_product_limit; ?></label>
                 <div class="col-sm-10">
-                  <input type="text" name="config_catalog_limit" value="<?php echo $config_catalog_limit; ?>" placeholder="<?php echo $entry_catalog_limit; ?>" id="input-catalog-limit" class="form-control" />
-                  <span class="help-block"><?php echo $help_catalog_limit; ?></span>
-                  <?php if ($error_catalog_limit) { ?>
-                  <div class="text-danger"><?php echo $error_catalog_limit; ?></div>
+                  <input type="text" name="config_product_limit" value="<?php echo $config_product_limit; ?>" placeholder="<?php echo $entry_product_limit; ?>" id="input-catalog-limit" class="form-control" />
+                  <span class="help-block"><?php echo $help_product_limit; ?></span>
+                  <?php if ($error_product_limit) { ?>
+                  <div class="text-danger"><?php echo $error_product_limit; ?></div>
                   <?php } ?>
                 </div>
               </div>
               <div class="form-group required">
-                <label class="col-sm-2 control-label" for="input-list-description-limit"><?php echo $entry_list_description_limit; ?></label>
+                <label class="col-sm-2 control-label" for="input-list-description-limit"><?php echo $entry_product_description_length; ?></label>
                 <div class="col-sm-10">
-                  <input type="text" name="config_list_description_limit" value="<?php echo $config_list_description_limit; ?>" placeholder="<?php echo $entry_list_description_limit; ?>" id="input-list-description-limit" class="form-control" />
-                  <span class="help-block"><?php echo $help_list_description_limit; ?></span>
-                  <?php if ($error_list_description_limit) { ?>
-                  <div class="text-danger"><?php echo $error_list_description_limit; ?></div>
+                  <input type="text" name="config_product_description_length" value="<?php echo $config_product_description_length; ?>" placeholder="<?php echo $entry_product_description_length; ?>" id="input-list-description-limit" class="form-control" />
+                  <span class="help-block"><?php echo $help_product_description_length; ?></span>
+                  <?php if ($error_product_description_length) { ?>
+                  <div class="text-danger"><?php echo $error_product_description_length; ?></div>
                   <?php } ?>
                 </div>
               </div>
@@ -388,27 +437,27 @@
                 </div>
               </div>
               <div class="form-group">
-                <label class="col-sm-2 control-label"><?php echo $entry_guest_checkout; ?></label>
+                <label class="col-sm-2 control-label"><?php echo $entry_checkout_guest; ?></label>
                 <div class="col-sm-10">
                   <label class="radio-inline">
-                    <?php if ($config_guest_checkout) { ?>
-                    <input type="radio" name="config_guest_checkout" value="1" checked="checked" />
+                    <?php if ($config_checkout_guest) { ?>
+                    <input type="radio" name="config_checkout_guest" value="1" checked="checked" />
                     <?php echo $text_yes; ?>
                     <?php } else { ?>
-                    <input type="radio" name="config_guest_checkout" value="1" />
+                    <input type="radio" name="config_checkout_guest" value="1" />
                     <?php echo $text_yes; ?>
                     <?php } ?>
                   </label>
                   <label class="radio-inline">
-                    <?php if (!$config_guest_checkout) { ?>
-                    <input type="radio" name="config_guest_checkout" value="0" checked="checked" />
+                    <?php if (!$config_checkout_guest) { ?>
+                    <input type="radio" name="config_checkout_guest" value="0" checked="checked" />
                     <?php echo $text_no; ?>
                     <?php } else { ?>
-                    <input type="radio" name="config_guest_checkout" value="0" />
+                    <input type="radio" name="config_checkout_guest" value="0" />
                     <?php echo $text_no; ?>
                     <?php } ?>
                   </label>
-                  <span class="help-block"><?php echo $help_guest_checkout; ?></span> </div>
+                  <span class="help-block"><?php echo $help_checkout_guest; ?></span> </div>
               </div>
               <div class="form-group">
                 <label class="col-sm-2 control-label" for="input-checkout"><?php echo $entry_checkout; ?></label>

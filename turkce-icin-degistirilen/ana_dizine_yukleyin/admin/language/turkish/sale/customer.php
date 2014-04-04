@@ -27,13 +27,13 @@ $_['column_total']			= 'Toplam Hesap';
 $_['column_action']			= 'Eylem';
 
 // Entry
+$_['entry_customer_group']	= 'Müşteri Grubu';
 $_['entry_firstname']		= 'Adı';
 $_['entry_lastname']		= 'Soyadı';
 $_['entry_email']			= 'E-Posta';
 $_['entry_telephone']		= 'Telefon';
 $_['entry_fax']				= 'Faks';
 $_['entry_newsletter']		= 'Bülten Aboneliği';
-$_['entry_customer_group']	= 'Müşteri Grubu';
 $_['entry_status']			= 'Durumu';
 $_['entry_password']		= 'Parola';
 $_['entry_confirm']			= 'Parola(tekrar)';
@@ -72,4 +72,3 @@ $_['error_city']			= 'İlçe / Semt alanı 2 ile 128 karakter arasında olmalı!
 $_['error_postcode']		= 'Posta kodu 2 ile 10 karakter arasında olmalı!';
 $_['error_country']			= 'Lütfen bir ülke seçiniz!';
 $_['error_zone']			= 'Lütfen bir şehir seçiniz!';
-?>

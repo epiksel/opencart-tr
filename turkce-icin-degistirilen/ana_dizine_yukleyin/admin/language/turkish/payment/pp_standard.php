@@ -11,12 +11,19 @@ $_['text_pp_standard']				 = '<a onclick="window.open(\'https://www.paypal.com/u
 $_['text_authorization']			 = 'Onaylı Ödeme';
 $_['text_sale']						 = 'Direk Ödeme';
 
+// Tabs
+$_['tab_general']					 = 'General';
+$_['tab_status']					 = 'Order status';
+
 // Entry
 $_['entry_email']					 = 'E-Posta';
 $_['entry_test']					 = 'Test Modu';
+$_['entry_test_help']    			 = 'Use the live or testing (sandbox) gateway server to process transactions?';
 $_['entry_transaction']				 = 'Ödeme Metodu';
 $_['entry_debug']					 = 'Hata Ayıklama Modu';
+$_['entry_debug_help']				 = 'Logs additional information to the system log';
 $_['entry_total']        			 = 'Toplam';
+$_['entry_total_help']               = 'The checkout total the order must reach before this payment method becomes active';
 $_['entry_canceled_reversal_status'] = 'Değişim İptal Durumu';
 $_['entry_completed_status']         = 'Tamamlandı Durumu';
 $_['entry_denied_status']			 = 'Reddedildi Durumu';
@@ -25,7 +32,7 @@ $_['entry_failed_status']			 = 'Başarısız Durumu';
 $_['entry_pending_status']			 = 'Onay Bekliyor Durumu';
 $_['entry_processed_status']		 = 'Hazırlanıyor Durumu';
 $_['entry_refunded_status']			 = 'İade Edildi Durumu';
-$_['entry_reversed_status']			 = 'İadeyi Geri Al Durumu';
+$_['entry_reversed_status']			 = 'Ters İbraz Durumu';
 $_['entry_voided_status']		     = 'Hükümsüz Durumu';
 $_['entry_geo_zone']				 = 'Bölge';
 $_['entry_status']					 = 'Durumu';
@@ -38,4 +45,3 @@ $_['help_total']					 = 'Bu ödeme metodunun aktif olması için toplam sipariş
 // Error
 $_['error_permission']				 = 'Uyarı: PayPal Payments Standard ödeme metodunu düzenleme iznine sahip değilsiniz!';
 $_['error_email']					 = 'E-Posta Gerekli!';
-?>

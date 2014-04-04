@@ -6,4 +6,3 @@ $_['heading_title']	= 'Yeni Ürünler';
 
 // Text
 $_['text_tax']		= 'Vergiler Hariç:';
-?>

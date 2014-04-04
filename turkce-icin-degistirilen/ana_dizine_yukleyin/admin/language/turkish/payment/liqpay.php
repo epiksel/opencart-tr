@@ -4,9 +4,9 @@
 // Heading
 $_['heading_title']      = 'LIQPAY';
 
-// Text 
+// Text
 $_['text_payment']       = 'Ödeme Metodları';
-$_['text_success']       = 'Başarılı: LIQPAY hesap detayları güncellendi!';   
+$_['text_success']       = 'Başarılı: LIQPAY hesap detayları güncellendi!';
 $_['text_pay']        	 = 'LIQPAY';
 $_['text_card']          = 'Kredi Kartı';
 
@@ -27,4 +27,3 @@ $_['help_total']		= 'Bu ödeme metodunun aktif olması için toplam sipariş tut
 $_['error_permission']   = 'Uyarı: LIQPAY ödeme metodunu düzenleme iznine sahip değilsiniz!';
 $_['error_merchant']     = 'Merchant ID gerekli!';
 $_['error_signature']    = 'Signature gerekli!';
-?>

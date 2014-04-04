@@ -16,4 +16,3 @@ $_['entry_confirm']  = 'Parola (Tekrar)';
 // Error
 $_['error_password'] = 'Parolanız 4 ile 20 karakter arasında olmalı!';
 $_['error_confirm']  = 'Parolanız birbiriyle uyuşmuyor!';
-?>

@@ -37,4 +37,3 @@ $_['error_city']        = 'İlçe / Semt alanı 2 ile 128 karakter arasında olm
 $_['error_country']     = 'Lütfen bir ülke seçiniz!';
 $_['error_zone']        = 'Lütfen bir şehir seçiniz!';
 $_['error_postcode']    = 'Posta kodu alanı 2 ile 10 karakter arasında olmalı!';
-?>

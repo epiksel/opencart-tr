@@ -16,4 +16,3 @@ $_['entry_email']     = 'E-Posta Adresiniz';
 
 // Error
 $_['error_email']     = 'Uyarı: E-Posta adresi bulunamadı. Lütfen tekrar deneyiniz!';
-?>

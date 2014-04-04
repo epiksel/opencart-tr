@@ -1,6 +1,6 @@
 <h2><?php echo $text_instruction; ?></h2>
-<div class="content">
-  <p><?php echo $text_description; ?></p>
+<p><b><?php echo $text_description; ?></b></p>
+<div class="well well-sm">
   <p><?php echo $bank; ?></p>
   <p><?php echo $text_payment; ?></p>
 </div>
@@ -14,6 +14,7 @@ $('#button-confirm').on('click', function() {
 	$.ajax({ 
 		type: 'get',
 		url: 'index.php?route=payment/bank_transfer/confirm',
+		cache: false,
 		beforeSend: function() {
 			$('#button-confirm').button('loading');
 		},

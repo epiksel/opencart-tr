@@ -4,8 +4,8 @@
 // Heading
 $_['heading_title']      = 'Sage Payment Solutions (US)';
 
-// Text 
-$_['text_payment']       = 'Ödeme Metodları'; 
+// Text
+$_['text_payment']       = 'Ödeme Metodları';
 $_['text_success']       = 'Başarılı: SagePay (US) hesap detayları başarılı bir şekilde değiştirildi!';
 
 // Entry
@@ -24,4 +24,3 @@ $_['help_total']         = 'Bu ödeme metodunun aktif olması için toplam sipar
 $_['error_permission']   = 'Uyarı: SagePay (US) ödeme metodunu düzenleme iznine sahip değilsiniz!';
 $_['error_merchant_id']  = 'Merchant ID Required!';
 $_['error_merchant_key'] = 'Merchant Key Required!';
-?>

@@ -1,65 +1,63 @@
 <?php
 class ControllerModuleShipping extends Controller {
 	public function index() {
-		$this->language->load('module/shipping');
-
-		$this->data['heading_title'] = $this->language->get('heading_title');
-		
-		$this->data['text_shipping'] = $this->language->get('text_shipping');
-		$this->data['text_shipping_method'] = $this->language->get('text_shipping_method');
-		$this->data['text_select'] = $this->language->get('text_select');
-		$this->data['text_none'] = $this->language->get('text_none');
-		$this->data['text_loading'] = $this->language->get('text_loading');
-
-		$this->data['entry_country'] = $this->language->get('entry_country');
-		$this->data['entry_zone'] = $this->language->get('entry_zone');
-		$this->data['entry_postcode'] = $this->language->get('entry_postcode');
+		if ($this->config->get('shipping_status') && $this->config->get('shipping_estimator') && $this->cart->hasShipping()) {
+			$this->load->language('module/shipping');
 	
-		$this->data['button_quote'] = $this->language->get('button_quote');
-		$this->data['button_shipping'] = $this->language->get('button_shipping');
-		$this->data['button_cancel'] = $this->language->get('button_cancel');			
-
-		$this->data['status'] = $this->config->get('shipping_status') && $this->config->get('shipping_estimator') && $this->cart->hasShipping();	
-							
-		if (isset($this->session->data['shipping_address']['country_id'])) {
-			$this->data['country_id'] = $this->session->data['shipping_address']['country_id'];			  	
-		} else {
-			$this->data['country_id'] = $this->config->get('config_country_id');
-		}
+			$data['heading_title'] = $this->language->get('heading_title');
 			
-		$this->load->model('localisation/country');
+			$data['text_shipping'] = $this->language->get('text_shipping');
+			$data['text_shipping_method'] = $this->language->get('text_shipping_method');
+			$data['text_select'] = $this->language->get('text_select');
+			$data['text_none'] = $this->language->get('text_none');
+			$data['text_loading'] = $this->language->get('text_loading');
+	
+			$data['entry_country'] = $this->language->get('entry_country');
+			$data['entry_zone'] = $this->language->get('entry_zone');
+			$data['entry_postcode'] = $this->language->get('entry_postcode');
 		
-		$this->data['countries'] = $this->model_localisation_country->getCountries();
-					
-		if (isset($this->session->data['shipping_address']['zone_id'])) {
-			$this->data['zone_id'] = $this->session->data['shipping_address']['zone_id'];			
-		} else {
-			$this->data['zone_id'] = '';
+			$data['button_quote'] = $this->language->get('button_quote');
+			$data['button_shipping'] = $this->language->get('button_shipping');
+			$data['button_cancel'] = $this->language->get('button_cancel');			
+								
+			if (isset($this->session->data['shipping_address']['country_id'])) {
+				$data['country_id'] = $this->session->data['shipping_address']['country_id'];			  	
+			} else {
+				$data['country_id'] = $this->config->get('config_country_id');
+			}
+				
+			$this->load->model('localisation/country');
+			
+			$data['countries'] = $this->model_localisation_country->getCountries();
+						
+			if (isset($this->session->data['shipping_address']['zone_id'])) {
+				$data['zone_id'] = $this->session->data['shipping_address']['zone_id'];			
+			} else {
+				$data['zone_id'] = '';
+			}
+			
+			if (isset($this->session->data['shipping_address']['postcode'])) {
+				$data['postcode'] = $this->session->data['shipping_address']['postcode'];					
+			} else {
+				$data['postcode'] = '';
+			}
+			
+			if (isset($this->session->data['shipping_method'])) {
+				$data['shipping_method'] = $this->session->data['shipping_method']['code']; 
+			} else {
+				$data['shipping_method'] = '';
+			}
+						
+			if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/module/shipping.tpl')) {
+				return $this->load->view($this->config->get('config_template') . '/template/module/shipping.tpl', $data);
+			} else {
+				return $this->load->view('default/template/module/shipping.tpl', $data);
+			}	
 		}
-		
-		if (isset($this->session->data['shipping_address']['postcode'])) {
-			$this->data['postcode'] = $this->session->data['shipping_address']['postcode'];					
-		} else {
-			$this->data['postcode'] = '';
-		}
-		
-		if (isset($this->session->data['shipping_method'])) {
-			$this->data['shipping_method'] = $this->session->data['shipping_method']['code']; 
-		} else {
-			$this->data['shipping_method'] = '';
-		}
-		
-		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/module/shipping.tpl')) {
-			$this->template = $this->config->get('config_template') . '/template/module/shipping.tpl';
-		} else {
-			$this->template = 'default/template/module/shipping.tpl';
-		}
-					
-		$this->response->setOutput($this->render());		
 	}	
 	
 	public function quote() {
-		$this->language->load('module/shipping');
+		$this->load->language('module/shipping');
 		
 		$json = array();	
 		
@@ -83,7 +81,7 @@ class ControllerModuleShipping extends Controller {
 		
 		$country_info = $this->model_localisation_country->getCountry($this->request->post['country_id']);
 		
-		if ($country_info && $country_info['postcode_required'] && (utf8_strlen($this->request->post['postcode']) < 2 || utf8_strlen($this->request->post['postcode']) > 10)) {
+		if ($country_info && $country_info['postcode_required'] && (utf8_strlen(trim($this->request->post['postcode'])) < 2 || utf8_strlen(trim($this->request->post['postcode'])) > 10)) {
 			$json['error']['postcode'] = $this->language->get('error_postcode');
 		}
 						
@@ -176,7 +174,7 @@ class ControllerModuleShipping extends Controller {
 	}
 	
 	public function shipping() {
-		$this->language->load('module/shipping');
+		$this->load->language('module/shipping');
 		
 		$json = array();	
 		
@@ -195,7 +193,7 @@ class ControllerModuleShipping extends Controller {
 			
 			$this->session->data['shipping_method'] = $this->session->data['shipping_methods'][$shipping[0]]['quote'][$shipping[1]];
 			
-			$this->session->data['success'] = $this->language->get('text_shipping');
+			$this->session->data['success'] = $this->language->get('text_success');
 			
 			$json['redirect'] = $this->url->link('checkout/cart');
 		}
@@ -228,4 +226,3 @@ class ControllerModuleShipping extends Controller {
 		$this->response->setOutput(json_encode($json));
 	}
 }
-?>

@@ -1,5 +1,5 @@
-<?php echo $header; ?>
-<div id="content" class="container">
+<?php echo $header; ?><?php echo $menu; ?>
+<div id="content">
   <ul class="breadcrumb">
     <?php foreach ($breadcrumbs as $breadcrumb) { ?>
     <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
@@ -13,9 +13,9 @@
   <div class="panel panel-default">
     <div class="panel-heading">
       <div class="pull-right">
-        <button type="submit" form="form-order" class="btn btn-primary"><i class="fa fa-check"></i> <?php echo $button_save; ?></button>
-        <a href="<?php echo $cancel; ?>" class="btn btn-danger"><i class="fa fa-times"></i> <?php echo $button_cancel; ?></a></div>
-      <h1 class="panel-title"><i class="fa fa-edit"></i> <?php echo $heading_title; ?></h1>
+        <button type="submit" form="form-order" data-toggle="tooltip" title="<?php echo $button_save; ?>" class="btn"><i class="fa fa-check-circle"></i></button>
+        <a href="<?php echo $cancel; ?>" data-toggle="tooltip" title="<?php echo $button_cancel; ?>" class="btn"><i class="fa fa-reply"></i></a></div>
+      <h1 class="panel-title"><i class="fa fa-pencil-square fa-lg"></i> <?php echo $heading_title; ?></h1>
     </div>
     <div class="panel-body">
       <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form-order" class="form-horizontal">
@@ -67,45 +67,45 @@
               </div>
             </div>
             <div class="form-group required">
-              <label class="col-sm-2 control-label" for="input-firstname"><?php echo $entry_firstname; ?></label>
+              <label class="col-sm-2 control-label" for="input-customer-firstname"><?php echo $entry_firstname; ?></label>
               <div class="col-sm-10">
-                <input type="text" name="firstname" value="<?php echo $firstname; ?>" id="input-firstname" class="form-control" />
+                <input type="text" name="firstname" value="<?php echo $firstname; ?>" id="input-customer-firstname" class="form-control" />
                 <?php if ($error_firstname) { ?>
                 <div class="text-danger"><?php echo $error_firstname; ?></div>
                 <?php } ?>
               </div>
             </div>
             <div class="form-group required">
-              <label class="col-sm-2 control-label" for="input-lastname"><?php echo $entry_lastname; ?></label>
+              <label class="col-sm-2 control-label" for="input-customer-lastname"><?php echo $entry_lastname; ?></label>
               <div class="col-sm-10">
-                <input type="text" name="lastname" value="<?php echo $lastname; ?>" id="input-lastname" class="form-control" />
+                <input type="text" name="lastname" value="<?php echo $lastname; ?>" id="input-customer-lastname" class="form-control" />
                 <?php if ($error_lastname) { ?>
                 <div class="text-danger"><?php echo $error_lastname; ?></div>
                 <?php } ?>
               </div>
             </div>
             <div class="form-group required">
-              <label class="col-sm-2 control-label" for="input-email"><?php echo $entry_email; ?></label>
+              <label class="col-sm-2 control-label" for="input-customer-email"><?php echo $entry_email; ?></label>
               <div class="col-sm-10">
-                <input type="text" name="email" value="<?php echo $email; ?>" id="input-email" class="form-control" />
+                <input type="text" name="email" value="<?php echo $email; ?>" id="input-customer-email" class="form-control" />
                 <?php if ($error_email) { ?>
                 <div class="text-danger"><?php echo $error_email; ?></div>
                 <?php } ?>
               </div>
             </div>
             <div class="form-group required">
-              <label class="col-sm-2 control-label" for="input-telephone"><?php echo $entry_telephone; ?></label>
+              <label class="col-sm-2 control-label" for="input-customer-telephone"><?php echo $entry_telephone; ?></label>
               <div class="col-sm-10">
-                <input type="text" name="telephone" value="<?php echo $telephone; ?>" id="input-telephone" class="form-control" />
+                <input type="text" name="telephone" value="<?php echo $telephone; ?>" id="input-customer-telephone" class="form-control" />
                 <?php if ($error_telephone) { ?>
                 <div class="text-danger"><?php echo $error_telephone; ?></div>
                 <?php } ?>
               </div>
             </div>
             <div class="form-group">
-              <label class="col-sm-2 control-label" for="input-fax"><?php echo $entry_fax; ?></label>
+              <label class="col-sm-2 control-label" for="input-customer-fax"><?php echo $entry_fax; ?></label>
               <div class="col-sm-10">
-                <input type="text" name="fax" value="<?php echo $fax; ?>" id="input-fax" class="form-control" />
+                <input type="text" name="fax" value="<?php echo $fax; ?>" id="input-customer-fax" class="form-control" />
               </div>
             </div>
           </div>
@@ -304,7 +304,7 @@
           </div>
           <div class="tab-pane" id="tab-product">
             <div class="table-responsive">
-              <table class="table table-striped table-bordered table-hover">
+              <table class="table table-bordered">
                 <thead>
                   <tr>
                     <td></td>
@@ -317,12 +317,11 @@
                 </thead>
                 <?php $product_row = 0; ?>
                 <?php $option_row = 0; ?>
-                <?php $download_row = 0; ?>
                 <tbody id="product">
                   <?php if ($order_products) { ?>
                   <?php foreach ($order_products as $order_product) { ?>
                   <tr id="product-row<?php echo $product_row; ?>">
-                    <td class="text-center" style="width: 3px;"><button type="button" onclick="$('#product-row<?php echo $product_row; ?>').remove(); $('#button-update').trigger('click');" class="btn btn-danger btn-sm"><i class="fa fa-minus-circle"></i></button></td>
+                    <td class="text-center" style="width: 3px;"><button type="button" onclick="$('#product-row<?php echo $product_row; ?>').remove(); $('#button-update').trigger('click');" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>
                     <td class="text-left"><?php echo $order_product['name']; ?><br />
                       <input type="hidden" name="order_product[<?php echo $product_row; ?>][order_product_id]" value="<?php echo $order_product['order_product_id']; ?>" />
                       <input type="hidden" name="order_product[<?php echo $product_row; ?>][product_id]" value="<?php echo $order_product['product_id']; ?>" />
@@ -336,14 +335,6 @@
                       <input type="hidden" name="order_product[<?php echo $product_row; ?>][order_option][<?php echo $option_row; ?>][value]" value="<?php echo $option['value']; ?>" />
                       <input type="hidden" name="order_product[<?php echo $product_row; ?>][order_option][<?php echo $option_row; ?>][type]" value="<?php echo $option['type']; ?>" />
                       <?php $option_row++; ?>
-                      <?php } ?>
-                      <?php foreach ($order_product['download'] as $download) { ?>
-                      <input type="hidden" name="order_product[<?php echo $product_row; ?>][order_download][<?php echo $download_row; ?>][order_download_id]" value="<?php echo $download['order_download_id']; ?>" />
-                      <input type="hidden" name="order_product[<?php echo $product_row; ?>][order_download][<?php echo $download_row; ?>][name]" value="<?php echo $download['name']; ?>" />
-                      <input type="hidden" name="order_product[<?php echo $product_row; ?>][order_download][<?php echo $download_row; ?>][filename]" value="<?php echo $download['filename']; ?>" />
-                      <input type="hidden" name="order_product[<?php echo $product_row; ?>][order_download][<?php echo $download_row; ?>][mask]" value="<?php echo $download['mask']; ?>" />
-                      <input type="hidden" name="order_product[<?php echo $product_row; ?>][order_download][<?php echo $download_row; ?>][remaining]" value="<?php echo $download['remaining']; ?>" />
-                      <?php $download_row++; ?>
                       <?php } ?></td>
                     <td class="text-left"><?php echo $order_product['model']; ?>
                       <input type="hidden" name="order_product[<?php echo $product_row; ?>][model]" value="<?php echo $order_product['model']; ?>" /></td>
@@ -389,7 +380,7 @@
           </div>
           <div class="tab-pane" id="tab-voucher">
             <div class="table-responsive">
-              <table class="table table-striped table-bordered table-hover">
+              <table class="table table-bordered">
                 <thead>
                   <tr>
                     <td></td>
@@ -405,7 +396,7 @@
                   <?php if ($order_vouchers) { ?>
                   <?php foreach ($order_vouchers as $order_voucher) { ?>
                   <tr id="voucher-row<?php echo $voucher_row; ?>">
-                    <td class="text-center" style="width: 3px;"><button type="button" onclick="$('#voucher-row<?php echo $voucher_row; ?>').remove(); $('#button-update').trigger('click');" class="btn btn-danger btn-sm"><i class="fa fa-minus-circle"></i></button></td>
+                    <td class="text-center" style="width: 3px;"><button type="button" onclick="$('#voucher-row<?php echo $voucher_row; ?>').remove(); $('#button-update').trigger('click');" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>
                     <td class="text-left"><?php echo $order_voucher['description']; ?>
                       <input type="hidden" name="order_voucher[<?php echo $voucher_row; ?>][order_voucher_id]" value="<?php echo $order_voucher['order_voucher_id']; ?>" />
                       <input type="hidden" name="order_voucher[<?php echo $voucher_row; ?>][voucher_id]" value="<?php echo $order_voucher['voucher_id']; ?>" />
@@ -488,7 +479,7 @@
           </div>
           <div class="tab-pane" id="tab-total">
             <div class="table-responsive">
-              <table class="table table-striped table-bordered table-hover">
+              <table class="table table-bordered">
                 <thead>
                   <tr>
                     <td class="text-left"><?php echo $column_product; ?></td>
@@ -524,11 +515,10 @@
                   <?php } ?>
                   <?php foreach ($order_totals as $order_total) { ?>
                   <tr id="total-row<?php echo $total_row; ?>">
-                    <td class="text-right" colspan="4"><?php echo $order_total['title']; ?>
+                    <td class="text-right" colspan="4"><?php echo $order_total['title']; ?>:
                       <input type="hidden" name="order_total[<?php echo $total_row; ?>][order_total_id]" value="<?php echo $order_total['order_total_id']; ?>" />
                       <input type="hidden" name="order_total[<?php echo $total_row; ?>][code]" value="<?php echo $order_total['code']; ?>" />
                       <input type="hidden" name="order_total[<?php echo $total_row; ?>][title]" value="<?php echo $order_total['title']; ?>" />
-                      <input type="hidden" name="order_total[<?php echo $total_row; ?>][text]" value="<?php echo $order_total['text']; ?>" />
                       <input type="hidden" name="order_total[<?php echo $total_row; ?>][value]" value="<?php echo $order_total['value']; ?>" />
                       <input type="hidden" name="order_total[<?php echo $total_row; ?>][sort_order]" value="<?php echo $order_total['sort_order']; ?>" /></td>
                     <td class="text-right"><?php echo $order_total['value']; ?></td>
@@ -580,19 +570,19 @@
               <div class="form-group">
                 <label class="col-sm-2 control-label" for="input-coupon"><?php echo $entry_coupon; ?></label>
                 <div class="col-sm-10">
-                  <input type="text" name="coupon" value="" id="input-coupon" class="form-control" />
+                  <input type="text" name="coupon" value="<?php echo $coupon; ?>" id="input-coupon" class="form-control" />
                 </div>
               </div>
               <div class="form-group">
                 <label class="col-sm-2 control-label" for="input-voucher"><?php echo $entry_voucher; ?></label>
                 <div class="col-sm-10">
-                  <input type="text" name="voucher" value="" id="input-voucher" class="form-control" />
+                  <input type="text" name="voucher" value="<?php echo $voucher; ?>" id="input-voucher" class="form-control" />
                 </div>
               </div>
               <div class="form-group">
                 <label class="col-sm-2 control-label" for="input-reward"><?php echo $entry_reward; ?></label>
                 <div class="col-sm-10">
-                  <input type="text" name="reward" value="" id="input-reward" class="form-control" />
+                  <input type="text" name="reward" value="<?php echo $reward; ?>" id="input-reward" class="form-control" />
                 </div>
               </div>
               <div class="form-group">
@@ -624,7 +614,7 @@
               </div>
             </fieldset>
             <div class="text-right">
-              <button type="button" id="button-update" class="btn btn-primary"><i class="fa fa-plus-circle"></i> <?php echo $button_total; ?></button>
+              <button type="button" id="button-save" class="btn btn-primary"><i class="fa fa-plus-circle"></i> Save</button> <button type="button" id="button-update" class="btn btn-primary"><i class="fa fa-plus-circle"></i> <?php echo $button_total; ?></button>
             </div>
           </div>
         </div>
@@ -709,6 +699,38 @@ $('input[name=\'affiliate\']').autocomplete({
 	}	
 });
 
+$('select[name=\'payment_address\']').on('change', function() {
+	$.ajax({
+		url: 'index.php?route=sale/customer/address&token=<?php echo $token; ?>&address_id=' + this.value,
+		dataType: 'json',
+		beforeSend: function() {
+			$('select[name=\'payment_address\']').after(' <i class="fa fa-spinner fa-spin"></i>');
+		},
+		complete: function() {
+			$('.fa-spinner').remove();
+		},		
+		success: function(json) {
+			if (json != '') {	
+				$('input[name=\'payment_firstname\']').attr('value', json['firstname']);
+				$('input[name=\'payment_lastname\']').attr('value', json['lastname']);
+				$('input[name=\'payment_company\']').attr('value', json['company']);
+				$('input[name=\'payment_address_1\']').attr('value', json['address_1']);
+				$('input[name=\'payment_address_2\']').attr('value', json['address_2']);
+				$('input[name=\'payment_city\']').attr('value', json['city']);
+				$('input[name=\'payment_postcode\']').attr('value', json['postcode']);
+				$('select[name=\'payment_country_id\']').prop('value', json['country_id']);
+				
+				payment_zone_id = json['zone_id'];
+				
+				$('select[name=\'payment_country_id\']').trigger('change');
+			}
+		},
+		error: function(xhr, ajaxOptions, thrownError) {
+			alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+		}
+	});	
+});
+
 var payment_zone_id = '<?php echo $payment_zone_id; ?>';
 
 $('select[name=\'payment_country_id\']').on('change', function() {
@@ -723,9 +745,9 @@ $('select[name=\'payment_country_id\']').on('change', function() {
 		},			
 		success: function(json) {
 			if (json['postcode_required'] == '1') {
-				$('#input-payment-postcode').parent().parent().addClass('required');
+				$('input[name=\'payment_postcode\']').parent().parent().addClass('required');
 			} else {
-				$('#input-payment-postcode').parent().parent().removeClass('required');
+				$('input[name=\'payment_postcode\']').parent().parent().removeClass('required');
 			}
 			
 			html = '<option value=""><?php echo $text_select; ?></option>';
@@ -754,31 +776,34 @@ $('select[name=\'payment_country_id\']').on('change', function() {
 
 $('select[name=\'payment_country_id\']').trigger('change');
 
-$('select[name=\'payment_address\']').on('change', function() {
+$('select[name=\'shipping_address\']').on('change', function() {
 	$.ajax({
 		url: 'index.php?route=sale/customer/address&token=<?php echo $token; ?>&address_id=' + this.value,
 		dataType: 'json',
 		beforeSend: function() {
-			$('select[name=\'payment_address\']').after(' <i class="fa fa-spinner fa-spin"></i>');
+			$('select[name=\'shipping_address\']').after(' <i class="fa fa-spinner fa-spin"></i>');
 		},
 		complete: function() {
 			$('.fa-spinner').remove();
 		},		
 		success: function(json) {
 			if (json != '') {	
-				$('input[name=\'payment_firstname\']').attr('value', json['firstname']);
-				$('input[name=\'payment_lastname\']').attr('value', json['lastname']);
-				$('input[name=\'payment_company\']').attr('value', json['company']);
-				$('input[name=\'payment_address_1\']').attr('value', json['address_1']);
-				$('input[name=\'payment_address_2\']').attr('value', json['address_2']);
-				$('input[name=\'payment_city\']').attr('value', json['city']);
-				$('input[name=\'payment_postcode\']').attr('value', json['postcode']);
-				$('select[name=\'payment_country_id\']').prop('value', json['country_id']);
+				$('input[name=\'shipping_firstname\']').attr('value', json['firstname']);
+				$('input[name=\'shipping_lastname\']').attr('value', json['lastname']);
+				$('input[name=\'shipping_company\']').attr('value', json['company']);
+				$('input[name=\'shipping_address_1\']').attr('value', json['address_1']);
+				$('input[name=\'shipping_address_2\']').attr('value', json['address_2']);
+				$('input[name=\'shipping_city\']').attr('value', json['city']);
+				$('input[name=\'shipping_postcode\']').attr('value', json['postcode']);
+				$('select[name=\'shipping_country_id\']').prop('value', json['country_id']);
 				
-				payment_zone_id = json['zone_id'];
+				shipping_zone_id = json['zone_id'];
 				
-				$('select[name=\'payment_country_id\']').trigger('change');
+				$('select[name=\'shipping_country_id\']').trigger('change');
 			}
+		},
+		error: function(xhr, ajaxOptions, thrownError) {
+			alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
 		}
 	});	
 });
@@ -797,9 +822,9 @@ $('select[name=\'shipping_country_id\']').on('change', function() {
 		},			
 		success: function(json) {
 			if (json['postcode_required'] == '1') {
-				$('#input-shipping-postcode').parent().parent().addClass('required');
+				$('input[name=\'shipping_postcode\']').parent().parent().addClass('required');
 			} else {
-				$('#input-shipping-postcode').parent().parent().removeClass('required');
+				$('input[name=\'shipping_postcode\']').parent().parent().removeClass('required');
 			}
 			
 			html = '<option value=""><?php echo $text_select; ?></option>';
@@ -827,35 +852,6 @@ $('select[name=\'shipping_country_id\']').on('change', function() {
 });
 
 $('select[name=\'shipping_country_id\']').trigger('change');
-
-$('select[name=\'shipping_address\']').on('change', function() {
-	$.ajax({
-		url: 'index.php?route=sale/customer/address&token=<?php echo $token; ?>&address_id=' + this.value,
-		dataType: 'json',
-		beforeSend: function() {
-			$('select[name=\'shipping_address\']').after(' <i class="fa fa-spinner fa-spin"></i>');
-		},
-		complete: function() {
-			$('.fa-spinner').remove();
-		},		
-		success: function(json) {
-			if (json != '') {	
-				$('input[name=\'shipping_firstname\']').attr('value', json['firstname']);
-				$('input[name=\'shipping_lastname\']').attr('value', json['lastname']);
-				$('input[name=\'shipping_company\']').attr('value', json['company']);
-				$('input[name=\'shipping_address_1\']').attr('value', json['address_1']);
-				$('input[name=\'shipping_address_2\']').attr('value', json['address_2']);
-				$('input[name=\'shipping_city\']').attr('value', json['city']);
-				$('input[name=\'shipping_postcode\']').attr('value', json['postcode']);
-				$('select[name=\'shipping_country_id\']').prop('value', json['country_id']);
-				
-				shipping_zone_id = json['zone_id'];
-				
-				$('select[name=\'shipping_country_id\']').trigger('change');
-			}
-		}
-	});	
-});
 //--></script> 
 <script type="text/javascript"><!--
 $('input[name=\'product\']').autocomplete({
@@ -1012,33 +1008,46 @@ $('input[name=\'product\']').autocomplete({
 				if (option['type'] == 'date') {
 					html += '<div class="form-group' + (option['required'] ? ' required' : '') + '">';
 					html += '  <label class="col-sm-2 control-label" for="input-option' + option['product_option_id'] + '">' + option['name'] + '</label>';
-					html += '  <div class="col-sm-3"><input type="date" name="option[' + option['product_option_id'] + ']" value="' + option['value'] + '" id="input-option' + option['product_option_id'] + '" class="form-control" /></div>';
+					html += '  <div class="col-sm-3"><div class="input-group date"><input type="text" name="option[' + option['product_option_id'] + ']" value="' + option['value'] + '" placeholder="' + option['name'] + '" data-format="YYYY-MM-DD" id="input-option' + option['product_option_id'] + '" class="form-control" /><span class="input-group-btn"><button type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button></span></div></div>';
 					html += '</div>';
 				}
 				
 				if (option['type'] == 'datetime') {
 					html += '<div class="form-group' + (option['required'] ? ' required' : '') + '">';
 					html += '  <label class="col-sm-2 control-label" for="input-option' + option['product_option_id'] + '">' + option['name'] + '</label>';
-					html += '  <div class="col-sm-10"><input type="datetime-local" name="option[' + option['product_option_id'] + ']" value="' + option['value'] + '" id="input-option' + option['product_option_id'] + '" class="form-control" /></div>';
+					html += '  <div class="col-sm-10"><div class="input-group datetime"><input type="text" name="option[' + option['product_option_id'] + ']" value="' + option['value'] + '" placeholder="' + option['name'] + '" data-format="YYYY-MM-DD HH:mm" id="input-option' + option['product_option_id'] + '" class="form-control" /><span class="input-group-btn"><button type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button></span></div></div>';
 					html += '</div>';					
 				}
 				
 				if (option['type'] == 'time') {
 					html += '<div class="form-group' + (option['required'] ? ' required' : '') + '">';
 					html += '  <label class="col-sm-2 control-label" for="input-option' + option['product_option_id'] + '">' + option['name'] + '</label>';
-					html += '  <div class="col-sm-10"><input type="time" name="option[' + option['product_option_id'] + ']" value="' + option['value'] + '" id="input-option' + option['product_option_id'] + '" class="form-control" /></div>';
+					html += '  <div class="col-sm-10"><div class="input-group time"><input type="text" name="option[' + option['product_option_id'] + ']" value="' + option['value'] + '" placeholder="' + option['name'] + '" data-format="HH:mm" id="input-option' + option['product_option_id'] + '" class="form-control" /><span class="input-group-btn"><button type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button></span></div></div>';
 					html += '</div>';					
 				}
 			}
 			
 			html += '</fieldset>';
 			
-			$('#option').html(html);			
+			$('#option').html(html);
+			
+			$('.date').datetimepicker({
+				pickTime: false
+			});
+			
+			$('.datetime').datetimepicker({
+				pickDate: true,
+				pickTime: true
+			});
+			
+			$('.time').datetimepicker({
+				pickDate: false
+			});
 		} else {
 			$('#option').html('');
 		}		
 	}	
-});
+})
 
 $('#option').delegate('button[id^=\'button-upload\']', 'click', function() {
 	var node = this;
@@ -1075,7 +1084,7 @@ $('#option').delegate('button[id^=\'button-upload\']', 'click', function() {
 				if (json['success']) {
 					alert(json['success']);
 					
-					$(node).parent().find('input[name^=\'option\']').attr('value', json['file']);
+					$(node).parent().find('input[name^=\'option\']').attr('value', json['code']);
 				}
 			},			
 			error: function(xhr, ajaxOptions, thrownError) {
@@ -1105,6 +1114,35 @@ $('select[name=\'shipping\']').on('change', function() {
 	
 	$('input[name=\'shipping_code\']').attr('value', this.value);
 });
+
+$('#button-reward-remove').on('click', function() {
+	$.ajax({
+		url: 'index.php?route=sale/customer/reward/removerewardhistory&token=<?php echo $token; ?>&order_id=<?php echo $order_id; ?>',
+		dataType: 'json',
+		beforeSend: function() {
+			$('#button-reward-remove i').replaceWith('<i class="fa fa-spinner fa-spin"></i>');
+			$('#button-reward-remove').prop('disabled', true);				
+		},
+		complete: function() {
+			$('#button-reward-remove i').replaceWith('<i class="fa fa-times-circle"></i>');
+			$('#button-reward-remove').prop('disabled', false);
+		},		
+		success: function(json) {
+			$('.alert').remove();
+			
+			if (json['error']) {
+				$('.panel').before('<div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> ' + json['error'] + '</div>');
+			}
+			
+			if (json['success']) {
+                $('.panel').before('<div class="alert alert-success"><i class="fa fa-check-circle"></i> ' + json['success'] + '</div>');
+			}
+		},
+		error: function(xhr, ajaxOptions, thrownError) {
+			alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+		}
+	});	
+});
 //--></script> 
 <script type="text/javascript"><!--
 $('#button-product, #button-voucher, #button-update').on('click', function() {	
@@ -1127,7 +1165,11 @@ $('#button-product, #button-voucher, #button-update').on('click', function() {
 	data += '#tab-total input, #tab-total select, #tab-total textarea';
 
 	$.ajax({
+		<?php if ($order_id) { ?>
+		url: '<?php echo $store_url; ?>index.php?route=checkout/manual&token=<?php echo $token; ?>&order_id=<?php echo $order_id; ?>',
+		<?php } else { ?>
 		url: '<?php echo $store_url; ?>index.php?route=checkout/manual&token=<?php echo $token; ?>',
+		<?php } ?>
 		type: 'post',
 		data: $(data),
 		dataType: 'json',
@@ -1150,36 +1192,22 @@ $('#button-product, #button-voucher, #button-update').on('click', function() {
 							
 				// Order Details
 				if (json['error']['customer']) {
-					$('.panel').before('<div class="text-danger">' + json['error']['customer'] + '</div>');
+					for (i in json['error']['customer']) {
+						$('#input-customer-' + i.replace('_', '-')).after('<div class="text-danger">' + json['error']['customer'][i] + '</div>');
+					}
 				}	
 			
 				// Payment Address
-				if (json['error']['payment']) {	
-					if (json['error']['payment']['country']) {
-						$('select[name=\'payment_country_id\']').after('<div class="text-danger">' + json['error']['payment']['country'] + '</div>');
-					}	
-					
-					if (json['error']['payment']['zone']) {
-						$('select[name=\'payment_zone_id\']').after('<div class="text-danger">' + json['error']['payment']['zone'] + '</div>');
-					}
-					
-					if (json['error']['payment']['postcode']) {
-						$('input[name=\'payment_postcode\']').after('<div class="text-danger">' + json['error']['payment']['postcode'] + '</div>');
+				if (json['error']['payment']) {
+					for (i in json['error']['payment']) {
+						$('#input-payment-' + i.replace('_', '-')).after('<div class="text-danger">' + json['error']['payment'][i] + '</div>');
 					}
 				}
 			
 				// Shipping	Address
 				if (json['error']['shipping']) {		
-					if (json['error']['shipping']['country']) {
-						$('select[name=\'shipping_country_id\']').after('<div class="text-danger">' + json['error']['shipping']['country'] + '</div>');
-					}	
-					
-					if (json['error']['shipping']['zone']) {
-						$('select[name=\'shipping_zone_id\']').after('<div class="text-danger">' + json['error']['shipping']['zone'] + '</div>');
-					}
-					
-					if (json['error']['shipping']['postcode']) {
-						$('input[name=\'shipping_postcode\']').after('<div class="text-danger">' + json['error']['shipping']['postcode'] + '</div>');
+					if (json['error']['shipping']) {
+						$('#input-shipping-' + i.replace('_', '-')).after('<div class="text-danger">' + json['error']['shipping'][i] + '</div>');
 					}	
 				}
 				
@@ -1243,27 +1271,27 @@ $('#button-product, #button-voucher, #button-update').on('click', function() {
 				
 				// Shipping Method	
 				if (json['error']['shipping_method']) {
-					$('.panel').before('<div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> ' + json['error']['shipping_method'] + '</div>');
+					$('.panel').before('<div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> ' + json['error']['shipping_method'] + '  <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
 				}	
 				
 				// Payment Method
 				if (json['error']['payment_method']) {
-					$('.panel').before('<div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> ' + json['error']['payment_method'] + '</div>');
+					$('.panel').before('<div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> ' + json['error']['payment_method'] + '  <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
 				}	
 															
 				// Coupon
 				if (json['error']['coupon']) {
-					$('.panel').before('<div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> ' + json['error']['coupon'] + '</div>');
+					$('.panel').before('<div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> ' + json['error']['coupon'] + '  <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
 				}
 				
 				// Voucher
 				if (json['error']['voucher']) {
-					$('.panel').before('<div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> ' + json['error']['voucher'] + '</div>');
+					$('.panel').before('<div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> ' + json['error']['voucher'] + '  <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
 				}
 				
 				// Reward Points		
 				if (json['error']['reward']) {
-					$('.panel').before('<div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> ' + json['error']['reward'] + '</div>');
+					$('.panel').before('<div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> ' + json['error']['reward'] + '  <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
 				}	
 			} else {
 				$('input[name=\'product\']').val('');
@@ -1280,13 +1308,12 @@ $('#button-product, #button-voucher, #button-update').on('click', function() {
 			}
 
 			if (json['success']) {
-				$('.panel').before('<div class="alert alert-success"><i class="fa fa-check-circle"></i> ' + json['success'] + '</div>');
+				$('.panel').before('<div class="alert alert-success"><i class="fa fa-check-circle"></i> ' + json['success'] + '  <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
 			}
 			
 			if (json['order_product'] != '') {
 				var product_row = 0;
 				var option_row = 0;
-				var download_row = 0;
 	
 				html = '';
 				
@@ -1294,7 +1321,7 @@ $('#button-product, #button-voucher, #button-update').on('click', function() {
 					product = json['order_product'][i];
 					
 					html += '<tr id="product-row' + product_row + '">';
-					html += '  <td class="text-center" style="width: 3px;"><button type="button" onclick="$(\'#product-row' + product_row + '\').remove(); $(\'#button-update\').trigger(\'click\');" class="btn btn-danger btn-sm"><i class="fa fa-minus-circle"></i></button></td>';
+					html += '  <td class="text-center" style="width: 3px;"><button type="button" onclick="$(\'#product-row' + product_row + '\').remove(); $(\'#button-update\').trigger(\'click\');" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>';
 					html += '  <td class="text-left">' + product['name'] + '<br /><input type="hidden" name="order_product[' + product_row + '][order_product_id]" value="" /><input type="hidden" name="order_product[' + product_row + '][product_id]" value="' + product['product_id'] + '" /><input type="hidden" name="order_product[' + product_row + '][name]" value="' + product['name'] + '" />';
 					
 					if (product['option']) {
@@ -1310,20 +1337,6 @@ $('#button-product, #button-voucher, #button-update').on('click', function() {
 							html += '  <input type="hidden" name="order_product[' + product_row + '][order_option][' + option_row + '][type]" value="' + option['type'] + '" />';
 							
 							option_row++;
-						}
-					}
-					
-					if (product['download']) {
-						for (j = 0; j < product['download'].length; j++) {
-							download = product['download'][j];
-							
-							html += '  <input type="hidden" name="order_product[' + product_row + '][order_download][' + download_row + '][order_download_id]" value="' + download['order_download_id'] + '" />';
-							html += '  <input type="hidden" name="order_product[' + product_row + '][order_download][' + download_row + '][name]" value="' + download['name'] + '" />';
-							html += '  <input type="hidden" name="order_product[' + product_row + '][order_download][' + download_row + '][filename]" value="' + download['filename'] + '" />';
-							html += '  <input type="hidden" name="order_product[' + product_row + '][order_download][' + download_row + '][mask]" value="' + download['mask'] + '" />';
-							html += '  <input type="hidden" name="order_product[' + product_row + '][order_download][' + download_row + '][remaining]" value="' + download['remaining'] + '" />';
-							
-							download_row++;
 						}
 					}
 					
@@ -1356,7 +1369,7 @@ $('#button-product, #button-voucher, #button-update').on('click', function() {
 					voucher = json['order_voucher'][i];
 					 
 					html += '<tr id="voucher-row' + voucher_row + '">';
-					html += '  <td class="text-center" style="width: 3px;"><button type="button" onclick="$(\'#voucher-row' + voucher_row + '\').remove(); $(\'#button-update\').trigger(\'click\');" class="btn btn-danger btn-sm"><i class="fa fa-minus-circle"></i></button></td>';
+					html += '  <td class="text-center" style="width: 3px;"><button type="button" onclick="$(\'#voucher-row' + voucher_row + '\').remove(); $(\'#button-update\').trigger(\'click\');" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>';
 					html += '  <td class="text-left">' + voucher['description'];
 					html += '  <input type="hidden" name="order_voucher[' + voucher_row + '][order_voucher_id]" value="" />';
 					html += '  <input type="hidden" name="order_voucher[' + voucher_row + '][voucher_id]" value="' + voucher['voucher_id'] + '" />';
@@ -1436,7 +1449,7 @@ $('#button-product, #button-voucher, #button-update').on('click', function() {
 					total = json['order_total'][i];
 					
 					html += '<tr id="total-row' + total_row + '">';
-					html += '  <td class="text-right" colspan="4"><input type="hidden" name="order_total[' + total_row + '][order_total_id]" value="" /><input type="hidden" name="order_total[' + total_row + '][code]" value="' + total['code'] + '" /><input type="hidden" name="order_total[' + total_row + '][title]" value="' + total['title'] + '" /><input type="hidden" name="order_total[' + total_row + '][text]" value="' + total['text'] + '" /><input type="hidden" name="order_total[' + total_row + '][value]" value="' + total['value'] + '" /><input type="hidden" name="order_total[' + total_row + '][sort_order]" value="' + total['sort_order'] + '" />' + total['title'] + '</td>';
+					html += '  <td class="text-right" colspan="4">' + total['title'] + ':<input type="hidden" name="order_total[' + total_row + '][order_total_id]" value="" /><input type="hidden" name="order_total[' + total_row + '][code]" value="' + total['code'] + '" /><input type="hidden" name="order_total[' + total_row + '][title]" value="' + total['title'] + '" /><input type="hidden" name="order_total[' + total_row + '][value]" value="' + total['value'] + '" /><input type="hidden" name="order_total[' + total_row + '][sort_order]" value="' + total['sort_order'] + '" /></td>';
 					html += '  <td class="text-right">' + total['value'] + '</td>';
 					html += '</tr>';
 					

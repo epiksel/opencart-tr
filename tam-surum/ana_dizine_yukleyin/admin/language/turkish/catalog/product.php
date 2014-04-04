@@ -13,6 +13,14 @@ $_['text_option']            = 'Seçenek';
 $_['text_option_value']      = 'Seçenek Değeri';
 $_['text_percent']           = 'Yüzde';
 $_['text_amount']            = 'Sabit Tutar';
+$_['text_recurring_help']    = 'Recurring amounts are calculated by the frequency and cycles. <br />For example if you use a frequency of "week" and a cycle of "2", then the user will be billed every 2 weeks. <br />The length is the number of times the user will make a payment, set this to 0 if you want payments until they are cancelled.';
+$_['text_recurring_title']   = 'Recurring payments';
+$_['text_recurring_trial']   = 'Trial period';
+$_['text_length_day']        = 'Day';
+$_['text_length_week']       = 'Week';
+$_['text_length_month']      = 'Month';
+$_['text_length_month_semi'] = 'Semi Month';
+$_['text_length_year']       = 'Year';
 
 // Column
 $_['column_name']            = 'Ürün Adı';
@@ -77,10 +85,21 @@ $_['entry_related']          = 'Benzer Ürünler';
 $_['entry_tag']          	 = 'Ürün Etiketleri';
 $_['entry_reward']           = 'Ödül Puanı';
 $_['entry_layout']           = 'Bu Bölüm Gibi Davran';
+$_['entry_profile']          = 'Profile:';
+$_['entry_recurring']        = 'Recurring billing:';
+$_['entry_recurring_price']  = 'Recurring price:';
+$_['entry_recurring_freq']   = 'Recurring frequency:';
+$_['entry_recurring_cycle']  = 'Recurring cycles:<span class="help">How often it\'s billed, must be 1 or more</span>';
+$_['entry_recurring_length'] = 'Recurring length:<span class="help">0 = until cancelled</span>';
+$_['entry_trial']            = 'Trial period:';
+$_['entry_trial_price']      = 'Trial recurring price:';
+$_['entry_trial_freq']       = 'Trial recurring frequency:';
+$_['entry_trial_cycle']      = 'Trial recurring cycles:<span class="help">How often it\'s billed, must be 1 or more</span>';
+$_['entry_trial_length']     = 'Trial recurring length:';
 
 // Help
 $_['help_keyword']           = 'Boşluk kullanmayın ve benzersiz kelimeler kullandığınızdan emin olunuz.';
-$_['help_sku']               = 'Stok Saklama Birimi';
+$_['help_sku']               = 'Stok Tutma Birimi';
 $_['help_upc']               = 'Evrensel Ürün Kodu';
 $_['help_ean']               = 'Avrupa Makale Numarası';
 $_['help_jan']               = 'Japon Makale Numarası';
@@ -102,4 +121,3 @@ $_['error_permission']       = 'Uyarı: Ürünleri düzenleme iznine sahip deği
 $_['error_name']             = 'Ürün adı 3 ile 255 karakter arasında olmalıdır!';
 $_['error_meta_title']       = 'Meta başlığı 3 ile 255 karakter arasında olmalıdır!';
 $_['error_model']            = 'Ürün kodu 3 ile 64 karakter arasında olmalıdır!';
-?>

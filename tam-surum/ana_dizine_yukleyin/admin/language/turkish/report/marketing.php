@@ -18,4 +18,3 @@ $_['column_total']     = 'Toplam';
 $_['entry_date_start'] = 'Başlangıç';
 $_['entry_date_end']   = 'Bitiş';
 $_['entry_status']     = 'Durumu';
-?>

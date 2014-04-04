@@ -20,4 +20,3 @@ $_['entry_sort_order']    = 'Sıralama';
 
 // Error
 $_['error_permission']    = 'Uyarı: Ortaklık modülünü değiştirme iznine sahip değilsiniz!';
-?>

@@ -4,7 +4,7 @@
 // Heading
 $_['heading_title']    = 'Google Sitemap';
 
-// Text 
+// Text
 $_['text_feed']        = 'Ürün Besleme';
 $_['text_success']     = 'Başarılı: Google Sitemap beslemesi güncellendi!';
 
@@ -14,4 +14,3 @@ $_['entry_data_feed']  = 'Feed Veri Adresi';
 
 // Error
 $_['error_permission'] = 'Uyarı: Google Sitemap düzenleme iznine sahip değilsiniz!';
-?>

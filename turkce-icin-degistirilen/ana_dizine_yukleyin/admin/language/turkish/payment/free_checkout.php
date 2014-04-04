@@ -15,4 +15,3 @@ $_['entry_sort_order']   = 'Sıralama';
 
 // Error
 $_['error_permission']   = 'Uyarı: Ücretsiz ödeme metodunu düzenleme iznine sahip değilsiniz!';
-?>

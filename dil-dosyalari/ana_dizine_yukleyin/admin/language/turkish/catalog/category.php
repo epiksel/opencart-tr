@@ -41,4 +41,3 @@ $_['error_warning']          	= 'Uyarı: Oluşan hatalar için lütfen formu dik
 $_['error_permission']       	= 'Uyarı: Kategorileri değiştirme iznine sahip değilsiniz!';
 $_['error_name']             	= 'Uyarı: Kategori adı 2 ile 32 karakter arasında olmalı!';
 $_['error_meta_title']          = 'Uyarı: Meta başlığı 3 ile 255 karakter arasında olmalı!';
-?>

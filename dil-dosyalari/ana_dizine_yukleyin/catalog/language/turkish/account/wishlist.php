@@ -20,4 +20,3 @@ $_['column_model']  = 'Kodu';
 $_['column_stock']  = 'Stok';
 $_['column_price']  = 'Fiyatı';
 $_['column_action'] = 'Eylem';
-?>

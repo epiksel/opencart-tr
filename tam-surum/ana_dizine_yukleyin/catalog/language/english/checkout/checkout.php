@@ -23,12 +23,22 @@ $_['text_forgotten']                 = 'Forgotten Password';
 $_['text_your_details']              = 'Your Personal Details';
 $_['text_your_address']              = 'Your Address';
 $_['text_your_password']             = 'Your Password';
-$_['text_agree']                     = 'I have read and agree to the <a href="%s" alt="%s" class="agree"><b>%s</b></a>';
+$_['text_agree']                     = 'I have read and agree to the <a href="%s" class="agree"><b>%s</b></a>';
 $_['text_address_new']               = 'I want to use a new address';
 $_['text_address_existing']          = 'I want to use an existing address';
 $_['text_shipping_method']           = 'Please select the preferred shipping method to use on this order.';
 $_['text_payment_method']            = 'Please select the preferred payment method to use on this order.';
 $_['text_comments']                  = 'Add Comments About Your Order';
+$_['text_recurring']                 = 'Recurring item';
+$_['text_payment_profile']           = 'Payment Profile';
+$_['text_trial_description']         = '%s every %d %s(s) for %d payment(s) then';
+$_['text_payment_description']       = '%s every %d %s(s) for %d payment(s)';
+$_['text_payment_until_canceled_description'] = '%s every %d %s(s) until canceled';
+$_['text_day']                       = 'day';
+$_['text_week']                      = 'week';
+$_['text_semi_month']                = 'half-month';
+$_['text_month']                     = 'month';
+$_['text_year']                      = 'year';
 
 // Column
 $_['column_name']                    = 'Product Name';
@@ -46,6 +56,7 @@ $_['entry_firstname']                = 'First Name';
 $_['entry_lastname']                 = 'Last Name';
 $_['entry_telephone']                = 'Telephone';
 $_['entry_fax']                      = 'Fax';
+$_['entry_address']                  = 'Choose Address';
 $_['entry_company']                  = 'Company';
 $_['entry_customer_group']           = 'Customer Group';
 $_['entry_address_1']                = 'Address 1';
@@ -80,4 +91,3 @@ $_['error_no_shipping']              = 'Warning: No Shipping options are availab
 $_['error_payment']                  = 'Warning: Payment method required!';
 $_['error_no_payment']               = 'Warning: No Payment options are available. Please <a href="%s">contact us</a> for assistance!';
 $_['error_custom_field']             = '%s required!';
-?>

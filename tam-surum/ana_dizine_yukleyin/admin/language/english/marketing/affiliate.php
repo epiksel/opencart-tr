@@ -32,6 +32,7 @@ $_['entry_status']              = 'Status';
 $_['entry_password']            = 'Password';
 $_['entry_confirm']             = 'Confirm';
 $_['entry_company']             = 'Company';
+$_['entry_website']             = 'Web Site';
 $_['entry_address_1']           = 'Address 1';
 $_['entry_address_2']           = 'Address 2';
 $_['entry_city']                = 'City';
@@ -74,4 +75,3 @@ $_['error_postcode']            = 'Postcode must be between 2 and 10 characters 
 $_['error_country']             = 'Please select a country!';
 $_['error_zone']                = 'Please select a region / state!';
 $_['error_code']                = 'Tracking Code required!';
-?>

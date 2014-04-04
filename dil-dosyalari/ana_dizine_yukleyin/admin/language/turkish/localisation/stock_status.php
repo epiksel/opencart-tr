@@ -18,4 +18,3 @@ $_['entry_name']       = 'Stok Durum Adı';
 $_['error_permission'] = 'Uyarı: Stok durumlarını düzenleme iznine sahip değilsiniz!';
 $_['error_name']       = 'Stok Durum Adı 3 ile 32 karakter arasında olmalı!';
 $_['error_product']    = 'Uyarı: Bu stok durumunu silemezsiniz, %s ürün tarafından kullanılıyor!';
-?>

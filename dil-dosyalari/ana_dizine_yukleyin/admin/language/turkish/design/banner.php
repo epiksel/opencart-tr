@@ -25,4 +25,3 @@ $_['entry_sort_order']   = 'Sıralama';
 $_['error_permission']   = 'Uyarı: Afişleri düzenleme iznine sahip değilsiniz!';
 $_['error_name']         = 'Afiş Adı 3 ile 64 karakter arasında olmalı!';
 $_['error_title']        = 'Afiş Başlığı 3 ile 64 karakter arasında olmalı!';
-?>

@@ -10,11 +10,10 @@ $_['text_account']     = 'Hesabım';
 $_['text_edit']        = 'Hesap Bilgileri';
 $_['text_password']    = 'Parola Değiştir';
 $_['text_address']     = 'Adreslerim';
-$_['text_history']     = 'Sipariş Geçmişim';
+$_['text_history']     = 'Siparişlerim';
 $_['text_download']    = 'Dosyalarım';
 $_['text_cart']        = 'Sepetim';
 $_['text_checkout']    = 'Kasaya Git';
 $_['text_search']      = 'Arama';
 $_['text_information'] = 'Bilgiler';
 $_['text_contact']     = 'İletişim';
-?>

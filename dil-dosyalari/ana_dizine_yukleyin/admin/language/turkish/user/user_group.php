@@ -20,4 +20,3 @@ $_['entry_modify']     = 'Değiştirme İzinleri';
 $_['error_permission'] = 'Uyarı: Kullanıcı Gruplarını düzenleme iznine sahip değilsiniz!';
 $_['error_name']       = 'Kullanıcı Grup Adı 3 ile 64 karakter arasında olmalı!';
 $_['error_user']       = 'Uyarı: Bu kullanıcı grubunu silemezsiniz, %s kullanıcı tarafından kullanılıyor!';
-?>

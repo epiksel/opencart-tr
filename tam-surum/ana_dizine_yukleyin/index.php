@@ -13,27 +13,11 @@ if (!defined('DIR_APPLICATION')) {
 	exit;
 }
 
-// Modification
-require_once(DIR_SYSTEM . 'engine/modification.php');
-$modification = new Modification();
-
 // Startup
-require_once($modification->getFile(DIR_SYSTEM . 'startup.php'));
-
-// Application
-require_once($modification->getFile(DIR_SYSTEM . 'library/customer.php'));
-require_once($modification->getFile(DIR_SYSTEM . 'library/affiliate.php'));
-require_once($modification->getFile(DIR_SYSTEM . 'library/currency.php'));
-require_once($modification->getFile(DIR_SYSTEM . 'library/tax.php'));
-require_once($modification->getFile(DIR_SYSTEM . 'library/weight.php'));
-require_once($modification->getFile(DIR_SYSTEM . 'library/length.php'));
-require_once($modification->getFile(DIR_SYSTEM . 'library/cart.php'));
+require_once(DIR_SYSTEM . 'startup.php');
 
 // Registry
 $registry = new Registry();
-
-// Modification
-$registry->set('modification', $modification);
 
 // Loader
 $loader = new Loader($registry);
@@ -130,7 +114,7 @@ $response->setCompression($config->get('config_compression'));
 $registry->set('response', $response); 
 		
 // Cache
-$cache = new Cache();
+$cache = new Cache('file');
 $registry->set('cache', $cache); 
 
 // Session
@@ -158,6 +142,8 @@ if (isset($request->server['HTTP_ACCEPT_LANGUAGE']) && $request->server['HTTP_AC
 
 				if (in_array($browser_language, $locale)) {
 					$detect = $key;
+					
+					break 2;
 				}
 			}
 		}
@@ -194,7 +180,15 @@ $registry->set('language', $language);
 $registry->set('document', new Document()); 		
 
 // Customer
-$registry->set('customer', new Customer($registry));
+$customer = new Customer($registry);
+$registry->set('customer', $customer);
+
+// Customer Group
+if ($customer->isLogged()) {
+	$config->set('config_customer_group_id', $customer->getGroupId());
+} elseif (isset($session->data['guest'])) {
+	$config->set('config_customer_group_id', $session->data['guest']['customer_group_id']);
+}
 
 // Tracking Code
 if (isset($request->get['tracking'])) {
@@ -245,4 +239,3 @@ $controller->dispatch($action, new Action('error/not_found'));
 
 // Output
 $response->output();
-?>

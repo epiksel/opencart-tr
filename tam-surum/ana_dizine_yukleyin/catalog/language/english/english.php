@@ -5,6 +5,7 @@ $_['direction']             = 'ltr';
 $_['date_format_short']     = 'd/m/Y';
 $_['date_format_long']      = 'l dS F Y';
 $_['time_format']           = 'h:i:s A';
+$_['datetime_format']       = 'd/m/Y H:i:s';
 $_['decimal_point']         = '.';
 $_['thousand_point']        = ',';
 
@@ -65,4 +66,3 @@ $_['error_upload_6']        = 'Warning: Missing a temporary folder!';
 $_['error_upload_7']        = 'Warning: Failed to write file to disk!';
 $_['error_upload_8']        = 'Warning: File upload stopped by extension!';
 $_['error_upload_999']      = 'Warning: No error code available!';
-?>

@@ -13,4 +13,3 @@ $_['text_transaction_total']	= 'Şuan ki toplam bakiyeniz %s.' . "\n\n" . 'Kazan
 $_['text_reward_subject']		= '%s - Ödül Puanı';
 $_['text_reward_received']		= '%s Ödül Puanı Aldınız!';
 $_['text_reward_total']			= 'Şuan ki toplam ödül puanınız %s.';
-?>

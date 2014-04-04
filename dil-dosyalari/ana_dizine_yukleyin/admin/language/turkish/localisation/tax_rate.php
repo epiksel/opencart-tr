@@ -30,4 +30,3 @@ $_['error_permission']     = 'Uyarı: Vergi oranlarını düzenleme iznine sahip
 $_['error_tax_rule']       = 'Uyarı: Bu vergi oranını silemezsiniz, %s vergi sınıfı tarafından kullanılıyor!';
 $_['error_name']           = 'Vergi oranı adı 3 ile 32 karakter arasında olmalı!';
 $_['error_rate']           = 'Vergi oranı gerekli!';
-?>

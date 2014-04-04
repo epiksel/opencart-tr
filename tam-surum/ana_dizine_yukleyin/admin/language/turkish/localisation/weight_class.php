@@ -25,6 +25,5 @@ $_['help_value']       = 'Varsayılan ağırlık birim değerini 1.00000 olarak 
 $_['error_permission'] = 'Uyarı: Ağırlık Birimlerini düzenleme iznine sahip değilsiniz!';
 $_['error_title']      = 'Ağırlık Adı 3 ile 32 karakter arasında olmalı!';
 $_['error_unit']       = 'Ağırlık Birimi 1 ile 4 karakter arasında olmalı!';
-$_['error_default']    = 'Uyarı: Bu ağırlık birimi varsayılan ağırlık birimi olduğundan silemezsiniz!';
-$_['error_product']    = 'Uyarı: Bu ağırlık birimi silemezsiniz. Bu ağırlık birimi şu %s ürünler tarafından kullanılmaktadır!';
-?>
+$_['error_default']    = 'Uyarı: Bu ağırlık birimini silemezsiniz, varsayılan ağırlık birimi tarafından kullanılıyor!';
+$_['error_product']    = 'Uyarı: Bu ağırlık birimini silemezsiniz, %s ürün tarafından kullanılıyor!';

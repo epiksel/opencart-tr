@@ -87,4 +87,3 @@ $_['error_width']        	= 'Width Required!';
 $_['error_length']        	= 'Length Required!';
 $_['error_height']        	= 'Height Required!';
 $_['error_girth']        	= 'Girth Required!';
-?>

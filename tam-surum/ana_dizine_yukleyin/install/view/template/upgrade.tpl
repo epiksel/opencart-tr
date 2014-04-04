@@ -1,32 +1,36 @@
 <?php echo $header; ?>
-<h1>Güncelleme</h1>
-<div id="column-right">
-  <ul>
-    <li><b>Güncelleme</b></li>
-    <li>Tamamlandı</li>
-  </ul>
-</div>
-<div id="content">
-  <?php if ($error_warning) { ?>
-  <div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> <?php echo $error_warning; ?> <button type="button" class="close" data-dismiss="alert">&times;</button></div>
-  <?php } ?>
-  <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data">
-  	<fieldset>
-    <p><b>Bu adımları dikkatlice takip ediniz!</b></p>
-    <ol>
-     <li>Güncelleme yazılımı hataları için forumdaki mesajlara gözatın</li>
-	 <li>Güncellemeden sonra token hatalarını önlemek için tarayıcınızdaki çerezleri temizleyin.</li>
-	 <li>CSS değişikliklerini güncellemek için yönetim sayfanızdayken Ctrl+F5 ile sayfanızını iki kere yenileyin.</li>
-	 <li>Yönetim -> Kullanıcılar -> Kullanıcı Grupları sayfasından Üst Yönetici grubunu düzenle dedikten sonra tüm kutuları işaretleyin ve kaydedin.</li>
-	 <li>Yönetim->Genel Ayarlar dan tüm alanları güncelleyin. Hiç birşey değişmemiş olsa bile kaydet butonuna tıklayınız.</li>
-	 <li>CSS değişikliklerini güncellemek için katalog sayfanızdayken Ctrl+F5 ile sayfanızını iki kere yenileyin ya da tarayıcı ayalarlarından tarayıcınızın önbelleğini boşaltınız.</li>
-    </ol>
-    </fieldset>
-    <div class="buttons">
-	  <div class="right">
-        <input type="submit" value="Devam Et" class="btn" />
+<div class="container">
+  <h1>Upgrade</h1>
+  <div id="column-right">
+    <ul>
+      <li><b>Upgrade</b></li>
+      <li>Finished</li>
+    </ul>
+  </div>
+  <div id="content">
+    <?php if ($error_warning) { ?>
+    <div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> <?php echo $error_warning; ?>
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+    </div>
+    <?php } ?>
+    <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data">
+      <fieldset>
+        <p><b>Follow these steps carefully!</b></p>
+        <ol>
+          <li>Post any upgrade script errors problems in the forums</li>
+          <li>After upgrade, clear any cookies in your browser to avoid getting token errors.</li>
+          <li>Load the admin page & press Ctrl+F5 twice to force the browser to update the css changes.</li>
+          <li>Goto Admin -> Users -> User Groups and Edit the Top Adminstrator group. Check All boxes.</li>
+          <li>Goto Admin and Edit the main System Settings. Update all fields and click save, even if nothing changed.</li>
+          <li>Load the store front & press Ctrl+F5 twice to force the browser to update the css changes.</li>
+        </ol>
+      </fieldset>
+      <div class="buttons">
+        <div class="right">
+          <input type="submit" value="Continue" class="button" />
+        </div>
       </div>
-	</div>
-  </form>
+    </form>
+  </div>
 </div>
 <?php echo $footer; ?>

@@ -12,38 +12,26 @@ $_['text_geocode']		= 'Coğrafi kod aşağıdaki nedenden dolayı başarısız o
 
 // Column
 $_['column_name']		= 'Mağaza Adı';
-$_['column_address_1']	= 'Adres';
-$_['column_zone']		= 'Şehir';
-$_['column_country']	= 'Ülke';
+$_['column_address']	= 'Adres';
 $_['column_action']		= 'Eylem';
 
 // Entry
 $_['entry_name']		= 'Mağaza Adı';
-$_['entry_telephone']	= 'Telefon';
-$_['entry_fax']			= 'Faks';
-$_['entry_address_1']	= 'Adres 1';
-$_['entry_address_2']	= 'Adres 2';
-$_['entry_city']		= 'Şehir';
-$_['entry_postcode']	= 'Posta Kodu';
-$_['entry_country']		= 'Ülke';
-$_['entry_zone']		= 'Şehir';
+$_['entry_address']		= 'Adres';
 $_['entry_geocode']		= 'Çoğrafi Kod';
+$_['entry_telephone']	= 'Telefon';
+$_['entry_fax']			= 'FaKs';
 $_['entry_image']		= 'Resim';
 $_['entry_open']		= 'Çalışma Saatleri';
 $_['entry_comment']		= 'Açıklama';
 
 // Help
-$_['help_geocode']		= 'Mağazanızın çoğrafi konum kodunu oluşturmak için çoğrafi kod butonunu kullanabilir ya da elle girebilirsiniz.';
+$_['help_geocode']		= 'Mağazanızın çoğrafi konum kodunu elle giriniz.';
 $_['help_open']			= 'Mağazanızın çalışma saatlerini yazınız.';
 $_['help_comment']		= 'Bu alana müşterileriniz için özel bir not yazabilirsiniz. Örneğin: Mağazamızda çek kabul edilmemek gibi.';
 
 // Error
 $_['error_permission']	= 'Uyarı: Konumları düzenleme iznine sahip değilsiniz!';
 $_['error_name']		= 'Mağaza adı en az 1 karakterden oluşmalıdır!';
+$_['error_address']		= 'Adres alanı 3 ile 128 karakter arasında olmalıdır!';
 $_['error_telephone']	= 'Telefon alanı 3 ile 32 karakter arasında olmalıdır!';
-$_['error_address_1']	= 'Adres 1 alanı 3 ile 128 karakter arasında olmalıdır!';
-$_['error_city']		= 'Şehir alanı 2 ile 128 karakter arasında olmalıdır!';
-$_['error_postcode']	= 'Bu şehir için posta kodu 2 ile 10 karakter arasında olmalıdır!';
-$_['error_country']		= 'Lütfen bir ülke seçiniz!';
-$_['error_zone']		= 'Lütfen bir şehir seçiniz!';
-?>

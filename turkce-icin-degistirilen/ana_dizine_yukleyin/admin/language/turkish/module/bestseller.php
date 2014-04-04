@@ -25,4 +25,3 @@ $_['entry_sort_order']    = 'Sıralama';
 // Error
 $_['error_permission']    = 'Uyarı: En çok satılanlar modülünü değiştirme iznine sahip değilsiniz!';
 $_['error_image']         = 'Resim genişlik &amp; yükseklik boyutları gerekli!';
-?>

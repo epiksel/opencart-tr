@@ -7,30 +7,30 @@
   </ul>
   <div class="row"><?php echo $column_left; ?>
     <?php if ($column_left && $column_right) { ?>
-    <?php $cols = 6; ?>
+    <?php $class = 'col-sm-6'; ?>
     <?php } elseif ($column_left || $column_right) { ?>
-    <?php $cols = 9; ?>
+    <?php $class = 'col-sm-9'; ?>
     <?php } else { ?>
-    <?php $cols = 12; ?>
+    <?php $class = 'col-sm-12'; ?>
     <?php } ?>
-    <div id="content" class="col-sm-<?php echo $cols; ?>"><?php echo $content_top; ?>
+    <div id="content" class="<?php echo $class; ?>"><?php echo $content_top; ?>
       <div class="row">
         <?php if ($column_left && $column_right) { ?>
-        <?php $cols = 6; ?>
+        <?php $class = 'col-sm-6'; ?>
         <?php } elseif ($column_left || $column_right) { ?>
-        <?php $cols = 6; ?>
+        <?php $class = 'col-sm-6'; ?>
         <?php } else { ?>
-        <?php $cols = 8; ?>
+        <?php $class = 'col-sm-8'; ?>
         <?php } ?>
-        <div class="col-md-<?php echo $cols; ?>">
+        <div class="<?php echo $class; ?>">
           <?php if ($thumb || $images) { ?>
           <ul class="thumbnails">
             <?php if ($thumb) { ?>
-            <li><a class="thumbnail" href="<?php echo $popup; ?>" title="<?php echo $heading_title; ?>"> <img src="<?php echo $thumb; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" id="image" /> </a> </li>
+            <li><a class="thumbnail" href="<?php echo $popup; ?>" title="<?php echo $heading_title; ?>"><img src="<?php echo $thumb; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" /></a></li>
             <?php } ?>
             <?php if ($images) { ?>
             <?php foreach ($images as $image) { ?>
-            <li class="image-additional"> <a class="thumbnail" href="<?php echo $image['popup']; ?>" title="<?php echo $heading_title; ?>"> <img src="<?php echo $image['thumb']; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" /> </a> </li>
+            <li class="image-additional"><a class="thumbnail" href="<?php echo $image['popup']; ?>" title="<?php echo $heading_title; ?>"> <img src="<?php echo $image['thumb']; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" /></a></li>
             <?php } ?>
             <?php } ?>
           </ul>
@@ -116,16 +116,16 @@
           </div>
         </div>
         <?php if ($column_left && $column_right) { ?>
-        <?php $cols = 6; ?>
+        <?php $class = 'col-sm-6'; ?>
         <?php } elseif ($column_left || $column_right) { ?>
-        <?php $cols = 6; ?>
+        <?php $class = 'col-sm-6'; ?>
         <?php } else { ?>
-        <?php $cols = 4; ?>
+        <?php $class = 'col-sm-4'; ?>
         <?php } ?>
-        <div class="col-md-<?php echo $cols; ?>">
+        <div class="<?php echo $class; ?>">
           <div class="btn-group">
-            <button type="button" data-toggle="tooltip" class="btn btn-default" title="<?php echo $button_wishlist; ?>" onclick="addToWishList('<?php echo $product_id; ?>');"><i class="fa fa-heart"></i></button>
-            <button type="button" data-toggle="tooltip" class="btn btn-default" title="<?php echo $button_compare; ?>" onclick="addToCompare('<?php echo $product_id; ?>');"><i class="fa fa-exchange"></i></button>
+            <button type="button" data-toggle="tooltip" class="btn btn-default" title="<?php echo $button_wishlist; ?>" onclick="wishlist.add('<?php echo $product_id; ?>');"><i class="fa fa-heart"></i></button>
+            <button type="button" data-toggle="tooltip" class="btn btn-default" title="<?php echo $button_compare; ?>" onclick="compare.add('<?php echo $product_id; ?>');"><i class="fa fa-exchange"></i></button>
           </div>
           <h1><?php echo $heading_title; ?></h1>
           <ul class="list-unstyled">
@@ -262,22 +262,47 @@
             <?php if ($option['type'] == 'date') { ?>
             <div class="form-group<?php echo ($option['required'] ? ' required' : ''); ?>">
               <label class="control-label" for="input-option<?php echo $option['product_option_id']; ?>"><?php echo $option['name']; ?></label>
-              <input type="date" name="option[<?php echo $option['product_option_id']; ?>]" value="<?php echo $option['value']; ?>" id="input-option<?php echo $option['product_option_id']; ?>" class="form-control" />
+              <div class="input-group date">
+                <input type="text" name="option[<?php echo $option['product_option_id']; ?>]" value="<?php echo $option['value']; ?>" data-format="YYYY-MM-DD" id="input-option<?php echo $option['product_option_id']; ?>" class="form-control" />
+                <span class="input-group-btn">
+                <button class="btn btn-default" type="button"><i class="fa fa-calendar"></i></button>
+                </span></div>
             </div>
             <?php } ?>
             <?php if ($option['type'] == 'datetime') { ?>
             <div class="form-group<?php echo ($option['required'] ? ' required' : ''); ?>">
               <label class="control-label" for="input-option<?php echo $option['product_option_id']; ?>"><?php echo $option['name']; ?></label>
-              <input type="datetime-local" name="option[<?php echo $option['product_option_id']; ?>]" value="<?php echo $option['value']; ?>" id="input-option<?php echo $option['product_option_id']; ?>" class="form-control" />
+              <div class="input-group datetime">
+                <input type="text" name="option[<?php echo $option['product_option_id']; ?>]" value="<?php echo $option['value']; ?>" data-format="YYYY-MM-DD HH:mm" id="input-option<?php echo $option['product_option_id']; ?>" class="form-control" />
+                <span class="input-group-btn">
+                <button type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button>
+                </span></div>
             </div>
             <?php } ?>
             <?php if ($option['type'] == 'time') { ?>
             <div class="form-group<?php echo ($option['required'] ? ' required' : ''); ?>">
               <label class="control-label" for="input-option<?php echo $option['product_option_id']; ?>"><?php echo $option['name']; ?></label>
-              <input type="time" name="option[<?php echo $option['product_option_id']; ?>]" value="<?php echo $option['value']; ?>" id="input-option<?php echo $option['product_option_id']; ?>" class="form-control" />
+              <div class="input-group time">
+                <input type="text" name="option[<?php echo $option['product_option_id']; ?>]" value="<?php echo $option['value']; ?>" data-format="HH:mm" id="input-option<?php echo $option['product_option_id']; ?>" class="form-control" />
+                <span class="input-group-btn">
+                <button type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button>
+                </span></div>
             </div>
             <?php } ?>
             <?php } ?>
+            <?php } ?>
+            <?php if ($profiles) { ?>
+            <hr>
+            <h3><?php echo $text_payment_profile ?></h3>
+            <div class="form-group required">
+              <select name="profile_id" class="form-control">
+                <option value=""><?php echo $text_select; ?></option>
+                <?php foreach ($profiles as $profile) { ?>
+                <option value="<?php echo $profile['profile_id'] ?>"><?php echo $profile['name'] ?></option>
+                <?php } ?>
+              </select>
+              <div class="help-block" id="profile-description"></div>
+            </div>
             <?php } ?>
             <div class="form-group">
               <label class="control-label" for="input-quantity"><?php echo $entry_qty; ?></label>
@@ -304,7 +329,6 @@
             <hr>
             <!-- AddThis Button BEGIN -->
             <div class="addthis_toolbox addthis_default_style"><a class="addthis_button_facebook_like" fb:like:layout="button_count"></a> <a class="addthis_button_tweet"></a> <a class="addthis_button_pinterest_pinit"></a> <a class="addthis_counter addthis_pill_style"></a></div>
-            <script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script> 
             <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-515eeaf54693130e"></script> 
             <!-- AddThis Button END --> 
           </div>
@@ -313,10 +337,17 @@
       </div>
       <?php if ($products) { ?>
       <h3><?php echo $text_related; ?></h3>
-      <?php foreach (array_chunk($products, ceil(count($products) / 4)) as $products) { ?>
       <div class="row">
+        <?php $i = 0; ?>
         <?php foreach ($products as $product) { ?>
-        <div class="col-sm-3">
+        <?php if ($column_left && $column_right) { ?>
+        <?php $class = 'col-lg-6 col-md-6 col-sm-12 col-xs-12'; ?>
+        <?php } elseif ($column_left || $column_right) { ?>
+        <?php $class = 'col-lg-4 col-md-4 col-sm-6 col-xs-12'; ?>
+        <?php } else { ?>
+        <?php $class = 'col-lg-3 col-md-3 col-sm-6 col-xs-12'; ?>
+        <?php } ?>
+        <div class="<?php echo $class; ?>">
           <div class="product-thumb transition">
             <div class="image"><a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" class="img-responsive" /></a></div>
             <div class="caption">
@@ -347,15 +378,22 @@
               <?php } ?>
             </div>
             <div class="button-group">
-              <button type="button" onclick="addToCart('<?php echo $product['product_id']; ?>');"><span class="hidden-xs hidden-sm"><?php echo $button_cart; ?></span> <i class="fa fa-shopping-cart"></i></button>
-              <button type="button" data-toggle="tooltip" title="<?php echo $button_wishlist; ?>" onclick="addToWishList('<?php echo $product['product_id']; ?>');"><i class="fa fa-heart"></i></button>
-              <button type="button" data-toggle="tooltip" title="<?php echo $button_compare; ?>" onclick="addToCompare('<?php echo $product['product_id']; ?>');"><i class="fa fa-exchange"></i></button>
+              <button type="button" onclick="cart.add('<?php echo $product['product_id']; ?>');"><span class="hidden-xs hidden-sm hidden-md"><?php echo $button_cart; ?></span> <i class="fa fa-shopping-cart"></i></button>
+              <button type="button" data-toggle="tooltip" title="<?php echo $button_wishlist; ?>" onclick="wishlist.add('<?php echo $product['product_id']; ?>');"><i class="fa fa-heart"></i></button>
+              <button type="button" data-toggle="tooltip" title="<?php echo $button_compare; ?>" onclick="compare.add('<?php echo $product['product_id']; ?>');"><i class="fa fa-exchange"></i></button>
             </div>
           </div>
         </div>
+        <?php if (($column_left && $column_right) && ($i % 2 == 0)) { ?>
+        <div class="clearfix visible-md visible-sm"></div>
+        <?php } elseif (($column_left || $column_right) && ($i % 3 == 0)) { ?>
+        <div class="clearfix visible-md"></div>
+        <?php } elseif ($i % 4 == 0) { ?>
+        <div class="clearfix visible-md"></div>
+        <?php } ?>
+        <?php $i++; ?>
         <?php } ?>
       </div>
-      <?php } ?>
       <?php } ?>
       <?php if ($tags) { ?>
       <p><?php echo $text_tags; ?>
@@ -372,11 +410,31 @@
     <?php echo $column_right; ?></div>
 </div>
 <script type="text/javascript"><!--
+$('select[name="profile_id"], input[name="quantity"]').change(function(){
+	$.ajax({
+		url: 'index.php?route=product/product/getRecurringDescription',
+		type: 'post',
+		data: $('input[name=\'product_id\'], input[name=\'quantity\'], select[name=\'profile_id\']'),
+		dataType: 'json',
+		beforeSend: function() {
+			$('#profile-description').html('');
+		},
+		success: function(json) {
+			$('.alert, .text-danger').remove();
+		
+			if (json['success']) {
+				$('#profile-description').html(json['success']);
+			}
+		}
+	});
+});
+//--></script> 
+<script type="text/javascript"><!--
 $('#button-cart').on('click', function() {
     $.ajax({
         url: 'index.php?route=checkout/cart/add',
         type: 'post',
-        data: $('#product input[type=\'text\'], #product input[type=\'hidden\'], #product input[type=\'radio\']:checked, #product input[type=\'checkbox\']:checked, #product select, #product textarea'),
+        data: $('#product input[type=\'text\'], #product input[type=\'date\'], #product input[type=\'datetime-local\'], #product input[type=\'time\'], #product input[type=\'hidden\'], #product input[type=\'radio\']:checked, #product input[type=\'checkbox\']:checked, #product select, #product textarea'),
         dataType: 'json',
         beforeSend: function() {
         	$('#button-cart').button('loading');
@@ -393,6 +451,10 @@ $('#button-cart').on('click', function() {
                         $('#input-option' + i).after('<div class="text-danger">' + json['error']['option'][i] + '</div>');
                     }
                 }
+
+				if (json['error']['profile']) {
+					$('select[name=\'profile_id\']').after('<div class="text-danger">' + json['error']['profile'] + '</div>');
+				}
             } 
             
             if (json['success']) {
@@ -407,6 +469,19 @@ $('#button-cart').on('click', function() {
 });
 //--></script> 
 <script type="text/javascript"><!--
+$('.date').datetimepicker({
+	pickTime: false
+});
+
+$('.datetime').datetimepicker({
+	pickDate: true,
+	pickTime: true
+});
+
+$('.time').datetimepicker({
+	pickDate: false
+});
+		
 $('button[id^=\'button-upload\']').on('click', function() {
 	var node = this;
 	
@@ -441,7 +516,7 @@ $('button[id^=\'button-upload\']').on('click', function() {
 				if (json['success']) {
 					alert(json['success']);
 					
-					$(node).parent().find('input[name^=\'option\']').attr('value', json['file']);
+					$(node).parent().find('input[name^=\'option\']').attr('value', json['code']);
 				}
 			},			
 			error: function(xhr, ajaxOptions, thrownError) {
@@ -493,6 +568,16 @@ $('#button-review').on('click', function() {
             }
         }
     });
+});
+
+$(document).ready(function() {
+	$('.thumbnails').magnificPopup({
+		type:'image',
+		delegate: 'a',
+		gallery: { 
+			enabled:true 
+		}
+	});
 });
 //--></script> 
 <?php echo $footer; ?>

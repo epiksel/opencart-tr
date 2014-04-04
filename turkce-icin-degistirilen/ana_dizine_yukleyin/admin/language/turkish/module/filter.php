@@ -2,7 +2,7 @@
 /* Turkceye Ceviren eka7a - http://www.e-piksel.com */
 
 // Heading
-$_['heading_title']       = 'Süzgeçler'; 
+$_['heading_title']       = 'Süzgeçler';
 
 // Text
 $_['text_module']         = 'Modüller';
@@ -20,4 +20,3 @@ $_['entry_sort_order']    = 'Sıralama';
 
 // Error
 $_['error_permission']    = 'Uyarı: Süzgeçler modülünü değiştirme iznine sahip değilsiniz!';
-?>

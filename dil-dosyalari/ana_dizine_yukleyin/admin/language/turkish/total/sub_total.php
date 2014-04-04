@@ -14,4 +14,3 @@ $_['entry_sort_order'] = 'Sıralama';
 
 // Error
 $_['error_permission'] = 'Uyarı: Ara toplam toplamını düzenleme iznine sahip değilsiniz!!';
-?>

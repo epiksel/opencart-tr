@@ -1,5 +1,5 @@
-<?php echo $header; ?>
-<div id="content" class="container">
+<?php echo $header; ?><?php echo $menu; ?>
+<div id="content">
   <ul class="breadcrumb">
     <?php foreach ($breadcrumbs as $breadcrumb) { ?>
     <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
@@ -7,7 +7,7 @@
   </ul>
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h1 class="panel-title"><i class="fa fa-bar-chart-o"></i> <?php echo $heading_title; ?></h1>
+      <h1 class="panel-title"><i class="fa fa-bar-chart-o fa-lg"></i> <?php echo $heading_title; ?></h1>
     </div>
     <div class="panel-body">
       <div class="well">
@@ -15,11 +15,15 @@
           <div class="col-sm-6">
             <div class="form-group">
               <label class="control-label" for="input-date-start"><?php echo $entry_date_start; ?></label>
-              <input type="date" name="filter_date_start" value="<?php echo $filter_date_start; ?>" id="input-date-start" class="form-control" />
+              <div class="input-group date"><input type="text" name="filter_date_start" value="<?php echo $filter_date_start; ?>" placeholder="<?php echo $entry_date_start; ?>" data-format="YYYY-MM-DD" id="input-date-start" class="form-control" /><span class="input-group-btn">
+                <button type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button>
+                </span></div>
             </div>
             <div class="form-group">
               <label class="control-label" for="input-date-end"><?php echo $entry_date_end; ?></label>
-              <input type="date" name="filter_date_end" value="<?php echo $filter_date_end; ?>" id="input-date-end" class="form-control" />
+              <div class="input-group date"><input type="text" name="filter_date_end" value="<?php echo $filter_date_end; ?>" placeholder="<?php echo $entry_date_end; ?>" data-format="YYYY-MM-DD" id="input-date-end" class="form-control" /><span class="input-group-btn">
+                <button type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button>
+                </span></div>
             </div>
           </div>
           <div class="col-sm-6">
@@ -41,7 +45,7 @@
         </div>
       </div>
       <div class="table-responsive">
-        <table class="table table-striped table-bordered table-hover">
+        <table class="table table-bordered table-hover">
           <thead>
             <tr>
               <td class="text-left"><?php echo $column_customer; ?></td>
@@ -107,5 +111,10 @@ $('#button-filter').on('click', function() {
 
 	location = url;
 });
-//--></script> 
+//--></script>
+<script type="text/javascript"><!--
+$('.date').datetimepicker({
+	pickTime: false
+});
+//--></script>
 <?php echo $footer; ?>

@@ -27,4 +27,3 @@ $_['error_title']      = 'Uzunluk Başlığı 3 ile 32 karakter arasında olmal�
 $_['error_unit']       = 'Uzunluk Birimi 1 ile 4 karakter arasında olmalı!';
 $_['error_default']    = 'Uyarı: Bu uzunluğu silemezsiniz, varsayılan uzunluk birimi tarafından kullanılıyor!';
 $_['error_product']    = 'Uyarı: Bu uzunluğu silemezsiniz, %s ürün tarafından kullanılıyor!';
-?>

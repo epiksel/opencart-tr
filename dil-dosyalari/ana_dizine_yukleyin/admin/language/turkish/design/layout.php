@@ -25,4 +25,3 @@ $_['error_store']       = 'Uyarı: Bu bölümü silemezsiniz, %s mağaza tarafı
 $_['error_product']     = 'Uyarı: Bu bölümü silemezsiniz, %s ürün tarafından kullanılıyor!';
 $_['error_category']    = 'Uyarı: Bu bölümü silemezsiniz, %s kategori tarafından kullanılıyor!';
 $_['error_information'] = 'Uyarı: Bu bölümü silemezsiniz, %s bilgi sayfası tarafından kullanılıyor!';
-?>

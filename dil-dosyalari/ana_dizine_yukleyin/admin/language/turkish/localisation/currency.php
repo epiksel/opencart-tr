@@ -34,4 +34,3 @@ $_['error_code']           = 'Para Birim Kodu en fazla 3 karakter olmalı!';
 $_['error_default']        = 'Uyarı: Bu para birimini silemezsiniz, varsayılan para birimi olarak kullanılıyor!';
 $_['error_store']          = 'Uyarı: Bu para birimini silemezsiniz, %s mağaza tarafından kullanılıyor!';
 $_['error_order']          = 'Uyarı: Bu para birimini silemezsiniz, %s sipariş tarafından kullanılıyor!';
-?>

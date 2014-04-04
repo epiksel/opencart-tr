@@ -43,4 +43,3 @@ $_['error_default']     = 'Uyarı: Bu dili silemezsiniz, varsayılan mağaza tar
 $_['error_admin']       = 'Uyarı: Bu dili silemezsiniz, yönetim dili olarak kullanılıyor!';
 $_['error_store']       = 'Uyarı: Bu dili silemezsiniz, %s mağaza tarafından kullanılıyor!';
 $_['error_order']       = 'Uyarı: Bu dili silemezsiniz, %s sipariş tarafından kullanılıyor!';
-?>

@@ -1,5 +1,5 @@
 <h2><?php echo $text_instruction; ?></h2>
-<div class="content">
+<div class="well well-sm">
   <p><b><?php echo $text_payable; ?></b></p>
   <p><?php echo $payable; ?></p>
   <b><?php echo $text_address; ?></b><br />
@@ -16,6 +16,7 @@ $('#button-confirm').on('click', function() {
 	$.ajax({ 
 		type: 'get',
 		url: 'index.php?route=payment/cheque/confirm',
+		cache: false,
 		beforeSend: function() {
 			$('#button-confirm').button('loading');
 		},

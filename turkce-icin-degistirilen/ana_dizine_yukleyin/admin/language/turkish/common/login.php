@@ -19,4 +19,3 @@ $_['button_login']   = 'Oturum Aç';
 // Error
 $_['error_login']    = 'Kullanıcı adı ya da parola yanlış!';
 $_['error_token']    = 'Geçersiz oturum. Lütfen tekrar oturum açın!';
-?>

@@ -17,25 +17,22 @@ $_['text_file']             = 'Dosya';
 $_['text_date']             = 'Tarih';
 $_['text_datetime']         = 'Tarih &amp; Zaman';
 $_['text_time']             = 'Zaman';
-$_['text_registration']     = 'Kayıt Olma';
 $_['text_account']          = 'Hesap';
-$_['text_address']          = 'Varsayılan Adres';
-$_['text_payment_address']  = 'Fatura Adresi';
-$_['text_shipping_address']	= 'Teslimat Adresi';
+$_['text_address']          = 'Adres';
 
 // Column
 $_['column_name']           = 'Özel Alan Adı';
-$_['column_type']           = 'Türü';
 $_['column_location']       = 'Konum';
+$_['column_type']           = 'Türü';
 $_['column_sort_order']     = 'Sıralama';
 $_['column_action']         = 'Eylem';
 
 // Entry
 $_['entry_name']           = 'Özel Alan Adı';
+$_['entry_location']       = 'Konum';
 $_['entry_type']           = 'Türü';
 $_['entry_value']          = 'Değeri';
 $_['entry_custom_value']   = 'Özel Alan Değer Adı';
-$_['entry_location']       = 'Konum';
 $_['entry_customer_group'] = 'Müşteri Grubu';
 $_['entry_required']       = 'Gerekli';
 $_['entry_status']		   = 'Durum';
@@ -46,4 +43,3 @@ $_['error_permission']     = 'Uyarı: Özel alanları düzenleme yetkisine sahip
 $_['error_name']           = 'Özel alan adı 1 ile 128 karakter arasında olmalıdır!';
 $_['error_type']           = 'Uyarı: Özel alan türü gerekli!';
 $_['error_custom_value']   = 'Özel alan değer adı 1 ile 128 karakter arasında olmalıdır!';
-?>

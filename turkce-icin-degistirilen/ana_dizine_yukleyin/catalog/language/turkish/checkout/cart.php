@@ -13,6 +13,20 @@ $_['text_points']		= 'Kazanacağınız Puan: %s';
 $_['text_next']			= 'Bir sonraki adımda ne yapmak istersiniz?';
 $_['text_next_choice']	= 'Eğer kullanmak istediğiniz bir indirim kodu veya puan varsa ya da kargo maliyetini hesaplamak isterseniz bir seçim yapınız.';
 $_['text_empty']		= 'Alışveriş sepetiniz boş!';
+$_['text_day']         = 'day';
+$_['text_week']        = 'week';
+$_['text_semi_month']  = 'half-month';
+$_['text_month']       = 'month';
+$_['text_year']        = 'year';
+$_['text_trial']       = '%s every %s %s for %s payments then ';
+$_['text_recurring']   = '%s every %s %s';
+$_['text_length']      = ' for %s payments';
+$_['text_until_cancelled']   	= 'until cancelled';
+$_['text_recurring_item']    	= 'Recurring item';
+$_['text_payment_profile']   	= 'Payment Profile';
+$_['text_trial_description'] 	= '%s every %d %s(s) for %d payment(s) then';
+$_['text_payment_description'] 	= '%s every %d %s(s) for %d payment(s)';
+$_['text_payment_until_canceled_description'] = '%s every %d %s(s) until canceled';
 
 // Column
 $_['column_image']		= 'Resim';
@@ -27,4 +41,4 @@ $_['error_stock']		= '<span style="color:#F00; font-weight:bold;">***</span> iş
 $_['error_minimum']		= '%s ürünü için asgari %s adet sipariş vermeniz gerekiyor!';
 $_['error_required']	= '%s gerekli!';
 $_['error_product']		= 'Uyarı: Alışveriş sepetinizde ürün bulunmamaktadır!';
-?>
+$_['error_profile_required'] = 'Please select a payment profile!';

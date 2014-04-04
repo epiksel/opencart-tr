@@ -16,7 +16,7 @@ $_['text_your_password']        = 'Parolanız';
 $_['text_cheque']               = 'Çek';
 $_['text_paypal']               = 'PayPal';
 $_['text_bank']                 = 'Banka Havalesi/EFT';
-$_['text_agree']                = '<a href="%s" alt="%s" class="agree"><b>%s</b></a>\'nı okudum ve kabul ediyorum';
+$_['text_agree']                = '<a href="%s" class="agree"><b>%s</b></a>\'nı okudum ve kabul ediyorum';
 
 // Entry
 $_['entry_firstname']      		= 'Ad';
@@ -58,4 +58,3 @@ $_['error_country']             = 'Lütfen bir ülke seçiniz!';
 $_['error_zone']                = 'Lütfen bir şehir seçiniz!';
 $_['error_postcode']            = 'Posta kodu 2 ile 10 karakter arasında olmalı!';
 $_['error_agree']               = 'Uyarı: %s kabul etmelisiniz!';
-?>

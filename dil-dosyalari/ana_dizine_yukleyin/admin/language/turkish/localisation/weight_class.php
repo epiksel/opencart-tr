@@ -27,4 +27,3 @@ $_['error_title']      = 'Ağırlık Adı 3 ile 32 karakter arasında olmalı!';
 $_['error_unit']       = 'Ağırlık Birimi 1 ile 4 karakter arasında olmalı!';
 $_['error_default']    = 'Uyarı: Bu ağırlık birimini silemezsiniz, varsayılan ağırlık birimi tarafından kullanılıyor!';
 $_['error_product']    = 'Uyarı: Bu ağırlık birimini silemezsiniz, %s ürün tarafından kullanılıyor!';
-?>

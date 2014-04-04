@@ -1,5 +1,5 @@
-<?php echo $header; ?>
-<div id="content" class="container">
+<?php echo $header; ?><?php echo $menu; ?>
+<div id="content">
   <ul class="breadcrumb">
     <?php foreach ($breadcrumbs as $breadcrumb) { ?>
     <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
@@ -13,9 +13,9 @@
   <div class="panel panel-default">
     <div class="panel-heading">
       <div class="pull-right">
-        <button type="submit" form="form-custom-field" class="btn btn-primary"><i class="fa fa-check"></i> <?php echo $button_save; ?></button>
-        <a href="<?php echo $cancel; ?>" class="btn btn-danger"><i class="fa fa-times"></i> <?php echo $button_cancel; ?></a></div>
-      <h1 class="panel-title"><i class="fa fa-edit"></i> <?php echo $heading_title; ?></h1>
+        <button type="submit" form="form-custom-field" data-toggle="tooltip" title="<?php echo $button_save; ?>" class="btn"><i class="fa fa-check-circle"></i></button>
+        <a href="<?php echo $cancel; ?>" data-toggle="tooltip" title="<?php echo $button_cancel; ?>" class="btn"><i class="fa fa-reply"></i></a></div>
+      <h1 class="panel-title"><i class="fa fa-pencil-square fa-lg"></i> <?php echo $heading_title; ?></h1>
     </div>
     <div class="panel-body">
       <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form-custom-field" class="form-horizontal">
@@ -30,6 +30,23 @@
             <div class="text-danger"><?php echo $error_name[$language['language_id']]; ?></div>
             <?php } ?>
             <?php } ?>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label" for="input-location"><?php echo $entry_location; ?></label>
+          <div class="col-sm-10">
+            <select name="location" id="input-location" class="form-control">
+              <?php if ($location == 'account') { ?>
+              <option value="account" selected="selected"><?php echo $text_account; ?></option>
+              <?php } else { ?>
+              <option value="account"><?php echo $text_account; ?></option>
+              <?php } ?>
+              <?php if ($location == 'address') { ?>
+              <option value="address" selected="selected"><?php echo $text_address; ?></option>
+              <?php } else { ?>
+              <option value="address"><?php echo $text_address; ?></option>
+              <?php } ?>
+            </select>
           </div>
         </div>
         <div class="form-group">
@@ -96,24 +113,6 @@
           <label class="col-sm-2 control-label" for="input-value"><?php echo $entry_value; ?></label>
           <div class="col-sm-10">
             <input type="text" name="value" value="<?php echo $value; ?>" placeholder="<?php echo $entry_value; ?>" id="input-value" class="form-control" />
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-sm-2 control-label"><?php echo $entry_location; ?></label>
-          <div class="col-sm-10">
-             <?php foreach ($locations as $location) { ?>
-             <div class="checkbox">
-              <label>
-                <?php if (in_array($location['value'], $custom_field_location)) { ?>
-                <input type="checkbox" name="location[]" value="<?php echo $location['value']; ?>" checked="checked" />
-                <?php echo $location['text']; ?>
-                <?php } else { ?>
-                <input type="checkbox" name="location[]" value="<?php echo $location['value']; ?>" />
-                <?php echo $location['text']; ?>
-                <?php } ?>
-              </label>
-            </div>      
-            <?php } ?>
           </div>
         </div>
         <div class="form-group">
@@ -224,29 +223,33 @@ $('select[name=\'type\']').on('change', function() {
 		$('#display-value').show();
 	}
 	
-	$('input[name=\'value\']').attr('type', 'text');
-	
 	if (this.value == 'date') {
-		 $('input[name=\'value\']').attr('type', 'date');
+		$('#display-value > div').html('<div class="input-group date"><input type="text" name="value" value="' + $('#input-value').val() + '" placeholder="<?php echo $entry_value; ?>" data-format="YYYY-MM-DD" id="input-value" class="form-control" /><span class="input-group-btn"><button type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button></span></div>');
 	} else if (this.value == 'time') {
-		$('input[name=\'value\']').attr('type', 'time');
+		$('#display-value > div').html('<div class="input-group time"><input type="text" name="value" value="' + $('#input-value').val() + '" placeholder="<?php echo $entry_value; ?>" data-format="HH:mm" id="input-value" class="form-control" /><span class="input-group-btn"><button type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button></span></div>');
 	} else if (this.value == 'datetime') {
-		$('input[name=\'value\']').attr('type', 'datetime-local');
+		$('#display-value > div').html('<div class="input-group datetime"><input type="text" name="value" value="' + $('#input-value').val() + '" placeholder="<?php echo $entry_value; ?>" data-format="YYYY-MM-DD HH:mm" id="input-value" class="form-control" /><span class="input-group-btn"><button type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button></span></div>');
+	} else if (this.value == 'textarea') {
+		$('#display-value > div').html('<textarea name="value" placeholder="<?php echo $entry_value; ?>" id="input-value" class="form-control">' + $('#input-value').val() + '</textarea>');
+	} else {
+		$('#display-value > div').html('<input type="text" name="value" value="' + $('#input-value').val() + '" placeholder="<?php echo $entry_value; ?>" id="input-value" class="form-control" />');
 	}
+	
+	$('.date').datetimepicker({
+		pickTime: false
+	});
+	
+	$('.time').datetimepicker({
+		pickDate: false
+	});	
+		
+	$('.datetime').datetimepicker({
+		pickDate: true,
+		pickTime: true
+	});
 });
 
 $('select[name=\'type\']').trigger('change');
-
-$('input[name^=\'location\']').on('change', function() {
-	
-	if (this.value == 'account') {
-		//$('#custom-field-value').show();
-		//$('#display-value').hide();
-	}
-	
-	
-	
-});
 
 var custom_field_value_row = <?php echo $custom_field_value_row; ?>;
 

@@ -5,7 +5,8 @@
 $_['heading_title']  = 'İletişim';
 
 // Text
-$_['text_location']  = 'Mağaza Bilgilerimiz';
+$_['text_location']  = 'Konum Bilgilerimiz';
+$_['text_store']     = 'Mağazalarımız';
 $_['text_contact']   = 'İletişim Formu';
 $_['text_address']   = 'Adres:';
 $_['text_telephone'] = 'Telefon:';
@@ -28,4 +29,3 @@ $_['error_name']     = 'Ad 3 ile 32 karakter arasında olmalı!';
 $_['error_email']    = 'E-Posta Adresi geçersiz!';
 $_['error_enquiry']  = 'Mesajınız 10 ile 3000 karakter arasında olmalı!';
 $_['error_captcha']  = 'Doğrulama kodu yanlış!';
-?>

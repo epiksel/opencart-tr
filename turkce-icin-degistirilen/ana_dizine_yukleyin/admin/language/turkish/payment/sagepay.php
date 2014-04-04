@@ -4,8 +4,8 @@
 // Heading
 $_['heading_title']      = 'SagePay';
 
-// Text 
-$_['text_payment']       = 'Ödeme Metodları'; 
+// Text
+$_['text_payment']       = 'Ödeme Metodları';
 $_['text_success']       = 'Başarılı: SagePay hesap detayları başarılı bir şekilde değiştirildi!';
 $_['text_sagepay']       = '<a href="https://support.sagepay.com/apply/default.aspx?PartnerID=E511AF91-E4A0-42DE-80B0-09C981A3FB61" target="_blank"><img src="view/image/payment/sagepay.png" alt="SagePay" title="SagePay" style="border: 1px solid #EEEEEE;" /></a>';
 $_['text_sim']           = 'Simulator';
@@ -32,4 +32,3 @@ $_['help_total']         = 'Bu ödeme metodunun aktif olması için toplam sipar
 $_['error_permission']   = 'Uyarı: SagePay ödeme metodunu düzenleme iznine sahip değilsiniz!';
 $_['error_vendor']       = 'Vendor ID Required!';
 $_['error_password']     = 'Password Required!';
-?>

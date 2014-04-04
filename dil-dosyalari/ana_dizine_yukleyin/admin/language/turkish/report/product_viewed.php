@@ -12,4 +12,3 @@ $_['column_name']    = 'Ürün Adı';
 $_['column_model']   = 'Ürün Kodu';
 $_['column_viewed']  = 'Görüntüleme';
 $_['column_percent'] = 'Yüzde';
-?>

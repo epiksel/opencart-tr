@@ -28,4 +28,3 @@ $_['help_total']				= 'Bu ödeme metodunun aktif olması için toplam sipariş t
 // Error
 $_['error_permission']			= 'Uyarı: Moneybookers ödeme metodunu düzenleme iznine sahip değilsiniz!';
 $_['error_email']				= 'E-Posta Gerekli!';
-?>

@@ -8,4 +8,3 @@ $_['text_product']	= 'Ürün: %s';
 $_['text_reviewer']	= 'Yorum Yapan: %s';
 $_['text_rating']	= 'Verilen Oy: %s';
 $_['text_review']	= 'Yapılan yorum:';
-?>

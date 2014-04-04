@@ -1,58 +1,21 @@
 <?php
 final class Loader {
-	protected $registry;
+	private $registry;
 
 	public function __construct($registry) {
 		$this->registry = $registry;
 	}
-	
-	public function controller($route, $args = array()) {
-		$path = '';
-		
-		$parts = explode('/', str_replace(array('../', '..\\', '..'), '', (string)$route));
-		
-		foreach ($parts as $part) {
-			$path .= $part;
 			
-			if (is_dir(DIR_APPLICATION . 'controller/' . $path)) {
-				$path .= '/';
-				
-				array_shift($parts);
-				
-				continue;
-			}
-			
-			$file = DIR_APPLICATION . 'controller/' .  $path . '.php';
-			
-			if (is_file($file)) {
-				$class = 'Controller' . preg_replace('/[^a-zA-Z0-9]/', '', $path);
+	public function controller($route) {
+		// function arguments
+		$args = func_get_args();
 
-				array_shift($parts);
-				
-				break;
-			}
-		}
-			
-		$method = array_shift($parts);
-				
-		if (!$method) {
-			$method = 'index';
-		}
-					
-		if (file_exists($file)) { 
-			include_once($file);
-			
-			$controller = new $class($this->registry);
-					
-			if (is_callable(array($controller, $method))) {
-				return call_user_func_array(array($controller, $method), $args);
-			} else {				
-				return false;
-			}
-		} else {
-			trigger_error('Error: Could not load controller ' . $file . '!');
-			exit();
-		}
+		// Remove the route
+		array_shift($args);	
+
+		$action = new Action($route, $args); 
+
+		return $action->execute($this->registry);
 	}
 		
 	public function model($model) {
@@ -73,14 +36,8 @@ final class Loader {
 		$file = DIR_TEMPLATE . $template;
 		
 		if (file_exists($file)) {
-			foreach ($data as $key => $value) {
-				if (is_object($value)) {
-					${$key} = $value->index(); 
-				} else {
-					${$key} = $value;
-				}
-			}
-
+			extract($data);
+			
 			ob_start();
 
 			require($file);
@@ -117,26 +74,12 @@ final class Loader {
 			exit();
 		}
 	}
-	
-	public function database($type, $hostname, $username, $password, $database) {
-		$file = DIR_SYSTEM . 'library/' . $driver . '.php';
-
-		if (file_exists($file)) {
-			include_once($file);
-
-			$this->registry->set($type, new $class($type, $hostname, $username, $password, $database));
-		} else {
-			trigger_error('Error: Could not load database ' . $file . '!');
-			exit();
-		}
-	}
 
 	public function config($config) {
-		$this->config->load($config);
+		$this->registry->get('config')->load($config);
 	}
 
 	public function language($language) {
-		return $this->language->load($language);
+		return $this->registry->get('language')->load($language);
 	}
-} 
-?>
+}

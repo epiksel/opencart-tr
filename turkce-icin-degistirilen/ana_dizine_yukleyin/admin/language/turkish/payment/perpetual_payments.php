@@ -4,7 +4,7 @@
 // Heading
 $_['heading_title']      = 'Perpetual Payments';
 
-// Text 
+// Text
 $_['text_payment']       = 'Ödeme Metodları';
 $_['text_success']       = 'Success: You have modified Perpetual Payments account details!';
 
@@ -24,6 +24,5 @@ $_['help_total']         = 'Bu ödeme metodunun aktif olması için toplam sipar
 
 // Error
 $_['error_permission']   = 'Warning: You do not have permission to modify payment Perpetual Payments!';
-$_['error_auth_id']      = 'Authorization ID Required!'; 
-$_['error_auth_pass']    = 'Authorization Password Required!'; 
-?>
+$_['error_auth_id']      = 'Authorization ID Required!';
+$_['error_auth_pass']    = 'Authorization Password Required!';

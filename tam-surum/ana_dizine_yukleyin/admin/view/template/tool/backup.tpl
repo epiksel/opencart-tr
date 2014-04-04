@@ -1,5 +1,5 @@
-<?php echo $header; ?>
-<div id="content" class="container">
+<?php echo $header; ?><?php echo $menu; ?>
+<div id="content">
   <ul class="breadcrumb">
     <?php foreach ($breadcrumbs as $breadcrumb) { ?>
     <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
@@ -18,10 +18,10 @@
   <div class="panel panel-default">
     <div class="panel-heading">
       <div class="pull-right">
-        <button type="submit" form="form-backup" class="btn btn-default"><i class="fa fa-download"></i> <?php echo $button_backup; ?></button>
-        <button type="submit" form="form-restore" class="btn btn-default"><i class="fa fa-upload"></i> <?php echo $button_restore; ?></button>
+        <button type="submit" form="form-backup" data-toggle="tooltip" title="<?php echo $button_backup; ?>" class="btn"><i class="fa fa-download"></i></button>
+        <button type="submit" form="form-restore" data-toggle="tooltip" title="<?php echo $button_restore; ?>" class="btn"><i class="fa fa-upload"></i></button>
       </div>
-      <h1 class="panel-title"><i class="fa fa-exchange"></i> <?php echo $heading_title; ?></h1>
+      <h1 class="panel-title"><i class="fa fa-exchange fa-lg"></i> <?php echo $heading_title; ?></h1>
     </div>
     <div class="panel-body">
       <form action="<?php echo $restore; ?>" method="post" enctype="multipart/form-data" id="form-restore" class="form-horizontal">
@@ -36,7 +36,7 @@
         <div class="form-group">
           <label class="col-sm-2 control-label"><?php echo $entry_backup; ?></label>
           <div class="col-sm-10">
-            <div class="well well-sm">
+            <div class="well well-sm" style="height: 150px; overflow: auto;">
               <?php foreach ($tables as $table) { ?>
               <div class="checkbox">
                 <label>

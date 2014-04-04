@@ -25,4 +25,3 @@ $_['entry_sort_order']    = 'Sıralama';
 // Error
 $_['error_permission']    = 'Uyarı: Slayt Gösteri modülünü değiştirme iznine sahip değilsiniz!';
 $_['error_dimension']     = 'Genişlik &amp; Yükseklik boyutları gerekli!';
-?>

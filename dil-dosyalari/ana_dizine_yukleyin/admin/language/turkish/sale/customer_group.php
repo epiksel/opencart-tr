@@ -27,4 +27,3 @@ $_['error_name']		= 'Uyarı: Müşteri Grup Adı 3 ile 32 karakter arasında olm
 $_['error_default']		= 'Uyarı: Bu müşteri grubunu silemezsiniz, varsayılan mağaza tarafından kullanılıyor!';
 $_['error_store']		= 'Uyarı: Bu müşteri grubunu silemezsiniz, %s mağaza tarafından kullanılıyor!';
 $_['error_customer']	= 'Uyarı: Bu müşteri grubunu silemezsiniz, %s müşteri tarafından kullanılıyor!';
-?>

@@ -22,9 +22,8 @@ $_['entry_country']          = 'Ülke';
 // Error
 $_['error_permission']       = 'Uyarı: Şehirleri düzenleme iznine sahip değilsiniz!';
 $_['error_name']             = 'Şehir Adı 3 ile 128 karakter arasında olmalı!';
-$_['error_default']          = 'Uyarı: Bu şehri silemezsiniz. Bu şehir varsayılan mağaza tarafından kullanılıyor!';
-$_['error_store']            = 'Uyarı: Bu şehri silemezsiniz. Bu şehir %s mağaza tarafından kullanılıyor!';
-$_['error_address']          = 'Uyarı: Bu şehri silemezsiniz. Bu şehir %s adres defteri tarafından kullanılıyor!';
-$_['error_affiliate']        = 'Uyarı: Bu şehri silemezsiniz. Bu şehir %s ortak tarafından kullanılıyor!';
-$_['error_zone_to_geo_zone'] = 'Uyarı: Bu şehri silemezsiniz. Bu şehir %s bölge tarafından kullanılıyor!';
-?>
+$_['error_default']          = 'Uyarı: Bu şehri silemezsiniz, varsayılan mağaza tarafından kullanılıyor!';
+$_['error_store']            = 'Uyarı: Bu şehri silemezsiniz, %s mağaza tarafından kullanılıyor!';
+$_['error_address']          = 'Uyarı: Bu şehri silemezsiniz, %s adres defteri tarafından kullanılıyor!';
+$_['error_affiliate']        = 'Uyarı: Bu şehri silemezsiniz, %s ortak tarafından kullanılıyor!';
+$_['error_zone_to_geo_zone'] = 'Uyarı: Bu şehri silemezsiniz, %s bölge tarafından kullanılıyor!';

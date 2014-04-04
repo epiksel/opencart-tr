@@ -25,12 +25,22 @@ $_['text_forgotten']                 = 'Parolamı unuttum';
 $_['text_your_details']              = 'Kişisel Bilgileriniz';
 $_['text_your_address']              = 'Adres Bilgileriniz';
 $_['text_your_password']             = 'Parolanız';
-$_['text_agree']                     = '<a href="%s" alt="%s" class="agree"><b>%s</b></a>\'ı okudum ve kabul ediyorum.';
+$_['text_agree']                     = '<a href="%s" class="agree"><b>%s</b></a>\'ı okudum ve kabul ediyorum.';
 $_['text_address_new']               = 'Yeni adres ekleyiniz.';
 $_['text_address_existing']          = 'Varolan fatura adresi seçiniz.';
 $_['text_shipping_method']           = 'Siparişinizde kullanılacak kargo metodunu seçiniz.';
 $_['text_payment_method']            = 'Siparişinizde kullanılacak ödeme metodunu seçiniz.';
 $_['text_comments']                  = 'Siparişiniz Hakkında Bir Açıklama Ekleyebilirsiniz';
+$_['text_recurring']                 = 'Recurring item';
+$_['text_payment_profile']           = 'Payment Profile';
+$_['text_trial_description']         = '%s every %d %s(s) for %d payment(s) then';
+$_['text_payment_description']       = '%s every %d %s(s) for %d payment(s)';
+$_['text_payment_until_canceled_description'] = '%s every %d %s(s) until canceled';
+$_['text_day']                       = 'day';
+$_['text_week']                      = 'week';
+$_['text_semi_month']                = 'half-month';
+$_['text_month']                     = 'month';
+$_['text_year']                      = 'year';
 
 // Column
 $_['column_name']                    = 'Ürün Adı';
@@ -48,6 +58,7 @@ $_['entry_firstname']                = 'Ad:';
 $_['entry_lastname']                 = 'Soyad';
 $_['entry_telephone']                = 'Telefon';
 $_['entry_fax']                      = 'Faks';
+$_['entry_address']                  = 'Choose Address';
 $_['entry_company']                  = 'Şirket Adı';
 $_['entry_customer_group']           = 'Müşteri Grubu';
 $_['entry_address_1']                = 'Adres 1';
@@ -82,4 +93,3 @@ $_['error_no_shipping']              = 'Uyarı: Kargo metodu mevcut değil. Lüt
 $_['error_payment']                  = 'Uyarı: Ödeme metodu gerekli!';
 $_['error_no_payment']               = 'Uyarı: Ödeme metodu mevcut değil. Lütfen <a href="%s">iletişim</a> için bize ulaşın!';
 $_['error_custom_field']             = '%s gerekli!';
-?>

@@ -1,7 +1,7 @@
 <?php
 class ModelPaymentKlarnaAccount extends Model {
-    public function getMethod($address, $total) {
-        $this->language->load('payment/klarna_account');
+	public function getMethod($address, $total) {
+		$this->load->language('payment/klarna_account');
 		
 		$status = true;
 
@@ -44,7 +44,7 @@ class ModelPaymentKlarnaAccount extends Model {
 				$status = false;
 			}			
 		}
-        
+
 		$payment_option = array();
 		
 		if ($status) {
@@ -173,41 +173,41 @@ class ModelPaymentKlarnaAccount extends Model {
 		if ($status) {
 			$method = array(
 				'code'       => 'klarna_account',
-				'title'      => sprintf($this->language->get('text_pay_month'), $this->currency->format($this->currency->convert($payment_option[0]['monthly_cost'], $country_to_currency[$address['iso_code_3']], $this->currency->getCode()), 1, 1), $klarna_account[$address['iso_code_3']]['merchant'], strtolower($address['iso_code_2'])),
-				'sort_order' => $klarna_account[$address['iso_code_3']]['sort_order']
+				'title'      => sprintf($this->language->get('text_title'), $this->currency->format($this->currency->convert($payment_option[0]['monthly_cost'], $country_to_currency[$address['iso_code_3']], $this->currency->getCode()), 1, 1)),
+				'terms'      => sprintf($this->language->get('text_terms'), $klarna_account[$address['iso_code_3']]['merchant'], strtolower($address['iso_code_2'])),
+				'sort_order' => $klarna_account[$address['iso_code_3']]['sort_order'],
 			);
 		}
 		
-        return $method;
-    }
+		return $method;
+	}
 
-    private function getLowestPaymentAccount($country) {
-        switch ($country) {
-            case 'SWE':
-                $amount = 50.0;
-                break;
-            case 'NOR':
-                $amount = 95.0;
-                break;
-            case 'FIN':
-                $amount = 8.95;
-                break;
-            case 'DNK':
-                $amount = 89.0;
-                break;
-            case 'DEU':
-            case 'NLD':
-                $amount = 6.95;
-                break;
-            default:
-                $log = new Log('klarna_account.log');
-                $log->write('Unknown country ' . $country);
-                
-				$amount = NULL;
-                break;
-        }
+	private function getLowestPaymentAccount($country) {
+		switch ($country) {
+			case 'SWE':
+				$amount = 50.0;
+				break;
+			case 'NOR':
+				$amount = 95.0;
+				break;
+			case 'FIN':
+				$amount = 8.95;
+				break;
+			case 'DNK':
+				$amount = 89.0;
+				break;
+			case 'DEU':
+			case 'NLD':
+				$amount = 6.95;
+				break;
+			default:
+				$log = new Log('klarna_account.log');
+				$log->write('Unknown country ' . $country);
 
-        return $amount;
-    }
+				$amount = null;
+				break;
+		}
+
+		return $amount;
+	}
 }
-?>

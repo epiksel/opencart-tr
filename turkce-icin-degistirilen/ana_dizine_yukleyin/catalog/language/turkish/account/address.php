@@ -8,8 +8,8 @@ $_['heading_title']     = 'Adreslerim';
 $_['text_account']      = 'Hesabım';
 $_['text_address_book'] = 'Adreslerim';
 $_['text_edit_address'] = 'Adresi Düzenle';
-$_['text_insert']       = 'Adresinizi başarılı bir şekilde eklediniz';
-$_['text_update']       = 'Adresiniz başarılı bir şekilde güncellediniz';
+$_['text_add']       = 'Adresinizi başarılı bir şekilde eklediniz';
+$_['text_edit']       = 'Adresiniz başarılı bir şekilde güncellediniz';
 $_['text_delete']       = 'Adresiniz başarılı bir şekilde sildiniz';
 $_['text_empty']		= 'Hesabınızda kayıtlı hiç adres yok.';
 
@@ -36,4 +36,3 @@ $_['error_postcode']    = 'Posta kodu alanı 2 ile 10 karakter arasında olmalı
 $_['error_city']        = 'İlçe / semt alanı 2 ile 128 karakter arasında olmalı!';
 $_['error_country']     = 'Lütfen bir ülke seçiniz!';
 $_['error_zone']        = 'Lütfen bir şehir seçiniz!';
-?>

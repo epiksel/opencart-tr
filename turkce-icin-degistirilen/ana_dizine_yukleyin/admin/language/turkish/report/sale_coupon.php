@@ -14,4 +14,3 @@ $_['column_action']    = 'Eylem';
 // Entry
 $_['entry_date_start']	= 'Başlangıç';
 $_['entry_date_end']	= 'Bitiş';
-?>

@@ -18,4 +18,3 @@ $_['entry_ip']         = 'IP';
 // Error
 $_['error_permission'] = 'Uyarı: Engelli IP adreslerini düzenleme iznine sahip değilsiniz!';
 $_['error_ip']         = 'IP adresi 1 ile 40 karakter arasında olmalı!';
-?>

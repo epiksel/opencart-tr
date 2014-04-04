@@ -15,4 +15,3 @@ $_['entry_link']       = 'Takip Bağlantısı';
 
 // Help
 $_['help_generator']  = 'Bağlantı oluşturmak için bir ürün adı yazınız.';
-?>
