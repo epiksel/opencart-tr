@@ -3703,7 +3703,7 @@ CREATE TABLE `oc_zone` (
 -- Dumping data for table `oc_zone`
 --
 
-INSERT INTO `es_zone` (`zone_id`, `country_id`, `code`, `name`, `status`) VALUES
+INSERT INTO `oc_zone` (`zone_id`, `country_id`, `code`, `name`, `status`) VALUES
 (1, 1, 'BDS', 'Badakhshan', 1),
 (2, 1, 'BDG', 'Badghis', 1),
 (3, 1, 'BGL', 'Baghlan', 1),
@@ -5217,7 +5217,7 @@ INSERT INTO `es_zone` (`zone_id`, `country_id`, `code`, `name`, `status`) VALUES
 (1534, 100, 'SB', 'Sumatera Barat', 1),
 (1535, 100, 'SS', 'Sumatera Selatan', 1),
 (1536, 100, 'SU', 'Sumatera Utara', 1);
-INSERT INTO `es_zone` (`zone_id`, `country_id`, `code`, `name`, `status`) VALUES
+INSERT INTO `oc_zone` (`zone_id`, `country_id`, `code`, `name`, `status`) VALUES
 (1537, 100, 'YO', 'Yogyakarta', 1),
 (1538, 101, 'TEH', 'Tehran', 1),
 (1539, 101, 'QOM', 'Qom', 1),
@@ -6685,7 +6685,7 @@ INSERT INTO `es_zone` (`zone_id`, `country_id`, `code`, `name`, `status`) VALUES
 (3036, 199, 'BRT', 'Al Buhayrat', 1),
 (3037, 199, 'JZR', 'Al Jazirah', 1),
 (3038, 199, 'KRT', 'Al Khartum', 1);
-INSERT INTO `es_zone` (`zone_id`, `country_id`, `code`, `name`, `status`) VALUES
+INSERT INTO `oc_zone` (`zone_id`, `country_id`, `code`, `name`, `status`) VALUES
 (3039, 199, 'QDR', 'Al Qadarif', 1),
 (3040, 199, 'WDH', 'Al Wahdah', 1),
 (3041, 199, 'ANB', 'An Nil al Abyad', 1),
