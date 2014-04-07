@@ -2,10 +2,18 @@
 /* Turkceye Ceviren eka7a - http://www.e-piksel.com */
 
 // Heading
-$_['heading_step_1']			= 'Step 1 - Lisans';
-$_['heading_step_2']			= 'Step 2 - Ön Yükleme';
-$_['heading_step_3']			= 'Step 3 - Yapılandırma';
-$_['heading_step_4']			= 'Step 4 - Tamamlandı!';
+$_['heading_step_1']			= 'License agreement';
+$_['heading_step_1_small']		= 'Please read the OpenCart licence agreement';
+$_['heading_step_2']			= 'Pre-Installation';
+$_['heading_step_2_small']		= 'Check your server is set-up correctly';
+$_['heading_step_3']			= 'Configuration';
+$_['heading_step_3_small']		= 'Enter your database and administration details';
+$_['heading_step_4']			= 'Installation complete';
+$_['heading_step_4_small']		= 'Ready to start selling!';
+$_['heading_maxmind']			= 'MaxMind';
+$_['heading_maxmind_small']		= 'Fraud detection service.';
+$_['heading_openbay']			= 'OpenBay Pro';
+$_['heading_openbay_small']		= 'Multi marketplace integration';
 
 // Text
 $_['text_license']				= 'Lisans';
@@ -40,6 +48,7 @@ $_['text_gd']					= 'GD';
 $_['text_curl']					= 'cURL';
 $_['text_mcrypt']				= 'mCrypt';
 $_['text_zip']					= 'ZIP';
+$_['text_mbstring']				= 'mbstring';
 $_['text_on']					= 'Açık';
 $_['text_off']					= 'Kapalı';
 $_['text_writable']				= 'Yazılabilir';
@@ -52,6 +61,34 @@ $_['text_project']				= 'Proje Anasayfa';
 $_['text_documentation']		= 'Dökümanlar';
 $_['text_support']				= 'Destek Forumları';
 $_['text_footer']				= 'Copyright © 2014 OpenCart-TR - Tüm hakları saklıdır.';
+$_['text_loading']				= 'Loading modules...';
+$_['text_store']				= 'visit the extensions store';
+$_['text_mail_list']			= 'Join the mailing list';
+$_['text_mail_list_small']		= 'Stay informed of OpenCart updates and events.';
+$_['text_openbay']				= 'OpenBay Pro gives merchants the ability to link their store with 3rd party markets like eBay and Amazon. Import orders, list items and handle shipping information direct from OpenCart...';
+$_['text_maxmind']				= 'MaxMind provides merchants the ability to identify risky transactions quickly, reducing the risk of fraud and minimises the time spent reviewing orders by giving a risk score for each one...';
+$_['text_more_info']			= 'More information';
+$_['text_facebook']				= 'Like us on Facebook';
+$_['text_facebook_info']		= 'Tell us how much you like OpenCart!';
+$_['text_facebook_link']		= 'Visit our Facebook page';
+$_['text_forum']				= 'Community forums';
+$_['text_forum_info']			= 'Get help from other OpenCart users';
+$_['text_forum_link']			= 'Visit our forums';
+$_['text_commercial']			= 'Commercial support';
+$_['text_commercial_info']		= 'Development services from OpenCart partners';
+$_['text_commercial_link']		= 'Visit our partner page';
+$_['text_view']					= 'View details';
+$_['text_download']				= 'Download';
+$_['text_downloads']			= 'Downloads';
+$_['text_price']				= 'Price';
+$_['text_view']					= 'View details';
+$_['text_maxmind_success']		= 'MaxMind fraud service has been installed';
+$_['text_maxmind_top']			= 'If you don\'t have a license key you can';
+$_['text_maxmind_link']			= 'sign up here';
+$_['text_maxmind_risk_help']	= 'The higher the score the more likely the order is fraudulent. Set a score between 0 - 100.';
+$_['text_maxmind_fraud_help']	= 'Orders over your set score will be assigned this order status and will not be allowed to reach the complete status automatically.';
+$_['text_ebay_about']			= 'eBay is a multi-billion dollar market place that allows business or private sellers to auction and retail goods online. Available to sellers worldwide.';
+$_['text_amazon_about']			= 'Amazon Marketplace a fixed-price online marketplace allowing sellers to offer new and used items alongside Amazon\'s regular retail service.';
 $_['text_translator']			= '|<a href="http://www.e-piksel.com" target="_blank">Türkçe Çeviri E-Piksel</a>';
 
 // Entry
@@ -64,14 +101,17 @@ $_['entry_db_prefix']			= 'VT Öneki';
 $_['entry_username']			= 'Kullanıcı Adı';
 $_['entry_password']			= 'Parola';
 $_['entry_email']				= 'E-Posta';
+$_['entry_licence_key']			= 'License Key';
+$_['entry_risk']				= 'Risk score';
+$_['entry_fraud_status']		= 'Fraud Order Status';
+
+// Error
+$_['error_key']					= 'Maxmind licence key required';
+$_['error_score']				= 'A score between 0 and 100 is accepted';
 
 // Buttons
 $_['button_continue']			= 'Devam Et';
 $_['button_back']				= 'Geri';
-
-
-// Error
-
 
 // Terms
 $_['text_terms']				= '<h3>GNU GENERAL PUBLIC LICENSE</h3>

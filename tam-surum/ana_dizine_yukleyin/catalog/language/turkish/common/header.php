@@ -9,4 +9,4 @@ $_['text_category']			= 'Kategoriler';
 $_['text_account']			= 'Hesabım';
 $_['text_checkout']			= 'Kasaya Git';
 $_['text_search']			= 'Ara';
-$_['text_all']				= 'Tümünü Gör';
+$_['text_all']				= 'Tümü';
