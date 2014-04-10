@@ -191,7 +191,7 @@ $_['help_maintenance']             = 'Müşterilerin mağazada gezinmesini engel
 $_['help_password']                = 'Yöneticiler için parolamı unuttum seçeneğini kullanmasına izin verin. Sistem hack girişimi algıladığında bu otomatik olarak devre dışı kalacaktır.';
 $_['help_encryption']              = 'Lütfen sipariş işlenirken özel bilgileri şifrelemek için kullanılacak gizli bir anahtar giriniz.';
 $_['help_compression']             = 'Daha verimli(hızlı) aktarım için istemci isteklerinde GZIP sıkıştırma kullanın. Sıkıştırma seviyesi olarak 0 ile 9 arasında bir sayı giriniz. Büyük sayı daha iyi sıkıştırma sağlar.';
-$_['help_google_analytics']        = 'Google Analytics hesabınızda <a href="http://www.google.com/analytics/" target="_blank"><u>oturum açın</u></a>  sonra web sitesi profili oluşturun ve oluşturduğunuz profil için analyrics kodunu buraya yapıştırın.';
+$_['help_google_analytics']        = 'Google Analytics hesabınızda <a href="http://www.google.com/analytics/" target="_blank"><u>oturum açın</u></a>  sonra web sitesi profili oluşturun ve oluşturduğunuz profil için analytics kodunu buraya yapıştırın.';
 
 // Error
 $_['error_warning']					= 'Uyarı: Oluşan hatalar için lütfen formu dikkatli kontrol ediniz!';
