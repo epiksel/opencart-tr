@@ -6,19 +6,19 @@ $_['heading_title']			= 'Müşteriler';
 
 // Text
 $_['text_success']			= 'Başarılı: Müşteri başarılı bir şekilde değiştirildi!';
-$_['text_default']          = 'Varsayılan';
+$_['text_default']			= 'Varsayılan';
 $_['text_balance']			= 'Bakiye';
-$_['text_add_ban_ip']       = 'IP Engelle';
-$_['text_remove_ban_ip']    = 'IP Engeli Kaldır';
-$_['text_login']            = 'Oturum Aç';
+$_['text_add_ban_ip']		= 'IP Engelle';
+$_['text_remove_ban_ip']	= 'IP Engeli Kaldır';
+$_['text_login']			= 'Oturum Aç';
 
 // Column
 $_['column_name']			= 'Müşteri Adı';
-$_['column_email']          = 'E-Posta';
+$_['column_email']			= 'E-Posta';
 $_['column_customer_group']	= 'Müşteri Grubu';
 $_['column_status']			= 'Durumu';
 $_['column_date_added']		= 'Ekleme Tarihi';
-$_['column_comment']        = 'Açıklama';
+$_['column_comment']		= 'Açıklama';
 $_['column_description']	= 'Açıklama';
 $_['column_amount']			= 'Tutar';
 $_['column_points']			= 'Puan';
@@ -45,22 +45,22 @@ $_['entry_postcode']		= 'Posta Kodu';
 $_['entry_country']			= 'Ülke';
 $_['entry_zone']			= 'Şehir';
 $_['entry_default']			= 'Varsayılan Adres';
-$_['entry_comment']         = 'Açıklama';
+$_['entry_comment']			= 'Açıklama';
 $_['entry_description']		= 'Açıklama';
 $_['entry_amount']			= 'Kredi Tutarı';
 $_['entry_points']			= 'Ödül Puanı';
-$_['entry_name']            = 'Müşteri Adı';
-$_['entry_approved']        = 'Onaylandı';
-$_['entry_ip']              = 'IP';
-$_['entry_date_added']      = 'Ekleme Tarihi';
+$_['entry_name']			= 'Müşteri Adı';
+$_['entry_approved']		= 'Onaylandı';
+$_['entry_ip']				= 'IP';
+$_['entry_date_added']		= 'Ekleme Tarihi';
 
 // Help
-$_['help_points']           = 'Puan silmek için başına eksi işareti koyunuz.';
+$_['help_points']			= 'Puan silmek için başına eksi işareti koyunuz.';
 
 // Error
 $_['error_warning']			= 'Uyarı: Oluşan hatalar için lütfen formu dikkatli kontrol ediniz!';
 $_['error_permission']		= 'Uyarı: Müşterileri düzenleme iznine sahip değilsiniz!';
-$_['error_exists']          = 'Uyarı: E-Posta adresi zaten kayıtlı!';
+$_['error_exists']			= 'Uyarı: E-Posta adresi zaten kayıtlı!';
 $_['error_firstname']		= 'Ad alanı 1 ile 32 karakter arasında olmalı!';
 $_['error_lastname']		= 'Soyad 1 ile 32 karakter arasında olmalı!';
 $_['error_email']			= 'E-Posta adresi geçersiz!';
@@ -72,3 +72,4 @@ $_['error_city']			= 'İlçe / Semt alanı 2 ile 128 karakter arasında olmalı!
 $_['error_postcode']		= 'Posta kodu 2 ile 10 karakter arasında olmalı!';
 $_['error_country']			= 'Lütfen bir ülke seçiniz!';
 $_['error_zone']			= 'Lütfen bir şehir seçiniz!';
+$_['error_custom_field']	= '%s gerekli!';
