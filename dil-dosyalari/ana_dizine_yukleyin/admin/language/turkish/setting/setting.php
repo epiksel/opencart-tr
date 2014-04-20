@@ -135,11 +135,11 @@ $_['help_open']                    = 'Fill in your store\'s opening times.';
 $_['help_comment']                 = 'This field is for any special notes you would like to tell the customer i.e. Store does not accept cheques.';
 $_['help_location']                = 'Farklı mağaza konumları iletişim sayfasında gösterilecektir.';
 $_['help_currency']                = 'Varsayılan para birimini değiştirir. Web tarayıcınızın önbelleğini ve çerezleri temizlemeniz gerekir.';
-$_['help_currency_auto']           = 'Para birimlerini günlük olarak otomatik güncelle.';
+$_['help_currency_auto']           = 'Para birimleri hergün otomatik olarak güncellenir.';
 $_['help_product_limit'] 	       = 'Mağazanızın sayfalarında, sayfa başına kaç ürün gösterileceğini seçin (ürünler, kategoriler vb).';
 $_['help_product_description_length']  = 'Liste görünümde kısa açıklama karakter limiti. (kategoriler, kampanya sayfaları vb).';
 $_['help_limit_admin']   	       = 'Yönetim sayfalarında sayfa başına kaç ürün gösterileceğini seçin (siparişler, müşteriler vb).';
-$_['help_product_count']           = 'Katalog sayfasında üst menüsünde alt kategorilerdeki ürün sayısını göster. <b>Uyarı, ürün sayısı bir çok mağazada aşırı performans düşüklüğüne neden olabilir!';
+$_['help_product_count']           = 'Katalog sayfasında üst menüsünde alt kategorilerdeki ürün sayısını göster. <b>Uyarı, ürün sayısı bir çok mağazada aşırı performans düşüklüğüne neden olabilir!</b>';
 $_['help_review']       	       = 'Yeni yorumları ve daha öncekileri görüntülenmesini aktif/pasif yapın.';
 $_['help_review_guest']       	   = 'Misafir ziyaretçilerin yorum göndermesine izin verin.';
 $_['help_review_mail']             = 'Yeni bir yorum yapıldığında mağaza sahibine e-posta gönder.';
@@ -191,7 +191,7 @@ $_['help_maintenance']             = 'Müşterilerin mağazada gezinmesini engel
 $_['help_password']                = 'Yöneticiler için parolamı unuttum seçeneğini kullanmasına izin verin. Sistem hack girişimi algıladığında bu otomatik olarak devre dışı kalacaktır.';
 $_['help_encryption']              = 'Lütfen sipariş işlenirken özel bilgileri şifrelemek için kullanılacak gizli bir anahtar giriniz.';
 $_['help_compression']             = 'Daha verimli(hızlı) aktarım için istemci isteklerinde GZIP sıkıştırma kullanın. Sıkıştırma seviyesi olarak 0 ile 9 arasında bir sayı giriniz. Büyük sayı daha iyi sıkıştırma sağlar.';
-$_['help_google_analytics']        = 'Google Analytics hesabınızda <a href="http://www.google.com/analytics/" target="_blank"><u>oturum açın</u></a>  sonra web sitesi profili oluşturun ve oluşturduğunuz profil için analytics kodunu buraya yapıştırın.';
+$_['help_google_analytics']        = 'Google Analytics hesabınızda <a href="http://www.google.com/analytics/" target="_blank"><u>oturum açın</u></a> ve mağazanız için bir profil oluşturun. Oluşturduğunuz profile ait kodu buraya yapıştırın.';
 
 // Error
 $_['error_warning']					= 'Uyarı: Oluşan hatalar için lütfen formu dikkatli kontrol ediniz!';

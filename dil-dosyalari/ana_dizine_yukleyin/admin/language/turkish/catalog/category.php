@@ -33,8 +33,8 @@ $_['entry_layout']           	= 'Bu Bölüm Gibi Davran';
 // Help
 $_['help_filter']				= '(Otomatik Tamamlama)';
 $_['help_keyword']				= 'Boşluk kullanmayın ve benzersiz kelimeler kullandığınızdan emin olunuz.';
-$_['help_top']					= 'Katalog sayfasında üst menüde göster. Sadece ana kategoriler için geçerlidir.';
-$_['help_column']				= '3 Alt kategori için kullanılacak sütun sayısı. Sadece ana kategoride geçerlidir.';
+$_['help_top']					= 'Kategoriyi katalog sayfasında üst menüde göster (sadece ana kategoriler).';
+$_['help_column']				= '3 alt kategori için kullanılacak sütun sayısı (sadece ana kategoriler).';
 
 // Error
 $_['error_warning']          	= 'Uyarı: Oluşan hatalar için lütfen formu dikkatli kontrol ediniz!';

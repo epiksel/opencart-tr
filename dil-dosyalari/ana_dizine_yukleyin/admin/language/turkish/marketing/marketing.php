@@ -27,6 +27,6 @@ $_['help_code']         = 'Pazarlama kampanyalarını takip etmek için kullanı
 $_['help_example']      = 'Sistem sitenizin bağlantı sonuna takip kodu ekleyerek referansları takip edebilirsiniz.';
 
 // Error
-$_['error_permission']  = 'Uyarı: Pazarlama takip bilgileri düzenleme iznine sahip değilsiniz!';
+$_['error_permission']  = 'Uyarı: Pazarlama takip bilgilerini düzenleme iznine sahip değilsiniz!';
 $_['error_name']        = 'Kampanya Adı 1 ile 32 karakter arasında olmalı!';
 $_['error_code']        = 'Takip kodu gerekli!';

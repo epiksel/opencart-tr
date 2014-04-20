@@ -71,7 +71,7 @@ $_['entry_newsletter']               = '%s bültene abone olmak istiyorum.';
 $_['entry_shipping'] 	             = 'Fatura ve Teslimat adresim aynı.';
 
 // Error
-$_['error_warning']                  = 'Siparişiniz işlenirken bir sorun oluştu! Sorun devam ederse farklı bir ödeme metodu seçip tekar deneyiniz ya da mağaza sahibi ile iletişime geçmek için <a href="%s">buraya tıklayınız</a>.';
+$_['error_warning']                  = 'Siparişiniz işlenirken bir sorun oluştu! Sorun devam ederse farklı bir ödeme metodu seçip tekar deneyiniz ya da iletişime geçmek için <a href="%s">buraya tıklayınız</a>.';
 $_['error_login']                    = 'Uyarı: E-Posta Adresi ve/ya da parolanız yanlış';
 $_['error_approved']                 = 'Uyarı: Oturum açabilmek için hesabınızın onaylanması gereklidir.';
 $_['error_exists']                   = 'Uyarı: E-Posta adresi ile daha önce kayıt olunmuştur!';
