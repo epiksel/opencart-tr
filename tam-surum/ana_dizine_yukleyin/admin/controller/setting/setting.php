@@ -56,6 +56,7 @@ class ControllerSettingSetting extends Controller {
 		$data['entry_location'] = $this->language->get('entry_location');
 		$data['entry_meta_title'] = $this->language->get('entry_meta_title');
 		$data['entry_meta_description'] = $this->language->get('entry_meta_description');
+		$data['entry_meta_keyword'] = $this->language->get('entry_meta_keyword');
 		$data['entry_layout'] = $this->language->get('entry_layout');
 		$data['entry_template'] = $this->language->get('entry_template');
 		$data['entry_country'] = $this->language->get('entry_country');
@@ -198,6 +199,7 @@ class ControllerSettingSetting extends Controller {
 		$data['help_ftp_root'] = $this->language->get('help_ftp_root');
 		$data['help_mail_protocol'] = $this->language->get('help_mail_protocol');
 		$data['help_mail_parameter'] = $this->language->get('help_mail_parameter');
+		$data['help_mail_smtp_hostname'] = $this->language->get('help_mail_smtp_hostname');
 		$data['help_mail_alert'] = $this->language->get('help_mail_alert');
 		$data['help_fraud_detection'] = $this->language->get('help_fraud_detection');
 		$data['help_fraud_score'] = $this->language->get('help_fraud_score');
@@ -532,6 +534,12 @@ class ControllerSettingSetting extends Controller {
 			$data['config_meta_description'] = $this->request->post['config_meta_description'];
 		} else {
 			$data['config_meta_description'] = $this->config->get('config_meta_description');
+		}
+		
+		if (isset($this->request->post['config_meta_keyword'])) {
+			$data['config_meta_keyword'] = $this->request->post['config_meta_keyword'];
+		} else {
+			$data['config_meta_keyword'] = $this->config->get('config_meta_keyword');
 		}
 		
 		if (isset($this->request->post['config_layout_id'])) {

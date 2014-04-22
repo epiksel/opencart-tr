@@ -15,8 +15,12 @@ if (extension_loaded('mbstring')) {
 	}
 	
 	function utf8_substr($string, $offset, $length = null) {
-		return mb_substr($string, $offset, $length);
-	}	
+		if ($length === null) {
+			return mb_substr($string, $offset, utf8_strlen($string));
+		} else {
+			return mb_substr($string, $offset, $length);
+		}
+	}
 	
 	function utf8_strtoupper($string) {	
 		return mb_strtoupper($string);
@@ -39,7 +43,7 @@ if (extension_loaded('mbstring')) {
 	}
 	
 	function utf8_substr($string, $offset, $length = null) {
-		if ($length == null) {
+		if ($length === null) {
 			return iconv_substr($string, $offset, utf8_strlen($string), 'UTF-8');
 		} else {
 			return iconv_substr($string, $offset, $length, 'UTF-8');

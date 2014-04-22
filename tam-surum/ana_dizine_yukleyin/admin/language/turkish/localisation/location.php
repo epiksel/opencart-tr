@@ -28,10 +28,10 @@ $_['entry_comment']		= 'Açıklama';
 // Help
 $_['help_geocode']		= 'Mağazanızın çoğrafi konum kodunu elle giriniz.';
 $_['help_open']			= 'Mağazanızın çalışma saatlerini yazınız.';
-$_['help_comment']		= 'Bu alana müşterileriniz için özel bir not yazabilirsiniz. Örneğin: Mağazamızda çek kabul edilmemek gibi.';
+$_['help_comment']		= 'Bu alana müşterileriniz için özel bir not yazabilirsiniz. Örneğin: Mağazamızda çek kabul edilir gibi.';
 
 // Error
-$_['error_permission']	= 'Uyarı: Konumları düzenleme iznine sahip değilsiniz!';
+$_['error_permission']	= 'Uyarı: Mağaza konumlarını düzenleme iznine sahip değilsiniz!';
 $_['error_name']		= 'Mağaza adı en az 1 karakterden oluşmalıdır!';
 $_['error_address']		= 'Adres alanı 3 ile 128 karakter arasında olmalıdır!';
 $_['error_telephone']	= 'Telefon alanı 3 ile 32 karakter arasında olmalıdır!';

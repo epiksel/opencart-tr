@@ -1417,7 +1417,6 @@ CREATE TABLE `oc_download` (
   `download_id` int(11) NOT NULL AUTO_INCREMENT,
   `filename` varchar(128) NOT NULL,
   `mask` varchar(128) NOT NULL,
-  `remaining` int(11) NOT NULL DEFAULT '0',
   `date_added` datetime NOT NULL,
   PRIMARY KEY (`download_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
@@ -2161,7 +2160,7 @@ CREATE TABLE `oc_order_custom_field` (
 -- --------------------------------------------------------
 
 --
--- Dumping data for table `oc_order_fraud`
+-- Table structure for table `oc_order_fraud`
 --
 
 DROP TABLE IF EXISTS `oc_order_fraud`;

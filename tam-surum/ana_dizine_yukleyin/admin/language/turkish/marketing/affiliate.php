@@ -59,8 +59,8 @@ $_['entry_approved']            = 'Onaylandı';
 $_['entry_date_added']          = 'Ekleme Tarihi';
 
 // Help
-$_['help_code']					= 'Tavsiyeleri izlemek için kullanılacak takip kodu.';
-$_['help_commission']			= 'Ortağın her sipariş için aldığı komisyon oranı.';
+$_['help_code']					= 'Ürün tavsiyelerini izlemek için kullanılacak takip kodu.';
+$_['help_commission']			= 'Ortağın her sipariş için alacağı komisyon oranı.';
 
 // Error
 $_['error_permission']          = 'Uyarı: Ortakları düzenleme iznine sahip değilsiniz!';
