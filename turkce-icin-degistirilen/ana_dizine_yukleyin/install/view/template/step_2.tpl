@@ -93,6 +93,14 @@
           <td>On</td>
           <td align="center"><?php echo extension_loaded('zlib') ? '<img src="view/image/good.png" alt="Good" />' : '<img src="view/image/bad.png" alt="Bad" />'; ?></td>
         </tr>
+        <?php if (!function_exists('iconv')) { ?>
+        <tr>
+          <td>mbstring:</td>
+          <td><?php echo extension_loaded('mbstring') ? 'On' : 'Off'; ?></td>
+          <td>On</td>
+          <td align="center"><?php echo extension_loaded('mbstring') ? '<img src="view/image/good.png" alt="Good" />' : '<img src="view/image/bad.png" alt="Bad" />'; ?></td>
+        </tr>
+        <?php } ?>
       </table>
     </fieldset>
     <p>3. Lütfen aşağıdaki dosyaların CHMOD izinlerinin doğru ayarlanmış olduğundan emin olun.</p>
