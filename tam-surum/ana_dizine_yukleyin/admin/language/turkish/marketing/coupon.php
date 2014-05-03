@@ -39,12 +39,12 @@ $_['entry_uses_customer'] = 'Müşteri Başına Kullanım';
 $_['entry_status']        = 'Durumu';
 
 // Help
-$_['help_code']			  = 'İndirim kuponu için gerekli kod.';
+$_['help_code']           = 'İndirim kuponu için gerekli kod.';
 $_['help_type']           = 'Yüzde ya da sabit tutar.';
 $_['help_logged']         = 'Müşteri kuponu kullanabilmesi için giriş yapmasını gerektirir.';
 $_['help_total']          = 'Toplam sipariş tutarı belirtilen rakam üzerindeyse indirim kuponunu kullanılsın.';
 $_['help_category']       = 'Seçtiğiniz kategori altındaki ürünlerden seçiniz.';
-$_['help_product']        = 'Kupon seçilen ürünlere uygulanacaktır. Sepetteki tüm ürünlere uygulamak için ürün seçemyiniz.';
+$_['help_product']        = 'Kupon seçilen ürünlere uygulanacaktır. Sepetteki tüm ürünlere uygulamak için ürün seçmeyin.';
 $_['help_uses_total']     = 'Tüm müşterilerin bu kuponu kaç kez kullanabileceğini belirleyin. Sınırsız için boş bırakın.';
 $_['help_uses_customer']  = 'Tek müşterinin bu kuponu kaç kez kullanabileceğini belirleyin. Sınırsız için boş bırakın.';
 
