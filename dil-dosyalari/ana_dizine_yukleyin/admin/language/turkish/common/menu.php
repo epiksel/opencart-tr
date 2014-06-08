@@ -4,6 +4,7 @@
 // Text
 $_['text_affiliate']										= 'Ortaklar';
 $_['text_affiliate_activity']						= 'Ortak Etkinlikleri';
+$_['text_api']													= 'Api';
 $_['text_attribute']										= 'Özellikler';
 $_['text_attribute_group']							= 'Özellik Grupları';
 $_['text_backup']												= 'Yedekle / Geri Yükle';
@@ -33,7 +34,7 @@ $_['text_localisation']									= 'Yerelleştirme';
 $_['text_location']											= 'Konumlar';
 $_['text_contact']											= 'E-Posta';
 $_['text_marketing']										= 'Pazarlama';
-$_['text_maintance']										= 'Bakım & Onarım';
+$_['text_maintenance']									= 'Bakım & Onarım';
 $_['text_modification']									= 'Modifikasyonlar';
 $_['text_manufacturer']									= 'Üreticiler';
 $_['text_module']												= 'Modüller';

@@ -1,4 +1,9 @@
 <?php
+/**
+ * Modifcation XML Documentation can be found here:
+ * 
+ * https://github.com/opencart/opencart/wiki/Modification-System
+ */
 class ControllerExtensionModification extends Controller {
 	private $error = array();
 
@@ -46,7 +51,6 @@ class ControllerExtensionModification extends Controller {
 		$this->getList();
 	}
 
-	/* A big thanks to Qphoria and mhcwebdesign for this part of the code! */
 	public function refresh() {
 		$this->load->language('extension/modification');
 
@@ -97,21 +101,21 @@ class ControllerExtensionModification extends Controller {
 					$path = '';
 
 					// Get the full path of the files that are going to be used for modification
-					if (substr($file->getAttribute('name'), 0, 7) == 'catalog') {
-						$path = DIR_CATALOG . substr($file->getAttribute('name'), 8);
+					if (substr($file->getAttribute('path'), 0, 7) == 'catalog') {
+						$path = DIR_CATALOG . substr($file->getAttribute('path'), 8);
 					}
 
-					if (substr($file->getAttribute('name'), 0, 5) == 'admin') {
-						$path = DIR_APPLICATION . substr($file->getAttribute('name'), 6);
+					if (substr($file->getAttribute('path'), 0, 5) == 'admin') {
+						$path = DIR_APPLICATION . substr($file->getAttribute('path'), 6);
 					}
 
-					if (substr($file->getAttribute('name'), 0, 6) == 'system') {
-						$path = DIR_SYSTEM . substr($file->getAttribute('name'), 7);
+					if (substr($file->getAttribute('path'), 0, 6) == 'system') {
+						$path = DIR_SYSTEM . substr($file->getAttribute('path'), 7);
 					}
 
 					if ($path) {
 						$files = glob($path, GLOB_BRACE);
-
+						
 						$operations = $file->getElementsByTagName('operation');
 
 						if ($files) {
@@ -132,74 +136,73 @@ class ControllerExtensionModification extends Controller {
 								if (!isset($modification[$key])) {
 									$modification[$key] = file_get_contents($file);
 								}
-
+	
 								foreach ($operations as $operation) {
-									$search = $operation->getElementsByTagName('search')->item(0)->textContent;
-									$regex = $operation->getElementsByTagName('search')->item(0)->getAttribute('regex');
-									$trim = $operation->getElementsByTagName('search')->item(0)->getAttribute('trim');
-									$index = $operation->getElementsByTagName('search')->item(0)->getAttribute('index');
-									$add = $operation->getElementsByTagName('add')->item(0)->textContent;
-									$position = $operation->getElementsByTagName('add')->item(0)->getAttribute('position');
-
-									// Trim
-									if (!$trim || $trim == 'true') {
-										$search = trim($search);
-									}
-
-									// Index
-									if (!$index) {
-										$index = 1;
-									}
-
-									switch ($position) {
-										default:
-										case 'replace':
-											$replace = $add;
-											break;
-										case 'before':
-											$replace = $add . $search;
-											break;
-										case 'after':
-											$replace = $search . $add;
-											break;
-									}
-
-									if ($regex && $regex == 'true') {
-										/*
-										Regex does not require index to match items
-
-										So if, for example, you want to change the 3rd 'foo' to 'bar' on the following line:
-
-										lorem ifoopsum foo lor foor ipsum foo dolor foo
-											   ^1      ^2      ^3         ^4        ^5
-
-										run: s/\(.\{-}\zsfoo\)\{3}/bar/
-
-										to get:
-
-										lorem ifoopsum foo lor barr ipsum foo dolor foo
-											   ^1      ^2      ^3=bar     ^4        ^5
-										*/
-										$modification[$key] = preg_replace($search, $replace, $modification[$key], 1);
-									} else {
-
-
-
-
-
-
+									// Search and replace
+									if ($operation->getElementsByTagName('search')->item(0)->getAttribute('regex') != 'true') {
+										$search = $operation->getElementsByTagName('search')->item(0)->textContent;
+										$trim = $operation->getElementsByTagName('search')->item(0)->getAttribute('trim');
+										$offset = $operation->getElementsByTagName('search')->item(0)->getAttribute('offset');
+										$limit = $operation->getElementsByTagName('search')->item(0)->getAttribute('limit');
+										$add = $operation->getElementsByTagName('add')->item(0)->textContent;
+										$position = $operation->getElementsByTagName('add')->item(0)->getAttribute('position');
+									
+										// Trim
+										if (!$trim || $trim == 'true') {
+											$search = trim($search);
+										}
+	
+										switch ($position) {
+											default:
+											case 'replace':
+												$replace = $add;
+												break;
+											case 'before':
+												$replace = $add . $search;
+												break;
+											case 'after':
+												$replace = $search . $add;
+												break;
+										}
+	
 										$i = 0;
 										$pos = -1;
-										$result = array();
-
+										$match = array();
+										
+										// Create an array of all the start postions of all the matched code 
 										while (($pos = strpos($modification[$key], $search, $pos + 1)) !== false) {
-											$result[$i++] = $pos;
+											$match[$i++] = $pos;
 										}
-
-										// Only replace the occurance of the string that is equal to the index
-										if (isset($result[$index - 1])) {
-											$modification[$key] = substr_replace($modification[$key], $replace, $result[$index - 1], strlen($search));
+										
+										// Offset
+										if (!$offset) {
+											$offset = 0;
 										}
+																				
+										// Limit
+										if (!$limit) {
+											$limit = count($match);
+										} else {
+											$limit = $offset + $limit;
+										}	
+																							
+										// Only replace the occurance of the string that is equal to the between the offset and limit
+										for ($i = $offset; $i < $limit; $i++) {
+											if (isset($match[$i])) {
+												$modification[$key] = substr_replace($modification[$key], $replace, $match[$i], strlen($search));
+											}
+										}
+									} else {
+										$search = $operation->getElementsByTagName('search')->item(0)->textContent;
+										$replace = $operation->getElementsByTagName('add')->item(0)->textContent;									
+										$limit = $operation->getElementsByTagName('search')->item(0)->getAttribute('limit');
+										
+										// Limit
+										if (!$limit) {
+											$limit = -1;
+										}
+										
+										$modification[$key] = preg_replace($search, $replace, $modification[$key], $limit);							
 									}
 								}
 							}
@@ -234,7 +237,7 @@ class ControllerExtensionModification extends Controller {
 			if (isset($this->request->get['page'])) {
 				$url .= '&page=' . $this->request->get['page'];
 			}
-
+			
 			$this->response->redirect($this->url->link('extension/modification', 'token=' . $this->session->data['token'] . $url, 'SSL'));
 		}
 

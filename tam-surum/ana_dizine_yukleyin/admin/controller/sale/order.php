@@ -444,7 +444,7 @@ class ControllerSaleOrder extends Controller {
 		$data['button_cancel'] = $this->language->get('button_cancel');
 		$data['button_product_add'] = $this->language->get('button_product_add');
 		$data['button_voucher_add'] = $this->language->get('button_voucher_add');
-		$data['button_total'] = $this->language->get('button_total');
+		$data['button_refresh'] = $this->language->get('button_refresh');
 		$data['button_upload'] = $this->language->get('button_upload');
 		$data['button_remove'] = $this->language->get('button_remove');
 
@@ -2631,5 +2631,73 @@ class ControllerSaleOrder extends Controller {
 		}
 
 		$this->response->setOutput($this->load->view('sale/order_shipping.tpl', $data));
+	}
+	
+	public function api() {
+		$this->load->model('setting/store');
+		
+		if ($this->request->post['store_id']) {
+			
+		} else {
+				
+		}
+		
+		$store_info = $this->model_setting_store->getStore($this->request->post['store_id']);
+		
+		if ($store_info) {
+			$url = $store_info['url'];
+		} else {
+			$url = HTTP_CATALOG;	
+		}
+		
+		// Make curl request
+		$curl = curl_init($url . 'index.php?route=' . $this->request->get['call']);
+				
+		switch($this->request->get['call']) {
+			case 'payment':
+			
+				break;
+			case 'shipping':
+			
+				break;
+			case 'calculate':
+			
+				break;
+			case 'add':
+			
+				break;		
+			case 'edit':
+			
+				break;
+			case 'delete':
+			
+				break;									
+			case 'comment':
+			
+				break;	
+		}
+		
+
+			
+
+				
+				
+				
+		curl_setopt($curl, CURLOPT_PORT, 443);
+		curl_setopt($curl, CURLOPT_HEADER, 0);
+		curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
+		curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($curl, CURLOPT_FORBID_REUSE, 0);
+		curl_setopt($curl, CURLOPT_FRESH_CONNECT, 1);
+		curl_setopt($curl, CURLOPT_POST, 1);
+		curl_setopt($curl, CURLOPT_POSTFIELDS, $this->request->post);
+
+		$response = curl_exec($curl);
+
+		curl_close($curl);
+
+		if (!$response) {
+			$this->log->write(curl_error($curl) . '(' . curl_errno($curl) . ')');
+		}	
 	}
 }

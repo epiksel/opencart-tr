@@ -1,28 +1,26 @@
 <?php
 class ControllerApiCoupon extends Controller {
-	public function voucher() {
-		$this->load->language('module/voucher');
+	public function index() {
+		$this->load->language('api/coupon');
 		
 		$json = array();
 				
-		$this->load->model('checkout/voucher');
+		$this->load->model('checkout/coupon');
 		
-		if (isset($this->request->post['voucher'])) {
-			$voucher = $this->request->post['voucher'];
+		if (isset($this->request->post['coupon'])) {
+			$coupon = $this->request->post['coupon'];
 		} else {
-			$voucher = '';
+			$coupon = '';
 		}
 				
-		$voucher_info = $this->model_checkout_voucher->getVoucher($voucher);			
+		$coupon_info = $this->model_checkout_voucher->getVoucher($coupon);			
 		
-		if ($voucher_info) {	
-			$this->session->data['voucher'] = $this->request->post['voucher'];
+		if ($coupon_info) {	
+			$this->session->data['coupon'] = $this->request->post['coupon'];
 				
-			$this->session->data['success'] = $this->language->get('text_success');
-				
-			$json['redirect'] = $this->url->link('checkout/cart');
+			$json['success'] = $this->language->get('text_success');
 		} else {
-			$json['error'] = $this->language->get('error_voucher');
+			$json['error'] = $this->language->get('error_coupon');
 		}
 		
 		$this->response->setOutput(json_encode($json));		

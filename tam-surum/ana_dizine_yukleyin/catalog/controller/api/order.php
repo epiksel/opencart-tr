@@ -1,681 +1,415 @@
-<<<<<<< HEAD:upload/catalog/controller/api/order.php
-<?php
+  <?php
 class ControllerApiOrder extends Controller {
+	public function setCustomer() {
+		$this->load->language('api/api');
+		
+		$json = array();
+		
+		// Customer
+		if ($this->request->post['customer_id']) {
+			$this->load->model('account/customer');
+
+			$customer_info = $this->model_account_customer->getCustomer($this->request->post['customer_id']);
+
+			if (!$customer_info) {
+				$json['error']['warning'] = $this->language->get('error_customer');
+			}
+		}
+		
+		if ((utf8_strlen(trim($this->request->post['firstname'])) < 1) || (utf8_strlen(trim($this->request->post['firstname'])) > 32)) {
+			$json['error']['firstname'] = $this->language->get('error_firstname');
+		}
+
+		if ((utf8_strlen(trim($this->request->post['lastname'])) < 1) || (utf8_strlen(trim($this->request->post['lastname'])) > 32)) {
+			$json['error']['lastname'] = $this->language->get('error_lastname');
+		}
+
+		if ((utf8_strlen($this->request->post['email']) > 96) || (!preg_match('/^[^\@]+@.*\.[a-z]{2,6}$/i', $this->request->post['email']))) {
+			$json['error']['email'] = $this->language->get('error_email');
+		}
+
+		if ((utf8_strlen($this->request->post['telephone']) < 3) || (utf8_strlen($this->request->post['telephone']) > 32)) {
+			$json['error']['telephone'] = $this->language->get('error_telephone');
+		}
+		
+		// Customer Group
+		if (isset($this->request->post['customer_group_id']) && is_array($this->config->get('config_customer_group_display')) && in_array($this->request->post['customer_group_id'], $this->config->get('config_customer_group_display'))) {
+			$customer_group_id = $this->request->post['customer_group_id'];
+		} else {
+			$customer_group_id = $this->config->get('config_customer_group_id');
+		}
+
+		// Custom field validation
+		$this->load->model('account/custom_field');
+
+		$custom_fields = $this->model_account_custom_field->getCustomFields(array('filter_customer_group_id' => $customer_group_id));
+
+		foreach ($custom_fields as $custom_field) {
+			if ($custom_field['required'] && empty($this->request->post['custom_field'][$custom_field['location']][$custom_field['custom_field_id']])) {
+				$json['error']['custom_field'][$custom_field['custom_field_id']] = sprintf($this->language->get('error_custom_field'), $custom_field['name']);
+			}
+		}
+
+		if (!$json) {
+			$this->session->data['customer'] = array(
+				'customer_id'       => $this->request->post['customer_id'],
+				'customer_group_id' => $this->request->post['customer_group_id'],
+				'firstname'         => $this->request->post['firstname'],
+				'lastname'          => $this->request->post['lastname'],
+				'email'             => $this->request->post['email'],
+				'telephone'         => $this->request->post['lastname'],
+				'fax'               => $this->request->post['fax'],
+				'custom_field'      => unserialize($this->request->post['custom_field'])
+			);
+			
+			$json['success'] = $this->language->get('text_success');			
+		}
+		
+		$this->response->setOutput(json_encode($json));					
+	}
+			
 	public function addOrder() {
 		$this->load->language('api/order');
 		
 		$json = array();
-			
-
-			// Settings
-			$this->load->model('setting/setting');
-			
-			$settings = $this->model_setting_setting->getSetting('config', $this->request->post['store_id']);
-			
-			foreach ($settings as $key => $value) {
-				$this->config->set($key, $value);
-			}
-			
-    		// Customer
-			if ($this->request->post['customer_id']) {
-				$this->load->model('account/customer');
-
-				$customer_info = $this->model_account_customer->getCustomer($this->request->post['customer_id']);
-
-				if ($customer_info) {
-					$this->customer->login($customer_info['email'], '', true);
-					$this->cart->clear();
-				} else {
-					$json['error']['warning'] = $this->language->get('error_customer');
-				}
-			} else {
-				// Customer Group
-				$this->config->set('config_customer_group_id', $this->request->post['customer_group_id']);
-			}
-
-			if ((utf8_strlen(trim($this->request->post['firstname'])) < 1) || (utf8_strlen(trim($this->request->post['firstname'])) > 32)) {
-				$json['error']['customer']['firstname'] = $this->language->get('error_firstname');
-			}
-	
-			if ((utf8_strlen(trim($this->request->post['lastname'])) < 1) || (utf8_strlen(trim($this->request->post['lastname'])) > 32)) {
-				$json['error']['customer']['lastname'] = $this->language->get('error_lastname');
-			}
-	
-			if ((utf8_strlen($this->request->post['email']) > 96) || (!preg_match('/^[^\@]+@.*\.[a-z]{2,6}$/i', $this->request->post['email']))) {
-				$json['error']['customer']['email'] = $this->language->get('error_email');
-			}
-			
-			if ((utf8_strlen($this->request->post['telephone']) < 3) || (utf8_strlen($this->request->post['telephone']) > 32)) {
-				$json['error']['customer']['telephone'] = $this->language->get('error_telephone');
-			}
-			
-			// Products
-			$this->load->model('catalog/product');
-			
-			if (isset($this->request->post['order_product'])) {
-				foreach ($this->request->post['order_product'] as $order_product) {
-					$product_info = $this->model_catalog_product->getProduct($order_product['product_id']);
+		
+		// Customer
+		if (!isset($this->session->data['customer'])) {
+			$json['error']['warning'] = $this->language->get('error_customer');
+		}	
 				
-					if ($product_info) {	
-						$option_data = array();
-						
-						if (isset($order_product['order_option'])) {
-							foreach ($order_product['order_option'] as $option) {
-								if ($option['type'] == 'select' || $option['type'] == 'radio' || $option['type'] == 'image') { 
-									$option_data[$option['product_option_id']] = $option['product_option_value_id'];
-								} elseif ($option['type'] == 'checkbox') {
-									$option_data[$option['product_option_id']][] = $option['product_option_value_id'];
-								} elseif ($option['type'] == 'text' || $option['type'] == 'textarea' || $option['type'] == 'file' || $option['type'] == 'date' || $option['type'] == 'datetime' || $option['type'] == 'time') {
-									$option_data[$option['product_option_id']] = $option['value'];						
-								}
-							}
-						}
-															
-						$this->cart->add($order_product['product_id'], $order_product['quantity'], $option_data);
-					}
-				}
-			}
-			
-			// Add new product
-			if (isset($this->request->post['product_id'])) {
-				$product_info = $this->model_catalog_product->getProduct($this->request->post['product_id']);
+		// Payment Address
+		if (!isset($this->session->data['payment_address'])) {
+			$json['error']['warning'] = $this->language->get('error_payment_address');
+		}	
+		
+		// Payment Method
+		if (!isset($this->session->data['payment_method'])) {
+			$json['error']['warning'] = $this->language->get('error_payment_method');			
+		}
 
-				if ($product_info) {
-					if (isset($this->request->post['quantity'])) {
-						$quantity = $this->request->post['quantity'];
-					} else {
-						$quantity = 1;
-					}
-																
-					if (isset($this->request->post['option'])) {
-						$option = array_filter($this->request->post['option']);
-					} else {
-						$option = array();	
-					}
-					
-					$product_options = $this->model_catalog_product->getProductOptions($this->request->post['product_id']);
-					
-					foreach ($product_options as $product_option) {
-						if ($product_option['required'] && empty($option[$product_option['product_option_id']])) {
-							$json['error']['product']['option'][$product_option['product_option_id']] = sprintf($this->language->get('error_required'), $product_option['name']);
-						}
-					}
-					
-					if (!isset($json['error']['product']['option'])) {
-						$this->cart->add($this->request->post['product_id'], $quantity, $option);
-					}
-				} else {
-					$json['error']['product']['store'] = $this->language->get('error_store');
+		// Shipping
+		if ($this->cart->hasShipping()) {
+			// Shipping Address
+			if (!isset($this->session->data['shipping_address'])) {
+				$json['error']['warning'] = $this->language->get('error_shipping_address');
+			}
+		
+			// Shipping Method
+			if (!isset($this->request->post['shipping_method'])) {
+				$json['error']['warning'] = $this->language->get('error_shipping_method');
+			} else {
+				$shipping = explode('.', $this->request->post['shipping_method']);
+	
+				if (!isset($shipping[0]) || !isset($shipping[1]) || !isset($this->session->data['shipping_methods'][$shipping[0]]['quote'][$shipping[1]])) {
+					$json['error']['warning'] = $this->language->get('error_shipping_method');
 				}
 			}
-			
-			// Stock
-			if (!$this->cart->hasStock() && (!$this->config->get('config_stock_checkout') || $this->config->get('config_stock_warning'))) {
-				$json['error']['product']['stock'] = $this->language->get('error_stock');
-			}
-			
-			// Tax
-			if ($this->cart->hasShipping()) {
-				$this->tax->setShippingAddress($this->request->post['shipping_country_id'], $this->request->post['shipping_zone_id']);
-			} else {
-				$this->tax->setShippingAddress($this->config->get('config_country_id'), $this->config->get('config_zone_id'));
-			}
-			
-			$this->tax->setPaymentAddress($this->request->post['payment_country_id'], $this->request->post['payment_zone_id']);				
-			$this->tax->setStoreAddress($this->config->get('config_country_id'), $this->config->get('config_zone_id'));	
+		} else {
+			unset($this->session->data['shipping_address']);
+			unset($this->session->data['shipping_method']);
+			unset($this->session->data['shipping_methods']);
+		}
 						
+		// Cart
+		if ((!$this->cart->hasProducts() && empty($this->session->data['vouchers'])) || (!$this->cart->hasStock() && !$this->config->get('config_stock_checkout'))) {
+			$json['error']['warning'] = $this->language->get('error_cart');
+		}
+		
+		// Validate minimum quantity requirments.
+		$products = $this->cart->getProducts();
+
+		foreach ($products as $product) {
+			$product_total = 0;
+
+			foreach ($products as $product_2) {
+				if ($product_2['product_id'] == $product['product_id']) {
+					$product_total += $product_2['quantity'];
+				}
+			}
+
+			if ($product['minimum'] > $product_total) {
+				$json['error']['warning'] = $this->language->get('error_minimum');
+
+				break;
+			}
+		}		
+		
+		if (!$json) {
+			$order_data = array();
+			
+			// Store Details
+			$order_data['invoice_prefix'] = $this->config->get('config_invoice_prefix');
+			$order_data['store_id'] = $this->config->get('config_store_id');
+			$order_data['store_name'] = $this->config->get('config_name');
+
+			if ($order_data['store_id']) {
+				$order_data['store_url'] = $this->config->get('config_url');
+			} else {
+				$order_data['store_url'] = HTTP_SERVER;
+			}
+						
+			// Customer Details
+			$order_data['customer_id'] = $this->session->data['customer']['customer_id'];
+			$order_data['customer_group_id'] = $this->session->data['customer']['customer_group_id'];
+			$order_data['firstname'] = $this->session->data['customer']['firstname'];
+			$order_data['lastname'] = $this->session->data['customer']['lastname'];
+			$order_data['email'] = $this->session->data['customer']['email'];
+			$order_data['telephone'] = $this->session->data['customer']['telephone'];
+			$order_data['fax'] = $this->session->data['customer']['fax'];
+			$order_data['custom_field'] = $this->session->data['customer']['custom_field'];
+			
+			// Payment Details
+			$order_data['payment_firstname'] = $this->session->data['payment_address']['firstname'];
+			$order_data['payment_lastname'] = $this->session->data['payment_address']['lastname'];
+			$order_data['payment_company'] = $this->session->data['payment_address']['company'];
+			$order_data['payment_address_1'] = $this->session->data['payment_address']['address_1'];
+			$order_data['payment_address_2'] = $this->session->data['payment_address']['address_2'];
+			$order_data['payment_city'] = $this->session->data['payment_address']['city'];
+			$order_data['payment_postcode'] = $this->session->data['payment_address']['postcode'];
+			$order_data['payment_zone'] = $this->session->data['payment_address']['zone'];
+			$order_data['payment_zone_id'] = $this->session->data['payment_address']['zone_id'];
+			$order_data['payment_country'] = $this->session->data['payment_address']['country'];
+			$order_data['payment_country_id'] = $this->session->data['payment_address']['country_id'];
+			$order_data['payment_address_format'] = $this->session->data['payment_address']['address_format'];
+			$order_data['payment_custom_field'] = $this->session->data['payment_address']['custom_field'];
+
+			if (isset($this->session->data['payment_method']['title'])) {
+				$order_data['payment_method'] = $this->session->data['payment_method']['title'];
+			} else {
+				$order_data['payment_method'] = '';
+			}
+
+			if (isset($this->session->data['payment_method']['code'])) {
+				$order_data['payment_code'] = $this->session->data['payment_method']['code'];
+			} else {
+				$order_data['payment_code'] = '';
+			}
+
+			// Shipping Details
+			if ($this->cart->hasShipping()) {
+				$order_data['shipping_firstname'] = $this->session->data['shipping_address']['firstname'];
+				$order_data['shipping_lastname'] = $this->session->data['shipping_address']['lastname'];
+				$order_data['shipping_company'] = $this->session->data['shipping_address']['company'];
+				$order_data['shipping_address_1'] = $this->session->data['shipping_address']['address_1'];
+				$order_data['shipping_address_2'] = $this->session->data['shipping_address']['address_2'];
+				$order_data['shipping_city'] = $this->session->data['shipping_address']['city'];
+				$order_data['shipping_postcode'] = $this->session->data['shipping_address']['postcode'];
+				$order_data['shipping_zone'] = $this->session->data['shipping_address']['zone'];
+				$order_data['shipping_zone_id'] = $this->session->data['shipping_address']['zone_id'];
+				$order_data['shipping_country'] = $this->session->data['shipping_address']['country'];
+				$order_data['shipping_country_id'] = $this->session->data['shipping_address']['country_id'];
+				$order_data['shipping_address_format'] = $this->session->data['shipping_address']['address_format'];
+				$order_data['shipping_custom_field'] = $this->session->data['shipping_address']['custom_field'];
+
+				if (isset($this->session->data['shipping_method']['title'])) {
+					$order_data['shipping_method'] = $this->session->data['shipping_method']['title'];
+				} else {
+					$order_data['shipping_method'] = '';
+				}
+
+				if (isset($this->session->data['shipping_method']['code'])) {
+					$order_data['shipping_code'] = $this->session->data['shipping_method']['code'];
+				} else {
+					$order_data['shipping_code'] = '';
+				}
+			} else {
+				$order_data['shipping_firstname'] = '';
+				$order_data['shipping_lastname'] = '';
+				$order_data['shipping_company'] = '';
+				$order_data['shipping_address_1'] = '';
+				$order_data['shipping_address_2'] = '';
+				$order_data['shipping_city'] = '';
+				$order_data['shipping_postcode'] = '';
+				$order_data['shipping_zone'] = '';
+				$order_data['shipping_zone_id'] = '';
+				$order_data['shipping_country'] = '';
+				$order_data['shipping_country_id'] = '';
+				$order_data['shipping_address_format'] = '';
+				$order_data['shipping_custom_field'] = array();
+				$order_data['shipping_method'] = '';
+				$order_data['shipping_code'] = '';
+			}
+
 			// Products
-			$json['order_product'] = array();
-			
-			$products = $this->cart->getProducts();
-			
-			foreach ($products as $product) {
-				$product_total = 0;
-					
-				foreach ($products as $product_2) {
-					if ($product_2['product_id'] == $product['product_id']) {
-						$product_total += $product_2['quantity'];
-					}
-				}	
-								
-				if ($product['minimum'] > $product_total) {
-					$json['error']['product']['minimum'][] = sprintf($this->language->get('error_minimum'), $product['name'], $product['minimum']);
-				}	
-								
+			$order_data['products'] = array();
+
+			foreach ($this->cart->getProducts() as $product) {
 				$option_data = array();
 
 				foreach ($product['option'] as $option) {
 					$option_data[] = array(
 						'product_option_id'       => $option['product_option_id'],
 						'product_option_value_id' => $option['product_option_value_id'],
+						'option_id'               => $option['option_id'],
+						'option_value_id'         => $option['option_value_id'],
 						'name'                    => $option['name'],
 						'value'                   => $option['value'],
 						'type'                    => $option['type']
 					);
 				}
-		
-				$download_data = array();
-				
-				foreach ($product['download'] as $download) {
-					$download_data[] = array(
-						'name'     => $download['name'],
-						'filename' => $download['filename'],
-						'mask'     => $download['mask']
-					);
-				}
-								
-				$json['order_product'][] = array(
+
+				$order_data['products'][] = array(
 					'product_id' => $product['product_id'],
 					'name'       => $product['name'],
-					'model'      => $product['model'], 
+					'model'      => $product['model'],
 					'option'     => $option_data,
-					'download'   => $download_data,
+					'download'   => $product['download'],
 					'quantity'   => $product['quantity'],
-					'stock'      => $product['stock'],
-					'price'      => $product['price'],	
-					'total'      => $product['total'],	
+					'subtract'   => $product['subtract'],
+					'price'      => $product['price'],
+					'total'      => $product['total'],
 					'tax'        => $this->tax->getTax($product['price'], $product['tax_class_id']),
-					'reward'     => $product['reward']				
+					'reward'     => $product['reward']
 				);
 			}
-			
-			// Voucher
-			$this->session->data['vouchers'] = array();
-			
-			if (isset($this->request->post['order_voucher'])) {
-				foreach ($this->request->post['order_voucher'] as $voucher) {
-					$this->session->data['vouchers'][] = array(
-						'voucher_id'       => $voucher['voucher_id'],
+
+			// Gift Voucher
+			$order_data['vouchers'] = array();
+
+			if (!empty($this->session->data['vouchers'])) {
+				foreach ($this->session->data['vouchers'] as $voucher) {
+					$order_data['vouchers'][] = array(
 						'description'      => $voucher['description'],
 						'code'             => substr(md5(mt_rand()), 0, 10),
-						'from_name'        => $voucher['from_name'],
-						'from_email'       => $voucher['from_email'],
 						'to_name'          => $voucher['to_name'],
 						'to_email'         => $voucher['to_email'],
-						'voucher_theme_id' => $voucher['voucher_theme_id'], 
+						'from_name'        => $voucher['from_name'],
+						'from_email'       => $voucher['from_email'],
+						'voucher_theme_id' => $voucher['voucher_theme_id'],
 						'message'          => $voucher['message'],
-						'amount'           => $voucher['amount']    
+						'amount'           => $voucher['amount']
 					);
 				}
 			}
 
-			// Add a new voucher if set
-			if (isset($this->request->post['from_name']) && isset($this->request->post['from_email']) && isset($this->request->post['to_name']) && isset($this->request->post['to_email']) && isset($this->request->post['amount'])) {
-				if ((utf8_strlen($this->request->post['from_name']) < 1) || (utf8_strlen($this->request->post['from_name']) > 64)) {
-					$json['error']['vouchers']['from_name'] = $this->language->get('error_from_name');
-				}  
-			
-				if ((utf8_strlen($this->request->post['from_email']) > 96) || !preg_match('/^[^\@]+@.*\.[a-z]{2,6}$/i', $this->request->post['from_email'])) {
-					$json['error']['vouchers']['from_email'] = $this->language->get('error_email');
-				}
-			
-				if ((utf8_strlen($this->request->post['to_name']) < 1) || (utf8_strlen($this->request->post['to_name']) > 64)) {
-					$json['error']['vouchers']['to_name'] = $this->language->get('error_to_name');
-				}       
-			
-				if ((utf8_strlen($this->request->post['to_email']) > 96) || !preg_match('/^[^\@]+@.*\.[a-z]{2,6}$/i', $this->request->post['to_email'])) {
-					$json['error']['vouchers']['to_email'] = $this->language->get('error_email');
-				}
-							
-				if (($this->request->post['amount'] < $this->config->get('config_voucher_min')) || ($this->request->post['amount'] > $this->config->get('config_voucher_max'))) {
-					$json['error']['vouchers']['amount'] = sprintf($this->language->get('error_amount'), $this->currency->format($this->config->get('config_voucher_min')), $this->currency->format($this->config->get('config_voucher_max')));
-				}
-				
-				if (!isset($json['error']['vouchers'])) { 
-					$voucher_data = array(
-						'order_id'         => 0,
-						'code'             => substr(md5(mt_rand()), 0, 10),
-						'from_name'        => $this->request->post['from_name'],
-						'from_email'       => $this->request->post['from_email'],
-						'to_name'          => $this->request->post['to_name'],
-						'to_email'         => $this->request->post['to_email'],
-						'voucher_theme_id' => $this->request->post['voucher_theme_id'], 
-						'message'          => $this->request->post['message'],
-						'amount'           => $this->request->post['amount'],
-						'status'           => true             
-					); 
-					
-					$this->load->model('checkout/voucher');
-					
-					$voucher_id = $this->model_checkout_voucher->addVoucher(0, $voucher_data);  
-									
-					$this->session->data['vouchers'][] = array(
-						'voucher_id'       => $voucher_id,
-						'description'      => sprintf($this->language->get('text_for'), $this->currency->format($this->request->post['amount'], $this->config->get('config_currency')), $this->request->post['to_name']),
-						'code'             => substr(md5(mt_rand()), 0, 10),
-						'from_name'        => $this->request->post['from_name'],
-						'from_email'       => $this->request->post['from_email'],
-						'to_name'          => $this->request->post['to_name'],
-						'to_email'         => $this->request->post['to_email'],
-						'voucher_theme_id' => $this->request->post['voucher_theme_id'], 
-						'message'          => $this->request->post['message'],
-						'amount'           => $this->request->post['amount']            
-					); 
-				}
-			}
-			
-			$json['order_voucher'] = array();
-					
-			foreach ($this->session->data['vouchers'] as $voucher) {
-				$json['order_voucher'][] = array(
-					'voucher_id'       => $voucher['voucher_id'],
-					'description'      => $voucher['description'],
-					'code'             => $voucher['code'],
-					'from_name'        => $voucher['from_name'],
-					'from_email'       => $voucher['from_email'],
-					'to_name'          => $voucher['to_name'],
-					'to_email'         => $voucher['to_email'],
-					'voucher_theme_id' => $voucher['voucher_theme_id'], 
-					'message'          => $voucher['message'],
-					'amount'           => $voucher['amount']    
-				);
-			}
-						
-			$this->load->model('setting/extension');
-			
-			$this->load->model('localisation/country');
-		
-			$this->load->model('localisation/zone');
-			
-			// Shipping
-			$json['shipping_method'] = array();
-			
-			if ($this->cart->hasShipping()) {
-				// Shipping address
-				if ((utf8_strlen($this->request->post['shipping_firstname']) < 1) || (utf8_strlen($this->request->post['shipping_firstname']) > 32)) {
-					$json['error']['shipping']['firstname'] = $this->language->get('error_firstname');
-				}
-		
-				if ((utf8_strlen($this->request->post['shipping_lastname']) < 1) || (utf8_strlen($this->request->post['shipping_lastname']) > 32)) {
-					$json['error']['shipping']['lastname'] = $this->language->get('error_lastname');
-				}
-				
-				if ((utf8_strlen($this->request->post['shipping_address_1']) < 3) || (utf8_strlen($this->request->post['shipping_address_1']) > 128)) {
-					$json['error']['shipping']['address_1'] = $this->language->get('error_address_1');
-				}
-		
-				if ((utf8_strlen($this->request->post['shipping_city']) < 3) || (utf8_strlen($this->request->post['shipping_city']) > 128)) {
-					$json['error']['shipping']['city'] = $this->language->get('error_city');
-				}
-				
-				$this->load->model('localisation/country');
-				
-				$country_info = $this->model_localisation_country->getCountry($this->request->post['shipping_country_id']);
-				
-				if ($country_info && $country_info['postcode_required'] && (utf8_strlen($this->request->post['shipping_postcode']) < 2 || utf8_strlen($this->request->post['shipping_postcode']) > 10)) {
-					$json['error']['shipping']['postcode'] = $this->language->get('error_postcode');
-				}
-		
-				if ($this->request->post['shipping_country_id'] == '') {
-					$json['error']['shipping']['country'] = $this->language->get('error_country');
-				}
-				
-				if (!isset($this->request->post['shipping_zone_id']) || $this->request->post['shipping_zone_id'] == '') {
-					$json['error']['shipping']['zone'] = $this->language->get('error_zone');
-				}
-							
-				$this->load->model('localisation/country');
-				
-				$country_info = $this->model_localisation_country->getCountry($this->request->post['shipping_country_id']);
-				
-				if ($country_info && $country_info['postcode_required'] && (utf8_strlen($this->request->post['shipping_postcode']) < 2 || utf8_strlen($this->request->post['shipping_postcode']) > 10)) {
-					$json['error']['shipping']['postcode'] = $this->language->get('error_postcode');
-				}
-
-				if (!isset($json['error']['shipping'])) {
-					if ($country_info) {
-						$country = $country_info['name'];
-						$iso_code_2 = $country_info['iso_code_2'];
-						$iso_code_3 = $country_info['iso_code_3'];
-						$address_format = $country_info['address_format'];
-					} else {
-						$country = '';
-						$iso_code_2 = '';
-						$iso_code_3 = '';	
-						$address_format = '';
-					}
-				
-					$zone_info = $this->model_localisation_zone->getZone($this->request->post['shipping_zone_id']);
-					
-					if ($zone_info) {
-						$zone = $zone_info['name'];
-						$zone_code = $zone_info['code'];
-					} else {
-						$zone = '';
-						$zone_code = '';
-					}					
-	
-					$address_data = array(
-						'firstname'      => $this->request->post['shipping_firstname'],
-						'lastname'       => $this->request->post['shipping_lastname'],
-						'company'        => $this->request->post['shipping_company'],
-						'address_1'      => $this->request->post['shipping_address_1'],
-						'address_2'      => $this->request->post['shipping_address_2'],
-						'postcode'       => $this->request->post['shipping_postcode'],
-						'city'           => $this->request->post['shipping_city'],
-						'zone_id'        => $this->request->post['shipping_zone_id'],
-						'zone'           => $zone,
-						'zone_code'      => $zone_code,
-						'country_id'     => $this->request->post['shipping_country_id'],
-						'country'        => $country,	
-						'iso_code_2'     => $iso_code_2,
-						'iso_code_3'     => $iso_code_3,
-						'address_format' => $address_format
-					);
-					
-					// Shipping method
-					$results = $this->model_setting_extension->getExtensions('shipping');
-					
-					foreach ($results as $result) {
-						if ($this->config->get($result['code'] . '_status')) {
-							$this->load->model('shipping/' . $result['code']);
-							
-							$quote = $this->{'model_shipping_' . $result['code']}->getQuote($address_data); 
-				
-							if ($quote) {
-								$json['shipping_method'][$result['code']] = array( 
-									'title'      => $quote['title'],
-									'quote'      => $quote['quote'], 
-									'sort_order' => $quote['sort_order'],
-									'error'      => $quote['error']
-								);
-							}
-						}
-					}
-			
-					$sort_order = array();
-				  
-					foreach ($json['shipping_method'] as $key => $value) {
-						$sort_order[$key] = $value['sort_order'];
-					}
-			
-					array_multisort($sort_order, SORT_ASC, $json['shipping_method']);
-
-					if (!$json['shipping_method']) {
-						$json['error']['shipping_method'] = $this->language->get('error_no_shipping');
-					} elseif ($this->request->post['shipping_code']) {
-						$shipping = explode('.', $this->request->post['shipping_code']);
-						
-						if (!isset($shipping[0]) || !isset($shipping[1]) || !isset($json['shipping_method'][$shipping[0]]['quote'][$shipping[1]])) {		
-							$json['error']['shipping_method'] = $this->language->get('error_shipping');
-						} else {
-							$this->session->data['shipping_method'] = $json['shipping_method'][$shipping[0]]['quote'][$shipping[1]];
-						}				
-					}					
-				}
-			}
-			
-			// Remove coupon, vouchers reward points history
-			if (isset($this->request->get['order_id'])) {
-				$this->load->model('account/order');
-			
-				$order_totals = $this->model_account_order->getOrderTotals($this->request->get['order_id']);
-				
-				foreach ($order_totals as $order_total) {
-					$this->load->model('total/' . $order_total['code']);
-					
-					if (method_exists($this->{'model_total_' . $order_total['code']}, 'clear')) {
-						$this->{'model_total_' . $order_total['code']}->clear($this->request->get['order_id']);
-					}
-				}			
-			}
-			
-			// Coupon
-			if (!empty($this->request->post['coupon'])) {
-				$this->load->model('checkout/coupon');
-			
-				$coupon_info = $this->model_checkout_coupon->getCoupon($this->request->post['coupon']);			
-			
-				if ($coupon_info) {					
-					$this->session->data['coupon'] = $this->request->post['coupon'];
-				} else {
-					$json['error']['coupon'] = $this->language->get('error_coupon');
-				}
-			}
-			
-			// Voucher
-			if (!empty($this->request->post['voucher'])) {
-				$this->load->model('checkout/voucher');
-			
-				$voucher_info = $this->model_checkout_voucher->getVoucher($this->request->post['voucher']);			
-			
-				if ($voucher_info) {					
-					$this->session->data['voucher'] = $this->request->post['voucher'];
-				} else {
-					$json['error']['voucher'] = $this->language->get('error_voucher');
-				}
-			}
-						
-			// Reward Points
-			if (!empty($this->request->post['reward'])) {
-				$points = $this->customer->getRewardPoints();
-				
-				if ($this->request->post['reward'] > $points) {
-					$json['error']['reward'] = sprintf($this->language->get('error_points'), $this->request->post['reward']);
-				}
-				
-				if (!isset($json['error']['reward'])) {
-					$points_total = 0;
-					
-					foreach ($this->cart->getProducts() as $product) {
-						if ($product['points']) {
-							$points_total += $product['points'];
-						}
-					}				
-					
-					if ($this->request->post['reward'] > $points_total) {
-						$json['error']['reward'] = sprintf($this->language->get('error_maximum'), $points_total);
-					}
-					
-					if (!isset($json['error']['reward'])) {		
-						$this->session->data['reward'] = $this->request->post['reward'];
-					}
-				}
-			}
-			 		
-			// Payment address
-			if ((utf8_strlen($this->request->post['payment_firstname']) < 1) || (utf8_strlen($this->request->post['payment_firstname']) > 32)) {
-				$json['error']['payment']['firstname'] = $this->language->get('error_firstname');
-			}
-	
-			if ((utf8_strlen($this->request->post['payment_lastname']) < 1) || (utf8_strlen($this->request->post['payment_lastname']) > 32)) {
-				$json['error']['payment']['lastname'] = $this->language->get('error_lastname');
-			}
-	
-			if ((utf8_strlen($this->request->post['payment_address_1']) < 3) || (utf8_strlen($this->request->post['payment_address_1']) > 128)) {
-				$json['error']['payment']['address_1'] = $this->language->get('error_address_1');
-			}
-	
-			if ((utf8_strlen($this->request->post['payment_city']) < 3) || (utf8_strlen($this->request->post['payment_city']) > 128)) {
-				$json['error']['payment']['city'] = $this->language->get('error_city');
-			}
-			
-			if ($this->request->post['payment_country_id'] == '') {
-				$json['error']['payment']['country'] = $this->language->get('error_country');
-			}
-			
-			if (!isset($this->request->post['payment_zone_id']) || $this->request->post['payment_zone_id'] == '') {
-				$json['error']['payment']['zone'] = $this->language->get('error_zone');
-			}		
-			
-			if (!isset($json['error']['payment'])) {
-				$json['payment_methods'] = array();
-				
-				$country_info = $this->model_localisation_country->getCountry($this->request->post['payment_country_id']);
-				
-				if ($country_info) {
-					$country = $country_info['name'];
-					$iso_code_2 = $country_info['iso_code_2'];
-					$iso_code_3 = $country_info['iso_code_3'];
-					$address_format = $country_info['address_format'];
-				} else {
-					$country = '';
-					$iso_code_2 = '';
-					$iso_code_3 = '';	
-					$address_format = '';
-				}
-				
-				$zone_info = $this->model_localisation_zone->getZone($this->request->post['payment_zone_id']);
-				
-				if ($zone_info) {
-					$zone = $zone_info['name'];
-					$zone_code = $zone_info['code'];
-				} else {
-					$zone = '';
-					$zone_code = '';
-				}					
-				
-				$address_data = array(
-					'firstname'      => $this->request->post['payment_firstname'],
-					'lastname'       => $this->request->post['payment_lastname'],
-					'company'        => $this->request->post['payment_company'],
-					'address_1'      => $this->request->post['payment_address_1'],
-					'address_2'      => $this->request->post['payment_address_2'],
-					'postcode'       => $this->request->post['payment_postcode'],
-					'city'           => $this->request->post['payment_city'],
-					'zone_id'        => $this->request->post['payment_zone_id'],
-					'zone'           => $zone,
-					'zone_code'      => $zone_code,
-					'country_id'     => $this->request->post['payment_country_id'],
-					'country'        => $country,	
-					'iso_code_2'     => $iso_code_2,
-					'iso_code_3'     => $iso_code_3,
-					'address_format' => $address_format
-				);
-				
-				// Order totals calculation to get the total amount for the payment gateways
-				$order_total = array();					
-				$total = 0;
-				$taxes = $this->cart->getTaxes();
-				
-				$sort_order = array(); 
-				
-				$results = $this->model_setting_extension->getExtensions('total');
-				
-				foreach ($results as $key => $value) {
-					$sort_order[$key] = $this->config->get($value['code'] . '_sort_order');
-				}
-				
-				array_multisort($sort_order, SORT_ASC, $results);
-				
-				foreach ($results as $result) {
-					if ($this->config->get($result['code'] . '_status')) {
-						$this->load->model('total/' . $result['code']);
-			
-						$this->{'model_total_' . $result['code']}->getTotal($order_total, $total, $taxes);
-					}	
-				}				
-				
-				// Payment method
-				$json['payment_method'] = array();
-								
-				$results = $this->model_setting_extension->getExtensions('payment');
-		
-				foreach ($results as $result) {
-					if ($this->config->get($result['code'] . '_status')) {
-						$this->load->model('payment/' . $result['code']);
-						
-						$method = $this->{'model_payment_' . $result['code']}->getMethod($address_data, $total); 
-						
-						if ($method) {
-							$json['payment_method'][$result['code']] = $method;
-						}
-					}
-				}
-							 
-				$sort_order = array(); 
-			  
-				foreach ($json['payment_method'] as $key => $value) {
-					$sort_order[$key] = $value['sort_order'];
-				}
-		
-				array_multisort($sort_order, SORT_ASC, $json['payment_method']);	
-				
-				if (!$json['payment_method']) {
-					$json['error']['payment_method'] = $this->language->get('error_no_payment');
-				} elseif ($this->request->post['payment_code']) {			
-					if (!isset($json['payment_method'][$this->request->post['payment_code']])) {
-						$json['error']['payment_method'] = $this->language->get('error_payment');
-					}
-				}
-			}
-
-			// Order total calculation to be feed back to the admin
-			$json['order_total'] = array();					
+			// Order Totals
+			$order_data['totals'] = array();					
 			$total = 0;
 			$taxes = $this->cart->getTaxes();
-			
+
 			$sort_order = array(); 
-			
+
 			$results = $this->model_setting_extension->getExtensions('total');
-			
+
 			foreach ($results as $key => $value) {
 				$sort_order[$key] = $this->config->get($value['code'] . '_sort_order');
 			}
-			
+
 			array_multisort($sort_order, SORT_ASC, $results);
-			
+
 			foreach ($results as $result) {
 				if ($this->config->get($result['code'] . '_status')) {
 					$this->load->model('total/' . $result['code']);
-		
-					$this->{'model_total_' . $result['code']}->getTotal($json['order_total'], $total, $taxes);
+
+					$this->{'model_total_' . $result['code']}->getTotal($order_data['totals'], $total, $taxes);
 				}	
-			}
-			
-			$sort_order = array(); 
-		  
-			foreach ($json['order_total'] as $key => $value) {
+			}			
+
+			$sort_order = array();
+
+			foreach ($order_total['totals'] as $key => $value) {
 				$sort_order[$key] = $value['sort_order'];
 			}
 
-			array_multisort($sort_order, SORT_ASC, $json['order_total']);				
+			array_multisort($sort_order, SORT_ASC, $order_total['totals']);
 			
-			if (!isset($json['error'])) { 
-				$json['success'] = $this->language->get('text_success');
-			} else {
-				$json['error']['warning'] = $this->language->get('error_warning');
-			}
-			
-			// Add the coupon, vouchers and reward points back
-			if (isset($this->request->get['order_id'])) {
-				$this->load->model('account/order');
-				
-				$order_info = $this->model_account_order->getOrder($this->request->get['order_id']);
-				
-				if ($order_info) {
-					$order_totals = $this->model_account_order->getOrderTotals($this->request->get['order_id']);
-					
-					foreach ($order_totals as $order_total) {
-						$this->load->model('total/' . $order_total['code']);
-						
-						if (method_exists($this->{'model_total_' . $order_total['code']}, 'confirm')) {
-							$this->{'model_total_' . $order_total['code']}->confirm($order_info, $order_total);
-						}
-					}
-				}
-			}
-			
-			
-			// Reset everything			
-			$this->cart->clear();
-			$this->customer->logout();
-			
-			unset($this->session->data['shipping_method']);
-			unset($this->session->data['shipping_methods']);
-			unset($this->session->data['payment_method']);
-			unset($this->session->data['payment_methods']);
-			unset($this->session->data['coupon']);
-			unset($this->session->data['reward']);
-			unset($this->session->data['voucher']);
-			unset($this->session->data['vouchers']);
+			$order_data['comment'] = $this->session->data['comment'];
+			$order_data['total'] = $total;
 
+
+			/*
+			if (isset($this->request->cookie['tracking'])) {
+				$order_data['tracking'] = $this->request->cookie['tracking'];
+
+				$subtotal = $this->cart->getSubTotal();
+
+				// Affiliate
+				$this->load->model('affiliate/affiliate');
+
+				$affiliate_info = $this->model_affiliate_affiliate->getAffiliateByCode($this->request->cookie['tracking']);
+
+				if ($affiliate_info) {
+					$order_data['affiliate_id'] = $affiliate_info['affiliate_id'];
+					$order_data['commission'] = ($subtotal / 100) * $affiliate_info['commission'];
+				} else {
+					$order_data['affiliate_id'] = 0;
+					$order_data['commission'] = 0;
+				}
+
+				// Marketing
+				$this->load->model('checkout/marketing');
+
+				$marketing_info = $this->model_checkout_marketing->getMarketingByCode($this->request->cookie['tracking']);
+
+				if ($marketing_info) {
+					$order_data['marketing_id'] = $marketing_info['marketing_id'];
+				} else {
+					$order_data['marketing_id'] = 0;
+				}
+			} else {
+				$order_data['affiliate_id'] = 0;
+				$order_data['commission'] = 0;
+				$order_data['marketing_id'] = 0;
+				$order_data['tracking'] = '';
+			}
+
+			$order_data['language_id'] = $this->config->get('config_language_id');
+			$order_data['currency_id'] = $this->currency->getId();
+			$order_data['currency_code'] = $this->currency->getCode();
+			$order_data['currency_value'] = $this->currency->getValue($this->currency->getCode());
+			$order_data['ip'] = $this->request->server['REMOTE_ADDR'];
+
+			if (!empty($this->request->server['HTTP_X_FORWARDED_FOR'])) {
+				$order_data['forwarded_ip'] = $this->request->server['HTTP_X_FORWARDED_FOR'];
+			} elseif (!empty($this->request->server['HTTP_CLIENT_IP'])) {
+				$order_data['forwarded_ip'] = $this->request->server['HTTP_CLIENT_IP'];
+			} else {
+				$order_data['forwarded_ip'] = '';
+			}
+
+			if (isset($this->request->server['HTTP_USER_AGENT'])) {
+				$order_data['user_agent'] = $this->request->server['HTTP_USER_AGENT'];
+			} else {
+				$order_data['user_agent'] = '';
+			}
+
+			if (isset($this->request->server['HTTP_ACCEPT_LANGUAGE'])) {
+				$order_data['accept_language'] = $this->request->server['HTTP_ACCEPT_LANGUAGE'];
+			} else {
+				$order_data['accept_language'] = '';
+			}
+			*/
+			
+		}
+
+		//$this->load->model('checkout/order');
+
+		//$this->session->data['order_id'] = $this->model_checkout_order->addOrder($order_data);
 	
 		$this->response->setOutput(json_encode($json));	
 	}		
 	
 	public function editOrder() {
-		
+		// Add the coupon, vouchers and reward points back
+		if (isset($this->request->get['order_id'])) {
+			$this->load->model('account/order');
+			
+			$order_info = $this->model_account_order->getOrder($this->request->get['order_id']);
+			
+			if ($order_info) {
+				$order_totals = $this->model_account_order->getOrderTotals($this->request->get['order_id']);
+				
+				foreach ($order_totals as $order_total) {
+					$this->load->model('total/' . $order_total['code']);
+					
+					if (method_exists($this->{'model_total_' . $order_total['code']}, 'confirm')) {
+						$this->{'model_total_' . $order_total['code']}->confirm($order_info, $order_total);
+					}
+				}
+			}
+		}
+					
 	}
 	
 	public function deleteOrder() {
@@ -689,703 +423,4 @@ class ControllerApiOrder extends Controller {
 	public function confirm() {
 		
 	}
-=======
-<?php
-class ControllerCheckoutManual extends Controller {
-	public function index() {
-		$this->load->language('checkout/manual');
-
-		$json = array();
-
-		$this->load->library('user');
-
-		$this->user = new User($this->registry);
-
-		if ($this->user->isLogged() && $this->user->hasPermission('modify', 'sale/order')) {
-			// Reset everything
-			$this->cart->clear();
-			$this->customer->logout();
-
-			unset($this->session->data['shipping_method']);
-			unset($this->session->data['shipping_methods']);
-			unset($this->session->data['payment_method']);
-			unset($this->session->data['payment_methods']);
-			unset($this->session->data['coupon']);
-			unset($this->session->data['reward']);
-			unset($this->session->data['voucher']);
-			unset($this->session->data['vouchers']);
-
-			// Settings
-			$this->load->model('setting/setting');
-
-			$settings = $this->model_setting_setting->getSetting('config', $this->request->post['store_id']);
-
-			foreach ($settings as $key => $value) {
-				$this->config->set($key, $value);
-			}
-
-    		// Customer
-			if ($this->request->post['customer_id']) {
-				$this->load->model('account/customer');
-
-				$customer_info = $this->model_account_customer->getCustomer($this->request->post['customer_id']);
-
-				if ($customer_info) {
-					$this->customer->login($customer_info['email'], '', true);
-					$this->cart->clear();
-				} else {
-					$json['error']['warning'] = $this->language->get('error_customer');
-				}
-			} else {
-				// Customer Group
-				$this->config->set('config_customer_group_id', $this->request->post['customer_group_id']);
-			}
-
-			if ((utf8_strlen(trim($this->request->post['firstname'])) < 1) || (utf8_strlen(trim($this->request->post['firstname'])) > 32)) {
-				$json['error']['customer']['firstname'] = $this->language->get('error_firstname');
-			}
-
-			if ((utf8_strlen(trim($this->request->post['lastname'])) < 1) || (utf8_strlen(trim($this->request->post['lastname'])) > 32)) {
-				$json['error']['customer']['lastname'] = $this->language->get('error_lastname');
-			}
-
-			if ((utf8_strlen($this->request->post['email']) > 96) || (!preg_match('/^[^\@]+@.*\.[a-z]{2,6}$/i', $this->request->post['email']))) {
-				$json['error']['customer']['email'] = $this->language->get('error_email');
-			}
-
-			if ((utf8_strlen($this->request->post['telephone']) < 3) || (utf8_strlen($this->request->post['telephone']) > 32)) {
-				$json['error']['customer']['telephone'] = $this->language->get('error_telephone');
-			}
-
-			// Products
-			$this->load->model('catalog/product');
-
-			if (isset($this->request->post['order_product'])) {
-				foreach ($this->request->post['order_product'] as $order_product) {
-					$product_info = $this->model_catalog_product->getProduct($order_product['product_id']);
-
-					if ($product_info) {
-						$option_data = array();
-
-						if (isset($order_product['order_option'])) {
-							foreach ($order_product['order_option'] as $option) {
-								if ($option['type'] == 'select' || $option['type'] == 'radio' || $option['type'] == 'image') {
-									$option_data[$option['product_option_id']] = $option['product_option_value_id'];
-								} elseif ($option['type'] == 'checkbox') {
-									$option_data[$option['product_option_id']][] = $option['product_option_value_id'];
-								} elseif ($option['type'] == 'text' || $option['type'] == 'textarea' || $option['type'] == 'file' || $option['type'] == 'date' || $option['type'] == 'datetime' || $option['type'] == 'time') {
-									$option_data[$option['product_option_id']] = $option['value'];
-								}
-							}
-						}
-
-						$this->cart->add($order_product['product_id'], $order_product['quantity'], $option_data);
-					}
-				}
-			}
-
-			// Add new product
-			if (isset($this->request->post['product_id'])) {
-				$product_info = $this->model_catalog_product->getProduct($this->request->post['product_id']);
-
-				if ($product_info) {
-					if (isset($this->request->post['quantity'])) {
-						$quantity = $this->request->post['quantity'];
-					} else {
-						$quantity = 1;
-					}
-
-					if (isset($this->request->post['option'])) {
-						$option = array_filter($this->request->post['option']);
-					} else {
-						$option = array();
-					}
-
-					$product_options = $this->model_catalog_product->getProductOptions($this->request->post['product_id']);
-
-					foreach ($product_options as $product_option) {
-						if ($product_option['required'] && empty($option[$product_option['product_option_id']])) {
-							$json['error']['product']['option'][$product_option['product_option_id']] = sprintf($this->language->get('error_required'), $product_option['name']);
-						}
-					}
-
-					if (!isset($json['error']['product']['option'])) {
-						$this->cart->add($this->request->post['product_id'], $quantity, $option);
-					}
-				} else {
-					$json['error']['product']['store'] = $this->language->get('error_store');
-				}
-			}
-
-			// Stock
-			if (!$this->cart->hasStock() && (!$this->config->get('config_stock_checkout') || $this->config->get('config_stock_warning'))) {
-				$json['error']['product']['stock'] = $this->language->get('error_stock');
-			}
-
-			// Tax
-			if ($this->cart->hasShipping()) {
-				$this->tax->setShippingAddress($this->request->post['shipping_country_id'], $this->request->post['shipping_zone_id']);
-			} else {
-				$this->tax->setShippingAddress($this->config->get('config_country_id'), $this->config->get('config_zone_id'));
-			}
-
-			$this->tax->setPaymentAddress($this->request->post['payment_country_id'], $this->request->post['payment_zone_id']);
-			$this->tax->setStoreAddress($this->config->get('config_country_id'), $this->config->get('config_zone_id'));
-
-			// Products
-			$json['order_product'] = array();
-
-			$products = $this->cart->getProducts();
-
-			foreach ($products as $product) {
-				$product_total = 0;
-
-				foreach ($products as $product_2) {
-					if ($product_2['product_id'] == $product['product_id']) {
-						$product_total += $product_2['quantity'];
-					}
-				}
-
-				if ($product['minimum'] > $product_total) {
-					$json['error']['product']['minimum'][] = sprintf($this->language->get('error_minimum'), $product['name'], $product['minimum']);
-				}
-
-				$option_data = array();
-
-				foreach ($product['option'] as $option) {
-					$option_data[] = array(
-						'product_option_id'       => $option['product_option_id'],
-						'product_option_value_id' => $option['product_option_value_id'],
-						'name'                    => $option['name'],
-						'value'                   => $option['value'],
-						'type'                    => $option['type']
-					);
-				}
-
-				$download_data = array();
-
-				foreach ($product['download'] as $download) {
-					$download_data[] = array(
-						'name'     => $download['name'],
-						'filename' => $download['filename'],
-						'mask'     => $download['mask']
-					);
-				}
-
-				$json['order_product'][] = array(
-					'product_id' => $product['product_id'],
-					'name'       => $product['name'],
-					'model'      => $product['model'],
-					'option'     => $option_data,
-					'download'   => $download_data,
-					'quantity'   => $product['quantity'],
-					'stock'      => $product['stock'],
-					'price'      => $product['price'],
-					'total'      => $product['total'],
-					'tax'        => $this->tax->getTax($product['price'], $product['tax_class_id']),
-					'reward'     => $product['reward']
-				);
-			}
-
-			// Voucher
-			$this->session->data['vouchers'] = array();
-
-			if (isset($this->request->post['order_voucher'])) {
-				foreach ($this->request->post['order_voucher'] as $voucher) {
-					$this->session->data['vouchers'][] = array(
-						'voucher_id'       => $voucher['voucher_id'],
-						'description'      => $voucher['description'],
-						'code'             => substr(md5(mt_rand()), 0, 10),
-						'from_name'        => $voucher['from_name'],
-						'from_email'       => $voucher['from_email'],
-						'to_name'          => $voucher['to_name'],
-						'to_email'         => $voucher['to_email'],
-						'voucher_theme_id' => $voucher['voucher_theme_id'],
-						'message'          => $voucher['message'],
-						'amount'           => $voucher['amount']
-					);
-				}
-			}
-
-			// Add a new voucher if set
-			if (isset($this->request->post['from_name']) && isset($this->request->post['from_email']) && isset($this->request->post['to_name']) && isset($this->request->post['to_email']) && isset($this->request->post['amount'])) {
-				if ((utf8_strlen($this->request->post['from_name']) < 1) || (utf8_strlen($this->request->post['from_name']) > 64)) {
-					$json['error']['vouchers']['from_name'] = $this->language->get('error_from_name');
-				}
-
-				if ((utf8_strlen($this->request->post['from_email']) > 96) || !preg_match('/^[^\@]+@.*\.[a-z]{2,6}$/i', $this->request->post['from_email'])) {
-					$json['error']['vouchers']['from_email'] = $this->language->get('error_email');
-				}
-
-				if ((utf8_strlen($this->request->post['to_name']) < 1) || (utf8_strlen($this->request->post['to_name']) > 64)) {
-					$json['error']['vouchers']['to_name'] = $this->language->get('error_to_name');
-				}
-
-				if ((utf8_strlen($this->request->post['to_email']) > 96) || !preg_match('/^[^\@]+@.*\.[a-z]{2,6}$/i', $this->request->post['to_email'])) {
-					$json['error']['vouchers']['to_email'] = $this->language->get('error_email');
-				}
-
-				if (($this->request->post['amount'] < $this->config->get('config_voucher_min')) || ($this->request->post['amount'] > $this->config->get('config_voucher_max'))) {
-					$json['error']['vouchers']['amount'] = sprintf($this->language->get('error_amount'), $this->currency->format($this->config->get('config_voucher_min')), $this->currency->format($this->config->get('config_voucher_max')));
-				}
-
-				if (!isset($json['error']['vouchers'])) {
-					$voucher_data = array(
-						'order_id'         => 0,
-						'code'             => substr(md5(mt_rand()), 0, 10),
-						'from_name'        => $this->request->post['from_name'],
-						'from_email'       => $this->request->post['from_email'],
-						'to_name'          => $this->request->post['to_name'],
-						'to_email'         => $this->request->post['to_email'],
-						'voucher_theme_id' => $this->request->post['voucher_theme_id'],
-						'message'          => $this->request->post['message'],
-						'amount'           => $this->request->post['amount'],
-						'status'           => true
-					);
-
-					$this->load->model('checkout/voucher');
-
-					$voucher_id = $this->model_checkout_voucher->addVoucher(0, $voucher_data);
-
-					$this->session->data['vouchers'][] = array(
-						'voucher_id'       => $voucher_id,
-						'description'      => sprintf($this->language->get('text_for'), $this->currency->format($this->request->post['amount'], $this->config->get('config_currency')), $this->request->post['to_name']),
-						'code'             => substr(md5(mt_rand()), 0, 10),
-						'from_name'        => $this->request->post['from_name'],
-						'from_email'       => $this->request->post['from_email'],
-						'to_name'          => $this->request->post['to_name'],
-						'to_email'         => $this->request->post['to_email'],
-						'voucher_theme_id' => $this->request->post['voucher_theme_id'],
-						'message'          => $this->request->post['message'],
-						'amount'           => $this->request->post['amount']
-					);
-				}
-			}
-
-			$json['order_voucher'] = array();
-
-			foreach ($this->session->data['vouchers'] as $voucher) {
-				$json['order_voucher'][] = array(
-					'voucher_id'       => $voucher['voucher_id'],
-					'description'      => $voucher['description'],
-					'code'             => $voucher['code'],
-					'from_name'        => $voucher['from_name'],
-					'from_email'       => $voucher['from_email'],
-					'to_name'          => $voucher['to_name'],
-					'to_email'         => $voucher['to_email'],
-					'voucher_theme_id' => $voucher['voucher_theme_id'],
-					'message'          => $voucher['message'],
-					'amount'           => $voucher['amount']
-				);
-			}
-
-			$this->load->model('setting/extension');
-
-			$this->load->model('localisation/country');
-
-			$this->load->model('localisation/zone');
-
-			// Shipping
-			$json['shipping_method'] = array();
-
-			if ($this->cart->hasShipping()) {
-				// Shipping address
-				if ((utf8_strlen($this->request->post['shipping_firstname']) < 1) || (utf8_strlen($this->request->post['shipping_firstname']) > 32)) {
-					$json['error']['shipping']['firstname'] = $this->language->get('error_firstname');
-				}
-
-				if ((utf8_strlen($this->request->post['shipping_lastname']) < 1) || (utf8_strlen($this->request->post['shipping_lastname']) > 32)) {
-					$json['error']['shipping']['lastname'] = $this->language->get('error_lastname');
-				}
-
-				if ((utf8_strlen($this->request->post['shipping_address_1']) < 3) || (utf8_strlen($this->request->post['shipping_address_1']) > 128)) {
-					$json['error']['shipping']['address_1'] = $this->language->get('error_address_1');
-				}
-
-				if ((utf8_strlen($this->request->post['shipping_city']) < 3) || (utf8_strlen($this->request->post['shipping_city']) > 128)) {
-					$json['error']['shipping']['city'] = $this->language->get('error_city');
-				}
-
-				$this->load->model('localisation/country');
-
-				$country_info = $this->model_localisation_country->getCountry($this->request->post['shipping_country_id']);
-
-				if ($country_info && $country_info['postcode_required'] && (utf8_strlen($this->request->post['shipping_postcode']) < 2 || utf8_strlen($this->request->post['shipping_postcode']) > 10)) {
-					$json['error']['shipping']['postcode'] = $this->language->get('error_postcode');
-				}
-
-				if ($this->request->post['shipping_country_id'] == '') {
-					$json['error']['shipping']['country'] = $this->language->get('error_country');
-				}
-
-				if (!isset($this->request->post['shipping_zone_id']) || $this->request->post['shipping_zone_id'] == '') {
-					$json['error']['shipping']['zone'] = $this->language->get('error_zone');
-				}
-
-				$this->load->model('localisation/country');
-
-				$country_info = $this->model_localisation_country->getCountry($this->request->post['shipping_country_id']);
-
-				if ($country_info && $country_info['postcode_required'] && (utf8_strlen($this->request->post['shipping_postcode']) < 2 || utf8_strlen($this->request->post['shipping_postcode']) > 10)) {
-					$json['error']['shipping']['postcode'] = $this->language->get('error_postcode');
-				}
-
-				if (!isset($json['error']['shipping'])) {
-					if ($country_info) {
-						$country = $country_info['name'];
-						$iso_code_2 = $country_info['iso_code_2'];
-						$iso_code_3 = $country_info['iso_code_3'];
-						$address_format = $country_info['address_format'];
-					} else {
-						$country = '';
-						$iso_code_2 = '';
-						$iso_code_3 = '';
-						$address_format = '';
-					}
-
-					$zone_info = $this->model_localisation_zone->getZone($this->request->post['shipping_zone_id']);
-
-					if ($zone_info) {
-						$zone = $zone_info['name'];
-						$zone_code = $zone_info['code'];
-					} else {
-						$zone = '';
-						$zone_code = '';
-					}
-
-					$address_data = array(
-						'firstname'      => $this->request->post['shipping_firstname'],
-						'lastname'       => $this->request->post['shipping_lastname'],
-						'company'        => $this->request->post['shipping_company'],
-						'address_1'      => $this->request->post['shipping_address_1'],
-						'address_2'      => $this->request->post['shipping_address_2'],
-						'postcode'       => $this->request->post['shipping_postcode'],
-						'city'           => $this->request->post['shipping_city'],
-						'zone_id'        => $this->request->post['shipping_zone_id'],
-						'zone'           => $zone,
-						'zone_code'      => $zone_code,
-						'country_id'     => $this->request->post['shipping_country_id'],
-						'country'        => $country,
-						'iso_code_2'     => $iso_code_2,
-						'iso_code_3'     => $iso_code_3,
-						'address_format' => $address_format
-					);
-
-					// Shipping method
-					$results = $this->model_setting_extension->getExtensions('shipping');
-
-					foreach ($results as $result) {
-						if ($this->config->get($result['code'] . '_status')) {
-							$this->load->model('shipping/' . $result['code']);
-
-							$quote = $this->{'model_shipping_' . $result['code']}->getQuote($address_data);
-
-							if ($quote) {
-								$json['shipping_method'][$result['code']] = array(
-									'title'      => $quote['title'],
-									'quote'      => $quote['quote'],
-									'sort_order' => $quote['sort_order'],
-									'error'      => $quote['error']
-								);
-							}
-						}
-					}
-
-					$sort_order = array();
-
-					foreach ($json['shipping_method'] as $key => $value) {
-						$sort_order[$key] = $value['sort_order'];
-					}
-
-					array_multisort($sort_order, SORT_ASC, $json['shipping_method']);
-
-					if (!$json['shipping_method']) {
-						$json['error']['shipping_method'] = $this->language->get('error_no_shipping');
-					} elseif ($this->request->post['shipping_code']) {
-						$shipping = explode('.', $this->request->post['shipping_code']);
-
-						if (!isset($shipping[0]) || !isset($shipping[1]) || !isset($json['shipping_method'][$shipping[0]]['quote'][$shipping[1]])) {
-							$json['error']['shipping_method'] = $this->language->get('error_shipping');
-						} else {
-							$this->session->data['shipping_method'] = $json['shipping_method'][$shipping[0]]['quote'][$shipping[1]];
-						}
-					}
-				}
-			}
-
-			// Remove coupon, vouchers reward points history
-			if (isset($this->request->get['order_id'])) {
-				$this->load->model('account/order');
-
-				$order_totals = $this->model_account_order->getOrderTotals($this->request->get['order_id']);
-
-				foreach ($order_totals as $order_total) {
-					$this->load->model('total/' . $order_total['code']);
-
-					if (method_exists($this->{'model_total_' . $order_total['code']}, 'clear')) {
-						$this->{'model_total_' . $order_total['code']}->clear($this->request->get['order_id']);
-					}
-				}
-			}
-
-			// Coupon
-			if (!empty($this->request->post['coupon'])) {
-				$this->load->model('checkout/coupon');
-
-				$coupon_info = $this->model_checkout_coupon->getCoupon($this->request->post['coupon']);
-
-				if ($coupon_info) {
-					$this->session->data['coupon'] = $this->request->post['coupon'];
-				} else {
-					$json['error']['coupon'] = $this->language->get('error_coupon');
-				}
-			}
-
-			// Voucher
-			if (!empty($this->request->post['voucher'])) {
-				$this->load->model('checkout/voucher');
-
-				$voucher_info = $this->model_checkout_voucher->getVoucher($this->request->post['voucher']);
-
-				if ($voucher_info) {
-					$this->session->data['voucher'] = $this->request->post['voucher'];
-				} else {
-					$json['error']['voucher'] = $this->language->get('error_voucher');
-				}
-			}
-
-			// Reward Points
-			if (!empty($this->request->post['reward'])) {
-				$points = $this->customer->getRewardPoints();
-
-				if ($this->request->post['reward'] > $points) {
-					$json['error']['reward'] = sprintf($this->language->get('error_points'), $this->request->post['reward']);
-				}
-
-				if (!isset($json['error']['reward'])) {
-					$points_total = 0;
-
-					foreach ($this->cart->getProducts() as $product) {
-						if ($product['points']) {
-							$points_total += $product['points'];
-						}
-					}
-
-					if ($this->request->post['reward'] > $points_total) {
-						$json['error']['reward'] = sprintf($this->language->get('error_maximum'), $points_total);
-					}
-
-					if (!isset($json['error']['reward'])) {
-						$this->session->data['reward'] = $this->request->post['reward'];
-					}
-				}
-			}
-
-			// Payment address
-			if ((utf8_strlen($this->request->post['payment_firstname']) < 1) || (utf8_strlen($this->request->post['payment_firstname']) > 32)) {
-				$json['error']['payment']['firstname'] = $this->language->get('error_firstname');
-			}
-
-			if ((utf8_strlen($this->request->post['payment_lastname']) < 1) || (utf8_strlen($this->request->post['payment_lastname']) > 32)) {
-				$json['error']['payment']['lastname'] = $this->language->get('error_lastname');
-			}
-
-			if ((utf8_strlen($this->request->post['payment_address_1']) < 3) || (utf8_strlen($this->request->post['payment_address_1']) > 128)) {
-				$json['error']['payment']['address_1'] = $this->language->get('error_address_1');
-			}
-
-			if ((utf8_strlen($this->request->post['payment_city']) < 3) || (utf8_strlen($this->request->post['payment_city']) > 128)) {
-				$json['error']['payment']['city'] = $this->language->get('error_city');
-			}
-
-			if ($this->request->post['payment_country_id'] == '') {
-				$json['error']['payment']['country'] = $this->language->get('error_country');
-			}
-
-			if (!isset($this->request->post['payment_zone_id']) || $this->request->post['payment_zone_id'] == '') {
-				$json['error']['payment']['zone'] = $this->language->get('error_zone');
-			}
-
-			if (!isset($json['error']['payment'])) {
-				$json['payment_methods'] = array();
-
-				$country_info = $this->model_localisation_country->getCountry($this->request->post['payment_country_id']);
-
-				if ($country_info) {
-					$country = $country_info['name'];
-					$iso_code_2 = $country_info['iso_code_2'];
-					$iso_code_3 = $country_info['iso_code_3'];
-					$address_format = $country_info['address_format'];
-				} else {
-					$country = '';
-					$iso_code_2 = '';
-					$iso_code_3 = '';
-					$address_format = '';
-				}
-
-				$zone_info = $this->model_localisation_zone->getZone($this->request->post['payment_zone_id']);
-
-				if ($zone_info) {
-					$zone = $zone_info['name'];
-					$zone_code = $zone_info['code'];
-				} else {
-					$zone = '';
-					$zone_code = '';
-				}
-
-				$address_data = array(
-					'firstname'      => $this->request->post['payment_firstname'],
-					'lastname'       => $this->request->post['payment_lastname'],
-					'company'        => $this->request->post['payment_company'],
-					'address_1'      => $this->request->post['payment_address_1'],
-					'address_2'      => $this->request->post['payment_address_2'],
-					'postcode'       => $this->request->post['payment_postcode'],
-					'city'           => $this->request->post['payment_city'],
-					'zone_id'        => $this->request->post['payment_zone_id'],
-					'zone'           => $zone,
-					'zone_code'      => $zone_code,
-					'country_id'     => $this->request->post['payment_country_id'],
-					'country'        => $country,
-					'iso_code_2'     => $iso_code_2,
-					'iso_code_3'     => $iso_code_3,
-					'address_format' => $address_format
-				);
-
-				// Order totals calculation to get the total amount for the payment gateways
-				$order_total = array();
-				$total = 0;
-				$taxes = $this->cart->getTaxes();
-
-				$sort_order = array();
-
-				$results = $this->model_setting_extension->getExtensions('total');
-
-				foreach ($results as $key => $value) {
-					$sort_order[$key] = $this->config->get($value['code'] . '_sort_order');
-				}
-
-				array_multisort($sort_order, SORT_ASC, $results);
-
-				foreach ($results as $result) {
-					if ($this->config->get($result['code'] . '_status')) {
-						$this->load->model('total/' . $result['code']);
-
-						$this->{'model_total_' . $result['code']}->getTotal($order_total, $total, $taxes);
-					}
-				}
-
-				// Payment method
-				$json['payment_method'] = array();
-
-				$results = $this->model_setting_extension->getExtensions('payment');
-
-				foreach ($results as $result) {
-					if ($this->config->get($result['code'] . '_status')) {
-						$this->load->model('payment/' . $result['code']);
-
-						$method = $this->{'model_payment_' . $result['code']}->getMethod($address_data, $total);
-
-						if ($method) {
-							$json['payment_method'][$result['code']] = $method;
-						}
-					}
-				}
-
-				$sort_order = array();
-
-				foreach ($json['payment_method'] as $key => $value) {
-					$sort_order[$key] = $value['sort_order'];
-				}
-
-				array_multisort($sort_order, SORT_ASC, $json['payment_method']);
-
-				if (!$json['payment_method']) {
-					$json['error']['payment_method'] = $this->language->get('error_no_payment');
-				} elseif ($this->request->post['payment_code']) {
-					if (!isset($json['payment_method'][$this->request->post['payment_code']])) {
-						$json['error']['payment_method'] = $this->language->get('error_payment');
-					}
-				}
-			}
-
-			// Order total calculation to be feed back to the admin
-			$json['order_total'] = array();
-			$total = 0;
-			$taxes = $this->cart->getTaxes();
-
-			$sort_order = array();
-
-			$results = $this->model_setting_extension->getExtensions('total');
-
-			foreach ($results as $key => $value) {
-				$sort_order[$key] = $this->config->get($value['code'] . '_sort_order');
-			}
-
-			array_multisort($sort_order, SORT_ASC, $results);
-
-			foreach ($results as $result) {
-				if ($this->config->get($result['code'] . '_status')) {
-					$this->load->model('total/' . $result['code']);
-
-					$this->{'model_total_' . $result['code']}->getTotal($json['order_total'], $total, $taxes);
-				}
-			}
-
-			$sort_order = array();
-
-			foreach ($json['order_total'] as $key => $value) {
-				$sort_order[$key] = $value['sort_order'];
-			}
-
-			array_multisort($sort_order, SORT_ASC, $json['order_total']);
-
-			if (!isset($json['error'])) {
-				$json['success'] = $this->language->get('text_success');
-			} else {
-				$json['error']['warning'] = $this->language->get('error_warning');
-			}
-
-			// Add the coupon, vouchers and reward points back
-			if (isset($this->request->get['order_id'])) {
-				$this->load->model('account/order');
-
-				$order_info = $this->model_account_order->getOrder($this->request->get['order_id']);
-
-				if ($order_info) {
-					$order_totals = $this->model_account_order->getOrderTotals($this->request->get['order_id']);
-
-					foreach ($order_totals as $order_total) {
-						$this->load->model('total/' . $order_total['code']);
-
-						if (method_exists($this->{'model_total_' . $order_total['code']}, 'confirm')) {
-							$this->{'model_total_' . $order_total['code']}->confirm($order_info, $order_total);
-						}
-					}
-				}
-			}
-
-
-			//if () {
-
-			//}
-
-			// Reset everything
-			$this->cart->clear();
-			$this->customer->logout();
-
-			unset($this->session->data['shipping_method']);
-			unset($this->session->data['shipping_methods']);
-			unset($this->session->data['payment_method']);
-			unset($this->session->data['payment_methods']);
-			unset($this->session->data['coupon']);
-			unset($this->session->data['reward']);
-			unset($this->session->data['voucher']);
-			unset($this->session->data['vouchers']);
-		} else {
-      		$json['error']['warning'] = $this->language->get('error_permission');
-		}
-
-		$this->response->setOutput(json_encode($json));
-	}
->>>>>>> 237e99f3f6ec6cc04acf8599724728aac7fcac68:upload/catalog/controller/checkout/manual.php
 }

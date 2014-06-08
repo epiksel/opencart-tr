@@ -74,7 +74,7 @@
                   <?php } ?>
                 </select></td>
               <td class="text-right"><input placeholder="<?php echo $entry_sort_order; ?>" type="text" name="amazon_checkout_layout_module[<?php echo $module_row; ?>][sort_order]" value="<?php echo $module['sort_order']; ?>" size="3" class="form-control" /></td>
-              <td class="text-left"><a onclick="$('#module-row<?php echo $module_row; ?>').remove();" class="btn btn-danger"><i class="fa fa-minus-circle"></i> <?php echo $button_remove; ?></a></td>
+              <td class="text-left"><a onclick="$('#module-row<?php echo $module_row; ?>').remove();" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger"><i class="fa fa-minus-circle"></i></a></td>
             </tr>
           </tbody>
           <?php $module_row++; ?>
@@ -82,7 +82,7 @@
           <tfoot>
             <tr>
               <td colspan="4"></td>
-              <td class="text-left"><button type="button" onclick="addModule();" class="btn btn-primary"><i class="fa fa-plus-circle"></i> <?php echo $button_module_add; ?></button></td>
+              <td class="text-left"><button type="button" onclick="addModule();" data-toggle="tooltip" title="<?php echo $button_module_add; ?>" class="btn btn-primary"><i class="fa fa-plus-circle"></i></button></td>
             </tr>
           </tfoot>
         </table>
@@ -112,7 +112,7 @@ function addModule() {
     html += '      <option value="0"><?php echo $text_disabled; ?></option>';
     html += '    </select></td>';
 	html += '    <td class="right"><input placeholder="<?php echo $entry_sort_order; ?>" type="text" name="amazon_checkout_layout_module[' + module_row + '][sort_order]" value="" size="3" class="form-control" /></td>';
-	html += '    <td class="left"><a onclick="$(\'#module-row' + module_row + '\').remove();" class="btn btn-danger"><i class="fa fa-minus-circle"></i> <?php echo $button_remove; ?></a></td>';
+	html += '    <td class="left"><a onclick="$(\'#module-row' + module_row + '\').remove();" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger"><i class="fa fa-minus-circle"></i></a></td>';
 	html += '  </tr>';
 	html += '</tbody>';
 	
