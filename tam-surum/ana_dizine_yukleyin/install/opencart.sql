@@ -1,12 +1,3 @@
--- phpMyAdmin SQL Dump
--- version 3.3.9
--- http://www.phpmyadmin.net
---
--- Host: localhost
--- Generation Time: Jul 16, 2011 at 05:01 PM
--- Server version: 5.1.36
--- PHP Version: 5.3.4
-
 -- --------------------------------------------------------
 
 --
@@ -18,6 +9,8 @@
 --
 -- Table structure for table `oc_address`
 --
+
+SET sql_mode = '';
 
 DROP TABLE IF EXISTS `oc_address`;
 CREATE TABLE `oc_address` (
