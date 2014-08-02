@@ -5,13 +5,8 @@
 $_['heading_title']														= 'Siparişler';
 
 // Text
-$_['text_order_customer']											= '1. Müşteri Detayları';
-$_['text_order_customer']											= '2. Ürünler!';
-$_['text_order_customer']											= 'Başarılı: You have modified orders!';
-$_['text_order_customer']											= 'Başarılı: You have modified orders!';
-
 $_['text_success']														= 'Başarılı: Siparişler başarılı bir şekilde değiştirildi!';
-$_['text_refresh']														= 'Başarılı: Sipariş toplamları yenilendi.!';
+$_['text_refresh']														= 'Başarılı: Sipariş toplamları yenilendi!';
 $_['text_order_detail']												= 'Sipariş Detayları';
 $_['text_order_id']														= 'Sipariş No';
 $_['text_invoice_no']													= 'Fatura No';

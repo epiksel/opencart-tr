@@ -10,6 +10,7 @@ $_['text_order_status']			= 'Onay Bekliyor';
 $_['text_complete_status']	= 'Tamamlandı';
 $_['text_customer']					= 'Müşteriler';
 $_['text_online']						= 'Çevrimiçi Müşteriler';
+$_['text_approval']					= 'Onay için Bekliyor';
 $_['text_product']					= 'Ürünler';
 $_['text_stock']						= 'Tükenenler';
 $_['text_review']						= 'Yorumlar';

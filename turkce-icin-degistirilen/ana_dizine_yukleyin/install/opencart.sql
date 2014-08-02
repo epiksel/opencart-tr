@@ -120,6 +120,7 @@ CREATE TABLE `oc_affiliate_transaction` (
 --
 -- Dumping data for table `oc_affiliate_transaction`
 --
+
 -- --------------------------------------------------------
 
 --
@@ -134,26 +135,6 @@ CREATE TABLE `oc_api` (
   `status` tinyint(1) NOT NULL,
   `date_added` datetime NOT NULL,
   `date_modified` datetime NOT NULL,
-  PRIMARY KEY (`api_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
---
--- Dumping data for table `oc_api`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `oc_api`
---
-
-CREATE TABLE IF NOT EXISTS `oc_api` (
-  `api_id` int(11) NOT NULL AUTO_INCREMENT,
-  `username` int(20) NOT NULL,
-  `key` text NOT NULL,
-  `status` tinyint(1) NOT NULL,
-  `date_added` datetime NOT NULL,
-  `date_modififed` datetime NOT NULL,
   PRIMARY KEY (`api_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
@@ -805,7 +786,7 @@ INSERT INTO `oc_country` (`country_id`, `name`, `iso_code_2`, `iso_code_3`, `add
 (123, 'Lithuania', 'LT', 'LTU', '', 0, 1),
 (124, 'Luxembourg', 'LU', 'LUX', '', 0, 1),
 (125, 'Macau', 'MO', 'MAC', '', 0, 1),
-(126, 'Macedonia', 'MK', 'MKD', '', 0, 1),
+(126, 'FYROM', 'MK', 'MKD', '', 0, 1),
 (127, 'Madagascar', 'MG', 'MDG', '', 0, 1),
 (128, 'Malawi', 'MW', 'MWI', '', 0, 1),
 (129, 'Malaysia', 'MY', 'MYS', '', 0, 1),
@@ -1050,9 +1031,9 @@ CREATE TABLE `oc_currency` (
 --
 
 INSERT INTO `oc_currency` (`currency_id`, `title`, `code`, `symbol_left`, `symbol_right`, `decimal_place`, `value`, `status`, `date_modified`) VALUES
-(1, 'Türk Lirası', 'TRY', '', 'TL', '2', 1.00000000, 1, '2011-07-16 10:30:52'),
-(2, 'US Dollar', 'USD', '$', '', '2', 1.801000000, 1, '2011-07-16 16:55:46'),
-(3, 'Euro', 'EUR', '', '€', '2', 2.2220001, 1, '2011-07-16 10:30:52');
+(1, 'Türk Lirası', 'TRY', '', 'TL', '2', 1.00000000, 1, '2014-08-01 10:30:52'),
+(2, 'US Dollar', 'USD', '$', '', '2', 2.144600000, 1, '2014-08-01 16:55:46'),
+(3, 'Euro', 'EUR', '', '€', '2', 2.8719000, 1, '2014-08-01 10:30:52');
 
 -- --------------------------------------------------------
 
@@ -3277,7 +3258,7 @@ INSERT INTO `oc_setting` (`setting_id`, `store_id`, `group`, `key`, `value`, `se
 (94, 0, 'voucher', 'voucher_sort_order', '8', 0),
 (95, 0, 'voucher', 'voucher_status', '1', 0),
 (96, 0, 'config', 'config_length_class_id', '1', 0),
-(97, 0, 'config', 'config_invoice_prefix', 'FA-2013-00', 0),
+(97, 0, 'config', 'config_invoice_prefix', 'FA-2014-00', 0),
 (98, 0, 'config', 'config_tax', '1', 0),
 (99, 0, 'config', 'config_tax_customer', 'payment', 0),
 (100, 0, 'config', 'config_tax_default', 'payment', 0),
@@ -3290,8 +3271,8 @@ INSERT INTO `oc_setting` (`setting_id`, `store_id`, `group`, `key`, `value`, `se
 (107, 0, 'config', 'config_currency', 'TRY', 0),
 (108, 0, 'slideshow', 'slideshow_module', 'a:1:{i:0;a:7:{s:9:"banner_id";s:1:"2";s:5:"width";s:3:"980";s:6:"height";s:3:"280";s:9:"layout_id";s:1:"1";s:8:"position";s:11:"content_top";s:6:"status";s:1:"1";s:10:"sort_order";s:1:"1";}}', 1),
 (109, 0, 'banner', 'banner_module', 'a:1:{i:0;a:7:{s:9:"banner_id";s:1:"1";s:5:"width";s:3:"182";s:6:"height";s:3:"182";s:9:"layout_id";s:1:"3";s:8:"position";s:11:"column_left";s:6:"status";s:1:"1";s:10:"sort_order";s:1:"3";}}', 1),
-(110, 0, 'config', 'config_name', 'E-Piksel E-Ticaret ve Bilgi Teknolojileri', 0),
-(111, 0, 'config', 'config_owner', 'E-Piksel', 0),
+(110, 0, 'config', 'config_name', 'E-Piksel', 0),
+(111, 0, 'config', 'config_owner', 'E-Piksel E-Ticaret ve Bilgi Teknolojileri', 0),
 (112, 0, 'config', 'config_address', 'Address 1', 0),
 (113, 0, 'config', 'config_email', 'your@store.com', 0),
 (114, 0, 'config', 'config_telephone', '123456789', 0),
