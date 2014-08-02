@@ -3,7 +3,13 @@
 $_['heading_title']                           = 'Orders';
 
 // Text
+$_['text_order_customer']                     = '1. Customer Details';
+$_['text_order_customer']                     = '2. Products!';
+$_['text_order_customer']                            = 'Success: You have modified orders!';
+$_['text_order_customer']                            = 'Success: You have modified orders!';
+
 $_['text_success']                            = 'Success: You have modified orders!';
+$_['text_refresh']                            = 'Success: You have refreshed the order totals!';
 $_['text_order_detail']                       = 'Order Details';
 $_['text_order_id']                           = 'Order ID:';
 $_['text_invoice_no']                         = 'Invoice No.:';
@@ -114,6 +120,8 @@ $_['text_risk_score']                         = 'Risk Score:';
 $_['text_queries_remaining']                  = 'Queries Remaining:';
 $_['text_maxmind_id']                         = 'Maxmind ID:';
 $_['text_error']                              = 'Error:';
+$_['text_picklist']                           = 'Dispatch note';
+$_['text_history']                            = 'Add Order History';
 
 // Column
 $_['column_order_id']                         = 'Order ID';
@@ -131,6 +139,7 @@ $_['column_notify']                           = 'Customer Notified';
 $_['column_location']                         = 'Location';
 $_['column_reference']                        = 'Reference';
 $_['column_action']                           = 'Action';
+$_['column_weight']                           = 'Product weight';
 
 // Entry
 $_['entry_store']                             = 'Store';
@@ -233,3 +242,4 @@ $_['error_upload']                            = 'Upload required!';
 $_['error_filename']                          = 'Filename must be between 3 and 128 characters!';
 $_['error_filetype']                          = 'Invalid file type!';
 $_['error_action']                            = 'Warning: Could not complete this action!';
+$_['error_no_selection']                      = 'You did not select any orders!';

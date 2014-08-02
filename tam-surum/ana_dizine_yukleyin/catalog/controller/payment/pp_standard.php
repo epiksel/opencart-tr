@@ -151,7 +151,9 @@ class ControllerPaymentPPStandard extends Controller {
 						break;
 					case 'Completed':
 						$receiver_match = (strtolower($this->request->post['receiver_email']) == strtolower($this->config->get('pp_standard_email')));
+						
 						$total_paid_match = ((float)$this->request->post['mc_gross'] == $this->currency->format($order_info['total'], $order_info['currency_code'], $order_info['currency_value'], false));
+						
 						if ($receiver_match && $total_paid_match) {
 							$order_status_id = $this->config->get('pp_standard_completed_status_id');
 						} else {
@@ -190,12 +192,12 @@ class ControllerPaymentPPStandard extends Controller {
 				}
 
 				if (!$order_info['order_status_id']) {
-					$this->model_checkout_order->confirm($order_id, $order_status_id);
+					$this->model_checkout_order->addOrderHistory($order_id, $order_status_id);
 				} else {
-					$this->model_checkout_order->update($order_id, $order_status_id);
+					$this->model_checkout_order->addOrderHistory($order_id, $order_status_id);
 				}
 			} else {
-				$this->model_checkout_order->confirm($order_id, $this->config->get('config_order_status_id'));
+				$this->model_checkout_order->addOrderHistory($order_id, $this->config->get('config_order_status_id'));
 			}
 
 			curl_close($curl);

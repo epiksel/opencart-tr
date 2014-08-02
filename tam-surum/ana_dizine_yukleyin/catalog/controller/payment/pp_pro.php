@@ -176,8 +176,6 @@ class ControllerPaymentPPPro extends Controller {
 		$json = array();
 
 		if (($response_info['ACK'] == 'Success') || ($response_info['ACK'] == 'SuccessWithWarning')) {
-			$this->model_checkout_order->confirm($this->session->data['order_id'], $this->config->get('config_order_status_id'));
-
 			$message = '';
 
 			if (isset($response_info['AVSCODE'])) {
@@ -192,13 +190,14 @@ class ControllerPaymentPPPro extends Controller {
 				$message .= 'TRANSACTIONID: ' . $response_info['TRANSACTIONID'] . "\n";
 			}
 
-			$this->model_checkout_order->update($this->session->data['order_id'], $this->config->get('pp_pro_order_status_id'), $message, false);
+			$this->model_checkout_order->addOrderHistory($this->session->data['order_id'], $this->config->get('pp_pro_order_status_id'), $message, false);
 
 			$json['success'] = $this->url->link('checkout/success');
 		} else {
 			$json['error'] = $response_info['L_LONGMESSAGE0'];
 		}
 
+		$this->response->addHeader('Content-Type: application/json');
 		$this->response->setOutput(json_encode($json));
 	}
 }

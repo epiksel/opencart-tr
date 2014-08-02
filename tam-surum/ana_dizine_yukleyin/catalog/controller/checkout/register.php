@@ -113,7 +113,7 @@ class ControllerCheckoutRegister extends Controller {
 			$json['redirect'] = $this->url->link('checkout/cart');
 		}
 
-		// Validate minimum quantity requirments.
+		// Validate minimum quantity requirements.
 		$products = $this->cart->getProducts();
 
 		foreach ($products as $product) {
@@ -257,6 +257,7 @@ class ControllerCheckoutRegister extends Controller {
 			$this->model_account_activity->addActivity('register', $activity_data);
 		}
 
+		$this->response->addHeader('Content-Type: application/json');
 		$this->response->setOutput(json_encode($json));
 	}
 }

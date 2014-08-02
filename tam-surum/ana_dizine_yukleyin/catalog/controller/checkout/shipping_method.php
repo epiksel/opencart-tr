@@ -96,7 +96,7 @@ class ControllerCheckoutShippingMethod extends Controller {
 			$json['redirect'] = $this->url->link('checkout/cart');
 		}
 
-		// Validate minimum quantity requirments.
+		// Validate minimum quantity requirements.
 		$products = $this->cart->getProducts();
 
 		foreach ($products as $product) {
@@ -131,6 +131,7 @@ class ControllerCheckoutShippingMethod extends Controller {
 			$this->session->data['comment'] = strip_tags($this->request->post['comment']);
 		}
 
+		$this->response->addHeader('Content-Type: application/json');
 		$this->response->setOutput(json_encode($json));
 	}
 }

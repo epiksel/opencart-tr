@@ -72,19 +72,27 @@ class ModelAccountCustomer extends Model {
 			}
 		}
 
+		$this->event->trigger('customer_add', array('customer_id' => $customer_id));
+
 		return $customer_id;
 	}
 
 	public function editCustomer($data) {
 		$this->db->query("UPDATE " . DB_PREFIX . "customer SET firstname = '" . $this->db->escape($data['firstname']) . "', lastname = '" . $this->db->escape($data['lastname']) . "', email = '" . $this->db->escape($data['email']) . "', telephone = '" . $this->db->escape($data['telephone']) . "', fax = '" . $this->db->escape($data['fax']) . "', custom_field = '" . $this->db->escape(isset($data['custom_field']) ? serialize($data['custom_field']) : '') . "' WHERE customer_id = '" . (int)$this->customer->getId() . "'");
+
+		$this->event->trigger('customer_edit');
 	}
 
 	public function editPassword($email, $password) {
       	$this->db->query("UPDATE " . DB_PREFIX . "customer SET salt = '" . $this->db->escape($salt = substr(md5(uniqid(rand(), true)), 0, 9)) . "', password = '" . $this->db->escape(sha1($salt . sha1($salt . sha1($password)))) . "' WHERE LOWER(email) = '" . $this->db->escape(utf8_strtolower($email)) . "'");
+
+		$this->event->trigger('customer_edit_password');
 	}
 
 	public function editNewsletter($newsletter) {
 		$this->db->query("UPDATE " . DB_PREFIX . "customer SET newsletter = '" . (int)$newsletter . "' WHERE customer_id = '" . (int)$this->customer->getId() . "'");
+
+		$this->event->trigger('customer_edit_newsletter');
 	}
 
 	public function getCustomer($customer_id) {
@@ -107,81 +115,6 @@ class ModelAccountCustomer extends Model {
 		return $query->row;
 	}
 
-	public function getCustomers($data = array()) {
-		$sql = "SELECT *, CONCAT(c.firstname, ' ', c.lastname) AS name, cg.name AS customer_group FROM " . DB_PREFIX . "customer c LEFT JOIN " . DB_PREFIX . "customer_group cg ON (c.customer_group_id = cg.customer_group_id) ";
-
-		$implode = array();
-
-		if (isset($data['filter_name']) && $data['filter_name'] !== null) {
-			$implode[] = "LCASE(CONCAT(c.firstname, ' ', c.lastname)) LIKE '" . $this->db->escape(utf8_strtolower($data['filter_name'])) . "%'";
-		}
-
-		if (isset($data['filter_email']) && $data['filter_email'] !== null) {
-			$implode[] = "LCASE(c.email) = '" . $this->db->escape(utf8_strtolower($data['filter_email'])) . "'";
-		}
-
-		if (isset($data['filter_customer_group_id']) && $data['filter_customer_group_id'] !== null) {
-			$implode[] = "cg.customer_group_id = '" . $this->db->escape($data['filter_customer_group_id']) . "'";
-		}
-
-		if (isset($data['filter_status']) && $data['filter_status'] !== null) {
-			$implode[] = "c.status = '" . (int)$data['filter_status'] . "'";
-		}
-
-		if (isset($data['filter_approved']) && $data['filter_approved'] !== null) {
-			$implode[] = "c.approved = '" . (int)$data['filter_approved'] . "'";
-		}
-
-		if (isset($data['filter_ip']) && $data['filter_ip'] !== null) {
-			$implode[] = "c.customer_id IN (SELECT customer_id FROM " . DB_PREFIX . "customer_ip WHERE ip = '" . $this->db->escape($data['filter_ip']) . "')";
-		}
-
-		if (isset($data['filter_date_added']) && $data['filter_date_added'] !== null) {
-			$implode[] = "DATE(c.date_added) = DATE('" . $this->db->escape($data['filter_date_added']) . "')";
-		}
-
-		if ($implode) {
-			$sql .= " WHERE " . implode(" AND ", $implode);
-		}
-
-		$sort_data = array(
-			'name',
-			'c.email',
-			'customer_group',
-			'c.status',
-			'c.ip',
-			'c.date_added'
-		);
-
-		if (isset($data['sort']) && in_array($data['sort'], $sort_data)) {
-			$sql .= " ORDER BY " . $data['sort'];
-		} else {
-			$sql .= " ORDER BY name";
-		}
-
-		if (isset($data['order']) && ($data['order'] == 'DESC')) {
-			$sql .= " DESC";
-		} else {
-			$sql .= " ASC";
-		}
-
-		if (isset($data['start']) || isset($data['limit'])) {
-			if ($data['start'] < 0) {
-				$data['start'] = 0;
-			}
-
-			if ($data['limit'] < 1) {
-				$data['limit'] = 20;
-			}
-
-			$sql .= " LIMIT " . (int)$data['start'] . "," . (int)$data['limit'];
-		}
-
-		$query = $this->db->query($sql);
-
-		return $query->rows;
-	}
-
 	public function getTotalCustomersByEmail($email) {
 		$query = $this->db->query("SELECT COUNT(*) AS total FROM " . DB_PREFIX . "customer WHERE LOWER(email) = '" . $this->db->escape(utf8_strtolower($email)) . "'");
 
@@ -193,7 +126,7 @@ class ModelAccountCustomer extends Model {
 
 		return $query->rows;
 	}
-
+	
 	public function isBanIp($ip) {
 		$query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "customer_ban_ip` WHERE ip = '" . $this->db->escape($ip) . "'");
 

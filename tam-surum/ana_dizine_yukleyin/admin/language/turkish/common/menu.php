@@ -4,7 +4,7 @@
 // Text
 $_['text_affiliate']										= 'Ortaklar';
 $_['text_affiliate_activity']						= 'Ortak Etkinlikleri';
-$_['text_api']													= 'Api';
+$_['text_api']													= 'API';
 $_['text_attribute']										= 'Özellikler';
 $_['text_attribute_group']							= 'Özellik Grupları';
 $_['text_backup']												= 'Yedekle / Geri Yükle';
@@ -65,7 +65,6 @@ $_['text_return_action']								= 'İade Eylemleri';
 $_['text_return_reason']								= 'İade Nedenleri';
 $_['text_return_status']								= 'İade Durumları';
 $_['text_sale']													= 'Satışlar';
-$_['text_search']												= 'Arama';
 $_['text_shipping']											= 'Kargo Metodları';
 $_['text_setting']											= 'Mağazalar';
 $_['text_stock_status']									= 'Stok Durumları';

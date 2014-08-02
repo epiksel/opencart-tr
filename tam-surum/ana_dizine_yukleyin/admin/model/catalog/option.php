@@ -20,6 +20,10 @@ class ModelCatalogOption extends Model {
 				}
 			}
 		}
+
+		$this->event->trigger('admin_add_option', array('option_id' => $option_id));
+
+		return $option_id;
 	}
 
 	public function editOption($option_id, $data) {
@@ -50,6 +54,8 @@ class ModelCatalogOption extends Model {
 			}
 
 		}
+
+		$this->event->trigger('admin_edit_option');
 	}
 
 	public function deleteOption($option_id) {
@@ -57,6 +63,8 @@ class ModelCatalogOption extends Model {
 		$this->db->query("DELETE FROM " . DB_PREFIX . "option_description WHERE option_id = '" . (int)$option_id . "'");
 		$this->db->query("DELETE FROM " . DB_PREFIX . "option_value WHERE option_id = '" . (int)$option_id . "'");
 		$this->db->query("DELETE FROM " . DB_PREFIX . "option_value_description WHERE option_id = '" . (int)$option_id . "'");
+
+		$this->event->trigger('admin_delete_option');
 	}
 
 	public function getOption($option_id) {

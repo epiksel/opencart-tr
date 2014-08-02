@@ -119,6 +119,10 @@ class ModelCatalogProduct extends Model {
 		}
 
 		$this->cache->delete('product');
+
+		$this->event->trigger('admin_add_product', array('product_id' => $product_id));
+
+		return $product_id;
 	}
 
 	public function editProduct($product_id, $data) {
@@ -270,6 +274,8 @@ class ModelCatalogProduct extends Model {
 		}
 
 		$this->cache->delete('product');
+
+		$this->event->trigger('admin_edit_product');
 	}
 
 	public function copyProduct($product_id) {
@@ -327,6 +333,8 @@ class ModelCatalogProduct extends Model {
 		$this->db->query("DELETE FROM " . DB_PREFIX . "url_alias WHERE query = 'product_id=" . (int)$product_id. "'");
 
 		$this->cache->delete('product');
+
+		$this->event->trigger('admin_delete_product', array('product_id' => $product_id));
 	}
 
 	public function getProduct($product_id) {
@@ -671,12 +679,6 @@ class ModelCatalogProduct extends Model {
 
 	public function getTotalProductsByLayoutId($layout_id) {
 		$query = $this->db->query("SELECT COUNT(*) AS total FROM " . DB_PREFIX . "product_to_layout WHERE layout_id = '" . (int)$layout_id . "'");
-
-		return $query->row['total'];
-	}
-
-	public function getTotalProductsOutOfStock() {
-		$query = $this->db->query("SELECT COUNT(*) AS total FROM " . DB_PREFIX . "product WHERE status <= 0");
 
 		return $query->row['total'];
 	}

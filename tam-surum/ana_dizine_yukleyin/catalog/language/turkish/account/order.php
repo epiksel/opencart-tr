@@ -36,4 +36,4 @@ $_['column_status']         = 'Durumu';
 $_['column_comment']        = 'Açıklama';
 
 // Error
-$_['error_reorder']         = '%s is not currently avaliable to be reordered.';
+$_['error_reorder']         = '%s is not currently available to be reordered.';

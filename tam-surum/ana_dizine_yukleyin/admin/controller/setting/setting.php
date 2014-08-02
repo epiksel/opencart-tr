@@ -56,6 +56,7 @@ class ControllerSettingSetting extends Controller {
 		$data['entry_location'] = $this->language->get('entry_location');
 		$data['entry_meta_title'] = $this->language->get('entry_meta_title');
 		$data['entry_meta_description'] = $this->language->get('entry_meta_description');
+		$data['entry_meta_keyword'] = $this->language->get('entry_meta_keyword');
 		$data['entry_layout'] = $this->language->get('entry_layout');
 		$data['entry_template'] = $this->language->get('entry_template');
 		$data['entry_country'] = $this->language->get('entry_country');
@@ -84,18 +85,18 @@ class ControllerSettingSetting extends Controller {
 		$data['entry_customer_price'] = $this->language->get('entry_customer_price');
 		$data['entry_account'] = $this->language->get('entry_account');
 		$data['entry_account_mail'] = $this->language->get('entry_account_mail');
+		$data['entry_invoice_prefix'] = $this->language->get('entry_invoice_prefix');
+		$data['entry_api'] = $this->language->get('entry_api');
 		$data['entry_cart_weight'] = $this->language->get('entry_cart_weight');
 		$data['entry_checkout_guest'] = $this->language->get('entry_checkout_guest');
 		$data['entry_checkout'] = $this->language->get('entry_checkout');
-		$data['entry_order_edit'] = $this->language->get('entry_order_edit');
-		$data['entry_invoice_prefix'] = $this->language->get('entry_invoice_prefix');
 		$data['entry_order_status'] = $this->language->get('entry_order_status');
+		$data['entry_process_status'] = $this->language->get('entry_process_status');
 		$data['entry_complete_status'] = $this->language->get('entry_complete_status');
 		$data['entry_order_mail'] = $this->language->get('entry_order_mail');
 		$data['entry_stock_display'] = $this->language->get('entry_stock_display');
 		$data['entry_stock_warning'] = $this->language->get('entry_stock_warning');
 		$data['entry_stock_checkout'] = $this->language->get('entry_stock_checkout');
-		$data['entry_stock_status'] = $this->language->get('entry_stock_status');
 		$data['entry_affiliate_approval'] = $this->language->get('entry_affiliate_approval');
 		$data['entry_affiliate_auto'] = $this->language->get('entry_affiliate_auto');
 		$data['entry_affiliate_commission'] = $this->language->get('entry_affiliate_commission');
@@ -138,8 +139,8 @@ class ControllerSettingSetting extends Controller {
 		$data['entry_secure'] = $this->language->get('entry_secure');
 		$data['entry_shared'] = $this->language->get('entry_shared');
 		$data['entry_robots'] = $this->language->get('entry_robots');
-		$data['entry_image_file_size'] = $this->language->get('entry_image_file_size');
-		$data['entry_file_extension_allowed'] = $this->language->get('entry_file_extension_allowed');
+		$data['entry_file_max_size'] = $this->language->get('entry_file_max_size');
+		$data['entry_file_ext_allowed'] = $this->language->get('entry_file_ext_allowed');
 		$data['entry_file_mime_allowed'] = $this->language->get('entry_file_mime_allowed');
 		$data['entry_maintenance'] = $this->language->get('entry_maintenance');
 		$data['entry_password'] = $this->language->get('entry_password');
@@ -174,18 +175,18 @@ class ControllerSettingSetting extends Controller {
 		$data['help_customer_price'] = $this->language->get('help_customer_price');
 		$data['help_account'] = $this->language->get('help_account');
 		$data['help_account_mail'] = $this->language->get('help_account_mail');
+		$data['help_api'] = $this->language->get('help_api');
 		$data['help_cart_weight'] = $this->language->get('help_cart_weight');
 		$data['help_checkout_guest'] = $this->language->get('help_checkout_guest');
 		$data['help_checkout'] = $this->language->get('help_checkout');
-		$data['help_order_edit'] = $this->language->get('help_order_edit');
 		$data['help_invoice_prefix'] = $this->language->get('help_invoice_prefix');
 		$data['help_order_status'] = $this->language->get('help_order_status');
+		$data['help_process_status'] = $this->language->get('help_process_status');
 		$data['help_complete_status'] = $this->language->get('help_complete_status');
 		$data['help_order_mail'] = $this->language->get('help_order_mail');
 		$data['help_stock_display'] = $this->language->get('help_stock_display');
 		$data['help_stock_warning'] = $this->language->get('help_stock_warning');
 		$data['help_stock_checkout'] = $this->language->get('help_stock_checkout');
-		$data['help_stock_status'] = $this->language->get('help_stock_status');
 		$data['help_affiliate_approval'] = $this->language->get('help_affiliate_approval');
 		$data['help_affiliate_auto'] = $this->language->get('help_affiliate_auto');
 		$data['help_affiliate_commission'] = $this->language->get('help_affiliate_commission');
@@ -207,8 +208,8 @@ class ControllerSettingSetting extends Controller {
 		$data['help_shared'] = $this->language->get('help_shared');
 		$data['help_robots'] = $this->language->get('help_robots');
 		$data['help_seo_url'] = $this->language->get('help_seo_url');
-		$data['help_image_file_size'] = $this->language->get('help_image_file_size');
-		$data['help_file_extension_allowed'] = $this->language->get('help_file_extension_allowed');
+		$data['help_file_max_size'] = $this->language->get('help_file_max_size');
+		$data['help_file_ext_allowed'] = $this->language->get('help_file_ext_allowed');
 		$data['help_file_mime_allowed'] = $this->language->get('help_file_mime_allowed');
 		$data['help_maintenance'] = $this->language->get('help_maintenance');
 		$data['help_password'] = $this->language->get('help_password');
@@ -247,7 +248,7 @@ class ControllerSettingSetting extends Controller {
 			$data['error_owner'] = '';
 		}
 
-		if (isset($this->error['address_1'])) {
+		if (isset($this->error['address'])) {
 			$data['error_address'] = $this->error['address'];
 		} else {
 			$data['error_address'] = '';
@@ -299,6 +300,18 @@ class ControllerSettingSetting extends Controller {
 			$data['error_voucher_max'] = $this->error['voucher_max'];
 		} else {
 			$data['error_voucher_max'] = '';
+		}
+
+		if (isset($this->error['process_status'])) {
+			$data['error_process_status'] = $this->error['process_status'];
+		} else {
+			$data['error_process_status'] = '';
+		}
+
+		if (isset($this->error['complete_status'])) {
+			$data['error_complete_status'] = $this->error['complete_status'];
+		} else {
+			$data['error_complete_status'] = '';
 		}
 
 		if (isset($this->error['ftp_hostname'])) {
@@ -453,7 +466,7 @@ class ControllerSettingSetting extends Controller {
 			$data['config_owner'] = $this->config->get('config_owner');
 		}
 
-		if (isset($this->request->post['config_address_1'])) {
+		if (isset($this->request->post['config_address'])) {
 			$data['config_address'] = $this->request->post['config_address'];
 		} else {
 			$data['config_address'] = $this->config->get('config_address');
@@ -533,6 +546,12 @@ class ControllerSettingSetting extends Controller {
 			$data['config_meta_description'] = $this->request->post['config_meta_description'];
 		} else {
 			$data['config_meta_description'] = $this->config->get('config_meta_description');
+		}
+
+		if (isset($this->request->post['config_meta_keyword'])) {
+			$data['config_meta_keyword'] = $this->request->post['config_meta_keyword'];
+		} else {
+			$data['config_meta_keyword'] = $this->config->get('config_meta_keyword');
 		}
 
 		if (isset($this->request->post['config_layout_id'])) {
@@ -745,6 +764,16 @@ class ControllerSettingSetting extends Controller {
 			$data['config_account_mail'] = $this->config->get('config_account_mail');
 		}
 
+		if (isset($this->request->post['config_api_id'])) {
+			$data['config_api_id'] = $this->request->post['config_api_id'];
+		} else {
+			$data['config_api_id'] = $this->config->get('config_api_id');
+		}
+
+		$this->load->model('user/api');
+
+		$data['apis'] = $this->model_user_api->getApis();
+
 		if (isset($this->request->post['config_cart_weight'])) {
 			$data['config_cart_weight'] = $this->request->post['config_cart_weight'];
 		} else {
@@ -763,14 +792,6 @@ class ControllerSettingSetting extends Controller {
 			$data['config_checkout_id'] = $this->config->get('config_checkout_id');
 		}
 
-		if (isset($this->request->post['config_order_edit'])) {
-			$data['config_order_edit'] = $this->request->post['config_order_edit'];
-		} elseif ($this->config->get('config_order_edit')) {
-			$data['config_order_edit'] = $this->config->get('config_order_edit');
-		} else {
-			$data['config_order_edit'] = 7;
-		}
-
 		if (isset($this->request->post['config_invoice_prefix'])) {
 			$data['config_invoice_prefix'] = $this->request->post['config_invoice_prefix'];
 		} elseif ($this->config->get('config_invoice_prefix')) {
@@ -785,10 +806,20 @@ class ControllerSettingSetting extends Controller {
 			$data['config_order_status_id'] = $this->config->get('config_order_status_id');
 		}
 
-		if (isset($this->request->post['config_complete_status_id'])) {
-			$data['config_complete_status_id'] = $this->request->post['config_complete_status_id'];
+		if (isset($this->request->post['config_process_status'])) {
+			$data['config_process_status'] = $this->request->post['config_process_status'];
+		} elseif ($this->config->get('config_process_status')) {
+			$data['config_process_status'] = $this->config->get('config_process_status');
 		} else {
-			$data['config_complete_status_id'] = $this->config->get('config_complete_status_id');
+			$data['config_process_status'] = array();
+		}
+		
+		if (isset($this->request->post['config_complete_status'])) {
+			$data['config_complete_status'] = $this->request->post['config_complete_status'];
+		} elseif ($this->config->get('config_complete_status')) {
+			$data['config_complete_status'] = $this->config->get('config_complete_status');
+		} else {
+			$data['config_complete_status'] = array();
 		}
 
 		$this->load->model('localisation/order_status');
@@ -818,16 +849,6 @@ class ControllerSettingSetting extends Controller {
 		} else {
 			$data['config_stock_checkout'] = $this->config->get('config_stock_checkout');
 		}
-
-		if (isset($this->request->post['config_stock_status_id'])) {
-			$data['config_stock_status_id'] = $this->request->post['config_stock_status_id'];
-		} else {
-			$data['config_stock_status_id'] = $this->config->get('config_stock_status_id');
-		}
-
-		$this->load->model('localisation/stock_status');
-
-		$data['stock_statuses'] = $this->model_localisation_stock_status->getStockStatuses();
 
 		if (isset($this->request->post['config_affiliate_auto'])) {
 			$data['config_affiliate_approval'] = $this->request->post['config_affiliate_approval'];
@@ -1155,18 +1176,18 @@ class ControllerSettingSetting extends Controller {
 			$data['config_seo_url'] = $this->config->get('config_seo_url');
 		}
 
-		if (isset($this->request->post['config_image_file_size'])) {
-			$data['config_image_file_size'] = $this->request->post['config_image_file_size'];
-		} elseif ($this->config->get('config_image_file_size')) {
-			$data['config_image_file_size'] = $this->config->get('config_image_file_size');
+		if (isset($this->request->post['config_file_max_size'])) {
+			$data['config_file_max_size'] = $this->request->post['config_file_max_size'];
+		} elseif ($this->config->get('config_file_max_size')) {
+			$data['config_file_max_size'] = $this->config->get('config_file_max_size');
 		} else {
-			$data['config_image_file_size'] = 300000;
+			$data['config_file_max_size'] = 300000;
 		}
 
-		if (isset($this->request->post['config_file_extension_allowed'])) {
-			$data['config_file_extension_allowed'] = $this->request->post['config_file_extension_allowed'];
+		if (isset($this->request->post['config_file_ext_allowed'])) {
+			$data['config_file_ext_allowed'] = $this->request->post['config_file_ext_allowed'];
 		} else {
-			$data['config_file_extension_allowed'] = $this->config->get('config_file_extension_allowed');
+			$data['config_file_ext_allowed'] = $this->config->get('config_file_ext_allowed');
 		}
 
 		if (isset($this->request->post['config_file_mime_allowed'])) {
@@ -1269,6 +1290,14 @@ class ControllerSettingSetting extends Controller {
 
 		if (!$this->request->post['config_voucher_max']) {
 			$this->error['voucher_max'] = $this->language->get('error_voucher_max');
+		}
+
+		if (!isset($this->request->post['config_process_status'])) {
+			$this->error['process_status'] = $this->language->get('error_process_status');
+		}
+
+		if (!isset($this->request->post['config_complete_status'])) {
+			$this->error['complete_status'] = $this->language->get('error_complete_status');
 		}
 
 		if (!$this->request->post['config_image_category_width'] || !$this->request->post['config_image_category_height']) {
@@ -1392,6 +1421,7 @@ class ControllerSettingSetting extends Controller {
 			);
 		}
 
+		$this->response->addHeader('Content-Type: application/json');
 		$this->response->setOutput(json_encode($json));
 	}
 }

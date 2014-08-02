@@ -8,23 +8,9 @@ $_['heading_title']       = 'Ürün İadeleri';
 $_['text_opened']         = 'Açıldı';
 $_['text_unopened']       = 'Kapatıldı';
 $_['text_success']        = 'Başarılı: Ürün iadesi başarılı bir şekilde değiştirildi!';
-
-// Text
-$_['text_return_id']      = 'İade No';
-$_['text_order_id']       = 'Sipariş No';
-$_['text_date_ordered']   = 'Sipariş Tarihi';
-$_['text_customer']       = 'Müşteri';
-$_['text_email']          = 'E-Posta';
-$_['text_telephone']      = 'Telefon';
-$_['text_date_added']     = 'Ekleme Tarihi';
-$_['text_date_modified']  = 'Güncelleme Tarihi';
-$_['text_product']        = 'Ürün';
-$_['text_model']          = 'Ürün Kodu';
-$_['text_quantity']       = 'Adet';
-$_['text_return_reason']  = 'İade Nedeni';
-$_['text_return_action']  = 'İade Eylemi';
-$_['text_return_status']  = 'İade Durumu';
-$_['text_comment']        = 'Açıklama';
+$_['text_order']          = 'Sipariş Bilgileri';
+$_['text_product']        = 'İade için Ürün Bilgileri &amp; Nedeni';
+$_['text_history']        = 'İade Geçmişi Ekle';
 
 // Column
 $_['column_return_id']     = 'İade No';

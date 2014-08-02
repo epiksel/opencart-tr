@@ -190,7 +190,7 @@ class ControllerPaymentKlarnaInvoice extends Controller {
 					'FIN' => 'EUR',
 					'DNK' => 'DKK',
 					'DEU' => 'EUR',
-					'NLD' => 'EUR',
+					'NLD' => 'EUR'
 				);
 
 				switch ($order_info['payment_iso_code_3']) {
@@ -283,7 +283,7 @@ class ControllerPaymentKlarnaInvoice extends Controller {
 							'price'    => (int)str_replace('.', '', $this->currency->format($product['price'], $country_to_currency[$order_info['payment_iso_code_3']], '', false)),
 							'vat'      => (float)$product['tax_rate'],
 							'discount' => 0.0,
-							'flags'    => 0,
+							'flags'    => 0
 						)
 					);
 				}
@@ -304,7 +304,7 @@ class ControllerPaymentKlarnaInvoice extends Controller {
 								'price'    => (int)str_replace('.', '', $this->currency->format($total['value'], $country_to_currency[$order_info['payment_iso_code_3']], '', false)),
 								'vat'      => (float)$total['tax_rate'],
 								'discount' => 0.0,
-								'flags'    => 0,
+								'flags'    => 0
 							)
 						);
 					}
@@ -359,7 +359,7 @@ class ControllerPaymentKlarnaInvoice extends Controller {
 					array(),
 					array(),
 					array(),
-					array(),
+					array()
 				);
 
 				$xml  = '<methodCall>';
@@ -422,7 +422,7 @@ class ControllerPaymentKlarnaInvoice extends Controller {
 
 						$comment = sprintf($this->language->get('text_comment'), $invoice_number, $this->config->get('config_currency'), $country_to_currency[$order_info['payment_iso_code_3']], $this->currency->getValue($country_to_currency[$order_info['payment_iso_code_3']]));
 
-						$this->model_checkout_order->confirm($this->session->data['order_id'], $order_status, $comment, 1);
+						$this->model_checkout_order->addOrderHistory($this->session->data['order_id'], $order_status, $comment, 1);
 
 						$json['redirect'] = $this->url->link('checkout/success');
 					}
@@ -432,6 +432,7 @@ class ControllerPaymentKlarnaInvoice extends Controller {
 			}
 		}
 
+		$this->response->addHeader('Content-Type: application/json');
 		$this->response->setOutput(json_encode($json));
 	}
 

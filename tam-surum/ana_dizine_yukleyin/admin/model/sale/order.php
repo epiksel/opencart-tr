@@ -1,20 +1,5 @@
 <?php
 class ModelSaleOrder extends Model {
-	public function restock($order_id) {
-		// Restock products that require restocking
-		$product_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "order_product WHERE order_id = '" . (int)$order_id . "'");
-
-		foreach($product_query->rows as $product) {
-			$this->db->query("UPDATE `" . DB_PREFIX . "product` SET quantity = (quantity + " . (int)$product['quantity'] . ") WHERE product_id = '" . (int)$product['product_id'] . "' AND subtract = '1'");
-
-			$option_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "order_option WHERE order_id = '" . (int)$order_id . "' AND order_product_id = '" . (int)$product['order_product_id'] . "'");
-
-			foreach ($option_query->rows as $option) {
-				$this->db->query("UPDATE " . DB_PREFIX . "product_option_value SET quantity = (quantity + " . (int)$product['quantity'] . ") WHERE product_option_value_id = '" . (int)$option['product_option_value_id'] . "' AND subtract = '1'");
-			}
-		}
-	}
-
 	public function getOrder($order_id) {
 		$order_query = $this->db->query("SELECT *, (SELECT CONCAT(c.firstname, ' ', c.lastname) FROM " . DB_PREFIX . "customer c WHERE c.customer_id = o.customer_id) AS customer FROM `" . DB_PREFIX . "order` o WHERE o.order_id = '" . (int)$order_id . "'");
 
@@ -170,15 +155,27 @@ class ModelSaleOrder extends Model {
 				'date_modified'           => $order_query->row['date_modified']
 			);
 		} else {
-			return false;
+			return;
 		}
 	}
 
 	public function getOrders($data = array()) {
 		$sql = "SELECT o.order_id, CONCAT(o.firstname, ' ', o.lastname) AS customer, (SELECT os.name FROM " . DB_PREFIX . "order_status os WHERE os.order_status_id = o.order_status_id AND os.language_id = '" . (int)$this->config->get('config_language_id') . "') AS status, o.total, o.currency_code, o.currency_value, o.date_added, o.date_modified FROM `" . DB_PREFIX . "order` o";
 
-		if (isset($data['filter_order_status_id']) && $data['filter_order_status_id'] !== null) {
-			$sql .= " WHERE o.order_status_id = '" . (int)$data['filter_order_status_id'] . "'";
+		if (!empty($data['filter_order_status'])) {
+			$implode = array();
+			
+			$order_statuses = explode(',', $data['filter_order_status']);
+	
+			foreach ($order_statuses as $order_status_id) {
+				$implode[] = "o.order_status_id = '" . (int)$order_status_id . "'";
+			}
+			
+			if ($implode) {
+				$sql .= " WHERE (" . implode(" OR ", $implode) . ")";
+			} else {
+				
+			}
 		} else {
 			$sql .= " WHERE o.order_status_id > '0'";
 		}
@@ -280,8 +277,18 @@ class ModelSaleOrder extends Model {
 	public function getTotalOrders($data = array()) {
 		$sql = "SELECT COUNT(*) AS total FROM `" . DB_PREFIX . "order`";
 
-		if (isset($data['filter_order_status_id']) && $data['filter_order_status_id'] !== null) {
-			$sql .= " WHERE order_status_id = '" . (int)$data['filter_order_status_id'] . "'";
+		if (!empty($data['filter_order_status'])) {
+			$implode = array();
+			
+			$order_statuses = explode(',', $data['filter_order_status']);
+	
+			foreach ($order_statuses as $order_status_id) {
+				$implode[] = "order_status_id = '" . (int)$order_status_id . "'";
+			}
+			
+			if ($implode) {
+				$sql .= " WHERE (" . implode(" OR ", $implode) . ")";
+			}			
 		} else {
 			$sql .= " WHERE order_status_id > '0'";
 		}
@@ -322,7 +329,43 @@ class ModelSaleOrder extends Model {
 
 		return $query->row['total'];
 	}
+	
+	public function getTotalOrdersByProcessStatus() {
+		$implode = array();
+		
+		$order_statuses = $this->config->get('config_process_status');
 
+		foreach ($order_statuses as $order_status_id) {
+			$implode[] = "order_status_id = '" . (int)$order_status_id . "'";
+		}
+		
+		if ($implode) {		
+			$query = $this->db->query("SELECT COUNT(*) AS total FROM `" . DB_PREFIX . "order` WHERE " . implode(" OR ", $implode) . "");
+	
+			return $query->row['total'];
+		} else {
+			return 0;	
+		}
+	}
+	
+	public function getTotalOrdersByCompleteStatus() {
+		$implode = array();
+		
+		$order_statuses = $this->config->get('config_complete_status');
+
+		foreach ($order_statuses as $order_status_id) {
+			$implode[] = "order_status_id = '" . (int)$order_status_id . "'";
+		}
+		
+		if ($implode) {		
+			$query = $this->db->query("SELECT COUNT(*) AS total FROM `" . DB_PREFIX . "order` WHERE " . implode(" OR ", $implode) . "");
+
+			return $query->row['total'];
+		} else {
+			return 0;	
+		}
+	}
+		
 	public function getTotalOrdersByLanguageId($language_id) {
 		$query = $this->db->query("SELECT COUNT(*) AS total FROM `" . DB_PREFIX . "order` WHERE language_id = '" . (int)$language_id . "' AND order_status_id > '0'");
 
@@ -350,63 +393,6 @@ class ModelSaleOrder extends Model {
 			$this->db->query("UPDATE `" . DB_PREFIX . "order` SET invoice_no = '" . (int)$invoice_no . "', invoice_prefix = '" . $this->db->escape($order_info['invoice_prefix']) . "' WHERE order_id = '" . (int)$order_id . "'");
 
 			return $order_info['invoice_prefix'] . $invoice_no;
-		}
-	}
-
-	public function addOrderHistory($order_id, $data) {
-		$this->db->query("UPDATE `" . DB_PREFIX . "order` SET order_status_id = '" . (int)$data['order_status_id'] . "', date_modified = NOW() WHERE order_id = '" . (int)$order_id . "'");
-
-		$this->db->query("INSERT INTO " . DB_PREFIX . "order_history SET order_id = '" . (int)$order_id . "', order_status_id = '" . (int)$data['order_status_id'] . "', notify = '" . (isset($data['notify']) ? (int)$data['notify'] : 0) . "', comment = '" . $this->db->escape(strip_tags($data['comment'])) . "', date_added = NOW()");
-
-		$order_info = $this->getOrder($order_id);
-
-		// Send out any gift voucher mails
-		if ($this->config->get('config_complete_status_id') == $data['order_status_id']) {
-			$this->load->model('sale/voucher');
-
-			$results = $this->getOrderVouchers($order_id);
-
-			foreach ($results as $result) {
-				$this->model_sale_voucher->sendVoucher($result['voucher_id']);
-			}
-		}
-
-		if ($data['notify']) {
-			$language = new Language($order_info['language_directory']);
-			$language->load($order_info['language_filename']);
-			$language->load('mail/order');
-
-			$subject = sprintf($language->get('text_subject'), $order_info['store_name'], $order_id);
-
-			$message  = $language->get('text_order') . ' ' . $order_id . "\n";
-			$message .= $language->get('text_date_added') . ' ' . date($language->get('date_format_short'), strtotime($order_info['date_added'])) . "\n\n";
-
-			$order_status_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "order_status WHERE order_status_id = '" . (int)$data['order_status_id'] . "' AND language_id = '" . (int)$order_info['language_id'] . "'");
-
-			if ($order_status_query->num_rows) {
-				$message .= $language->get('text_order_status') . "\n";
-				$message .= $order_status_query->row['name'] . "\n\n";
-			}
-
-			if ($order_info['customer_id']) {
-				$message .= $language->get('text_link') . "\n";
-				$message .= html_entity_decode($order_info['store_url'] . 'index.php?route=account/order/info&order_id=' . $order_id, ENT_QUOTES, 'UTF-8') . "\n\n";
-			}
-
-			if ($data['comment']) {
-				$message .= $language->get('text_comment') . "\n\n";
-				$message .= strip_tags(html_entity_decode($data['comment'], ENT_QUOTES, 'UTF-8')) . "\n\n";
-			}
-
-			$message .= $language->get('text_footer');
-
-			$mail = new Mail($this->config->get('config_mail'));
-			$mail->setTo($order_info['email']);
-			$mail->setFrom($this->config->get('config_email'));
-			$mail->setSender($order_info['store_name']);
-			$mail->setSubject($subject);
-			$mail->setText(html_entity_decode($message, ENT_QUOTES, 'UTF-8'));
-			$mail->send();
 		}
 	}
 

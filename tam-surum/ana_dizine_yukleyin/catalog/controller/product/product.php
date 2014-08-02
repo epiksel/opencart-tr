@@ -624,7 +624,6 @@ class ControllerProductProduct extends Controller {
 		$json = array();
 
 		if ($product_info && $profile_info) {
-
 			if (!$json) {
 				$frequencies = array(
 					'day'        => $this->language->get('text_day'),
@@ -653,6 +652,7 @@ class ControllerProductProduct extends Controller {
 			}
 		}
 
+		$this->response->addHeader('Content-Type: application/json');
 		$this->response->setOutput(json_encode($json));
 	}
 
@@ -670,7 +670,7 @@ class ControllerProductProduct extends Controller {
 				$json['error'] = $this->language->get('error_text');
 			}
 
-			if (empty($this->request->post['rating'])) {
+			if (empty($this->request->post['rating']) || $this->request->post['rating'] < 0 || $this->request->post['rating'] > 5) {
 				$json['error'] = $this->language->get('error_rating');
 			}
 
@@ -689,6 +689,7 @@ class ControllerProductProduct extends Controller {
 			}
 		}
 
+		$this->response->addHeader('Content-Type: application/json');
 		$this->response->setOutput(json_encode($json));
 	}
 
@@ -709,7 +710,7 @@ class ControllerProductProduct extends Controller {
 			// Allowed file extension types
 			$allowed = array();
 
-			$extension_allowed = preg_replace('~\r?\n~', "\n", $this->config->get('config_file_extension_allowed'));
+			$extension_allowed = preg_replace('~\r?\n~', "\n", $this->config->get('config_file_ext_allowed'));
 
 			$filetypes = explode("\n", $extension_allowed);
 
@@ -764,6 +765,7 @@ class ControllerProductProduct extends Controller {
 			$json['success'] = $this->language->get('text_upload');
 		}
 
+		$this->response->addHeader('Content-Type: application/json');
 		$this->response->setOutput(json_encode($json));
 	}
 }

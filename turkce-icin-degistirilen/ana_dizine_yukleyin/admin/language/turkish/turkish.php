@@ -90,7 +90,6 @@ $_['button_view']										= 'Göster';
 $_['button_install']								= 'Kur';
 $_['button_uninstall']							= 'Kaldır';
 $_['button_link']										= 'Link';
-$_['button_restock']								= 'Yeniden Stok. Only use restock when you plan to void an order but not delete it. Deleting an order will automatically restock products. You should also leave a note in the order history let others know if you have already restocked the items.';
 $_['button_add_profile']						= 'Profil Ekle';
 
 // Tab
@@ -120,7 +119,6 @@ $_['tab_module']										= 'Modül';
 $_['tab_order']											= 'Sipariş Detayları';
 $_['tab_payment']										= 'Fatura Detayları';
 $_['tab_product']										= 'Ürünler';
-$_['tab_return']										= 'İade Detayları';
 $_['tab_reward']										= 'Ödül Puanı';
 $_['tab_shipping']									= 'Kargo Detayları';
 $_['tab_total']											= 'Toplamlar';

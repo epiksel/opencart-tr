@@ -377,7 +377,7 @@ class ControllerPaymentPPProIframe extends Controller {
 						'transaction_entity' => 'payment',
 						'pending_reason' => '',
 						'amount' => '-' . (isset($call_data['AMT']) ? $call_data['AMT'] : $current_transaction['amount']),
-						'debug_data' => json_encode($result),
+						'debug_data' => json_encode($result)
 					);
 
 					if ($result == false) {
@@ -449,7 +449,7 @@ class ControllerPaymentPPProIframe extends Controller {
 					'transaction_entity' => 'auth',
 					'pending_reason' => $result['PENDINGREASON'],
 					'amount' => '-' . '',
-					'debug_data' => json_encode($result),
+					'debug_data' => json_encode($result)
 				);
 
 				$this->model_payment_pp_pro_iframe->addTransaction($transaction);
@@ -468,6 +468,7 @@ class ControllerPaymentPPProIframe extends Controller {
 			$json['msg'] = $this->language->get('error_missing_data');
 		}
 
+		$this->response->addHeader('Content-Type: application/json');
 		$this->response->setOutput(json_encode($json));
 	}
 
@@ -639,7 +640,7 @@ class ControllerPaymentPPProIframe extends Controller {
 				'pending_reason' => '',
 				'transaction_entity' => 'payment',
 				'amount' => '',
-				'debug_data' => json_encode($result),
+				'debug_data' => json_encode($result)
 			);
 
 			if ($result == false) {
@@ -714,6 +715,7 @@ class ControllerPaymentPPProIframe extends Controller {
 			$json['msg'] = 'Missing data';
 		}
 
+		$this->response->addHeader('Content-Type: application/json');
 		$this->response->setOutput(json_encode($json));
 	}
 
@@ -744,7 +746,7 @@ class ControllerPaymentPPProIframe extends Controller {
 					'pending_reason' => '',
 					'transaction_entity' => 'auth',
 					'amount' => '',
-					'debug_data' => json_encode($result),
+					'debug_data' => json_encode($result)
 				);
 
 				$this->model_payment_pp_pro_iframe->addTransaction($transaction);
@@ -765,6 +767,7 @@ class ControllerPaymentPPProIframe extends Controller {
 			$json['msg'] = $this->language->get('error_missing_data');
 		}
 
+		$this->response->addHeader('Content-Type: application/json');
 		$this->response->setOutput(json_encode($json));
 	}
 
@@ -851,69 +854,70 @@ class ControllerPaymentPPProIframe extends Controller {
 	}
 
 	public function resend() {
-			$this->load->model('payment/pp_pro_iframe');
-			$this->load->language('payment/pp_pro_iframe');
+		$this->load->model('payment/pp_pro_iframe');
+		$this->load->language('payment/pp_pro_iframe');
 
-			$json = array();
+		$json = array();
 
-			if (isset($this->request->get['paypal_iframe_order_transaction_id'])) {
-				$transaction = $this->model_payment_pp_pro_iframe->getFailedTransaction($this->request->get['paypal_iframe_order_transaction_id']);
+		if (isset($this->request->get['paypal_iframe_order_transaction_id'])) {
+			$transaction = $this->model_payment_pp_pro_iframe->getFailedTransaction($this->request->get['paypal_iframe_order_transaction_id']);
 
-				if ($transaction) {
-					$call_data = unserialize($transaction['call_data']);
+			if ($transaction) {
+				$call_data = unserialize($transaction['call_data']);
 
-					$result = $this->model_payment_pp_pro_iframe->call($call_data);
+				$result = $this->model_payment_pp_pro_iframe->call($call_data);
 
-					if ($result) {
-						$parent_transaction = $this->model_payment_pp_pro_iframe->getLocalTransaction($transaction['parent_transaction_id']);
+				if ($result) {
+					$parent_transaction = $this->model_payment_pp_pro_iframe->getLocalTransaction($transaction['parent_transaction_id']);
 
-						if ($parent_transaction['amount'] == abs($transaction['amount'])) {
-							$this->model_payment_pp_pro_iframe->updateRefundTransaction($transaction['parent_transaction_id'], 'Refunded');
-						} else {
-							$this->model_payment_pp_pro_iframe->updateRefundTransaction($transaction['parent_transaction_id'], 'Partially-Refunded');
-						}
-
-						if (isset($result['REFUNDTRANSACTIONID'])) {
-							$transaction['transaction_id'] = $result['REFUNDTRANSACTIONID'];
-						} else {
-							$transaction['transaction_id'] = $result['TRANSACTIONID'];
-						}
-
-						if (isset($result['PAYMENTTYPE'])) {
-							$transaction['payment_type'] = $result['PAYMENTTYPE'];
-						} else {
-							$transaction['payment_type'] = $result['REFUNDSTATUS'];
-						}
-
-						if (isset($result['PAYMENTSTATUS'])) {
-							$transaction['payment_status'] = $result['PAYMENTSTATUS'];
-						} else {
-							$transaction['payment_status'] = 'Refunded';
-						}
-
-						if (isset($result['AMT'])) {
-							$transaction['amount'] = $result['AMT'];
-						} else {
-							$transaction['amount'] = $transaction['amount'];
-						}
-
-						$transaction['pending_reason'] = (isset($result['PENDINGREASON']) ? $result['PENDINGREASON'] : '');
-
-						$this->model_payment_pp_pro_iframe->updateTransaction($transaction);
-
-						$json['success'] = $this->language->get('success_transaction_resent');
+					if ($parent_transaction['amount'] == abs($transaction['amount'])) {
+						$this->model_payment_pp_pro_iframe->updateRefundTransaction($transaction['parent_transaction_id'], 'Refunded');
 					} else {
-						$json['error'] = $this->language->get('error_timeout');
+						$this->model_payment_pp_pro_iframe->updateRefundTransaction($transaction['parent_transaction_id'], 'Partially-Refunded');
 					}
+
+					if (isset($result['REFUNDTRANSACTIONID'])) {
+						$transaction['transaction_id'] = $result['REFUNDTRANSACTIONID'];
+					} else {
+						$transaction['transaction_id'] = $result['TRANSACTIONID'];
+					}
+
+					if (isset($result['PAYMENTTYPE'])) {
+						$transaction['payment_type'] = $result['PAYMENTTYPE'];
+					} else {
+						$transaction['payment_type'] = $result['REFUNDSTATUS'];
+					}
+
+					if (isset($result['PAYMENTSTATUS'])) {
+						$transaction['payment_status'] = $result['PAYMENTSTATUS'];
+					} else {
+						$transaction['payment_status'] = 'Refunded';
+					}
+
+					if (isset($result['AMT'])) {
+						$transaction['amount'] = $result['AMT'];
+					} else {
+						$transaction['amount'] = $transaction['amount'];
+					}
+
+					$transaction['pending_reason'] = (isset($result['PENDINGREASON']) ? $result['PENDINGREASON'] : '');
+
+					$this->model_payment_pp_pro_iframe->updateTransaction($transaction);
+
+					$json['success'] = $this->language->get('success_transaction_resent');
 				} else {
-					$json['error'] = $this->language->get('error_transaction_missing');
+					$json['error'] = $this->language->get('error_timeout');
 				}
 			} else {
-				$json['error'] = $this->language->get('error_missing_data');
+				$json['error'] = $this->language->get('error_transaction_missing');
 			}
-
-			$this->response->setOutput(json_encode($json));
+		} else {
+			$json['error'] = $this->language->get('error_missing_data');
 		}
+
+		$this->response->addHeader('Content-Type: application/json');
+		$this->response->setOutput(json_encode($json));
+	}
 
 	protected function validate() {
 		if (!$this->user->hasPermission('modify', 'payment/pp_pro_iframe')) {

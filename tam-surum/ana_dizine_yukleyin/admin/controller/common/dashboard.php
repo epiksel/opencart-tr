@@ -38,18 +38,6 @@ class ControllerCommonDashboard extends Controller {
 			$data['error_install'] = '';
 		}
 
-		$data['breadcrumbs'] = array();
-
-		$data['breadcrumbs'][] = array(
-			'text' => $this->language->get('text_home'),
-			'href' => $this->url->link('common/dashboard', 'token=' . $this->session->data['token'], 'SSL')
-		);
-
-		$data['breadcrumbs'][] = array(
-			'text' => $this->language->get('heading_title'),
-			'href' => $this->url->link('common/dashboard', 'token=' . $this->session->data['token'], 'SSL')
-		);
-
 		$data['token'] = $this->session->data['token'];
 
 		// Total Orders
@@ -261,6 +249,7 @@ class ControllerCommonDashboard extends Controller {
 				break;
 		}
 
+		$this->response->addHeader('Content-Type: application/json');
 		$this->response->setOutput(json_encode($json));
 	}
 
@@ -284,6 +273,7 @@ class ControllerCommonDashboard extends Controller {
 			$json['xaxis'][] = array($time, date('H:i', $time));
 		}
 
+		$this->response->addHeader('Content-Type: application/json');
 		$this->response->setOutput(json_encode($json));
 	}
 }

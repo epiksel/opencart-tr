@@ -19,18 +19,6 @@ class ControllerExtensionInstaller extends Controller {
 		$data['button_clear'] = $this->language->get('button_clear');
 		$data['button_continue'] = $this->language->get('button_continue');
 
-		$data['breadcrumbs'] = array();
-
-		$data['breadcrumbs'][] = array(
-			'text' => $this->language->get('text_home'),
-			'href' => $this->url->link('common/dashboard', 'token=' . $this->session->data['token'], 'SSL')
-		);
-
-		$data['breadcrumbs'][] = array(
-			'text' => $this->language->get('heading_title'),
-			'href' => $this->url->link('extension/installer', 'token=' . $this->session->data['token'], 'SSL')
-		);
-
 		$data['token'] = $this->session->data['token'];
 
 		$directories = glob(DIR_DOWNLOAD . 'temp-*', GLOB_ONLYDIR);
@@ -208,6 +196,7 @@ class ControllerExtensionInstaller extends Controller {
 			}
 		}
 
+		$this->response->addHeader('Content-Type: application/json');
 		$this->response->setOutput(json_encode($json));
 	}
 
@@ -242,6 +231,7 @@ class ControllerExtensionInstaller extends Controller {
 			unlink($file);
 		}
 
+		$this->response->addHeader('Content-Type: application/json');
 		$this->response->setOutput(json_encode($json));
 	}
 
@@ -321,10 +311,11 @@ class ControllerExtensionInstaller extends Controller {
 
 				ftp_close($connection);
 			} else {
-				$json['error'] = sprintf($this->language->get('error_ftp_connection'), $this->config->get('config_ftp_host'), $this->config->get('config_ftp_port'));
+				$json['error'] = sprintf($this->language->get('error_ftp_connection'), $this->config->get('config_ftp_hostname'), $this->config->get('config_ftp_port'));
 			}
 		}
 
+		$this->response->addHeader('Content-Type: application/json');
 		$this->response->setOutput(json_encode($json));
 	}
 
@@ -369,6 +360,7 @@ class ControllerExtensionInstaller extends Controller {
 			}
 		}
 
+		$this->response->addHeader('Content-Type: application/json');
 		$this->response->setOutput(json_encode($json));
 	}
 
@@ -446,6 +438,7 @@ class ControllerExtensionInstaller extends Controller {
 			}
 		}
 
+		$this->response->addHeader('Content-Type: application/json');
 		$this->response->setOutput(json_encode($json));
 	}
 
@@ -472,6 +465,7 @@ class ControllerExtensionInstaller extends Controller {
 			}
 		}
 
+		$this->response->addHeader('Content-Type: application/json');
 		$this->response->setOutput(json_encode($json));
 	}
 
@@ -527,6 +521,7 @@ class ControllerExtensionInstaller extends Controller {
 			$json['success'] = $this->language->get('text_success');
 		}
 
+		$this->response->addHeader('Content-Type: application/json');
 		$this->response->setOutput(json_encode($json));
 	}
 
@@ -580,6 +575,7 @@ class ControllerExtensionInstaller extends Controller {
 			$json['success'] = $this->language->get('text_clear');
 		}
 
+		$this->response->addHeader('Content-Type: application/json');
 		$this->response->setOutput(json_encode($json));
 	}
 }

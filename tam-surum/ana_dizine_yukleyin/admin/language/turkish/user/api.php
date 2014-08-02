@@ -16,10 +16,10 @@ $_['column_action']        = 'Eylem';
 
 // Entry
 $_['entry_username']       = 'Kullanıcı Adı';
-$_['entry_key']            = 'Anahtar';
-$_['entry_status']         = 'Durumu';
+$_['entry_password']       = 'Password';
+$_['entry_status']         = 'Status';
 
 // Error
-$_['error_permission']     = 'Uyarı: API\'leri düzenleme iznine sahip değilsiniz!!';
+$_['error_permission']     = 'Uyarı: API\'leri düzenleme iznine sahip değilsiniz!';
 $_['error_username']       = 'Kullanıcı Adı 3 ile 20 karakter arasında olmalı!';
-$_['error_key']            = 'API anahtarı  ile 256 karakter arasında olmalı!';
+$_['error_password']       = 'API parolası 3 ile 256 karakter arasında olmalı!';

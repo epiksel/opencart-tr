@@ -20,6 +20,10 @@ class ModelCatalogManufacturer extends Model {
 		}
 
 		$this->cache->delete('manufacturer');
+
+		$this->event->trigger('admin_add_manufacturer', array('manufacturer_id' => $manufacturer_id));
+
+		return $manufacturer_id;
 	}
 
 	public function editManufacturer($manufacturer_id, $data) {
@@ -44,6 +48,8 @@ class ModelCatalogManufacturer extends Model {
 		}
 
 		$this->cache->delete('manufacturer');
+
+		$this->event->trigger('admin_edit_manufacturer');
 	}
 
 	public function deleteManufacturer($manufacturer_id) {
@@ -52,6 +58,8 @@ class ModelCatalogManufacturer extends Model {
 		$this->db->query("DELETE FROM " . DB_PREFIX . "url_alias WHERE query = 'manufacturer_id=" . (int)$manufacturer_id . "'");
 
 		$this->cache->delete('manufacturer');
+
+		$this->event->trigger('admin_delete_manufacturer');
 	}
 
 	public function getManufacturer($manufacturer_id) {
