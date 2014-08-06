@@ -12,3 +12,4 @@ $_['entry_coupon']	= 'Kupon kodunuzu buraya giriniz';
 
 // Error
 $_['error_coupon']	= 'Uyarı: Kupon kodunuz geçersiz, süresi ya da kullanım limiti dolmuş!';
+$_['error_empty']		= 'Uyarı: Lütfen bir kupon kodu giriniz!';

@@ -1,6 +1,6 @@
 <?php
 // Heading
-$_['heading_title']					= 'Profiles';
+$_['heading_title']					= 'Profiller';
 
 // Text
 $_['text_remove']						= 'Kaldır';
@@ -16,9 +16,9 @@ $_['text_year']							= 'Yıl';
 $_['text_recurring_help']		= 'Recurring amounts are calculated by the frequency and cycles. <br />For example if you use a frequency of "week" and a cycle of "2", then the user will be billed every 2 weeks. <br />The duration is the number of times the user will make a payment, set this to 0 if you want payments until they are cancelled.';
 
 // Entry
-$_['entry_name']						= 'Name';
-$_['entry_sort_order']			= 'Sort Order';
-$_['entry_price']						= 'Price';
+$_['entry_name']						= 'Profil Adı';
+$_['entry_sort_order']			= 'Sıralama';
+$_['entry_price']						= 'Fiyatı';
 $_['entry_duration']				= 'Duration';
 $_['entry_status']					= 'Status';
 $_['entry_cycle']						= 'Cycle';
@@ -30,11 +30,12 @@ $_['entry_trial_cycle']			= 'Trial cycle';
 $_['entry_trial_frequency']	= 'Trial frequency';
 
 // Column
-$_['column_name']						= 'Name';
-$_['column_sort_order']			= 'Sort Order';
-$_['column_action']					= 'Action';
+$_['column_name']						= 'Profil Adı';
+$_['column_sort_order']			= 'Sıralama';
+$_['column_action']					= 'Eylem';
 
 // Error
-$_['error_warning']					= 'Warning: Please check the form carefully for errors!';
-$_['error_permission']			= 'Warning: You do not have permission to modify profiles!';
-$_['error_name']						= 'Profile Name must be greater than 3 and less than 255 characters!';
+$_['error_warning']					= 'Uyarı: Oluşan hatalar için lütfen formu dikkatli kontrol ediniz!';
+$_['error_permission']			= 'Uyarı: Profilleri düzenleme iznine sahip değilsiniz!';
+$_['error_name']						= 'Profil Adı 3 ile 255 karakter arasında olmalı!';
+$_['error_product']					= 'Uyarı: Bu profili silemezsiniz, %s ürün tarafından kullanılıyor!';

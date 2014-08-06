@@ -3,11 +3,6 @@
 $_['heading_title']                           = 'Orders';
 
 // Text
-$_['text_order_customer']                     = '1. Customer Details';
-$_['text_order_customer']                     = '2. Products!';
-$_['text_order_customer']                            = 'Success: You have modified orders!';
-$_['text_order_customer']                            = 'Success: You have modified orders!';
-
 $_['text_success']                            = 'Success: You have modified orders!';
 $_['text_refresh']                            = 'Success: You have refreshed the order totals!';
 $_['text_order_detail']                       = 'Order Details';
@@ -173,8 +168,8 @@ $_['entry_affiliate']                         = 'Affiliate';
 $_['entry_order_status']                      = 'Order Status';
 $_['entry_notify']                            = 'Notify Customer';
 $_['entry_comment']                           = 'Comment';
-$_['entry_shipping']                          = 'Shipping Method';
-$_['entry_payment']                           = 'Payment Method';
+$_['entry_shipping_method']                   = 'Shipping Method';
+$_['entry_payment_method']                    = 'Payment Method';
 $_['entry_coupon']                            = 'Coupon';
 $_['entry_voucher']                           = 'Voucher';
 $_['entry_reward']                            = 'Reward';

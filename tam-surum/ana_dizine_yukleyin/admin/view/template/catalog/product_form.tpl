@@ -5,7 +5,7 @@
       <div class="pull-right">
         <button type="submit" form="form-product" data-toggle="tooltip" title="<?php echo $button_save; ?>" class="btn btn-primary"><i class="fa fa-check-circle"></i></button>
         <a href="<?php echo $cancel; ?>" data-toggle="tooltip" title="<?php echo $button_cancel; ?>" class="btn btn-default"><i class="fa fa-reply"></i></a></div>
-      <h1><i class="fa fa-pencil-square"></i> <?php echo $heading_title; ?></h1>
+      <h1><i class="fa fa-pencil"></i> <?php echo $heading_title; ?></h1>
     </div>
   </div>
   <div class="container-fluid">
@@ -927,8 +927,8 @@ $('input[name=\'manufacturer\']').autocomplete({
 			dataType: 'json',			
 			success: function(json) {
 				json.unshift({
-					'manufacturer_id': 0,
-					'name': '<?php echo $text_none; ?>'
+					manufacturer_id: 0,
+					name: '<?php echo $text_none; ?>'
 				});
 				
 				response($.map(json, function(item) {

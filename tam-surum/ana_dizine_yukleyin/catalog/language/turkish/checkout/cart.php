@@ -39,6 +39,7 @@ $_['column_total']							= 'Tutarı';
 // Error
 $_['error_stock']								= '<span style="color:#F00; font-weight:bold;">***</span> işaretli ürünler stokta yok ya da istenilen adet bulunmuyor!';
 $_['error_minimum']							= '%s ürünü için asgari %s adet sipariş vermeniz gerekiyor!';
+$_['error_quantity']						= 'Quantity required!';
 $_['error_required']						= '%s gerekli!';
 $_['error_product']							= 'Uyarı: Alışveriş sepetinizde ürün bulunmamaktadır!';
 $_['error_profile_required']		= 'Please select a payment profile!';

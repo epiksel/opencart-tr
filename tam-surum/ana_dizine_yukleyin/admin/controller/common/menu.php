@@ -40,7 +40,6 @@ class ControllerCommonMenu extends Controller {
 		$data['text_layout'] = $this->language->get('text_layout');
 		$data['text_localisation'] = $this->language->get('text_localisation');
 		$data['text_location'] = $this->language->get('text_location');
-		$data['text_maintenance'] = $this->language->get('text_maintenance');
 		$data['text_marketing'] = $this->language->get('text_marketing');
 		$data['text_modification'] = $this->language->get('text_modification');
 		$data['text_manufacturer'] = $this->language->get('text_manufacturer');
@@ -79,6 +78,7 @@ class ControllerCommonMenu extends Controller {
 		$data['text_tax'] = $this->language->get('text_tax');
 		$data['text_tax_class'] = $this->language->get('text_tax_class');
 		$data['text_tax_rate'] = $this->language->get('text_tax_rate');
+		$data['text_tools'] = $this->language->get('text_tools');
 		$data['text_total'] = $this->language->get('text_total');
 		$data['text_upload'] = $this->language->get('text_upload');
 		$data['text_tracking'] = $this->language->get('text_tracking');
@@ -98,8 +98,27 @@ class ControllerCommonMenu extends Controller {
 
 			$data['home'] = $this->url->link('common/dashboard', '', 'SSL');
 		} else {
-			$data['logged'] = true;
+			$data['logged'] = sprintf($this->language->get('text_logged'), $this->user->getUserName());
 
+			$this->load->model('user/user');
+	
+			$this->load->model('tool/image');
+	
+			$user_info = $this->model_user_user->getUser($this->user->getId());
+	
+			if ($user_info) {
+				$data['username'] = $user_info['firstname'] . ' ' . $user_info['lastname'];
+	
+				if (is_file(DIR_IMAGE . $user_info['image'])) {
+					$data['image'] = $this->model_tool_image->resize($user_info['image'], 24, 24);
+				} else {
+					$data['image'] = '';
+				}
+			} else {
+				$data['username'] = '';
+				$data['image'] = '';
+			}
+		
 			$data['home'] = $this->url->link('common/dashboard', 'token=' . $this->session->data['token'], 'SSL');
 			$data['affiliate'] = $this->url->link('marketing/affiliate', 'token=' . $this->session->data['token'], 'SSL');
 			$data['api'] = $this->url->link('user/api', 'token=' . $this->session->data['token'], 'SSL');
