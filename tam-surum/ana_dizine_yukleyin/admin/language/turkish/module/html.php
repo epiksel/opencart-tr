@@ -15,4 +15,4 @@ $_['entry_description']	= 'İçerik';
 $_['entry_status']			= 'Durumu';
 
 // Error
-$_['error_permission'		= 'Uyarı: HTML İçerik modülünü değiştirme iznine sahip değilsiniz!';
+$_['error_permission']	= 'Uyarı: HTML İçerik modülünü değiştirme iznine sahip değilsiniz!';
