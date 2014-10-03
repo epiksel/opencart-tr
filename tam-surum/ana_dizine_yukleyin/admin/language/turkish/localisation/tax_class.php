@@ -5,14 +5,17 @@
 $_['heading_title']     = 'Vergi Sınıfları';
 
 // Text
-$_['text_shipping']		= 'Teslimat Adresi';
-$_['text_payment']		= 'Fatura Adresi';
-$_['text_store']		= 'Mağaza Adresi';
-$_['text_success']		= 'Başarılı: Vergi oranları başarılı bir şekilde değiştirildi!';
+$_['text_success']			= 'Başarılı: Vergi oranları başarılı bir şekilde değiştirildi!';
+$_['text_list']					= 'Vergi Sınıfı Listesi';
+$_['text_add']					= 'Vergi Sınıfı Ekle';
+$_['text_edit']					= 'Vergi Sınıfı Düzenle';
+$_['text_shipping']			= 'Teslimat Adresi';
+$_['text_payment']			= 'Fatura Adresi';
+$_['text_store']				= 'Mağaza Adresi';
 
 // Column
 $_['column_title']      = 'Vergi Sınıfı Başlığı';
-$_['column_action']		= 'Eylem';
+$_['column_action']			= 'Eylem';
 
 // Entry
 $_['entry_title']       = 'Vergi Sınıfı Başlığı';

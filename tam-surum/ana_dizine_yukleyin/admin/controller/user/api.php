@@ -12,7 +12,7 @@ class ControllerUserApi extends Controller {
 		$this->getList();
 	}
 
-	public function insert() {
+	public function add() {
 		$this->load->language('user/api');
 
 		$this->document->setTitle($this->language->get('heading_title'));
@@ -44,7 +44,7 @@ class ControllerUserApi extends Controller {
 		$this->getForm();
 	}
 
-	public function update() {
+	public function edit() {
 		$this->load->language('user/api');
 
 		$this->document->setTitle($this->language->get('heading_title'));
@@ -155,7 +155,7 @@ class ControllerUserApi extends Controller {
 			'href' => $this->url->link('user/api', 'token=' . $this->session->data['token'] . $url, 'SSL')
 		);
 
-		$data['insert'] = $this->url->link('user/api/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
+		$data['insert'] = $this->url->link('user/api/add', 'token=' . $this->session->data['token'] . $url, 'SSL');
 		$data['delete'] = $this->url->link('user/api/delete', 'token=' . $this->session->data['token'] . $url, 'SSL');
 
 		$data['apis'] = array();
@@ -177,12 +177,13 @@ class ControllerUserApi extends Controller {
 				'username'   => $result['username'],
 				'status'     => ($result['status'] ? $this->language->get('text_enabled') : $this->language->get('text_disabled')),
 				'date_added' => date($this->language->get('date_format_short'), strtotime($result['date_added'])),
-				'edit'       => $this->url->link('user/api/update', 'token=' . $this->session->data['token'] . '&api_id=' . $result['api_id'] . $url, 'SSL')
+				'edit'       => $this->url->link('user/api/edit', 'token=' . $this->session->data['token'] . '&api_id=' . $result['api_id'] . $url, 'SSL')
 			);
 		}
 
 		$data['heading_title'] = $this->language->get('heading_title');
-
+		
+		$data['text_list'] = $this->language->get('text_list');
 		$data['text_no_results'] = $this->language->get('text_no_results');
 		$data['text_confirm'] = $this->language->get('text_confirm');
 
@@ -256,7 +257,7 @@ class ControllerUserApi extends Controller {
 		$data['order'] = $order;
 
 		$data['header'] = $this->load->controller('common/header');
-		$data['menu'] = $this->load->controller('common/menu');
+		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['footer'] = $this->load->controller('common/footer');
 
 		$this->response->setOutput($this->load->view('user/api_list.tpl', $data));
@@ -264,7 +265,8 @@ class ControllerUserApi extends Controller {
 
 	protected function getForm() {
 		$data['heading_title'] = $this->language->get('heading_title');
-
+		
+		$data['text_form'] = !isset($this->request->get['api_id']) ? $this->language->get('text_add') : $this->language->get('text_edit');
 		$data['text_enabled'] = $this->language->get('text_enabled');
 		$data['text_disabled'] = $this->language->get('text_disabled');
 
@@ -287,13 +289,13 @@ class ControllerUserApi extends Controller {
 		} else {
 			$data['error_username'] = '';
 		}
-		
+
 		if (isset($this->error['password'])) {
 			$data['error_password'] = $this->error['password'];
 		} else {
 			$data['error_password'] = '';
 		}
-		
+
 		$url = '';
 
 		if (isset($this->request->get['sort'])) {
@@ -321,9 +323,9 @@ class ControllerUserApi extends Controller {
 		);
 
 		if (!isset($this->request->get['api_id'])) {
-			$data['action'] = $this->url->link('user/api/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
+			$data['action'] = $this->url->link('user/api/add', 'token=' . $this->session->data['token'] . $url, 'SSL');
 		} else {
-			$data['action'] = $this->url->link('user/api/update', 'token=' . $this->session->data['token'] . '&api_id=' . $this->request->get['api_id'] . $url, 'SSL');
+			$data['action'] = $this->url->link('user/api/edit', 'token=' . $this->session->data['token'] . '&api_id=' . $this->request->get['api_id'] . $url, 'SSL');
 		}
 
 		$data['cancel'] = $this->url->link('user/api', 'token=' . $this->session->data['token'] . $url, 'SSL');
@@ -339,7 +341,7 @@ class ControllerUserApi extends Controller {
 		} else {
 			$data['username'] = '';
 		}
-		
+
 		if (isset($this->request->post['password'])) {
 			$data['password'] = $this->request->post['password'];
 		} elseif (!empty($api_info)) {
@@ -347,7 +349,7 @@ class ControllerUserApi extends Controller {
 		} else {
 			$data['password'] = '';
 		}
-		
+
 		if (isset($this->request->post['status'])) {
 			$data['status'] = $this->request->post['status'];
 		} elseif (!empty($api_info)) {
@@ -357,7 +359,7 @@ class ControllerUserApi extends Controller {
 		}
 
 		$data['header'] = $this->load->controller('common/header');
-		$data['menu'] = $this->load->controller('common/menu');
+		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['footer'] = $this->load->controller('common/footer');
 
 		$this->response->setOutput($this->load->view('user/api_form.tpl', $data));
@@ -371,11 +373,11 @@ class ControllerUserApi extends Controller {
 		if ((utf8_strlen(trim($this->request->post['username'])) < 3) || (utf8_strlen(trim($this->request->post['username'])) > 64)) {
 			$this->error['username'] = $this->language->get('error_username');
 		}
-		
+
 		if ((utf8_strlen($this->request->post['password']) < 3) || (utf8_strlen($this->request->post['password']) > 256)) {
 			$this->error['password'] = $this->language->get('error_password');
 		}
-		
+
 		return !$this->error;
 	}
 

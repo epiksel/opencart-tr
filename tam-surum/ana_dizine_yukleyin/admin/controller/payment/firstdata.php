@@ -1,6 +1,6 @@
-<?php 
+<?php
 class ControllerPaymentFirstdata extends Controller {
-	private $error = array(); 
+	private $error = array();
 
 	public function index() {
 		$this->load->language('payment/firstdata');
@@ -18,9 +18,8 @@ class ControllerPaymentFirstdata extends Controller {
 		}
 
 		$data['heading_title'] = $this->language->get('heading_title');
-
-		$data['notify_url'] = HTTPS_CATALOG . 'index.php?route=payment/firstdata/notify';
-
+		
+		$data['text_edit'] = $this->language->get('text_edit');
 		$data['text_enabled'] = $this->language->get('text_enabled');
 		$data['text_disabled'] = $this->language->get('text_disabled');
 		$data['text_live'] = $this->language->get('text_live');
@@ -28,17 +27,14 @@ class ControllerPaymentFirstdata extends Controller {
 		$data['text_yes'] = $this->language->get('text_yes');
 		$data['text_no'] = $this->language->get('text_no');
 		$data['text_all_zones'] = $this->language->get('text_all_zones');
-		$data['text_help_total'] = $this->language->get('text_help_total');
-		$data['text_help_debug'] = $this->language->get('text_help_debug');
+
 		$data['text_card_type'] = $this->language->get('text_card_type');
 		$data['text_enabled'] = $this->language->get('text_enabled');
 		$data['text_notification_url'] = $this->language->get('text_notification_url');
-		$data['text_help_notification'] = $this->language->get('text_help_notification');
 		$data['text_merchant_id'] = $this->language->get('text_merchant_id');
 		$data['text_secret'] = $this->language->get('text_secret');
 		$data['text_settle_delayed'] = $this->language->get('text_settle_delayed');
 		$data['text_settle_auto'] = $this->language->get('text_settle_auto');
-		$data['text_help_settle'] = $this->language->get('text_help_settle');
 
 		$data['entry_merchant_id'] = $this->language->get('entry_merchant_id');
 		$data['entry_secret'] = $this->language->get('entry_secret');
@@ -61,6 +57,11 @@ class ControllerPaymentFirstdata extends Controller {
 		$data['entry_status_decline_bank'] = $this->language->get('entry_status_decline_bank');
 		$data['entry_status_void'] = $this->language->get('entry_status_void');
 
+		$data['help_total'] = $this->language->get('help_total');
+		$data['help_debug'] = $this->language->get('help_debug');
+		$data['help_notification'] = $this->language->get('help_notification');
+		$data['help_settle'] = $this->language->get('help_settle');
+
 		$data['tab_account'] = $this->language->get('tab_account');
 		$data['tab_order_status'] = $this->language->get('tab_order_status');
 		$data['tab_payment'] = $this->language->get('tab_payment');
@@ -68,6 +69,8 @@ class ControllerPaymentFirstdata extends Controller {
 
 		$data['button_save'] = $this->language->get('button_save');
 		$data['button_cancel'] = $this->language->get('button_cancel');
+		
+		$data['notify_url'] = HTTPS_CATALOG . 'index.php?route=payment/firstdata/notify';
 
 		$this->load->model('localisation/order_status');
 
@@ -234,7 +237,7 @@ class ControllerPaymentFirstdata extends Controller {
 		}
 
 		$data['header'] = $this->load->controller('common/header');
-		$data['menu'] = $this->load->controller('common/menu');
+		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['footer'] = $this->load->controller('common/footer');
 
 		$this->response->setOutput($this->load->view('payment/firstdata.tpl', $data));
@@ -260,7 +263,7 @@ class ControllerPaymentFirstdata extends Controller {
 
 				$data['request_timestamp'] = date("Y:m:d-H:i:s");
 
-				$data['hash'] = sha1(bin2hex($data['merchant_id'].$data['request_timestamp'].$data['amount'].$data['currency'].$this->config->get('firstdata_secret')));
+				$data['hash'] = sha1(bin2hex($data['merchant_id'] . $data['request_timestamp'] . $data['amount'] . $data['currency'] . $this->config->get('firstdata_secret')));
 
 				$data['void_url'] = $this->url->link('payment/firstdata/void', 'token=' . $this->session->data['token'], 'SSL');
 				$data['capture_url'] = $this->url->link('payment/firstdata/capture', 'token=' . $this->session->data['token'], 'SSL');
@@ -315,9 +318,9 @@ class ControllerPaymentFirstdata extends Controller {
 				$data['text_no'] = $this->language->get('text_no');
 				$data['text_column_amount'] = $this->language->get('text_column_amount');
 				$data['text_column_type'] = $this->language->get('text_column_type');
-				$data['text_column_created'] = $this->language->get('text_column_created');
-				$data['btn_capture'] = $this->language->get('btn_capture');
-				$data['btn_void'] = $this->language->get('btn_void');
+				$data['text_column_date_added'] = $this->language->get('text_column_date_added');
+				$data['button_capture'] = $this->language->get('button_capture');
+				$data['button_void'] = $this->language->get('button_void');
 				$data['text_confirm_void'] = $this->language->get('text_confirm_void');
 				$data['text_confirm_capture'] = $this->language->get('text_confirm_capture');
 
@@ -385,11 +388,11 @@ class ControllerPaymentFirstdata extends Controller {
 		if (!$this->request->post['firstdata_demo_url']) {
 			$this->error['error_demo_url'] = $this->language->get('error_demo_url');
 		}
-		
+
 		if (!$this->error) {
 			return true;
 		} else {
 			return false;
-		}	
+		}
 	}
 }

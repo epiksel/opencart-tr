@@ -6,6 +6,9 @@ $_['heading_title']					= 'Müşteriler';
 
 // Text
 $_['text_success']					= 'Başarılı: Müşteri başarılı bir şekilde değiştirildi!';
+$_['text_list']							= 'Müşteri Listesi';
+$_['text_add']							= 'Müşteri Ekle';
+$_['text_edit']							= 'Müşteri Düzenle';
 $_['text_default']					= 'Varsayılan';
 $_['text_balance']					= 'Bakiye';
 $_['text_add_ban_ip']				= 'IP Engelle';
@@ -49,7 +52,7 @@ $_['entry_default']					= 'Varsayılan Adres';
 $_['entry_comment']					= 'Açıklama';
 $_['entry_description']			= 'Açıklama';
 $_['entry_amount']					= 'Kredi Tutarı';
-$_['entry_points']					= 'Ödül Puanı';
+$_['entry_points']					= 'Puan';
 $_['entry_name']						= 'Müşteri Adı';
 $_['entry_approved']				= 'Onaylandı';
 $_['entry_ip']							= 'IP';
@@ -75,3 +78,4 @@ $_['error_postcode']				= 'Posta kodu 2 ile 10 karakter arasında olmalı!';
 $_['error_country']					= 'Lütfen bir ülke seçiniz!';
 $_['error_zone']						= 'Lütfen bir şehir seçiniz!';
 $_['error_custom_field']		= '%s gerekli!';
+$_['error_comment']         = 'Bir açıklama giriniz!';

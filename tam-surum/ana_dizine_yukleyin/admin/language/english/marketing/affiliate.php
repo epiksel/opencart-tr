@@ -1,10 +1,13 @@
 <?php
 // Heading
-$_['heading_title']             = 'Affiliate';
+$_['heading_title']             = 'Affiliates';
 
 // Text
 $_['text_success']              = 'Success: You have modified affiliates!';
 $_['text_approved']             = 'You have approved %s accounts!';
+$_['text_list']                 = 'Affiliate List';
+$_['text_add']                  = 'Add Affiliate';
+$_['text_edit']                 = 'Edit Affiliate';
 $_['text_balance']              = 'Balance';
 $_['text_cheque']               = 'Cheque';
 $_['text_paypal']               = 'PayPal';
@@ -57,8 +60,8 @@ $_['entry_approved']            = 'Approved';
 $_['entry_date_added']          = 'Date Added';
 
 // Help
-$_['help_code']                = 'The tracking code that will be used to track referrals.';
-$_['help_commission']          = 'Percentage the affiliate recieves on each order.';
+$_['help_code']                 = 'The tracking code that will be used to track referrals.';
+$_['help_commission']           = 'Percentage the affiliate recieves on each order.';
 
 // Error
 $_['error_permission']          = 'Warning: You do not have permission to modify affiliates!';
@@ -66,6 +69,10 @@ $_['error_exists']              = 'Warning: E-Mail Address is already registered
 $_['error_firstname']           = 'First Name must be between 1 and 32 characters!';
 $_['error_lastname']            = 'Last Name must be between 1 and 32 characters!';
 $_['error_email']               = 'E-Mail Address does not appear to be valid!';
+$_['error_cheque']              = 'Cheque Payee Name required!';
+$_['error_paypal']              = 'PayPal Email Address does not appear to be valid!!';
+$_['error_bank_account_name']   = 'Account Name required!';
+$_['error_bank_account_number'] = 'Account Number required!';
 $_['error_telephone']           = 'Telephone must be between 3 and 32 characters!';
 $_['error_password']            = 'Password must be between 4 and 20 characters!';
 $_['error_confirm']             = 'Password and password confirmation do not match!';

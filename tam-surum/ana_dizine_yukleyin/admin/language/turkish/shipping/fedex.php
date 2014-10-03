@@ -8,6 +8,7 @@ $_['heading_title']                            = 'Fedex';
 $_['text_shipping']                            = 'Kargo Metodları';
 $_['text_success']                             = 'Success: You have modified Fedex shipping!';
 $_['text_europe_first_international_priority'] = 'Europe First International Priority';
+$_['text_edit']                                = 'Edit Fedex Shipping';
 $_['text_fedex_1_day_freight']                 = 'Fedex 1 Day Freight';
 $_['text_fedex_2_day']                         = 'Fedex 2 Day';
 $_['text_fedex_2_day_am']                      = 'Fedex 2 Day AM';

@@ -12,7 +12,7 @@ class ControllerSaleCustomer extends Controller {
 		$this->getList();
 	}
 
-	public function insert() {
+	public function add() {
 		$this->load->language('sale/customer');
 
 		$this->document->setTitle($this->language->get('heading_title'));
@@ -72,7 +72,7 @@ class ControllerSaleCustomer extends Controller {
 		$this->getForm();
 	}
 
-	public function update() {
+	public function edit() {
 		$this->load->language('sale/customer');
 
 		$this->document->setTitle($this->language->get('heading_title'));
@@ -201,7 +201,15 @@ class ControllerSaleCustomer extends Controller {
 
 		$this->load->model('sale/customer');
 
-		if (isset($this->request->get['customer_id']) && $this->validateApprove()) {
+		$customers = array();
+
+		if (isset($this->request->post['selected'])) {
+			$customers = $this->request->post['selected'];
+		} elseif (isset($this->request->get['customer_id'])) {
+			$customers[] = $this->request->get['customer_id'];
+		}
+
+		if ($customers && $this->validateApprove()) {
 			$this->model_sale_customer->approve($this->request->get['customer_id']);
 
 			$this->session->data['success'] = $this->language->get('text_success');
@@ -369,7 +377,7 @@ class ControllerSaleCustomer extends Controller {
 			'href' => $this->url->link('sale/customer', 'token=' . $this->session->data['token'] . $url, 'SSL')
 		);
 
-		$data['insert'] = $this->url->link('sale/customer/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
+		$data['insert'] = $this->url->link('sale/customer/add', 'token=' . $this->session->data['token'] . $url, 'SSL');
 		$data['delete'] = $this->url->link('sale/customer/delete', 'token=' . $this->session->data['token'] . $url, 'SSL');
 
 		$data['customers'] = array();
@@ -401,7 +409,7 @@ class ControllerSaleCustomer extends Controller {
 				'status'         => ($result['status'] ? $this->language->get('text_enabled') : $this->language->get('text_disabled')),
 				'ip'             => $result['ip'],
 				'date_added'     => date($this->language->get('date_format_short'), strtotime($result['date_added'])),
-				'edit'           => $this->url->link('sale/customer/update', 'token=' . $this->session->data['token'] . '&customer_id=' . $result['customer_id'] . $url, 'SSL'),
+				'edit'           => $this->url->link('sale/customer/edit', 'token=' . $this->session->data['token'] . '&customer_id=' . $result['customer_id'] . $url, 'SSL'),
 				'approve'        => $this->url->link('sale/customer/approve', 'token=' . $this->session->data['token'] . '&customer_id=' . $result['customer_id'] . $url, 'SSL'),
 				'approved'       => $result['approved']
 			);
@@ -409,6 +417,7 @@ class ControllerSaleCustomer extends Controller {
 
 		$data['heading_title'] = $this->language->get('heading_title');
 
+		$data['text_list'] = $this->language->get('text_list');
 		$data['text_enabled'] = $this->language->get('text_enabled');
 		$data['text_disabled'] = $this->language->get('text_disabled');
 		$data['text_yes'] = $this->language->get('text_yes');
@@ -425,7 +434,6 @@ class ControllerSaleCustomer extends Controller {
 		$data['column_approved'] = $this->language->get('column_approved');
 		$data['column_ip'] = $this->language->get('column_ip');
 		$data['column_date_added'] = $this->language->get('column_date_added');
-
 		$data['column_action'] = $this->language->get('column_action');
 
 		$data['entry_name'] = $this->language->get('entry_name');
@@ -579,7 +587,7 @@ class ControllerSaleCustomer extends Controller {
 		$data['order'] = $order;
 
 		$data['header'] = $this->load->controller('common/header');
-		$data['menu'] = $this->load->controller('common/menu');
+		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['footer'] = $this->load->controller('common/footer');
 
 		$this->response->setOutput($this->load->view('sale/customer_list.tpl', $data));
@@ -588,10 +596,12 @@ class ControllerSaleCustomer extends Controller {
 	protected function getForm() {
 		$data['heading_title'] = $this->language->get('heading_title');
 
+		$data['text_form'] = !isset($this->request->get['customer_id']) ? $this->language->get('text_add') : $this->language->get('text_edit');
 		$data['text_enabled'] = $this->language->get('text_enabled');
 		$data['text_disabled'] = $this->language->get('text_disabled');
 		$data['text_select'] = $this->language->get('text_select');
 		$data['text_none'] = $this->language->get('text_none');
+		$data['text_loading'] = $this->language->get('text_loading');
 		$data['text_add_ban_ip'] = $this->language->get('text_add_ban_ip');
 		$data['text_remove_ban_ip'] = $this->language->get('text_remove_ban_ip');
 
@@ -618,7 +628,7 @@ class ControllerSaleCustomer extends Controller {
 		$data['entry_description'] = $this->language->get('entry_description');
 		$data['entry_amount'] = $this->language->get('entry_amount');
 		$data['entry_points'] = $this->language->get('entry_points');
-		
+
 		$data['help_safe'] = $this->language->get('help_safe');
 		$data['help_points'] = $this->language->get('help_points');
 
@@ -629,6 +639,7 @@ class ControllerSaleCustomer extends Controller {
 		$data['button_transaction_add'] = $this->language->get('button_transaction_add');
 		$data['button_reward_add'] = $this->language->get('button_reward_add');
 		$data['button_remove'] = $this->language->get('button_remove');
+		$data['button_upload'] = $this->language->get('button_upload');
 
 		$data['tab_general'] = $this->language->get('tab_general');
 		$data['tab_address'] = $this->language->get('tab_address');
@@ -744,9 +755,9 @@ class ControllerSaleCustomer extends Controller {
 		);
 
 		if (!isset($this->request->get['customer_id'])) {
-			$data['action'] = $this->url->link('sale/customer/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
+			$data['action'] = $this->url->link('sale/customer/add', 'token=' . $this->session->data['token'] . $url, 'SSL');
 		} else {
-			$data['action'] = $this->url->link('sale/customer/update', 'token=' . $this->session->data['token'] . '&customer_id=' . $this->request->get['customer_id'] . $url, 'SSL');
+			$data['action'] = $this->url->link('sale/customer/edit', 'token=' . $this->session->data['token'] . '&customer_id=' . $this->request->get['customer_id'] . $url, 'SSL');
 		}
 
 		$data['cancel'] = $this->url->link('sale/customer', 'token=' . $this->session->data['token'] . $url, 'SSL');
@@ -810,7 +821,20 @@ class ControllerSaleCustomer extends Controller {
 		// Custom Fields
 		$this->load->model('sale/custom_field');
 
-		$data['custom_fields'] = $this->model_sale_custom_field->getCustomFields();
+		$data['custom_fields'] = array();
+
+		$custom_fields = $this->model_sale_custom_field->getCustomFields();
+
+		foreach ($custom_fields as $custom_field) {
+			$data['custom_fields'][] = array(
+				'custom_field_id'    => $custom_field['custom_field_id'],
+				'custom_field_value' => $this->model_sale_custom_field->getCustomFieldValues($custom_field['custom_field_id']),
+				'name'               => $custom_field['name'],
+				'value'              => $custom_field['value'],
+				'type'               => $custom_field['type'],
+				'location'           => $custom_field['location']
+			);
+		}
 
 		if (isset($this->request->post['custom_field'])) {
 			$data['account_custom_field'] = $this->request->post['custom_field'];
@@ -835,7 +859,7 @@ class ControllerSaleCustomer extends Controller {
 		} else {
 			$data['status'] = 1;
 		}
-		
+
 		if (isset($this->request->post['safe'])) {
 			$data['safe'] = $this->request->post['safe'];
 		} elseif (!empty($customer_info)) {
@@ -843,7 +867,7 @@ class ControllerSaleCustomer extends Controller {
 		} else {
 			$data['safe'] = 0;
 		}
-		
+
 		if (isset($this->request->post['password'])) {
 			$data['password'] = $this->request->post['password'];
 		} else {
@@ -877,7 +901,7 @@ class ControllerSaleCustomer extends Controller {
 		}
 
 		$data['header'] = $this->load->controller('common/header');
-		$data['menu'] = $this->load->controller('common/menu');
+		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['footer'] = $this->load->controller('common/footer');
 
 		$this->response->setOutput($this->load->view('sale/customer_form.tpl', $data));
@@ -1069,7 +1093,7 @@ class ControllerSaleCustomer extends Controller {
 			);
 
 			$data['header'] = $this->load->controller('common/header');
-			$data['menu'] = $this->load->controller('common/menu');
+			$data['column_left'] = $this->load->controller('common/column_left');
 			$data['footer'] = $this->load->controller('common/footer');
 
 			$this->response->setOutput($this->load->view('error/not_found.tpl', $data));
@@ -1262,6 +1286,7 @@ class ControllerSaleCustomer extends Controller {
 		$data['text_no_results'] = $this->language->get('text_no_results');
 		$data['text_add_ban_ip'] = $this->language->get('text_add_ban_ip');
 		$data['text_remove_ban_ip'] = $this->language->get('text_remove_ban_ip');
+		$data['text_loading'] = $this->language->get('text_loading');
 
 		$data['column_ip'] = $this->language->get('column_ip');
 		$data['column_total'] = $this->language->get('column_total');
@@ -1385,6 +1410,7 @@ class ControllerSaleCustomer extends Controller {
 					'email'             => $result['email'],
 					'telephone'         => $result['telephone'],
 					'fax'               => $result['fax'],
+					'custom_field'      => unserialize($result['custom_field']),
 					'address'           => $this->model_sale_customer->getAddresses($result['customer_id'])
 				);
 			}
@@ -1402,7 +1428,7 @@ class ControllerSaleCustomer extends Controller {
 		$this->response->setOutput(json_encode($json));
 	}
 
-	public function custom_field() {
+	public function customfield() {
 		$json = array();
 
 		$this->load->model('sale/custom_field');

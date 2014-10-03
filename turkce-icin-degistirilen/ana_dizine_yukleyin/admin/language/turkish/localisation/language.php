@@ -6,6 +6,9 @@ $_['heading_title']     = 'Diller';
 
 // Text
 $_['text_success']      = 'Başarılı: Diller başarılı bir şekilde değiştirildi!';
+$_['text_list']         = 'Dil Listesi';
+$_['text_add']          = 'Dil Ekle';
+$_['text_edit']         = 'Dil Düzenle';
 
 // Column
 $_['column_name']       = 'Dil Adı';
@@ -24,11 +27,11 @@ $_['entry_status']      = 'Durumu';
 $_['entry_sort_order']  = 'Sıralama';
 
 // Help
-$_['help_code']         = 'Bu varsayılan diliniz ise değiştirmeyiniz. örn: tr, en';
+$_['help_code']         = 'Bu varsayılan diliniz ise değiştirmeyiniz. Örnek: tr, en';
 $_['help_locale']       = 'Türkçe için: tr_TR.UTF-8,tr_TR,tr-tr,turkish <br />İngilizce için: en_US.UTF-8,en_US,en-gb,en_gb,english';
-$_['help_image']        = 'örn: tr.png, gb.png';
-$_['help_directory']    = 'Dil dizinin adı. örn: turkish, english (küçük harfe duyarlı).';
-$_['help_filename']     = 'Uzantısı olmadan ana dil dosyası. örn: turkish, english';
+$_['help_image']        = 'Örnek: tr.png, gb.png';
+$_['help_directory']    = 'Dil dizinin adı. Örnek: turkish, english (küçük harfe duyarlı).';
+$_['help_filename']     = 'Uzantısı olmadan ana dil dosyası. Örnek: turkish, english';
 $_['help_status']       = 'Dili göster/gizle';
 
 // Error

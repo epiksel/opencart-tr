@@ -6,6 +6,9 @@ $_['heading_title']     = 'Özellik Grupları';
 
 // Text
 $_['text_success']      = 'Başarılı: Özellik Grupları başarılı bir şekilde değiştirildi!';
+$_['text_list']         = 'Özellik Grup Listesi';
+$_['text_add']          = 'Özellik Grubu Ekle';
+$_['text_edit']         = 'Özellik Grubunu Düzenle';
 
 // Column
 $_['column_name']       = 'Özellik Grup Adı';

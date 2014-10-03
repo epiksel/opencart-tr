@@ -87,7 +87,17 @@ div.required .control-label:before {
 #top .container {
 	padding: 0 20px;
 }
-#top .btn-link, #top-links a {
+#top #currency .currency-select {
+	text-align: left;
+}
+#top #currency .currency-select:hover {
+	text-shadow: none;
+	color: #ffffff;
+	background-color: #229ac8;
+	background-image: linear-gradient(to bottom, #23a1d1, #1f90bb);
+	background-repeat: repeat-x;
+}
+#top .btn-link, #top-links li, #top-links a {
 	color: #888;
 	text-shadow: 0 1px 0 #FFF;
 	text-decoration: none;
@@ -356,7 +366,7 @@ footer h5 {
 	overflow: auto;
 }
 .btn {
-	padding: 7px 12px;
+	padding: 7.5px 12px;
 	font-size: 12px;
 	border: 1px solid #cccccc;
 	border-radius: 4px;
@@ -673,6 +683,9 @@ h2.price {
 
 .flexslider .slides img {
 	width: inherit;
+}
+.flexslider.carousel .slides img {
+	width: auto;
 }
 .slides {
 	padding: 0;

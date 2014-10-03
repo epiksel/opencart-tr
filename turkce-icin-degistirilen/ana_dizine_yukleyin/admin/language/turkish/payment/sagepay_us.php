@@ -7,6 +7,7 @@ $_['heading_title']      = 'Sage Payment Solutions (US)';
 // Text
 $_['text_payment']       = 'Ödeme Metodları';
 $_['text_success']       = 'Başarılı: SagePay (US) hesap detayları başarılı bir şekilde değiştirildi!';
+$_['text_edit']					 = 'Sage Payment Solutions (US) Düzenle';
 
 // Entry
 $_['entry_merchant_id']  = 'Merchant ID';

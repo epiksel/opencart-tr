@@ -3,8 +3,9 @@
 $_['heading_title']                           = 'Orders';
 
 // Text
-$_['text_success']                            = 'Success: You have modified orders!';
-$_['text_refresh']                            = 'Success: You have refreshed the order totals!';
+$_['text_list']                               = 'Order List';
+$_['text_add']                                = 'Add Order';
+$_['text_edit']                               = 'Edit Order';
 $_['text_order_detail']                       = 'Order Details';
 $_['text_order_id']                           = 'Order ID:';
 $_['text_invoice_no']                         = 'Invoice No.:';
@@ -233,8 +234,5 @@ $_['help_error']                              = 'Returns an error string with a 
 // Error
 $_['error_warning']                           = 'Warning: Please check the form carefully for errors!';
 $_['error_permission']                        = 'Warning: You do not have permission to modify orders!';
-$_['error_upload']                            = 'Upload required!';
-$_['error_filename']                          = 'Filename must be between 3 and 128 characters!';
-$_['error_filetype']                          = 'Invalid file type!';
+$_['error_curl']                              = 'Warning: CURL error %s(%s)!';
 $_['error_action']                            = 'Warning: Could not complete this action!';
-$_['error_no_selection']                      = 'You did not select any orders!';

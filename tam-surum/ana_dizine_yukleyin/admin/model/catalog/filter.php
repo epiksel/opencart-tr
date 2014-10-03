@@ -1,6 +1,8 @@
 <?php
 class ModelCatalogFilter extends Model {
 	public function addFilter($data) {
+		$this->event->trigger('pre.admin.add.filter', $data);
+
 		$this->db->query("INSERT INTO `" . DB_PREFIX . "filter_group` SET sort_order = '" . (int)$data['sort_order'] . "'");
 
 		$filter_group_id = $this->db->getLastId();
@@ -21,12 +23,14 @@ class ModelCatalogFilter extends Model {
 			}
 		}
 
-		$this->event->trigger('admin_add_filter', array('filter_id' => $filter_id));
+		$this->event->trigger('post.admin.add.filter', $filter_id);
 
 		return $filter_id;
 	}
 
 	public function editFilter($filter_group_id, $data) {
+		$this->event->trigger('pre.admin.edit.filter', $data);
+
 		$this->db->query("UPDATE `" . DB_PREFIX . "filter_group` SET sort_order = '" . (int)$data['sort_order'] . "' WHERE filter_group_id = '" . (int)$filter_group_id . "'");
 
 		$this->db->query("DELETE FROM " . DB_PREFIX . "filter_group_description WHERE filter_group_id = '" . (int)$filter_group_id . "'");
@@ -54,16 +58,18 @@ class ModelCatalogFilter extends Model {
 			}
 		}
 
-		$this->event->trigger('admin_edit_filter');
+		$this->event->trigger('post.admin.edit.filter', $filter_group_id);
 	}
 
 	public function deleteFilter($filter_group_id) {
+		$this->event->trigger('pre.admin.delete.filter', $filter_group_id);
+
 		$this->db->query("DELETE FROM `" . DB_PREFIX . "filter_group` WHERE filter_group_id = '" . (int)$filter_group_id . "'");
 		$this->db->query("DELETE FROM `" . DB_PREFIX . "filter_group_description` WHERE filter_group_id = '" . (int)$filter_group_id . "'");
 		$this->db->query("DELETE FROM `" . DB_PREFIX . "filter` WHERE filter_group_id = '" . (int)$filter_group_id . "'");
 		$this->db->query("DELETE FROM `" . DB_PREFIX . "filter_description` WHERE filter_group_id = '" . (int)$filter_group_id . "'");
 
-		$this->event->trigger('admin_delete_filter');
+		$this->event->trigger('post.admin.delete.filter', $filter_group_id);
 	}
 
 	public function getFilterGroup($filter_group_id) {
@@ -178,7 +184,7 @@ class ModelCatalogFilter extends Model {
 	}
 
 	public function getTotalFilterGroups() {
-      	$query = $this->db->query("SELECT COUNT(*) AS total FROM `" . DB_PREFIX . "filter_group`");
+		$query = $this->db->query("SELECT COUNT(*) AS total FROM `" . DB_PREFIX . "filter_group`");
 
 		return $query->row['total'];
 	}

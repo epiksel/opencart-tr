@@ -6,6 +6,9 @@ $_['heading_title']    = 'İade Nedenleri';
 
 // Text
 $_['text_success']     = 'Başarılı: İade nedeni başarılı bir şekilde değiştirildi!';
+$_['text_list']        = 'İade Nedeni Listesi';
+$_['text_add']         = 'İade Nedeni Ekle';
+$_['text_edit']        = 'İade Nedeni Düzenle';
 
 // Column
 $_['column_name']      = 'İade Neden Adı';

@@ -6,8 +6,9 @@ $_['heading_title']      = 'WordPay';
 
 // Text
 $_['text_payment']       = 'Ödeme Metodları';
+$_['text_edit']					 = 'WorldPay Düzenle';
 $_['text_success']       = 'Başarılı: WordPay hesap detayları başarılı bir şekilde değiştirildi!';
-$_['text_worldpay']    = '<a target="_BLANK" href="https://business.worldpay.com/partner/opencart"><img src="view/image/payment/worldpay.png" alt="Worldpay" title="Worldpay" style="border: 1px solid #EEEEEE;" /></a>';
+$_['text_worldpay']			 = '<a target="_BLANK" href="https://business.worldpay.com/partner/opencart"><img src="view/image/payment/worldpay.png" alt="Worldpay" title="Worldpay" style="border: 1px solid #EEEEEE;" /></a>';
 $_['text_successful']    = 'Açık - Daima Başarılı';
 $_['text_declined']      = 'Açık - Daima Başarısız';
 $_['text_off']           = 'Kapalı';

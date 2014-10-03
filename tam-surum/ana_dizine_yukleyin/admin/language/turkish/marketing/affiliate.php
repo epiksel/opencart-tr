@@ -6,6 +6,9 @@ $_['heading_title']             = 'Ortaklar';
 
 // Text
 $_['text_success']              = 'Başarılı: Oraklık başarılı bir şekilde değiştirildi!';
+$_['text_list']									= 'Ortak Listesi';
+$_['text_add']									= 'Ortak Ekle';
+$_['text_edit']									= 'Ortak Düzenle';
 $_['text_approved']             = '%s hesabını onayladınız!';
 $_['text_balance']              = 'Bakiye';
 $_['text_cheque']               = 'Çek';
@@ -59,8 +62,8 @@ $_['entry_approved']            = 'Onaylandı';
 $_['entry_date_added']          = 'Ekleme Tarihi';
 
 // Help
-$_['help_code']					= 'Ürün tavsiyelerini izlemek için kullanılacak takip kodu.';
-$_['help_commission']			= 'Ortağın her sipariş için alacağı komisyon oranı.';
+$_['help_code'									= 'Ürün tavsiyelerini izlemek için kullanılacak takip kodu.';
+$_['help_commission']						= 'Ortağın her sipariş için alacağı komisyon oranı.';
 
 // Error
 $_['error_permission']          = 'Uyarı: Ortakları düzenleme iznine sahip değilsiniz!';
@@ -68,6 +71,10 @@ $_['error_exists']              = 'Uyarı: E-Posta adresi zaten kayıtlı!';
 $_['error_firstname']           = 'Ad alanı 1 ile 32 karakter arasında olmalı!';
 $_['error_lastname']            = 'Soyadı alanı 1 ile 32 karakter arasında olmalı!';
 $_['error_email']               = 'E-Posta adresi geçersiz!';
+$_['error_cheque']							= 'Alacaklı adı gerekli!';
+$_['error_paypal']							= 'PayPal e-posta adersi geçersiz!';
+$_['error_bank_account_name']		= 'Hesap adı gerekli!';
+$_['error_bank_account_number']	= 'Hesap numarası gerekli!';
 $_['error_telephone']           = 'Telefon alanı 3 ile 32 karakter arasında olmalı!';
 $_['error_password']            = 'Parola alanı 3 ile 20 karakter arasında olmalı!';
 $_['error_confirm']             = 'Girdiğiniz parolalar birbirleri ile uyuşmuyor!';

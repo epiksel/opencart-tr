@@ -7,6 +7,7 @@ $_['heading_title']    = 'Sabit Kargo Fiyatı';
 // Text
 $_['text_shipping']    = 'Kargo Metodları';
 $_['text_success']     = 'Başarılı: Sabit Kargo Fiyatı başarılı bir şekilde değiştirildi!';
+$_['text_edit']        = 'Sabit Kargo Fiyatını Düzenle';
 
 // Entry
 $_['entry_cost']       = 'Fiyatı';

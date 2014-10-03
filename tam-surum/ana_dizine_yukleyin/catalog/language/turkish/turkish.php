@@ -46,6 +46,7 @@ $_['button_remove']         = 'Kaldır';
 $_['button_reorder']        = 'Yeniden Sipariş';
 $_['button_return']         = 'Ürün İade';
 $_['button_shopping']       = 'Alışverişe Devam Et';
+$_['button_submit']         = 'Gönder';
 $_['button_search']         = 'Arama';
 $_['button_shipping']       = 'Kargoyu Uygula';
 $_['button_guest']          = 'Misafir Alışverişi';

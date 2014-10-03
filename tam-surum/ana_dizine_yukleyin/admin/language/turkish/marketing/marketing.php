@@ -2,10 +2,13 @@
 /* Turkceye Ceviren eka7a - http://www.e-piksel.com */
 
 // Heading
-$_['heading_title']			= 'Pazarlama';
+$_['heading_title']			= 'Pazarlama Takip';
 
 // Text
 $_['text_success']			= 'Başarılı: Pazarlama takibi başarılı bir şekilde değiştirildi!';
+$_['text_list']					= 'Pazarlama Takip Listesi';
+$_['text_add']					= 'Pazarlama Takip Ekle';
+$_['text_edit']					= 'Pazarlama Takip Düzenle';
 
 // Column
 $_['column_name']				= 'Kampanya Adı';

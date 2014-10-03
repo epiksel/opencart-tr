@@ -6,6 +6,9 @@ $_['heading_title']											= 'Mağazalar';
 
 // Text
 $_['text_success']											= 'Başarılı: Mağazalar başarılı bir şekilde değiştirildi!';
+$_['text_list']													= 'Mağaza Listesi';
+$_['text_add']													= 'Mağaza Ekle';
+$_['text_edit']													= 'Mağaza Düzenle';
 $_['text_items']												= 'Öğeler';
 $_['text_tax']													= 'Vergiler';
 $_['text_account']											= 'Hesap';

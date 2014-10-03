@@ -7,7 +7,7 @@ class ControllerExtensionPayment extends Controller {
 
 		$this->document->setTitle($this->language->get('heading_title'));
 
-		$this->load->model('setting/extension');
+		$this->load->model('extension/extension');
 
 		$this->getList();
 	}
@@ -15,26 +15,20 @@ class ControllerExtensionPayment extends Controller {
 	public function install() {
 		$this->load->language('extension/payment');
 
-		$this->load->model('setting/extension');
+		$this->load->model('extension/extension');
 
 		if ($this->validate()) {
-			$this->model_setting_extension->install('payment', $this->request->get['extension']);
+			$this->model_extension_extension->install('payment', $this->request->get['extension']);
 
 			$this->load->model('user/user_group');
 
 			$this->model_user_user_group->addPermission($this->user->getId(), 'access', 'payment/' . $this->request->get['extension']);
 			$this->model_user_user_group->addPermission($this->user->getId(), 'modify', 'payment/' . $this->request->get['extension']);
 
+			// Call install method if it exsits
+			$this->load->controller('payment/' . $this->request->get['extension'] . '/install');
+
 			$this->session->data['success'] = $this->language->get('text_success');
-
-			require_once(DIR_APPLICATION . 'controller/payment/' . $this->request->get['extension'] . '.php');
-
-			$class = 'ControllerPayment' . str_replace('_', '', $this->request->get['extension']);
-			$class = new $class($this->registry);
-
-			if (method_exists($class, 'install')) {
-				$class->install();
-			}
 
 			$this->response->redirect($this->url->link('extension/payment', 'token=' . $this->session->data['token'], 'SSL'));
 		}
@@ -47,23 +41,17 @@ class ControllerExtensionPayment extends Controller {
 
 		$this->document->setTitle($this->language->get('heading_title'));
 
-		$this->load->model('setting/extension');
+		$this->load->model('extension/extension');
 
 		if ($this->validate()) {
-			$this->model_setting_extension->uninstall('payment', $this->request->get['extension']);
+			$this->model_extension_extension->uninstall('payment', $this->request->get['extension']);
 
 			$this->load->model('setting/setting');
 
 			$this->model_setting_setting->deleteSetting($this->request->get['extension']);
 
-			require_once(DIR_APPLICATION . 'controller/payment/' . $this->request->get['extension'] . '.php');
-
-			$class = 'ControllerPayment' . str_replace('_', '', $this->request->get['extension']);
-			$class = new $class($this->registry);
-
-			if (method_exists($class, 'uninstall')) {
-				$class->uninstall();
-			}
+			// Call uninstall method if it exsits
+			$this->load->controller('payment/' . $this->request->get['extension'] . '/uninstall');
 
 			$this->session->data['success'] = $this->language->get('text_success');
 
@@ -74,8 +62,21 @@ class ControllerExtensionPayment extends Controller {
 	}
 
 	public function getList() {
-		$data['heading_title'] = $this->language->get('heading_title');
+		$data['breadcrumbs'] = array();
 
+		$data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_home'),
+			'href' => $this->url->link('common/dashboard', 'token=' . $this->session->data['token'], 'SSL')
+		);
+
+		$data['breadcrumbs'][] = array(
+			'text' => $this->language->get('heading_title'),
+			'href' => $this->url->link('extension/feed', 'token=' . $this->session->data['token'], 'SSL')
+		);
+				
+		$data['heading_title'] = $this->language->get('heading_title');
+		
+		$data['text_list'] = $this->language->get('text_list');
 		$data['text_no_results'] = $this->language->get('text_no_results');
 		$data['text_confirm'] = $this->language->get('text_confirm');
 
@@ -102,13 +103,13 @@ class ControllerExtensionPayment extends Controller {
 			$data['success'] = '';
 		}
 
-		$this->load->model('setting/extension');
+		$this->load->model('extension/extension');
 
-		$extensions = $this->model_setting_extension->getInstalled('payment');
+		$extensions = $this->model_extension_extension->getInstalled('payment');
 
 		foreach ($extensions as $key => $value) {
 			if (!file_exists(DIR_APPLICATION . 'controller/payment/' . $value . '.php')) {
-				$this->model_setting_extension->uninstall('payment', $value);
+				$this->model_extension_extension->uninstall('payment', $value);
 
 				unset($extensions[$key]);
 			}
@@ -146,7 +147,7 @@ class ControllerExtensionPayment extends Controller {
 		}
 
 		$data['header'] = $this->load->controller('common/header');
-		$data['menu'] = $this->load->controller('common/menu');
+		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['footer'] = $this->load->controller('common/footer');
 
 		$this->response->setOutput($this->load->view('extension/payment.tpl', $data));

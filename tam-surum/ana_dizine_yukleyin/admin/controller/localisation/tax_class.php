@@ -12,7 +12,7 @@ class ControllerLocalisationTaxClass extends Controller {
 		$this->getList();
 	}
 
-	public function insert() {
+	public function add() {
 		$this->load->language('localisation/tax_class');
 
 		$this->document->setTitle($this->language->get('heading_title'));
@@ -44,7 +44,7 @@ class ControllerLocalisationTaxClass extends Controller {
 		$this->getForm();
 	}
 
-	public function update() {
+	public function edit() {
 		$this->load->language('localisation/tax_class');
 
 		$this->document->setTitle($this->language->get('heading_title'));
@@ -155,7 +155,7 @@ class ControllerLocalisationTaxClass extends Controller {
 			'href' => $this->url->link('localisation/tax_class', 'token=' . $this->session->data['token'] . $url, 'SSL')
 		);
 
-		$data['insert'] = $this->url->link('localisation/tax_class/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
+		$data['insert'] = $this->url->link('localisation/tax_class/add', 'token=' . $this->session->data['token'] . $url, 'SSL');
 		$data['delete'] = $this->url->link('localisation/tax_class/delete', 'token=' . $this->session->data['token'] . $url, 'SSL');
 
 		$data['tax_classes'] = array();
@@ -175,12 +175,13 @@ class ControllerLocalisationTaxClass extends Controller {
 			$data['tax_classes'][] = array(
 				'tax_class_id' => $result['tax_class_id'],
 				'title'        => $result['title'],
-				'edit'         => $this->url->link('localisation/tax_class/update', 'token=' . $this->session->data['token'] . '&tax_class_id=' . $result['tax_class_id'] . $url, 'SSL')
+				'edit'         => $this->url->link('localisation/tax_class/edit', 'token=' . $this->session->data['token'] . '&tax_class_id=' . $result['tax_class_id'] . $url, 'SSL')
 			);
 		}
 
 		$data['heading_title'] = $this->language->get('heading_title');
-
+		
+		$data['text_list'] = $this->language->get('text_list');
 		$data['text_no_results'] = $this->language->get('text_no_results');
 		$data['text_confirm'] = $this->language->get('text_confirm');
 
@@ -249,7 +250,7 @@ class ControllerLocalisationTaxClass extends Controller {
 		$data['order'] = $order;
 
 		$data['header'] = $this->load->controller('common/header');
-		$data['menu'] = $this->load->controller('common/menu');
+		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['footer'] = $this->load->controller('common/footer');
 
 		$this->response->setOutput($this->load->view('localisation/tax_class_list.tpl', $data));
@@ -257,7 +258,8 @@ class ControllerLocalisationTaxClass extends Controller {
 
 	protected function getForm() {
 		$data['heading_title'] = $this->language->get('heading_title');
-
+		
+		$data['text_form'] = !isset($this->request->get['tax_class_id']) ? $this->language->get('text_add') : $this->language->get('text_edit');
 		$data['text_shipping'] = $this->language->get('text_shipping');
 		$data['text_payment'] = $this->language->get('text_payment');
 		$data['text_store'] = $this->language->get('text_store');
@@ -318,9 +320,9 @@ class ControllerLocalisationTaxClass extends Controller {
 		);
 
 		if (!isset($this->request->get['tax_class_id'])) {
-			$data['action'] = $this->url->link('localisation/tax_class/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
+			$data['action'] = $this->url->link('localisation/tax_class/add', 'token=' . $this->session->data['token'] . $url, 'SSL');
 		} else {
-			$data['action'] = $this->url->link('localisation/tax_class/update', 'token=' . $this->session->data['token'] . '&tax_class_id=' . $this->request->get['tax_class_id'] . $url, 'SSL');
+			$data['action'] = $this->url->link('localisation/tax_class/edit', 'token=' . $this->session->data['token'] . '&tax_class_id=' . $this->request->get['tax_class_id'] . $url, 'SSL');
 		}
 
 		$data['cancel'] = $this->url->link('localisation/tax_class', 'token=' . $this->session->data['token'] . $url, 'SSL');
@@ -358,7 +360,7 @@ class ControllerLocalisationTaxClass extends Controller {
 		}
 
 		$data['header'] = $this->load->controller('common/header');
-		$data['menu'] = $this->load->controller('common/menu');
+		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['footer'] = $this->load->controller('common/footer');
 
 		$this->response->setOutput($this->load->view('localisation/tax_class_form.tpl', $data));

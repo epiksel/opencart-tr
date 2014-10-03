@@ -6,6 +6,9 @@ $_['heading_title']     = 'Yorumlar';
 
 // Text
 $_['text_success']      = 'Başarılı: Yorumlar başarılı bir şekilde değiştirildi!';
+$_['text_list']         = 'Yorum Listesi';
+$_['text_add']          = 'Yorum Ekle';
+$_['text_edit']         = 'Yorum Düzenle';
 
 // Column
 $_['column_product']    = 'Ürün';

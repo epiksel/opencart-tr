@@ -12,7 +12,7 @@ class ControllerCatalogProduct extends Controller {
 		$this->getList();
 	}
 
-	public function insert() {
+	public function add() {
 		$this->load->language('catalog/product');
 
 		$this->document->setTitle($this->language->get('heading_title'));
@@ -64,7 +64,7 @@ class ControllerCatalogProduct extends Controller {
 		$this->getForm();
 	}
 
-	public function update() {
+	public function edit() {
 		$this->load->language('catalog/product');
 
 		$this->document->setTitle($this->language->get('heading_title'));
@@ -307,7 +307,19 @@ class ControllerCatalogProduct extends Controller {
 			$url .= '&page=' . $this->request->get['page'];
 		}
 
-		$data['insert'] = $this->url->link('catalog/product/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
+		$data['breadcrumbs'] = array();
+
+		$data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_home'),
+			'href' => $this->url->link('common/dashboard', 'token=' . $this->session->data['token'], 'SSL')
+		);
+
+		$data['breadcrumbs'][] = array(
+			'text' => $this->language->get('heading_title'),
+			'href' => $this->url->link('catalog/product', 'token=' . $this->session->data['token'] . $url, 'SSL')
+		);
+
+		$data['insert'] = $this->url->link('catalog/product/add', 'token=' . $this->session->data['token'] . $url, 'SSL');
 		$data['copy'] = $this->url->link('catalog/product/copy', 'token=' . $this->session->data['token'] . $url, 'SSL');
 		$data['delete'] = $this->url->link('catalog/product/delete', 'token=' . $this->session->data['token'] . $url, 'SSL');
 
@@ -335,7 +347,7 @@ class ControllerCatalogProduct extends Controller {
 			if (is_file(DIR_IMAGE . $result['image'])) {
 				$image = $this->model_tool_image->resize($result['image'], 40, 40);
 			} else {
-				$image = '';
+				$image = $this->model_tool_image->resize('no_image.png', 40, 40);
 			}
 
 			$special = false;
@@ -358,13 +370,14 @@ class ControllerCatalogProduct extends Controller {
 				'price'      => $result['price'],
 				'special'    => $special,
 				'quantity'   => $result['quantity'],
-				'status'     => ($result['status'] ? $this->language->get('text_enabled') : $this->language->get('text_disabled')),
-				'edit'       => $this->url->link('catalog/product/update', 'token=' . $this->session->data['token'] . '&product_id=' . $result['product_id'] . $url, 'SSL')
+				'status'     => ($result['status']) ? $this->language->get('text_enabled') : $this->language->get('text_disabled'),
+				'edit'       => $this->url->link('catalog/product/edit', 'token=' . $this->session->data['token'] . '&product_id=' . $result['product_id'] . $url, 'SSL')
 			);
 		}
 
 		$data['heading_title'] = $this->language->get('heading_title');
-
+		
+		$data['text_list'] = $this->language->get('text_list');
 		$data['text_enabled'] = $this->language->get('text_enabled');
 		$data['text_disabled'] = $this->language->get('text_disabled');
 		$data['text_no_results'] = $this->language->get('text_no_results');
@@ -501,7 +514,7 @@ class ControllerCatalogProduct extends Controller {
 		$data['order'] = $order;
 
 		$data['header'] = $this->load->controller('common/header');
-		$data['menu'] = $this->load->controller('common/menu');
+		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['footer'] = $this->load->controller('common/footer');
 
 		$this->response->setOutput($this->load->view('catalog/product_list.tpl', $data));
@@ -509,7 +522,8 @@ class ControllerCatalogProduct extends Controller {
 
 	protected function getForm() {
 		$data['heading_title'] = $this->language->get('heading_title');
-
+		
+		$data['text_form'] = !isset($this->request->get['product_id']) ? $this->language->get('text_add') : $this->language->get('text_edit');
 		$data['text_enabled'] = $this->language->get('text_enabled');
 		$data['text_disabled'] = $this->language->get('text_disabled');
 		$data['text_none'] = $this->language->get('text_none');
@@ -576,27 +590,7 @@ class ControllerCatalogProduct extends Controller {
 		$data['entry_customer_group'] = $this->language->get('entry_customer_group');
 		$data['entry_reward'] = $this->language->get('entry_reward');
 		$data['entry_layout'] = $this->language->get('entry_layout');
-		$data['entry_profile'] = $this->language->get('entry_profile');
-
-		$data['text_recurring_help'] = $this->language->get('text_recurring_help');
-		$data['text_recurring_title'] = $this->language->get('text_recurring_title');
-		$data['text_recurring_trial'] = $this->language->get('text_recurring_trial');
 		$data['entry_recurring'] = $this->language->get('entry_recurring');
-		$data['entry_recurring_price'] = $this->language->get('entry_recurring_price');
-		$data['entry_recurring_freq'] = $this->language->get('entry_recurring_freq');
-		$data['entry_recurring_cycle'] = $this->language->get('entry_recurring_cycle');
-		$data['entry_recurring_length'] = $this->language->get('entry_recurring_length');
-		$data['entry_trial'] = $this->language->get('entry_trial');
-		$data['entry_trial_price'] = $this->language->get('entry_trial_price');
-		$data['entry_trial_freq'] = $this->language->get('entry_trial_freq');
-		$data['entry_trial_length'] = $this->language->get('entry_trial_length');
-		$data['entry_trial_cycle'] = $this->language->get('entry_trial_cycle');
-
-		$data['text_length_day'] = $this->language->get('text_length_day');
-		$data['text_length_week'] = $this->language->get('text_length_week');
-		$data['text_length_month'] = $this->language->get('text_length_month');
-		$data['text_length_month_semi'] = $this->language->get('text_length_month_semi');
-		$data['text_length_year'] = $this->language->get('text_length_year');
 
 		$data['help_keyword'] = $this->language->get('help_keyword');
 		$data['help_sku'] = $this->language->get('help_sku');
@@ -624,19 +618,20 @@ class ControllerCatalogProduct extends Controller {
 		$data['button_special_add'] = $this->language->get('button_special_add');
 		$data['button_image_add'] = $this->language->get('button_image_add');
 		$data['button_remove'] = $this->language->get('button_remove');
-		$data['button_add_profile'] = $this->language->get('button_add_profile');
+		$data['button_recurring_add'] = $this->language->get('button_recurring_add');
 
 		$data['tab_general'] = $this->language->get('tab_general');
 		$data['tab_data'] = $this->language->get('tab_data');
 		$data['tab_attribute'] = $this->language->get('tab_attribute');
 		$data['tab_option'] = $this->language->get('tab_option');
-		$data['tab_profile'] = $this->language->get('tab_profile');
+		$data['tab_recurring'] = $this->language->get('tab_recurring');
 		$data['tab_discount'] = $this->language->get('tab_discount');
 		$data['tab_special'] = $this->language->get('tab_special');
 		$data['tab_image'] = $this->language->get('tab_image');
 		$data['tab_links'] = $this->language->get('tab_links');
 		$data['tab_reward'] = $this->language->get('tab_reward');
 		$data['tab_design'] = $this->language->get('tab_design');
+		$data['tab_openbay'] = $this->language->get('tab_openbay');
 
 		if (isset($this->error['warning'])) {
 			$data['error_warning'] = $this->error['warning'];
@@ -702,10 +697,22 @@ class ControllerCatalogProduct extends Controller {
 			$url .= '&page=' . $this->request->get['page'];
 		}
 
+		$data['breadcrumbs'] = array();
+
+		$data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_home'),
+			'href' => $this->url->link('common/dashboard', 'token=' . $this->session->data['token'], 'SSL')
+		);
+
+		$data['breadcrumbs'][] = array(
+			'text' => $this->language->get('heading_title'),
+			'href' => $this->url->link('catalog/product', 'token=' . $this->session->data['token'] . $url, 'SSL')
+		);
+
 		if (!isset($this->request->get['product_id'])) {
-			$data['action'] = $this->url->link('catalog/product/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
+			$data['action'] = $this->url->link('catalog/product/add', 'token=' . $this->session->data['token'] . $url, 'SSL');
 		} else {
-			$data['action'] = $this->url->link('catalog/product/update', 'token=' . $this->session->data['token'] . '&product_id=' . $this->request->get['product_id'] . $url, 'SSL');
+			$data['action'] = $this->url->link('catalog/product/edit', 'token=' . $this->session->data['token'] . '&product_id=' . $this->request->get['product_id'] . $url, 'SSL');
 		}
 
 		$data['cancel'] = $this->url->link('catalog/product', 'token=' . $this->session->data['token'] . $url, 'SSL');
@@ -728,6 +735,26 @@ class ControllerCatalogProduct extends Controller {
 			$data['product_description'] = array();
 		}
 
+		if (isset($this->request->post['image'])) {
+			$data['image'] = $this->request->post['image'];
+		} elseif (!empty($product_info)) {
+			$data['image'] = $product_info['image'];
+		} else {
+			$data['image'] = '';
+		}
+
+		$this->load->model('tool/image');
+
+		if (isset($this->request->post['image']) && is_file(DIR_IMAGE . $this->request->post['image'])) {
+			$data['thumb'] = $this->model_tool_image->resize($this->request->post['image'], 100, 100);
+		} elseif (!empty($product_info) && is_file(DIR_IMAGE . $product_info['image'])) {
+			$data['thumb'] = $this->model_tool_image->resize($product_info['image'], 100, 100);
+		} else {
+			$data['thumb'] = $this->model_tool_image->resize('no_image.png', 100, 100);
+		}
+
+		$data['placeholder'] = $this->model_tool_image->resize('no_image.png', 100, 100);
+		
 		if (isset($this->request->post['model'])) {
 			$data['model'] = $this->request->post['model'];
 		} elseif (!empty($product_info)) {
@@ -828,16 +855,16 @@ class ControllerCatalogProduct extends Controller {
 			$data['price'] = '';
 		}
 
-		$this->load->model('catalog/profile');
+		$this->load->model('catalog/recurring');
 
-		$data['profiles'] = $this->model_catalog_profile->getProfiles();
+		$data['recurrings'] = $this->model_catalog_recurring->getRecurrings();
 
-		if (isset($this->request->post['product_profiles'])) {
-			$data['product_profiles'] = $this->request->post['product_profiles'];
+		if (isset($this->request->post['product_recurrings'])) {
+			$data['product_recurrings'] = $this->request->post['product_recurrings'];
 		} elseif (!empty($product_info)) {
-			$data['product_profiles'] = $this->model_catalog_product->getProfiles($product_info['product_id']);
+			$data['product_recurrings'] = $this->model_catalog_product->getRecurrings($product_info['product_id']);
 		} else {
-			$data['product_profiles'] = array();
+			$data['product_recurrings'] = array();
 		}
 
 		$this->load->model('localisation/tax_class');
@@ -855,7 +882,7 @@ class ControllerCatalogProduct extends Controller {
 		if (isset($this->request->post['date_available'])) {
 			$data['date_available'] = $this->request->post['date_available'];
 		} elseif (!empty($product_info)) {
-			$data['date_available'] = ($product_info['date_available'] != '0000-00-00' ? $product_info['date_available'] : '');
+			$data['date_available'] = ($product_info['date_available'] != '0000-00-00') ? $product_info['date_available'] : '';
 		} else {
 			$data['date_available'] = date('Y-m-d');
 		}
@@ -1011,7 +1038,7 @@ class ControllerCatalogProduct extends Controller {
 			if ($category_info) {
 				$data['product_categories'][] = array(
 					'category_id' => $category_info['category_id'],
-					'name'        => ($category_info['path'] ? $category_info['path'] . ' &gt; ' : '') . $category_info['name']
+					'name' => ($category_info['path']) ? $category_info['path'] . ' &gt; ' . $category_info['name'] : $category_info['name']
 				);
 			}
 		}
@@ -1139,8 +1166,8 @@ class ControllerCatalogProduct extends Controller {
 				'quantity'          => $product_discount['quantity'],
 				'priority'          => $product_discount['priority'],
 				'price'             => $product_discount['price'],
-				'date_start'        => ($product_discount['date_start'] != '0000-00-00' ? $product_discount['date_start'] : ''),
-				'date_end'          => ($product_discount['date_end'] != '0000-00-00' ? $product_discount['date_end'] : '')
+				'date_start'        => ($product_discount['date_start'] != '0000-00-00') ? $product_discount['date_start'] : '',
+				'date_end'          => ($product_discount['date_end'] != '0000-00-00') ? $product_discount['date_end'] : ''
 			);
 		}
 
@@ -1159,27 +1186,9 @@ class ControllerCatalogProduct extends Controller {
 				'customer_group_id' => $product_special['customer_group_id'],
 				'priority'          => $product_special['priority'],
 				'price'             => $product_special['price'],
-				'date_start'        => ($product_special['date_start'] != '0000-00-00' ? $product_special['date_start'] : ''),
-				'date_end'          => ($product_special['date_end'] != '0000-00-00' ? $product_special['date_end'] :  '')
+				'date_start'        => ($product_special['date_start'] != '0000-00-00') ? $product_special['date_start'] : '',
+				'date_end'          => ($product_special['date_end'] != '0000-00-00') ? $product_special['date_end'] :  ''
 			);
-		}
-
-		if (isset($this->request->post['image'])) {
-			$data['image'] = $this->request->post['image'];
-		} elseif (!empty($product_info)) {
-			$data['image'] = $product_info['image'];
-		} else {
-			$data['image'] = '';
-		}
-
-		$this->load->model('tool/image');
-
-		if (isset($this->request->post['image']) && is_file(DIR_IMAGE . $this->request->post['image'])) {
-			$data['thumb'] = $this->model_tool_image->resize($this->request->post['image'], 100, 100);
-		} elseif (!empty($product_info) && is_file(DIR_IMAGE . $product_info['image'])) {
-			$data['thumb'] = $this->model_tool_image->resize($product_info['image'], 100, 100);
-		} else {
-			$data['thumb'] = '';
 		}
 
 		// Images
@@ -1196,13 +1205,15 @@ class ControllerCatalogProduct extends Controller {
 		foreach ($product_images as $product_image) {
 			if (is_file(DIR_IMAGE . $product_image['image'])) {
 				$image = $product_image['image'];
+				$thumb = $product_image['image'];
 			} else {
 				$image = '';
+				$thumb = 'no_image.png';
 			}
 
 			$data['product_images'][] = array(
 				'image'      => $image,
-				'thumb'      => $this->model_tool_image->resize($image, 100, 100),
+				'thumb'      => $this->model_tool_image->resize($thumb, 100, 100),
 				'sort_order' => $product_image['sort_order']
 			);
 		}
@@ -1281,7 +1292,7 @@ class ControllerCatalogProduct extends Controller {
 		$data['layouts'] = $this->model_design_layout->getLayouts();
 
 		$data['header'] = $this->load->controller('common/header');
-		$data['menu'] = $this->load->controller('common/menu');
+		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['footer'] = $this->load->controller('common/footer');
 
 		$this->response->setOutput($this->load->view('catalog/product_form.tpl', $data));

@@ -15,7 +15,7 @@ $_['text_remove']						= 'Geçici dosyalar kaldırılıyor!';
 $_['text_clear']						= 'Başarılı: Tüm geçici dosyalar temizlendi!';
 
 // Entry
-$_['entry_upload']					= 'Yükleme dosyası';
+$_['entry_upload']					= 'Dosya Yükle';
 $_['entry_overwrite']				= 'Dosyalar üzerine yazılacak';
 $_['entry_progress']				= 'İlerleme';
 

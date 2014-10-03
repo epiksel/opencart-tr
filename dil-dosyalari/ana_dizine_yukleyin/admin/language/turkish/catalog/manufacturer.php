@@ -6,6 +6,9 @@ $_['heading_title']			= 'Üreticiler';
 
 // Text
 $_['text_success']			= 'Başarılı: Üretici başarılı bir şekilde değiştirildi!';
+$_['text_list']         = 'Üretici Listesi';
+$_['text_add']          = 'Üretici Ekle';
+$_['text_edit']         = 'Üretici Düzenle';
 $_['text_default']			= 'Varsayılan Mağaza';
 $_['text_percent']			= 'Yüzde';
 $_['text_amount']				= 'Sabit Tutar';

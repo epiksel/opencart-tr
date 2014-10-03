@@ -7,6 +7,7 @@ $_['heading_title']    = 'Citylink';
 // Text
 $_['text_shipping']    = 'Kargo Metodları';
 $_['text_success']     = 'Success: You have modified Citylink shipping!';
+$_['text_edit']				 = 'Citylink Düzenle';
 
 // Entry
 $_['entry_rate']       = 'Citylink Rates';

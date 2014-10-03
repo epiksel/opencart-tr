@@ -7,6 +7,7 @@ $_['heading_title']      = 'Kapıda Ödeme';
 // Text
 $_['text_payment']       = 'Ödeme Metodları';
 $_['text_success']       = 'Başarılı: Kapıda Ödeme hesap detayları başarılı bir şekilde değiştirildi!';
+$_['text_edit']					 = 'Kapıda Ödeme Düzenle';
 
 // Entry
 $_['entry_total']        = 'Toplam';
@@ -16,7 +17,7 @@ $_['entry_status']       = 'Durumu';
 $_['entry_sort_order']   = 'Sıralama';
 
 // Help
-$_['help_total']		 = 'Bu ödeme metodunun aktif olması için toplam sipariş tutarını giriniz.';
+$_['help_total']				 = 'Bu ödeme metodunun aktif olması için toplam sipariş tutarını giriniz.';
 
 // Error
 $_['error_permission']   = 'Uyarı: Kapıda Ödeme ile ödeme metodunu düzenleme iznine sahip değilsiniz!';

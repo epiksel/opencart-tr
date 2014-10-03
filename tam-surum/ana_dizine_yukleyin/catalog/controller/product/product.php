@@ -62,7 +62,7 @@ class ControllerProductProduct extends Controller {
 
 				$data['breadcrumbs'][] = array(
 					'text' => $category_info['name'],
-					'href' => $this->url->link('product/category', 'path=' . $this->request->get['path'].$url)
+					'href' => $this->url->link('product/category', 'path=' . $this->request->get['path'] . $url)
 				);
 			}
 		}
@@ -453,8 +453,8 @@ class ControllerProductProduct extends Controller {
 				}
 			}
 
-			$data['text_payment_profile'] = $this->language->get('text_payment_profile');
-			$data['profiles'] = $this->model_catalog_product->getProfiles($this->request->get['product_id']);
+			$data['text_payment_recurring'] = $this->language->get('text_payment_recurring');
+			$data['recurrings'] = $this->model_catalog_product->getProfiles($this->request->get['product_id']);
 
 			$this->model_catalog_product->updateViewed($this->request->get['product_id']);
 
@@ -536,6 +536,8 @@ class ControllerProductProduct extends Controller {
 
 			$data['continue'] = $this->url->link('common/home');
 
+			$this->response->addHeader($this->request->server['SERVER_PROTOCOL'] . ' 404 Not Found');
+
 			$data['column_left'] = $this->load->controller('common/column_left');
 			$data['column_right'] = $this->load->controller('common/column_right');
 			$data['content_top'] = $this->load->controller('common/content_top');
@@ -573,7 +575,7 @@ class ControllerProductProduct extends Controller {
 		foreach ($results as $result) {
 			$data['reviews'][] = array(
 				'author'     => $result['author'],
-				'text'       => $result['text'],
+				'text'       => nl2br($result['text']),
 				'rating'     => (int)$result['rating'],
 				'date_added' => date($this->language->get('date_format_short'), strtotime($result['date_added']))
 			);
@@ -606,10 +608,10 @@ class ControllerProductProduct extends Controller {
 			$product_id = 0;
 		}
 
-		if (isset($this->request->post['profile_id'])) {
-			$profile_id = $this->request->post['profile_id'];
+		if (isset($this->request->post['recurring_id'])) {
+			$recurring_id = $this->request->post['recurring_id'];
 		} else {
-			$profile_id = 0;
+			$recurring_id = 0;
 		}
 
 		if (isset($this->request->post['quantity'])) {
@@ -619,11 +621,11 @@ class ControllerProductProduct extends Controller {
 		}
 
 		$product_info = $this->model_catalog_product->getProduct($product_id);
-		$profile_info = $this->model_catalog_product->getProfile($product_id, $profile_id);
+		$recurring_info = $this->model_catalog_product->getProfile($product_id, $recurring_id);
 
 		$json = array();
 
-		if ($product_info && $profile_info) {
+		if ($product_info && $recurring_info) {
 			if (!$json) {
 				$frequencies = array(
 					'day'        => $this->language->get('text_day'),
@@ -633,19 +635,19 @@ class ControllerProductProduct extends Controller {
 					'year'       => $this->language->get('text_year'),
 				);
 
-				if ($profile_info['trial_status'] == 1) {
-					$price = $this->currency->format($this->tax->calculate($profile_info['trial_price'] * $quantity, $product_info['tax_class_id'], $this->config->get('config_tax')));
-					$trial_text = sprintf($this->language->get('text_trial_description'), $price, $profile_info['trial_cycle'], $frequencies[$profile_info['trial_frequency']], $profile_info['trial_duration']) . ' ';
+				if ($recurring_info['trial_status'] == 1) {
+					$price = $this->currency->format($this->tax->calculate($recurring_info['trial_price'] * $quantity, $product_info['tax_class_id'], $this->config->get('config_tax')));
+					$trial_text = sprintf($this->language->get('text_trial_description'), $price, $recurring_info['trial_cycle'], $frequencies[$recurring_info['trial_frequency']], $recurring_info['trial_duration']) . ' ';
 				} else {
 					$trial_text = '';
 				}
 
-				$price = $this->currency->format($this->tax->calculate($profile_info['price'] * $quantity, $product_info['tax_class_id'], $this->config->get('config_tax')));
+				$price = $this->currency->format($this->tax->calculate($recurring_info['price'] * $quantity, $product_info['tax_class_id'], $this->config->get('config_tax')));
 
-				if ($profile_info['duration']) {
-					$text = $trial_text . sprintf($this->language->get('text_payment_description'), $price, $profile_info['cycle'], $frequencies[$profile_info['frequency']], $profile_info['duration']);
+				if ($recurring_info['duration']) {
+					$text = $trial_text . sprintf($this->language->get('text_payment_description'), $price, $recurring_info['cycle'], $frequencies[$recurring_info['frequency']], $recurring_info['duration']);
 				} else {
-					$text = $trial_text . sprintf($this->language->get('text_payment_until_canceled_description'), $price, $profile_info['cycle'], $frequencies[$profile_info['frequency']], $profile_info['duration']);
+					$text = $trial_text . sprintf($this->language->get('text_payment_until_canceled_description'), $price, $recurring_info['cycle'], $frequencies[$recurring_info['frequency']], $recurring_info['duration']);
 				}
 
 				$json['success'] = $text;
@@ -677,7 +679,7 @@ class ControllerProductProduct extends Controller {
 			if (empty($this->session->data['captcha']) || ($this->session->data['captcha'] != $this->request->post['captcha'])) {
 				$json['error'] = $this->language->get('error_captcha');
 			}
-			
+
 			unset($this->session->data['captcha']);
 
 			if (!isset($json['error'])) {
@@ -687,82 +689,6 @@ class ControllerProductProduct extends Controller {
 
 				$json['success'] = $this->language->get('text_success');
 			}
-		}
-
-		$this->response->addHeader('Content-Type: application/json');
-		$this->response->setOutput(json_encode($json));
-	}
-
-	public function upload() {
-		$this->load->language('product/product');
-
-		$json = array();
-
-		if (!empty($this->request->files['file']['name']) && is_file($this->request->files['file']['tmp_name'])) {
-			// Sanitize the filename
-			$filename = basename(preg_replace('/[^a-zA-Z0-9\.\-\s+]/', '', html_entity_decode($this->request->files['file']['name'], ENT_QUOTES, 'UTF-8')));
-
-			// Validate the filename length
-			if ((utf8_strlen($filename) < 3) || (utf8_strlen($filename) > 64)) {
-				$json['error'] = $this->language->get('error_filename');
-			}
-
-			// Allowed file extension types
-			$allowed = array();
-
-			$extension_allowed = preg_replace('~\r?\n~', "\n", $this->config->get('config_file_ext_allowed'));
-
-			$filetypes = explode("\n", $extension_allowed);
-
-			foreach ($filetypes as $filetype) {
-				$allowed[] = trim($filetype);
-			}
-
-			if (!in_array(strtolower(substr(strrchr($filename, '.'), 1)), $allowed)) {
-				$json['error'] = $this->language->get('error_filetype');
-			}
-
-			// Allowed file mime types
-			$allowed = array();
-
-			$mime_allowed = preg_replace('~\r?\n~', "\n", $this->config->get('config_file_mime_allowed'));
-
-			$filetypes = explode("\n", $mime_allowed);
-
-			foreach ($filetypes as $filetype) {
-				$allowed[] = trim($filetype);
-			}
-
-			if (!in_array($this->request->files['file']['type'], $allowed)) {
-				$json['error'] = $this->language->get('error_filetype');
-			}
-
-			// Check to see if any PHP files are trying to be uploaded
-			$content = file_get_contents($this->request->files['file']['tmp_name']);
-
-			if (preg_match('/\<\?php/i', $content)) {
-				$json['error'] = $this->language->get('error_filetype');
-			}
-
-			// Return any upload error
-			if ($this->request->files['file']['error'] != UPLOAD_ERR_OK) {
-				$json['error'] = $this->language->get('error_upload_' . $this->request->files['file']['error']);
-			}
-		} else {
-			$json['error'] = $this->language->get('error_upload');
-		}
-
-		if (!$json) {
-			$file = $filename . '.' . md5(mt_rand());
-
-			move_uploaded_file($this->request->files['file']['tmp_name'], DIR_DOWNLOAD . $file);
-
-			// Hide the uploaded file name so people can not link to it directly.
-			$this->load->model('tool/upload');
-
-			$json['code'] = $this->model_tool_upload->addUpload($filename, $file);
-
-			$json['success'] = $this->language->get('text_upload');
 		}
 
 		$this->response->addHeader('Content-Type: application/json');

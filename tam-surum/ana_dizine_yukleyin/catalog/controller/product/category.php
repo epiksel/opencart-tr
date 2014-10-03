@@ -364,14 +364,14 @@ class ControllerProductCategory extends Controller {
 
 			$data['pagination'] = $pagination->render();
 
-			$this->document->addLink($this->url->link('product/category', 'path=' . $this->request->get['path'] . $url . '&page='. $pagination->page), 'canonical');
+			$this->document->addLink($this->url->link('product/category', 'path=' . $this->request->get['path'] . $url . '&page=' . $pagination->page), 'canonical');
 
 			if ($pagination->limit && ceil($pagination->total / $pagination->limit) > $pagination->page) {
-				$this->document->addLink($this->url->link('product/category', 'path=' . $this->request->get['path'] . $url . '&page='. ($pagination->page + 1)), 'next');
+				$this->document->addLink($this->url->link('product/category', 'path=' . $this->request->get['path'] . $url . '&page=' . ($pagination->page + 1)), 'next');
 			}
 
 			if ($pagination->page > 1) {
-				$this->document->addLink($this->url->link('product/category', 'path=' . $this->request->get['path'] . $url . '&page='. ($pagination->page - 1)), 'prev');
+				$this->document->addLink($this->url->link('product/category', 'path=' . $this->request->get['path'] . $url . '&page=' . ($pagination->page - 1)), 'prev');
 			}
 
 			$data['results'] = sprintf($this->language->get('text_pagination'), ($product_total) ? (($page - 1) * $limit) + 1 : 0, ((($page - 1) * $limit) > ($product_total - $limit)) ? $product_total : ((($page - 1) * $limit) + $limit), $product_total, ceil($product_total / $limit));
@@ -435,6 +435,8 @@ class ControllerProductCategory extends Controller {
 			$data['button_continue'] = $this->language->get('button_continue');
 
 			$data['continue'] = $this->url->link('common/home');
+
+			$this->response->addHeader($this->request->server['SERVER_PROTOCOL'] . ' 404 Not Found');
 
 			$data['column_left'] = $this->load->controller('common/column_left');
 			$data['column_right'] = $this->load->controller('common/column_right');

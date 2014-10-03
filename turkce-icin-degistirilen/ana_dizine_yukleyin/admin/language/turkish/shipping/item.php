@@ -7,6 +7,7 @@ $_['heading_title']    = 'Parça Başına Kargo Fiyatı';
 // Text
 $_['text_shipping']    = 'Kargo Metodları';
 $_['text_success']     = 'Başarılı: Parça Başına Kargo Fiyatı başarılı bir şekilde değiştirildi!';
+$_['text_edit']        = 'Parça Başına Kargo Düzenle';
 
 // Entry
 $_['entry_cost']       = 'Fiyatı';

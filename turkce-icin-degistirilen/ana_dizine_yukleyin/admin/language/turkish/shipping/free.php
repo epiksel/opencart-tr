@@ -7,6 +7,7 @@ $_['heading_title']    = 'Ücretsiz Kargo';
 // Text
 $_['text_shipping']    = 'Kargo Metodları';
 $_['text_success']     = 'Başarılı: Ücretsiz Kargo başarılı bir şekilde değiştirildi!';
+$_['text_edit']        = 'Ücretsiz Kargo Düzenle';
 
 // Entry
 $_['entry_total']      = 'Toplam';

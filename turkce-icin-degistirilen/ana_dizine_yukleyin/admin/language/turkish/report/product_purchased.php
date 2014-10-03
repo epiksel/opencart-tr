@@ -5,6 +5,7 @@
 $_['heading_title']     = 'Satılan Ürünler Raporu';
 
 // Text
+$_['text_list']					= 'Satılan Ürünler Listesi';
 $_['text_all_status']   = 'Tüm Durumlar';
 
 // Column
@@ -17,5 +18,5 @@ $_['column_total']      = 'Toplam';
 
 // Entry
 $_['entry_date_start']	= 'Başlangıç';
-$_['entry_date_end']	= 'Bitiş';
+$_['entry_date_end']		= 'Bitiş';
 $_['entry_status']      = 'Durumu';

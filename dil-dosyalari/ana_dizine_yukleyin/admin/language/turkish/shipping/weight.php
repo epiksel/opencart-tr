@@ -7,6 +7,7 @@ $_['heading_title']    = 'Ağırlık Orantılı Kargo';
 // Text
 $_['text_shipping']    = 'Kargo Metodları';
 $_['text_success']     = 'Başarılı: Ağırlık orantılı kargo başarılı bir şekilde değiştirildi!';
+$_['text_edit']        = 'Ağırlık Orantılı Kargo Düzenle';
 
 // Entry
 $_['entry_rate']       = 'Değer';

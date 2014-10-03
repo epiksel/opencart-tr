@@ -6,6 +6,9 @@ $_['heading_title']       = 'Seçenekler';
 
 // Text
 $_['text_success']        = 'Başarılı: Seçenekler başarılı bir şekilde değiştirildi!';
+$_['text_list']           = 'Seçenek Listesi';
+$_['text_add']            = 'Seçenek Ekle';
+$_['text_edit']           = 'Seçenek Düzenle';
 $_['text_choose']         = 'Seçiniz';
 $_['text_select']         = 'Seçenek';
 $_['text_radio']          = 'Radyo Düğmesi';

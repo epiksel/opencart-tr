@@ -12,7 +12,7 @@ class ControllerLocalisationStockStatus extends Controller {
 		$this->getList();
 	}
 
-	public function insert() {
+	public function add() {
 		$this->load->language('localisation/stock_status');
 
 		$this->document->setTitle($this->language->get('heading_title'));
@@ -44,7 +44,7 @@ class ControllerLocalisationStockStatus extends Controller {
 		$this->getForm();
 	}
 
-	public function update() {
+	public function edit() {
 		$this->load->language('localisation/stock_status');
 
 		$this->document->setTitle($this->language->get('heading_title'));
@@ -155,7 +155,7 @@ class ControllerLocalisationStockStatus extends Controller {
 			'href' => $this->url->link('localisation/stock_status', 'token=' . $this->session->data['token'] . $url, 'SSL')
 		);
 
-		$data['insert'] = $this->url->link('localisation/stock_status/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
+		$data['insert'] = $this->url->link('localisation/stock_status/add', 'token=' . $this->session->data['token'] . $url, 'SSL');
 		$data['delete'] = $this->url->link('localisation/stock_status/delete', 'token=' . $this->session->data['token'] . $url, 'SSL');
 
 		$data['stock_statuses'] = array();
@@ -175,12 +175,13 @@ class ControllerLocalisationStockStatus extends Controller {
 			$data['stock_statuses'][] = array(
 				'stock_status_id' => $result['stock_status_id'],
 				'name'            => $result['name'],
-				'edit'            => $this->url->link('localisation/stock_status/update', 'token=' . $this->session->data['token'] . '&stock_status_id=' . $result['stock_status_id'] . $url, 'SSL')
+				'edit'            => $this->url->link('localisation/stock_status/edit', 'token=' . $this->session->data['token'] . '&stock_status_id=' . $result['stock_status_id'] . $url, 'SSL')
 			);
 		}
 
 		$data['heading_title'] = $this->language->get('heading_title');
-
+		
+		$data['text_list'] = $this->language->get('text_list');
 		$data['text_no_results'] = $this->language->get('text_no_results');
 		$data['text_confirm'] = $this->language->get('text_confirm');
 
@@ -249,7 +250,7 @@ class ControllerLocalisationStockStatus extends Controller {
 		$data['order'] = $order;
 
 		$data['header'] = $this->load->controller('common/header');
-		$data['menu'] = $this->load->controller('common/menu');
+		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['footer'] = $this->load->controller('common/footer');
 
 		$this->response->setOutput($this->load->view('localisation/stock_status_list.tpl', $data));
@@ -257,7 +258,9 @@ class ControllerLocalisationStockStatus extends Controller {
 
 	protected function getForm() {
 		$data['heading_title'] = $this->language->get('heading_title');
-
+		
+		$data['text_form'] = !isset($this->request->get['stock_status_id']) ? $this->language->get('text_add') : $this->language->get('text_edit');
+		
 		$data['entry_name'] = $this->language->get('entry_name');
 		$data['entry_sort_order'] = $this->language->get('entry_sort_order');
 
@@ -303,9 +306,9 @@ class ControllerLocalisationStockStatus extends Controller {
 		);
 
 		if (!isset($this->request->get['stock_status_id'])) {
-			$data['action'] = $this->url->link('localisation/stock_status/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
+			$data['action'] = $this->url->link('localisation/stock_status/add', 'token=' . $this->session->data['token'] . $url, 'SSL');
 		} else {
-			$data['action'] = $this->url->link('localisation/stock_status/update', 'token=' . $this->session->data['token'] . '&stock_status_id=' . $this->request->get['stock_status_id'] . $url, 'SSL');
+			$data['action'] = $this->url->link('localisation/stock_status/edit', 'token=' . $this->session->data['token'] . '&stock_status_id=' . $this->request->get['stock_status_id'] . $url, 'SSL');
 		}
 
 		$data['cancel'] = $this->url->link('localisation/stock_status', 'token=' . $this->session->data['token'] . $url, 'SSL');
@@ -323,7 +326,7 @@ class ControllerLocalisationStockStatus extends Controller {
 		}
 
 		$data['header'] = $this->load->controller('common/header');
-		$data['menu'] = $this->load->controller('common/menu');
+		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['footer'] = $this->load->controller('common/footer');
 
 		$this->response->setOutput($this->load->view('localisation/stock_status_form.tpl', $data));

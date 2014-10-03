@@ -6,6 +6,9 @@ $_['heading_title']    = 'Sipariş Durumları';
 
 // Text
 $_['text_success']     = 'Başarılı: Sipariş durumu başarılı bir şekilde değiştirildi!';
+$_['text_list']        = 'Sipariş Durumu Listesi';
+$_['text_add']         = 'Sipariş Durumu Ekle';
+$_['text_edit']        = 'Sipariş Durumu Düzenle';
 
 // Column
 $_['column_name']      = 'Sipariş Durum Adı';

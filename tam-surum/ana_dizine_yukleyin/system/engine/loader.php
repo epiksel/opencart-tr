@@ -6,13 +6,7 @@ final class Loader {
 		$this->registry = $registry;
 	}
 
-	public function controller($route) {
-		// function arguments
-		$args = func_get_args();
-
-		// Remove the route
-		array_shift($args);
-
+	public function controller($route, $args = array()) {
 		$action = new Action($route, $args);
 
 		return $action->execute($this->registry);
@@ -28,21 +22,6 @@ final class Loader {
 			$this->registry->set('model_' . str_replace('/', '_', $model), new $class($this->registry));
 		} else {
 			trigger_error('Error: Could not load model ' . $file . '!');
-			exit();
-		}
-	}
-
-	public function event($model) {
-		$file = DIR_APPLICATION . 'event/' . $model . '.php';
-
-		$class = 'Event' . preg_replace('/[^a-zA-Z0-9]/', '', $model);
-
-		if (file_exists($file)) {
-			include_once($file);
-
-			return new $class($this->registry);
-		} else {
-			trigger_error('Error: Could not load event ' . $file . '!');
 			exit();
 		}
 	}

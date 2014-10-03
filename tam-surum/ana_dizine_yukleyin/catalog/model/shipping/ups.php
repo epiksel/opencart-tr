@@ -135,7 +135,7 @@ class ModelShippingUps extends Model {
 			$xml .= '		<Shipper>';
 			$xml .= '			<Address>';
 			$xml .= '				<City>' . $this->config->get('ups_city') . '</City>';
-			$xml .= '				<StateProvinceCode>'. $this->config->get('ups_state') . '</StateProvinceCode>';
+			$xml .= '				<StateProvinceCode>' . $this->config->get('ups_state') . '</StateProvinceCode>';
 			$xml .= '				<CountryCode>' . $this->config->get('ups_country') . '</CountryCode>';
 			$xml .= '				<PostalCode>' . $this->config->get('ups_postcode') . '</PostalCode>';
 			$xml .= '			</Address>';
@@ -148,7 +148,7 @@ class ModelShippingUps extends Model {
 			$xml .= '				<PostalCode>' . $address['postcode'] . '</PostalCode>';
 
 			if ($this->config->get('ups_quote_type') == 'residential') {
-				 $xml .= '				<ResidentialAddressIndicator />';
+				$xml .= '				<ResidentialAddressIndicator />';
 			}
 
 			$xml .= '			</Address>';
@@ -156,7 +156,7 @@ class ModelShippingUps extends Model {
 			$xml .= '		<ShipFrom>';
 			$xml .= '			<Address>';
 			$xml .= '				<City>' . $this->config->get('ups_city') . '</City>';
-			$xml .= '				<StateProvinceCode>'. $this->config->get('ups_state') . '</StateProvinceCode>';
+			$xml .= '				<StateProvinceCode>' . $this->config->get('ups_state') . '</StateProvinceCode>';
 			$xml .= '				<CountryCode>' . $this->config->get('ups_country') . '</CountryCode>';
 			$xml .= '				<PostalCode>' . $this->config->get('ups_postcode') . '</PostalCode>';
 			$xml .= '			</Address>';
@@ -275,13 +275,15 @@ class ModelShippingUps extends Model {
 				$title .= ' (' . $this->language->get('text_weight') . ' ' . $this->weight->format($weight, $this->config->get('ups_weight_class_id')) . ')';
 			}
 
-			$method_data = array(
-				'code'       => 'ups',
-				'title'      => $title,
-				'quote'      => $quote_data,
-				'sort_order' => $this->config->get('ups_sort_order'),
-				'error'      => $error
-			);
+			if ($quote_data || $error) {
+				$method_data = array(
+					'code'       => 'ups',
+					'title'      => $title,
+					'quote'      => $quote_data,
+					'sort_order' => $this->config->get('ups_sort_order'),
+					'error'      => $error
+				);
+			}
 		}
 
 		return $method_data;

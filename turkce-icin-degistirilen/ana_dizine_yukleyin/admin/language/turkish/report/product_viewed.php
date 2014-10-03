@@ -5,6 +5,7 @@
 $_['heading_title']			= 'Ürün Görüntüleme Raporu';
 
 // Text
+$_['text_list']					= 'Ürün Görüntüleme Listesi';
 $_['text_success']			= 'Başarılı: Ürün görüntüle rapor istatistikleri sıfırlandı!';
 
 // Column

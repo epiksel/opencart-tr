@@ -1,9 +1,42 @@
+function getURLVar(key) {
+	var value = [];
+
+	var query = String(document.location).split('?');
+
+	if (query[1]) {
+		var part = query[1].split('&');
+
+		for (i = 0; i < part.length; i++) {
+			var data = part[i].split('=');
+
+			if (data[0] && data[1]) {
+				value[data[0]] = data[1];
+			}
+		}
+
+		if (value[key]) {
+			return value[key];
+		} else {
+			return '';
+		}
+	}
+}
+
 $(document).ready(function() {
+	// Highlight any found errors
+	$('.text-danger').each(function() {
+		var element = $(this).parent().parent();
+		
+		if (element.hasClass('form-group')) {
+			element.addClass('has-error');
+		}
+	});
+		
 	// Currency
-	$('#currency a').on('click', function(e) {
+	$('#currency .currency-select').on('click', function(e) {
 		e.preventDefault();
 
-		$('#currency input[name=\'code\']').attr('value', $(this).attr('href'));
+		$('#currency input[name=\'code\']').attr('value', $(this).attr('name'));
 
 		$('#currency').submit();
 	});
@@ -96,30 +129,6 @@ $(document).ready(function() {
 	});
 });
 
-function getURLVar(key) {
-	var value = [];
-
-	var query = String(document.location).split('?');
-
-	if (query[1]) {
-		var part = query[1].split('&');
-
-		for (i = 0; i < part.length; i++) {
-			var data = part[i].split('=');
-
-			if (data[0] && data[1]) {
-				value[data[0]] = data[1];
-			}
-		}
-
-		if (value[key]) {
-			return value[key];
-		} else {
-			return '';
-		}
-	}
-}
-
 // Cart add remove functions
 var cart = {
 	'add': function(product_id, quantity) {
@@ -154,7 +163,7 @@ var cart = {
 	},
 	'update': function(key, quantity) {
 		$.ajax({
-			url: 'index.php?route=checkout/cart/update',
+			url: 'index.php?route=checkout/cart/edit',
 			type: 'post',
 			data: 'key=' + key + '&quantity=' + (typeof(quantity) != 'undefined' ? quantity : 1),
 			dataType: 'json',

@@ -1,7 +1,5 @@
 <?php
-
 class ControllerPaymentBluepayredirect extends Controller {
-
 	private $error = array();
 
 	public function index() {
@@ -21,14 +19,15 @@ class ControllerPaymentBluepayredirect extends Controller {
 		}
 
 		$data['heading_title'] = $this->language->get('heading_title');
-
+		
+		$data['text_edit'] = $this->language->get('text_edit');
 		$data['text_enabled'] = $this->language->get('text_enabled');
 		$data['text_disabled'] = $this->language->get('text_disabled');
 		$data['text_all_zones'] = $this->language->get('text_all_zones');
 		$data['text_sim'] = $this->language->get('text_sim');
 		$data['text_test'] = $this->language->get('text_test');
 		$data['text_live'] = $this->language->get('text_live');
-		$data['text_payment'] = $this->language->get('text_payment');
+		$data['text_sale'] = $this->language->get('text_sale');
 		$data['text_authenticate'] = $this->language->get('text_authenticate');
 
 		$data['entry_vendor'] = $this->language->get('entry_vendor');
@@ -42,7 +41,6 @@ class ControllerPaymentBluepayredirect extends Controller {
 		$data['entry_sort_order'] = $this->language->get('entry_sort_order');
 		$data['entry_debug'] = $this->language->get('entry_debug');
 		$data['entry_card'] = $this->language->get('entry_card');
-
 
 		$data['help_total'] = $this->language->get('help_total');
 		$data['help_debug'] = $this->language->get('help_debug');
@@ -165,7 +163,7 @@ class ControllerPaymentBluepayredirect extends Controller {
 		}
 
 		$data['header'] = $this->load->controller('common/header');
-		$data['menu'] = $this->load->controller('common/menu');
+		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['footer'] = $this->load->controller('common/footer');
 
 		$this->response->setOutput($this->load->view('payment/bluepay_redirect.tpl', $data));
@@ -173,18 +171,18 @@ class ControllerPaymentBluepayredirect extends Controller {
 
 	public function install() {
 		$this->load->model('payment/bluepay_redirect');
+
 		$this->model_payment_bluepay_redirect->install();
 	}
 
 	public function uninstall() {
 		$this->load->model('payment/bluepay_redirect');
+
 		$this->model_payment_bluepay_redirect->uninstall();
 	}
 
 	public function orderAction() {
-
 		if ($this->config->get('bluepay_redirect_status')) {
-
 			$this->load->model('payment/bluepay_redirect');
 
 			$bluepay_redirect_order = $this->model_payment_bluepay_redirect->getOrder($this->request->get['order_id']);
@@ -211,10 +209,10 @@ class ControllerPaymentBluepayredirect extends Controller {
 				$data['text_no'] = $this->language->get('text_no');
 				$data['text_column_amount'] = $this->language->get('text_column_amount');
 				$data['text_column_type'] = $this->language->get('text_column_type');
-				$data['text_column_created'] = $this->language->get('text_column_created');
-				$data['btn_release'] = $this->language->get('btn_release');
-				$data['btn_rebate'] = $this->language->get('btn_rebate');
-				$data['btn_void'] = $this->language->get('btn_void');
+				$data['text_column_date_added'] = $this->language->get('text_column_date_added');
+				$data['button_release'] = $this->language->get('button_release');
+				$data['button_rebate'] = $this->language->get('button_rebate');
+				$data['button_void'] = $this->language->get('button_void');
 				$data['text_confirm_void'] = $this->language->get('text_confirm_void');
 				$data['text_confirm_release'] = $this->language->get('text_confirm_release');
 				$data['text_confirm_rebate'] = $this->language->get('text_confirm_rebate');
@@ -245,18 +243,8 @@ class ControllerPaymentBluepayredirect extends Controller {
 				$this->model_payment_bluepay_redirect->updateVoidStatus($bluepay_redirect_order['bluepay_redirect_order_id'], 1);
 
 				$json['msg'] = $this->language->get('text_void_ok');
-
-				$this->load->model('sale/order');
-
-				$history = array();
-				$history['order_status_id'] = $this->config->get('bluepay_redirect_order_status_void_id');
-				$history['comment'] = '';
-				$history['notify'] = '';
-
-				$this->model_sale_order->addOrderHistory($this->request->post['order_id'], $history);
-
 				$json['data'] = array();
-				$json['data']['created'] = date("Y-m-d H:i:s");
+				$json['data']['column_date_added'] = date("Y-m-d H:i:s");
 				$json['error'] = false;
 			} else {
 				$json['error'] = true;
@@ -293,25 +281,16 @@ class ControllerPaymentBluepayredirect extends Controller {
 					$this->model_payment_bluepay_redirect->updateReleaseStatus($bluepay_redirect_order['bluepay_redirect_order_id'], 1);
 					$release_status = 1;
 					$json['msg'] = $this->language->get('text_release_ok_order');
-
-					$this->load->model('sale/order');
-
-					$history = array();
-					$history['order_status_id'] = $this->config->get('bluepay_redirect_order_status_id');
-					$history['comment'] = '';
-					$history['notify'] = '';
-
-					$this->model_sale_order->addOrderHistory($this->request->post['order_id'], $history);
 				} else {
 					$release_status = 0;
 					$json['msg'] = $this->language->get('text_release_ok');
 				}
 
 				$json['data'] = array();
-				$json['data']['created'] = date("Y-m-d H:i:s");
+				$json['data']['column_date_added'] = date("Y-m-d H:i:s");
 				$json['data']['amount'] = $this->request->post['amount'];
 				$json['data']['release_status'] = $release_status;
-				$json['data']['total'] = (double)$total_released;
+				$json['data']['total'] = (float)$total_released;
 				$json['error'] = false;
 			} else {
 				$json['error'] = true;
@@ -349,25 +328,16 @@ class ControllerPaymentBluepayredirect extends Controller {
 					$this->model_payment_bluepay_redirect->updateRebateStatus($bluepay_redirect_order['bluepay_redirect_order_id'], 1);
 					$rebate_status = 1;
 					$json['msg'] = $this->language->get('text_rebate_ok_order');
-
-					$this->load->model('sale/order');
-
-					$history = array();
-					$history['order_status_id'] = $this->config->get('bluepay_redirect_order_status_rebated_id');
-					$history['comment'] = '';
-					$history['notify'] = '';
-
-					$this->model_sale_order->addOrderHistory($this->request->post['order_id'], $history);
 				} else {
 					$rebate_status = 0;
 					$json['msg'] = $this->language->get('text_rebate_ok');
 				}
 
 				$json['data'] = array();
-				$json['data']['created'] = date("Y-m-d H:i:s");
+				$json['data']['column_date_added'] = date("Y-m-d H:i:s");
 				$json['data']['amount'] = $this->request->post['amount'] * -1;
-				$json['data']['total_released'] = (double)$total_released;
-				$json['data']['total_rebated'] = (double)$total_rebated;
+				$json['data']['total_released'] = (float)$total_released;
+				$json['data']['total_rebated'] = (float)$total_rebated;
 				$json['data']['rebate_status'] = $rebate_status;
 				$json['error'] = false;
 			} else {
@@ -403,5 +373,4 @@ class ControllerPaymentBluepayredirect extends Controller {
 		$this->response->addHeader('Content-Type: application/json');
 		$this->response->setOutput(json_encode($this->request->get));
 	}
-
 }

@@ -1,6 +1,6 @@
 <?php
 // Version
-define('VERSION', '2.0.0.0a1');
+define('VERSION', '2.0.0.0');
 
 // Configuration
 if (is_file('config.php')) {
@@ -72,10 +72,10 @@ function error_handler($errno, $errstr, $errfile, $errline) {
 	global $log, $config;
 
 	// error suppressed with @
-	if (error_reporting() === 0) { 
-		return false; 
-	} 
-	
+	if (error_reporting() === 0) {
+		return false;
+	}
+
 	switch ($errno) {
 		case E_NOTICE:
 		case E_USER_NOTICE:
@@ -191,6 +191,9 @@ $registry->set('customer', $customer);
 // Customer Group
 if ($customer->isLogged()) {
 	$config->set('config_customer_group_id', $customer->getGroupId());
+} elseif (isset($session->data['customer'])) {
+	// For API calls
+	$config->set('config_customer_group_id', $session->data['customer']['customer_group_id']);
 } elseif (isset($session->data['guest'])) {
 	$config->set('config_customer_group_id', $session->data['guest']['customer_group_id']);
 }
@@ -223,8 +226,18 @@ $registry->set('cart', new Cart($registry));
 // Encryption
 $registry->set('encryption', new Encryption($config->get('config_encryption')));
 
+//OpenBay Pro
+$registry->set('openbay', new Openbay($registry));
+
 // Event
-$registry->set('event', new Event($registry));
+$event = new Event($registry);
+$registry->set('event', $event);
+
+$query = $db->query("SELECT * FROM " . DB_PREFIX . "event");
+
+foreach ($query->rows as $result) {
+	$event->register($result['trigger'], $result['action']);
+}
 
 // Front Controller
 $controller = new Front($registry);

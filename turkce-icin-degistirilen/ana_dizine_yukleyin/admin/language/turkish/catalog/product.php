@@ -6,6 +6,9 @@ $_['heading_title']						= 'Ürünler';
 
 // Text
 $_['text_success']						= 'Başarılı: Ürünler başarılı bir şekilde değiştirildi!';
+$_['text_list']								= 'Ürün Listesi';
+$_['text_add']								= 'Ürün Ekle';
+$_['text_edit']								= 'Ürün Düzenle';
 $_['text_plus']								= '+';
 $_['text_minus']							= '-';
 $_['text_default']						= 'Varsayılan Mağaza';
@@ -13,14 +16,6 @@ $_['text_option']							= 'Seçenek';
 $_['text_option_value']				= 'Seçenek Değeri';
 $_['text_percent']						= 'Yüzde';
 $_['text_amount']							= 'Sabit Tutar';
-$_['text_recurring_help']			= 'Recurring amounts are calculated by the frequency and cycles. <br />For example if you use a frequency of "week" and a cycle of "2", then the user will be billed every 2 weeks. <br />The length is the number of times the user will make a payment, set this to 0 if you want payments until they are cancelled.';
-$_['text_recurring_title']		= 'Tekrarlayan Ödemler';
-$_['text_recurring_trial']		= 'Trial period';
-$_['text_length_day']					= 'Gün';
-$_['text_length_week']				= 'Hafta';
-$_['text_length_month']				= 'Ay';
-$_['text_length_month_semi']	= '2 Hafta';
-$_['text_length_year']				= 'Yıl';
 
 // Column
 $_['column_name']							= 'Ürün Adı';
@@ -83,19 +78,9 @@ $_['entry_filter']						= 'Süzgeçler';
 $_['entry_download']					= 'Dosyalar';
 $_['entry_related']						= 'Benzer Ürünler';
 $_['entry_tag']								= 'Ürün Etiketleri';
-$_['entry_reward']						= 'Ödül Puanı';
+$_['entry_reward']						= 'Puanlar';
 $_['entry_layout']						= 'Bu Bölüm Gibi Davran';
-$_['entry_profile']						= 'Profile:';
-$_['entry_recurring']					= 'Recurring billing:';
-$_['entry_recurring_price']		= 'Recurring price:';
-$_['entry_recurring_freq']		= 'Recurring frequency:';
-$_['entry_recurring_cycle']		= 'Recurring cycles:<span class="help">How often it\'s billed, must be 1 or more</span>';
-$_['entry_recurring_length']	= 'Recurring length:<span class="help">0 = until cancelled</span>';
-$_['entry_trial']							= 'Trial period:';
-$_['entry_trial_price']				= 'Trial recurring price:';
-$_['entry_trial_freq']				= 'Trial recurring frequency:';
-$_['entry_trial_cycle']				= 'Trial recurring cycles:<span class="help">How often it\'s billed, must be 1 or more</span>';
-$_['entry_trial_length']			= 'Trial recurring length:';
+$_['entry_recurring']					= 'Tekrarlayan Profil';
 
 // Help
 $_['help_keyword']						= 'Boşluk kullanmayın ve benzersiz kelimeler kullandığınızdan emin olunuz.';
@@ -113,7 +98,7 @@ $_['help_category']						= '(Otomatik Tamamlama)';
 $_['help_filter']							= '(Otomatik Tamamlama)';
 $_['help_download']						= '(Otomatik Tamamlama)';
 $_['help_related']						= '(Otomatik Tamamlama)';
-$_['help_tag']								= 'Vilgül ile ayrınız';
+$_['help_tag']								= 'Virgül ile ayrınız';
 
 // Error
 $_['error_warning']						= 'Uyarı: Oluşan hatalar için lütfen formu dikkatli kontrol ediniz!';

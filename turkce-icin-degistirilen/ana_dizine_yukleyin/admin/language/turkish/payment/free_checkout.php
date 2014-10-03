@@ -7,6 +7,7 @@ $_['heading_title']      = 'Ücretsiz Ödeme';
 // Text
 $_['text_payment']       = 'Ödeme Metodları';
 $_['text_success']       = 'Başarılı: Ücretsiz Ödeme başarılı bir şekilde değiştirildi!';
+$_['text_edit']					 = 'Ücretsiz Ödeme Düzenle';
 
 // Entry
 $_['entry_order_status'] = 'Sipariş Durumu';

@@ -6,6 +6,9 @@ $_['heading_title']    = 'Uzunluk Birimleri';
 
 // Text
 $_['text_success']     = 'Başarılı: Uzunluk sınıfları başarıyla değiştirildi!';
+$_['text_list']        = 'Uzunluk Birim Listesi';
+$_['text_add']         = 'Uzunluk Birimi Ekle';
+$_['text_edit']        = 'Uzunluk Birimi Düzenle';
 
 // Column
 $_['column_title']     = 'Uzunluk Başlığı';

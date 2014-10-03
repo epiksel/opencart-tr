@@ -6,6 +6,9 @@ $_['heading_title']    = 'İade Durumları';
 
 // Text
 $_['text_success']     = 'Başarılı: İade durumu başarılı bir şekilde değiştirildi!';
+$_['text_list']        = 'İade Durumu Listesi';
+$_['text_add']         = 'İade Durumu Ekle';
+$_['text_edit']        = 'İade Durumu Düzenle';
 
 // Column
 $_['column_name']      = 'İade Durumu Adı';

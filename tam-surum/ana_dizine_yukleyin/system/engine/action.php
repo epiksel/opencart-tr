@@ -22,10 +22,10 @@ final class Action {
 				continue;
 			}
 
-			$controller_file = DIR_APPLICATION . 'controller/' . str_replace(array('../', '..\\', '..'), '', $path) . '.php';
+			$file = DIR_APPLICATION . 'controller/' . str_replace(array('../', '..\\', '..'), '', $path) . '.php';
 
-			if (is_file($controller_file)) {
-				$this->file = $controller_file;
+			if (is_file($file)) {
+				$this->file = $file;
 
 				$this->class = 'Controller' . preg_replace('/[^a-zA-Z0-9]/', '', $path);
 
@@ -62,7 +62,7 @@ final class Action {
 			$controller = new $class($registry);
 
 			if (is_callable(array($controller, $this->method))) {
-				return call_user_func_array(array($controller, $this->method), $this->args);
+				return call_user_func(array($controller, $this->method), $this->args);
 			} else {
 				return false;
 			}

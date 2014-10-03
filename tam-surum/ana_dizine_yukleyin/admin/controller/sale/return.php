@@ -12,7 +12,7 @@ class ControllerSaleReturn extends Controller {
 		$this->getList();
 	}
 
-	public function insert() {
+	public function add() {
 		$this->load->language('sale/return');
 
 		$this->document->setTitle($this->language->get('heading_title'));
@@ -76,7 +76,7 @@ class ControllerSaleReturn extends Controller {
 		$this->getForm();
 	}
 
-	public function update() {
+	public function edit() {
 		$this->load->language('sale/return');
 
 		$this->document->setTitle($this->language->get('heading_title'));
@@ -331,7 +331,7 @@ class ControllerSaleReturn extends Controller {
 			'href' => $this->url->link('sale/return', 'token=' . $this->session->data['token'] . $url, 'SSL')
 		);
 
-		$data['insert'] = $this->url->link('sale/return/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
+		$data['insert'] = $this->url->link('sale/return/add', 'token=' . $this->session->data['token'] . $url, 'SSL');
 		$data['delete'] = $this->url->link('sale/return/delete', 'token=' . $this->session->data['token'] . $url, 'SSL');
 
 		$data['returns'] = array();
@@ -365,14 +365,16 @@ class ControllerSaleReturn extends Controller {
 				'status'        => $result['status'],
 				'date_added'    => date($this->language->get('date_format_short'), strtotime($result['date_added'])),
 				'date_modified' => date($this->language->get('date_format_short'), strtotime($result['date_modified'])),
-				'edit'          => $this->url->link('sale/return/update', 'token=' . $this->session->data['token'] . '&return_id=' . $result['return_id'] . $url, 'SSL')
+				'edit'          => $this->url->link('sale/return/edit', 'token=' . $this->session->data['token'] . '&return_id=' . $result['return_id'] . $url, 'SSL')
 			);
 		}
 
 		$data['heading_title'] = $this->language->get('heading_title');
-
+		
+		$data['text_list'] = $this->language->get('text_list');
 		$data['text_no_results'] = $this->language->get('text_no_results');
 		$data['text_confirm'] = $this->language->get('text_confirm');
+
 		$data['column_return_id'] = $this->language->get('column_return_id');
 		$data['column_order_id'] = $this->language->get('column_order_id');
 		$data['column_customer'] = $this->language->get('column_customer');
@@ -546,7 +548,7 @@ class ControllerSaleReturn extends Controller {
 		$data['order'] = $order;
 
 		$data['header'] = $this->load->controller('common/header');
-		$data['menu'] = $this->load->controller('common/menu');
+		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['footer'] = $this->load->controller('common/footer');
 
 		$this->response->setOutput($this->load->view('sale/return_list.tpl', $data));
@@ -554,13 +556,15 @@ class ControllerSaleReturn extends Controller {
 
 	protected function getForm() {
 		$data['heading_title'] = $this->language->get('heading_title');
-
+		
+		$data['text_form'] = !isset($this->request->get['return_id']) ? $this->language->get('text_add') : $this->language->get('text_edit');
 		$data['text_select'] = $this->language->get('text_select');
 		$data['text_opened'] = $this->language->get('text_opened');
 		$data['text_unopened'] = $this->language->get('text_unopened');
 		$data['text_order'] = $this->language->get('text_order');
 		$data['text_product'] = $this->language->get('text_product');
 		$data['text_history'] = $this->language->get('text_history');
+		$data['text_loading'] = $this->language->get('text_loading');
 
 		$data['entry_customer'] = $this->language->get('entry_customer');
 		$data['entry_order_id'] = $this->language->get('entry_order_id');
@@ -595,7 +599,7 @@ class ControllerSaleReturn extends Controller {
 		} else {
 			$data['return_id'] = 0;
 		}
-		
+
 		if (isset($this->error['warning'])) {
 			$data['error_warning'] = $this->error['warning'];
 		} else {
@@ -703,9 +707,9 @@ class ControllerSaleReturn extends Controller {
 		);
 
 		if (!isset($this->request->get['return_id'])) {
-			$data['action'] = $this->url->link('sale/return/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
+			$data['action'] = $this->url->link('sale/return/add', 'token=' . $this->session->data['token'] . $url, 'SSL');
 		} else {
-			$data['action'] = $this->url->link('sale/return/update', 'token=' . $this->session->data['token'] . '&return_id=' . $this->request->get['return_id'] . $url, 'SSL');
+			$data['action'] = $this->url->link('sale/return/edit', 'token=' . $this->session->data['token'] . '&return_id=' . $this->request->get['return_id'] . $url, 'SSL');
 		}
 
 		$data['cancel'] = $this->url->link('sale/return', 'token=' . $this->session->data['token'] . $url, 'SSL');
@@ -863,7 +867,7 @@ class ControllerSaleReturn extends Controller {
 		$data['return_statuses'] = $this->model_localisation_return_status->getReturnStatuses();
 
 		$data['header'] = $this->load->controller('common/header');
-		$data['menu'] = $this->load->controller('common/menu');
+		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['footer'] = $this->load->controller('common/footer');
 
 		$this->response->setOutput($this->load->view('sale/return_form.tpl', $data));

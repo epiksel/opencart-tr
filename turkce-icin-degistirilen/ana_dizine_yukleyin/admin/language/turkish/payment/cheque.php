@@ -2,11 +2,12 @@
 /* Turkceye Ceviren eka7a - http://www.e-piksel.com */
 
 // Heading
-$_['heading_title']      = 'Çek / Havale';
+$_['heading_title']      = 'Çek / Posta Havalesi';
 
 // Text
 $_['text_payment']       = 'Ödeme Metodları';
-$_['text_success']       = 'Başarılı: Çek ödeme detayları güncellendi!';
+$_['text_success']       = 'Başarılı: Çek / Posta Havale ödeme detayları güncellendi!';
+$_['text_edit']					 = 'Çek / Posta Havalesi Düzenle';
 
 // Entry
 $_['entry_payable']      = 'Ödencek Kişi';
@@ -17,8 +18,8 @@ $_['entry_status']       = 'Durumu';
 $_['entry_sort_order']   = 'Sıralama';
 
 // Help
-$_['help_total']		 = 'Bu ödeme metodunun aktif olması için toplam sipariş tutarını giriniz.';
+$_['help_total']		 		 = 'Bu ödeme metodunun aktif olması için toplam sipariş tutarını giriniz.';
 
 // Error
-$_['error_permission']   = 'Uyarı: Çek / Havale ödeme metodunu düzenleme iznine sahip değilsiniz!';
+$_['error_permission']   = 'Uyarı: Çek / Posta Havalesi ödeme metodunu düzenleme iznine sahip değilsiniz!';
 $_['error_payable']      = 'Ödenen kişi gerekli!';

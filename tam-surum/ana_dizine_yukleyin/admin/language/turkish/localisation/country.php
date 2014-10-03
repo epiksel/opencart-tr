@@ -6,6 +6,9 @@ $_['heading_title']           = 'Ülkeler';
 
 // Text
 $_['text_success']            = 'Başarılı: Ülkeler başarılı bir şekilde değiştirildi!';
+$_['text_list']               = 'Ülke Listesi';
+$_['text_add']                = 'Ülke Ekle';
+$_['text_edit']               = 'Ülke Düzenle';
 
 // Column
 $_['column_name']             = 'Ülke Adı';

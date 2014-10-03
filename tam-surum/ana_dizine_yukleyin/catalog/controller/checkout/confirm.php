@@ -60,11 +60,11 @@ class ControllerCheckoutConfirm extends Controller {
 			$total = 0;
 			$taxes = $this->cart->getTaxes();
 
-			$this->load->model('setting/extension');
+			$this->load->model('extension/extension');
 
 			$sort_order = array();
 
-			$results = $this->model_setting_extension->getExtensions('total');
+			$results = $this->model_extension_extension->getExtensions('total');
 
 			foreach ($results as $key => $value) {
 				$sort_order[$key] = $this->config->get($value['code'] . '_sort_order');
@@ -314,7 +314,7 @@ class ControllerCheckoutConfirm extends Controller {
 			$this->session->data['order_id'] = $this->model_checkout_order->addOrder($order_data);
 
 			$data['text_recurring_item'] = $this->language->get('text_recurring_item');
-			$data['text_payment_profile'] = $this->language->get('text_payment_profile');
+			$data['text_payment_recurring'] = $this->language->get('text_payment_recurring');
 
 			$data['column_name'] = $this->language->get('column_name');
 			$data['column_model'] = $this->language->get('column_model');

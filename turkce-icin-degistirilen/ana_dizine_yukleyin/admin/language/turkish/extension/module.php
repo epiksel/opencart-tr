@@ -5,7 +5,9 @@
 $_['heading_title']     = 'Modüller';
 
 // Text
-$_['text_success']		= 'Başarılı: Modüller güncellendi!';
+$_['text_success']			= 'Başarılı: Modüller güncellendi!';
+$_['text_layout']				= 'Modül kuruldu ve bir bölüm <a href="%s" class="alert-link">buradan</a> yapılandırılmış modül ekleyebilirsiniz!';
+$_['text_list'					= 'Modül Listesi';
 
 // Column
 $_['column_name']       = 'Modül Adı';

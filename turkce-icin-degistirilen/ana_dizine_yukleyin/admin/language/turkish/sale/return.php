@@ -5,9 +5,11 @@
 $_['heading_title']       = 'Ürün İadeleri';
 
 // Text
+$_['text_list']						= 'Ürün İade Listesi';
+$_['text_add']						= 'Ürün İadesi Ekle';
+$_['text_edit']						= 'Ürün İadesi Düzenle';
 $_['text_opened']         = 'Açıldı';
 $_['text_unopened']       = 'Kapatıldı';
-$_['text_success']        = 'Başarılı: Ürün iadesi başarılı bir şekilde değiştirildi!';
 $_['text_order']          = 'Sipariş Bilgileri';
 $_['text_product']        = 'İade için Ürün Bilgileri &amp; Nedeni';
 $_['text_history']        = 'İade Geçmişi Ekle';

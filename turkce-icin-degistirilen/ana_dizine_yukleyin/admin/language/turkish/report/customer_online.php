@@ -5,6 +5,7 @@
 $_['heading_title']     = 'Çevrimiçi Müşteri Raporu';
 
 // Text
+$_['text_list']         = 'Çevrimiçi Müşteri Listesi';
 $_['text_guest']        = 'Misafir';
 
 // Column

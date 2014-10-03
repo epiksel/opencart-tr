@@ -7,7 +7,7 @@ $_['heading_title']					= 'Ortaklık Programı';
 // Text
 $_['text_account']					= 'Ortaklık Hesabım';
 $_['text_login']					= 'Oturum Açın';
-$_['text_description']				= '<p>%s ortaklık programına kayıt olmak ücretsizdir. Oluşturacağınız takip kodunu kendi web sitenizde, sosyal ağ hesaplarınızda ya da her hangi bir yerde paylaşabilirsiniz. Paylaştığınız takip kodu ile gelen müşteriler %s sitesinde bulunan ürünleri satın aldığında, komisyon oranına göre sizde gelir elde edersiniz. Şuan ki geçerli komisyon oranımız %s\'dir.</p><p>Daha fazla bilgi için, Ortaklık Programı Kullanımı &amp; Koşullarına bakabilirsiniz.</p>';
+$_['text_description']				= '<p>%s ortaklık programına kayıt olmak ücretsizdir. Oluşturacağınız takip kodunu kendi web sitenizde, sosyal ağ hesaplarınızda ya da her hangi bir yerde paylaşabilirsiniz. Paylaştığınız takip kodu ile gelen müşteriler %s sitesinde bulunan ürünleri satın aldığında, komisyon oranına göre sizde gelir elde edersiniz. Şu anki geçerli komisyon oranımız %s\'dir.</p><p>Daha fazla bilgi için, Ortaklık Programı Kullanımı &amp; Koşullarına bakabilirsiniz.</p>';
 $_['text_new_affiliate']			= 'Yeni Ortak';
 $_['text_register_account']			= '<p>Ortak değilim</p><p>Yeni ortaklık hesabı oluşturmak için lüften devam butonuna tıklayınız. Ortaklık hesabı Müşteri hesabınızdan farklı bir hesaptır ve birbirleri ile bağlantılı değildir.</p>';
 $_['text_returning_affiliate']		= 'Oturum Aç';

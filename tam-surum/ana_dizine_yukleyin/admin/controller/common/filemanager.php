@@ -63,16 +63,12 @@ class ControllerCommonFileManager extends Controller {
 					$url .= '&thumb=' . $this->request->get['thumb'];
 				}
 
-				if (isset($this->request->get['ckeditor'])) {
-					$url .= '&ckeditor=' . $this->request->get['ckeditor'];
-				}
-
 				$data['images'][] = array(
 					'thumb' => '',
 					'name'  => implode(' ', $name),
 					'type'  => 'directory',
 					'path'  => utf8_substr($image, utf8_strlen(DIR_IMAGE)),
-					'href'  => $this->url->link('common/filemanager', 'token=' . $this->session->data['token'] . '&directory=' . utf8_substr($image, utf8_strlen(DIR_IMAGE . 'catalog/')) . $url, 'SSL')
+					'href'  => $this->url->link('common/filemanager', 'token=' . $this->session->data['token'] . '&directory=' . urlencode(utf8_substr($image, utf8_strlen(DIR_IMAGE . 'catalog/'))) . $url, 'SSL')
 				);
 			} elseif (is_file($image)) {
 				// Find which protocol to use to pass the full image link back
@@ -110,7 +106,7 @@ class ControllerCommonFileManager extends Controller {
 		$data['token'] = $this->session->data['token'];
 
 		if (isset($this->request->get['directory'])) {
-			$data['directory'] = $this->request->get['directory'];
+			$data['directory'] = urlencode($this->request->get['directory']);
 		} else {
 			$data['directory'] = '';
 		}
@@ -135,12 +131,6 @@ class ControllerCommonFileManager extends Controller {
 			$data['thumb'] = '';
 		}
 
-		if (isset($this->request->get['ckeditor'])) {
-			$data['ckeditor'] = $this->request->get['ckeditor'];
-		} else {
-			$data['ckeditor'] = '';
-		}
-
 		// Parent
 		$url = '';
 
@@ -148,7 +138,7 @@ class ControllerCommonFileManager extends Controller {
 			$pos = strrpos($this->request->get['directory'], '/');
 
 			if ($pos) {
-				$url .= '&directory=' . substr($this->request->get['directory'], 0, $pos);
+				$url .= '&directory=' . urlencode(substr($this->request->get['directory'], 0, $pos));
 			}
 		}
 
@@ -160,17 +150,13 @@ class ControllerCommonFileManager extends Controller {
 			$url .= '&thumb=' . $this->request->get['thumb'];
 		}
 
-		if (isset($this->request->get['ckeditor'])) {
-			$url .= '&ckeditor=' . $this->request->get['ckeditor'];
-		}
-
 		$data['parent'] = $this->url->link('common/filemanager', 'token=' . $this->session->data['token'] . $url, 'SSL');
 
 		// Refresh
 		$url = '';
 
 		if (isset($this->request->get['directory'])) {
-			$url .= '&directory=' . substr($this->request->get['directory'], 0, $pos);
+			$url .= '&directory=' . urlencode($this->request->get['directory']);
 		}
 
 		if (isset($this->request->get['target'])) {
@@ -179,10 +165,6 @@ class ControllerCommonFileManager extends Controller {
 
 		if (isset($this->request->get['thumb'])) {
 			$url .= '&thumb=' . $this->request->get['thumb'];
-		}
-
-		if (isset($this->request->get['ckeditor'])) {
-			$url .= '&ckeditor=' . $this->request->get['ckeditor'];
 		}
 
 		$data['refresh'] = $this->url->link('common/filemanager', 'token=' . $this->session->data['token'] . $url, 'SSL');
@@ -203,10 +185,6 @@ class ControllerCommonFileManager extends Controller {
 
 		if (isset($this->request->get['thumb'])) {
 			$url .= '&thumb=' . $this->request->get['thumb'];
-		}
-
-		if (isset($this->request->get['ckeditor'])) {
-			$url .= '&ckeditor=' . $this->request->get['ckeditor'];
 		}
 
 		$pagination = new Pagination();

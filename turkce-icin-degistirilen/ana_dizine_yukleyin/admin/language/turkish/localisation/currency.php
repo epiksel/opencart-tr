@@ -6,6 +6,9 @@ $_['heading_title']        = 'Para Birimleri';
 
 // Text
 $_['text_success']         = 'Başarılı: Para birimi başarılı bir şekilde değiştirildi!';
+$_['text_list']            = 'Para Birimi Listesi';
+$_['text_add']             = 'Para Birimi Ekle';
+$_['text_edit']            = 'Para Birimi Düzenle';
 
 // Column
 $_['column_title']         = 'Para Birimi Adı';

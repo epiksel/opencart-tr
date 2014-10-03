@@ -4,6 +4,9 @@
 // Heading
 $_['heading_title']     = 'Ortaklık Komisyon Raporu';
 
+// Text
+$_['text_list']         = 'Ortaklık Komisyon Listesi';
+
 // Column
 $_['column_affiliate']  = 'Ortaklık Adı';
 $_['column_email']      = 'E-Posta';

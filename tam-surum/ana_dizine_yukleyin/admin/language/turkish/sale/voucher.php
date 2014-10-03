@@ -6,6 +6,9 @@ $_['heading_title']			= 'Hediye Çekleri';
 
 // Text
 $_['text_success']			= 'Başarılı: Hediye çeki başarılı bir şekilde değiştirildi!';
+$_['text_list']					= 'Hediye Çeki Listesi';
+$_['text_add']					= 'Hediye Çeki Ekle';
+$_['text_edit']					= 'Hediye Çeki Düzenle';
 $_['text_sent']					= 'Başarılı: Hediye çeki e-postası gönderildi!';
 
 // Column
