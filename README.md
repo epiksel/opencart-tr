@@ -10,8 +10,6 @@ OpenCart PHP tabanlı açık kaynak kodlu online alışveriş sepetidir. Tüccar
 
 [E-Piksel E-Ticaret ve Bilgi Teknolojileri] (http://www.e-piksel.com)
 
-[Weblenti OpenCart Dökümanlar] (http://www.weblenti.com)
-
 
 ## Lisans
 
