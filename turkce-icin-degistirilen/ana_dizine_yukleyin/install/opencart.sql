@@ -1432,26 +1432,25 @@ CREATE TABLE `oc_extension` (
 --
 
 INSERT INTO `oc_extension` (`extension_id`, `type`, `code`) VALUES
-(1, 'payment', 'cod'),
-(2, 'total', 'shipping'),
-(3, 'total', 'sub_total'),
-(4, 'total', 'tax'),
-(5, 'total', 'total'),
-(6, 'module', 'banner'),
-(7, 'module', 'carousel'),
-(8, 'total', 'credit'),
+(1, 'module', 'carousel'),
+(2, 'module', 'category'),
+(3, 'module', 'affiliate'),
+(4, 'module', 'account'),
+(5, 'module', 'featured'),
+(6, 'module', 'slideshow'),
+(7, 'payment', 'cod'),
+(8, 'payment', 'free_checkout'),
 (9, 'shipping', 'flat'),
-(10, 'total', 'handling'),
-(11, 'total', 'low_order_fee'),
-(12, 'total', 'coupon'),
-(13, 'module', 'category'),
-(14, 'module', 'affiliate'),
-(15, 'module', 'account'),
-(16, 'total', 'reward'),
-(17, 'total', 'voucher'),
-(18, 'payment', 'free_checkout'),
-(19, 'module', 'featured'),
-(20, 'module', 'slideshow');
+(10, 'total', 'shipping'),
+(11, 'total', 'sub_total'),
+(12, 'total', 'tax'),
+(13, 'total', 'total'),
+(14, 'total', 'credit'),
+(15, 'total', 'handling'),
+(16, 'total', 'low_order_fee'),
+(17, 'total', 'coupon'),
+(18, 'total', 'reward'),
+(19, 'total', 'voucher');
 
 -- --------------------------------------------------------
 
@@ -1721,15 +1720,12 @@ CREATE TABLE `oc_layout_module` (
 --
 
 INSERT INTO `oc_layout_module` (`layout_module_id`, `layout_id`, `code`, `position`, `sort_order`) VALUES
-(14, 1, 'featured.0', 'content_top', 1),
-(2, 4, 'carousel.0', 'content_top', 0),
-(3, 4, 'banner.0', 'content_top', 1),
-(19, 3, 'slideshow.pol3h8iif8j2lnmi', 'column_left', 1),
-(13, 1, 'slideshow.0', 'content_top', 0),
-(8, 6, 'account', 'column_right', 0),
-(20, 5, 'category', 'column_left', 2),
-(15, 1, 'carousel.0', 'content_bottom', 0),
-(18, 3, 'category', 'column_left', 0);
+(1, 10, 'affiliate', 'column_right', 1),
+(2, 6, 'account', 'column_right', 1),
+(3, 1, 'featured.pn193bz4ddrnewmi', 'content_top', 2),
+(4, 3, 'category', 'column_left', 1),
+(5, 1, 'carousel.o8uc7fd5bcnpcik9', 'content_top', 3),
+(6, 1, 'slideshow.yiaydblkudxnu3di', 'content_top', 1);
 
 -- --------------------------------------------------------
 
@@ -3230,7 +3226,7 @@ INSERT INTO `oc_setting` (`setting_id`, `store_id`, `group`, `key`, `value`, `se
 (36, 0, 'flat', 'flat_geo_zone_id', '0', 0),
 (37, 0, 'flat', 'flat_tax_class_id', '9', 0),
 (294, 0, 'carousel', 'carousel_status', '1', 0),
-(295, 0, 'carousel', 'carousel_module', 'a:1:{i:0;a:5:{s:9:"banner_id";s:1:"3";s:5:"limit";s:2:"10";s:6:"scroll";s:1:"3";s:5:"width";s:3:"130";s:6:"height";s:3:"100";}}', 1),
+(295, 0, 'carousel', 'carousel_module', 'a:1:{s:16:"o8uc7fd5bcnpcik9";a:5:{s:9:"banner_id";s:1:"3";s:5:"limit";s:2:"10";s:6:"scroll";s:1:"3";s:5:"width";s:3:"130";s:6:"height";s:3:"100";}}', 1),
 (41, 0, 'flat', 'flat_cost', '5.00', 0),
 (42, 0, 'credit', 'credit_sort_order', '7', 0),
 (43, 0, 'credit', 'credit_status', '1', 0),
@@ -3251,10 +3247,6 @@ INSERT INTO `oc_setting` (`setting_id`, `store_id`, `group`, `key`, `value`, `se
 (103, 0, 'free_checkout', 'free_checkout_status', '1', 0),
 (104, 0, 'free_checkout', 'free_checkout_order_status_id', '1', 0),
 (259, 0, 'config', 'config_mail', 'a:7:{s:8:"protocol";s:4:"mail";s:9:"parameter";s:0:"";s:13:"smtp_hostname";s:0:"";s:13:"smtp_username";s:0:"";s:13:"smtp_password";s:0:"";s:9:"smtp_port";s:0:"";s:12:"smtp_timeout";s:0:"";}', 1),
-(292, 0, 'featured', 'featured_status', '1', 0),
-(291, 0, 'featured', 'featured_product', '12,3,17,1,11', 0),
-(287, 0, 'slideshow', 'slideshow_module', 'a:1:{i:0;a:3:{s:9:"banner_id";s:1:"2";s:5:"width";s:4:"1140";s:6:"height";s:3:"380";}}', 1),
-(293, 0, 'featured', 'featured_module', 'a:1:{i:0;a:3:{s:5:"limit";s:1:"4";s:5:"width";s:3:"200";s:6:"height";s:3:"200";}}', 1),
 (258, 0, 'config', 'config_ftp_status', '0', 0),
 (257, 0, 'config', 'config_ftp_root', '', 0),
 (256, 0, 'config', 'config_ftp_password', '', 0),
@@ -3355,7 +3347,12 @@ INSERT INTO `oc_setting` (`setting_id`, `store_id`, `group`, `key`, `value`, `se
 (277, 0, 'config', 'config_error_log', '1', 0),
 (278, 0, 'config', 'config_error_filename', 'error.log', 0),
 (279, 0, 'config', 'config_google_analytics', '', 0),
-(286, 0, 'slideshow', 'slideshow_status', '1', 0);
+(286, 0, 'slideshow', 'slideshow_status', '1', 0),
+(287, 0, 'slideshow', 'slideshow_module', 'a:1:{s:16:"yiaydblkudxnu3di";a:3:{s:9:"banner_id";s:1:"2";s:5:"width";s:4:"1140";s:6:"height";s:3:"380";}}', 1),
+(291, 0, 'featured', 'featured_status', '1', 0),
+(292, 0, 'featured', 'featured_module', 'a:1:{s:16:"pn193bz4ddrnewmi";a:3:{s:5:"limit";s:1:"4";s:5:"width";s:3:"200";s:6:"height";s:3:"200";}}', 1),
+(293, 0, 'featured', 'featured_product', '12,3,17,1,11', 0),
+(322, 0, 'affiliate', 'affiliate_status', '1', 0);
 
 -- --------------------------------------------------------
 
