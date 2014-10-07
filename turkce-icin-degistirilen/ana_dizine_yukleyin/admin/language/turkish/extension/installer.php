@@ -30,6 +30,7 @@ $_['error_filetype']				= 'Geçersiz dosya türü!';
 $_['error_file']						= 'Dosya bulunamadı!';
 $_['error_unzip']						= 'Zip dosyası açılamadı!';
 $_['error_directory']				= 'Yüklenecek dosyaları içeren dizin bulunamadı!';
+$_['error_ftp_status']			= 'Ayarlardan FTP etkinleştirilmesi gerekiyor!';
 $_['error_ftp_connection']	= 'Bağlanılamadı %s:%s';
 $_['error_ftp_login']				= '%s olarak oturum açılamadı!';
 $_['error_ftp_root']				= 'Kök dizin %s olarak ayarlanamadı!';

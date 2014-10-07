@@ -20,4 +20,5 @@ $_['entry_status']			= 'Durum';
 
 // Error
 $_['error_permission']	= 'Uyarı: Carousel modülünü değiştirme iznine sahip değilsiniz!';
+$_['error_module']			= 'Uyarı: Modül gerekli!';
 $_['error_image']				= 'Resim genişlik &amp; yükseklik boyutları gerekli!';

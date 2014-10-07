@@ -16,3 +16,4 @@ $_['entry_status']			= 'Durumu';
 
 // Error
 $_['error_permission']	= 'Uyarı: HTML İçerik modülünü değiştirme iznine sahip değilsiniz!';
+$_['error_module']			= 'Uyarı: Modül gerekli!';

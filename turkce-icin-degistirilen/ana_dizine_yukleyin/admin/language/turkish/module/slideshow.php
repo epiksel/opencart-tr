@@ -18,4 +18,5 @@ $_['entry_status']			= 'Durumu';
 
 // Error
 $_['error_permission']	= 'Uyarı: Slayt Gösteri modülünü değiştirme iznine sahip değilsiniz!';
+$_['error_module']			= 'Uyarı: Modül gerekli!';
 $_['error_dimension']		= 'Genişlik &amp; Yükseklik boyutları gerekli!';

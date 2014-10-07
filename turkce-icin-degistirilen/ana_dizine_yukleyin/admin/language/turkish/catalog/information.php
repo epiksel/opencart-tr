@@ -39,6 +39,7 @@ $_['error_permission']				= 'Uyarı: Bilgi sayfalarını düzenleme iznine sahip
 $_['error_title']							= 'Bilgi başlığı 3 ile 64 karakter arasında olmalı!';
 $_['error_description']				= 'Açıklama alanı en az 3 karakter olmalı!';
 $_['error_meta_title']				= 'Meta Title must be greater than 3 and less than 255 characters!';
+$_['error_keyword']						= 'SEO Kelimesi zaten kullanılıyor!';
 $_['error_account']						= 'Uyarı: Bu bilgi sayfası silemezsiniz mağazada gizlilik ilkeleri olarak kullanılıyor!';
 $_['error_checkout']					= 'Uyarı: Bu bilgi sayfası silemezsiniz mağazada satış sözleşmesi olarak kullanılıyor!';
 $_['error_affiliate']					= 'Uyarı: Bu bilgi sayfası silemezsiniz mağazada ortaklık şartları olarak kullanılıyor!';

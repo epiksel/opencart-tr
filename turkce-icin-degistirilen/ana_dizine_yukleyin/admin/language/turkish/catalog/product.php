@@ -106,3 +106,4 @@ $_['error_permission']				= 'Uyarı: Ürünleri düzenleme iznine sahip değilsi
 $_['error_name']							= 'Ürün adı 3 ile 255 karakter arasında olmalıdır!';
 $_['error_meta_title']				= 'Meta başlığı 3 ile 255 karakter arasında olmalıdır!';
 $_['error_model']							= 'Ürün kodu 1 ile 64 karakter arasında olmalıdır!';
+$_['error_keyword']						= 'SEO Kelimesi zaten kullanılıyor!';
