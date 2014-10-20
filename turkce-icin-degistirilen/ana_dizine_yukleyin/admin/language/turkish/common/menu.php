@@ -3,7 +3,6 @@
 
 // Text
 $_['text_affiliate']										= 'Ortaklar';
-$_['text_affiliate_activity']						= 'Ortak Etkinlikleri';
 $_['text_api']													= 'API';
 $_['text_attribute']										= 'Özellikler';
 $_['text_attribute_group']							= 'Özellik Grupları';
@@ -57,7 +56,9 @@ $_['text_report_customer_online']				= 'Çevrimiçi Müşteriler';
 $_['text_report_customer_order']				= 'Siparişler';
 $_['text_report_customer_reward']				= 'Puanlar';
 $_['text_report_customer_credit']				= 'Kredi İşlemleri';
+$_['text_report_affiliate']							= 'Ortaklar';
 $_['text_report_affiliate_commission']	= 'Komisyon';
+$_['text_report_affiliate_activity']		= 'Ortak Etkinlikleri';
 $_['text_review']												= 'Yorumlar';
 $_['text_return']												= 'Ürün İadeleri';
 $_['text_return_action']								= 'İade Eylemleri';

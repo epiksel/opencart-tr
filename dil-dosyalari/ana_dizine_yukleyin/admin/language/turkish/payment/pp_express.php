@@ -14,7 +14,7 @@ $_['text_sale']                         = 'Satış';
 $_['text_clear']                        = 'Temizle';
 $_['text_browse']                       = 'Gözat';
 $_['text_image_manager']                = 'Resim Yönetimi';
-$_['text_ipn']                          = 'IPN url';
+$_['text_ipn']                          = 'IPN URL';
 
 // Entry
 $_['entry_username']                    = 'API Kullanıcı Adı';
@@ -49,9 +49,9 @@ $_['entry_page_colour']									= 'Page background colour';
 
 // Tab
 $_['tab_general']												= 'General';
-$_['tab_api_details']										= 'API details';
+$_['tab_api']														= 'API Details';
 $_['tab_order_status']									= 'Order status';
-$_['tab_customise']											= 'Customise checkout';
+$_['tab_checkout']											= 'Checkout';
 
 // Help
 $_['help_ipn']													= 'Abonelikler için gerekli';

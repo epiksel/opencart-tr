@@ -125,6 +125,11 @@ $_['error_config']						= 'Error: Could not write to config.php please check you
 // Buttons
 $_['button_continue']					= 'Devam Et';
 $_['button_back']							= 'Geri';
+$_['button_join']							= 'Join here';
+$_['button_setup']						= 'Set-up now';
+$_['button_register']					= 'Register';
+$_['button_register_eu']			= 'Register Europe';
+$_['button_register_us']			= 'Register USA';
 
 // Terms
 $_['text_terms']							= '<h3>GNU GENERAL PUBLIC LICENSE</h3>

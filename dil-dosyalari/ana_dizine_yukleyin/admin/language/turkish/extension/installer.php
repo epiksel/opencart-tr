@@ -20,7 +20,7 @@ $_['entry_overwrite']				= 'Dosyalar üzerine yazılacak';
 $_['entry_progress']				= 'İlerleme';
 
 // Help
-$_['help_upload']						= 'Zip ya da XML dosyası gerekli.';
+$_['help_upload']						= 'Yüklemek için ".ocmod.zip" ya da ".ocmod.xml" uzantılı modifikasyon dosyası gereklidir.';
 
 // Error
 $_['error_permission']			= 'Uyarı: Eklenti yükleyicisini değiştirme iznine sahip değilsiniz!';
@@ -29,6 +29,8 @@ $_['error_upload']					= 'Dosya yüklenemedi!';
 $_['error_filetype']				= 'Geçersiz dosya türü!';
 $_['error_file']						= 'Dosya bulunamadı!';
 $_['error_unzip']						= 'Zip dosyası açılamadı!';
+$_['error_code']						= 'Modifikasyon benzersiz bir kimlik kodu gerektirir!';
+$_['error_exists']					= '%s Modifikasyonu yüklemeğe çalıştığınız ile aynı kimlik kodu kullanıyor!';
 $_['error_directory']				= 'Yüklenecek dosyaları içeren dizin bulunamadı!';
 $_['error_ftp_status']			= 'Ayarlardan FTP etkinleştirilmesi gerekiyor!';
 $_['error_ftp_connection']	= 'Bağlanılamadı %s:%s';

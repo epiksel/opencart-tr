@@ -11,8 +11,8 @@ $_['text_customer_forgotten']				= '<a href="customer_id=%d">%s</a> adlı müşt
 $_['text_customer_login']						= '<a href="customer_id=%d">%s</a> adlı müşteri oturum açtı.';
 $_['text_customer_password']				= '<a href="customer_id=%d">%s</a> adlı müşteri hesap parolasını güncelledi.';
 $_['text_customer_register']				= '<a href="customer_id=%d">%s</a> adında yeni müşteri kayıt oldu.';
-$_['text_customer_return_accout']		= '<a href="customer_id=%d">%s</a> adlı müşteri ürün iade isteği gönderdi.';
-$_['text_customer_return_guest']		= '%s adlı misafir müşteri ürün iade isteği gönderdi.';
+$_['text_customer_return_account']	= '<a href="customer_id=%d">%s</a> adlı müşteri <a href="return_id=%d">ürün iade isteği</a> gönderdi.';
+$_['text_customer_return_guest']		= '%s adlı misafir müşteri <a href="return_id=%d">ürün iade</a> isteği gönderdi.';
 $_['text_customer_order_account']		= '<a href="customer_id=%d">%s</a> adlı müşteri tarafından <a href="order_id=%d">yeni sipariş</a> oluşturuldu.';
 $_['text_customer_order_guest']			= '%s tarafından adlı misafir müşteri <a href="order_id=%d">yeni sipariş</a> oluşturuldu.';
 $_['text_affiliate_edit']						= '<a href="affiliate_id=%d">%s</a> adlı ortak hesap detayları güncelledi.';

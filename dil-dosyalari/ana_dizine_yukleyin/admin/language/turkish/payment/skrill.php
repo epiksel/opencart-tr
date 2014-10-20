@@ -2,14 +2,13 @@
 /* Turkceye Ceviren eka7a - http://www.e-piksel.com */
 
 // Heading
-$_['heading_title']						= 'Moneybookers';
+$_['heading_title']						= 'Skrill';
 
 // Text
 $_['text_payment']						= 'Ödeme Metodları';
-$_['text_success']						= 'Başarılı: Moneybookers hesap detayları başarılı bir şekilde değiştirildi!';
-$_['text_edit']								= 'Moneybookers Düzenle';
-
-$_['text_moneybookers']				= '<a href="https://account.skrill.com/signup?rid=13624353" target="_blank"><img src="view/image/payment/moneybookers.png" alt="Moneybookers" title="Moneybookers" style="border: 1px solid #EEEEEE;" /></a>';
+$_['text_success']						= 'Başarılı: Skrill hesap detayları başarılı bir şekilde değiştirildi!';
+$_['text_edit']								= 'Skrill Düzenle';
+$_['text_skrill']							= '<a href="https://account.skrill.com/signup?rid=13624353" target="_blank"><img src="view/image/payment/skrill.png" alt="Skrill" title="Skrill" style="border: 1px solid #EEEEEE;" /></a>';
 
 // Entry
 $_['entry_email']							= 'E-Posta';
@@ -28,5 +27,5 @@ $_['entry_sort_order']				= 'Sıralama';
 $_['help_total']							= 'Bu ödeme metodunun aktif olması için toplam sipariş tutarını giriniz.';
 
 // Error
-$_['error_permission']				= 'Uyarı: Moneybookers ödeme metodunu düzenleme iznine sahip değilsiniz!';
+$_['error_permission']				= 'Uyarı: Skrill ödeme metodunu düzenleme iznine sahip değilsiniz!';
 $_['error_email']							= 'E-Posta Gerekli!';

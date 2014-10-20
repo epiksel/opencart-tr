@@ -2,4 +2,4 @@
 /* Turkceye Ceviren eka7a - http://www.e-piksel.com */
 
 // Text
-$_['text_title']     = 'Moneybookers ile ödeyin';
+$_['text_title']     = 'Skrill ile Ödeyin';

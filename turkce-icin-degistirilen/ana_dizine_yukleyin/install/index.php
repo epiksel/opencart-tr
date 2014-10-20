@@ -39,8 +39,8 @@ $response->addHeader('Content-Type: text/html; charset=UTF-8');
 $registry->set('response', $response);
 
 // Language
-$language = new Language();
-$language->load('turkish');
+$language = new Language('turkish');
+$language->load('default');
 $registry->set('language', $language);
 
 // Document
