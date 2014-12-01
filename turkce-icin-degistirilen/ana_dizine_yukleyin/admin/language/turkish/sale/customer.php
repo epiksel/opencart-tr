@@ -37,6 +37,7 @@ $_['entry_telephone']				= 'Telefon';
 $_['entry_fax']							= 'Faks';
 $_['entry_newsletter']			= 'Bülten Aboneliği';
 $_['entry_status']					= 'Durumu';
+$_['entry_approved']				= 'Onaylandı';
 $_['entry_safe']						= 'Güvenilir';
 $_['entry_password']				= 'Parola';
 $_['entry_confirm']					= 'Parola(tekrar)';
@@ -53,7 +54,6 @@ $_['entry_description']			= 'Açıklama';
 $_['entry_amount']					= 'Kredi Tutarı';
 $_['entry_points']					= 'Puan';
 $_['entry_name']						= 'Müşteri Adı';
-$_['entry_approved']				= 'Onaylandı';
 $_['entry_ip']							= 'IP';
 $_['entry_date_added']			= 'Ekleme Tarihi';
 

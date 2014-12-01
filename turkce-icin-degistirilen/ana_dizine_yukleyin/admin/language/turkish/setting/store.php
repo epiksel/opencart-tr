@@ -5,6 +5,7 @@
 $_['heading_title']											= 'Mağazalar';
 
 // Text
+$_['text_settings']											= 'Ayarlar';
 $_['text_success']											= 'Başarılı: Mağazalar başarılı bir şekilde değiştirildi!';
 $_['text_list']													= 'Mağaza Listesi';
 $_['text_add']													= 'Mağaza Ekle';

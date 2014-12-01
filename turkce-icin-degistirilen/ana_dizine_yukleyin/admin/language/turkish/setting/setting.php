@@ -5,6 +5,7 @@
 $_['heading_title']										= 'Genel Ayarlar';
 
 // Text
+$_['text_stores']											= 'Mağazalar';
 $_['text_success']										= 'Başarılı: Ayarlar başarılı bir şekilde değiştirildi!';
 $_['text_edit']												= 'Ayarları Düzenle';
 $_['text_product']										= 'Ürünler';

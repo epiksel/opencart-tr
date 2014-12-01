@@ -7,8 +7,8 @@ $_['heading_title']                            = 'Fedex';
 // Text
 $_['text_shipping']                            = 'Kargo Metodları';
 $_['text_success']                             = 'Success: You have modified Fedex shipping!';
-$_['text_europe_first_international_priority'] = 'Europe First International Priority';
 $_['text_edit']                                = 'Edit Fedex Shipping';
+$_['text_europe_first_international_priority'] = 'Europe First International Priority';
 $_['text_fedex_1_day_freight']                 = 'Fedex 1 Day Freight';
 $_['text_fedex_2_day']                         = 'Fedex 2 Day';
 $_['text_fedex_2_day_am']                      = 'Fedex 2 Day AM';
@@ -52,6 +52,11 @@ $_['entry_meter']                              = 'Meter Number';
 $_['entry_postcode']                           = 'Post Code';
 $_['entry_test']                               = 'Test Mode';
 $_['entry_service']                            = 'Services';
+$_['entry_dimension']                          = 'Box Dimensions (L x W x H)';
+$_['entry_length_class']                       = 'Length Class';
+$_['entry_length']                             = 'Length';
+$_['entry_width']                              = 'Width';
+$_['entry_height']                             = 'Height';
 $_['entry_dropoff_type']                       = 'Drop Off Type';
 $_['entry_packaging_type']                     = 'Packaging Type';
 $_['entry_rate_type']                          = 'Rate Type';
@@ -64,14 +69,16 @@ $_['entry_status']                             = 'Status';
 $_['entry_sort_order']                         = 'Sort Order';
 
 // Help
+$_['help_length_class']                        = 'Set to inches or centimeters.';
 $_['help_display_time']                        = 'Do you want to display the shipping time? (e.g. Ships within 3 to 5 days)';
-$_['help_display_weight']                      = 'Do you want to display the shipping weight? (e.g. Delivery Weight : 2.7674 Kg\'s)';
+$_['help_display_weight']                      = 'Do you want to display the shipping weight? (e.g. Delivery Weight : 2.7674 kg)';
 $_['help_weight_class']                        = 'Set to kilograms or pounds.';
 
 // Error
 $_['error_permission']                         = 'Warning: You do not have permission to modify Fedex shipping!';
-$_['error_key']                                = 'Key Required!';
-$_['error_password']                           = 'Password Required!';
-$_['error_account']                            = 'Account Required!';
-$_['error_meter']                              = 'Meter Required!';
-$_['error_postcode']                           = 'Post Code Required!';
+$_['error_key']                                = 'Key required!';
+$_['error_password']                           = 'Password required!';
+$_['error_account']                            = 'Account required!';
+$_['error_meter']                              = 'Meter required!';
+$_['error_postcode']                           = 'Post Code required!';
+$_['error_dimension']                          = 'Width &amp; Height required!';

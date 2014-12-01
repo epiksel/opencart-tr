@@ -17,7 +17,7 @@ $_['entry_status']			= 'Durumu';
 $_['entry_sort_order']	= 'Sıralama';
 
 // Help
-$_['help_total']				= 'Bu sipariş toplamı aktif olmadan önce sipariş toplamına ulaşılması gerekir.';
+$_['help_total']				= 'Devre dışı bırakılması için sipariş tutarının sipariş toplamına ulaşılması gerekir.';
 
 // Error
 $_['error_permission']	= 'Uyarı: Düşük sipariş fiyat toplamını düzenleme iznine sahip değilsiniz!!';

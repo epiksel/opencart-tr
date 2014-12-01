@@ -19,7 +19,10 @@ class ControllerAccountRegister extends Controller {
 
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
 			$this->model_account_customer->addCustomer($this->request->post);
-
+			
+			// Clear any previous login attempts for unregistered accounts.
+			$this->model_account_customer->deleteLoginAttempts($this->request->post['email']);
+			
 			$this->customer->login($this->request->post['email'], $this->request->post['password']);
 
 			unset($this->session->data['guest']);
@@ -40,21 +43,18 @@ class ControllerAccountRegister extends Controller {
 		$data['breadcrumbs'] = array();
 
 		$data['breadcrumbs'][] = array(
-			'text'      => $this->language->get('text_home'),
-			'href'      => $this->url->link('common/home'),
-			'separator' => false
+			'text' => $this->language->get('text_home'),
+			'href' => $this->url->link('common/home')
 		);
 
 		$data['breadcrumbs'][] = array(
-			'text'      => $this->language->get('text_account'),
-			'href'      => $this->url->link('account/account', '', 'SSL'),
-			'separator' => $this->language->get('text_separator')
+			'text' => $this->language->get('text_account'),
+			'href' => $this->url->link('account/account', '', 'SSL')
 		);
 
 		$data['breadcrumbs'][] = array(
-			'text'      => $this->language->get('text_register'),
-			'href'      => $this->url->link('account/register', '', 'SSL'),
-			'separator' => $this->language->get('text_separator')
+			'text' => $this->language->get('text_register'),
+			'href' => $this->url->link('account/register', '', 'SSL')
 		);
 
 		$data['heading_title'] = $this->language->get('heading_title');
@@ -278,7 +278,19 @@ class ControllerAccountRegister extends Controller {
 		$data['custom_fields'] = $this->model_account_custom_field->getCustomFields();
 
 		if (isset($this->request->post['custom_field'])) {
-			$data['register_custom_field'] = $this->request->post['custom_field']['account'] + $this->request->post['custom_field']['address'];
+			if (isset($this->request->post['custom_field']['account'])) {
+				$account_custom_field = $this->request->post['custom_field']['account'];
+			} else {
+				$account_custom_field = array();
+			}
+			
+			if (isset($this->request->post['custom_field']['address'])) {
+				$address_custom_field = $this->request->post['custom_field']['address'];
+			} else {
+				$address_custom_field = array();
+			}			
+			
+			$data['register_custom_field'] = $account_custom_field + $address_custom_field;
 		} else {
 			$data['register_custom_field'] = array();
 		}
@@ -344,7 +356,7 @@ class ControllerAccountRegister extends Controller {
 			$this->error['lastname'] = $this->language->get('error_lastname');
 		}
 
-		if ((utf8_strlen($this->request->post['email']) > 96) || !preg_match('/^[^\@]+@.*\.[a-z]{2,6}$/i', $this->request->post['email'])) {
+		if ((utf8_strlen($this->request->post['email']) > 96) || !preg_match('/^[^\@]+@.*.[a-z]{2,15}$/i', $this->request->post['email'])) {
 			$this->error['email'] = $this->language->get('error_email');
 		}
 

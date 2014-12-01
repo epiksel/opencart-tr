@@ -41,20 +41,17 @@ class ControllerAccountEdit extends Controller {
 
 		$data['breadcrumbs'][] = array(
 			'text'      => $this->language->get('text_home'),
-			'href'      => $this->url->link('common/home'),
-			'separator' => false
+			'href'      => $this->url->link('common/home')
 		);
 
 		$data['breadcrumbs'][] = array(
 			'text'      => $this->language->get('text_account'),
-			'href'      => $this->url->link('account/account', '', 'SSL'),
-			'separator' => $this->language->get('text_separator')
+			'href'      => $this->url->link('account/account', '', 'SSL')
 		);
 
 		$data['breadcrumbs'][] = array(
 			'text'      => $this->language->get('text_edit'),
-			'href'      => $this->url->link('account/edit', '', 'SSL'),
-			'separator' => $this->language->get('text_separator')
+			'href'      => $this->url->link('account/edit', '', 'SSL')
 		);
 
 		$data['heading_title'] = $this->language->get('heading_title');
@@ -194,7 +191,7 @@ class ControllerAccountEdit extends Controller {
 			$this->error['lastname'] = $this->language->get('error_lastname');
 		}
 
-		if ((utf8_strlen($this->request->post['email']) > 96) || !preg_match('/^[^\@]+@.*\.[a-z]{2,6}$/i', $this->request->post['email'])) {
+		if ((utf8_strlen($this->request->post['email']) > 96) || !preg_match('/^[^\@]+@.*.[a-z]{2,15}$/i', $this->request->post['email'])) {
 			$this->error['email'] = $this->language->get('error_email');
 		}
 

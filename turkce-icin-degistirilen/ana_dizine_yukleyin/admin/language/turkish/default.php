@@ -28,10 +28,9 @@ $_['text_loading']                  = 'Yükleniyor...';
 $_['text_no_results']								= 'Gösterilecek sonuç yok!';
 $_['text_confirm']									= 'Emin misiniz?';
 $_['text_home']											= 'Anasayfa';
-$_['text_confirm']									= 'Silme/Kaldırma işlemi geri alınamaz. Onaylıyor musunuz?';
 
 // Button
-$_['button_insert']									= 'Ekle';
+$_['button_add']										= 'Ekle';
 $_['button_delete']									= 'Sil';
 $_['button_save']										= 'Kaydet';
 $_['button_cancel']									= 'İptal';
@@ -138,6 +137,7 @@ $_['tab_marketing']									= 'Pazarlama';
 $_['tab_online']										= 'Çevirimiçi';
 $_['tab_activity']									= 'Son Aktiviteler';
 $_['tab_recurring']                 = 'Tekrarlayan';
+$_['tab_action']                    = 'Eylem';
 
 // Error
 $_['error_exception']								= 'Hata kodu(%s): %s dosya %s satır %s';

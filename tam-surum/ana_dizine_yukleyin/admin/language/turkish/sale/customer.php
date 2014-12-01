@@ -13,7 +13,6 @@ $_['text_default']					= 'Varsayılan';
 $_['text_balance']					= 'Bakiye';
 $_['text_add_ban_ip']				= 'IP Engelle';
 $_['text_remove_ban_ip']		= 'IP Engeli Kaldır';
-$_['text_login']						= 'Oturum Aç';
 
 // Column
 $_['column_name']						= 'Müşteri Adı';
@@ -38,7 +37,8 @@ $_['entry_telephone']				= 'Telefon';
 $_['entry_fax']							= 'Faks';
 $_['entry_newsletter']			= 'Bülten Aboneliği';
 $_['entry_status']					= 'Durumu';
-$_['entry_safe']						= 'Güvenli';
+$_['entry_approved']				= 'Onaylandı';
+$_['entry_safe']						= 'Güvenilir';
 $_['entry_password']				= 'Parola';
 $_['entry_confirm']					= 'Parola(tekrar)';
 $_['entry_company']					= 'Şirket Adı';
@@ -54,12 +54,11 @@ $_['entry_description']			= 'Açıklama';
 $_['entry_amount']					= 'Kredi Tutarı';
 $_['entry_points']					= 'Puan';
 $_['entry_name']						= 'Müşteri Adı';
-$_['entry_approved']				= 'Onaylandı';
 $_['entry_ip']							= 'IP';
 $_['entry_date_added']			= 'Ekleme Tarihi';
 
 // Help
-$_['help_safe']							= 'Anti-Dolandırıcılık sistemi tarafından engellenmemesi için bu mişteriyi doğrulayın.';
+$_['help_safe']							= 'Anti-Dolandırıcılık sistemi tarafından engellenmemesi için bu müşteriyi güvenilir olarak işaretleyebilirsiniz.';
 $_['help_points']						= 'Puan silmek için başına eksi işareti koyunuz.';
 
 // Error

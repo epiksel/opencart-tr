@@ -5,7 +5,7 @@
 $_['heading_title']     = 'Satılan Ürünler Raporu';
 
 // Text
-$_['text_list']					= 'Satılan Ürünler Listesi';
+$_['text_list']					= 'Satılan Ürün Listesi';
 $_['text_all_status']   = 'Tüm Durumlar';
 
 // Column

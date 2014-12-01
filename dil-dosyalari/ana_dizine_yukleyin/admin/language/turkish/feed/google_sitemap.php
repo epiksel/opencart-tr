@@ -7,7 +7,7 @@ $_['heading_title']			= 'Google Sitemap';
 // Text
 $_['text_feed']					= 'Beslemeler';
 $_['text_success']			= 'Başarılı: Google Sitemap beslemesi güncellendi!';
-$_['text_list']					= 'Bölüm Listesi';
+$_['text_edit']					= 'Google Sitemap Düzenle';
 
 // Entry
 $_['entry_status']			= 'Durumu';

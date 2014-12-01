@@ -243,7 +243,7 @@ class ControllerAccountAddress extends Controller {
 			);
 		}
 
-		$data['insert'] = $this->url->link('account/address/add', '', 'SSL');
+		$data['add'] = $this->url->link('account/address/add', '', 'SSL');
 		$data['back'] = $this->url->link('account/account', '', 'SSL');
 
 		$data['column_left'] = $this->load->controller('common/column_left');
@@ -356,6 +356,12 @@ class ControllerAccountAddress extends Controller {
 			$data['error_zone'] = '';
 		}
 
+		if (isset($this->error['custom_field'])) {
+			$data['error_custom_field'] = $this->error['custom_field'];
+		} else {
+			$data['error_custom_field'] = array();
+		}
+		
 		if (!isset($this->request->get['address_id'])) {
 			$data['action'] = $this->url->link('account/address/add', '', 'SSL');
 		} else {

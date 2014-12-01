@@ -34,7 +34,7 @@ $_['entry_sort_order']								= 'Sıralama';
 
 // Tabs
 $_['tab_general']											= 'General';
-$_['tab_status']											= 'Order status';
+$_['tab_order_status']								= 'Order Status';
 
 // Help
 $_['help_test']												= 'Use the live or testing (sandbox) gateway server to process transactions?';

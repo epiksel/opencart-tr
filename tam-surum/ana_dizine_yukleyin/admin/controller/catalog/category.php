@@ -173,7 +173,7 @@ class ControllerCatalogCategory extends Controller {
 			'href' => $this->url->link('catalog/category', 'token=' . $this->session->data['token'] . $url, 'SSL')
 		);
 		
-		$data['insert'] = $this->url->link('catalog/category/add', 'token=' . $this->session->data['token'] . $url, 'SSL');
+		$data['add'] = $this->url->link('catalog/category/add', 'token=' . $this->session->data['token'] . $url, 'SSL');
 		$data['delete'] = $this->url->link('catalog/category/delete', 'token=' . $this->session->data['token'] . $url, 'SSL');
 		$data['repair'] = $this->url->link('catalog/category/repair', 'token=' . $this->session->data['token'] . $url, 'SSL');
 
@@ -210,7 +210,7 @@ class ControllerCatalogCategory extends Controller {
 		$data['column_sort_order'] = $this->language->get('column_sort_order');
 		$data['column_action'] = $this->language->get('column_action');
 
-		$data['button_insert'] = $this->language->get('button_insert');
+		$data['button_add'] = $this->language->get('button_add');
 		$data['button_edit'] = $this->language->get('button_edit');
 		$data['button_delete'] = $this->language->get('button_delete');
 		$data['button_rebuild'] = $this->language->get('button_rebuild');
@@ -501,7 +501,7 @@ class ControllerCatalogCategory extends Controller {
 		} elseif (!empty($category_info)) {
 			$data['status'] = $category_info['status'];
 		} else {
-			$data['status'] = 1;
+			$data['status'] = true;
 		}
 
 		if (isset($this->request->post['category_layout'])) {
@@ -538,20 +538,22 @@ class ControllerCatalogCategory extends Controller {
 			}
 		}
 
-		$this->load->model('catalog/url_alias');
+		if (utf8_strlen($this->request->post['keyword']) > 0) {
+			$this->load->model('catalog/url_alias');
 
-		$url_alias_info = $this->model_catalog_url_alias->getUrlAlias($this->request->post['keyword']);
+			$url_alias_info = $this->model_catalog_url_alias->getUrlAlias($this->request->post['keyword']);
 		
-		if ($url_alias_info && isset($this->request->get['category_id']) && $url_alias_info['query'] != 'category_id=' . $this->request->get['category_id']) {
-			$this->error['keyword'] = sprintf($this->language->get('error_keyword'));
-		}
-		
-		if ($url_alias_info && !isset($this->request->get['category_id'])) {
-			$this->error['keyword'] = sprintf($this->language->get('error_keyword'));
-		}
-		
-		if ($this->error && !isset($this->error['warning'])) {
-			$this->error['warning'] = $this->language->get('error_warning');
+			if ($url_alias_info && isset($this->request->get['category_id']) && $url_alias_info['query'] != 'category_id=' . $this->request->get['category_id']) {
+				$this->error['keyword'] = sprintf($this->language->get('error_keyword'));
+			}
+
+			if ($url_alias_info && !isset($this->request->get['category_id'])) {
+				$this->error['keyword'] = sprintf($this->language->get('error_keyword'));
+			}
+
+			if ($this->error && !isset($this->error['warning'])) {
+				$this->error['warning'] = $this->language->get('error_warning');
+			}
 		}
 
 		return !$this->error;
@@ -581,6 +583,8 @@ class ControllerCatalogCategory extends Controller {
 
 			$filter_data = array(
 				'filter_name' => $this->request->get['filter_name'],
+				'sort'        => 'name',
+				'order'       => 'ASC',
 				'start'       => 0,
 				'limit'       => 5
 			);
