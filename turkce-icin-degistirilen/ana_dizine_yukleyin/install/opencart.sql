@@ -1708,9 +1708,9 @@ INSERT INTO `oc_layout_module` (`layout_module_id`, `layout_id`, `code`, `positi
 (3, 5, '0', 'column_left', 2),
 (4, 10, 'affiliate', 'column_right', 1),
 (5, 6, 'account', 'column_right', 1),
-(6, 1, 'carousel.29', 'content_top', 3),
-(7, 1, 'slideshow.27', 'content_top', 1),
-(8, 1, 'featured.28', 'content_top', 2),
+(13, 1, 'featured.28', 'content_top', 2),
+(12, 1, 'slideshow.27', 'content_top', 1),
+(11, 1, 'carousel.29', 'content_top', 3),
 (9, 3, 'account', 'column_left', 1),
 (10, 3, 'banner.30', 'column_left', 2);
 
@@ -1926,10 +1926,10 @@ CREATE TABLE IF NOT EXISTS `oc_module` (
 --
 
 INSERT INTO `oc_module` (`module_id`, `name`, `code`, `setting`) VALUES
-(30, 'Category', 'banner', 'a:5:{s:4:"name";s:17:"Banner - Category";s:9:"banner_id";s:1:"6";s:5:"width";s:3:"300";s:6:"height";s:3:"300";s:6:"status";s:1:"1";}'),
-(29, 'Home Page', 'carousel', 'a:5:{s:4:"name";s:20:"Carousel - Home Page";s:9:"banner_id";s:1:"8";s:5:"width";s:3:"130";s:6:"height";s:3:"100";s:6:"status";s:1:"1";}'),
-(28, 'Home Page', 'featured', 'a:6:{s:4:"name";s:20:"Featured - Home Page";s:7:"product";a:4:{i:0;s:2:"43";i:1;s:2:"40";i:2;s:2:"42";i:3;s:2:"30";}s:5:"limit";s:1:"4";s:5:"width";s:3:"200";s:6:"height";s:3:"200";s:6:"status";s:1:"1";}'),
-(27, 'Home Page', 'slideshow', 'a:5:{s:4:"name";s:21:"Slideshow - Home Page";s:9:"banner_id";s:1:"7";s:5:"width";s:4:"1140";s:6:"height";s:3:"380";s:6:"status";s:1:"1";}');
+(30, 'Kategoriler', 'banner', 'a:5:{s:4:"name";s:11:"Kategoriler";s:9:"banner_id";s:1:"1";s:5:"width";s:3:"300";s:6:"height";s:3:"300";s:6:"status";s:1:"1";}'),
+(29, 'Ana Sayfa', 'carousel', 'a:5:{s:4:"name";s:9:"Ana Sayfa";s:9:"banner_id";s:1:"3";s:5:"width";s:3:"130";s:6:"height";s:3:"100";s:6:"status";s:1:"1";}'),
+(28, 'Ana Sayfa', 'featured', 'a:6:{s:4:"name";s:9:"Ana Sayfa";s:7:"product";a:5:{i:0;s:2:"12";i:1;s:1:"3";i:2;s:2:"17";i:3;s:1:"1";i:4;s:2:"11";}s:5:"limit";s:1:"4";s:5:"width";s:3:"200";s:6:"height";s:3:"200";s:6:"status";s:1:"1";}'),
+(27, 'Ana Sayfa', 'slideshow', 'a:5:{s:4:"name";s:9:"Ana Sayfa";s:9:"banner_id";s:1:"2";s:5:"width";s:4:"1140";s:6:"height";s:3:"380";s:6:"status";s:1:"1";}');
 
 -- --------------------------------------------------------
 
