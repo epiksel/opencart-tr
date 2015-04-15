@@ -6,7 +6,6 @@ html, body {
 	font-family: 'Open Sans', sans-serif;
 	font-size: 12px;
 	color: #666666;
-	font-weight: 500;
 	line-height: 18px;
 	text-rendering: optimizeLegibility;
 }
@@ -51,11 +50,9 @@ h1, h2, h3, h4, h5, h6, p {
 	color: #BBBBBB;
 	padding: 0 5px;	
 }
-
 a:hover, a:focus {
 	text-decoration: none;
 }
-
 /* fix for bootstrap hidden and visible */
 span.hidden-xs, span.hidden-sm, span.hidden-md, span.hidden-lg {
 	display: inline;
@@ -608,3 +605,14 @@ input[type="checkbox"]:checked::after, .checkbox input[type="checkbox"]:checked:
 .jqvmap-label {
 	z-index: 999;
 }
+
+/* Menu Fix For System -> Layout -> Banner */
+.collapse.in {
+    display: block;
+    visibility: unset;
+}
+.collapse {
+    display: none;
+    visibility: unset;
+}
+/* Menu Fix For System -> Layout -> Banner */

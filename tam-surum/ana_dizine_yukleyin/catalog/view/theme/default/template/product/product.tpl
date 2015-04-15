@@ -101,16 +101,14 @@
                     <input type="radio" name="rating" value="5" />
                     &nbsp;<?php echo $entry_good; ?></div>
                 </div>
-                <div class="form-group required">
-                  <div class="col-sm-12">
-                    <label class="control-label" for="input-captcha"><?php echo $entry_captcha; ?></label>
-                    <input type="text" name="captcha" value="" id="input-captcha" class="form-control" />
+                <?php if ($site_key) { ?>
+                  <div class="form-group">
+                    <div class="col-sm-12">
+                      <div class="g-recaptcha" data-sitekey="<?php echo $site_key; ?>"></div>
+                    </div>
                   </div>
-                </div>
-                <div class="form-group">
-                  <div class="col-sm-12"> <img src="index.php?route=tool/captcha" alt="" id="captcha" /> </div>
-                </div>
-                <div class="buttons">
+                <?php } ?>
+                <div class="buttons clearfix">
                   <div class="pull-right">
                     <button type="button" id="button-review" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-primary"><?php echo $button_continue; ?></button>
                   </div>
@@ -337,8 +335,8 @@
             <hr>
             <!-- AddThis Button BEGIN -->
             <div class="addthis_toolbox addthis_default_style"><a class="addthis_button_facebook_like" fb:like:layout="button_count"></a> <a class="addthis_button_tweet"></a> <a class="addthis_button_pinterest_pinit"></a> <a class="addthis_counter addthis_pill_style"></a></div>
-            <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-515eeaf54693130e"></script> 
-            <!-- AddThis Button END --> 
+            <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-515eeaf54693130e"></script>
+            <!-- AddThis Button END -->
           </div>
           <?php } ?>
         </div>
@@ -386,7 +384,7 @@
               <?php } ?>
             </div>
             <div class="button-group">
-              <button type="button" onclick="cart.add('<?php echo $product['product_id']; ?>');"><span class="hidden-xs hidden-sm hidden-md"><?php echo $button_cart; ?></span> <i class="fa fa-shopping-cart"></i></button>
+              <button type="button" onclick="cart.add('<?php echo $product['product_id']; ?>', '<?php echo $product['minimum']; ?>');"><span class="hidden-xs hidden-sm hidden-md"><?php echo $button_cart; ?></span> <i class="fa fa-shopping-cart"></i></button>
               <button type="button" data-toggle="tooltip" title="<?php echo $button_wishlist; ?>" onclick="wishlist.add('<?php echo $product['product_id']; ?>');"><i class="fa fa-heart"></i></button>
               <button type="button" data-toggle="tooltip" title="<?php echo $button_compare; ?>" onclick="compare.add('<?php echo $product['product_id']; ?>');"><i class="fa fa-exchange"></i></button>
             </div>
@@ -429,14 +427,14 @@ $('select[name=\'recurring_id\'], input[name="quantity"]').change(function(){
 		},
 		success: function(json) {
 			$('.alert, .text-danger').remove();
-			
+
 			if (json['success']) {
 				$('#recurring-description').html(json['success']);
 			}
 		}
 	});
 });
-//--></script> 
+//--></script>
 <script type="text/javascript"><!--
 $('#button-cart').on('click', function() {
 	$.ajax({
@@ -458,7 +456,7 @@ $('#button-cart').on('click', function() {
 				if (json['error']['option']) {
 					for (i in json['error']['option']) {
 						var element = $('#input-option' + i.replace('_', '-'));
-						
+
 						if (element.parent().hasClass('input-group')) {
 							element.parent().after('<div class="text-danger">' + json['error']['option'][i] + '</div>');
 						} else {
@@ -466,28 +464,28 @@ $('#button-cart').on('click', function() {
 						}
 					}
 				}
-				
+
 				if (json['error']['recurring']) {
 					$('select[name=\'recurring_id\']').after('<div class="text-danger">' + json['error']['recurring'] + '</div>');
 				}
-				
+
 				// Highlight any found errors
 				$('.text-danger').parent().addClass('has-error');
 			}
-			
+
 			if (json['success']) {
 				$('.breadcrumb').after('<div class="alert alert-success">' + json['success'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');
-				
-				$('#cart-total').html(json['total']);
-				
+
+				$('#cart > button').html('<i class="fa fa-shopping-cart"></i> ' + json['total']);
+
 				$('html, body').animate({ scrollTop: 0 }, 'slow');
-				
+
 				$('#cart > ul').load('index.php?route=common/cart/info ul li');
 			}
 		}
 	});
 });
-//--></script> 
+//--></script>
 <script type="text/javascript"><!--
 $('.date').datetimepicker({
 	pickTime: false
@@ -504,17 +502,21 @@ $('.time').datetimepicker({
 
 $('button[id^=\'button-upload\']').on('click', function() {
 	var node = this;
-	
+
 	$('#form-upload').remove();
-	
+
 	$('body').prepend('<form enctype="multipart/form-data" id="form-upload" style="display: none;"><input type="file" name="file" /></form>');
-	
+
 	$('#form-upload input[name=\'file\']').trigger('click');
-	
+
+	if (typeof timer != 'undefined') {
+    	clearInterval(timer);
+	}
+
 	timer = setInterval(function() {
 		if ($('#form-upload input[name=\'file\']').val() != '') {
 			clearInterval(timer);
-			
+
 			$.ajax({
 				url: 'index.php?route=tool/upload',
 				type: 'post',
@@ -531,14 +533,14 @@ $('button[id^=\'button-upload\']').on('click', function() {
 				},
 				success: function(json) {
 					$('.text-danger').remove();
-					
+
 					if (json['error']) {
 						$(node).parent().find('input').after('<div class="text-danger">' + json['error'] + '</div>');
 					}
-					
+
 					if (json['success']) {
 						alert(json['success']);
-						
+
 						$(node).parent().find('input').attr('value', json['code']);
 					}
 				},
@@ -549,7 +551,7 @@ $('button[id^=\'button-upload\']').on('click', function() {
 		}
 	}, 500);
 });
-//--></script> 
+//--></script>
 <script type="text/javascript"><!--
 $('#review').delegate('.pagination a', 'click', function(e) {
   e.preventDefault();
@@ -568,29 +570,26 @@ $('#button-review').on('click', function() {
 		url: 'index.php?route=product/product/write&product_id=<?php echo $product_id; ?>',
 		type: 'post',
 		dataType: 'json',
-		data: 'name=' + encodeURIComponent($('input[name=\'name\']').val()) + '&text=' + encodeURIComponent($('textarea[name=\'text\']').val()) + '&rating=' + encodeURIComponent($('input[name=\'rating\']:checked').val() ? $('input[name=\'rating\']:checked').val() : '') + '&captcha=' + encodeURIComponent($('input[name=\'captcha\']').val()),
+		data: 'name=' + encodeURIComponent($('input[name=\'name\']').val()) + '&text=' + encodeURIComponent($('textarea[name=\'text\']').val()) + '&rating=' + encodeURIComponent($('input[name=\'rating\']:checked').val() ? $('input[name=\'rating\']:checked').val() : ''),
 		beforeSend: function() {
 			$('#button-review').button('loading');
 		},
 		complete: function() {
 			$('#button-review').button('reset');
-			$('#captcha').attr('src', 'index.php?route=tool/captcha#'+new Date().getTime());
-			$('input[name=\'captcha\']').val('');
 		},
 		success: function(json) {
 			$('.alert-success, .alert-danger').remove();
-			
+
 			if (json['error']) {
 				$('#review').after('<div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> ' + json['error'] + '</div>');
 			}
-			
+
 			if (json['success']) {
 				$('#review').after('<div class="alert alert-success"><i class="fa fa-check-circle"></i> ' + json['success'] + '</div>');
-				
+
 				$('input[name=\'name\']').val('');
 				$('textarea[name=\'text\']').val('');
 				$('input[name=\'rating\']:checked').prop('checked', false);
-				$('input[name=\'captcha\']').val('');
 			}
 		}
 	});
@@ -605,5 +604,5 @@ $(document).ready(function() {
 		}
 	});
 });
-//--></script> 
+//--></script>
 <?php echo $footer; ?>

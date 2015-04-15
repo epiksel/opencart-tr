@@ -57,7 +57,7 @@ class ControllerCheckoutLogin extends Controller {
 			// Check how many login attempts have been made.
 			$login_info = $this->model_account_customer->getLoginAttempts($this->request->post['email']);
 					
-			if ($login_info && ($login_info['total'] > $this->config->get('config_login_attempts')) && strtotime('-1 hour') < strtotime($login_info['date_modified'])) {
+			if ($login_info && ($login_info['total'] >= $this->config->get('config_login_attempts')) && strtotime('-1 hour') < strtotime($login_info['date_modified'])) {
 				$json['error']['warning'] = $this->language->get('error_attempts');
 			}			
 
@@ -85,11 +85,11 @@ class ControllerCheckoutLogin extends Controller {
 			$this->load->model('account/address');
 
 			if ($this->config->get('config_tax_customer') == 'payment') {
-				$this->session->data['payment_addess'] = $this->model_account_address->getAddress($this->customer->getAddressId());
+				$this->session->data['payment_address'] = $this->model_account_address->getAddress($this->customer->getAddressId());
 			}
 
 			if ($this->config->get('config_tax_customer') == 'shipping') {
-				$this->session->data['shipping_addess'] = $this->model_account_address->getAddress($this->customer->getAddressId());
+				$this->session->data['shipping_address'] = $this->model_account_address->getAddress($this->customer->getAddressId());
 			}
 
 			$json['redirect'] = $this->url->link('checkout/checkout', '', 'SSL');

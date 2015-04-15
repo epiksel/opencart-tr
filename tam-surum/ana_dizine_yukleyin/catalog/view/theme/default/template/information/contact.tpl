@@ -130,20 +130,16 @@
               <?php } ?>
             </div>
           </div>
-          <div class="form-group required">
-            <label class="col-sm-2 control-label" for="input-captcha"><?php echo $entry_captcha; ?></label>
-            <div class="col-sm-10">
-              <input type="text" name="captcha" id="input-captcha" class="form-control" />
+          <?php if ($site_key) { ?>
+            <div class="form-group">
+              <div class="col-sm-offset-2 col-sm-10">
+                <div class="g-recaptcha" data-sitekey="<?php echo $site_key; ?>"></div>
+                <?php if ($error_captcha) { ?>
+                  <div class="text-danger"><?php echo $error_captcha; ?></div>
+                <?php } ?>
+              </div>
             </div>
-          </div>
-          <div class="form-group">
-            <div class="col-sm-10 pull-right">
-              <img src="index.php?route=tool/captcha" alt="" />
-              <?php if ($error_captcha) { ?>
-                <div class="text-danger"><?php echo $error_captcha; ?></div>
-              <?php } ?>
-            </div>
-          </div>
+          <?php } ?>
         </fieldset>
         <div class="buttons">
           <div class="pull-right">

@@ -139,7 +139,7 @@
               <?php } ?>
             </div>
             <div class="button-group">
-              <button type="button" onclick="cart.add('<?php echo $product['product_id']; ?>');"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo $button_cart; ?></span></button>
+              <button type="button" onclick="cart.add('<?php echo $product['product_id']; ?>', '<?php echo $product['minimum']; ?>');"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo $button_cart; ?></span></button>
               <button type="button" data-toggle="tooltip" title="<?php echo $button_wishlist; ?>" onclick="wishlist.add('<?php echo $product['product_id']; ?>');"><i class="fa fa-heart"></i></button>
               <button type="button" data-toggle="tooltip" title="<?php echo $button_compare; ?>" onclick="compare.add('<?php echo $product['product_id']; ?>');"><i class="fa fa-exchange"></i></button>
             </div>
@@ -160,27 +160,27 @@
 <script type="text/javascript"><!--
 $('#button-search').bind('click', function() {
 	url = 'index.php?route=product/search';
-	
+
 	var search = $('#content input[name=\'search\']').prop('value');
-	
+
 	if (search) {
 		url += '&search=' + encodeURIComponent(search);
 	}
 
 	var category_id = $('#content select[name=\'category_id\']').prop('value');
-	
+
 	if (category_id > 0) {
 		url += '&category_id=' + encodeURIComponent(category_id);
 	}
-	
+
 	var sub_category = $('#content input[name=\'sub_category\']:checked').prop('value');
-	
+
 	if (sub_category) {
 		url += '&sub_category=true';
 	}
-		
+
 	var filter_description = $('#content input[name=\'description\']:checked').prop('value');
-	
+
 	if (filter_description) {
 		url += '&description=true';
 	}
@@ -203,5 +203,5 @@ $('select[name=\'category_id\']').on('change', function() {
 });
 
 $('select[name=\'category_id\']').trigger('change');
---></script> 
-<?php echo $footer; ?> 
+--></script>
+<?php echo $footer; ?>

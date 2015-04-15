@@ -41,7 +41,6 @@ $_['entry_review']							= 'Yorumunuz';
 $_['entry_rating']							= 'Oylama';
 $_['entry_good']								= 'İyi';
 $_['entry_bad']									= 'Kötü';
-$_['entry_captcha']							= 'Doğrulama kodunu giriniz';
 
 // Tabs
 $_['tab_description']						= 'Açıklama';

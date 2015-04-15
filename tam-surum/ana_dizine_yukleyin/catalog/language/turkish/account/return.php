@@ -48,7 +48,6 @@ $_['entry_quantity']     = 'Adet';
 $_['entry_reason']       = 'İade Nedeni';
 $_['entry_opened']       = 'Ürün Açıldı';
 $_['entry_fault_detail'] = 'Arıza ya da diğer detaylar';
-$_['entry_captcha']      = 'Doğrulama kodunu giriniz';
 
 // Error
 $_['text_error']         = 'İstediğiniz ürün iadesi bulunamadı!';

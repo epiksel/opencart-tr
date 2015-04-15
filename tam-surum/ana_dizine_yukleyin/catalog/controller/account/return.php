@@ -279,8 +279,6 @@ class ControllerAccountReturn extends Controller {
 		$this->load->model('account/return');
 
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
-			unset($this->session->data['captcha']);
-
 			$return_id = $this->model_account_return->addReturn($this->request->post);
 
 			// Add to activity log
@@ -348,7 +346,6 @@ class ControllerAccountReturn extends Controller {
 		$data['entry_reason'] = $this->language->get('entry_reason');
 		$data['entry_opened'] = $this->language->get('entry_opened');
 		$data['entry_fault_detail'] = $this->language->get('entry_fault_detail');
-		$data['entry_captcha'] = $this->language->get('entry_captcha');
 
 		$data['button_submit'] = $this->language->get('button_submit');
 		$data['button_back'] = $this->language->get('button_back');
@@ -519,6 +516,14 @@ class ControllerAccountReturn extends Controller {
 			$data['comment'] = '';
 		}
 
+		if ($this->config->get('config_google_captcha_status')) {
+			$this->document->addScript('https://www.google.com/recaptcha/api.js');
+
+			$data['site_key'] = $this->config->get('config_google_captcha_public');
+		} else {
+			$data['site_key'] = '';
+		}
+
 		if ($this->config->get('config_return_id')) {
 			$this->load->model('catalog/information');
 
@@ -627,8 +632,14 @@ class ControllerAccountReturn extends Controller {
 			$this->error['reason'] = $this->language->get('error_reason');
 		}
 
-		if (empty($this->session->data['captcha']) || ($this->session->data['captcha'] != $this->request->post['captcha'])) {
-			$this->error['captcha'] = $this->language->get('error_captcha');
+		if ($this->config->get('config_google_captcha_status')) {
+			$recaptcha = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret=' . urlencode($this->config->get('config_google_captcha_secret')) . '&response=' . $this->request->post['g-recaptcha-response'] . '&remoteip=' . $this->request->server['REMOTE_ADDR']);
+
+			$recaptcha = json_decode($recaptcha, true);
+
+			if (!$recaptcha['success']) {
+				$this->error['captcha'] = $this->language->get('error_captcha');
+			}
 		}
 
 		if ($this->config->get('config_return_id')) {

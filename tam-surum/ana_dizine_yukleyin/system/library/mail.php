@@ -20,38 +20,36 @@ class Mail {
 
 	public function __construct($config = array()) {
 		foreach ($config as $key => $value) {
-			if ($value) {
-				$this->$key = $value;
-			}
+			$this->$key = $value;
 		}
 	}
 
 	public function setTo($to) {
-		$this->to = html_entity_decode($to, ENT_QUOTES, 'UTF-8');
+		$this->to = $to;
 	}
 
 	public function setFrom($from) {
-		$this->from = html_entity_decode($from, ENT_QUOTES, 'UTF-8');
+		$this->from = $from;
 	}
 
 	public function setSender($sender) {
-		$this->sender = html_entity_decode($sender, ENT_QUOTES, 'UTF-8');
+		$this->sender = $sender;
 	}
 
 	public function setReplyTo($reply_to) {
-		$this->replyto = html_entity_decode($reply_to, ENT_QUOTES, 'UTF-8');
+		$this->replyto = $reply_to;
 	}
 
 	public function setSubject($subject) {
-		$this->subject = html_entity_decode($subject, ENT_QUOTES, 'UTF-8');
+		$this->subject = $subject;
 	}
 
 	public function setText($text) {
-		$this->text = html_entity_decode($text, ENT_QUOTES, 'UTF-8');
+		$this->text = $text;
 	}
 
 	public function setHtml($html) {
-		$this->html = html_entity_decode($html, ENT_QUOTES, 'UTF-8');
+		$this->html = $html;
 	}
 
 	public function addAttachment($filename) {
@@ -164,8 +162,9 @@ class Mail {
 				mail($to, '=?UTF-8?B?' . base64_encode($this->subject) . '?=', $message, $header);
 			}
 		} elseif ($this->protocol == 'smtp') {
-			$is_tls = substr($this->smtp_hostname, 0, 3) == 'tls';
-			$hostname = $is_tls ? substr($this->smtp_hostname, 6) : $this->smtp_hostname;
+			$tls = substr($this->smtp_hostname, 0, 3) == 'tls';
+			$hostname = $tls ? substr($this->smtp_hostname, 6) : $this->smtp_hostname;
+
 			$handle = fsockopen($hostname, $this->smtp_port, $errno, $errstr, $this->smtp_timeout);
 
 			if (!$handle) {
@@ -199,7 +198,7 @@ class Mail {
 					exit();
 				}
 
-				if ($is_tls) {
+				if ($tls) {
 					fputs($handle, 'STARTTLS' . "\r\n");
 
 					$reply = '';

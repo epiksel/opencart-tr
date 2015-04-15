@@ -15,4 +15,4 @@ $_['text_download']				= 'Dosyalarım';
 $_['text_logout']					= 'Çıkış Yap';
 $_['text_checkout']				= 'Kasaya Git';
 $_['text_search']					= 'Ara';
-$_['text_all']						= 'Tümü';
+$_['text_all']						= 'Tümü Göster';

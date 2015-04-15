@@ -1,6 +1,6 @@
 <?php
 // Version
-define('VERSION', '2.0.1.1');
+define('VERSION', '2.0.2.0');
 
 // Configuration
 if (is_file('config.php')) {
@@ -120,7 +120,7 @@ $config->set('config_language_id', $languages[$config->get('config_admin_languag
 
 // Language
 $language = new Language($languages[$config->get('config_admin_language')]['directory']);
-$language->load('default');
+$language->load($languages[$config->get('config_admin_language')]['directory']);
 $registry->set('language', $language);
 
 // Document

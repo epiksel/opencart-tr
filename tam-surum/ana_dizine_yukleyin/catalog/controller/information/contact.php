@@ -8,14 +8,20 @@ class ControllerInformationContact extends Controller {
 		$this->document->setTitle($this->language->get('heading_title'));
 
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
-			unset($this->session->data['captcha']);
-
-			$mail = new Mail($this->config->get('config_mail'));
+			$mail = new Mail();
+			$mail->protocol = $this->config->get('config_mail_protocol');
+			$mail->parameter = $this->config->get('config_mail_parameter');
+			$mail->smtp_hostname = $this->config->get('config_mail_smtp_host');
+			$mail->smtp_username = $this->config->get('config_mail_smtp_username');
+			$mail->smtp_password = html_entity_decode($this->config->get('config_mail_smtp_password'), ENT_QUOTES, 'UTF-8');
+			$mail->smtp_port = $this->config->get('config_mail_smtp_port');
+			$mail->smtp_timeout = $this->config->get('config_mail_smtp_timeout');			
+			
 			$mail->setTo($this->config->get('config_email'));
 			$mail->setFrom($this->request->post['email']);
 			$mail->setSender($this->request->post['name']);
 			$mail->setSubject(sprintf($this->language->get('email_subject'), $this->request->post['name']));
-			$mail->setText(strip_tags($this->request->post['enquiry']));
+			$mail->setText($this->request->post['enquiry']);
 			$mail->send();
 
 			$this->response->redirect($this->url->link('information/contact/success'));
@@ -47,7 +53,6 @@ class ControllerInformationContact extends Controller {
 		$data['entry_name'] = $this->language->get('entry_name');
 		$data['entry_email'] = $this->language->get('entry_email');
 		$data['entry_enquiry'] = $this->language->get('entry_enquiry');
-		$data['entry_captcha'] = $this->language->get('entry_captcha');
 
 		$data['button_map'] = $this->language->get('button_map');
 
@@ -141,10 +146,12 @@ class ControllerInformationContact extends Controller {
 			$data['enquiry'] = '';
 		}
 
-		if (isset($this->request->post['captcha'])) {
-			$data['captcha'] = $this->request->post['captcha'];
+		if ($this->config->get('config_google_captcha_status')) {
+			$this->document->addScript('https://www.google.com/recaptcha/api.js');
+
+			$data['site_key'] = $this->config->get('config_google_captcha_public');
 		} else {
-			$data['captcha'] = '';
+			$data['site_key'] = '';
 		}
 
 		$data['column_left'] = $this->load->controller('common/column_left');
@@ -213,8 +220,14 @@ class ControllerInformationContact extends Controller {
 			$this->error['enquiry'] = $this->language->get('error_enquiry');
 		}
 
-		if (empty($this->session->data['captcha']) || ($this->session->data['captcha'] != $this->request->post['captcha'])) {
-			$this->error['captcha'] = $this->language->get('error_captcha');
+		if ($this->config->get('config_google_captcha_status')) {
+			$recaptcha = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret=' . urlencode($this->config->get('config_google_captcha_secret')) . '&response=' . $this->request->post['g-recaptcha-response'] . '&remoteip=' . $this->request->server['REMOTE_ADDR']);
+
+			$recaptcha = json_decode($recaptcha, true);
+
+			if (!$recaptcha['success']) {
+				$this->error['captcha'] = $this->language->get('error_captcha');
+			}
 		}
 
 		return !$this->error;

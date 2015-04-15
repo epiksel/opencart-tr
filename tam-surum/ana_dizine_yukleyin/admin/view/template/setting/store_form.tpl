@@ -121,13 +121,13 @@
               <div class="form-group">
                 <label class="col-sm-2 control-label" for="input-open"><span data-toggle="tooltip" title="<?php echo $help_open; ?>"><?php echo $entry_open; ?></span></label>
                 <div class="col-sm-10">
-                  <textarea name="open" rows="5" placeholder="<?php echo $entry_open; ?>" id="input-open" class="form-control"><?php echo $open; ?></textarea>
+                  <textarea name="config_open" rows="5" placeholder="<?php echo $entry_open; ?>" id="input-open" class="form-control"><?php echo $config_open; ?></textarea>
                 </div>
               </div>
               <div class="form-group">
                 <label class="col-sm-2 control-label" for="input-comment"><span data-toggle="tooltip" title="<?php echo $help_comment; ?>"><?php echo $entry_comment; ?></span></label>
                 <div class="col-sm-10">
-                  <textarea name="comment" rows="5" placeholder="<?php echo $entry_comment; ?>" id="input-comment" class="form-control"><?php echo $comment; ?></textarea>
+                  <textarea name="config_comment" rows="5" placeholder="<?php echo $entry_comment; ?>" id="input-comment" class="form-control"><?php echo $config_comment; ?></textarea>
                 </div>
               </div>
               <?php if ($locations) { ?>
@@ -758,7 +758,7 @@ $('select[name=\'config_template\']').on('change', function() {
 			$('.fa-spin').remove();
 		},
 		success: function(html) {
-      $('.fa-spin').remove();
+			$('.fa-spin').remove();
 
 			$('#template').attr('src', html);
 		},
@@ -782,11 +782,9 @@ $('select[name=\'config_country_id\']').on('change', function() {
 			$('.fa-spin').remove();
 		},
 		success: function(json) {
-      $('.fa-spin').remove();
-
 			html = '<option value=""><?php echo $text_select; ?></option>';
 
-			if (json['zone'] != '') {
+			if (json['zone'] && json['zone'] != '') {
 				for (i = 0; i < json['zone'].length; i++) {
 					html += '<option value="' + json['zone'][i]['zone_id'] + '"';
 					

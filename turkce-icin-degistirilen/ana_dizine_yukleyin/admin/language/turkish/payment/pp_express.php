@@ -15,11 +15,16 @@ $_['text_clear']                        = 'Temizle';
 $_['text_browse']                       = 'Gözat';
 $_['text_image_manager']                = 'Resim Yönetimi';
 $_['text_ipn']                          = 'IPN URL';
+$_['text_paypal_join']                  = 'Sign up for PayPal - save your settings first as this page will be refreshed';
+$_['text_paypal_join_sandbox']          = 'Sign up for PayPal Sandbox - save your settings first as this page will be refreshed';
 
 // Entry
 $_['entry_username']                    = 'API Kullanıcı Adı';
 $_['entry_password']                    = 'API Parolası';
 $_['entry_signature']                   = 'API İmzası';
+$_['entry_sandbox_username']						= 'API Sandbox Username';
+$_['entry_sandbox_password']						= 'API Sandbox Password';
+$_['entry_sandbox_signature']						= 'API Sandbox Signature';
 $_['entry_test']                        = 'Test (Sandbox) Modu';
 $_['entry_method']                      = 'İşlem Metodu';
 $_['entry_geo_zone']                    = 'Bölge';
@@ -65,5 +70,10 @@ $_['error_permission']									= 'Uyarı: PayPal Express Checkout ödeme metodun
 $_['error_username']      							= 'API kullanıcı adı gerekli!';
 $_['error_password']      							= 'API parolası gerekli!';
 $_['error_signature']     							= 'API imzası gerekli!';
+$_['error_sandbox_username']						= 'API Sandbox Username Required!';
+$_['error_sandbox_password']						= 'API Sandbox Password Required!';
+$_['error_sandbox_signature']						= 'API Sandbox Signature Required!';
 $_['error_data']                        = 'Eksik veri isteği!';
 $_['error_timeout']                     = 'İstek zaman aşımına uğradı!';
+$_['error_api']													= 'Paypal Authorization Error';
+$_['error_api_sandbox']									= 'Paypal Sandbox Authorization Error';
