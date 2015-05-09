@@ -2,7 +2,7 @@
 	   ///			 OpenCart V1.5.x			   ///
 	  ///		  Güncelleme Aşamaları			  ///
 	 ///		http://www.e-piksel.com			 ///
-	///		github.com/e-piksel/opencart-tr		///
+	///		github.com/epiksel/opencart-tr		///
    ///////////////////////////////////////////////
 
 	##########################################
@@ -25,7 +25,7 @@
 
 	1. BAŞLAMADAN ÖNCE TÜM DOSYALARINIZI VE VERİTABINIZI YEDEKLEYİNİZ.
 
-	2. https://github.com/e-piksel/opencart-tr/releases sayfasından son sürümü indiriniz ve arşiv dosyasını bilgisayarınızda herhangi bir yere açınız.
+	2. https://github.com/epiksel/opencart-tr/releases sayfasından son sürümü indiriniz ve arşiv dosyasını bilgisayarınızda herhangi bir yere açınız.
 
 	3. Açtığınız dizinde ana_dizine_yükleyin/config.php, ana_dizine_yükleyin/admin/config.php ve ana_dizine_yükleyin/image klasörünü siliniz.
 

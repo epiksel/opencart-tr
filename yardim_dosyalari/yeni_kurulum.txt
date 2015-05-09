@@ -2,7 +2,7 @@
 	   ///			 OpenCart V1.5.x			   ///
 	  ///			Kurulum Aşamaları			  ///
 	 ///		http://www.e-piksel.com			 ///
-	///		github.com/e-piksel/opencart-tr		///
+	///		github.com/epiksel/opencart-tr		///
    ///////////////////////////////////////////////
 
 
@@ -44,4 +44,4 @@
 
 TÜRKÇE ÇEVİRİ
 E-Piksel E-Ticaret ve Bilgi Teknolojileri
-http://www.e-piksel.com
+http://e-piksel.com

@@ -2,7 +2,7 @@
 	   ///			 OpenCart V1.5.x			   ///
 	  ///		  	Türkçe Dil Ekleme			  ///
 	 ///		http://www.e-piksel.com			 ///
-	///		github.com/e-piksel/opencart-tr		///
+	///		github.com/epiksel/opencart-tr		///
    ///////////////////////////////////////////////
 
    Türkçe Tam sürümü yüklemediyseniz Türkçe dil dosyalarını yükleyerek kolaylıkla sitenize Türkçe dilini ekleyebilirsiniz.
@@ -36,4 +36,4 @@
 
 TÜRKÇE ÇEVİRİ
 E-Piksel E-Ticaret ve Bilgi Teknolojileri
-http://www.e-piksel.com
+http://e-piksel.com

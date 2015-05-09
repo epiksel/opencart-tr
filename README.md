@@ -13,7 +13,7 @@ OpenCart PHP tabanlı açık kaynak kodlu online alışveriş sepetidir. Tüccar
 
 ## Lisans
 
-[GNU General Public License version 3 (GPLv3)](https://github.com/e-piksel/opencart-tr/blob/master/lisans.txt)
+[GNU General Public License version 3 (GPLv3)](https://github.com/epiksel/opencart-tr/blob/master/lisans.txt)
 
 ## Türkçe Çeviri
 
