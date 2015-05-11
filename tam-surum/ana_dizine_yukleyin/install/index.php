@@ -40,7 +40,7 @@ $registry->set('response', $response);
 
 // Language
 $language = new Language('turkish');
-$language->load('default');
+$language->load('turkish');
 $registry->set('language', $language);
 
 // Document

@@ -201,7 +201,7 @@ class ModelOpenbayEbayOrder extends Model{
 
 			if ($notify) {
 				$language = new Language($order_info['language_directory']);
-				$language->load('default');
+				$language->load($order_info['language_directory']);
 				$language->load('mail/order');
 
 				$subject = sprintf($language->get('text_update_subject'), html_entity_decode($order_info['store_name'], ENT_QUOTES, 'UTF-8'), $order_id);
@@ -234,7 +234,7 @@ class ModelOpenbayEbayOrder extends Model{
 				$mail = new Mail();
 				$mail->protocol = $this->config->get('config_mail_protocol');
 				$mail->parameter = $this->config->get('config_mail_parameter');
-				$mail->smtp_hostname = $this->config->get('config_mail_smtp_host');
+				$mail->smtp_hostname = $this->config->get('config_mail_smtp_hostname');
 				$mail->smtp_username = $this->config->get('config_mail_smtp_username');
 				$mail->smtp_password = html_entity_decode($this->config->get('config_mail_smtp_password'), ENT_QUOTES, 'UTF-8');
 				$mail->smtp_port = $this->config->get('config_mail_smtp_port');
@@ -276,7 +276,7 @@ class ModelOpenbayEbayOrder extends Model{
 
 				// Send out order confirmation mail
 				$language = new Language($order_info['language_directory']);
-				$language->load('default');
+				$language->load($order_info['language_directory']);
 				$language->load('mail/order');
 
 				$order_status_query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "order_status` WHERE `order_status_id` = '" . (int)$order_status_id . "' AND `language_id` = '" . (int)$order_info['language_id'] . "'");
@@ -509,7 +509,7 @@ class ModelOpenbayEbayOrder extends Model{
 						$mail = new Mail();
 						$mail->protocol = $this->config->get('config_mail_protocol');
 						$mail->parameter = $this->config->get('config_mail_parameter');
-						$mail->smtp_hostname = $this->config->get('config_mail_smtp_host');
+						$mail->smtp_hostname = $this->config->get('config_mail_smtp_hostname');
 						$mail->smtp_username = $this->config->get('config_mail_smtp_username');
 						$mail->smtp_password = html_entity_decode($this->config->get('config_mail_smtp_password'), ENT_QUOTES, 'UTF-8');
 						$mail->smtp_port = $this->config->get('config_mail_smtp_port');
