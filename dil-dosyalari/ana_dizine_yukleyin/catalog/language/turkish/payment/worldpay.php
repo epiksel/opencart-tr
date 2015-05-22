@@ -1,6 +1,4 @@
 <?php
-/* Turkceye Ceviren eka7a - http://www.e-piksel.com */
-
 // Text
 $_['text_title']			 = 'Credit Card / Debit Card (Worldpay)';
 $_['text_credit_card']		 = 'Card Details';

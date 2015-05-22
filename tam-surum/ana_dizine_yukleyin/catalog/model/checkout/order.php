@@ -116,9 +116,7 @@ class ModelCheckoutOrder extends Model {
 		$this->db->query("DELETE FROM `" . DB_PREFIX . "order_voucher` WHERE order_id = '" . (int)$order_id . "'");
 		$this->db->query("DELETE FROM `" . DB_PREFIX . "order_total` WHERE order_id = '" . (int)$order_id . "'");
 		$this->db->query("DELETE FROM `" . DB_PREFIX . "order_history` WHERE order_id = '" . (int)$order_id . "'");
-		$this->db->query("DELETE FROM `" . DB_PREFIX . "order_fraud` WHERE order_id = '" . (int)$order_id . "'");
 		$this->db->query("DELETE `or`, ort FROM `" . DB_PREFIX . "order_recurring` `or`, `" . DB_PREFIX . "order_recurring_transaction` `ort` WHERE order_id = '" . (int)$order_id . "' AND ort.order_recurring_id = `or`.order_recurring_id");
-
 		$this->db->query("DELETE FROM `" . DB_PREFIX . "affiliate_transaction` WHERE order_id = '" . (int)$order_id . "'");
 
 		// Gift Voucher
@@ -272,18 +270,8 @@ class ModelCheckoutOrder extends Model {
 				$safe = false;
 			}
 
-			if ($this->config->get('config_fraud_detection')) {
-				$this->load->model('checkout/fraud');
-
-				$risk_score = $this->model_checkout_fraud->getFraudScore($order_info);
-
-				if (!$safe && $risk_score > $this->config->get('config_fraud_score')) {
-					$order_status_id = $this->config->get('config_fraud_status_id');
-				}
-			}
-
-			// Ban IP
 			if (!$safe) {
+				// Ban IP
 				$status = false;
 
 				if ($order_info['customer_id']) {
@@ -302,6 +290,23 @@ class ModelCheckoutOrder extends Model {
 
 				if ($status) {
 					$order_status_id = $this->config->get('config_order_status_id');
+				}
+
+				// Anti-Fraud
+				$this->load->model('extension/extension');
+
+				$extensions = $this->model_extension_extension->getExtensions('fraud');
+
+				foreach ($extensions as $extension) {
+					if ($this->config->get($extension['code'] . '_status')) {
+						$this->load->model('fraud/' . $extension['code']);
+
+						$fraud_status_id = $this->{'model_fraud_' . $extension['code']}->check($order_info);
+
+						if ($fraud_status_id) {
+							$order_status_id = $fraud_status_id;
+						}
+					}
 				}
 			}
 
@@ -410,14 +415,14 @@ class ModelCheckoutOrder extends Model {
 					$order_status = '';
 				}
 
-				$subject = sprintf($language->get('text_new_subject'), $order_info['store_name'], $order_id);
+				$subject = sprintf($language->get('text_new_subject'), html_entity_decode($order_info['store_name'], ENT_QUOTES, 'UTF-8'), $order_id);
 
 				// HTML Mail
 				$data = array();
 
-				$data['title'] = sprintf($language->get('text_new_subject'), html_entity_decode($order_info['store_name'], ENT_QUOTES, 'UTF-8'), $order_id);
+				$data['title'] = sprintf($language->get('text_new_subject'), $order_info['store_name'], $order_id);
 
-				$data['text_greeting'] = sprintf($language->get('text_new_greeting'), html_entity_decode($order_info['store_name'], ENT_QUOTES, 'UTF-8'));
+				$data['text_greeting'] = sprintf($language->get('text_new_greeting'), $order_info['store_name']);
 				$data['text_link'] = $language->get('text_new_link');
 				$data['text_download'] = $language->get('text_new_download');
 				$data['text_order_detail'] = $language->get('text_new_order_detail');
@@ -681,11 +686,11 @@ class ModelCheckoutOrder extends Model {
 					$mail->smtp_password = html_entity_decode($this->config->get('config_mail_smtp_password'), ENT_QUOTES, 'UTF-8');
 					$mail->smtp_port = $this->config->get('config_mail_smtp_port');
 					$mail->smtp_timeout = $this->config->get('config_mail_smtp_timeout');
-			
+
 					$mail->setTo($order_info['email']);
 					$mail->setFrom($this->config->get('config_email'));
-					$mail->setSender($order_info['store_name']);
-					$mail->setSubject($subject);
+					$mail->setSender(html_entity_decode($order_info['store_name'], ENT_QUOTES, 'UTF-8'));
+					$mail->setSubject(html_entity_decode($subject, ENT_QUOTES, 'UTF-8'));
 					$mail->setHtml($html);
 					$mail->setText($text);
 					$mail->send();
@@ -711,6 +716,7 @@ class ModelCheckoutOrder extends Model {
 							$data['comment'] = '';
 						}
 					}
+
 					$data['text_download'] = '';
 
 					$data['text_footer'] = '';
@@ -775,12 +781,11 @@ class ModelCheckoutOrder extends Model {
 					$mail->smtp_password = html_entity_decode($this->config->get('config_mail_smtp_password'), ENT_QUOTES, 'UTF-8');
 					$mail->smtp_port = $this->config->get('config_mail_smtp_port');
 					$mail->smtp_timeout = $this->config->get('config_mail_smtp_timeout');
-			
+
 					$mail->setTo($this->config->get('config_email'));
 					$mail->setFrom($this->config->get('config_email'));
-					$mail->setReplyTo($order_info['email']);
-					$mail->setSender($order_info['store_name']);
-					$mail->setSubject($subject);
+					$mail->setSender(html_entity_decode($order_info['store_name'], ENT_QUOTES, 'UTF-8'));
+					$mail->setSubject(html_entity_decode($subject, ENT_QUOTES, 'UTF-8'));
 					$mail->setHtml($html);
 					$mail->setText($text);
 					$mail->send();
@@ -835,11 +840,11 @@ class ModelCheckoutOrder extends Model {
 				$mail->smtp_password = html_entity_decode($this->config->get('config_mail_smtp_password'), ENT_QUOTES, 'UTF-8');
 				$mail->smtp_port = $this->config->get('config_mail_smtp_port');
 				$mail->smtp_timeout = $this->config->get('config_mail_smtp_timeout');
-			
+
 				$mail->setTo($order_info['email']);
 				$mail->setFrom($this->config->get('config_email'));
-				$mail->setSender($order_info['store_name']);
-				$mail->setSubject($subject);
+				$mail->setSender(html_entity_decode($order_info['store_name'], ENT_QUOTES, 'UTF-8'));
+				$mail->setSubject(html_entity_decode($subject, ENT_QUOTES, 'UTF-8'));
 				$mail->setText($message);
 				$mail->send();
 			}

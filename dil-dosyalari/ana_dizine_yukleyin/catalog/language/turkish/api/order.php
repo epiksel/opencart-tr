@@ -2,7 +2,7 @@
 /* Turkceye Ceviren eka7a - http://www.e-piksel.com */
 
 // Text
-$_['text_success']						= 'Sipariş toplamı başarıyla tekrar hesaplandı!';
+$_['text_success']						= 'Başarlı: Sipariş başarıyla değiştirildi!';
 
 // Error
 $_['error_permission']				= 'Uyarı: API erişim iznine sahip değilsiniz!';

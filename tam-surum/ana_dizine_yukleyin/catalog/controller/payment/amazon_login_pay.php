@@ -6,9 +6,14 @@ class ControllerPaymentAmazonLoginPay extends Controller {
 
 		$this->load->model('payment/amazon_login_pay');
 
-		if (!$this->customer->isLogged() || !isset($this->request->cookie['amazon_login_state_cache'])) {
+		// capital L in Amazon cookie name is required, do not alter for coding standards
+		if (!$this->customer->isLogged() || !isset($this->request->cookie['amazon_Login_state_cache'])) {
 			$this->session->data['lpa']['error'] = $this->language->get('error_login');
 			$this->response->redirect($this->url->link('payment/amazon_login_pay/failure', '', 'SSL'));
+		}
+
+		if ($this->config->get('amazon_login_pay_minimum_total') > 0 && $this->config->get('amazon_login_pay_minimum_total') > $this->cart->getTotal()) {
+			$this->failure(sprintf($this->language->get('error_minimum'), $this->currency->format($this->config->get('amazon_login_pay_minimum_total'))));
 		}
 
 		$data['heading_title'] = $this->language->get('heading_title');
@@ -60,9 +65,14 @@ class ControllerPaymentAmazonLoginPay extends Controller {
 
 		$this->load->model('payment/amazon_login_pay');
 
-		if (!$this->customer->isLogged() || !isset($this->request->cookie['amazon_login_state_cache'])) {
+		// capital L in Amazon cookie name is required, do not alter for coding standards
+		if (!$this->customer->isLogged() || !isset($this->request->cookie['amazon_Login_state_cache'])) {
 			$this->session->data['lpa']['error'] = $this->language->get('error_login');
 			$this->response->redirect($this->url->link('payment/amazon_login_pay/failure', '', 'SSL'));
+		}
+
+		if ($this->config->get('amazon_login_pay_minimum_total') > 0 && $this->config->get('amazon_login_pay_minimum_total') > $this->cart->getTotal()) {
+			$this->failure(sprintf($this->language->get('error_minimum'), $this->currency->format($this->config->get('amazon_login_pay_minimum_total'))));
 		}
 
 		$data['heading_title'] = $this->language->get('heading_title');
@@ -108,9 +118,14 @@ class ControllerPaymentAmazonLoginPay extends Controller {
 		$this->load->model('extension/extension');
 		$this->load->model('payment/amazon_login_pay');
 
-		if (!$this->customer->isLogged() || !isset($this->request->cookie['amazon_login_state_cache'])) {
+		// capital L in Amazon cookie name is required, do not alter for coding standards
+		if (!$this->customer->isLogged() || !isset($this->request->cookie['amazon_Login_state_cache'])) {
 			$this->session->data['lpa']['error'] = $this->language->get('error_login');
 			$this->response->redirect($this->url->link('payment/amazon_login_pay/loginFailure', '', 'SSL'));
+		}
+
+		if ($this->config->get('amazon_login_pay_minimum_total') > 0 && $this->config->get('amazon_login_pay_minimum_total') > $this->cart->getTotal()) {
+			$this->failure(sprintf($this->language->get('error_minimum'), $this->currency->format($this->config->get('amazon_login_pay_minimum_total'))));
 		}
 
 		$data['amazon_login_pay_merchant_id'] = $this->config->get('amazon_login_pay_merchant_id');
@@ -581,10 +596,6 @@ class ControllerPaymentAmazonLoginPay extends Controller {
 	public function failure($error) {
 		unset($this->session->data['lpa']);
 		$this->session->data['error'] = $error;
-		$this->response->redirect($this->url->link('checkout/cart', '', 'SSL'));
-
-		unset($this->session->data['lpa']);
-		$this->session->data['error'] = $this->language->get('error_process_order');
 		$this->response->redirect($this->url->link('checkout/cart', '', 'SSL'));
 	}
 

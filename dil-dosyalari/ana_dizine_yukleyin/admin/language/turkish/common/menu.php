@@ -24,6 +24,7 @@ $_['text_error_log']									= 'Hata Kayıtları';
 $_['text_extension']									= 'Eklentiler';
 $_['text_feed']												= 'Beslemeler';
 $_['text_filter']											= 'Süzgeçler';
+$_['text_fraud']											= 'Sahtekârlık Araçları';
 $_['text_geo_zone']										= 'Bölgeler';
 $_['text_information']								= 'Bilgi Sayfaları';
 $_['text_installer']									= 'Eklenti Yükle';
