@@ -94,12 +94,8 @@ $_['button_uninstall']							= 'Kaldır';
 $_['button_login']                  = 'Oturum Aç';
 $_['button_unlock']                 = 'Hesap Kilidini Aç';
 $_['button_link']										= 'Link';
-$_['button_shipping']               = 'Kargo Methodunu Uygula';
-$_['button_payment']                = 'Ödeme Methodunu Uygula';
-$_['button_coupon']                 = 'Kuponu Uygula';
-$_['button_voucher']                = 'Hediye Çekini Uygula';
-$_['button_reward']                 = 'Puanları Uygula';
 $_['button_currency']               = 'Para Birimilerini Yenile';
+$_['button_apply']                  = 'Uygula';
 
 // Tab
 $_['tab_address']										= 'Adres';
