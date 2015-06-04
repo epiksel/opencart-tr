@@ -283,7 +283,8 @@ CREATE TABLE IF NOT EXISTS `oc_banner` (
 INSERT INTO `oc_banner` (`banner_id`, `name`, `status`) VALUES
 (1, 'HP Products', 1),
 (2, 'Anasayfa Slayt', 1),
-(3, 'Manufacturers', 1);
+(3, 'Manufacturers', 1),
+(4, 'DigitalOcean', 1);
 
 -- --------------------------------------------------------
 
@@ -318,7 +319,8 @@ INSERT INTO `oc_banner_image` (`banner_image_id`, `banner_id`, `link`, `image`, 
 (11, 3, '', 'catalog/demo/manufacturer/disney.png', 0),
 (12, 2, '', 'catalog/demo/banners/MacBookAir.jpg', 0),
 (13, 3, '', 'catalog/demo/manufacturer/starbucks.png', 0),
-(14, 3, '', 'catalog/demo/manufacturer/nintendo.png', 0);
+(14, 3, '', 'catalog/demo/manufacturer/nintendo.png', 0),
+(15, 4, 'https://www.digitalocean.com/?refcode=77292963b9dd', 'catalog/demo/banners/ssd-virtual-servers-banner-2-728x90.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -352,7 +354,8 @@ INSERT INTO `oc_banner_image_description` (`banner_image_id`, `language_id`, `ba
 (11, 1, 3, 'Disney'),
 (12, 1, 2, 'MacBookAir'),
 (13, 1, 3, 'Starbucks'),
-(14, 1, 3, 'Nintendo');
+(14, 1, 3, 'Nintendo'),
+(15, 1, 4, 'SSD Virtual Servers');
 
 -- --------------------------------------------------------
 
@@ -1444,7 +1447,8 @@ INSERT INTO `oc_extension` (`extension_id`, `type`, `code`) VALUES
 (16, 'total', 'low_order_fee'),
 (17, 'total', 'coupon'),
 (18, 'total', 'reward'),
-(19, 'total', 'voucher');
+(19, 'total', 'voucher'),
+(20, 'module', 'banner');
 
 -- --------------------------------------------------------
 
@@ -1708,11 +1712,14 @@ INSERT INTO `oc_layout_module` (`layout_module_id`, `layout_id`, `code`, `positi
 (3, 5, '0', 'column_left', 2),
 (4, 10, 'affiliate', 'column_right', 1),
 (5, 6, 'account', 'column_right', 1),
-(13, 1, 'featured.28', 'content_top', 2),
-(12, 1, 'slideshow.27', 'content_top', 1),
-(11, 1, 'carousel.29', 'content_top', 3),
-(9, 3, 'account', 'column_left', 1),
-(10, 3, 'banner.30', 'column_left', 2);
+(20, 1, 'featured.28', 'content_top', 3),
+(19, 1, 'slideshow.27', 'content_top', 1),
+(23, 3, 'banner.30', 'column_left', 2),
+(22, 3, 'account', 'column_left', 1),
+(18, 1, 'carousel.29', 'content_top', 4),
+(21, 1, 'banner.31', 'content_top', 2),
+(24, 3, 'banner.31', 'content_top', 1),
+(25, 2, 'banner.31', 'content_top', 1);
 
 -- --------------------------------------------------------
 
@@ -1735,9 +1742,9 @@ CREATE TABLE IF NOT EXISTS `oc_layout_route` (
 INSERT INTO `oc_layout_route` (`layout_route_id`, `layout_id`, `store_id`, `route`) VALUES
 (1, 6, 0, 'account/%'),
 (2, 10, 0, 'affiliate/%'),
-(3, 3, 0, 'product/category'),
-(4, 1, 0, 'common/home'),
-(5, 2, 0, 'product/product'),
+(16, 3, 0, 'product/category'),
+(15, 1, 0, 'common/home'),
+(17, 2, 0, 'product/product'),
 (6, 11, 0, 'information/information'),
 (7, 5, 0, 'product/manufacturer'),
 (8, 7, 0, 'checkout/%'),
@@ -1929,7 +1936,8 @@ INSERT INTO `oc_module` (`module_id`, `name`, `code`, `setting`) VALUES
 (30, 'Kategoriler', 'banner', 'a:5:{s:4:"name";s:11:"Kategoriler";s:9:"banner_id";s:1:"1";s:5:"width";s:3:"300";s:6:"height";s:3:"300";s:6:"status";s:1:"1";}'),
 (29, 'Ana Sayfa', 'carousel', 'a:5:{s:4:"name";s:9:"Ana Sayfa";s:9:"banner_id";s:1:"3";s:5:"width";s:3:"130";s:6:"height";s:3:"100";s:6:"status";s:1:"1";}'),
 (28, 'Ana Sayfa', 'featured', 'a:6:{s:4:"name";s:9:"Ana Sayfa";s:7:"product";a:5:{i:0;s:2:"12";i:1;s:1:"3";i:2;s:2:"17";i:3;s:1:"1";i:4;s:2:"11";}s:5:"limit";s:1:"4";s:5:"width";s:3:"200";s:6:"height";s:3:"200";s:6:"status";s:1:"1";}'),
-(27, 'Ana Sayfa', 'slideshow', 'a:5:{s:4:"name";s:9:"Ana Sayfa";s:9:"banner_id";s:1:"2";s:5:"width";s:4:"1140";s:6:"height";s:3:"380";s:6:"status";s:1:"1";}');
+(27, 'Ana Sayfa', 'slideshow', 'a:5:{s:4:"name";s:9:"Ana Sayfa";s:9:"banner_id";s:1:"2";s:5:"width";s:4:"1140";s:6:"height";s:3:"380";s:6:"status";s:1:"1";}'),
+(31, 'DigitalOcean', 'banner', 'a:5:{s:4:"name";s:12:"DigitalOcean";s:9:"banner_id";s:1:"4";s:5:"width";s:4:"1132";s:6:"height";s:3:"140";s:6:"status";s:1:"1";}');
 
 -- --------------------------------------------------------
 
@@ -2686,7 +2694,7 @@ INSERT INTO `oc_product_option_value` (`product_option_value_id`, `product_optio
 -- --------------------------------------------------------
 
 --
--- Table structure for table `oc_product_profile`
+-- Table structure for table `oc_product_recurring`
 --
 
 CREATE TABLE IF NOT EXISTS `oc_product_recurring` (
@@ -2906,7 +2914,7 @@ INSERT INTO `oc_product_to_store` (`product_id`, `store_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `oc_profile`
+-- Table structure for table `oc_recurring`
 --
 
 CREATE TABLE IF NOT EXISTS `oc_recurring` (
@@ -2928,7 +2936,7 @@ CREATE TABLE IF NOT EXISTS `oc_recurring` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `oc_profile_description`
+-- Table structure for table `oc_recurring_description`
 --
 
 CREATE TABLE IF NOT EXISTS `oc_recurring_description` (
