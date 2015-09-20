@@ -7,7 +7,7 @@ $_['heading_title']      = 'Payza';
 // Text
 $_['text_payment']       = 'Ödeme Metodları';
 $_['text_success']       = 'Başarılı: Payza hesap detayları başarılı bir şekilde değiştirildi!';
-$_['text_edit']					 = 'Payza Düzenle';
+$_['text_edit']          = 'Payza Düzenle';
 
 // Entry
 $_['entry_merchant']     = 'Merchant ID';

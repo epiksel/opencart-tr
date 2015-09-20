@@ -2,4 +2,4 @@
 /* Turkceye Ceviren eka7a - http://www.e-piksel.com */
 
 // Text
-$_['text_currency']	= 'Para Birimi';
+$_['text_currency'] = 'Para Birimi';

@@ -20,7 +20,7 @@ $_['text_date_added']    = 'Ekleme Tarihi:';
 $_['text_comment']       = 'İade Açıklamları';
 $_['text_history']       = 'İade Geçmişi';
 $_['text_empty']         = 'Daha önce iade isteğinde bulunmadınız!';
-$_['text_agree']					= '<a href="%s" class="agree"><b>%s</b></a>\'nı okudum ve kabul ediyorum.';
+$_['text_agree']         = '<a href="%s" class="agree"><b>%s</b></a>\'nı okudum ve kabul ediyorum.';
 
 // Column
 $_['column_return_id']   = 'İade No';
@@ -59,5 +59,4 @@ $_['error_telephone']    = 'Telefon alanı 3 ile 32 karakter arasında olmalı!'
 $_['error_product']      = 'Ürün adı alanı 3 ile 255 karakter arasında olmalı!';
 $_['error_model']        = 'Ürün kodu 3 ile 64 karakter arasında olmalı!';
 $_['error_reason']       = 'İade nedeni seçmelisiniz!';
-$_['error_captcha']      = 'Doğrulama kodu yanlış!';
-$_['error_agree']				 = 'Uyarı: %s\'nı kabul etmelisiniz!';
+$_['error_agree']        = 'Uyarı: %s\'nı kabul etmelisiniz!';

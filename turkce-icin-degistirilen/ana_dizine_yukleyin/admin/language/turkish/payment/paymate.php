@@ -7,8 +7,8 @@ $_['heading_title']      = 'PayMate';
 // Text
 $_['text_payment']       = 'Ödeme Metodları';
 $_['text_success']       = 'Başarılı: PayMate hesap detayları başarılı bir şekilde değiştirildi!';
-$_['text_edit']					 = 'Paymate Düzenle';
-$_['text_paymate']			 = '<img src="view/image/payment/paymate.png" alt="Paymate" title="Paymate" style="border: 1px solid #EEEEEE;" />';
+$_['text_edit']          = 'Paymate Düzenle';
+$_['text_paymate']       = '<img src="view/image/payment/paymate.png" alt="Paymate" title="Paymate" style="border: 1px solid #EEEEEE;" />';
 
 // Entry
 $_['entry_username']     = 'Kullanıcı Adı';

@@ -2,15 +2,15 @@
 /* Turkceye Ceviren eka7a - http://www.e-piksel.com */
 
 // Heading
-$_['heading_title']			= 'Bilgiler';
+$_['heading_title']    = 'Bilgiler';
 
 // Text
-$_['text_module']				= 'Modüller';
-$_['text_success']			= 'Başarılı: Bilgiler modülü güncellendi!';
-$_['text_edit']					= 'Bilgiler Modülünü Düzenle';
+$_['text_module']      = 'Modüller';
+$_['text_success']     = 'Başarılı: Bilgiler modülü güncellendi!';
+$_['text_edit']        = 'Bilgiler Modülünü Düzenle';
 
 // Entry
-$_['entry_status']			= 'Durumu';
+$_['entry_status']     = 'Durumu';
 
 // Error
-$_['error_permission']	= 'Uyarı: Bilgiler modülünü değiştirme iznine sahip değilsiniz!';
+$_['error_permission'] = 'Uyarı: Bilgiler modülünü değiştirme iznine sahip değilsiniz!';

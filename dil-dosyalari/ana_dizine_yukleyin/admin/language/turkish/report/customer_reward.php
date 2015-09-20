@@ -5,7 +5,7 @@
 $_['heading_title']         = 'Müşteri Puan Raporu';
 
 // Text
-$_['text_list']         		= 'Müşteri Puan Listesi';
+$_['text_list']             = 'Müşteri Puan Listesi';
 
 // Column
 $_['column_customer']       = 'Müşteri Adı';
@@ -18,5 +18,5 @@ $_['column_total']          = 'Toplam';
 $_['column_action']         = 'Eylem';
 
 // Entry
-$_['entry_date_start']			= 'Başlangıç';
-$_['entry_date_end']				= 'Bitiş';
+$_['entry_date_start']      = 'Başlangıç';
+$_['entry_date_end']        = 'Bitiş';

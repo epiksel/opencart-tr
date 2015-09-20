@@ -2,7 +2,7 @@
 /* Turkceye Ceviren eka7a - http://www.e-piksel.com */
 
 // Text
-$_['text_success']			= 'Başarılı: Para birimi değiştirildi!';
+$_['text_success']     = 'Başarılı: Para birimi değiştirildi!';
 
 // Error
 $_['error_permission'] = 'Uyarı: API erişim iznine sahip değilsiniz!';

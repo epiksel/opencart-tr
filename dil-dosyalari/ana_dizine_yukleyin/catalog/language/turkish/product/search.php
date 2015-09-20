@@ -3,7 +3,7 @@
 
 // Heading
 $_['heading_title']     = 'Arama';
-$_['heading_tag']		= 'Etiket - ';
+$_['heading_tag']       = 'Etiket - ';
 
 // Text
 $_['text_search']       = 'Arama kriterlerine uygun ürünler';

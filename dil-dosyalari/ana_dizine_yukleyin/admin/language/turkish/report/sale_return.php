@@ -5,7 +5,7 @@
 $_['heading_title']     = 'Ürün İade Raporu';
 
 // Text
-$_['text_list']					= 'Ürün İade Listesi';
+$_['text_list']         = 'Ürün İade Listesi';
 $_['text_year']         = 'Yıllar';
 $_['text_month']        = 'Aylar';
 $_['text_week']         = 'Haftalar';
@@ -18,7 +18,7 @@ $_['column_date_end']   = 'Bitiş';
 $_['column_returns']    = 'İade Sayısı';
 
 // Entry
-$_['entry_date_start']	= 'Başlangıç';
-$_['entry_date_end']		= 'Bitiş';
+$_['entry_date_start']  = 'Başlangıç';
+$_['entry_date_end']    = 'Bitiş';
 $_['entry_group']       = 'Dilimi';
 $_['entry_status']      = 'Durumu';

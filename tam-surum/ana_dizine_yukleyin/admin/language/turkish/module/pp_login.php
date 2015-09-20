@@ -2,36 +2,36 @@
 /* Turkceye Ceviren eka7a - http://www.e-piksel.com */
 
 // Heading
-$_['heading_title']        = 'Log In with PayPal';
+$_['heading_title']        = 'PayPal ile Oturum Aç';
 
 //Text
-$_['text_module']          = 'Modules';
-$_['text_success']         = 'Success: You have modified Log In with PayPal module!';
-$_['text_edit']            = 'Edit Log In with PayPal Module';
-$_['text_button_grey']     = 'Grey';
-$_['text_button_blue']     = 'Blue (Recommended)';
+$_['text_module']          = 'Modüller';
+$_['text_success']         = 'Başarılı: PayPal ile Oturum Aç modülü güncellendi!';
+$_['text_edit']            = 'PayPal ile Oturum Aç Modülünü Düzenle';
+$_['text_button_grey']     = 'Gri';
+$_['text_button_blue']     = 'Mavi (Önerilir)';
 
 //Entry
 $_['entry_client_id']      = 'Client ID';
 $_['entry_secret']         = 'Secret';
-$_['entry_sandbox']        = 'Sandbox Mode';
-$_['entry_debug']          = 'Debug Logging';
-$_['entry_customer_group'] = 'Customer Group';
-$_['entry_button']         = 'Button Colour';
-$_['entry_seamless']       = 'Allow "Seamless Checkout"';
-$_['entry_locale']         = 'Locale';
-$_['entry_return_url']     = 'Return URL';
-$_['entry_status']         = 'Status';
+$_['entry_sandbox']        = 'Test Modu';
+$_['entry_debug']          = 'Hata Kayıtları';
+$_['entry_customer_group'] = 'Müşteri Grubu';
+$_['entry_button']         = 'Buton Rengi';
+$_['entry_seamless']       = 'İzin ver "Kesintisiz Ödeme"';
+$_['entry_locale']         = 'Yerel';
+$_['entry_return_url']     = 'Geri Dönüş Bağlantısı';
+$_['entry_status']         = 'Durumu';
 
 //Help
-$_['help_sandbox']         = 'Use sandbox (testing) environment?';
-$_['help_customer_group']  = 'For new customers, which Customer Group should they get created as?';
-$_['help_debug_logging']   = 'Enabling this will allow data to be added to your error log to help debug any problems.';
-$_['help_seamless']        = 'Allows auto-login when customers choose PayPal Express Checkout. To use this, the option must be enabled in your Log in With PayPal account. You must also use the same account as the one used in Express Checkout.';
-$_['help_locale']          = 'This is the PayPal locale setting for your store languages';
-$_['help_return_url']      = 'This needs to be added in the PayPal app configuration under app redirect URLs.';
+$_['help_sandbox']         = 'Test (sandbox) ortamını kullanın?';
+$_['help_customer_group']  = 'Hangi müşteri grubları oluşturabilir? Yeni müşteriler için.';
+$_['help_debug_logging']   = 'Herhangi bir hata oluştuğunda, hata günlüğüne verileri yazarak hata ayıklamanızı sağlar.';
+$_['help_seamless']        = 'Müşteriler PayPal Ekspres Ödeme seçenğini seçtiğinde otomatik oturum açma izin verir. Bunu kullanmak için PayPal hesabı ile oturum seçeneği etkinleştirilmelidir. Ayrıca PayPal Ekspres Ödemesinde kullanılan hesap ile yanı hesabı kullanmanız gerekir.';
+$_['help_locale']          = 'Mağaza dilleriniz için PayPal yerel ayarı';
+$_['help_return_url']      = 'PayPal uyugulama yapılandırmasında yönlendirme bağlantısına eklemeniz gereklidir.';
 
 //Error
-$_['error_permission']     = 'Warning: You do not have permission to modify Log In with PayPal module!';
-$_['error_client_id']      = 'Client ID required!';
-$_['error_secret']         = 'Secret required!';
+$_['error_permission']     = 'Uyarı: PayPal ile Oturum Aç modülünü değiştirme iznine sahip değilsiniz!';
+$_['error_client_id']      = 'Client ID gerekli!';
+$_['error_secret']         = 'Secret gerekli!';

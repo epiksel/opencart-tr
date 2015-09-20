@@ -6,9 +6,9 @@ $_['heading_title']       = 'Kuponlar';
 
 // Text
 $_['text_success']        = 'Başarılı: Kupon başarılı bir şekilde değiştirildi!';
-$_['text_list']						= 'Kupon Listesi';
-$_['text_add']						= 'Kupon Ekle';
-$_['text_edit']						= 'Kupon Düzenle';
+$_['text_list']           = 'Kupon Listesi';
+$_['text_add']            = 'Kupon Ekle';
+$_['text_edit']           = 'Kupon Düzenle';
 $_['text_percent']        = 'Yüzde(%)';
 $_['text_amount']         = 'Sabit Tutar';
 

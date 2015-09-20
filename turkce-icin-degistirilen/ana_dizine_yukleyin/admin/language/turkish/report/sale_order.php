@@ -5,7 +5,7 @@
 $_['heading_title']     = 'Satış Raporu';
 
 // Text
-$_['text_list']					= 'Satış Listesi';
+$_['text_list']         = 'Satış Listesi';
 $_['text_year']         = 'Yıllar';
 $_['text_month']        = 'Aylar';
 $_['text_week']         = 'Haftalar';
@@ -21,7 +21,7 @@ $_['column_tax']        = 'Vergi';
 $_['column_total']      = 'Toplam';
 
 // Entry
-$_['entry_date_start']	= 'Başlangıç';
-$_['entry_date_end']		= 'Bitiş';
+$_['entry_date_start']  = 'Başlangıç';
+$_['entry_date_end']    = 'Bitiş';
 $_['entry_group']       = 'Zaman';
 $_['entry_status']      = 'Durumu';

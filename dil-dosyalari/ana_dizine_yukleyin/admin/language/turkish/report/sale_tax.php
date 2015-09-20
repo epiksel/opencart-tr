@@ -5,7 +5,7 @@
 $_['heading_title']     = 'Vergi Raporu';
 
 // Text
-$_['text_list']					= 'Vergi Listesi';
+$_['text_list']         = 'Vergi Listesi';
 $_['text_year']         = 'Yıllar';
 $_['text_month']        = 'Aylar';
 $_['text_week']         = 'Haftalar';
@@ -20,7 +20,7 @@ $_['column_orders']     = 'Sipariş Sayısı';
 $_['column_total']      = 'Toplam';
 
 // Entry
-$_['entry_date_start']	= 'Başlangıç';
-$_['entry_date_end']		= 'Bitiş';
+$_['entry_date_start']  = 'Başlangıç';
+$_['entry_date_end']    = 'Bitiş';
 $_['entry_group']       = 'Zaman';
 $_['entry_status']      = 'Durumu';

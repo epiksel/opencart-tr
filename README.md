@@ -14,4 +14,4 @@ OpenCart PHP tabanlı açık kaynak kodlu online alışveriş sepetidir. Tüccar
 
 ## Türkçe Çeviri
 
-[E-Piksel E-Ticaret ve Bilgi Teknolojileri] (http://www.e-piksel.com)
+[E-Piksel E-Ticaret ve Bilgi Teknolojileri] (http://e-piksel.com)

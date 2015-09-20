@@ -2,15 +2,15 @@
 /* Turkceye Ceviren eka7a - http://www.e-piksel.com */
 
 // Heading
-$_['heading_title']			= 'Kategoriler';
+$_['heading_title']    = 'Kategoriler';
 
 // Text
-$_['text_module']				= 'Modüller';
-$_['text_success']			= 'Başarılı: Kategori modülü güncellendi!';
-$_['text_edit']					= 'Kategori Modülünü Düzenle';
+$_['text_module']      = 'Modüller';
+$_['text_success']     = 'Başarılı: Kategori modülü güncellendi!';
+$_['text_edit']        = 'Kategori Modülünü Düzenle';
 
 // Entry
-$_['entry_status']			= 'Durumu';
+$_['entry_status']     = 'Durumu';
 
 // Error
-$_['error_permission']	= 'Uyarı: Kategori modülünü değiştirme iznine sahip değilsiniz!';
+$_['error_permission'] = 'Uyarı: Kategori modülünü değiştirme iznine sahip değilsiniz!';

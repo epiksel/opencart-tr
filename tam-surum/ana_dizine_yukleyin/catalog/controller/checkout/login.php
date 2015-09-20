@@ -47,19 +47,19 @@ class ControllerCheckoutLogin extends Controller {
 			$json['redirect'] = $this->url->link('checkout/checkout', '', 'SSL');
 		}
 
-		if (!$this->cart->hasCart()) {
+		if ((!$this->cart->hasProducts() && empty($this->session->data['vouchers'])) || (!$this->cart->hasStock() && !$this->config->get('config_stock_checkout'))) {
 			$json['redirect'] = $this->url->link('checkout/cart');
 		}
 
 		if (!$json) {
 			$this->load->model('account/customer');
-			
+
 			// Check how many login attempts have been made.
 			$login_info = $this->model_account_customer->getLoginAttempts($this->request->post['email']);
-					
+
 			if ($login_info && ($login_info['total'] >= $this->config->get('config_login_attempts')) && strtotime('-1 hour') < strtotime($login_info['date_modified'])) {
 				$json['error']['warning'] = $this->language->get('error_attempts');
-			}			
+			}
 
 			// Check if customer has been approved.
 			$customer_info = $this->model_account_customer->getCustomerByEmail($this->request->post['email']);
@@ -67,21 +67,26 @@ class ControllerCheckoutLogin extends Controller {
 			if ($customer_info && !$customer_info['approved']) {
 				$json['error']['warning'] = $this->language->get('error_approved');
 			}
-						
+
 			if (!isset($json['error'])) {
 				if (!$this->customer->login($this->request->post['email'], $this->request->post['password'])) {
 					$json['error']['warning'] = $this->language->get('error_login');
-				
+
 					$this->model_account_customer->addLoginAttempt($this->request->post['email']);
 				} else {
 					$this->model_account_customer->deleteLoginAttempts($this->request->post['email']);
-				}			
+				}
 			}
 		}
 
 		if (!$json) {
-			unset($this->session->data['guest']);
+			// Trigger customer pre login event
+			$this->event->trigger('pre.customer.login');
 
+			// Unset guest
+			unset($this->session->data['guest']);
+			
+			// Default Shipping Address
 			$this->load->model('account/address');
 
 			if ($this->config->get('config_tax_customer') == 'payment') {
@@ -92,8 +97,6 @@ class ControllerCheckoutLogin extends Controller {
 				$this->session->data['shipping_address'] = $this->model_account_address->getAddress($this->customer->getAddressId());
 			}
 
-			$json['redirect'] = $this->url->link('checkout/checkout', '', 'SSL');
-
 			// Add to activity log
 			$this->load->model('account/activity');
 
@@ -103,6 +106,11 @@ class ControllerCheckoutLogin extends Controller {
 			);
 
 			$this->model_account_activity->addActivity('login', $activity_data);
+
+			// Trigger customer post login event
+			$this->event->trigger('post.customer.login');
+
+			$json['redirect'] = $this->url->link('checkout/checkout', '', 'SSL');
 		}
 
 		$this->response->addHeader('Content-Type: application/json');

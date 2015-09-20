@@ -19,7 +19,6 @@ $_['text_success']   = '<p>Mesajınız başarıyla gönderildi!</p><p>En kısa s
 $_['entry_name']     = 'Adınız';
 $_['entry_email']    = 'E-Posta';
 $_['entry_enquiry']  = 'Mesajınız';
-$_['entry_captcha']  = 'Doğrulama kodunu giriniz:';
 
 // Email
 $_['email_subject']  = '%s Mesaj Gönderdi';
@@ -28,4 +27,3 @@ $_['email_subject']  = '%s Mesaj Gönderdi';
 $_['error_name']     = 'Ad 3 ile 32 karakter arasında olmalı!';
 $_['error_email']    = 'E-Posta Adresi geçersiz!';
 $_['error_enquiry']  = 'Mesajınız 10 ile 3000 karakter arasında olmalı!';
-$_['error_captcha']  = 'Doğrulama kodu yanlış!';

@@ -39,7 +39,7 @@ $_['text_global']            = 'Register Globals';
 $_['text_magic']             = 'Magic Quotes GPC';
 $_['text_file_upload']       = 'File Uploads';
 $_['text_session']           = 'Session Auto Start';
-$_['text_db']            	 = 'Database';
+$_['text_db']                = 'Database';
 $_['text_mysqli']            = 'MySQLi';
 $_['text_mysql']             = 'MySQL';
 $_['text_mpdo']              = 'mPDO';
@@ -65,28 +65,28 @@ $_['text_loading']           = 'Loading modules...';
 $_['text_store']             = 'visit the extensions store';
 $_['text_mail_list']         = 'Join the mailing list';
 $_['text_mail_list_small']   = 'Stay informed of OpenCart updates and events.';
-$_['text_openbay']   		 = 'OpenBay Pro gives merchants the ability to link their store with 3rd party markets like eBay and Amazon. Import orders, list items and handle shipping information direct from OpenCart...';
-$_['text_maxmind']   		 = 'MaxMind provides merchants the ability to identify risky transactions quickly, reducing the risk of fraud and minimises the time spent reviewing orders by giving a risk score for each one...';
-$_['text_more_info']   		 = 'More information';
-$_['text_facebook']   		 = 'Like us on Facebook';
+$_['text_openbay']           = 'OpenBay Pro gives merchants the ability to link their store with 3rd party markets like eBay and Amazon. Import orders, list items and handle shipping information direct from OpenCart...';
+$_['text_maxmind']           = 'MaxMind provides merchants the ability to identify risky transactions quickly, reducing the risk of fraud and minimises the time spent reviewing orders by giving a risk score for each one...';
+$_['text_more_info']         = 'More information';
+$_['text_facebook']          = 'Like us on Facebook';
 $_['text_facebook_info']     = 'Tell us how much you like OpenCart!';
 $_['text_facebook_link']     = 'Visit our Facebook page';
-$_['text_forum']    	 	 = 'Community forums';
-$_['text_forum_info']    	 = 'Get help from other OpenCart users';
-$_['text_forum_link']    	 = 'Visit our forums';
-$_['text_commercial']    	 = 'Commercial support';
+$_['text_forum']             = 'Community forums';
+$_['text_forum_info']        = 'Get help from other OpenCart users';
+$_['text_forum_link']        = 'Visit our forums';
+$_['text_commercial']        = 'Commercial support';
 $_['text_commercial_info']   = 'Development services from OpenCart partners';
 $_['text_commercial_link']   = 'Visit our partner page';
-$_['text_view']   		     = 'View details';
-$_['text_download']   		 = 'Download';
-$_['text_downloads']   		 = 'Downloads';
-$_['text_price']   		 	 = 'Price';
-$_['text_view']   		     = 'View details';
+$_['text_view']              = 'View details';
+$_['text_download']          = 'Download';
+$_['text_downloads']         = 'Downloads';
+$_['text_price']             = 'Price';
+$_['text_view']              = 'View details';
 $_['text_maxmind_success']   = 'MaxMind fraud service has been installed';
-$_['text_maxmind_top']   	 = 'If you don\'t have a license key you can';
-$_['text_maxmind_link']   	 = 'sign up here';
-$_['text_ebay_about']	 	 = 'eBay is a multi-billion dollar market place that allows business or private sellers to auction and retail goods online. Available to sellers worldwide.';
-$_['text_amazon_about']	 	 = 'Amazon Marketplace a fixed-price online marketplace allowing sellers to offer new and used items alongside Amazon\'s regular retail service.';
+$_['text_maxmind_top']       = 'If you don\'t have a license key you can';
+$_['text_maxmind_link']      = 'sign up here';
+$_['text_ebay_about']        = 'eBay is a multi-billion dollar market place that allows business or private sellers to auction and retail goods online. Available to sellers worldwide.';
+$_['text_amazon_about']      = 'Amazon Marketplace a fixed-price online marketplace allowing sellers to offer new and used items alongside Amazon\'s regular retail service.';
 $_['text_translator']         = '';
 
 // Entry
@@ -95,30 +95,32 @@ $_['entry_db_hostname']      = 'Hostname';
 $_['entry_db_username']      = 'Username';
 $_['entry_db_password']      = 'Password';
 $_['entry_db_database']      = 'Database';
+$_['entry_db_port']          = 'Port';
 $_['entry_db_prefix']        = 'Prefix';
 $_['entry_username']         = 'Username';
 $_['entry_password']         = 'Password';
 $_['entry_email']            = 'E-Mail';
-$_['entry_licence_key']      = 'License Key';
-$_['entry_risk']      		 = 'Risk score';
-$_['entry_fraud_status']     = 'Fraud Order Status';
+$_['entry_key']              = 'License Key';
+$_['entry_score']            = 'Risk score';
+$_['entry_order_status']     = 'Fraud Order Status';
 
 // Help
-$_['help_maxmind_risk']      = 'The higher the score the more likely the order is fraudulent. Set a score between 0 - 100.';
-$_['help_maxmind_fraud']     = 'Orders over your set score will be assigned this order status and will not be allowed to reach the complete status automatically.';
+$_['help_score']             = 'The higher the score the more likely the order is fraudulent. Set a score between 0 - 100.';
+$_['help_order_status']      = 'Orders over your set score will be assigned this order status and will not be allowed to reach the complete status automatically.';
 
 // Error
-$_['error_key'] 			 = 'Maxmind licence key required';
-$_['error_score'] 			 = 'A score between 0 and 100 is accepted';
-$_['error_db_hostname'] 	 = 'Hostname required!';
-$_['error_db_username'] 	 = 'Username required!';
-$_['error_db_database']		 = 'Database Name required!';
-$_['error_db_prefix'] 		 = 'DB Prefix can only contain lowercase characters in the a-z range, 0-9 and underscores';
-$_['error_db_connect'] 		 = 'Error: Could not connect to the database please make sure the database server, username and password is correct!';
-$_['error_username'] 		 = 'Username required!';
-$_['error_password'] 		 = 'Password required!';
-$_['error_email'] 			 = 'Invalid E-Mail!';
-$_['error_config'] 			 = 'Error: Could not write to config.php please check you have set the correct permissions on: ';
+$_['error_key']              = 'Maxmind licence key required';
+$_['error_score']            = 'A score between 0 and 100 is accepted';
+$_['error_db_hostname']      = 'Hostname required!';
+$_['error_db_username']      = 'Username required!';
+$_['error_db_database']      = 'Database Name required!';
+$_['error_db_port']          = 'Database Port required!';
+$_['error_db_prefix']        = 'DB Prefix can only contain lowercase characters in the a-z range, 0-9 and underscores';
+$_['error_db_connect']       = 'Error: Could not connect to the database please make sure the database server, username and password is correct!';
+$_['error_username']         = 'Username required!';
+$_['error_password']         = 'Password required!';
+$_['error_email']            = 'Invalid E-Mail!';
+$_['error_config']           = 'Error: Could not write to config.php please check you have set the correct permissions on: ';
 
 // Buttons
 $_['button_continue']        = 'Continue';
@@ -693,4 +695,3 @@ $_['text_terms'] = '<h3>GNU GENERAL PUBLIC LICENSE</h3>
           the library.  If this is what you want to do, use the GNU Lesser General
           Public License instead of this License.  But first, please read
           &lt;http://www.gnu.org/philosophy/why-not-lgpl.html&gt;.</p>';
-

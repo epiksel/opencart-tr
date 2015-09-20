@@ -1,6 +1,7 @@
 <?php
 // Text
-$_['text_success']	= 'Başarılı: API oturumu başarıyla başlatıldı!';
+$_['text_success'] = 'Başarılı: API oturumu başarıyla başlatıldı!';
 
 // Error
-$_['error_login']		= 'Uyarı: Kullanıcı Adı ve/ya da Parola eşleşmiyor.';
+$_['error_key']    = 'Uyarı: Yanlış API Anahtarı!';
+$_['error_ip']     = 'Uyarı: IP %s adresinizden API erişimine izin verilmiyor!';

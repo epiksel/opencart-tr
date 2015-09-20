@@ -5,10 +5,10 @@
 $_['heading_title']        = 'Vergi Oranları';
 
 // Text
-$_['text_success']				 = 'Başarılı: Vergi oranları başarılı bir şekilde değiştirildi!';
-$_['text_list']						 = 'Vergi Oranı Listesi';
-$_['text_add']						 = 'Vergi Oranı Ekle';
-$_['text_edit']						 = 'Vergi Oranı Düzenle';
+$_['text_success']         = 'Başarılı: Vergi oranları başarılı bir şekilde değiştirildi!';
+$_['text_list']            = 'Vergi Oranı Listesi';
+$_['text_add']             = 'Vergi Oranı Ekle';
+$_['text_edit']            = 'Vergi Oranı Düzenle';
 $_['text_percent']         = 'Yüzde';
 $_['text_amount']          = 'Sabit Tutar';
 

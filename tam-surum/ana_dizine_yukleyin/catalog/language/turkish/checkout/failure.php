@@ -2,21 +2,21 @@
 /* Turkceye Ceviren eka7a - http://www.e-piksel.com */
 
 // Heading
-$_['heading_title'] = 'Failed Payment!';
+$_['heading_title'] = 'Ödeme Başarısız!';
 
 // Text
-$_['text_basket']   = 'Shopping Cart';
-$_['text_checkout'] = 'Checkout';
-$_['text_failure']  = 'Failed Payment';
-$_['text_message']  = '<p>There was a problem processing your payment and the order did not complete.</p>
+$_['text_basket']   = 'Alışveriş Sepetim';
+$_['text_checkout'] = 'Kasaya Git';
+$_['text_failure']  = 'Ödeme Başarısız';
+$_['text_message']  = '<p>Ödeme işlemi sırasında bir sorun oluştu ve siparişiniz tamamlanamadı.</p>
 
-<p>Possible reasons are:</p>
+<p>Olası nedenler:</p>
 <ul>
-  <li>Insufficient funds</li>
-  <li>Verification failed</li>
+  <li>Yetersiz bakiye</li>
+  <li>Doğrulama başarısız</li>
 </ul>
 
-<p>Please try to order again using a different payment method.</p>
+<p>Lütfen başka bir ödeme yöntemi kullanarak yeniden sipariş vermeyi deneyin.</p>
 
-<p>If the problem persists please <a href="%s">contact us</a> with the details of the order you are trying to place.</p>
+<p>Eğer sorun devam ederse, lütfen <a href="%s">iletişim sayfasında/a> sipariş detaylarınız ile birlikte bizimle irtibata geçiniz.</p>
 ';

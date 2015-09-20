@@ -6,9 +6,9 @@ $_['heading_title']          = 'Şehirler';
 
 // Text
 $_['text_success']           = 'Başarılı: Şehir başarılı bir şekilde değiştirildi!';
-$_['text_list']							 = 'Şehir Listesi';
-$_['text_add']							 = 'Şehir Ekle';
-$_['text_edit']							 = 'Şehir Düzenle';
+$_['text_list']              = 'Şehir Listesi';
+$_['text_add']               = 'Şehir Ekle';
+$_['text_edit']              = 'Şehir Düzenle';
 
 // Column
 $_['column_name']            = 'Şehir Adı';
