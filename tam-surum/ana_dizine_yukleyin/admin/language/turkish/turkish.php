@@ -96,7 +96,7 @@ $_['button_unlock']                 = 'Hesap Kilidini Aç';
 $_['button_link']                   = 'Link';
 $_['button_currency']               = 'Para Birimilerini Yenile';
 $_['button_apply']                  = 'Uygula';
-$_['button_category_add']           = 'Kategori Ekle'
+$_['button_category_add']           = 'Kategori Ekle';
 
 // Tab
 $_['tab_address']                   = 'Adres';

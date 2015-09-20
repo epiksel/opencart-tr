@@ -2,16 +2,16 @@
 /* Turkceye Ceviren eka7a - http://www.e-piksel.com */
 
 // Heading
-$_['heading_step_1']          = 'License agreement';
-$_['heading_step_1_small']    = 'Please read the OpenCart licence agreement';
-$_['heading_step_2']          = 'Pre-Installation';
-$_['heading_step_2_small']    = 'Check your server is set-up correctly';
-$_['heading_step_3']          = 'Configuration';
-$_['heading_step_3_small']    = 'Enter your database and administration details';
-$_['heading_step_4']          = 'Installation complete';
-$_['heading_step_4_small']    = 'Ready to start selling!';
+$_['heading_step_1']          = 'Lisans Anlaşması';
+$_['heading_step_1_small']    = 'Lütfen OpenCart lisans anlaşmasını okuyunuz.';
+$_['heading_step_2']          = 'Kurulum Öncesi';
+$_['heading_step_2_small']    = 'Sunucunuzu doğru kurulum için kontrol edin.';
+$_['heading_step_3']          = 'Yapılandırma';
+$_['heading_step_3_small']    = 'Veritabanı ve Yönetim detaylarınızı girin.';
+$_['heading_step_4']          = 'Kurulum Tamamlandı';
+$_['heading_step_4_small']    = 'Satışa başlamak için hazır.';
 $_['heading_maxmind']         = 'MaxMind';
-$_['heading_maxmind_small']   = 'Fraud detection service.';
+$_['heading_maxmind_small']   = 'Sahtekârlık tespit sistemi';
 $_['heading_openbay']         = 'OpenBay Pro';
 $_['heading_openbay_small']   = 'Multi marketplace integration';
 

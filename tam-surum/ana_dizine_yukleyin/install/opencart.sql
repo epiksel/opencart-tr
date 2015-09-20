@@ -3177,7 +3177,7 @@ INSERT INTO `oc_setting` (`setting_id`, `store_id`, `code`, `key`, `value`, `ser
 (210, 0, 'config', 'config_account_id', '3', 0),
 (211, 0, 'config', 'config_account_mail', '0', 0),
 (212, 0, 'config', 'config_invoice_prefix', 'INV-2015-00', 0),
-(283, 0, 'config', 'config_api_id', '1', 0),
+(213, 0, 'config', 'config_api_id', '1', 0),
 (214, 0, 'config', 'config_cart_weight', '1', 0),
 (215, 0, 'config', 'config_checkout_guest', '1', 0),
 (216, 0, 'config', 'config_checkout_id', '5', 0),
