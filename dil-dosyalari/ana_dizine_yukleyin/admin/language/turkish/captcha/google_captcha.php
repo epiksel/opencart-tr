@@ -4,7 +4,7 @@
 $_['heading_title']    = 'Google reCAPTCHA';
 
 // Text
-$_['text_captcha']     = 'Doğrulama';
+$_['text_captcha']     = 'Doğrulama Araçları';
 $_['text_success']     = 'Başarılı: Google reCAPTCHA başarılı bir şekilde değiştirildi!';
 $_['text_edit']        = 'Google reCAPTCHA Düzenle';
 $_['text_signup']      = '<a href="https://www.google.com/recaptcha/intro/index.html" target="_blank"><u>Google reCAPTCHA</u></a> sayfasına gidin ve web sitenizi kayıt edin.';

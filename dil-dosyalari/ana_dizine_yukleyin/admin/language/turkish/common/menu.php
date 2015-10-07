@@ -2,14 +2,14 @@
 /* Turkceye Ceviren eka7a - http://www.e-piksel.com */
 
 // Text
-$_['text_analytics']                 = 'Analitik';
+$_['text_analytics']                 = 'Analitik Araçları';
 $_['text_affiliate']                 = 'Ortaklar';
 $_['text_api']                       = 'API';
 $_['text_attribute']                 = 'Özellikler';
 $_['text_attribute_group']           = 'Özellik Grupları';
 $_['text_backup']                    = 'Yedekle / Geri Yükle';
 $_['text_banner']                    = 'Afişler';
-$_['text_captcha']                   = 'Doğrulama';
+$_['text_captcha']                   = 'Doğrulama Araçları';
 $_['text_catalog']                   = 'Katalog';
 $_['text_category']                  = 'Kategoriler';
 $_['text_country']                   = 'Ülkeler';

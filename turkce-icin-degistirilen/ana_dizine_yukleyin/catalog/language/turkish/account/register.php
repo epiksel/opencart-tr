@@ -16,8 +16,8 @@ $_['text_agree']           = '<a href="%s" class="agree"><b>%s</b></a>\'ni okudu
 
 // Entry
 $_['entry_customer_group'] = 'Müşteri Grubu';
-$_['entry_firstname']      = 'Ad';
-$_['entry_lastname']       = 'Soyad';
+$_['entry_firstname']      = 'Adınız';
+$_['entry_lastname']       = 'Soyadınız';
 $_['entry_email']          = 'E-Posta';
 $_['entry_telephone']      = 'Telefon';
 $_['entry_fax']            = 'Faks';

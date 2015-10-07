@@ -1927,7 +1927,7 @@ CREATE TABLE `oc_module` (
 
 INSERT INTO `oc_module` (`module_id`, `name`, `code`, `setting`) VALUES
 (1, 'Ana sayfa', 'slideshow', '{"name":"Ana Sayfa","banner_id":"2","width":"1140","height":"380","status":"1"}'),
-(2, 'Ana sayfa', 'featured', '{"name":"Ana Sayfa","product":["43","40","42","30"],"limit":"4","width":"200","height":"200","status":"1"}'),
+(2, 'Ana sayfa', 'featured', '{"name":"Ana Sayfa","product":["12","3","17","1"],"limit":"4","width":"200","height":"200","status":"1"}'),
 (3, 'Ana sayfa', 'carousel', '{"name":"Ana Sayfa","banner_id":"3","width":"130","height":"100","status":"1"}'),
 (4, 'Kategoriler', 'banner', '{"name":"Kategoriler","banner_id":"1","width":"182","height":"182","status":"1"}'),
 (5, 'DigitalOcean', 'banner', '{"name":"DigitalOcean","banner_id":"4","width":"1132","height":"140","status":"1"}');
@@ -3242,7 +3242,8 @@ INSERT INTO `oc_setting` (`setting_id`, `store_id`, `code`, `key`, `value`, `ser
 (285, 0, 'config', 'config_mail_smtp_port', '587', 0),
 (286, 0, 'config', 'config_mail_smtp_timeout', '5', 0),
 (287, 0, 'config', 'config_captcha', 'basic_captcha', 0),
-(288, 0, 'config', 'config_captcha_page', '["review","return","contact"]', 1);
+(288, 0, 'config', 'config_captcha_page', '["review","return","contact"]', 1), 1),
+(289, 0, 'config', 'config_login_attempts', '5', 0);
 
 -- --------------------------------------------------------
 

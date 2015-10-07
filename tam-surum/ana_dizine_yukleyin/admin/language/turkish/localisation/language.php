@@ -35,7 +35,7 @@ $_['help_status']       = 'Dili göster/gizle';
 // Error
 $_['error_permission']  = 'Uyarı: Dilleri düzenleme iznine sahip değilsiniz!';
 $_['error_name']        = 'Dil Adı 3 ile 32 karakter arasında olmalı!';
-$_['error_code']        = 'Dil Kodu en fazla 2 karakter olmalı!';
+$_['error_code']        = 'Dil Kodu en az 2 karakter olmalı!';
 $_['error_locale']      = 'Yer gerekli!';
 $_['error_image']       = 'Resim Dosya Adı 3 ile 64 karakter arasında olmalı!';
 $_['error_directory']   = 'Klasör gerekli!';

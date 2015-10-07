@@ -14,8 +14,8 @@ $_['text_delete']        = 'Adresiniz başarılı bir şekilde sildiniz';
 $_['text_empty']         = 'Hesabınızda kayıtlı hiç adres yok.';
 
 // Entry
-$_['entry_firstname']    = 'Ad';
-$_['entry_lastname']     = 'Soyad';
+$_['entry_firstname']    = 'Adınız';
+$_['entry_lastname']     = 'Soyadınız';
 $_['entry_company']      = 'Şirket Adı';
 $_['entry_address_1']    = 'Adres 1';
 $_['entry_address_2']    = 'Adres 2';

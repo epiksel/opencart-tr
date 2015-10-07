@@ -11,8 +11,8 @@ $_['text_your_details']  = 'Kişisel Bilgileriniz';
 $_['text_success']       = 'Başarılı: Hesabınız başarılı bir şekilde güncellendi.';
 
 // Entry
-$_['entry_firstname']    = 'Ad';
-$_['entry_lastname']     = 'Soyad';
+$_['entry_firstname']    = 'Adınız';
+$_['entry_lastname']     = 'Soyadınız';
 $_['entry_email']        = 'E-Posta';
 $_['entry_telephone']    = 'Telefon';
 $_['entry_fax']          = 'Faks';

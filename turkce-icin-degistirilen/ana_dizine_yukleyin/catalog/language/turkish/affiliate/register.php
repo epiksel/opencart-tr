@@ -19,8 +19,8 @@ $_['text_bank']                 = 'Banka Havalesi/EFT';
 $_['text_agree']                = '<a href="%s" class="agree"><b>%s</b></a>\'nı okudum ve kabul ediyorum';
 
 // Entry
-$_['entry_firstname']           = 'Ad';
-$_['entry_lastname']            = 'Soyad';
+$_['entry_firstname']           = 'Adınız';
+$_['entry_lastname']            = 'Soyadınız';
 $_['entry_email']               = 'E-Posta';
 $_['entry_telephone']           = 'Telefon';
 $_['entry_fax']                 = 'Faks';
