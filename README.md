@@ -4,6 +4,10 @@
 
 OpenCart PHP tabanlı açık kaynak kodlu online alışveriş sepetidir. Tüccarların düşük bir maliyet ile kendi e-ticaret mağazalarını oluşturmada yardımcı olan güçlü bir e-ticaret yazılımıdır.
 
+## Güncelleme
+
+[Güncelleme Dökümanı] (http://weblenti.com/how-to-opencart-upgrade)
+
 ## Türkçe Destek
 
 [Resmi Türkçe Destek Forumu] (http://forum.opencart.com/viewforum.php?f=171)
