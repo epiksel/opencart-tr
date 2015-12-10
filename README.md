@@ -6,7 +6,7 @@ OpenCart PHP tabanlı açık kaynak kodlu online alışveriş sepetidir. Tüccar
 
 ## Güncelleme
 
-[Güncelleme Dökümanı] (http://weblenti.com/how-to-opencart-upgrade)
+[Güncelleme Dokümanı] (http://weblenti.com/how-to-opencart-upgrade)
 
 ## Türkçe Destek
 
