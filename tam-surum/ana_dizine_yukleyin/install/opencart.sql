@@ -343,7 +343,7 @@ INSERT INTO `oc_banner_image` (`banner_image_id`, `banner_id`, `link`, `image`, 
 (12, 2, '', 'catalog/demo/banners/MacBookAir.jpg', 0),
 (13, 3, '', 'catalog/demo/manufacturer/starbucks.png', 0),
 (14, 3, '', 'catalog/demo/manufacturer/nintendo.png', 0),
-(15, 4, 'https://www.digitalocean.com/?refcode=77292963b9dd', 'catalog/demo/banners/ssd-virtual-servers-banner-2-728x90.jpg', 1);
+(15, 4, 'https://m.do.co/c/77292963b9dd', 'catalog/demo/banners/ssd-virtual-servers-banner-2-728x90.jpg', 1);
 
 -- --------------------------------------------------------
 
