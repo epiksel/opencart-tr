@@ -20,6 +20,7 @@ $_['text_select']           = ' --- Seçiniz --- ';
 $_['text_all_zones']        = 'Tüm Şehirler';
 $_['text_pagination']       = 'Gösterilen: %d ile %d arası, toplam: %d (%d Sayfa)';
 $_['text_loading']          = 'Yükleniyor...';
+$_['text_no_results']       = 'Gösterilecek sonuç yok!';
 
 // Buttons
 $_['button_address_add']    = 'Adres Ekle';
@@ -69,3 +70,4 @@ $_['error_upload_6']        = 'Uyarı: Geçici klasör eksik!';
 $_['error_upload_7']        = 'Uyarı: Dosyayı diske yazma basarısız oldu!';
 $_['error_upload_8']        = 'Uyarı: Bu uzantı türdeki dosyaları yükleyemezsiniz!';
 $_['error_upload_999']      = 'Uyarı: Kod hatası mümkün olabilir!';
+$_['error_curl']            = 'CURL: Hata Kodu(%s): %s';

@@ -1,27 +1,27 @@
 <?php
+/* Turkceye Ceviren eka7a - http://www.e-piksel.com */
+
 // Heading
-$_['express_text_title']      = 'Confirm order';
+$_['express_text_title']      = 'Sipariş Onayla';
 
 // Text
 $_['text_title']              = 'PayPal Express Checkout';
-$_['button_continue']         = 'Continue';
-$_['text_cart']               = 'Shopping Cart';
-$_['text_shipping_updated']   = 'Shipping service updated';
+$_['text_cart']               = 'Alışveriş Sepeti';
+$_['text_shipping_updated']   = 'Kargo servivsi güncellendi';
 $_['text_trial']              = '%s every %s %s for %s payments then ';
 $_['text_recurring']          = '%s every %s %s';
-$_['text_recurring_item']     = 'Recurring Item';
+$_['text_recurring_item']     = 'Tekrarlayan Öğe';
 $_['text_length']             = ' for %s payments';
 
 // Entry
-$_['express_entry_coupon']    = 'Enter your coupon here:';
+$_['express_entry_coupon']    = 'Kupon kodunuzu buraya girin:';
 
 // Button
-$_['button_express_coupon']   = 'Add';
-$_['button_express_confirm']  = 'Confirm';
-$_['button_express_login']    = 'Continue to PayPal';
-$_['button_express_shipping'] = 'Update shipping';
-$_['button_cancel_recurring'] = 'Cancel payments';
+$_['button_express_coupon']   = 'Ekle';
+$_['button_express_confirm']  = 'Onayla';
+$_['button_express_login']    = 'PayPal ile Devam Et';
+$_['button_express_shipping'] = 'Kargoyu güncelle';
 
 // Error
-$_['error_heading_title']     = 'There was an error';
-$_['error_too_many_failures'] = 'Your payment has failed too many times';
+$_['error_heading_title']     = 'Bir hata oluştu';
+$_['error_too_many_failures'] = 'Ödemeniz çok kez başarısız oldu';

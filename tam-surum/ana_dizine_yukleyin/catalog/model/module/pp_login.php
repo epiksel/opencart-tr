@@ -10,7 +10,7 @@ class ModelModulePPLogin extends Model {
 		$request  = '';
 		$request .= 'grant_type=authorization_code';
 		$request .= '&code=' . $code;
-		$request .= '&redirect_uri=' . urlencode($this->url->link('module/pp_login/login', '', 'SSL'));
+		$request .= '&redirect_uri=' . urlencode($this->url->link('module/pp_login/login', '', true));
 
 		$additional_opts = array(
 			CURLOPT_USERPWD    => $this->config->get('pp_login_client_id') . ':' . $this->config->get('pp_login_secret'),
@@ -20,7 +20,7 @@ class ModelModulePPLogin extends Model {
 
 		$curl = $this->curl($endpoint, $additional_opts);
 
-		$this->log('cURL Response: ' . print_r($curl, 1));
+		$this->log('cURL Response: ' . print_r($curl, 1), 1);
 
 		return $curl;
 	}
@@ -42,7 +42,7 @@ class ModelModulePPLogin extends Model {
 
 		$curl = $this->curl($endpoint, $additional_opts);
 
-		$this->log('cURL Response: ' . print_r($curl, 1));
+		$this->log('cURL Response: ' . print_r($curl, 1), 1);
 
 		return $curl;
 	}
@@ -71,10 +71,10 @@ class ModelModulePPLogin extends Model {
 		return $response;
 	}
 
-	public function log($data) {
+	public function log($data, $class_step = 6) {
 		if ($this->config->get('pp_login_debug')) {
 			$backtrace = debug_backtrace();
-			$this->log->write('Log In with PayPal debug (' . $backtrace[1]['class'] . '::' . $backtrace[1]['function'] . ') - ' . $data);
+			$this->log->write('Log In with PayPal debug (' . $backtrace[$class_step]['class'] . '::' . $backtrace[6]['function'] . ') - ' . $data);
 		}
 	}
 }

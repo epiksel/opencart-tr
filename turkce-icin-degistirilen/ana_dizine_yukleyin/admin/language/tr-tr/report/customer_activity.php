@@ -10,7 +10,8 @@ $_['text_address_add']    = '<a href="customer_id=%d">%s</a> adlı müşteri yen
 $_['text_address_edit']   = '<a href="customer_id=%d">%s</a> adlı müşteri adres güncelledi.';
 $_['text_address_delete'] = '<a href="customer_id=%d">%s</a> adlı müşteri bir adresini sildi.';
 $_['text_edit']           = '<a href="customer_id=%d">%s</a> adlı müşteri hesap detaylarını güncelledi.';
-$_['text_forgotten']      = '<a href="customer_id=%d">%s</a> adlı müşteri yeni parola talep etti.';
+$_['text_forgotten']      = '<a href="customer_id=%d">%s</a> adlı müşteri parola sıfırlama isteğinde bulundu.';
+$_['text_reset']          = '<a href="customer_id=%d">%s</a> adlı müşteri hesap parolasını sıfırladı.';
 $_['text_login']          = '<a href="customer_id=%d">%s</a> adlı müşteri oturum açtı.';
 $_['text_password']       = '<a href="customer_id=%d">%s</a> adlı müşteri hesap parolasını güncelledi.';
 $_['text_register']       = '<a href="customer_id=%d">%s</a> adında yeni müşteri kayıt oldu.';

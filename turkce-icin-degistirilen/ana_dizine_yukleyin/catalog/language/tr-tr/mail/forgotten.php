@@ -2,6 +2,7 @@
 /* Turkceye Ceviren eka7a - http://www.e-piksel.com */
 
 // Text
-$_['text_subject']  = '%s - Yeni Parolanız';
-$_['text_greeting'] = '%s sitemizdeki hesabınız için yeni parola talebinde bulundunuz.';
-$_['text_password'] = 'Yeni parolanız:';
+$_['text_subject']  = '%s - Parola sıfırlama isteği';
+$_['text_greeting'] = '%s müşteri hesabınız için parola sıfırlama talebinde bulundunuz.';
+$_['text_change']   = 'Parolanızı sıfırlamak için aşağıdaki bağlantıyı tıklayın:';
+$_['text_ip']       = 'Parola sıfırlama isteğiniz bu IP adresinden yapıldı: %s';

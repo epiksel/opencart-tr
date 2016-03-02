@@ -12,6 +12,7 @@ $_['text_my_newsletter'] = 'Bülten Aboneliği';
 $_['text_edit']          = 'Hesap Bilgilerimi Düzenle';
 $_['text_password']      = 'Parola Değiştir';
 $_['text_address']       = 'Adres Defterlerini Düzenle';
+$_['text_credit_card']   = 'Kayıtlı Kredi Kartları';
 $_['text_wishlist']      = 'Alışveriş Listemi Düzenle';
 $_['text_order']         = 'Siparişlerim';
 $_['text_download']      = 'Dosyalarım';

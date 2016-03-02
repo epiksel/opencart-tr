@@ -23,8 +23,8 @@ $_['text_error']            = 'İstediğiniz sipariş bulunamadı!';
 
 // Column
 $_['column_order_id']       = 'Sipairş No';
-$_['column_product']        = 'Ürünler';
 $_['column_customer']       = 'Müşteri';
+$_['column_product']        = 'Ürünler';
 $_['column_name']           = 'Ürün Adı';
 $_['column_model']          = 'Ürün Kodu';
 $_['column_quantity']       = 'Adet';

@@ -9,7 +9,7 @@ $_['text_coupon']   = 'Kupon (%s)';
 $_['text_success']  = 'Başarılı: İndirim kuponu septinize başarıyla uygulandı!';
 
 // Entry
-$_['entry_coupon']  = 'Kupon kodunuzu buraya giriniz';
+$_['entry_coupon']  = 'Kupon kodunuzu buraya girin';
 
 // Error
 $_['error_coupon']  = 'Uyarı: Kupon kodunuz geçersiz, süresi ya da kullanım limiti dolmuş!';

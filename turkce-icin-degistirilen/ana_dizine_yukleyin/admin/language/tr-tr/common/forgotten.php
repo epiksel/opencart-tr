@@ -17,5 +17,5 @@ $_['entry_confirm']   = 'Yeni Parola(tekrar)';
 
 // Error
 $_['error_email']     = 'Uyarı: E-Posta adresi bulunamadı. Lütfen tekrar deneyiniz!';
-$_['error_password']  = 'Parolanız 3 ile 20 karakter arasında olmalıdır!';
+$_['error_password']  = 'Parolanız 4 ile 20 karakter arasında olmalıdır!';
 $_['error_confirm']   = 'Yazdığınız parolar birbiri ile uyuşmuyor!';
