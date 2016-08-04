@@ -9,6 +9,9 @@ $_['text_success']        = 'Başarılı: Bölüm başarılı bir şekilde deği
 $_['text_list']           = 'Bölüm Listesi';
 $_['text_add']            = 'Bölüm Ekle';
 $_['text_edit']           = 'Bölüm Düzenle';
+$_['text_remove']         = 'Kaldır';
+$_['text_route']          = 'Bu bölümde kullanılacak mağaza ve yolları seçin.';
+$_['text_module']         = 'Modül konumlarını seçin.';
 $_['text_default']        = 'Varsayılan';
 $_['text_content_top']    = 'Orta Üstte';
 $_['text_content_bottom'] = 'Orta Altta';
@@ -24,8 +27,6 @@ $_['entry_name']          = 'Bölüm Adı';
 $_['entry_store']         = 'Mağaza';
 $_['entry_route']         = 'Yol';
 $_['entry_module']        = 'Modül';
-$_['entry_position']      = 'Pozisyon';
-$_['entry_sort_order']    = 'Sıralama';
 
 // Error
 $_['error_permission']    = 'Uyarı: Bölümleri düzenleme iznine sahip değilsiniz!';

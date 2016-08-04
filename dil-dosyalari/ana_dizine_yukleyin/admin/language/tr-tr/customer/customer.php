@@ -73,6 +73,4 @@ $_['error_address_1']             = 'Adres 1 alanı 3 ile 128 karakter arasında
 $_['error_city']                  = 'İlçe / Semt alanı 2 ile 128 karakter arasında olmalı!';
 $_['error_postcode']              = 'Posta kodu 2 ile 10 karakter arasında olmalı!';
 $_['error_country']               = 'Lütfen bir ülke seçiniz!';
-$_['error_zone']                  = 'Lütfen bir şehir seçiniz!';
-$_['error_custom_field']          = '%s gerekli!';
-$_['error_custom_field_validate'] = '%s geçersiz!';
+$_['error_zone']                  = '%s gerekli!';

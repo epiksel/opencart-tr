@@ -20,5 +20,5 @@ $_['text_reward']        = 'Puanlarım';
 $_['text_return']        = 'İade Taleplerim';
 $_['text_transaction']   = 'Bakiye İşlemlerim';
 $_['text_newsletter']    = 'Bültene Abone Ol / Kaldır.';
-$_['text_recurring']     = 'Tekrarlayan Ödemeler';
+$_['text_recurring']     = 'Otomatik Ödemeler';
 $_['text_transactions']  = 'İşlemler';

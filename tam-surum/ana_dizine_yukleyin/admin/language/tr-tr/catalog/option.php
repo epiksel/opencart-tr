@@ -13,7 +13,6 @@ $_['text_choose']         = 'Seçiniz';
 $_['text_select']         = 'Seçenek';
 $_['text_radio']          = 'Radyo Düğmesi';
 $_['text_checkbox']       = 'Onay Kutusu';
-$_['text_image']          = 'Resim';
 $_['text_input']          = 'Veri Girişi';
 $_['text_text']           = 'Metin';
 $_['text_textarea']       = 'Metin Alanı';

@@ -45,3 +45,4 @@ $_['error_permission']        = 'Uyarı: Kategorileri değiştirme iznine sahip 
 $_['error_name']              = 'Uyarı: Kategori adı 2 ile 255 karakter arasında olmalı!';
 $_['error_meta_title']        = 'Uyarı: Meta başlığı 3 ile 255 karakter arasında olmalı!';
 $_['error_keyword']           = 'SEO Bağlantısı zaten kullanılıyor!';
+$_['error_parent']            = 'Kategorinin kendisi ana kategori olarak seçilemez!';

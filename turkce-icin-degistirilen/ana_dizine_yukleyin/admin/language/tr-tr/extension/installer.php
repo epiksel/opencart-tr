@@ -5,6 +5,7 @@
 $_['heading_title']        = 'Eklenti Yükleyicisi';
 
 // Text
+$_['text_upload']          = 'Eklenti Yükleyin';
 $_['text_success']         = 'Başarılı: Eklenti yüklendi!';
 $_['text_unzip']           = 'Dosyalar açılıyor!';
 $_['text_ftp']             = 'Dosyalar kopyalanıyor!';

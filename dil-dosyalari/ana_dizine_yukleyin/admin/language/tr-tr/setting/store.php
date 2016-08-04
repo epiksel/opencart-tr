@@ -66,11 +66,11 @@ $_['entry_secure']                 = 'SSL Kullan';
 // Help
 $_['help_url']                     = 'Mağazanızın tam adresini yazınız. Sonuna \'/\' işaretini eklemeyi unutmayınız. Örneğin: http://www.e-piksel.com/shop/<br />Yeni bir mağaza oluşturmak için dizin oluşturmayınız. Hostinginiz her zaman başka bir etki alanı veya alt etki alanını işaret etmelidir.';
 $_['help_ssl']                     = 'Mağazanızın SSL URL adresi. Sonuna \'/\' işaretini eklemeyi unutmayınız. Örneğin: https://www.e-piksel.com/shop/<br />Yeni bir mağaza oluşturmak için dizin oluşturmayınız. Hostinginiz her zaman başka bir etki alanı veya alt etki alanını işaret etmelidir.';
-$_['help_geocode']                 = 'Please enter your store location geocode manually.';
-$_['help_open']                    = 'Fill in your stores opening times.';
-$_['help_comment']                 = 'This field is for any special notes you would like to tell the customer i.e. Store does not accept cheques.';
-$_['help_location']                = 'The different store locations you have that you want displayed on the contact us form.';
-$_['help_currency']                = 'Change the default currency. Clear your browser cache to see the change and reset your existing cookie.';
+$_['help_geocode']                 = 'Lütfen mağazanızın coğrafi kodunu elle giriniz.';
+$_['help_open']                    = 'Mağazanızın çalışma saatlerini yazınız.';
+$_['help_comment']                 = 'Bu alana müşterilerinize belirtmek istediğiniz özel bir not ya da açıklama için kullanabilirsiniz. Örn: Mağazamızda çek kabul edilmez gibi.';
+$_['help_location']                = 'Farklı mağaza konumları iletişim sayfasında gösterilecektir.';
+$_['help_currency']                = 'Varsayılan para birimini değiştirir. Web tarayıcınızın önbelleğini ve çerezleri temizlemeniz gerekir.';
 $_['help_tax_default']             = 'Mağaza adresi kimse oturum açmadığında vergi hesaplamak için kullanılır. Kargo ya da ödeme adresi için müşterilerinizde kullanılacak varsayılan mağaza adresi seçebilirsiniz.';
 $_['help_tax_customer']            = 'Müşteri oturum açtığında hesaplamalar için kullanılacak vergi adresi. Müşterileriniz için varsayılan kargo ya da fatura adresi seçebilirsiniz.';
 $_['help_customer_group']          = 'Varsayılan müşteri grubu.';

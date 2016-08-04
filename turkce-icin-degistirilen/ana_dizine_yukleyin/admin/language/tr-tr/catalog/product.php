@@ -81,7 +81,7 @@ $_['entry_related']          = 'Benzer Ürünler';
 $_['entry_tag']              = 'Ürün Etiketleri';
 $_['entry_reward']           = 'Puanlar';
 $_['entry_layout']           = 'Bu Bölüm Gibi Davran';
-$_['entry_recurring']        = 'Tekrarlayan Profil';
+$_['entry_recurring']        = 'Abonelik Profili';
 
 // Help
 $_['help_keyword']           = 'Boşluk kullanmayın ve benzersiz bağlantı kullandığınızdan emin olunuz.';

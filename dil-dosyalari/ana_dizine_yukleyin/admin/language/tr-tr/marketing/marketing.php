@@ -34,3 +34,4 @@ $_['error_permission']  = 'Uyarı: Pazarlama takip bilgilerini düzenleme iznine
 $_['error_delete']      = 'Uyarı: Pazarlama takip bilgilerini silme iznine sahip değilsiniz!';
 $_['error_name']        = 'Kampanya Adı 1 ile 32 karakter arasında olmalı!';
 $_['error_code']        = 'Takip kodu gerekli!';
+$_['error_exists']      = 'Takip kodu başka kampanya tarafından kullanılıyor!';

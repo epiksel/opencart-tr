@@ -22,7 +22,7 @@ $_['text_empty']            = 'Daha önce hiç sipariş vermediniz!';
 $_['text_error']            = 'İstediğiniz sipariş bulunamadı!';
 
 // Column
-$_['column_order_id']       = 'Sipairş No';
+$_['column_order_id']       = 'Sipariş No';
 $_['column_customer']       = 'Müşteri';
 $_['column_product']        = 'Ürünler';
 $_['column_name']           = 'Ürün Adı';

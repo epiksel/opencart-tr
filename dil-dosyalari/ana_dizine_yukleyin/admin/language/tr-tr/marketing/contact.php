@@ -28,9 +28,9 @@ $_['entry_subject']        = 'Konu';
 $_['entry_message']        = 'Mesaj';
 
 // Help
-$_['help_customer']       = '(Otomatik Tamamlama)';
-$_['help_affiliate']      = '(Otomatik Tamamlama)';
-$_['help_product']        = 'Sadece listedeki ürünleri sipariş veren müşterilere gönder. (Otomatik Tamamlama)';
+$_['help_customer']        = '(Otomatik Tamamlama)';
+$_['help_affiliate']       = '(Otomatik Tamamlama)';
+$_['help_product']         = 'Sadece listedeki ürünleri sipariş veren müşterilere gönder. (Otomatik Tamamlama)';
 
 // Error
 $_['error_permission']     = 'Uyarı: E-Posta gönderme iznine sahip değilsiniz!';

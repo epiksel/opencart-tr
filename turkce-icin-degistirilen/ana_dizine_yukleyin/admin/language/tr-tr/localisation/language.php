@@ -19,10 +19,12 @@ $_['column_action']     = 'Eylem';
 // Entry
 $_['entry_name']        = 'Dil Adı';
 $_['entry_code']        = 'Kodu';
+$_['entry_locale']      = 'Yerel';
 $_['entry_status']      = 'Durumu';
 $_['entry_sort_order']  = 'Sıralama';
 
 // Help
+$_['help_locale']       = 'Türkçe için: tr_TR.UTF-8,tr_TR,tr-tr,turkish <br />İngilizce için: en_US.UTF-8,en_US,en-gb,en_gb,english';
 $_['help_status']       = 'Dili göster/gizle';
 
 // Error
@@ -30,6 +32,7 @@ $_['error_permission']  = 'Uyarı: Dilleri düzenleme iznine sahip değilsiniz!'
 $_['error_exists']      = 'Uyarı: Bu dili daha önce eklediniz!';
 $_['error_name']        = 'Dil Adı 3 ile 32 karakter arasında olmalı!';
 $_['error_code']        = 'Dil Kodu en az 2 karakter olmalı!';
+$_['error_locale']      = 'Yerel gerekli!';
 $_['error_default']     = 'Uyarı: Bu dili silemezsiniz, varsayılan mağaza tarafından kullanılıyor!';
 $_['error_admin']       = 'Uyarı: Bu dili silemezsiniz, yönetim dili olarak kullanılıyor!';
 $_['error_store']       = 'Uyarı: Bu dili silemezsiniz, %s mağaza tarafından kullanılıyor!';

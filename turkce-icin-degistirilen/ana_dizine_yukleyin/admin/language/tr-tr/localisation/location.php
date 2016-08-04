@@ -9,7 +9,7 @@ $_['text_success']     = 'Başarılı: Mağaza konumu başarılı bir şekilde d
 $_['text_list']        = 'Mağaza Konum Listesi';
 $_['text_add']         = 'Mağaza Konum Ekle';
 $_['text_edit']        = 'Mağaza Konum Düzenle';
-$_['text_default']     = 'Varsaılan';
+$_['text_default']     = 'Varsayılan';
 $_['text_time']        = 'Çalışma Saatleri';
 $_['text_geocode']     = 'Coğrafi kod aşağıdaki nedenden dolayı başarısız oldu';
 
@@ -35,6 +35,6 @@ $_['help_comment']     = 'Bu alana müşterileriniz için özel bir not yazabili
 
 // Error
 $_['error_permission'] = 'Uyarı: Mağaza konumlarını düzenleme iznine sahip değilsiniz!';
-$_['error_name']       = 'Mağaza adı en az 1 karakterden oluşmalıdır!';
+$_['error_name']       = 'Mağaza adı 3 ile 32 karakter arasında olmalıdır!';
 $_['error_address']    = 'Adres alanı 3 ile 128 karakter arasında olmalıdır!';
 $_['error_telephone']  = 'Telefon alanı 3 ile 32 karakter arasında olmalıdır!';

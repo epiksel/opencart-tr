@@ -5,6 +5,7 @@
 $_['heading_title']              = 'Siparişler';
 
 // Text
+$_['text_success']               = 'Başarılı: Siparişler başarılı bir şekilde değiştirildi!';
 $_['text_list']                  = 'Sipariş Listesi';
 $_['text_add']                   = 'Sipariş Ekle';
 $_['text_edit']                  = 'Sipariş Düzenle';

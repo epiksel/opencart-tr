@@ -9,6 +9,7 @@ $_['text_success']         = 'Başarılı: Para birimi başarılı bir şekilde 
 $_['text_list']            = 'Para Birimi Listesi';
 $_['text_add']             = 'Para Birimi Ekle';
 $_['text_edit']            = 'Para Birimi Düzenle';
+$_['text_iso']             = 'You can find a full list of ISO currency codes and settings <a href="http://www.xe.com/iso4217.php" target="_blank">here</a>.';
 
 // Column
 $_['column_title']         = 'Para Birimi Adı';
@@ -27,7 +28,7 @@ $_['entry_decimal_place']  = 'Basamak Ayırıcı';
 $_['entry_status']         = 'Durumu';
 
 // Help
-$_['help_code']            = 'Bu varsayılan para biriminiz ise değiştirmeyiniz. Geçerli bir <a href="http://www.xe.com/iso4217.php" target="_blank">ISO kod</a> olmalı.';
+$_['help_code']            = 'Bu varsayılan para biriminiz ise değiştirmeyiniz.';
 $_['help_value']           = 'Varsayılan ağırlık birim değerini 1.00000 olarak ayarlayın.';
 
 // Error

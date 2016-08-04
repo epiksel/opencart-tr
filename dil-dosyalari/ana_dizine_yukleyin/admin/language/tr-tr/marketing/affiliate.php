@@ -87,3 +87,4 @@ $_['error_postcode']            = 'Bu ülke için posta kodu 2 ile 10 karakter a
 $_['error_country']             = 'Lütfen bir ülke seçiniz!';
 $_['error_zone']                = 'Lütfen bir şehir seçiniz!';
 $_['error_code']                = 'Takip kodu gerekli!';
+$_['error_exists']              = 'Takip kodu başka ortak tarafından kullanılıyor!';

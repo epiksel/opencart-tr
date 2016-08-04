@@ -31,7 +31,7 @@ $_['text_address_existing']          = 'Varolan fatura adresi seçiniz.';
 $_['text_shipping_method']           = 'Siparişinizde kullanılacak kargo metodunu seçiniz.';
 $_['text_payment_method']            = 'Siparişinizde kullanılacak ödeme metodunu seçiniz.';
 $_['text_comments']                  = 'Siparişiniz Hakkında Bir Açıklama Ekleyebilirsiniz';
-$_['text_recurring_item']            = 'Tekrarlanan Öğe';
+$_['text_recurring_item']            = 'Abonelik';
 $_['text_payment_recurring']         = 'Ödeme Profili';
 $_['text_trial_description']         = '%s için her %d %s %d ödeme ardından';
 $_['text_payment_description']       = '%s için her %d %s %d ödeme';
@@ -94,4 +94,3 @@ $_['error_no_shipping']              = 'Uyarı: Kargo metodu mevcut değil. Lüt
 $_['error_payment']                  = 'Uyarı: Ödeme metodu gerekli!';
 $_['error_no_payment']               = 'Uyarı: Ödeme metodu mevcut değil. Lütfen <a href="%s">iletişim</a> için bize ulaşın!';
 $_['error_custom_field']             = '%s gerekli!';
-$_['error_custom_field_validate']    = '%s geçersiz!';
