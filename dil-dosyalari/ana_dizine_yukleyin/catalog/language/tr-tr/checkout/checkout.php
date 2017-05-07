@@ -1,5 +1,5 @@
 <?php
-/* Turkceye Ceviren eka7a - http://www.e-piksel.com */
+/* Turkceye Ceviren eka7a - http://e-piksel.com */
 
 // Heading
 $_['heading_title']                  = 'Kasaya Git';
@@ -57,7 +57,6 @@ $_['entry_confirm']                  = 'Parola(tekrar)';
 $_['entry_firstname']                = 'Adınız';
 $_['entry_lastname']                 = 'Soyadınız';
 $_['entry_telephone']                = 'Telefon';
-$_['entry_fax']                      = 'Faks';
 $_['entry_address']                  = 'Adres Seçin';
 $_['entry_company']                  = 'Şirket Adı';
 $_['entry_customer_group']           = 'Müşteri Grubu';

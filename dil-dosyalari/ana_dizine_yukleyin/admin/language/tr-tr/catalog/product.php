@@ -1,5 +1,5 @@
 <?php
-/* Turkceye Ceviren eka7a - http://www.e-piksel.com */
+/* Turkceye Ceviren eka7a - http://e-piksel.com */
 
 // Heading
 $_['heading_title']          = 'Ürünler';
@@ -75,7 +75,7 @@ $_['entry_required']         = 'Gerekli';
 $_['entry_status']           = 'Durum';
 $_['entry_sort_order']       = 'Sıralama';
 $_['entry_category']         = 'Kategoriler';
-$_['entry_filter']           = 'Süzgeçler';
+$_['entry_filter']           = 'Filtreler';
 $_['entry_download']         = 'Dosyalar';
 $_['entry_related']          = 'Benzer Ürünler';
 $_['entry_tag']              = 'Ürün Etiketleri';

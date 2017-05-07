@@ -1,10 +1,9 @@
 <?php
-/* Turkceye Ceviren eka7a - http://www.e-piksel.com */
-
 // Heading
 $_['heading_title']        = 'Ürün İadeleri';
 
 // Text
+$_['text_success']         = 'Başarılı: Ürün iadesi başarılı bir şekilde değiştirildi!';
 $_['text_list']            = 'Ürün İade Listesi';
 $_['text_add']             = 'Ürün İadesi Ekle';
 $_['text_edit']            = 'Ürün İadesi Düzenle';
@@ -12,7 +11,8 @@ $_['text_opened']          = 'Açıldı';
 $_['text_unopened']        = 'Açılmadı';
 $_['text_order']           = 'Sipariş Bilgileri';
 $_['text_product']         = 'İade için Ürün Bilgileri &amp; Nedeni';
-$_['text_history']         = 'İade Geçmişi Ekle';
+$_['text_history']         = 'Geçmiş';
+$_['text_history_add']     = 'İade Geçmişi Ekle';
 
 // Column
 $_['column_return_id']     = 'İade No';

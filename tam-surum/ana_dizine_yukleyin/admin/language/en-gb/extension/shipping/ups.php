@@ -3,7 +3,7 @@
 $_['heading_title']                = 'UPS';
 
 // Text
-$_['text_shipping']                = 'Shipping';
+$_['text_extension']               = 'Extensions';
 $_['text_success']                 = 'Success: You have modified UPS shipping!';
 $_['text_edit']                    = 'Edit UPS Shipping';
 $_['text_regular_daily_pickup']    = 'Regular Daily Pickup';
@@ -72,7 +72,7 @@ $_['entry_insurance']              = 'Enable Insurance';
 $_['entry_display_weight']         = 'Display Delivery Weight';
 $_['entry_weight_class']           = 'Weight Class';
 $_['entry_length_class']           = 'Length Class';
-$_['entry_dimension']			   = 'Dimensions (L x W x H)';
+$_['entry_dimension']              = 'Dimensions (L x W x H)';
 $_['entry_length']                 = 'Length';
 $_['entry_height']                 = 'Height';
 $_['entry_width']                  = 'Width';
@@ -80,7 +80,7 @@ $_['entry_tax_class']              = 'Tax Class';
 $_['entry_geo_zone']               = 'Geo Zone';
 $_['entry_status']                 = 'Status';
 $_['entry_sort_order']             = 'Sort Order';
-$_['entry_debug']      			   = 'Debug Mode';
+$_['entry_debug']                  = 'Debug Mode';
 
 // Help
 $_['help_key']                     = 'Enter the XML rates access key assigned to you by UPS.';
@@ -101,8 +101,8 @@ $_['help_insurance']               = 'Enables insurance with product total as th
 $_['help_display_weight']          = 'Do you want to display the shipping weight? (e.g. Delivery Weight : 2.7674 kg)';
 $_['help_weight_class']            = 'Set to kilograms or pounds.';
 $_['help_length_class']            = 'Set to centimeters or inches.';
-$_['help_dimension']			   = 'This is assumed to be your average packing box size. Individual item dimensions are not supported at this time so you must enter average dimensions like 5x5x5.';
-$_['help_debug']      			   = 'Saves send/recv data to the system log';
+$_['help_dimension']               = 'This is assumed to be your average packing box size. Individual item dimensions are not supported at this time so you must enter average dimensions like 5x5x5.';
+$_['help_debug']                   = 'Saves send/recv data to the system log';
 
 // Error
 $_['error_permission']             = 'Warning: You do not have permission to modify UPS (US) shipping!';

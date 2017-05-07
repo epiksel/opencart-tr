@@ -1,5 +1,5 @@
 <?php
-/* Turkceye Ceviren eka7a - http://www.e-piksel.com */
+/* Turkceye Ceviren eka7a - http://e-piksel.com */
 
 // Heading
 $_['heading_title']           = 'Kategoriler';
@@ -24,7 +24,7 @@ $_['entry_meta_keyword']      = 'Meta Kelimeleri';
 $_['entry_meta_description']  = 'Meta Açıklaması';
 $_['entry_keyword']           = 'SEO Bağlantısı';
 $_['entry_parent']            = 'Ana Kategori';
-$_['entry_filter']            = 'Süzgeçler';
+$_['entry_filter']            = 'Filtreler';
 $_['entry_store']             = 'Mağazalar';
 $_['entry_image']             = 'Resim';
 $_['entry_top']               = 'Üst';

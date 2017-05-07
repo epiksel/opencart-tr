@@ -1,11 +1,11 @@
 <?php
-/* Turkceye Ceviren eka7a - http://www.e-piksel.com */
+/* Turkceye Ceviren eka7a - http://e-piksel.com */
 
 // Heading
 $_['heading_title']    = 'Vergiler';
 
 // Text
-$_['text_total']       = 'Sipariş Toplamları';
+$_['text_extension']   = 'Eklentiler';
 $_['text_success']     = 'Başarılı: Vergiler toplamı vergiler başarılı bir şekilde değiştirildi!';
 $_['text_edit']        = 'Vergi Toplamını Düzenle';
 

@@ -2,11 +2,12 @@
 /* Turkceye Ceviren eka7a - http://e-piksel.com */
 
 // Heading
-$_['heading_title']       = 'MaxMind';
+$_['heading_title']      = 'MaxMind';
 
-$_['text_maxmind']        = 'Fraud detection service.';
-$_['text_success']        = 'MaxMind fraud service has been installed';
-$_['text_signup']         = 'If you don\'t have a license key you can sign up <a href="http://www.maxmind.com/?rId=epiksel" target="_blank">here</a>.';
+// Text
+$_['text_maxmind']       = 'Fraud detection service.';
+$_['text_success']       = 'MaxMind fraud service has been installed';
+$_['text_signup']        = 'If you don\'t have a license key you can sign up <a href="http://www.maxmind.com/?rId=epiksel" target="_blank">here</a>.';
 
 // Entry
 $_['entry_key']          = 'Lisans Anahtarı';

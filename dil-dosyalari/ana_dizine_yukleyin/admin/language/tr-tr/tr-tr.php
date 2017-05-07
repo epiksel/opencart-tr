@@ -1,5 +1,5 @@
 <?php
-/* Turkceye Ceviren eka7a - http://www.e-piksel.com */
+/* Turkceye Ceviren eka7a - http://e-piksel.com */
 
 // Locale
 $_['code']                          = 'tr';
@@ -40,7 +40,7 @@ $_['button_clear']                  = 'Temizle';
 $_['button_close']                  = 'Kapat';
 $_['button_enable']                 = 'Açık';
 $_['button_disable']                = 'Kapalı';
-$_['button_filter']                 = 'Süzgeç';
+$_['button_filter']                 = 'Filtrele';
 $_['button_send']                   = 'Gönder';
 $_['button_edit']                   = 'Düzenle';
 $_['button_copy']                   = 'Kopyala';
@@ -60,7 +60,7 @@ $_['button_attribute_add']          = 'Özellik Ekle';
 $_['button_banner_add']             = 'Afiş Ekle';
 $_['button_custom_field_value_add'] = 'Özel Alan Ekle';
 $_['button_product_add']            = 'Ürün Ekle';
-$_['button_filter_add']             = 'Süzgeç Ekle';
+$_['button_filter_add']             = 'Filtre Ekle';
 $_['button_option_add']             = 'Seçenek Ekle';
 $_['button_option_value_add']       = 'Değer Ekle';
 $_['button_recurring_add']          = 'Abonelik Ekle';
@@ -77,6 +77,7 @@ $_['button_rule_add']               = 'Kural Ekle';
 $_['button_module_add']             = 'Modül Ekle';
 $_['button_link_add']               = 'Bağlantı Ekle';
 $_['button_approve']                = 'Onayla';
+$_['button_deny']                   = 'Reddet';
 $_['button_reset']                  = 'Sıfırla';
 $_['button_generate']               = 'Oluştur';
 $_['button_voucher_add']            = 'Hediye Çeki Ekle';
@@ -101,16 +102,21 @@ $_['button_apply']                  = 'Uygula';
 $_['button_category_add']           = 'Kategori Ekle';
 $_['button_order']                  = 'Siparişi Görüntüle';
 $_['button_order_recurring']        = 'Abonelik Siparişini Göster';
+$_['button_buy']                    = 'Satın Al';
 
 // Tab
 $_['tab_address']                   = 'Adres';
 $_['tab_additional']                = 'İlave Edilen';
 $_['tab_admin']                     = 'Yönetici';
+$_['tab_affiliate']                 = 'Ortaklık';
 $_['tab_attribute']                 = 'Özellik';
 $_['tab_customer']                  = 'Müşteri Detayları';
+$_['tab_comment']                   = 'Yorum';
 $_['tab_data']                      = 'Veri';
+$_['tab_description']               = 'Açıklama';
 $_['tab_design']                    = 'Tasarım';
 $_['tab_discount']                  = 'İndirim';
+$_['tab_documentation']             = 'Dokümantasyon';
 $_['tab_general']                   = 'Genel';
 $_['tab_history']                   = 'Geçmiş';
 $_['tab_ftp']                       = 'FTP';

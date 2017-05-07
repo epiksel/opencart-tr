@@ -1,23 +1,31 @@
 <?php
 // Heading
-$_['heading_title']    = 'Language Translation';
+$_['heading_title']    = 'Dil Editörü';
 
 // Text
-$_['text_edit']        = 'Edit Translation';
-$_['text_list']        = 'Translation List';
-$_['text_translation'] = 'Choose a translation';
-$_['text_translation'] = 'Translations';
+$_['text_success']     = 'Başarılı: Dil çevirisi başarılı bir şekilde değiştirildi!';
+$_['text_list']        = 'Çeviri Listesi';
+$_['text_add']         = 'Çeviri Ekle';
+$_['text_edit']        = 'Çeviriyi Düzenle';
+$_['text_default']     = 'Varsayılan';
+$_['text_store']       = 'Mağaza';
+$_['text_language']    = 'Dil';
 
 // Column
-$_['column_flag']      = 'Flag';
-$_['column_country']   = 'Country';
-$_['column_progress']  = 'Translation Progress';
-$_['column_action']    = 'Action';
+$_['column_store']     = 'Mağaza';
+$_['column_language']  = 'Dil';
+$_['column_route']     = 'Yol';
+$_['column_key']       = 'Anahtar';
+$_['column_action']    = 'Eylem';
 
-// button
-$_['button_install']   = 'Install';
-$_['button_uninstall'] = 'Uninstall';
-$_['button_refresh']   = 'Refresh';
+// Entry
+$_['entry_store']      = 'Mağaza';
+$_['entry_language']   = 'Dil';
+$_['entry_route']      = 'Yol';
+$_['entry_key']        = 'Anahtar';
+$_['entry_default']    = 'Varsayılan';
+$_['entry_value']      = 'Değer';
 
 // Error
-$_['error_permission'] = 'Warning: You do not have permission to modify language translation!';
+$_['error_permission'] = 'Warning: Dil editörünü düzenleme iznine sahip değilsiniz!';
+$_['error_key']        = 'Anahtar 3 ile 64 karakter arasında olmalı!';

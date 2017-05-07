@@ -1,5 +1,5 @@
 <?php
-/* Turkceye Ceviren eka7a - http://www.e-piksel.com */
+/* Turkceye Ceviren eka7a - http://e-piksel.com */
 
 // Heading
 $_['heading_title']              = 'Siparişler';
@@ -38,7 +38,6 @@ $_['text_forwarded_ip']          = 'Aktarılan IP';
 $_['text_user_agent']            = 'Tarayıcı Bilgisi';
 $_['text_accept_language']       = 'Geçerli Dil';
 $_['text_order_id']              = 'Sipariş No';
-$_['text_fax']                   = 'Faks';
 $_['text_website']               = 'Web Sitesi:';
 $_['text_invoice_no']            = 'Fatura No';
 $_['text_invoice_date']          = 'Fatura Tarihi';
@@ -88,7 +87,6 @@ $_['entry_firstname']            = 'Adı';
 $_['entry_lastname']             = 'Soyadı';
 $_['entry_email']                = 'E-Posta';
 $_['entry_telephone']            = 'Telefon';
-$_['entry_fax']                  = 'Faks';
 $_['entry_address']              = 'Adres Seç';
 $_['entry_company']              = 'Şirket Adı';
 $_['entry_address_1']            = 'Adres 1';

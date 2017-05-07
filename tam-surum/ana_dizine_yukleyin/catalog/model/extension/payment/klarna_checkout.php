@@ -59,13 +59,13 @@ class ModelExtensionPaymentKlarnaCheckout extends Model {
 		return array();
 	}
 
-	public function getConnector($accounts, $country_id, $currency) {
+	public function getConnector($accounts, $currency) {
 		$klarna_account = false;
 		$connector = false;
 
-		if ($accounts && $country_id && $currency) {
+		if ($accounts && $currency) {
 			foreach ($accounts as $account) {
-				if (($account['country'] == $country_id) && ($account['currency'] == $currency)) {
+				if ($account['currency'] == $currency) {
 					if ($account['environment'] == 'test') {
 						if ($account['api'] == 'NA') {
 							$base_url = KCConnectorInterface::NA_TEST_BASE_URL;
@@ -132,9 +132,27 @@ class ModelExtensionPaymentKlarnaCheckout extends Model {
 	}
 
 	public function getZoneByCode($code, $country_id) {
-		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "zone WHERE `code` = '" . $this->db->escape($code) . "' AND `country_id` = '" . (int)$country_id . "' AND `status` = '1'");
+		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "zone WHERE (`code` = '" . $this->db->escape($code) . "' OR `name` = '" . $this->db->escape($code) . "') AND `country_id` = '" . (int)$country_id . "' AND `status` = '1'");
 
 		return $query->row;
+	}
+
+	public function getCountriesByGeoZone($geo_zone_id) {
+		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "zone_to_geo_zone WHERE geo_zone_id = '" . (int)$geo_zone_id . "' GROUP BY `country_id` ORDER BY `country_id` ASC");
+
+		return $query->rows;
+	}
+
+	public function checkForPaymentTaxes($products = array()) {
+		foreach ($products as $product) {
+			$query = $this->db->query("SELECT COUNT(*) AS `total` FROM " . DB_PREFIX . "tax_rule WHERE `based` = 'payment' AND `tax_class_id` = '" . (int)$product['tax_class_id'] . "'");
+
+			if ($query->row['total']) {
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 	public function getDefaultShippingMethod($shipping_methods) {
@@ -159,6 +177,54 @@ class ModelExtensionPaymentKlarnaCheckout extends Model {
 			$log = new Log('klarna_checkout.log');
 			$log->write('(' . $backtrace[$step]['class'] . '::' . $backtrace[$step]['function'] . ') - ' . print_r($data, true));
 		}
+	}
+
+	public function subscribeNewsletter($customer_id) {
+		$this->db->query("UPDATE " . DB_PREFIX . "customer SET newsletter = '1' WHERE customer_id = '" . (int)$customer_id . "'");
+	}
+
+	public function getTotals() {
+		$totals = array();
+		$taxes = $this->cart->getTaxes();
+		$total = 0;
+
+		// Because __call can not keep var references so we put them into an array.
+		$total_data = array(
+			'totals' => &$totals,
+			'taxes'  => &$taxes,
+			'total'  => &$total
+		);
+
+		$this->load->model('setting/extension');
+
+		$sort_order = array();
+
+		$results = $this->model_setting_extension->getExtensions('total');
+
+		foreach ($results as $key => $value) {
+			$sort_order[$key] = $this->config->get('total_' . $value['code'] . '_sort_order');
+		}
+
+		array_multisort($sort_order, SORT_ASC, $results);
+
+		foreach ($results as $result) {
+			if ($this->config->get('total_' . $result['code'] . '_status')) {
+				$this->load->model('extension/total/' . $result['code']);
+
+				// We have to put the totals in an array so that they pass by reference.
+				$this->{'model_extension_total_' . $result['code']}->getTotal($total_data);
+			}
+		}
+
+		$sort_order = array();
+
+		foreach ($totals as $key => $value) {
+			$sort_order[$key] = $value['sort_order'];
+		}
+
+		array_multisort($sort_order, SORT_ASC, $totals);
+
+		return array($totals, $taxes, $total);
 	}
 
 	private function connector($merchant_id, $secret, $url) {

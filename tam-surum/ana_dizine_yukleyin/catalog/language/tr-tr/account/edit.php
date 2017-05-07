@@ -1,5 +1,5 @@
 <?php
-/* Turkceye Ceviren eka7a - http://www.e-piksel.com */
+/* Turkceye Ceviren eka7a - http://e-piksel.com */
 
 // Heading
 $_['heading_title']      = 'Hesap Bilgilerim';
@@ -15,7 +15,6 @@ $_['entry_firstname']    = 'Adınız';
 $_['entry_lastname']     = 'Soyadınız';
 $_['entry_email']        = 'E-Posta';
 $_['entry_telephone']    = 'Telefon';
-$_['entry_fax']          = 'Faks';
 
 // Error
 $_['error_exists']       = 'Uyarı: E-Posta adresi ile daha önce kayıt olunmuştur!';

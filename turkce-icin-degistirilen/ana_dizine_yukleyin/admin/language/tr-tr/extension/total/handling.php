@@ -1,11 +1,11 @@
 <?php
-/* Turkceye Ceviren eka7a - http://www.e-piksel.com */
+/* Turkceye Ceviren eka7a - http://e-piksel.com */
 
 // Heading
 $_['heading_title']    = 'Hizmet Bedeli';
 
 // Text
-$_['text_total']       = 'Sipariş Toplamları';
+$_['text_extension']   = 'Eklentiler';
 $_['text_success']     = 'Başarılı: Hizmet bedeli başarılı bir şekilde değiştirildi';
 $_['text_edit']        = 'Hizmet Bedelini Düzenle';
 

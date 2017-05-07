@@ -7,12 +7,22 @@ $_['site_ssl']          = HTTP_SERVER;
 $_['language_default']  = 'tr-tr';
 $_['language_autoload'] = array('tr-tr');
 
+// Template
+$_['template_engine']   = 'twig';
+
 // Actions
 $_['action_default']    = 'install/step_1';
 $_['action_router']     = 'startup/router';
 $_['action_error']      = 'error/not_found';
 $_['action_pre_action'] = array(
-	'startup/language',
-	'startup/upgrade',
-	'startup/database'
+    'startup/language',
+    'startup/upgrade',
+    'startup/database'
+);
+
+// Action Events
+$_['action_event'] = array(
+    'view/*/before' => array(
+        'event/theme'
+    )
 );

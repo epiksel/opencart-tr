@@ -35,9 +35,11 @@ $_['text_on']                = 'Açık';
 $_['text_off']               = 'Kapalı';
 $_['text_writable']          = 'Yazılabilir';
 $_['text_unwritable']        = 'Yazılamaz';
-$_['text_missing']           = 'Eksik';
+//$_['text_missing']           = 'Eksik';
 
 // Error
+$_['error_missing']          = 'Eksik';
+$_['error_unwritable']       = 'Yazılamaz';
 $_['error_version']          = 'Uyarı: You need to use PHP 5.4 or above for OpenCart to work!';
 $_['error_file_upload']      = 'Uyarı: file_uploads needs to be enabled!';
 $_['error_session']          = 'Uyarı: OpenCart will not work with session.auto_start enabled!';

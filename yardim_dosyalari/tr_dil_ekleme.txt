@@ -1,5 +1,5 @@
 		///////////////////////////////////////////////
-	   ///			 OpenCart V1.5.x			   ///
+	   ///			 OpenCart V2.x			       ///
 	  ///		  	Türkçe Dil Ekleme			  ///
 	 ///		http://www.e-piksel.com			 ///
 	///		github.com/epiksel/opencart-tr		///
@@ -14,11 +14,8 @@
 	- Buradaki alanlara aşağıdaki bilgiler ile doldurunuz ve kaydedin.
 
 		Language Name: Türkçe
-		Code: tr
-		Locale: tr_TR.UTF-8,tr_TR,tr-tr,turkish
-		Image: tr.png
-		Directory: turkish
-		Filename: turkish
+		Code: tr-tr
+		Locale: tr-TR,tr_TR.UTF-8,tr_TR,tr,tr-tr,turkish
 		Status: Enable
 		Sort Order: Dilin görünmesi istediğiniz sıralama numarası giriniz.
 

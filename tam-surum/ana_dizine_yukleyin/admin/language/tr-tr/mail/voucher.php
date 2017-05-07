@@ -1,7 +1,8 @@
 <?php
-/* Turkceye Ceviren eka7a - http://www.e-piksel.com */
+/* Turkceye Ceviren eka7a - http://e-piksel.com */
 
 // Text
+$_['text_success']  = 'Başarılı: Hediye çeki başarılı bir şekilde değiştirildi!';
 $_['text_subject']  = '%s tarafından hediye çeki gönderildi';
 $_['text_greeting'] = 'Tebrikler, %s değerinde bir hediye çeki aldınız';
 $_['text_from']     = 'Bu hediye çeki %s tarafından gönderildi';

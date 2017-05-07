@@ -77,7 +77,15 @@ $(document).ready(function() {
 			$('#menu > li > ul').removeClass('in collapse');
 			$('#menu > li > ul').removeAttr('style');
 		} else {
-			localStorage.setItem('column-left', 'active');
+			if (typeof localStorage === 'object') {
+				try {
+					localStorage.setItem('column-left', 'active');
+				} catch (e) {
+					Storage.prototype._setItem = Storage.prototype.setItem;
+					Storage.prototype.setItem = function() {};
+					alert('Your web browser does not support storing settings locally. In Safari, the most common cause of this is using "Private Browsing Mode". Some settings may not save or some features may not work properly for you.');
+				}
+			}
 
 			$('#button-menu i').replaceWith('<i class="fa fa-dedent fa-lg"></i>');
 
@@ -138,7 +146,7 @@ $(document).ready(function() {
 			$('#modal-image').remove();
 
 			$.ajax({
-				url: 'index.php?route=common/filemanager&token=' + getURLVar('token') + '&target=' + $element.parent().find('input').attr('id') + '&thumb=' + $element.attr('id'),
+				url: 'index.php?route=common/filemanager&user_token=' + getURLVar('user_token') + '&target=' + $element.parent().find('input').attr('id') + '&thumb=' + $element.attr('id'),
 				dataType: 'html',
 				beforeSend: function() {
 					$button.prop('disabled', true);

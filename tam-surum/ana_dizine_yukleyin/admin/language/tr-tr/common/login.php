@@ -1,7 +1,7 @@
 <?php
-/* Turkceye Ceviren eka7a - http://www.e-piksel.com */
+/* Turkceye Ceviren eka7a - http://e-piksel.com */
 
-// Header
+// Heading
 $_['heading_title']  = 'Kontrol Paneli';
 
 // Text

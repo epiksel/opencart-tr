@@ -1,11 +1,11 @@
 <?php
-/* Turkceye Ceviren eka7a - http://www.e-piksel.com */
+/* Turkceye Ceviren eka7a - http://e-piksel.com */
 
 // Heading
 $_['heading_title']    = 'Klarna Fee';
 
 // Text
-$_['text_total']       = 'Order Totals';
+$_['text_extension']   = 'Eklentiler';
 $_['text_success']     = 'Success: You have modified Klarna fee total!';
 $_['text_edit']        = 'Edit Klarna Fee Total';
 $_['text_sweden']      = 'Sweden';

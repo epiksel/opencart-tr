@@ -84,7 +84,6 @@ class ModelUpgrade1006 extends Model {
 				fwrite($file, $output);
 
 				fclose($file);
-
 			}
 		}
 

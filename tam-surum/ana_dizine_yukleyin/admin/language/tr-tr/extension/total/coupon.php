@@ -1,12 +1,12 @@
 <?php
-/* Turkceye Ceviren eka7a - http://www.e-piksel.com */
+/* Turkceye Ceviren eka7a - http://e-piksel.com */
 
 // Heading
 $_['heading_title']    = 'Kupon';
 $_['text_edit']        = 'Kupon Düzenle';
 
 // Text
-$_['text_total']       = 'Sipariş Toplamları';
+$_['text_extension']   = 'Eklentiler';
 $_['text_success']     = 'Başarılı: Kupon Toplamı başarılı bir şekilde değiştirildi!';
 
 // Entry

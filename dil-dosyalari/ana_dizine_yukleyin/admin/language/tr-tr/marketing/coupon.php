@@ -1,5 +1,5 @@
 <?php
-/* Turkceye Ceviren eka7a - http://www.e-piksel.com */
+/* Turkceye Ceviren eka7a - http://e-piksel.com */
 
 // Heading
 $_['heading_title']       = 'Kuponlar';
@@ -11,6 +11,7 @@ $_['text_add']            = 'Kupon Ekle';
 $_['text_edit']           = 'Kupon Düzenle';
 $_['text_percent']        = 'Yüzde(%)';
 $_['text_amount']         = 'Sabit Tutar';
+$_['text_coupon']         = 'Kupon Kullanım Geçmişi';
 
 // Column
 $_['column_name']         = 'Kupon Adı';

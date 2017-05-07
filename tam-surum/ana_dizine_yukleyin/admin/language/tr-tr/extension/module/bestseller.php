@@ -1,5 +1,5 @@
 <?php
-/* Turkceye Ceviren eka7a - http://www.e-piksel.com */
+/* Turkceye Ceviren eka7a - http://e-piksel.com */
 
 // Heading
 $_['heading_title']    = 'En Çok Satılanlar';
@@ -7,7 +7,7 @@ $_['heading_title']    = 'En Çok Satılanlar';
 // Text
 $_['text_extension']   = 'Eklentiler';
 $_['text_success']     = 'Başarılı: En çok satılanlar modülü güncellendi!';
-$_['text_edit']        = 'Afiş Modülünü Düzenle';
+$_['text_edit']        = 'Çok Satılanlar Modülünü Düzenle';
 
 // Entry
 $_['entry_name']       = 'Modül Adı';

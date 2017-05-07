@@ -1,11 +1,11 @@
 <?php
-/* Turkceye Ceviren eka7a - http://www.e-piksel.com */
+/* Turkceye Ceviren eka7a - http://e-piksel.com */
 
 // Heading
 $_['heading_title']    = 'Hediye Çeki';
 
 // Text
-$_['text_total']       = 'Sipariş Toplamı';
+$_['text_extension']   = 'Eklentiler';
 $_['text_success']     = 'Başarılı: Hediye çeki toplamı başarılı bir şekilde değiştirildi!';
 $_['text_edit']        = 'Hediye Çeki Toplamını Düzenle';
 

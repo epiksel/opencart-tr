@@ -1,5 +1,5 @@
 <?php
-/* Turkceye Ceviren eka7a - http://www.e-piksel.com */
+/* Turkceye Ceviren eka7a - http://e-piksel.com */
 
 // Heading
 $_['heading_title']     = 'Vergi Sınıfları';
@@ -9,6 +9,7 @@ $_['text_success']      = 'Başarılı: Vergi oranları başarılı bir şekilde
 $_['text_list']         = 'Vergi Sınıfı Listesi';
 $_['text_add']          = 'Vergi Sınıfı Ekle';
 $_['text_edit']         = 'Vergi Sınıfı Düzenle';
+$_['text_tax_class']    = 'Vergi Sınıfları';
 $_['text_shipping']     = 'Teslimat Adresi';
 $_['text_payment']      = 'Fatura Adresi';
 $_['text_store']        = 'Mağaza Adresi';

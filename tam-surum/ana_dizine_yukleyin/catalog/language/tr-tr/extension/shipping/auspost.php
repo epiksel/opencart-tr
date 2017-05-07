@@ -1,8 +1,5 @@
 <?php
-/* Turkceye Ceviren eka7a - http://www.e-piksel.com */
+/* Turkceye Ceviren eka7a - http://e-piksel.com */
 
 // Text
-$_['text_title']    = 'Australia Post';
-$_['text_express']  = 'Express';
-$_['text_standard'] = 'Standard';
-$_['text_eta']      = 'days';
+$_['text_title'] = 'Australia Post';

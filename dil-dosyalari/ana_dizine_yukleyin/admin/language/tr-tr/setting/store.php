@@ -1,5 +1,5 @@
 <?php
-/* Turkceye Ceviren eka7a - http://www.e-piksel.com */
+/* Turkceye Ceviren eka7a - http://e-piksel.com */
 
 // Heading
 $_['heading_title']                = 'Mağazalar';
@@ -64,7 +64,7 @@ $_['entry_icon']                   = 'Favicon';
 $_['entry_secure']                 = 'SSL Kullan';
 
 // Help
-$_['help_url']                     = 'Mağazanızın tam adresini yazınız. Sonuna \'/\' işaretini eklemeyi unutmayınız. Örneğin: http://www.e-piksel.com/shop/<br />Yeni bir mağaza oluşturmak için dizin oluşturmayınız. Hostinginiz her zaman başka bir etki alanı veya alt etki alanını işaret etmelidir.';
+$_['help_url']                     = 'Mağazanızın tam adresini yazınız. Sonuna \'/\' işaretini eklemeyi unutmayınız. Örneğin: http://e-piksel.com/shop/<br />Yeni bir mağaza oluşturmak için dizin oluşturmayınız. Hostinginiz her zaman başka bir etki alanı veya alt etki alanını işaret etmelidir.';
 $_['help_ssl']                     = 'Mağazanızın SSL URL adresi. Sonuna \'/\' işaretini eklemeyi unutmayınız. Örneğin: https://www.e-piksel.com/shop/<br />Yeni bir mağaza oluşturmak için dizin oluşturmayınız. Hostinginiz her zaman başka bir etki alanı veya alt etki alanını işaret etmelidir.';
 $_['help_geocode']                 = 'Lütfen mağazanızın coğrafi kodunu elle giriniz.';
 $_['help_open']                    = 'Mağazanızın çalışma saatlerini yazınız.';

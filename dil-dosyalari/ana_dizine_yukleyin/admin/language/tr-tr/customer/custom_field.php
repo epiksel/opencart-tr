@@ -1,5 +1,5 @@
 <?php
-/* Turkceye Ceviren eka7a - http://www.e-piksel.com */
+/* Turkceye Ceviren eka7a - http://e-piksel.com */
 
 // Heading
 $_['heading_title']        = 'Özel Alanlar';
@@ -22,7 +22,9 @@ $_['text_datetime']        = 'Tarih &amp; Zaman';
 $_['text_time']            = 'Zaman';
 $_['text_account']         = 'Hesap';
 $_['text_address']         = 'Adres';
+$_['text_affiliate']       = 'Ortak';
 $_['text_regex']           = 'Regex';
+$_['text_value']           = 'Özel Alan Değerleri';
 
 // Column
 $_['column_name']          = 'Özel Alan Adı';

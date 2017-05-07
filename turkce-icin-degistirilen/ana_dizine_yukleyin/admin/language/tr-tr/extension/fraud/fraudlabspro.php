@@ -34,7 +34,6 @@ $_['text_error']                 = 'Error:';
 $_['text_flp_upgrade']           = '<a href="http://www.fraudlabspro.com/plan" target="_blank">[Upgrade]</a>';
 $_['text_flp_merchant_area']     = 'Please login to <a href="http://www.fraudlabspro.com/merchant/login" target="_blank">FraudLabs Pro Merchant Area</a> for more information about this order.';
 
-
 // Entry
 $_['entry_status']               = 'Status';
 $_['entry_key']                  = 'API Key';

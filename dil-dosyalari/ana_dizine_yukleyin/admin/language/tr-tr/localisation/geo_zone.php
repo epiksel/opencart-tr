@@ -1,5 +1,5 @@
 <?php
-/* Turkceye Ceviren eka7a - http://www.e-piksel.com */
+/* Turkceye Ceviren eka7a - http://e-piksel.com */
 
 // Heading
 $_['heading_title']      = 'Bölgeler';
@@ -9,6 +9,7 @@ $_['text_success']       = 'Başarılı: Bölgeler başarılı bir şekilde değ
 $_['text_list']          = 'Bölge Listesi';
 $_['text_add']           = 'Bölge Ekle';
 $_['text_edit']          = 'Bölge Düzenle';
+$_['text_geo_zone']      = 'Bölgeler';
 
 // Column
 $_['column_name']        = 'Bölge Adı';

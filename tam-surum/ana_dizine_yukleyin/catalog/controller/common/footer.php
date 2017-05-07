@@ -3,14 +3,13 @@ class ControllerCommonFooter extends Controller {
 	public function index() {
 		$this->load->language('common/footer');
 
-		$data['scripts'] = $this->document->getScripts('footer');
-
 		$data['text_information'] = $this->language->get('text_information');
 		$data['text_service'] = $this->language->get('text_service');
 		$data['text_extra'] = $this->language->get('text_extra');
 		$data['text_contact'] = $this->language->get('text_contact');
 		$data['text_return'] = $this->language->get('text_return');
 		$data['text_sitemap'] = $this->language->get('text_sitemap');
+		$data['text_tracking'] = $this->language->get('text_tracking');
 		$data['text_manufacturer'] = $this->language->get('text_manufacturer');
 		$data['text_voucher'] = $this->language->get('text_voucher');
 		$data['text_affiliate'] = $this->language->get('text_affiliate');
@@ -36,9 +35,10 @@ class ControllerCommonFooter extends Controller {
 		$data['contact'] = $this->url->link('information/contact');
 		$data['return'] = $this->url->link('account/return/add', '', true);
 		$data['sitemap'] = $this->url->link('information/sitemap');
+		$data['tracking'] = $this->url->link('information/tracking');
 		$data['manufacturer'] = $this->url->link('product/manufacturer');
 		$data['voucher'] = $this->url->link('account/voucher', '', true);
-		$data['affiliate'] = $this->url->link('affiliate/account', '', true);
+		$data['affiliate'] = $this->url->link('affiliate/login', '', true);
 		$data['special'] = $this->url->link('product/special');
 		$data['account'] = $this->url->link('account/account', '', true);
 		$data['order'] = $this->url->link('account/order', '', true);
@@ -72,6 +72,8 @@ class ControllerCommonFooter extends Controller {
 			$this->model_tool_online->addOnline($ip, $this->customer->getId(), $url, $referer);
 		}
 
+		$data['scripts'] = $this->document->getScripts('footer');
+		
 		return $this->load->view('common/footer', $data);
 	}
 }

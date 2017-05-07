@@ -1,5 +1,5 @@
 <?php
-/* Turkceye Ceviren eka7a - http://www.e-piksel.com */
+/* Turkceye Ceviren eka7a - http://e-piksel.com */
 
 // Heading
 $_['heading_title']                = 'Genel Ayarlar';
@@ -91,6 +91,7 @@ $_['entry_api']                    = 'API Kullanıcısı';
 $_['entry_stock_display']          = 'Stok Adedini Göster';
 $_['entry_stock_warning']          = 'Stok Uyarısını Göster';
 $_['entry_stock_checkout']         = 'Stok Dışı Sipariş';
+$_['entry_affiliate_group']        = 'Ortaklık Grubu';
 $_['entry_affiliate_approval']     = 'Ortaklık İsteklerini Onayla';
 $_['entry_affiliate_auto']         = 'Otomatik Komisyon';
 $_['entry_affiliate_commission']   = 'Ortaklık Komisyonu (%)';
@@ -101,12 +102,6 @@ $_['entry_captcha']                = 'Doğrulama';
 $_['entry_captcha_page']           = 'Doğrulama Sayfaları';
 $_['entry_logo']                   = 'Mağaza Logosu';
 $_['entry_icon']                   = 'Favicon';
-$_['entry_ftp_hostname']           = 'FTP Sunucu';
-$_['entry_ftp_port']               = 'FTP Port';
-$_['entry_ftp_username']           = 'FTP Kullanıcı Adı';
-$_['entry_ftp_password']           = 'FTP Parola';
-$_['entry_ftp_root']               = 'FTP Ana Dizini';
-$_['entry_ftp_status']             = 'FTP Açık';
 $_['entry_mail_protocol']          = 'E-Posta Protokol';
 $_['entry_mail_parameter']         = 'Posta Parametreleri';
 $_['entry_mail_smtp_hostname']     = 'SMTP Host Adı';
@@ -129,7 +124,7 @@ $_['entry_encryption']             = 'Şifreleme Anahtarı';
 $_['entry_compression']            = 'Sıkıştırma Seviyesi';
 $_['entry_error_display']          = 'Hataları Göster';
 $_['entry_error_log']              = 'Hata Kayıtları';
-$_['entry_error_filename']         = 'Hata Kayıtları için Dosya Adı';
+$_['entry_error_filename']         = 'Hata Kayıtları Dosya Adı';
 $_['entry_status']                 = 'Status';
 
 // Help
@@ -174,7 +169,6 @@ $_['help_return']                  = 'Ürün iade talebi oluşturmadan önce iad
 $_['help_return_status']           = 'Ürün iade isteği oluşturulduğunda varsayılan iade durumunu seçiniz.';
 $_['help_captcha']                 = 'Kayıt olma, ürün iade, iletişim ve yorumlarda doğrulama kullanmak için seçim yapın.';
 $_['help_icon']                    = 'Favicon 16x16 PNG türünden olmalıdır.';
-$_['help_ftp_root']                = 'OpenCart dosyalarının bulunduğu dizin, genellikle \'public_html/\' dizinidir.';
 $_['help_mail_protocol']           = '\'Mail\' seçeneğini sadece sunucu php mail fonksiyonunu kapatmadıysa seçebilirsiniz.';
 $_['help_mail_parameter']          = '\'Posta\' da kullanılacak, ilave posta parametreleri girebilirsiniz (örn. -f email@storeaddress.com).';
 $_['help_mail_smtp_hostname']      = 'Güvenli bağlantı için \'tls://\' ya da \'ssl://\' ön-eki eklemeniz gereklidir (örn: tls://smtp.gmail.com).';
@@ -209,10 +203,7 @@ $_['error_voucher_max']            = 'Maks. hediye çeki tutarı gerekli!';
 $_['error_login_attempts']         = 'Oturum açma denemesi sıfırdan büyük olmalıdır!';
 $_['error_processing_status']      = 'Hazırlanan siparişler için en az 1 sipariş durum seçmelisiniz!';
 $_['error_complete_status']        = 'Tamamlanan siparişler için en az 1 sipariş durum seçmelisiniz!';
-$_['error_ftp_hostname']           = 'FTP Sunucusu gerekli!';
-$_['error_ftp_port']               = 'FTP Port gerekli!';
-$_['error_ftp_username']           = 'FTP Kullanıcı Adı gerekli!';
-$_['error_ftp_password']           = 'FTP Parolası gerekli!';
-$_['error_error_filename']         = 'Hata kayıtları için dosya adı gerekli!';
-$_['error_malformed_filename']     = 'Kayıt dosyaadı hatalı biçimlendirilmiş!';
+$_['error_log_required']           = 'Hata kayıtları için dosya adı gerekli!';
+$_['error_log_invalid']            = 'Hata kayıtları için dosya adı geçersiz!';
+$_['error_log_extension']          = 'Hata kayıtları dosya adı uzantısı .log olmalı!';
 $_['error_encryption']             = 'Şifreleme anahtarı 32 ile 1024 karakter arasında olmalı!';

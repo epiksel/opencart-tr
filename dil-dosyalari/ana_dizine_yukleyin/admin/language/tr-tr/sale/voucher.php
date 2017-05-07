@@ -1,5 +1,5 @@
 <?php
-/* Turkceye Ceviren eka7a - http://www.e-piksel.com */
+/* Turkceye Ceviren eka7a - http://e-piksel.com */
 
 // Heading
 $_['heading_title']     = 'Hediye Çekleri';
@@ -39,7 +39,6 @@ $_['entry_status']      = 'Durum';
 $_['help_code']         = 'Hediye çeki için gerekli kod.';
 
 // Error
-$_['error_selection']   = 'Uyarı: Hediye çeki seçmediniz!';
 $_['error_permission']  = 'Uyarı: Hediye çeklerini düzenleme iznine sahip değilsiniz!';
 $_['error_exists']      = 'Uyarı: Hediye çeki kodu zaten kullanımda!';
 $_['error_code']        = 'Kod alanı 3 ile 10 karakter arasında olmalı!';
