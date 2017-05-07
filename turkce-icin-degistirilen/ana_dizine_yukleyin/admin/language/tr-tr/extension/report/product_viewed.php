@@ -8,7 +8,7 @@ $_['heading_title']    = 'Ürün Görüntüleme Raporu';
 $_['text_extension']   = 'Eklentiler';
 $_['text_success']     = 'Başarılı: Ürün görüntüleme raporu güncellendi!';
 $_['text_edit']        = 'Ürün Görüntüleme Raporu Düzenle';
-$_['text_filter']      = 'Ürün Görüntüleme Süzgeçi';
+$_['text_filter']      = 'Ürün Görüntüleme Filtreleri';
 
 // Column
 $_['column_name']      = 'Ürün Adı';

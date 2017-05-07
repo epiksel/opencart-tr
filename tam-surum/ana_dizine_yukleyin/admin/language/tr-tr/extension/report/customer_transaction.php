@@ -8,7 +8,7 @@ $_['heading_title']         = 'Müşteri İşlemler Raporu';
 $_['text_extension']        = 'Eklentiler';
 $_['text_success']          = 'Başarılı: Müşteri işlemler raporu güncellendi!';
 $_['text_edit']             = 'Müşteri İşlemler Raporu Düzenle';
-$_['text_filter']           = 'Müşteri İşlemler Süzgeçi';
+$_['text_filter']           = 'Müşteri İşlemler Filtreleri';
 
 // Column
 $_['column_customer']       = 'Müşteri Adı';

@@ -6,4 +6,4 @@ $_['heading_title'] = 'Raporlar';
 $_['text_success']  = 'Başarılı: Raporlar başarılı bir şekilde değiştirildi!';
 $_['text_list']     = 'Rapor Listesi';
 $_['text_type']     = 'Rapor Türünü Seçin';
-$_['text_filter']   = 'Süzgeç';
+$_['text_filter']   = 'Filtrele';

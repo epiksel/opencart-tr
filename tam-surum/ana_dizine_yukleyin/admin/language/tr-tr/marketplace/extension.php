@@ -8,4 +8,4 @@ $_['heading_title'] = 'Eklentiler';
 $_['text_success']  = 'Başarılı: Eklentiler başarılı bir şekilde değiştirildi!';
 $_['text_list']     = 'Eklenti Listesi';
 $_['text_type']     = 'Eklenti Türünü Seçin';
-$_['text_filter']   = 'Süzgeç';
+$_['text_filter']   = 'Filtrele';

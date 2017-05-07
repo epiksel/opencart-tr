@@ -8,7 +8,7 @@ $_['heading_title']         = 'Müşteri Sipariş Raporu';
 $_['text_extension']        = 'Eklentiler';
 $_['text_success']          = 'Başarılı: Müşteri sipariş raporu güncellendi!';
 $_['text_edit']             = 'Müşteri Sipariş Raporu Düzenle';
-$_['text_filter']           = 'Müşteri Sipariş Süzgeçi';
+$_['text_filter']           = 'Müşteri Sipariş Filtreleri';
 $_['text_all_status']       = 'Tüm Durumlar';
 
 // Column

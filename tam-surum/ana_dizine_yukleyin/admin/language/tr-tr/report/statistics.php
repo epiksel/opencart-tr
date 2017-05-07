@@ -17,7 +17,7 @@ $_['text_review']           = 'Bekleyen Yorumlar';
 
 // Column
 $_['column_name']           = 'İstatistik Adı';
-$_['column_value']	        = 'Değeri';
+$_['column_value']          = 'Değer';
 $_['column_action']         = 'Eylem';
 
 // Error
