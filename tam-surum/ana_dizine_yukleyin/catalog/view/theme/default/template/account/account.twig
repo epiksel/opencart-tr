@@ -1,12 +1,12 @@
 {{ header }}
-<div class="container">
+<div id="account-account" class="container">
   <ul class="breadcrumb">
     {% for breadcrumb in breadcrumbs %}
     <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
     {% endfor %}
   </ul>
   {% if success %}
-  <div class="alert alert-success"><i class="fa fa-check-circle"></i> {{ success }}</div>
+  <div class="alert alert-success alert-dismissible"><i class="fa fa-check-circle"></i> {{ success }}</div>
   {% endif %}
   <div class="row">{{ column_left }}
     {% if column_left and column_right %}

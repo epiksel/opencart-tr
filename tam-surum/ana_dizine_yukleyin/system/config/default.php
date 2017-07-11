@@ -7,7 +7,7 @@ $_['site_ssl']             = false;
 $_['url_autostart']        = true;
 
 // Language
-$_['language_default']     = 'en-gb';
+$_['language_directory']   = 'en-gb';
 $_['language_autoload']    = array('en-gb');
 
 // Date
@@ -23,7 +23,7 @@ $_['db_port']              = 3306;
 $_['db_autostart']         = false;
 
 // Mail
-$_['mail_protocol']        = 'mail'; // mail or smtp
+$_['mail_engine']          = 'mail'; // mail or smtp
 $_['mail_from']            = ''; // Your E-Mail
 $_['mail_sender']          = ''; // Your name or company name
 $_['mail_reply_to']        = ''; // Reply to E-Mail
@@ -40,13 +40,14 @@ $_['cache_engine']         = 'file'; // apc, file or mem
 $_['cache_expire']         = 3600;
 
 // Session
-$_['session_engine']       = 'file';
+$_['session_engine']       = 'db';
 $_['session_autostart']    = true;
 $_['session_name']         = 'OCSESSID';
 
 // Template
 $_['template_engine']      = 'twig';
 $_['template_directory']   = '';
+$_['template_cache']       = false;
 
 // Error
 $_['error_display']        = true;

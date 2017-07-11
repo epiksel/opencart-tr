@@ -9,6 +9,7 @@ $_['text_success']      = 'Başarılı: Pazarlama takibi başarılı bir şekild
 $_['text_list']         = 'Pazarlama Takip Listesi';
 $_['text_add']          = 'Pazarlama Takip Ekle';
 $_['text_edit']         = 'Pazarlama Takip Düzenle';
+$_['text_filter']       = 'Filtre';
 
 // Column
 $_['column_name']       = 'Kampanya Adı';

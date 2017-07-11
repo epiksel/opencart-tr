@@ -1,6 +1,6 @@
 <?php
 class ControllerMailOrder extends Controller {
-	public function before(&$route, &$args) {
+	public function index(&$route, &$args) {
 		if (isset($args[0])) {
 			$order_id = $args[0];
 		} else {
@@ -86,7 +86,7 @@ class ControllerMailOrder extends Controller {
 		$data['text_total'] = $language->get('text_total');
 		$data['text_footer'] = $language->get('text_footer');
 
-		$data['logo'] = $this->config->get('config_url') . 'image/' . $this->config->get('config_logo');
+		$data['logo'] = $order_info['store_url'] . 'image/' . $this->config->get('config_logo');
 		$data['store_name'] = $order_info['store_name'];
 		$data['store_url'] = $order_info['store_url'];
 		$data['customer_id'] = $order_info['customer_id'];
@@ -105,7 +105,14 @@ class ControllerMailOrder extends Controller {
 		$data['email'] = $order_info['email'];
 		$data['telephone'] = $order_info['telephone'];
 		$data['ip'] = $order_info['ip'];
-		$data['order_status'] = $order_info['order_status'];
+
+		$order_status_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "order_status WHERE order_status_id = '" . (int)$order_status_id . "' AND language_id = '" . (int)$order_info['language_id'] . "'");
+	
+		if ($order_status_query->num_rows) {
+			$data['order_status'] = $order_status_query->row['name'];
+		} else {
+			$data['order_status'] = '';
+		}
 
 		if ($comment && $notify) {
 			$data['comment'] = nl2br($comment);
@@ -243,9 +250,16 @@ class ControllerMailOrder extends Controller {
 				'text'  => $this->currency->format($order_total['value'], $order_info['currency_code'], $order_info['currency_value']),
 			);
 		}
-
-		$mail = new Mail();
-		$mail->protocol = $this->config->get('config_mail_protocol');
+	
+		$this->load->model('setting/setting');
+		
+		$from = $this->model_setting_setting->getSettingValue('config_email', $order_info['store_id']);
+		
+		if (!$from) {
+			$from = $this->config->get('config_email');
+		}
+		
+		$mail = new Mail($this->config->get('config_mail_engine'));
 		$mail->parameter = $this->config->get('config_mail_parameter');
 		$mail->smtp_hostname = $this->config->get('config_mail_smtp_hostname');
 		$mail->smtp_username = $this->config->get('config_mail_smtp_username');
@@ -254,7 +268,7 @@ class ControllerMailOrder extends Controller {
 		$mail->smtp_timeout = $this->config->get('config_mail_smtp_timeout');
 
 		$mail->setTo($order_info['email']);
-		$mail->setFrom($this->config->get('config_email'));
+		$mail->setFrom($from);
 		$mail->setSender(html_entity_decode($order_info['store_name'], ENT_QUOTES, 'UTF-8'));
 		$mail->setSubject(html_entity_decode(sprintf($language->get('text_subject'), $order_info['store_name'], $order_info['order_id']), ENT_QUOTES, 'UTF-8'));
 		$mail->setHtml($this->load->view('mail/order_add', $data));
@@ -292,8 +306,15 @@ class ControllerMailOrder extends Controller {
 
 		$data['comment'] = strip_tags($comment);
 
-		$mail = new Mail();
-		$mail->protocol = $this->config->get('config_mail_protocol');
+		$this->load->model('setting/setting');
+		
+		$from = $this->model_setting_setting->getSettingValue('config_email', $order_info['store_id']);
+		
+		if (!$from) {
+			$from = $this->config->get('config_email');
+		}
+		
+		$mail = new Mail($this->config->get('config_mail_engine'));
 		$mail->parameter = $this->config->get('config_mail_parameter');
 		$mail->smtp_hostname = $this->config->get('config_mail_smtp_hostname');
 		$mail->smtp_username = $this->config->get('config_mail_smtp_username');
@@ -302,7 +323,7 @@ class ControllerMailOrder extends Controller {
 		$mail->smtp_timeout = $this->config->get('config_mail_smtp_timeout');
 
 		$mail->setTo($order_info['email']);
-		$mail->setFrom($this->config->get('config_email'));
+		$mail->setFrom($from);
 		$mail->setSender(html_entity_decode($order_info['store_name'], ENT_QUOTES, 'UTF-8'));
 		$mail->setSubject(html_entity_decode(sprintf($language->get('text_subject'), $order_info['store_name'], $order_info['order_id']), ENT_QUOTES, 'UTF-8'));
 		$mail->setText($this->load->view('mail/order_edit', $data));
@@ -310,7 +331,7 @@ class ControllerMailOrder extends Controller {
 	}
 	
 	// Admin Alert Mail
-	public function alert(&$route, &$args, $output) {
+	public function alert(&$route, &$args) {
 		if (isset($args[0])) {
 			$order_id = $args[0];
 		} else {
@@ -351,9 +372,15 @@ class ControllerMailOrder extends Controller {
 			
 			$data['order_id'] = $order_info['order_id'];
 			$data['date_added'] = date($this->language->get('date_format_short'), strtotime($order_info['date_added']));
-			
-			$data['order_status'] = $order_info['order_status'];
-			
+
+			$order_status_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "order_status WHERE order_status_id = '" . (int)$order_status_id . "' AND language_id = '" . (int)$this->config->get('config_language_id') . "'");
+
+			if ($order_status_query->num_rows) {
+				$data['order_status'] = $order_status_query->row['name'];
+			} else {
+				$data['order_status'] = '';
+			}
+
 			$this->load->model('tool/upload');
 			
 			$data['products'] = array();
@@ -417,8 +444,7 @@ class ControllerMailOrder extends Controller {
 
 			$data['comment'] = strip_tags($order_info['comment']);
 
-			$mail = new Mail();
-			$mail->protocol = $this->config->get('config_mail_protocol');
+			$mail = new Mail($this->config->get('config_mail_engine'));
 			$mail->parameter = $this->config->get('config_mail_parameter');
 			$mail->smtp_hostname = $this->config->get('config_mail_smtp_hostname');
 			$mail->smtp_username = $this->config->get('config_mail_smtp_username');

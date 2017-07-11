@@ -12,7 +12,7 @@
   </div>
   <div class="container-fluid">
     {% if success %}
-    <div class="alert alert-success"><i class="fa fa-check-circle"></i> {{ success }}</div>
+    <div class="alert alert-success alert-dismissible"><i class="fa fa-check-circle"></i> {{ success }}</div>
     {% endif %}
     <div class="row">
       <div class="col-md-3 text-center">
@@ -53,9 +53,9 @@
       </div>
       {% else %}
       <div class="col-md-3 text-center">
-        <div class="well"><a href="https://account.openbaypro.com/amazon/apiRegister/" target="_BLANK"><span class="fa-stack fa-3x"><i class="fa fa-square-o fa-stack-2x"></i><i class="fa fa-star fa-stack-1x"></i></span>
+        <div class="well"><a href="{{ link_signup }}" target="_BLANK"><span class="fa-stack fa-3x"><i class="fa fa-square-o fa-stack-2x"></i><i class="fa fa-star fa-stack-1x"></i></span>
           <h4>{{ text_heading_register }}</h4>
-          </a></div>
+          </a> </div>
       </div>
       {% endif %}
     </div>

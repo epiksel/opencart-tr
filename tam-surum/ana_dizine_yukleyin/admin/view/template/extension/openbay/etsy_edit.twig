@@ -20,7 +20,7 @@
       <div class="panel-body">
         <div id="page-listing">
           {% if error_warning %}
-          <div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> {{ error_warning }}</div>
+          <div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> {{ error_warning }}</div>
           {% endif %}
           <form action="{{ action }}" method="post" enctype="multipart/form-data" id="form" class="form-horizontal">
             <input type="hidden" name="etsy_item_id" value="{{ etsy_item_id }}" />
@@ -53,7 +53,7 @@
                   <div class="col-sm-10">
                     <select name="state" id="input-state" class="form-control">
                       {% for state in setting.state %}
-                      <option value="{{ value }}"<?php echo ($listing['state'] == $value) ? ' selected' : ''; ?>>{{ value }}</option>
+                      <option value="{{ state }}" {% if listing.state == state %} selected{% endif %}>{{ state }}</option>
                       {% endfor %}
                     </select>
                   </div>

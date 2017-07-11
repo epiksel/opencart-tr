@@ -29,7 +29,7 @@ $_['help_address_format']     = 'Ad = {firstname}<br />Soyad = {lastname}<br />�
 
 // Error
 $_['error_permission']        = 'Uyarı: Ülkeleri düzenleme iznine sahip değilsiniz!';
-$_['error_name']              = 'Ülke Adı 3 ile 128 karakter arasında olmalı!';
+$_['error_name']              = 'Ülke Adı 1 ile 128 karakter arasında olmalı!';
 $_['error_default']           = 'Uyarı: Bu ülkeyi silemezsiniz, varsayılan mağaza tarafından kullanılıyor!';
 $_['error_store']          	  = 'Uyarı: Bu ülkeyi silemezsiniz, %s mağaza tarafından kullanılıyor!';
 $_['error_address']           = 'Uyarı: Bu ülkeyi silemezsiniz, %s adres defterinde kullanılıyor!';

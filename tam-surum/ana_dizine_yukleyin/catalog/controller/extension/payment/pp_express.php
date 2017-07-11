@@ -2,9 +2,14 @@
 class ControllerExtensionPaymentPPExpress extends Controller {
 	public function index() {
 		$this->load->language('extension/payment/pp_express');
+		
+		$data['payment_pp_express_incontext_disable'] = $this->config->get('payment_pp_express_incontext_disable');
 
-		$data['button_continue'] = $this->language->get('button_continue');
-		$data['text_loading'] = $this->language->get('text_loading');
+		if ($this->config->get('payment_pp_express_test') == 1) {
+			$data['username'] = $this->config->get('payment_pp_express_sandbox_username');
+		} else {
+			$data['username'] = $this->config->get('payment_pp_express_username');
+		}
 
 		$data['continue'] = $this->url->link('extension/payment/pp_express/checkout', '', true);
 
@@ -323,7 +328,7 @@ class ControllerExtensionPaymentPPExpress extends Controller {
 						'country_id' => (isset($country_info['country_id']) ? $country_info['country_id'] : 0)
 					);
 
-					$address_id = $this->model_account_address->addAddress($address_data);
+					$address_id = $this->model_account_address->addAddress($this->customer->getId(), $address_data);
 
 					$this->session->data['payment_address_id'] = $address_id;
 					$this->session->data['payment_country_id'] = $address_data['country_id'];
@@ -379,8 +384,6 @@ class ControllerExtensionPaymentPPExpress extends Controller {
 
 		$this->document->setTitle($this->language->get('express_text_title'));
 
-		$data['heading_title'] = $this->language->get('express_text_title');
-
 		$data['breadcrumbs'] = array();
 
 		$data['breadcrumbs'][] = array(
@@ -407,19 +410,6 @@ class ControllerExtensionPaymentPPExpress extends Controller {
 				$points_total += $product['points'];
 			}
 		}
-
-		$data['text_trial'] = $this->language->get('text_trial');
-		$data['text_recurring'] = $this->language->get('text_recurring');
-		$data['text_length'] = $this->language->get('text_length');
-		$data['text_recurring_item'] = $this->language->get('text_recurring_item');
-		$data['text_payment_recurring'] = $this->language->get('text_payment_recurring');
-		$data['text_until_cancelled'] = $this->language->get('text_until_cancelled');
-
-		$data['column_name'] = $this->language->get('column_name');
-		$data['column_model'] = $this->language->get('column_model');
-		$data['column_quantity'] = $this->language->get('column_quantity');
-		$data['column_price'] = $this->language->get('column_price');
-		$data['column_total'] = $this->language->get('column_total');
 
 		$data['button_shipping'] = $this->language->get('button_express_shipping');
 		$data['button_confirm'] = $this->language->get('button_express_confirm');
@@ -478,15 +468,12 @@ class ControllerExtensionPaymentPPExpress extends Controller {
 
 			// Display prices
 			if ($this->customer->isLogged() || !$this->config->get('config_customer_price')) {
-				$price = $this->currency->format($this->tax->calculate($product['price'], $product['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
+				$unit_price = $this->tax->calculate($product['price'], $product['tax_class_id'], $this->config->get('config_tax'));
+
+				$price = $this->currency->format($unit_price, $this->session->data['currency']);
+				$total = $this->currency->format($unit_price * $product['quantity'], $this->session->data['currency']);
 			} else {
 				$price = false;
-			}
-
-			// Display prices
-			if ($this->customer->isLogged() || !$this->config->get('config_customer_price')) {
-				$total = $this->currency->format($this->tax->calculate($product['price'], $product['tax_class_id'], $this->config->get('config_tax')) * $product['quantity'], $this->session->data['currency']);
-			} else {
 				$total = false;
 			}
 
@@ -700,8 +687,13 @@ class ControllerExtensionPaymentPPExpress extends Controller {
 
 		array_multisort($sort_order, SORT_ASC, $method_data);
 
+		if (!isset($method_data['pp_express'])) {
+			$this->session->data['error_warning'] = $this->language->get('error_unavailable');
+			$this->response->redirect($this->url->link('checkout/checkout', '', true));
+		}
+
 		$this->session->data['payment_methods'] = $method_data;
-		$this->session->data['payment_method'] = $this->session->data['payment_methods']['pp_express'];
+		$this->session->data['payment_method'] = $method_data['pp_express'];
 
 		$data['action_confirm'] = $this->url->link('extension/payment/pp_express/expressComplete', '', true);
 
@@ -1211,7 +1203,7 @@ class ControllerExtensionPaymentPPExpress extends Controller {
 						}
 
 						//create new recurring and set to pending status as no payment has been made yet.
-						$recurring_id = $this->model_checkout_recurring->create($item, $order_id, $recurring_description);
+						$recurring_id = $this->model_checkout_recurring->addRecurring($order_id, $recurring_description, $item['recurring']);
 
 						$data['PROFILEREFERENCE'] = $recurring_id;
 						$data['DESC'] = $recurring_description;
@@ -1302,7 +1294,8 @@ class ControllerExtensionPaymentPPExpress extends Controller {
 				'PAYMENTREQUEST_0_SHIPTOCITY'        => html_entity_decode($order_info['shipping_city'], ENT_QUOTES, 'UTF-8'),
 				'PAYMENTREQUEST_0_SHIPTOSTATE'       => html_entity_decode($ship_to_state, ENT_QUOTES, 'UTF-8'),
 				'PAYMENTREQUEST_0_SHIPTOZIP'         => html_entity_decode($order_info['shipping_postcode'], ENT_QUOTES, 'UTF-8'),
-				'PAYMENTREQUEST_0_SHIPTOCOUNTRYCODE' => $order_info['shipping_iso_code_2']
+				'PAYMENTREQUEST_0_SHIPTOCOUNTRYCODE' => $order_info['shipping_iso_code_2'],
+				'ADDROVERRIDE' 						 => 1,
 			);
 		} else {
 			$shipping = 1;
@@ -1504,7 +1497,7 @@ class ControllerExtensionPaymentPPExpress extends Controller {
 					}
 
 					//create new recurring and set to pending status as no payment has been made yet.
-					$recurring_id = $this->model_checkout_recurring->create($item, $order_id, $recurring_description);
+					$recurring_id = $this->model_checkout_recurring->addRecurring($order_id, $recurring_description, $item['recurring']);
 
 					$data['PROFILEREFERENCE'] = $recurring_id;
 					$data['DESC'] = $recurring_description;
@@ -1512,7 +1505,7 @@ class ControllerExtensionPaymentPPExpress extends Controller {
 					$result = $this->model_extension_payment_pp_express->call($data);
 
 					if (isset($result['PROFILEID'])) {
-						$this->model_checkout_recurring->addReference($recurring_id, $result['PROFILEID']);
+						$this->model_checkout_recurring->editReference($recurring_id, $result['PROFILEID']);
 					} else {
 						// there was an error creating the recurring, need to log and also alert admin / user
 
@@ -1697,7 +1690,7 @@ class ControllerExtensionPaymentPPExpress extends Controller {
 							$transaction = array(
 								'paypal_order_id'       => $parent_transaction['paypal_order_id'],
 								'transaction_id'        => '',
-								'parent_id' => $this->request->post['parent_txn_id'],
+								'parent_id' 			=> $this->request->post['parent_txn_id'],
 								'note'                  => '',
 								'msgsubid'              => '',
 								'receipt_id'            => '',
@@ -1800,7 +1793,7 @@ class ControllerExtensionPaymentPPExpress extends Controller {
 				}
 
 				//date_added
-				if ($this->request->post['txn_type'] == 'recurring_payment_recurring_date_added') {
+				if ($this->request->post['txn_type'] == 'recurring_payment_profile_date_added') {
 					$recurring = $this->model_account_recurring->getOrderRecurringByReference($this->request->post['recurring_payment_id']);
 
 					if ($recurring != false) {
@@ -1813,7 +1806,7 @@ class ControllerExtensionPaymentPPExpress extends Controller {
 				}
 
 				//cancelled
-				if ($this->request->post['txn_type'] == 'recurring_payment_recurring_cancel') {
+				if ($this->request->post['txn_type'] == 'recurring_payment_profile_cancel') {
 					$recurring = $this->model_account_recurring->getOrderRecurringByReference($this->request->post['recurring_payment_id']);
 
 					if ($recurring != false && $recurring['status'] != 3) {

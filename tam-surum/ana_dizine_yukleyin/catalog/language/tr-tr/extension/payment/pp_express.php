@@ -25,3 +25,4 @@ $_['button_express_shipping'] = 'Kargoyu güncelle';
 // Error
 $_['error_heading_title']     = 'Bir hata oluştu';
 $_['error_too_many_failures'] = 'Ödemeniz çok kez başarısız oldu';
+$_['error_no_shipping']    	  = 'Uyarı: Kullanılabilir kargo seçeneği yok. Yardım için lütfen <a href="%s">bizimle iletişime</a> geçin!';

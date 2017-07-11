@@ -32,20 +32,13 @@ class ControllerMailReturn extends Controller {
 			
 			if ($return_info) {
 				$this->load->language('mail/return');
-				
-				$data['text_return_id'] = $this->language->get('text_return_id');
-				$data['text_date_added'] = $this->language->get('text_return_id');
-				$data['text_return_status'] = $this->language->get('text_return_status');
-				$data['text_comment'] = $this->language->get('text_comment');
-				$data['text_footer'] = $this->language->get('text_footer');
 
 				$data['return_id'] = $return_id;
 				$data['date_added'] = date($this->language->get('date_format_short'), strtotime($return_info['date_modified']));
 				$data['return_status'] = $return_info['return_status'];
 				$data['comment'] = strip_tags(html_entity_decode($comment, ENT_QUOTES, 'UTF-8'));
 
-				$mail = new Mail();
-				$mail->protocol = $this->config->get('config_mail_protocol');
+				$mail = new Mail($this->config->get('config_mail_engine'));
 				$mail->parameter = $this->config->get('config_mail_parameter');
 				$mail->smtp_hostname = $this->config->get('config_mail_smtp_hostname');
 				$mail->smtp_username = $this->config->get('config_mail_smtp_username');

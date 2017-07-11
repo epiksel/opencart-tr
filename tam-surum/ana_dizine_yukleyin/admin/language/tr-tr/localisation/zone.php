@@ -24,7 +24,7 @@ $_['entry_status']           = 'Durumu';
 
 // Error
 $_['error_permission']       = 'Uyarı: Şehirleri düzenleme iznine sahip değilsiniz!';
-$_['error_name']             = 'Şehir Adı 3 ile 128 karakter arasında olmalı!';
+$_['error_name']             = 'Şehir Adı 1 ile 128 karakter arasında olmalı!';
 $_['error_default']          = 'Uyarı: Bu şehri silemezsiniz, varsayılan mağaza tarafından kullanılıyor!';
 $_['error_store']            = 'Uyarı: Bu şehri silemezsiniz, %s mağaza tarafından kullanılıyor!';
 $_['error_address']          = 'Uyarı: Bu şehri silemezsiniz, %s adres defteri tarafından kullanılıyor!';

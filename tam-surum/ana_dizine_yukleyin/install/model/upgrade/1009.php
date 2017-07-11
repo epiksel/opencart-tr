@@ -85,9 +85,11 @@ class ModelUpgrade1009 extends Model {
 		if ($query->num_rows) {
 			$this->db->query("ALTER TABLE `" . DB_PREFIX . "event` DROP COLUMN `date_added`");
 		}
-				
+						
 		// OPENCART_SERVER
 		$upgrade = true;
+		
+		$file = DIR_OPENCART . 'admin/config.php';
 		
 		$lines = file(DIR_OPENCART . 'admin/config.php');
 
@@ -104,83 +106,121 @@ class ModelUpgrade1009 extends Model {
 
 			foreach ($lines as $line_id => $line) {
 				if (strpos($line, 'DB_PREFIX') !== false) {
-					$output .= $line;
-					$output .= "\n\n";
-					$output .= 'define(\'OPENCART_SERVER\', \'http://www.opecart.com/\');' . "\n";
+					$output .= $line . "\n\n";
+					$output .= 'define(\'OPENCART_SERVER\', \'http://www.opencart.com/\');' . "\n";
 				} else {
 					$output .= $line;
 				}
 			}
 
-			$file = fopen($file, 'w');
+			$handle = fopen($file, 'w');
 
-			fwrite($file, $output);
+			fwrite($handle, $output);
 
-			fclose($file);
-		}	
-		
-		// OPENCART_USERNAME
-		$upgrade = true;
-		
-		$lines = file(DIR_OPENCART . 'admin/config.php');
-
-		foreach ($lines as $line) {
-			if (strpos(strtoupper($line), 'OPENCART_USERNAME') !== false) {
-				$upgrade = false;
-
-				break;
-			}
+			fclose($handle);
 		}
+	
+		$files = glob(DIR_OPENCART . '{config.php,admin/config.php}', GLOB_BRACE);
 
-		if ($upgrade) {
+		foreach ($files as $file) {
+			// DIR_STORAGE
+			$upgrade = true;
+			
+			$lines = file($file);
+	
+			foreach ($lines as $line) {
+				if (strpos(strtoupper($line), 'DIR_STORAGE') !== false) {
+					$upgrade = false;
+	
+					break;
+				}
+			}
+	
+			if ($upgrade) {
+				$output = '';
+	
+				foreach ($lines as $line_id => $line) {
+					if (strpos($line, 'DIR_IMAGE') !== false) {
+						$output .= $line . "\n\n";
+						$output .= 'define(\'DIR_STORAGE\', DIR_SYSTEM . \'storage/\');' . "\n";
+					} else {
+						$output .= $line;
+					}
+				}
+	
+				$file = fopen($file, 'w');
+	
+				fwrite($file, $output);
+	
+				fclose($file);
+			}
+			
+			// DIR_SESSION
+			$upgrade = true;
+	
+			$lines = file($file);
+			
+			foreach ($lines as $line) {
+				if (strpos(strtoupper($line), 'DIR_SESSION') !== false) {
+					$upgrade = false;
+	
+					break;
+				}
+			}
+	
+			if ($upgrade) {
+				$output = '';
+	
+				foreach ($lines as $line_id => $line) {
+					if (strpos($line, 'DIR_MODIFICATION') !== false) {
+						$output .= $line . "\n\n";
+						$output .= 'define(\'DIR_SESSION\', DIR_STORAGE . \'session/\');' . "\n";
+					} else {
+						$output .= $line;
+					}
+				}
+	
+				$handle = fopen($file, 'w');
+	
+				fwrite($handle, $output);
+	
+				fclose($handle);
+			}
+			
+			$replace = array(
+				'DIR_CACHE'        => 'cache',
+				'DIR_DOWNLOAD'     => 'download',
+				'DIR_LOGS'         => 'logs',
+				'DIR_MODIFICATION' => 'modification',
+				'DIR_SESSION'      => 'session',
+				'DIR_UPLOAD'       => 'upload'
+			);
+
+			$lines = file($file);
+			
 			$output = '';
-
+				
 			foreach ($lines as $line_id => $line) {
-				if (strpos($line, 'OPENCART_SERVER') !== false) {
-					$output .= $line;
-					$output .= 'define(\'OPENCART_USERNAME\', \'\');' . "\n";
+				$status = false;
+				
+				foreach ($replace as $key => $value) {
+					if (strpos($line, $key) !== false) {
+						$status = true;
+					}
+				}
+				
+				if ($status) {
+					$output .= 'define(\'' . $key . '\', DIR_STORAGE . \'' . $value . '/\');' . "\n";
 				} else {
 					$output .= $line;
 				}
 			}
 
-			$file = fopen($file, 'w');
+			$handle = fopen($file, 'w');
 
-			fwrite($file, $output);
+			fwrite($handle, $output);
 
-			fclose($file);
+			fclose($handle);
 		}
-		
-		// OPENCART_SECRET
-		$upgrade = true;
-		
-		$lines = file(DIR_OPENCART . 'admin/config.php');
-
-		foreach ($lines as $line) {
-			if (strpos(strtoupper($line), 'OPENCART_SECRET') !== false) {
-				$upgrade = false;
-
-				break;
-			}
-		}
-
-		if ($upgrade) {
-			$output = '';
-
-			foreach ($lines as $line_id => $line) {
-				if (strpos($line, 'OPENCART_USERNAME') !== false) {
-					$output .= $line;
-					$output .= 'define(\'OPENCART_SECRET\', \'\');' . "\n";
-				} else {
-					$output .= $line;
-				}
-			}
-
-			$file = fopen($file, 'w');
-
-			fwrite($file, $output);
-
-			fclose($file);
-		}								
 	}
 }

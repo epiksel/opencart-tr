@@ -45,11 +45,11 @@ class ModelUpgrade1006 extends Model {
 						}
 					}
 
-					$file = fopen($file, 'w');
+					$handle = fopen($file, 'w');
 
-					fwrite($file, $output);
+					fwrite($handle, $output);
 
-					fclose($file);
+					fclose($handle);
 				}
 			}
 		}
@@ -79,11 +79,11 @@ class ModelUpgrade1006 extends Model {
 				$output = str_replace('system/storage/download', '/download', $output);
 				$output = str_replace('/download', 'system/storage/download', $output);
 
-				$file = fopen($file, 'w');
+				$handle = fopen($file, 'w');
 
-				fwrite($file, $output);
+				fwrite($handle, $output);
 
-				fclose($file);
+				fclose($handle);
 			}
 		}
 
@@ -180,11 +180,11 @@ class ModelUpgrade1006 extends Model {
 	private function recursive_move($src, $dest){
 
 	    // If source is not a directory stop processing
-	    if(!is_dir($src)) return false;
+	    if (!is_dir($src)) return false;
 
 	    // If the destination directory does not exist create it
-	    if(!is_dir($dest)) {
-	        if(!@mkdir($dest)) {
+	    if (!is_dir($dest)) {
+	        if (!@mkdir($dest)) {
 	            // If the destination directory could not be created stop processing
 	    		return false;
 	        }
@@ -193,9 +193,9 @@ class ModelUpgrade1006 extends Model {
 	    // Open the source directory to read in files
 	    $i = new DirectoryIterator($src);
 	    foreach($i as $f) {
-	        if($f->isFile() && !file_exists("$dest/" . $f->getFilename())) {
+	        if ($f->isFile() && !file_exists("$dest/" . $f->getFilename())) {
 	            @rename($f->getRealPath(), "$dest/" . $f->getFilename());
-	        } elseif(!$f->isDot() && $f->isDir()) {
+	        } elseif (!$f->isDot() && $f->isDir()) {
 	            $this->recursive_move($f->getRealPath(), "$dest/$f");
 	            @unlink($f->getRealPath());
 	        }

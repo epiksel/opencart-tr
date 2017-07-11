@@ -8,8 +8,7 @@ class ControllerInformationContact extends Controller {
 		$this->document->setTitle($this->language->get('heading_title'));
 
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
-			$mail = new Mail();
-			$mail->protocol = $this->config->get('config_mail_protocol');
+			$mail = new Mail($this->config->get('config_mail_engine'));
 			$mail->parameter = $this->config->get('config_mail_parameter');
 			$mail->smtp_hostname = $this->config->get('config_mail_smtp_hostname');
 			$mail->smtp_username = $this->config->get('config_mail_smtp_username');
@@ -39,23 +38,6 @@ class ControllerInformationContact extends Controller {
 			'text' => $this->language->get('heading_title'),
 			'href' => $this->url->link('information/contact')
 		);
-
-		$data['heading_title'] = $this->language->get('heading_title');
-
-		$data['text_location'] = $this->language->get('text_location');
-		$data['text_store'] = $this->language->get('text_store');
-		$data['text_contact'] = $this->language->get('text_contact');
-		$data['text_address'] = $this->language->get('text_address');
-		$data['text_telephone'] = $this->language->get('text_telephone');
-		$data['text_fax'] = $this->language->get('text_fax');
-		$data['text_open'] = $this->language->get('text_open');
-		$data['text_comment'] = $this->language->get('text_comment');
-
-		$data['entry_name'] = $this->language->get('entry_name');
-		$data['entry_email'] = $this->language->get('entry_email');
-		$data['entry_enquiry'] = $this->language->get('entry_enquiry');
-
-		$data['button_map'] = $this->language->get('button_map');
 
 		if (isset($this->error['name'])) {
 			$data['error_name'] = $this->error['name'];
@@ -200,12 +182,6 @@ class ControllerInformationContact extends Controller {
 			'text' => $this->language->get('heading_title'),
 			'href' => $this->url->link('information/contact')
 		);
-
-		$data['heading_title'] = $this->language->get('heading_title');
-
-		$data['text_message'] = $this->language->get('text_success');
-
-		$data['button_continue'] = $this->language->get('button_continue');
 
 		$data['continue'] = $this->url->link('common/home');
 

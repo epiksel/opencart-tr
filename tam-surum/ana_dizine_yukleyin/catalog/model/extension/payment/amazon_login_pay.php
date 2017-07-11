@@ -42,8 +42,7 @@ class ModelExtensionPaymentAmazonLoginPay extends Model {
 		$message .= $this->language->get('text_thanks') . "\n";
 		$message .= html_entity_decode($this->config->get('config_name'), ENT_QUOTES, 'UTF-8');
 
-		$mail = new Mail();
-		$mail->protocol = $this->config->get('config_mail_protocol');
+		$mail = new Mail($this->config->get('config_mail_engine'));
 		$mail->parameter = $this->config->get('config_mail_parameter');
 		$mail->smtp_hostname = $this->config->get('config_mail_smtp_hostname');
 		$mail->smtp_username = $this->config->get('config_mail_smtp_username');
@@ -68,8 +67,7 @@ class ModelExtensionPaymentAmazonLoginPay extends Model {
 			$message .= $this->language->get('text_email') . ' '  .  $data['email'] . "\n";
 			$message .= $this->language->get('text_telephone') . ' ' . $data['telephone'] . "\n";
 
-			$mail = new Mail();
-			$mail->protocol = $this->config->get('config_mail_protocol');
+			$mail = new Mail($this->config->get('config_mail_engine'));
 			$mail->parameter = $this->config->get('config_mail_parameter');
 			$mail->smtp_hostname = $this->config->get('config_mail_smtp_hostname');
 			$mail->smtp_username = $this->config->get('config_mail_smtp_username');
@@ -132,7 +130,7 @@ class ModelExtensionPaymentAmazonLoginPay extends Model {
 	}
 
 	public function getAdditionalCharges($order_id) {
-		return $this->db->query("SELECT `ot`.`title`, `ot`.`order_total_id`, `value` + IF(`tax` IS NULL, 0, `tax`) AS 'price' FROM `" . DB_PREFIX . "order_total` `ot` LEFT JOIN `" . DB_PREFIX . "amazon_login_pay_order_total_tax` `ott` USING(`order_total_id`)  WHERE `ott`.`code` NOT IN ('shipping', 'total', 'sub_total', 'tax') AND `value` > 0 AND `order_id` = " . (int)$order_id)->rows;
+		return $this->db->query("SELECT `ot`.`title`, `ot`.`order_total_id`, `value` + IF(`tax` IS NULL, 0, `tax`) AS 'price' FROM `" . DB_PREFIX . "order_total` `ot` LEFT JOIN `" . DB_PREFIX . "amazon_login_pay_order_total_tax` `ott` USING(`order_total_id`)  WHERE `ott`.`code` NOT IN ('shipping', 'total', 'sub_total', 'tax') AND `order_id` = " . (int)$order_id)->rows;
 	}
 
 	public function addAmazonOrderId($order_id, $amazon_authorization_id, $capture_status, $total, $currency_code) {

@@ -9,6 +9,7 @@ $_['text_success']      = 'Başarılı: Yorumlar başarılı bir şekilde deği�
 $_['text_list']         = 'Yorum Listesi';
 $_['text_add']          = 'Yorum Ekle';
 $_['text_edit']         = 'Yorum Düzenle';
+$_['text_filter']       = 'Filtre';
 
 // Column
 $_['column_product']    = 'Ürün';

@@ -7,8 +7,7 @@ $_['heading_title']    = 'Pazarlama Takip Raporu';
 // Text
 $_['text_extension']   = 'Eklentiler';
 $_['text_success']     = 'Başarılı: Pazarlama takip raporu güncellendi!';
-$_['text_edit']        = 'Pazarlama Takip Raporu Düzenle';
-$_['text_filter']      = 'Pazarlama Takip Filtreleri';
+$_['text_filter']      = 'Filtre';
 $_['text_all_status']  = 'Tüm Durumlar';
 
 // Column

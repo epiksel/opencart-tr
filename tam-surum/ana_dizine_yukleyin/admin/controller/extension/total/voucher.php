@@ -17,18 +17,6 @@ class ControllerExtensionTotalVoucher extends Controller {
 			$this->response->redirect($this->url->link('marketplace/extension', 'user_token=' . $this->session->data['user_token'] . '&type=total', true));
 		}
 
-		$data['heading_title'] = $this->language->get('heading_title');
-
-		$data['text_edit'] = $this->language->get('text_edit');
-		$data['text_enabled'] = $this->language->get('text_enabled');
-		$data['text_disabled'] = $this->language->get('text_disabled');
-
-		$data['entry_status'] = $this->language->get('entry_status');
-		$data['entry_sort_order'] = $this->language->get('entry_sort_order');
-
-		$data['button_save'] = $this->language->get('button_save');
-		$data['button_cancel'] = $this->language->get('button_cancel');
-
 		if (isset($this->error['warning'])) {
 			$data['error_warning'] = $this->error['warning'];
 		} else {
@@ -85,14 +73,14 @@ class ControllerExtensionTotalVoucher extends Controller {
 
 	public function install() {
 		// Register the event triggers
-		$this->load->model('marketplace/event');
+		$this->load->model('setting/event');
 
 		$this->model_setting_event->addEvent('voucher', 'catalog/model/checkout/order/addOrderHistory/after', 'extension/total/voucher/send');
 	}
 
 	public function uninstall() {
 		// delete the event triggers
-		$this->load->model('marketplace/event');
+		$this->load->model('setting/event');
 
 		$this->model_setting_event->deleteEventByCode('voucher');
 	}

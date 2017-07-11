@@ -11,7 +11,8 @@ class ControllerAffiliateRegister extends Controller {
 
 		$this->document->setTitle($this->language->get('heading_title'));
 		
-		$this->document->addScript('catalog/view/javascript/jquery/datetimepicker/moment.js');
+		$this->document->addScript('catalog/view/javascript/jquery/datetimepicker/moment/moment.min.js');
+		$this->document->addScript('catalog/view/javascript/jquery/datetimepicker/moment/moment-with-locales.min.js');
 		$this->document->addScript('catalog/view/javascript/jquery/datetimepicker/bootstrap-datetimepicker.min.js');
 		$this->document->addStyle('catalog/view/javascript/jquery/datetimepicker/bootstrap-datetimepicker.min.css');
 
@@ -47,39 +48,7 @@ class ControllerAffiliateRegister extends Controller {
 			'href' => $this->url->link('affiliate/register', '', true)
 		);
 
-		$data['heading_title'] = $this->language->get('heading_title');
-
-		$data['text_select'] = $this->language->get('text_select');
-		$data['text_none'] = $this->language->get('text_none');
 		$data['text_account_already'] = sprintf($this->language->get('text_account_already'), $this->url->link('affiliate/login', '', true));
-		$data['text_signup'] = $this->language->get('text_signup');
-		$data['text_your_details'] = $this->language->get('text_your_details');
-		$data['text_your_affiliate'] = $this->language->get('text_your_affiliate');
-		$data['text_your_password'] = $this->language->get('text_your_password');
-		$data['text_cheque'] = $this->language->get('text_cheque');
-		$data['text_paypal'] = $this->language->get('text_paypal');
-		$data['text_bank'] = $this->language->get('text_bank');
-		
-		$data['entry_customer_group'] = $this->language->get('entry_customer_group');
-		$data['entry_firstname'] = $this->language->get('entry_firstname');
-		$data['entry_lastname'] = $this->language->get('entry_lastname');
-		$data['entry_email'] = $this->language->get('entry_email');
-		$data['entry_telephone'] = $this->language->get('entry_telephone');
-		$data['entry_company'] = $this->language->get('entry_company');
-		$data['entry_website'] = $this->language->get('entry_website');
-		$data['entry_tax'] = $this->language->get('entry_tax');
-		$data['entry_payment'] = $this->language->get('entry_payment');
-		$data['entry_cheque'] = $this->language->get('entry_cheque');
-		$data['entry_paypal'] = $this->language->get('entry_paypal');
-		$data['entry_bank_name'] = $this->language->get('entry_bank_name');
-		$data['entry_bank_branch_number'] = $this->language->get('entry_bank_branch_number');
-		$data['entry_bank_swift_code'] = $this->language->get('entry_bank_swift_code');
-		$data['entry_bank_account_name'] = $this->language->get('entry_bank_account_name');
-		$data['entry_bank_account_number'] = $this->language->get('entry_bank_account_number');
-		$data['entry_password'] = $this->language->get('entry_password');
-		$data['entry_confirm'] = $this->language->get('entry_confirm');
-
-		$data['button_continue'] = $this->language->get('button_continue');
 
 		if (isset($this->error['warning'])) {
 			$data['error_warning'] = $this->error['warning'];
@@ -378,7 +347,7 @@ class ControllerAffiliateRegister extends Controller {
             }
 		}
 
-		if ((utf8_strlen(html_entity_decode($this->request->post['password'], ENT_QUOTES, 'UTF-8')) < 4) || (utf8_strlen(html_entity_decode($this->request->post['password'], ENT_QUOTES, 'UTF-8')) > 20)) {
+		if ((utf8_strlen(html_entity_decode($this->request->post['password'], ENT_QUOTES, 'UTF-8')) < 4) || (utf8_strlen(html_entity_decode($this->request->post['password'], ENT_QUOTES, 'UTF-8')) > 40)) {
 			$this->error['password'] = $this->language->get('error_password');
 		}
 

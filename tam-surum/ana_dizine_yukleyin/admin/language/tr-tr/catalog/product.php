@@ -9,6 +9,7 @@ $_['text_success']           = 'Başarılı: Ürünler başarılı bir şekilde 
 $_['text_list']              = 'Ürün Listesi';
 $_['text_add']               = 'Ürün Ekle';
 $_['text_edit']              = 'Ürün Düzenle';
+$_['text_filter']            = 'Filtre';
 $_['text_plus']              = '+';
 $_['text_minus']             = '-';
 $_['text_default']           = 'Varsayılan Mağaza';
@@ -16,6 +17,7 @@ $_['text_option']            = 'Seçenek';
 $_['text_option_value']      = 'Seçenek Değeri';
 $_['text_percent']           = 'Yüzde';
 $_['text_amount']            = 'Sabit Tutar';
+$_['text_keyword']           = 'Boşluk kullanmayın ve benzersiz bağlantı kullandığınızdan emin olunuz.';
 
 // Column
 $_['column_name']            = 'Ürün Adı';
@@ -32,6 +34,7 @@ $_['entry_description']      = 'Açıklama';
 $_['entry_meta_title']       = 'Meta Başlığı';
 $_['entry_meta_keyword']     = 'Meta Kelimeleri';
 $_['entry_meta_description'] = 'Meta Açıklaması';
+$_['entry_store']            = 'Mağazalar';
 $_['entry_keyword']          = 'SEO Bağlantısı';
 $_['entry_model']            = 'Ürün Kodu';
 $_['entry_sku']              = 'SKU';
@@ -42,7 +45,6 @@ $_['entry_isbn']             = 'ISBN';
 $_['entry_mpn']              = 'MPN';
 $_['entry_location']         = 'Konum\'u';
 $_['entry_manufacturer']     = 'Üretici';
-$_['entry_store']            = 'Mağazalar';
 $_['entry_date_available']   = 'Geçerlilik Tarihi';
 $_['entry_shipping']         = 'Kargo Gerekli';
 $_['entry_quantity']         = 'Adet';
@@ -84,7 +86,6 @@ $_['entry_layout']           = 'Bu Bölüm Gibi Davran';
 $_['entry_recurring']        = 'Abonelik Profili';
 
 // Help
-$_['help_keyword']           = 'Boşluk kullanmayın ve benzersiz bağlantı kullandığınızdan emin olunuz.';
 $_['help_sku']               = 'Stok Tutma Birimi';
 $_['help_upc']               = 'Evrensel Ürün Kodu';
 $_['help_ean']               = 'Avrupa Makale Numarası';
@@ -104,7 +105,8 @@ $_['help_tag']               = 'Virgül ile ayrınız';
 // Error
 $_['error_warning']          = 'Uyarı: Oluşan hatalar için lütfen formu dikkatli kontrol ediniz!';
 $_['error_permission']       = 'Uyarı: Ürünleri düzenleme iznine sahip değilsiniz!';
-$_['error_name']             = 'Ürün adı 3 ile 255 karakter arasında olmalıdır!';
-$_['error_meta_title']       = 'Meta başlığı 3 ile 255 karakter arasında olmalıdır!';
+$_['error_name']             = 'Ürün adı 1 ile 255 karakter arasında olmalıdır!';
+$_['error_meta_title']       = 'Meta başlığı 1 ile 255 karakter arasında olmalıdır!';
 $_['error_model']            = 'Ürün kodu 1 ile 64 karakter arasında olmalıdır!';
 $_['error_keyword']          = 'SEO Bağlantısı zaten kullanılıyor!';
+$_['error_unique']           = 'SEO Bağlantısı benzersiz olmalı!';

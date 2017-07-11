@@ -2,7 +2,11 @@
 <div id="content">
   <div class="page-header">
     <div class="container-fluid">
-      <div class="pull-right"><a href="{{ cancel }}" data-toggle="tooltip" title="{{ button_cancel }}" class="btn btn-default"><i class="fa fa-reply"></i></a></div>
+      <div class="pull-right">{% if not error_signature %}
+        <button type="button" id="button-opencart" data-toggle="tooltip" title="{{ button_opencart }}" class="btn btn-info"><i class="fa fa-cog"></i></button>
+        {% else %}
+        <button type="button" id="button-opencart" data-toggle="tooltip" title="{{ error_signature }}"  data-placement="left" class="btn btn-danger"><i class="fa fa-exclamation-triangle"></i></button>
+        {% endif %} <a href="{{ cancel }}" data-toggle="tooltip" title="{{ button_cancel }}" class="btn btn-default"><i class="fa fa-reply"></i></a></div>
       <h1>{{ heading_title }}</h1>
       <ul class="breadcrumb">
         {% for breadcrumb in breadcrumbs %}
@@ -12,7 +16,7 @@
     </div>
   </div>
   <div id="marketplace-extension-info" class="container-fluid">{% if error_warning %}
-    <div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> {{ error_warning }}
+    <div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> {{ error_warning }}
       <button type="button" class="close" data-dismiss="alert">&times;</button>
     </div>
     {% endif %}
@@ -21,13 +25,13 @@
         <h3 class="panel-title"><i class="fa fa-puzzle-piece"></i> {{ name }}</h3>
       </div>
       <div class="panel-body">
-        <div class="row">
+        <div class="row extension-info">
           <div class="col-sm-8">{% if banner %}
-            <div id="banner" class="well well-sm text-center"><img src="{{ banner }}" title="{{ name }}" alt="{{ name }}" class="img-responsive" /></div>
+            <div id="banner" class="text-center thumbnail"><img src="{{ banner }}" title="{{ name }}" alt="{{ name }}" class="img-responsive" /></div>
             {% endif %}
-            <div class="row">
-              <div class="col-xs-4 col-sm-2">{% for image in images %}<a href="{{ image.popup }}" class="colorbox thumbnail" rel="colorbox"><img src="{{ image.thumb }}" alt="{{ image.name }}" title="{{ image.name }}" class="image" /></a>{% endfor %}</div>
-            </div>
+            <div class="row thumbnails">{% for image in images %}
+              <div class="col-xs-4 col-sm-2"><a href="{{ image.popup }}" class="thumbnail"><img src="{{ image.thumb }}" alt="{{ image.name }}" title="{{ image.name }}" class="img-responsive" /></a></div>
+              {% endfor %} </div>
             <ul class="nav nav-tabs">
               <li class="active"><a href="#tab-description" data-toggle="tab">{{ tab_general }}</a></li>
               <li><a href="#tab-documentation" data-toggle="tab">{{ tab_documentation }}</a></li>
@@ -39,7 +43,7 @@
               <div id="tab-documentation" class="tab-pane">{{ documentation }}</div>
               <div id="tab-download" class="tab-pane">
                 <fieldset>
-                  <legend>Progress</legend>
+                  <legend>{{ text_progress }}</legend>
                   <div id="progress">
                     <div class="progress">
                       <div id="progress-bar" class="progress-bar" style="width: 0%;"></div>
@@ -49,25 +53,26 @@
                   <hr />
                 </fieldset>
                 <fieldset>
-                  <legend>Available Installs</legend>
+                  <legend>{{ text_available }}</legend>
                   <table class="table table-bordered">
                     <thead>
-                      <th>Download Name</th>
-                      <th>Date Added</th>
-                      <th class="text-right">Action</th>
-                    </thead>
+                    <th>{{ text_name }}</th>
+                      <th>{{ text_date_added }}</th>
+                      <th class="text-right">{{ text_action }}</th>
+                        </thead>
                     <tbody>
+                    
                     {% if downloads %}
                     {% for download in downloads %}
                     <tr>
                       <td>{{ download.name }}</td>
                       <td>{{ download.date_added }}</td>
                       <td class="text-right">{% if download.extension_install_id %}
-                        <button type="button" value="{{ download.extension_install_id }}" data-loading="{{ text_loading }}" class="btn btn-danger"><i class="fa fa-upload"></i> Uninstall</button>
-                        {% elseif download.status %}
-                        <button type="button" value="{{ download.extension_download_id }}" data-loading="{{ text_loading }}" class="btn btn-primary"><i class="fa fa-download"></i> Install</button>
+                        <button type="button" data-install="{{ download.extension_download_id }}" data-uninstall="{{ download.extension_install_id }}" data-loading="{{ text_loading }}" class="btn btn-danger"><i class="fa fa-upload"></i> {{ button_uninstall }}</button>
+                        {% elseif download.filename|slice(-10) == '.ocmod.zip' %}
+                        <button type="button" data-install="{{ download.extension_download_id }}" data-uninstall="" data-loading="{{ text_loading }}" class="btn btn-primary"{% if not download.status %} disabled{% endif %}><i class="fa fa-download"></i> {{ button_install }}</button>
                         {% else %}
-                        <button type="button" value="{{ download.extension_download_id }}" data-loading="{{ text_loading }}" class="btn btn-primary" disabled><i class="fa fa-download"></i> Install</button>
+                        <button type="button" data-install="{{ download.extension_download_id }}" data-uninstall="" data-loading="{{ text_loading }}" class="btn btn-primary"{% if not download.status %} disabled{% endif %}><i class="fa fa-download"></i> {{ button_download }}</button>
                         {% endif %}</td>
                     </tr>
                     {% endfor %}
@@ -77,6 +82,7 @@
                     </tr>
                     {% endif %}
                     </tbody>
+                    
                   </table>
                 </fieldset>
               </div>
@@ -84,7 +90,7 @@
                 <fieldset>
                   <legend>{{ text_comment_add }}</legend>
                   <div class="form-group">
-                    <textarea name="comment" rows="5" placeholder="Write your comment here..." id="input-comment" class="form-control"></textarea>
+                    <textarea name="comment" rows="5" placeholder="{{ text_write }}" id="input-comment" class="form-control"></textarea>
                   </div>
                   <div class="text-right">
                     <button type="button" id="button-comment" class="btn btn-primary">{{ button_comment }}</button>
@@ -99,30 +105,29 @@
             </div>
           </div>
           <div class="col-sm-4">
-            <div id="buy" class="well">
-              {% if license == '1' and not purchased %}
-              <button id="button-buy" class="btn btn-success btn-lg btn-block">Buy</button>
+            <div id="buy" class="well">{% if license == '1' and not purchased %}
+              <button id="button-buy" class="btn btn-success btn-lg btn-block">{{ button_purchase }}</button>
               {% endif %}
-               <div id="price" class="row">
+              <div id="price" class="row">
                 <div class="col-xs-5"><strong>{{ text_price }}</strong></div>
                 <div class="col-xs-7 text-right">{% if license %}
                   {{ price }}
                   {% else %}
-                  Free
+                  {{ text_free }}
                   {% endif %}</div>
               </div>
               <hr>
               <ul class="list-check">
-                <li>Developed by OpenCart Partner</li>
-                <li>12 Months Free Support</li>
-                <li>Documentation Included</li>
+                <li>{{ text_partner }}</li>
+                <li>{{ text_support }}</li>
+                <li>{{ text_documentation }}</li>
               </ul>
               <hr>
               <div class="row">
                 <div class="col-xs-5"><strong>{{ text_rating }}</strong></div>
                 <div class="col-xs-7 text-right">{% for i in 1..5 %}
                   {% if rating >= i %}<i class="fa fa-star"></i>{% else %}<i class="fa fa-star-o"></i>{% endif %}
-                  {% endfor %}</div>
+                  {% endfor %} ({{ rating_total }})</div>
               </div>
               <hr>
               <div class="row">
@@ -135,21 +140,45 @@
                 <div class="col-xs-7 text-right">{{ date_added }}</div>
               </div>
             </div>
-            <div id="sales" class="well"><i class="opencart-icon-cart-mini"></i> <strong>{{ sales }}</strong> {{ text_sales }} </div>
-            <div id="sales" class="well"><i class="opencart-icon-cart-mini"></i> <strong>{{ downloaded }}</strong> {{ text_downloaded }} </div>
+            <div id="sales" class="well"><i class="opencart-icon-cart-mini"></i> <strong>{{ sales }}</strong> {{ text_sales }}</div>
+            <div id="sales" class="well"><i class="opencart-icon-cart-mini"></i> <strong>{{ downloaded }}</strong> {{ text_downloaded }}</div>
             <div class="well">
               <div class="media">
                 <div class="media-left media-middle"><img src="{{ member_image }}" alt="{{ member_username }}" title="{{ member_username }}" class="media-object img-circle"></div>
                 <div class="media-body"> <span><a href="{{ filter_member }}">{{ member_username }}</a></span><br>
-                  <small>Member since: {{ member_date_added }}</small></div>
+                  <small>{{ text_member_since }} {{ member_date_added }}</small></div>
               </div>
               <br />
-              <a href="{{ filter_member }}" class="btn btn-primary btn-lg btn-block">View all extensions</a> <a href="https://www.opencart.com/index.php?route=support/seller&amp;extension_id={{ extension_id }}" class="btn btn-ghost-dark btn-lg btn-block">Get Support</a></div>
+              <a href="{{ filter_member }}" class="btn btn-primary btn-lg btn-block">{{ button_view_all }}</a> <a href="https://www.opencart.com/index.php?route=support/seller&amp;extension_id={{ extension_id }}" target="_blank" class="btn btn-ghost-dark btn-lg btn-block">{{ button_get_support }}</a></div>
           </div>
         </div>
       </div>
     </div>
   </div>
+  <script type="text/javascript"><!--
+$('#button-opencart').on('click', function(e) {
+	$('#modal-opencart').remove();
+	
+	$.ajax({
+		url: 'index.php?route=marketplace/api&user_token={{ user_token }}',
+		dataType: 'html',
+		beforeSend: function() {
+			$('#button-opencart').button('loading');
+		},
+		complete: function() {
+			$('#button-opencart').button('reset');
+		},
+		success: function(html) {
+			$('body').append('<div id="modal-opencart" class="modal">' + html + '</div>');
+			
+			$('#modal-opencart').modal('show');
+		},
+		error: function(xhr, ajaxOptions, thrownError) {
+			alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+		}
+	});
+});
+//--></script> 
   <script type="text/javascript"><!--
 $('#button-buy').on('click', function(e) {
 	e.preventDefault();
@@ -161,17 +190,17 @@ $('#button-buy').on('click', function(e) {
 	html += '    <div class="modal-content">';
 	html += '      <div class="modal-header">';
 	html += '        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>';
-	html += '        <h4 class="modal-title">Please confirm who you are!</h4>';
+	html += '        <h4 class="modal-title">{{ text_purchase }}</h4>';
 	html += '      </div>';
 	html += '      <div class="modal-body">';
-	html += '        <p>Please enter your 4 digit PIN number. This PIN number is to protect your account. When ever you logon from a new device you will be asked for this PIN.</p>';
-	html += '        <p>Do not give your PIN to any one including developers. If you require an extension seller to install an extension for you then you should email them the required extension.</p>';
+	html += '        <p>{{ text_pin }}</p>';
+	html += '        <p>{{ text_secure }}</p>';
 	html += '        <div class="form-group">';
-	html += '          <label for="input-pin">PIN</label>';
-	html += '          <input type="password" name="pin" value="" placeholder="PIN" id="input-pin" class="form-control" />';
+	html += '          <label for="input-pin">{{ entry_pin }}</label>';
+	html += '          <input type="password" name="pin" value="" placeholder="{{ entry_pin }}" id="input-pin" class="form-control" />';
 	html += '        </div>';
 	html += '        <div class="form-group text-right">';
-	html += '          <button type="button" id="button-purchase" data-loading-text="{{ text_loading }}" class="btn btn-primary btn-lg">Purchase</button>';
+	html += '          <button type="button" id="button-purchase" data-loading-text="{{ text_loading }}" class="btn btn-primary btn-lg">{{ button_purchase }}</button>';
 	html += '        </div>';
 	html += '      </div>';
 	html += '    </div>';
@@ -200,14 +229,14 @@ $('body').on('click', '#modal-purchase #button-purchase', function(e) {
 			$(element).button('reset');
 		},
 		success: function(json) {
-			$('.alert').remove();
+			$('.alert-dismissible').remove();
 			
 			if (json['error']) {
-				$('#modal-purchase .modal-body').prepend('<div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> ' + json['error'] + ' <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+				$('#modal-purchase .modal-body').prepend('<div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> ' + json['error'] + ' <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
 			}
 
 			if (json['success']) {
-				$('#content > .container-fluid').prepend('<div class="alert alert-success"><i class="fa fa-exclamation-circle"></i> ' + json['success'] + ' <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+				$('#content > .container-fluid').prepend('<div class="alert alert-success alert-dismissible"><i class="fa fa-exclamation-circle"></i> ' + json['success'] + ' <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
 
 				$('#modal-purchase').modal('hide');
 				
@@ -232,7 +261,7 @@ $('#tab-download').on('click', '.btn-primary', function(e) {
 	$('#progress-text').html('');
 
 	$.ajax({
-		url: 'index.php?route=marketplace/marketplace/download&user_token={{ user_token }}&extension_download_id=' + $(this).attr('value'),
+		url: 'index.php?route=marketplace/marketplace/download&user_token={{ user_token }}&extension_id={{ extension_id }}&extension_download_id=' + $(this).attr('data-install'),
 		dataType: 'json',
 		beforeSend: function() {
 			$(element).button('loading');
@@ -241,19 +270,25 @@ $('#tab-download').on('click', '.btn-primary', function(e) {
 			$(element).button('reset');
 		},
 		success: function(json) {
-			$('.alert').remove();
+			$('.alert-dismissible').remove();
 			
 			if (json['error']) {
-				$('#tab-download').prepend('<div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> ' + json['error'] + ' <button type="button" class="close" data-dismiss="alert">&times;</button</div>');
-			
-				$(element).button('reset');
+				$('#tab-download').prepend('<div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> ' + json['error'] + ' <button type="button" class="close" data-dismiss="alert">&times;</button</div>');
 			}
-			
+
+			if (json['redirect']) {
+				location = json['redirect'];
+			}
+						
 			if (json['text']) {
 				$('#progress-bar').css('width', '20%');
 				$('#progress-text').html(json['text']);
 			}
-			
+						
+			if (json['extension_install_id']) {
+				$(element).replaceWith('<button type="button" data-install="' + $(element).attr('data-install') + '" data-uninstall="' + json['extension_install_id'] + '" data-loading="{{ text_loading }}" class="btn btn-danger"><i class="fa fa-upload"></i> Uninstall</button>');
+			}
+						
 			if (json['next']) {
 				next(json['next'], element, 1);
 			}
@@ -276,15 +311,11 @@ function next(url, element, i) {
 			if (json['error']) {
 				$('#progress-bar').addClass('progress-bar-danger');
 				$('#progress-text').html('<div class="text-danger">' + json['error'] + '</div>');
-
-				$(element).button('reset');
 			}
 			
 			if (json['success']) {
 				$('#progress-bar').addClass('progress-bar-success');
 				$('#progress-text').html('<span class="text-success">' + json['success'] + '</span>');
-				
-				$(element).replaceWith('<button type="button" value="' + $(element).val() + '" data-loading="{{ text_loading }}" class="btn btn-danger"><i class="fa fa-upload"></i> Uninstall</button>');
 			}
 			
 			if (json['text']) {
@@ -312,7 +343,7 @@ $('#tab-download').on('click', ' .btn-danger', function(e) {
 	$('#progress-text').html('');
 
 	$.ajax({
-		url: 'index.php?route=marketplace/install/uninstall&user_token={{ user_token }}&extension_install_id=' + $(this).attr('value'),
+		url: 'index.php?route=marketplace/install/uninstall&user_token={{ user_token }}&extension_install_id=' + $(this).attr('data-uninstall'),
 		dataType: 'json',
 		beforeSend: function() {
 			$(element).button('loading');
@@ -331,7 +362,7 @@ $('#tab-download').on('click', ' .btn-danger', function(e) {
 				$('#progress-bar').addClass('progress-bar-success');
 				$('#progress-text').html(json['success']);
 				
-				$(element).replaceWith('<button type="button" value="' + $(element).val() + '" data-loading="{{ text_loading }}" class="btn btn-primary"><i class="fa fa-download"></i> Install</button>');
+				$(element).replaceWith('<button type="button" data-install="' + $(element).attr('data-install') + '" data-uninstall="" data-loading="{{ text_loading }}" class="btn btn-primary"><i class="fa fa-download"></i> Install</button>');
 			}
 		},
 		error: function(xhr, ajaxOptions, thrownError) {
@@ -363,14 +394,14 @@ $('#button-comment').on('click', function() {
 			$('#button-comment').button('reset');
 		},
 		success: function(json) {
-			$('.alert').remove();
+			$('.alert-dismissible').remove();
 			
 			if (json['error']) {
-				$('#tab-comment').prepend('<div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> ' + json['error'] + ' <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+				$('#tab-comment').prepend('<div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> ' + json['error'] + ' <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
 			}
 			
 			if (json['success']) {
-				$('#tab-comment').prepend('<div class="alert alert-success"><i class="fa fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+				$('#tab-comment').prepend('<div class="alert alert-success alert-dismissible"><i class="fa fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
 
 				$('#comment').load('index.php?route=marketplace/marketplace/comment&user_token={{ user_token }}&extension_id={{ extension_id }}');
 			
@@ -434,14 +465,14 @@ $('#comment').on('click', '.btn-primary', function(e) {
 			$(element).button('reset');
 		},
 		success: function(json) {
-			$('.alert').remove();
+			$('.alert-dismissible').remove();
 			
 			if (json['error']) {
-				$(element).parents('.reply-input-box').before('<div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> ' + json['error'] + ' <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+				$(element).parents('.reply-input-box').before('<div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> ' + json['error'] + ' <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
 			}
 			
 			if (json['success']) {
-				$(element).parents('.reply-input-box').before('<div class="alert alert-success"><i class="fa fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+				$(element).parents('.reply-input-box').before('<div class="alert alert-success alert-dismissible"><i class="fa fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
 
 				$(element).parents('.reply-input-box').parents('.media').find('.reply-refresh').last().trigger('click');
 			
@@ -474,6 +505,17 @@ $('#comment').on('click', '.reply-refresh', function(e) {
 		},
 		error: function(xhr, ajaxOptions, thrownError) {
 			alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+		}
+	});
+});
+//--></script> 
+  <script type="text/javascript"><!--
+$(document).ready(function() {
+	$('.thumbnails').magnificPopup({
+		type:'image',
+		delegate: 'a',
+		gallery: {
+			enabled:true
 		}
 	});
 });

@@ -34,16 +34,6 @@ class ControllerCommonReset extends Controller {
 				$this->response->redirect($this->url->link('common/login', '', true));
 			}
 
-			$data['heading_title'] = $this->language->get('heading_title');
-
-			$data['text_password'] = $this->language->get('text_password');
-
-			$data['entry_password'] = $this->language->get('entry_password');
-			$data['entry_confirm'] = $this->language->get('entry_confirm');
-
-			$data['button_save'] = $this->language->get('button_save');
-			$data['button_cancel'] = $this->language->get('button_cancel');
-
 			$data['breadcrumbs'] = array();
 
 			$data['breadcrumbs'][] = array(
@@ -98,7 +88,7 @@ class ControllerCommonReset extends Controller {
 	}
 
 	protected function validate() {
-		if ((utf8_strlen(html_entity_decode($this->request->post['password'], ENT_QUOTES, 'UTF-8')) < 4) || (utf8_strlen(html_entity_decode($this->request->post['password'], ENT_QUOTES, 'UTF-8')) > 20)) {
+		if ((utf8_strlen(html_entity_decode($this->request->post['password'], ENT_QUOTES, 'UTF-8')) < 4) || (utf8_strlen(html_entity_decode($this->request->post['password'], ENT_QUOTES, 'UTF-8')) > 40)) {
 			$this->error['password'] = $this->language->get('error_password');
 		}
 

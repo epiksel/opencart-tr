@@ -9,6 +9,8 @@ $_['text_success']      = 'Başarılı: Filtre grubu başarılı bir şekilde de
 $_['text_list']         = 'Filtre Listesi';
 $_['text_add']          = 'Filtre Ekle';
 $_['text_edit']         = 'Filtre Düzenle';
+$_['text_group']        = 'Filtre Grubu';
+$_['text_value']        = 'Filtre Değeri';
 
 // Column
 $_['column_group']      = 'Filtre Grubu';

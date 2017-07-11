@@ -15,6 +15,9 @@ $_['db_port']           = DB_PORT;
 // Session
 $_['session_autostart'] = true;
 
+// Template
+$_['template_cache']    = true;
+
 // Actions
 $_['action_pre_action'] = array(
 	'startup/startup',
@@ -29,4 +32,18 @@ $_['action_pre_action'] = array(
 $_['action_default'] = 'common/dashboard';
 
 // Action Events
-$_['action_event'] = array();
+$_['action_event'] = array(
+	'controller/*/before' => array(
+		'event/language/before'
+	),
+	'controller/*/after' => array(
+		'event/language/after'
+	),
+	'view/*/before' => array(
+		999  => 'event/language',
+		1000 => 'event/theme'
+	),
+	'view/*/before' => array(
+		'event/language'
+	)
+);

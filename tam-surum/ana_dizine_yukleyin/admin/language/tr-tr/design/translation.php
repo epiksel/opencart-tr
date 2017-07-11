@@ -1,4 +1,6 @@
 <?php
+/* Turkceye Ceviren eka7a - http://e-piksel.com */
+
 // Heading
 $_['heading_title']    = 'Dil Editörü';
 
@@ -16,6 +18,7 @@ $_['column_store']     = 'Mağaza';
 $_['column_language']  = 'Dil';
 $_['column_route']     = 'Yol';
 $_['column_key']       = 'Anahtar';
+$_['column_value']     = 'Değer';
 $_['column_action']    = 'Eylem';
 
 // Entry

@@ -71,3 +71,6 @@ $_['error_upload_7']        = 'Uyarı: Dosyayı diske yazma basarısız oldu!';
 $_['error_upload_8']        = 'Uyarı: Bu uzantı türdeki dosyaları yükleyemezsiniz!';
 $_['error_upload_999']      = 'Uyarı: Kod hatası mümkün olabilir!';
 $_['error_curl']            = 'CURL: Hata Kodu(%s): %s';
+
+// Datepicker
+$_['datepicker']            = 'tr';

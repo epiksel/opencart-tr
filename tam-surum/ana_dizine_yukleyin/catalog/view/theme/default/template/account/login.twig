@@ -1,15 +1,15 @@
 {{ header }}
-<div class="container">
+<div id="account-login" class="container">
   <ul class="breadcrumb">
     {% for breadcrumb in breadcrumbs %}
     <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
     {% endfor %}
   </ul>
   {% if success %}
-  <div class="alert alert-success"><i class="fa fa-check-circle"></i> {{ success }}</div>
+  <div class="alert alert-success alert-dismissible"><i class="fa fa-check-circle"></i> {{ success }}</div>
   {% endif %}
   {% if error_warning %}
-  <div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> {{ error_warning }}</div>
+  <div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> {{ error_warning }}</div>
   {% endif %}
   <div class="row">{{ column_left }}
     {% if column_left and column_right %}

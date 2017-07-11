@@ -16,7 +16,7 @@
   </div>
   <div class="container-fluid">
 	{% if error_warning %}
-		<div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> {{ error_warning }}
+		<div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> {{ error_warning }}
 		  <button type="button" class="close" data-dismiss="alert">&times;</button>
 		</div>
 	{% endif %}
@@ -30,13 +30,13 @@
             <div class="form-group">
               <label class="col-sm-2 control-label" for="name">{{ entry_template_name }}</label>
               <div class="col-sm-10">
-                <input type="text" name="name" value="<?php if (isset($name)){ echo $name; } ?>" placeholder="{{ entry_template_name }}" id="name" class="form-control" />
+                <input type="text" name="name" value="{{ name }}" placeholder="{{ entry_template_name }}" id="name" class="form-control" />
               </div>
             </div>
             <div class="form-group">
               <label class="col-sm-2 control-label" for="code">{{ entry_template_html }}</label>
               <div class="col-sm-10">
-                <textarea name="html" cols="100" rows="100" placeholder="{{ entry_template_html }}" id="code" class="form-control"><?php if (isset($html)){ echo $html; } ?></textarea>
+                <textarea name="html" cols="100" rows="100" placeholder="{{ entry_template_html }}" id="code" class="form-control">{{ html }}</textarea>
               </div>
             </div>
         </form>
@@ -52,7 +52,9 @@
     lineNumbers: true,
     tabMode: "indent",
     lineWrapping: true,
-    indentUnit: 2
+    indentUnit: 2,
+    theme: 'monokai',
+    autofocus: true
   });
 //--></script>
 {{ footer }}

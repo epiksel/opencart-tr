@@ -35,15 +35,11 @@ class ControllerMailAffiliate extends Controller {
 			$subject = sprintf($language->get('text_subject'), $store_name);
 			
 			$data['text_welcome'] = sprintf($language->get('text_welcome'), $store_name);
-			$data['text_login'] = $language->get('text_login');
-			$data['text_service'] = $language->get('text_service');
-			$data['text_thanks'] = $language->get('text_thanks');
 						
 			$data['login'] = $store_url . 'index.php?route=account/login';
 			$data['store'] = $store_name;
 	
-			$mail = new Mail();
-			$mail->protocol = $this->config->get('config_mail_protocol');
+			$mail = new Mail($this->config->get('config_mail_engine'));
 			$mail->parameter = $this->config->get('config_mail_parameter');
 			$mail->smtp_hostname = $this->config->get('config_mail_smtp_hostname');
 			$mail->smtp_username = $this->config->get('config_mail_smtp_username');
@@ -95,14 +91,11 @@ class ControllerMailAffiliate extends Controller {
 			$subject = sprintf($language->get('text_subject'), $store_name);	
 				
 			$data['text_welcome'] = sprintf($language->get('text_welcome'), $store_name);
-			$data['text_denied'] = $language->get('text_denied');
-			$data['text_thanks'] = $language->get('text_thanks');
 			
 			$data['contact'] = $store_url . 'index.php?route=information/contact';	
 			$data['store'] = $store_name;
 			
-			$mail = new Mail();
-			$mail->protocol = $this->config->get('config_mail_protocol');
+			$mail = new Mail($this->config->get('config_mail_engine'));
 			$mail->parameter = $this->config->get('config_mail_parameter');
 			$mail->smtp_hostname = $this->config->get('config_mail_smtp_hostname');
 			$mail->smtp_username = $this->config->get('config_mail_smtp_username');

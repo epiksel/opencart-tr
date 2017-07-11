@@ -4,14 +4,6 @@ class ControllerExtensionTotalVoucher extends Controller {
 		if ($this->config->get('total_voucher_status')) {
 			$this->load->language('extension/total/voucher');
 
-			$data['heading_title'] = $this->language->get('heading_title');
-
-			$data['text_loading'] = $this->language->get('text_loading');
-
-			$data['entry_voucher'] = $this->language->get('entry_voucher');
-
-			$data['button_voucher'] = $this->language->get('button_voucher');
-
 			if (isset($this->session->data['voucher'])) {
 				$data['voucher'] = $this->session->data['voucher'];
 			} else {
@@ -90,8 +82,7 @@ class ControllerExtensionTotalVoucher extends Controller {
 					$data['store_url'] = $order_info['store_url'];
 					$data['message'] = nl2br($voucher['message']);
 
-					$mail = new Mail();
-					$mail->protocol = $this->config->get('config_mail_protocol');
+					$mail = new Mail($this->config->get('config_mail_engine'));
 					$mail->parameter = $this->config->get('config_mail_parameter');
 					$mail->smtp_hostname = $this->config->get('config_mail_smtp_hostname');
 					$mail->smtp_username = $this->config->get('config_mail_smtp_username');

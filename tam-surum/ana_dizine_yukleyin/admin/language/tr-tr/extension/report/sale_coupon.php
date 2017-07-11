@@ -5,10 +5,9 @@
 $_['heading_title']    = 'Kupon Raporu';
 
 // Text
-$_['text_extension']   = 'Eklentiler';
+$_['text_extension']    = 'Eklentiler';
 $_['text_success']     = 'Başarılı: Kupon raporu güncellendi!';
-$_['text_edit']        = 'Kupon Raporu Düzenle';
-$_['text_filter']      = 'Kupon Filtreleri';
+$_['text_filter']      = 'Filtre';
 
 // Column
 $_['column_name']      = 'Kupon Adı';

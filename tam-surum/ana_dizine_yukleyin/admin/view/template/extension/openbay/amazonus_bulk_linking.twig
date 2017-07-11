@@ -18,7 +18,10 @@
       <div class="row">
         <div class="col-sm-12">
           {% if marketplace_processing %}
-          <div class="pull-right"> <a class="btn btn-primary" disabled="disabled"><i class="fa fa-cog fa-lg fa-spin"></i> {{ text_loading }}</a> </div>
+          <div class="pull-right">
+            <a class="btn btn-warning" href="{{ cancel_report_link }}"><i class="fa fa-times fa-lg"></i> {{ button_cancel }}</a>
+            <a class="btn btn-primary" disabled="disabled"><i class="fa fa-cog fa-lg fa-spin"></i> {{ text_loading }}</a>
+          </div>
           {% else %}
           <div class="pull-right"> <a id="button-load-listings" class="btn btn-primary" href="{{ link_load_listings }}">{{ button_load }}</a> </div>
           {% endif %}
@@ -63,7 +66,7 @@
             <td class="text-left">{{ product.amazon_sku }}</td>
             <td class="text-center">{{ product.amazon_quantity }}</td>
             <td class="text-right">{{ product.amazon_price }}</td>
-            <td class="text-left"><a href="{{ product.href_product }}" target="_blank">{{ product.name }}</a><?php echo (!empty($product['combination']) ? '<br />' . $product['combination'] : ''); ?></td>
+            <td class="text-left"><a href="{{ product.href_product }}" target="_blank">{{ product.name }}</a>{% if product.combination is not empty %}<br />{{ product.combination }}{% endif %}</td>
             <td class="text-left">{{ product.sku }}</td>
             <td class="text-center">{{ product.quantity }}</td>
             <input type="hidden" name="link[{{ row }}][amazon_sku]" value="{{ product.amazon_sku }}"/>
@@ -76,7 +79,7 @@
         <div class="well">
           <div class="row">
             <div class="col-sm-12 text-right">
-              <div class="pull-right"> <a id="link-button" class="btn btn-primary" href="{{ button_save }}" data-toggle="tooltip" title="{{ button_load }}"><i class="fa fa-save"></i></a></div>
+              <div class="pull-right"> <a id="link-button" class="btn btn-primary" data-toggle="tooltip" title="{{ button_link }}"><i class="fa fa-save"></i></a></div>
             </div>
           </div>
         </div>
@@ -105,9 +108,9 @@
       },
       success: function (json) {
         if (json['status'] == 1) {
-          $('.alert-info').after('<div class="alert alert-success">' + json['message'] + '</div>');
+          $('.alert-info').after('<div class="alert alert-success alert-dismissible">' + json['message'] + '</div>');
         } else {
-          $('.alert-info').after('<div class="alert alert-danger">' + json['message'] + '</div>');
+          $('.alert-info').after('<div class="alert alert-danger alert-dismissible">' + json['message'] + '</div>');
         }
       },
       error: function(xhr, ajaxOptions, thrownError) {
@@ -133,7 +136,7 @@
     e.preventDefault();
 
     $.ajax({
-      url: '<?php echo html_entity_decode($link_do_listings); ?>',
+      url: '{{ link_do_listings }}',
       dataType: 'json',
       type: 'POST',
       data: $('.link-checkbox:checked').parent().siblings('input[type="hidden"]').serialize(),

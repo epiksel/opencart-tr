@@ -74,29 +74,6 @@ class ControllerAccountAffiliate extends Controller {
 				'href' => $this->url->link('account/affiliate/edit', '', true)
 			);		
 		}
-
-		$data['heading_title'] = $this->language->get('heading_title');
-		
-		$data['text_my_affiliate'] = $this->language->get('text_my_affiliate');
-		$data['text_payment'] = $this->language->get('text_payment');
-		$data['text_cheque'] = $this->language->get('text_cheque');
-		$data['text_paypal'] = $this->language->get('text_paypal');
-		$data['text_bank'] = $this->language->get('text_bank');
-		
-		$data['entry_company'] = $this->language->get('entry_company');
-		$data['entry_website'] = $this->language->get('entry_website');
-		$data['entry_tax'] = $this->language->get('entry_tax');
-		$data['entry_payment'] = $this->language->get('entry_payment');
-		$data['entry_cheque'] = $this->language->get('entry_cheque');
-		$data['entry_paypal'] = $this->language->get('entry_paypal');
-		$data['entry_bank_name'] = $this->language->get('entry_bank_name');
-		$data['entry_bank_branch_number'] = $this->language->get('entry_bank_branch_number');
-		$data['entry_bank_swift_code'] = $this->language->get('entry_bank_swift_code');
-		$data['entry_bank_account_name'] = $this->language->get('entry_bank_account_name');
-		$data['entry_bank_account_number'] = $this->language->get('entry_bank_account_number');
-
-		$data['button_continue'] = $this->language->get('button_continue');
-		$data['button_back'] = $this->language->get('button_back');
 	
 		if (isset($this->error['warning'])) {
 			$data['error_warning'] = $this->error['warning'];
@@ -139,7 +116,7 @@ class ControllerAccountAffiliate extends Controller {
 		if ($this->request->get['route'] == 'account/affiliate/edit' && $this->request->server['REQUEST_METHOD'] != 'POST') {
 			$affiliate_info = $this->model_account_customer->getAffiliate($this->customer->getId());
 		}
-
+		
 		if (isset($this->request->post['company'])) {
 			$data['company'] = $this->request->post['company'];
 		} elseif (!empty($affiliate_info)) {
@@ -296,10 +273,12 @@ class ControllerAccountAffiliate extends Controller {
 		$custom_fields = $this->model_account_custom_field->getCustomFields($this->config->get('config_customer_group_id'));
 
 		foreach ($custom_fields as $custom_field) {
-			if (($custom_field['location'] == 'affiliate') && $custom_field['required'] && empty($this->request->post['custom_field'][$custom_field['custom_field_id']])) {
-				$this->error['custom_field'][$custom_field['custom_field_id']] = sprintf($this->language->get('error_custom_field'), $custom_field['name']);
-			} elseif (($custom_field['location'] == 'affiliate') && ($custom_field['type'] == 'text') && !empty($custom_field['validation']) && !filter_var($this->request->post['custom_field'][$custom_field['custom_field_id']], FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => $custom_field['validation'])))) {
-				$this->error['custom_field'][$custom_field['custom_field_id']] = sprintf($this->language->get('error_custom_field'), $custom_field['name']);
+			if ($custom_field['location'] == 'affiliate') {
+				if ($custom_field['required'] && empty($this->request->post['custom_field'][$custom_field['location']][$custom_field['custom_field_id']])) {
+					$this->error['custom_field'][$custom_field['custom_field_id']] = sprintf($this->language->get('error_custom_field'), $custom_field['name']);
+				} elseif (($custom_field['type'] == 'text') && !empty($custom_field['validation']) && !filter_var($this->request->post['custom_field'][$custom_field['location']][$custom_field['custom_field_id']], FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => $custom_field['validation'])))) {
+					$this->error['custom_field'][$custom_field['custom_field_id']] = sprintf($this->language->get('error_custom_field'), $custom_field['name']);
+				}
 			}
 		}			
 		

@@ -54,18 +54,6 @@ class ControllerExtensionExtensionAnalytics extends Controller {
 	}
 
 	protected function getList() {
-		$data['heading_title'] = $this->language->get('heading_title');
-
-		$data['text_no_results'] = $this->language->get('text_no_results');
-
-		$data['column_name'] = $this->language->get('column_name');
-		$data['column_status'] = $this->language->get('column_status');
-		$data['column_action'] = $this->language->get('column_action');
-
-		$data['button_edit'] = $this->language->get('button_edit');
-		$data['button_install'] = $this->language->get('button_install');
-		$data['button_uninstall'] = $this->language->get('button_uninstall');
-
 		if (isset($this->error['warning'])) {
 			$data['error_warning'] = $this->error['warning'];
 		} else {
@@ -89,12 +77,12 @@ class ControllerExtensionExtensionAnalytics extends Controller {
 				unset($extensions[$key]);
 			}
 		}
-
+		
 		$this->load->model('setting/store');
 		$this->load->model('setting/setting');
 
 		$stores = $this->model_setting_store->getStores();
-
+		
 		$data['extensions'] = array();
 
 		// Compatibility code for old extension folders
@@ -105,7 +93,7 @@ class ControllerExtensionExtensionAnalytics extends Controller {
 				$extension = basename($file, '.php');
 				
 				// Compatibility code for old extension folders
-				$this->load->language('extension/analytics/' . $extension);
+				$this->load->language('extension/analytics/' . $extension, 'extension');
 				
 				$store_data = array();
 
@@ -124,7 +112,7 @@ class ControllerExtensionExtensionAnalytics extends Controller {
 				}
 
 				$data['extensions'][] = array(
-					'name'      => $this->language->get('heading_title'),
+					'name'      => $this->language->get('extension')->get('heading_title'),
 					'install'   => $this->url->link('extension/extension/analytics/install', 'user_token=' . $this->session->data['user_token'] . '&extension=' . $extension, true),
 					'uninstall' => $this->url->link('extension/extension/analytics/uninstall', 'user_token=' . $this->session->data['user_token'] . '&extension=' . $extension, true),
 					'installed' => in_array($extension, $extensions),

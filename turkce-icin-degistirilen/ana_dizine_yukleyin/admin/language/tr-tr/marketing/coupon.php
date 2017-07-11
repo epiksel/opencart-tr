@@ -11,7 +11,7 @@ $_['text_add']            = 'Kupon Ekle';
 $_['text_edit']           = 'Kupon Düzenle';
 $_['text_percent']        = 'Yüzde(%)';
 $_['text_amount']         = 'Sabit Tutar';
-$_['text_coupon']         = 'Kupon Kullanım Geçmişi';
+$_['text_coupon']         = 'Kupon Geçmişi';
 
 // Column
 $_['column_name']         = 'Kupon Adı';

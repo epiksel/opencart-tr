@@ -50,10 +50,10 @@
         {% endif %}
         {% for ref, row in table_data %}
           <tr>
-            <td class="text-left" rowspan="<?php echo count($row['data']) + 1; ?>">{{ ref }}</td>
-            <td class="text-left" rowspan="<?php echo count($row['data']) + 1; ?>">{{ row.status }}</td>
-            <td class="text-left" rowspan="<?php echo count($row['data']) + 1; ?>">{{ row.date_requested }}</td>
-            <td class="text-left" rowspan="<?php echo count($row['data']) + 1; ?>">{{ row.date_updated }}</td>
+            <td class="text-left" rowspan="{{ row.data|length + 1 }}">{{ ref }}</td>
+            <td class="text-left" rowspan="{{ row.data|length + 1 }}">{{ row.status }}</td>
+            <td class="text-left" rowspan="{{ row.data|length + 1 }}">{{ row.date_requested }}</td>
+            <td class="text-left" rowspan="{{ row.data|length + 1 }}">{{ row.date_updated }}</td>
             {% for dataRow in row.data %}
               <tr>
                 <td class="text-center">{{ dataRow.sku }}</td>
@@ -90,16 +90,19 @@ $(document).ready(function() {
 });
 
 $('.date').datetimepicker({
-  pickTime: false
+	language: '{{ datepicker }}',
+	pickTime: false
 });
 
 $('.datetime').datetimepicker({
-  pickDate: true,
-  pickTime: true
+	language: '{{ datepicker }}',
+	pickDate: true,
+	pickTime: true
 });
 
 $('.time').datetimepicker({
-  pickDate: false
+	language: '{{ datepicker }}',
+	pickDate: false
 });
 //--></script>
 {{ footer }}

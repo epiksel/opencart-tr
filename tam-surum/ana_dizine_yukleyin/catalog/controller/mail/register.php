@@ -10,8 +10,14 @@ class ControllerMailRegister extends Controller {
 		$data['text_thanks'] = $this->language->get('text_thanks');
 
 		$this->load->model('account/customer_group');
-		
-		$customer_group_info = $this->model_account_customer_group->getCustomerGroup($args[0]['customer_group_id']);
+			
+		if (isset($args[0]['customer_group_id'])) {
+			$customer_group_id = $args[0]['customer_group_id'];
+		} else {
+			$customer_group_id = $this->config->get('config_customer_group_id');
+		}
+					
+		$customer_group_info = $this->model_account_customer_group->getCustomerGroup($customer_group_id);
 		
 		if ($customer_group_info) {
 			$data['approval'] = $customer_group_info['approval'];
@@ -22,8 +28,7 @@ class ControllerMailRegister extends Controller {
 		$data['login'] = $this->url->link('account/login', '', true);		
 		$data['store'] = html_entity_decode($this->config->get('config_name'), ENT_QUOTES, 'UTF-8');
 
-		$mail = new Mail();
-		$mail->protocol = $this->config->get('config_mail_protocol');
+		$mail = new Mail($this->config->get('config_mail_engine'));
 		$mail->parameter = $this->config->get('config_mail_parameter');
 		$mail->smtp_hostname = $this->config->get('config_mail_smtp_hostname');
 		$mail->smtp_username = $this->config->get('config_mail_smtp_username');
@@ -56,7 +61,13 @@ class ControllerMailRegister extends Controller {
 			
 			$this->load->model('account/customer_group');
 			
-			$customer_group_info = $this->model_account_customer_group->getCustomerGroup($args[0]['customer_group_id']);
+			if (isset($args[0]['customer_group_id'])) {
+				$customer_group_id = $args[0]['customer_group_id'];
+			} else {
+				$customer_group_id = $this->config->get('config_customer_group_id');
+			}
+			
+			$customer_group_info = $this->model_account_customer_group->getCustomerGroup($customer_group_id);
 			
 			if ($customer_group_info) {
 				$data['customer_group'] = $customer_group_info['name'];
@@ -67,8 +78,7 @@ class ControllerMailRegister extends Controller {
 			$data['email'] = $args[0]['email'];
 			$data['telephone'] = $args[0]['telephone'];
 
-			$mail = new Mail();
-			$mail->protocol = $this->config->get('config_mail_protocol');
+			$mail = new Mail($this->config->get('config_mail_engine'));
 			$mail->parameter = $this->config->get('config_mail_parameter');
 			$mail->smtp_hostname = $this->config->get('config_mail_smtp_hostname');
 			$mail->smtp_username = $this->config->get('config_mail_smtp_username');

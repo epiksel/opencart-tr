@@ -32,6 +32,9 @@ class ControllerStartupStartup extends Controller {
 			}
 		}
 
+		// Theme
+		$this->config->set('template_cache', $this->config->get('developer_theme'));
+		
 		// Url
 		$this->registry->set('url', new Url($this->config->get('config_url'), $this->config->get('config_ssl')));
 		
@@ -110,11 +113,12 @@ class ControllerStartupStartup extends Controller {
 		$this->registry->set('customer', $customer);
 		
 		// Customer Group
-		if ($this->customer->isLogged()) {
-			$this->config->set('config_customer_group_id', $this->customer->getGroupId());
-		} elseif (isset($this->session->data['customer']) && isset($this->session->data['customer']['customer_group_id'])) {
+		if (isset($this->session->data['customer']) && isset($this->session->data['customer']['customer_group_id'])) {
 			// For API calls
 			$this->config->set('config_customer_group_id', $this->session->data['customer']['customer_group_id']);
+		} elseif ($this->customer->isLogged()) {
+			// Logged in customers
+			$this->config->set('config_customer_group_id', $this->customer->getGroupId());
 		} elseif (isset($this->session->data['guest']) && isset($this->session->data['guest']['customer_group_id'])) {
 			$this->config->set('config_customer_group_id', $this->session->data['guest']['customer_group_id']);
 		}

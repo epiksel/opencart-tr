@@ -24,7 +24,8 @@ $_['text_account']         = 'Hesap';
 $_['text_address']         = 'Adres';
 $_['text_affiliate']       = 'Ortak';
 $_['text_regex']           = 'Regex';
-$_['text_value']           = 'Özel Alan Değerleri';
+$_['text_custom_field']    = 'Özel Alan';
+$_['text_value']           = 'Özel Alan Değeri';
 
 // Column
 $_['column_name']          = 'Özel Alan Adı';

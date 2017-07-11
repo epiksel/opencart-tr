@@ -15,7 +15,7 @@
   </div>
   <div class="container-fluid">
     {% if error_warning %}
-    <div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> {{ error_warning }}
+    <div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> {{ error_warning }}
       <button type="button" class="close" data-dismiss="alert">&times;</button>
     </div>
     {% endif %}
@@ -37,7 +37,7 @@
           <div class="form-group required">
             <label class="col-sm-2 control-label" for="input-key">{{ entry_key }}</label>
             <div class="col-sm-10">
-              <input type="text" name="authorizenet_sim_key" value="{{ authorizenet_sim_key }}" placeholder="{{ entry_key }}" id="input-key" class="form-control" />
+              <input type="text" name="payment_authorizenet_sim_key" value="{{ payment_authorizenet_sim_key }}" placeholder="{{ entry_key }}" id="input-key" class="form-control" />
               {% if error_key %}
               <div class="text-danger">{{ error_key }}</div>
               {% endif %}

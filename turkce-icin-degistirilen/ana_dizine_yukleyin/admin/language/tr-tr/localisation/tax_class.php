@@ -10,6 +10,7 @@ $_['text_list']         = 'Vergi Sınıfı Listesi';
 $_['text_add']          = 'Vergi Sınıfı Ekle';
 $_['text_edit']         = 'Vergi Sınıfı Düzenle';
 $_['text_tax_class']    = 'Vergi Sınıfları';
+$_['text_tax_rate']     = 'Vergi Oranları';
 $_['text_shipping']     = 'Teslimat Adresi';
 $_['text_payment']      = 'Fatura Adresi';
 $_['text_store']        = 'Mağaza Adresi';

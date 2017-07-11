@@ -15,7 +15,7 @@
   </div>
   <div class="container-fluid">
     {% if error_warning %}
-    <div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> {{ error_warning }}
+    <div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> {{ error_warning }}
       <button type="button" class="close" data-dismiss="alert">&times;</button>
     </div>
     {% endif %}
@@ -124,6 +124,7 @@
                     <tr>
                       <td class="text-left"><div class="input-group">
                           <select class="form-control input-sm">
+                            <option value=""></option>
                             {% for extension in extensions %}
                             <optgroup label="{{ extension.name }}">
                             {% if not extension.module %}
@@ -192,6 +193,7 @@
                     <tr>
                       <td class="text-left"><div class="input-group">
                           <select class="form-control input-sm">
+                            <option value=""></option>
                             {% for extension in extensions %}
                             <optgroup label="{{ extension.name }}">
                             {% if not extension.module %}
@@ -258,6 +260,7 @@
                     <tr>
                       <td class="text-left"><div class="input-group">
                           <select class="form-control input-sm">
+                            <option value=""></option>
                             {% for extension in extensions %}
                             <optgroup label="{{ extension.name }}">
                             {% if not extension.module %}
@@ -326,6 +329,7 @@
                     <tr>
                       <td class="text-left"><div class="input-group">
                           <select class="form-control input-sm">
+                            <option value=""></option>
                             {% for extension in extensions %}
                             <optgroup label="{{ extension.name }}">
                             {% if not extension.module %}

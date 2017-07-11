@@ -20,6 +20,8 @@ $_['text_file']           = 'Dosya';
 $_['text_date']           = 'Tarih';
 $_['text_datetime']       = 'Tarih &amp; Zaman';
 $_['text_time']           = 'Zaman';
+$_['text_option']         = 'Seçenek';
+$_['text_value']          = 'Seçenek Değeri';
 
 // Column
 $_['column_name']         = 'Seçenek Adı';

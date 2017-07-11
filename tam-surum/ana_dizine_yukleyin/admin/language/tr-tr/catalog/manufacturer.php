@@ -12,6 +12,7 @@ $_['text_edit']         = 'Üretici Düzenle';
 $_['text_default']      = 'Varsayılan Mağaza';
 $_['text_percent']      = 'Yüzde';
 $_['text_amount']       = 'Sabit Tutar';
+$_['text_keyword']      = 'Boşluk kullanmayın ve benzersiz bağlantı kullandığınızdan emin olunuz.';
 
 // Column
 $_['column_name']       = 'Üretici Adı';
@@ -26,11 +27,9 @@ $_['entry_image']       = 'Resim';
 $_['entry_sort_order']  = 'Sıralama';
 $_['entry_type']        = 'Türü';
 
-// Help
-$_['help_keyword']      = 'Boşluk kullanmayın ve benzersiz bağlantı kullandığınızdan emin olunuz.';
-
 // Error
 $_['error_permission']  = 'Uyarı: Üreticileri düzenleme iznine sahip değilsiniz!';
-$_['error_name']        = 'Üretici Adı 2 ile 64 karakter arasında olmalı!';
+$_['error_name']        = 'Üretici Adı 1 ile 64 karakter arasında olmalı!';
 $_['error_keyword']     = 'SEO Bağlantısı zaten kullanılıyor!';
+$_['error_unique']      = 'SEO Bağlantısı benzersiz olmalı!';
 $_['error_product']     = 'Uyarı: Bu üreticiyi silemezsiniz, %s ürün tarafından kullanılıyor!';

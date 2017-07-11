@@ -21,6 +21,6 @@ $_['entry_sort_order']  = 'Sıralama';
 
 // Error
 $_['error_permission']  = 'Uyarı: Özellik Gruplarını düzenleme iznine sahip değilsiniz!';
-$_['error_name']        = 'Özellik Grup Adı 3 ile 64 karakter arasında olmalı!';
+$_['error_name']        = 'Özellik Grup Adı 1 ile 64 karakter arasında olmalı!';
 $_['error_attribute']   = 'Uyarı: Bu özellik grubunu silemezsiniz, %s özellik tarafından kullanılıyor!';
 $_['error_product']     = 'Uyarı: Bu özellik grubunu silemezsiniz, %s ürün tarafından kullanılıyor!';
