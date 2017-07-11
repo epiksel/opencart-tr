@@ -21,7 +21,7 @@ $_['entry_upload']      = 'Dosya Yükle';
 $_['entry_progress']    = 'İlerleme';
 
 // Help
-$_['help_upload']       = 'Yüklemek için \'.ocmod.zip\' ya da \'.ocmod.xml\' uzantılı modifikasyon dosyası gereklidir.';
+$_['help_upload']       = 'Yüklemek için \'.ocmod.zip\' uzantılı modifikasyon dosyası gereklidir.';
 
 // Error
 $_['error_permission']  = 'Uyarı: Eklentileri değiştirme iznine sahip değilsiniz!';
