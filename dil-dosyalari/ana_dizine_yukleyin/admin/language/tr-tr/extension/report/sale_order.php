@@ -7,8 +7,7 @@ $_['heading_title']     = 'Satış Raporu';
 // Text
 $_['text_extension']    = 'Eklentiler';
 $_['text_success']      = 'Başarılı: Satış raporu güncellendi!';
-$_['text_edit']         = 'Satış Raporu Düzenle';
-$_['text_filter']       = 'Satış Filtreleri';
+$_['text_filter']       = 'Filtre';
 $_['text_year']         = 'Yıllar';
 $_['text_month']        = 'Aylar';
 $_['text_week']         = 'Haftalar';

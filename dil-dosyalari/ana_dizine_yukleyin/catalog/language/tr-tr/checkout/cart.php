@@ -20,7 +20,6 @@ $_['text_month']               = 'ay';
 $_['text_year']                = 'yıl';
 $_['text_trial']               = '%s her %s %s %s ödemelerinde sonra  ';
 $_['text_recurring']           = '%s her %s %s';
-$_['text_length']              = '  %s ödemeler için';
 $_['text_until_cancelled']     = 'iptal edilinceye kadar';
 $_['text_recurring_item']      = 'Abonelik';
 $_['text_payment_recurring']   = 'Ödeme Profili';

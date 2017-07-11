@@ -5,7 +5,7 @@
 $_['heading_title']    = 'Yedekle &amp; Geri Yükle';
 
 // Text
-$_['text_success']     = 'Başarılı: Veritabanı başarı bir şekilde %d&#37; geri yüklendi!';
+$_['text_success']     = 'Başarılı: Veritabanı başarı bir şekilde geri yüklendi!';
 
 // Entry
 $_['entry_import']     = 'İçeri Aktar';

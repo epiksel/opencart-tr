@@ -7,8 +7,7 @@ $_['heading_title']     = 'Teslimat Raporu';
 // Text
 $_['text_extension']    = 'Eklentiler';
 $_['text_success']      = 'Başarılı: Teslimat raporu güncellendi!';
-$_['text_edit']         = 'Teslimat Raporu Düzenle';
-$_['text_filter']       = 'Teslimat Filtreleri';
+$_['text_filter']       = 'Filtre';
 $_['text_year']         = 'Yıllar';
 $_['text_month']        = 'Aylar';
 $_['text_week']         = 'Haftalar';

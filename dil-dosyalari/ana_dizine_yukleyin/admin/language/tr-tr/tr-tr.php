@@ -94,8 +94,6 @@ $_['button_search']                 = 'Ara';
 $_['button_view']                   = 'Göster';
 $_['button_install']                = 'Kur';
 $_['button_uninstall']              = 'Kaldır';
-$_['button_login']                  = 'Oturum Aç';
-$_['button_unlock']                 = 'Hesap Kilidini Aç';
 $_['button_link']                   = 'Link';
 $_['button_currency']               = 'Para Birimilerini Yenile';
 $_['button_apply']                  = 'Uygula';
@@ -126,6 +124,7 @@ $_['tab_log']                       = 'Günlük';
 $_['tab_image']                     = 'Resim';
 $_['tab_option']                    = 'Seçenek';
 $_['tab_server']                    = 'Sunucu';
+$_['tab_seo']                       = 'SEO';
 $_['tab_store']                     = 'Mağaza';
 $_['tab_special']                   = 'Kampanya';
 $_['tab_session']                   = 'Oturum';
@@ -158,3 +157,8 @@ $_['error_upload_7']                = 'Uyarı: Dosyayı diske yazma basarısız 
 $_['error_upload_8']                = 'Uyarı: Bu uzantı türdeki dosyaları yükleyemezsiniz!';
 $_['error_upload_999']              = 'Uyarı: Kod hatası mümkün olabilir!';
 $_['error_curl']                    = 'CURL: Hata Kodu(%s): %s';
+
+// Summernote
+$_['summernote']                    = 'tr-TR';
+// Datepicker
+$_['datepicker']                    = 'tr';
