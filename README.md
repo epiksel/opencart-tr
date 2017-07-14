@@ -12,6 +12,11 @@ OpenCart PHP tabanlı açık kaynak kodlu online alışveriş sepetidir. Tüccar
 
 [Resmi Türkçe Destek Forumu](http://forum.opencart.com/viewforum.php?f=171)
 
+## SSL Sertifikaları - SSL Certificates
+E-Ticaret siteleriniz için [SSL Sertifikası](https://openix.io/tr/ssl-sertifikalari) satın alarak bize destek olabilirsiniz.
+
+You can support us by purchasing an [SSL Certificate](https://openix.io/en/ssl-certificates) for your e-commerce sites.
+
 ## Lisans
 
 [GNU General Public License version 3 (GPLv3)](https://github.com/epiksel/opencart-tr/blob/master/lisans.txt)
@@ -19,9 +24,3 @@ OpenCart PHP tabanlı açık kaynak kodlu online alışveriş sepetidir. Tüccar
 ## Türkçe Çeviri
 
 [E-Piksel E-Ticaret ve Bilgi Teknolojileri](https://e-piksel.com)
-
-## SSL Sertifikaları
-E-Ticaret siteleriniz için [SSL Sertifikası](https://openix.io/tr/ssl-sertifikalari) satın alarak bize destek olabilirsiniz.
-
-## SSL Certificates
-You can support us by purchasing an [SSL Certificate](https://openix.io/en/ssl-certificates) for your e-commerce sites.
