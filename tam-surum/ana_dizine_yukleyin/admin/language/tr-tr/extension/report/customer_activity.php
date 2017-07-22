@@ -6,6 +6,7 @@ $_['heading_title']                = 'Müşteri Etkinlik Raporu';
 
 // Text
 $_['text_extension']               = 'Eklentiler';
+$_['text_edit']                    = 'Müşteri Etkinlik Raporu Düzenle';
 $_['text_success']                 = 'Başarılı: Müşteri etkinlik raporu güncellendi!';
 $_['text_filter']                  = 'Filtre';
 $_['text_activity_register']       = '<a href="customer_id=%d">%s</a> adında yeni müşteri kayıt oldu.';

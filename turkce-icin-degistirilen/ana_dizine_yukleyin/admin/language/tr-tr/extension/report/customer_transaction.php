@@ -6,6 +6,7 @@ $_['heading_title']         = 'Müşteri İşlemler Raporu';
 
 // Text
 $_['text_extension']        = 'Eklentiler';
+$_['text_edit']             = 'Müşteri İşlemler Raporu Düzenle';
 $_['text_success']          = 'Başarılı: Müşteri işlemler raporu güncellendi!';
 $_['text_filter']           = 'Filtre';
 

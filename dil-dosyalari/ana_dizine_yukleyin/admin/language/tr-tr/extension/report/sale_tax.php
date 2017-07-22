@@ -6,6 +6,7 @@ $_['heading_title']     = 'Vergi Raporu';
 
 // Text
 $_['text_extension']    = 'Eklentiler';
+$_['text_edit']         = 'Vergi Raporu Düzenle';
 $_['text_success']      = 'Başarılı: Vergi raporu güncellendi!';
 $_['text_filter']       = 'Filtre';
 $_['text_year']         = 'Yıllar';

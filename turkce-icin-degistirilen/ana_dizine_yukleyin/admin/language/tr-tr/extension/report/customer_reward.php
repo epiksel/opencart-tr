@@ -6,6 +6,7 @@ $_['heading_title']         = 'Müşteri Puan Raporu';
 
 // Text
 $_['text_extension']        = 'Eklentiler';
+$_['text_edit']             = 'Müşteri Puan Raporu Düzenle';
 $_['text_success']          = 'Başarılı: Müşteri puan raporu güncellendi!';
 $_['text_filter']           = 'Filtre';
 

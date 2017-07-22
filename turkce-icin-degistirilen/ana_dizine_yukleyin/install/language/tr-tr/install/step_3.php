@@ -11,6 +11,7 @@ $_['text_db_administration'] = '2. Lütfen yönetim için bir kullanıcı adı v
 $_['text_mysqli']            = 'MySQLi';
 $_['text_mysql']             = 'MySQL';
 $_['text_mpdo']              = 'mPDO';
+$_['text_pgsql']             = 'PostgreSQL';
 
 // Entry
 $_['entry_db_driver']        = 'VT Sürücüsü';

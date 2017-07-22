@@ -6,6 +6,7 @@ $_['heading_title']     = 'Ürün İade Raporu';
 
 // Text
 $_['text_extension']    = 'Eklentiler';
+$_['text_edit']         = 'Ürün İade Raporu Düzenle';
 $_['text_success']      = 'Başarılı: Ürün iade raporu güncellendi!';
 $_['text_filter']       = 'Filtre';
 $_['text_year']         = 'Yıllar';
