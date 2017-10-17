@@ -23,7 +23,7 @@ $_['entry_mask']        = 'Maske';
 
 // Help
 $_['help_filename']     = 'Download dizinine dosya yüklemek için "Yükle" butonuyla ya da FTP kullanarak yükleyebilir ve aşağıda maske adını girebilirsiniz.';
-$_['help_mask']         = 'Ayrıca tavsiye edilir, dosya adı ve maske insanların direk bağlantı adresi girerek dosyalarınızı indirmelerini engeller.';
+$_['help_mask']         = 'Maske kullanmanız tavsiye edilir. Dosya adı ve maske insanların direk bağlantı adresi girerek dosyalarınızı indirmelerini engeller.';
 
 // Error
 $_['error_permission']  = 'Uyarı: Dosyaları düzenleme iznine sahip değilsiniz!';
