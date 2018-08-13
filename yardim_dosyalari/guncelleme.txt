@@ -1,14 +1,13 @@
-    ///////////////////////////////////////////////
-   ///	 OpenCart Güncelleme Aşamaları		   ///
-  ///		http://e-piksel.com			      ///
- ///	github.com/epiksel/opencart-tr		 ///
-///////////////////////////////////////////////
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||
+|||		OpenCart Güncelleme Aşamaları				|||
+|||		https://e-piksel.com						|||
+|||		https://github.com/epiksel/opencart-tr		|||
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
-Güncelleme dökümanı için aşağıdaki adresi ziyaret edebilirsiniz:
-http://weblenti.com/how-to-opencart-upgrade
+=== GÜNCEL VE RESİMLİ GÜNCELLEME AŞAMALARI İÇİN AŞAĞIDAKİ ADRESİ ZİYARET EDİN ===
+https://destekpaneli.com/viewtopic.php?t=20
 
 ------------------------------------------------
 
-TÜRKÇE ÇEVİRİ
-E-Piksel E-Ticaret ve Bilgi Teknolojileri
-http://e-piksel.com
+=== TÜRKÇE ÇEVİRİ ===
+https://e-piksel.com
