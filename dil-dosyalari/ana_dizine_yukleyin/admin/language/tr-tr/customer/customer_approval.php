@@ -12,7 +12,7 @@ $_['text_customer']         = 'Müşteri';
 $_['text_affiliate']        = 'Ortak';
 
 // Column
-$_['column_name']           = 'Müşteri Adı';
+$_['column_customer']       = 'Müşteri';
 $_['column_email']          = 'E-Posta';
 $_['column_customer_group'] = 'Müşteri Grubu';
 $_['column_type']           = 'Türü';
@@ -20,7 +20,7 @@ $_['column_date_added']     = 'Ekleme Tarihi';
 $_['column_action']         = 'Eylem';
 
 // Entry
-$_['entry_name']            = 'Müşteri Adı';
+$_['entry_customer']        = 'Müşteri';
 $_['entry_email']           = 'E-Posta';
 $_['entry_customer_group']  = 'Müşteri Grubu';
 $_['entry_type']            = 'Türü';

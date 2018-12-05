@@ -18,5 +18,5 @@ $_['text_message']  = '<p>Ödeme işlemi sırasında bir sorun oluştu ve sipari
 
 <p>Lütfen başka bir ödeme yöntemi kullanarak yeniden sipariş vermeyi deneyin.</p>
 
-<p>Eğer sorun devam ederse, lütfen <a href="%s">iletişim sayfasında</a> sipariş detaylarınız ile birlikte bizimle irtibata geçiniz.</p>
+<p>Eğer sorun devam ederse, lütfen <a href="%s">iletişim sayfasından</a> sipariş detaylarınız ile birlikte bizimle irtibata geçiniz.</p>
 ';

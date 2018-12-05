@@ -25,11 +25,11 @@ $_['entry_image']           = 'Resim';
 
 // Error
 $_['error_permission']      = 'Uyarı: Kullanıcıları düzenleme iznine sahip değilsiniz!';
-$_['error_exists_username'] = 'Uyarı: Kullanıcı adı zaten kullanılıyor!';
+$_['error_username_exists'] = 'Uyarı: Kullanıcı adı zaten kullanılıyor!';
 $_['error_username']        = 'Kullanıcı Adı 3 ile 20 karakter arasında olmalı!';
 $_['error_password']        = 'Parola 4 ile 20 karakter arasında olmalı!';
 $_['error_confirm']         = 'Parolanız birbiriyle uyuşmuyor!';
 $_['error_firstname']       = 'Ad 1 ile 32 karakter arasında olmalı!';
 $_['error_lastname']        = 'Soyadı 1 ile 32 karakter arasında olmalı!';
 $_['error_email']           = 'E-Posta adresi geçersiz!';
-$_['error_exists_email']    = 'Uyarı: E-Posta adresiyle kayıtlı bir kullanıcı var!';
+$_['error_email_exists']    = 'Uyarı: E-Posta adresiyle kayıtlı bir kullanıcı var!';

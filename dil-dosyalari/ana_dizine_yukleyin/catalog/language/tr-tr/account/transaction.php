@@ -13,4 +13,4 @@ $_['column_amount']      = 'Tutar (%s)';
 $_['text_account']       = 'Hesabım';
 $_['text_transaction']   = 'Bakiye İşlemlerim';
 $_['text_total']         = 'Geçerli bakiyeniz:';
-$_['text_empty']         = 'Herhangi bir işleminiz yok!';
+$_['text_no_results']    = 'Herhangi bir işleminiz yok!';

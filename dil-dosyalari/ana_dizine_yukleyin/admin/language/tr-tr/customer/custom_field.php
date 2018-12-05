@@ -31,6 +31,7 @@ $_['text_value']           = 'Özel Alan Değeri';
 $_['column_name']          = 'Özel Alan Adı';
 $_['column_location']      = 'Konum';
 $_['column_type']          = 'Türü';
+$_['column_status']        = 'Durumu';
 $_['column_sort_order']    = 'Sıralama';
 $_['column_action']        = 'Eylem';
 
@@ -47,7 +48,7 @@ $_['entry_status']         = 'Durum';
 $_['entry_sort_order']     = 'Sıralama';
 
 // Help
-$_['help_regex']           = 'Regex Kulanımı. Örneğin: /[a-zA-Z0-9_-]/';
+$_['help_regex']           = 'Regex Kulanımı. Örneğin: [^a-zA-Z0-9_-]';
 $_['help_sort_order']      = 'Son alandan geriye doğru ayarlamak için eksi değer kullanın.';
 
 // Error

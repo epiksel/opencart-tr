@@ -6,7 +6,7 @@ $_['text_success']     = 'Başarılı: Eklentiler başarılı bir şekilde deği
 $_['text_unzip']       = 'Dosyalar açılıyor!';
 $_['text_move']        = 'Dosyalar kopyalanıyor!';
 $_['text_xml']         = 'Değişiklikler uygulanıyor!';
-$_['text_remove']      = 'Geçici dosyalar kaldırılıyor!';
+$_['text_clear']       = 'Geçici dosyalar temizleniyor!';
 
 // Error
 $_['error_permission'] = 'Uyarı: Eklentileri değiştirme iznine sahip değilsiniz!';

@@ -40,4 +40,5 @@ $_['error_permission']   = 'Uyarı: Seçenekleri düzenleme iznine sahip değils
 $_['error_name']         = 'Seçenek Adı 1 ile 128 karakter arasında olmalı!';
 $_['error_type']         = 'Uyarı: Seçenek Değeri gerekli!';
 $_['error_option_value'] = 'Seçenek Değer Adı 1 ile 128 karakter arasında olmalı!';
+$_['error_option']       = 'Uyarı: Bu seçenek değerini silemezsiniz, %s ürün tarafından kullanılıyor!';
 $_['error_product']      = 'Uyarı: Bu seçeneği silemezsiniz, %s ürün tarafından kullanılıyor!';

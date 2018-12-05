@@ -5,7 +5,7 @@
 $_['code']                          = 'tr';
 $_['direction']                     = 'ltr';
 $_['date_format_short']             = 'd/m/Y';
-$_['date_format_long']              = 'l dS F Y';
+$_['date_format_long']              = 'l jS F Y';
 $_['time_format']                   = 'h:i:s A';
 $_['datetime_format']               = 'd/m/Y H:i:s';
 $_['decimal_point']                 = ',';
@@ -19,6 +19,7 @@ $_['text_disabled']                 = 'Kapalı';
 $_['text_none']                     = ' --- Yok --- ';
 $_['text_select']                   = ' --- Seçiniz --- ';
 $_['text_select_all']               = 'Tümünü Seçiniz';
+$_['text_all']                      = 'Tümü';
 $_['text_unselect_all']             = 'Tüm Seçimi Kaldır';
 $_['text_all_zones']                = 'Hepsini Kapsa';
 $_['text_default']                  = ' <b>(Varsayılan)</b>';
@@ -101,14 +102,17 @@ $_['button_category_add']           = 'Kategori Ekle';
 $_['button_order']                  = 'Siparişi Görüntüle';
 $_['button_order_recurring']        = 'Abonelik Siparişini Göster';
 $_['button_buy']                    = 'Satın Al';
+$_['button_restore']                = 'Geri Yükle';
+$_['button_run']                    = 'Zamanlanmış Görevi Çalıştır';
+$_['button_backup']                 = 'Yedek Al';
+$_['button_developer']              = 'Geliştirici Ayarları';
 
 // Tab
-$_['tab_address']                   = 'Adres';
+$_['tab_address']                   = 'Adresler';
 $_['tab_additional']                = 'İlave Edilen';
 $_['tab_admin']                     = 'Yönetici';
 $_['tab_affiliate']                 = 'Ortaklık';
 $_['tab_attribute']                 = 'Özellik';
-$_['tab_customer']                  = 'Müşteri Detayları';
 $_['tab_comment']                   = 'Yorum';
 $_['tab_data']                      = 'Veri';
 $_['tab_description']               = 'Açıklama';
@@ -131,11 +135,8 @@ $_['tab_session']                   = 'Oturum';
 $_['tab_local']                     = 'Yerel';
 $_['tab_mail']                      = 'E-Posta';
 $_['tab_module']                    = 'Modül';
-$_['tab_payment']                   = 'Fatura Detayları';
 $_['tab_product']                   = 'Ürünler';
 $_['tab_reward']                    = 'Puan';
-$_['tab_shipping']                  = 'Kargo Detayları';
-$_['tab_total']                     = 'Toplamlar';
 $_['tab_transaction']               = 'İşlemler';
 $_['tab_voucher']                   = 'Hediye Çekleri';
 $_['tab_sale']                      = 'Satışlar';
@@ -143,6 +144,7 @@ $_['tab_marketing']                 = 'Pazarlama';
 $_['tab_online']                    = 'Çevirimiçi';
 $_['tab_activity']                  = 'Son Aktiviteler';
 $_['tab_recurring']                 = 'Abonelik';
+$_['tab_report']                    = 'Rapor';
 $_['tab_action']                    = 'Eylem';
 $_['tab_google']                    = 'Google';
 
@@ -158,7 +160,7 @@ $_['error_upload_8']                = 'Uyarı: Bu uzantı türdeki dosyaları y�
 $_['error_upload_999']              = 'Uyarı: Kod hatası mümkün olabilir!';
 $_['error_curl']                    = 'CURL: Hata Kodu(%s): %s';
 
-// Summernote
-$_['summernote']                    = 'tr-TR';
+// CKEditor
+$_['ckeditor']                      = 'tr';
 // Datepicker
 $_['datepicker']                    = 'tr';

@@ -12,12 +12,15 @@ $_['text_automatic']   = 'Otomatik Taşı';
 $_['text_manual']      = 'Elle Taşı';
 $_['text_move']        = 'Taşı';
 $_['text_to']          = 'to';
-$_['text_config']      = 'Düzenle ve Değiştir (config.php)';
-$_['text_admin']       = 'Düzenle ve Değiştir (admin/config.php)';
+$_['text_admin']       = 'admin/config.php dosyasında satırı değiştirin';
+$_['text_config']      = 'config.php dosyasında satırı değiştirin';
+$_['text_by']          = 'by';
+
+// Entry
+$_['entry_directory']  = 'Dizin';
 
 // Button
 $_['button_move']      = 'Taşı';
-$_['button_manual']    = 'Elle';
 
 // Error
 $_['error_permission'] = 'Uyarı: Depolama dizinin düzenleme iznine sahip değilsiniz!';
