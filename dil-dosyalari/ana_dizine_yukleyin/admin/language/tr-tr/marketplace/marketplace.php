@@ -63,7 +63,7 @@ $_['tab_comment']        = 'Yorum';
 // Button
 $_['button_opencart']    = 'Pazaryeri API';
 $_['button_purchase']    = 'Satın Al';
-$_['button_view_all']    = 'Tüm Uzantıları Göster';
+$_['button_view_all']    = 'Tüm Eklentileri';
 $_['button_get_support'] = 'Destek Al';
 $_['button_comment']     = 'Yorum';
 $_['button_reply']       = 'Cevapla';
