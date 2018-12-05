@@ -18,3 +18,5 @@ $_['text_lastname']       = 'Soyadı:';
 $_['text_company']        = 'Şirket:';
 $_['text_email']          = 'E-Posta:';
 $_['text_telephone']      = 'Telefon:';
+
+$_['button_login']        = 'Oturum Aç';

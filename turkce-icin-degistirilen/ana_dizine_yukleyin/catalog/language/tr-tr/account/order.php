@@ -18,7 +18,7 @@ $_['text_payment_method']   = 'Ödeme Metodu:';
 $_['text_comment']          = 'Sipariş Açıklamaları';
 $_['text_history']          = 'Sipariş Geçmişi';
 $_['text_success']          = 'Başarılı: <a href="%s">%s</a> no siparişinizdeki ürünler <a href="%s">sepetinize</a> eklendi!';
-$_['text_empty']            = 'Daha önce hiç sipariş vermediniz!';
+$_['text_no_results']       = 'Daha önce hiç sipariş vermediniz!';
 $_['text_error']            = 'İstediğiniz sipariş bulunamadı!';
 
 // Column

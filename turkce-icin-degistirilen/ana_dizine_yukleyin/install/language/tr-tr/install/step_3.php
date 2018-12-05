@@ -9,8 +9,7 @@ $_['text_step_3']            = 'Veritabanı ve Yönetim detaylarınızı girin.'
 $_['text_db_connection']     = '1. Lütfen veritabanı bağlantı bilgilerini girin.';
 $_['text_db_administration'] = '2. Lütfen yönetim için bir kullanıcı adı ve parola giriniz.';
 $_['text_mysqli']            = 'MySQLi';
-$_['text_mysql']             = 'MySQL';
-$_['text_mpdo']              = 'mPDO';
+$_['text_pdo']               = 'mPDO';
 $_['text_pgsql']             = 'PostgreSQL';
 
 // Entry
@@ -26,6 +25,7 @@ $_['entry_password']         = 'Parola';
 $_['entry_email']            = 'E-Posta';
 
 // Error
+$_['error_db_driver']        = 'VT Sürücüsü gerekli!';
 $_['error_db_hostname']      = 'Sunucu adı gerekli!';
 $_['error_db_username']      = 'VT Kullanıcı gerekli!';
 $_['error_db_database']      = 'Veritabanı adı gerekli!';

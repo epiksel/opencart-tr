@@ -1,7 +1,6 @@
 <?php
 // Site
 $_['site_url']             = '';
-$_['site_ssl']             = false;
 
 // Url
 $_['url_autostart']        = true;
@@ -40,7 +39,7 @@ $_['cache_engine']         = 'file'; // apc, file, mem or memcached
 $_['cache_expire']         = 3600;
 
 // Session
-$_['session_engine']       = 'db';
+$_['session_engine']       = 'file';
 $_['session_autostart']    = true;
 $_['session_name']         = 'OCSESSID';
 
@@ -48,6 +47,7 @@ $_['session_name']         = 'OCSESSID';
 $_['template_engine']      = 'twig';
 $_['template_directory']   = '';
 $_['template_cache']       = false;
+$_['template_extension']   = '.twig';
 
 // Error
 $_['error_display']        = true;
@@ -73,3 +73,4 @@ $_['action_router']        = 'startup/router';
 $_['action_error']         = 'error/not_found';
 $_['action_pre_action']    = array();
 $_['action_event']         = array();
+$_['action_cron']          = array();

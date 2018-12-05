@@ -3,7 +3,7 @@
 $_['code']                  = 'en';
 $_['direction']             = 'ltr';
 $_['date_format_short']     = 'd/m/Y';
-$_['date_format_long']      = 'l dS F Y';
+$_['date_format_long']      = 'l jS F Y';
 $_['time_format']           = 'h:i:s A';
 $_['datetime_format']       = 'd/m/Y H:i:s';
 $_['decimal_point']         = '.';
@@ -29,7 +29,7 @@ $_['button_cancel']         = 'Cancel';
 $_['button_compare']        = 'Compare this Product';
 $_['button_wishlist']       = 'Add to Wish List';
 $_['button_checkout']       = 'Checkout';
-$_['button_confirm']        = 'Confirm Order';
+$_['button_confirm']        = 'Confirm';
 $_['button_coupon']         = 'Apply Coupon';
 $_['button_delete']         = 'Delete';
 $_['button_download']       = 'Download';

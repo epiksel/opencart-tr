@@ -10,12 +10,19 @@ $_['text_list']         = 'Pazarlama Takip Listesi';
 $_['text_add']          = 'Pazarlama Takip Ekle';
 $_['text_edit']         = 'Pazarlama Takip Düzenle';
 $_['text_filter']       = 'Filtre';
+$_['text_history']      = 'Geçmiş';
+$_['text_history_add']  = 'Geçmiş Ekle';
+$_['text_report']       = 'Rapor';
 
 // Column
 $_['column_name']       = 'Kampanya Adı';
 $_['column_code']       = 'Kod';
 $_['column_clicks']     = 'Tıklama';
 $_['column_orders']     = 'Siparişler';
+$_['column_ip']         = 'IP';
+$_['column_account']    = 'Hesaplar';
+$_['column_store']      = 'Mağaza';
+$_['column_country']    = 'Ülke';
 $_['column_date_added'] = 'Ekleme Tarihi';
 $_['column_action']     = 'Eylem';
 

@@ -11,10 +11,6 @@ $_['text_list']                    = 'Mağaza Listesi';
 $_['text_add']                     = 'Mağaza Ekle';
 $_['text_edit']                    = 'Mağaza Düzenle';
 $_['text_items']                   = 'Öğeler';
-$_['text_tax']                     = 'Vergiler';
-$_['text_account']                 = 'Hesap';
-$_['text_checkout']                = 'Kasaya Git';
-$_['text_stock']                   = 'Stok';
 $_['text_shipping']                = 'Teslimat Adresi';
 $_['text_payment']                 = 'Fatura Adresi';
 
@@ -25,7 +21,6 @@ $_['column_action']                = 'Eylem';
 
 // Entry
 $_['entry_url']                    = 'Mağaza URL';
-$_['entry_ssl']                    = 'SSL URL';
 $_['entry_meta_title']             = 'Meta Başlığı';
 $_['entry_meta_description']       = 'Meta Açıklaması';
 $_['entry_meta_keyword']           = 'Meta Kelimeleri';
@@ -46,6 +41,8 @@ $_['entry_country']                = 'Ülke';
 $_['entry_zone']                   = 'Şehir';
 $_['entry_language']               = 'Dil';
 $_['entry_currency']               = 'Para Birimi';
+$_['entry_cookie']                 = 'Çerez Politikası';
+$_['entry_gdpr']                   = 'GDPR Politikası';
 $_['entry_tax']                    = 'Vergi Oranlarını Göster';
 $_['entry_tax_default']            = 'Varsayılan Mağaza Vergi Adresi';
 $_['entry_tax_customer']           = 'Varsayılan Müşteri Vergi Adresi';
@@ -61,16 +58,23 @@ $_['entry_stock_display']          = 'Stok Adedini Göster';
 $_['entry_stock_checkout']         = 'Stok Dışı Sipariş';
 $_['entry_logo']                   = 'Mağaza Logosu';
 $_['entry_icon']                   = 'Favicon';
-$_['entry_secure']                 = 'SSL Kullan';
+
+// Tab
+$_['tab_legal']                    = 'Yasal';
+$_['tab_tax']                      = 'Vergiler';
+$_['tab_account']                  = 'Hesap';
+$_['tab_checkout']                 = 'Kasaya Git';
+$_['tab_stock']                    = 'Stok';
 
 // Help
 $_['help_url']                     = 'Mağazanızın tam adresini yazınız. Sonuna \'/\' işaretini eklemeyi unutmayınız. Örneğin: http://e-piksel.com/shop/<br />Yeni bir mağaza oluşturmak için dizin oluşturmayınız. Hostinginiz her zaman başka bir etki alanı veya alt etki alanını işaret etmelidir.';
-$_['help_ssl']                     = 'Mağazanızın SSL URL adresi. Sonuna \'/\' işaretini eklemeyi unutmayınız. Örneğin: https://www.e-piksel.com/shop/<br />Yeni bir mağaza oluşturmak için dizin oluşturmayınız. Hostinginiz her zaman başka bir etki alanı veya alt etki alanını işaret etmelidir.';
 $_['help_geocode']                 = 'Lütfen mağazanızın coğrafi kodunu elle giriniz.';
 $_['help_open']                    = 'Mağazanızın çalışma saatlerini yazınız.';
 $_['help_comment']                 = 'Bu alana müşterilerinize belirtmek istediğiniz özel bir not ya da açıklama için kullanabilirsiniz. Örn: Mağazamızda çek kabul edilmez gibi.';
 $_['help_location']                = 'Farklı mağaza konumları iletişim sayfasında gösterilecektir.';
 $_['help_currency']                = 'Varsayılan para birimini değiştirir. Web tarayıcınızın önbelleğini ve çerezleri temizlemeniz gerekir.';
+$_['help_cookie']                  = 'AB Yasası\'nın bir parçası olarak Çerez politikasını görüntüleyin.';
+$_['help_gdpr']                    = 'GDPR özelliklerini etkinleştirin ve GDPR politikasına bağlantı verin.';
 $_['help_tax_default']             = 'Mağaza adresi kimse oturum açmadığında vergi hesaplamak için kullanılır. Kargo ya da ödeme adresi için müşterilerinizde kullanılacak varsayılan mağaza adresi seçebilirsiniz.';
 $_['help_tax_customer']            = 'Müşteri oturum açtığında hesaplamalar için kullanılacak vergi adresi. Müşterileriniz için varsayılan kargo ya da fatura adresi seçebilirsiniz.';
 $_['help_customer_group']          = 'Varsayılan müşteri grubu.';
@@ -83,7 +87,6 @@ $_['help_order_status']            = 'Sipariş işlendiğinde varsayılan sipari
 $_['help_stock_display']           = 'Ürün sayfasında stok adedini gösterir.';
 $_['help_stock_checkout']          = 'Müşteriler stokta olmayan ürünleri sipariş edebilsinler.';
 $_['help_icon']                    = 'Favicon 16x16 PNG türünden olmalıdır.';
-$_['help_secure']                  = 'SSL kullanbilmeniz için hostunuzda SSL sertifikası kurulu olması gerekir.';
 
 // Error
 $_['error_warning']                = 'Uyarı: Oluşan hatalar için lütfen formu dikkatli kontrol ediniz!';

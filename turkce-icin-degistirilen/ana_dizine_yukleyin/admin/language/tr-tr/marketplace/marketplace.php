@@ -24,6 +24,7 @@ $_['text_other']         = 'Diğerleri';
 $_['text_free']          = 'Ücretsiz';
 $_['text_paid']          = 'Ücretli';
 $_['text_purchased']     = 'Satın Alındı';
+$_['text_recommended']   = 'Tavsiye Edilen';
 $_['text_date_modified'] = 'Güncelleme Tarihi';
 $_['text_date_added']    = 'Ekleme Tarihi';
 $_['text_rating']        = 'Oylama';
@@ -65,6 +66,7 @@ $_['button_view_all']    = 'Tüm Uzantıları Göster';
 $_['button_get_support'] = 'Destek Al';
 $_['button_comment']     = 'Yorum';
 $_['button_reply']       = 'Cevapla';
+$_['button_forgot_pin']  = 'PIN\'i Unuttun Mu?';
 
 // Error
 $_['error_permission']   = 'Uyarı: Eklentileri değiştirme iznine sahip değilsiniz!';

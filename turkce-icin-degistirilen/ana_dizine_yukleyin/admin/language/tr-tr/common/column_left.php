@@ -2,6 +2,7 @@
 /* Turkceye Ceviren eka7a - http://e-piksel.com */
 
 // Text
+$_['text_affiliate']            = 'Ortaklar';
 $_['text_api']                  = 'API';
 $_['text_attribute']            = 'Özellikler';
 $_['text_attribute_group']      = 'Özellik Grupları';
@@ -11,6 +12,7 @@ $_['text_catalog']              = 'Katalog';
 $_['text_category']             = 'Kategoriler';
 $_['text_country']              = 'Ülkeler';
 $_['text_coupon']               = 'Kuponlar';
+$_['text_cron']                 = 'Zamanlanmış Görevler';
 $_['text_currency']             = 'Para Birimleri';
 $_['text_customer']             = 'Müşteriler';
 $_['text_customer_approval']    = 'Müşteri Onayları';
@@ -25,6 +27,7 @@ $_['text_event']                = 'Olaylar';
 $_['text_extension']            = 'Eklentiler';
 $_['text_filter']               = 'Filtreler';
 $_['text_geo_zone']             = 'Bölgeler';
+$_['text_gdpr']                 = 'GDPR';
 $_['text_information']          = 'Bilgi Sayfaları';
 $_['text_installer']            = 'Eklenti Yükle';
 $_['text_language']             = 'Diller';
@@ -45,6 +48,8 @@ $_['text_option']               = 'Seçenekler';
 $_['text_order']                = 'Siparişler';
 $_['text_order_status']         = 'Sipariş Durumları';
 $_['text_product']              = 'Ürünler';
+$_['text_product_option']       = 'Ürün Seçenekleri';
+$_['text_product_variant']      = 'Ürün Varyantları';
 $_['text_reports']              = 'Raporlar';
 $_['text_review']               = 'Yorumlar';
 $_['text_return']               = 'Ürün İadeleri';
@@ -53,6 +58,8 @@ $_['text_return_reason']        = 'İade Nedenleri';
 $_['text_return_status']        = 'İade Durumları';
 $_['text_sale']                 = 'Satışlar';
 $_['text_setting']              = 'Mağazalar';
+$_['text_seo']                  = 'SEO';
+$_['text_seo_regex']            = 'SEO Regex';
 $_['text_seo_url']              = 'SEO Bağlantıları';
 $_['text_statistics']           = 'İstatistikler';
 $_['text_stock_status']         = 'Stok Durumları';

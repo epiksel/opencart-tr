@@ -7,7 +7,7 @@ $_['heading_title']     = 'Dosyalarım';
 // Text
 $_['text_account']      = 'Hesabım';
 $_['text_downloads']    = 'Dosyalarım';
-$_['text_empty']        = 'Daha önce dosya içeren bir ürün siparişi vermediniz!';
+$_['text_no_results']   = 'Daha önce dosya içeren bir ürün siparişi vermediniz!';
 
 // Column
 $_['column_order_id']   = 'Sipariş No';

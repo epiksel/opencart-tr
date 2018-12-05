@@ -10,6 +10,7 @@ class ControllerInstallStep3 extends Controller {
 
 			$this->model_install_install->database($this->request->post);
 
+			// Catalog config.php
 			$output  = '<?php' . "\n";
 			$output .= '// HTTP' . "\n";
 			$output .= 'define(\'HTTP_SERVER\', \'' . HTTP_OPENCART . '\');' . "\n\n";
@@ -47,6 +48,7 @@ class ControllerInstallStep3 extends Controller {
 
 			fclose($file);
 
+			// Admin config.php
 			$output  = '<?php' . "\n";
 			$output .= '// HTTP' . "\n";
 			$output .= 'define(\'HTTP_SERVER\', \'' . HTTP_OPENCART . 'admin/\');' . "\n";
@@ -124,6 +126,12 @@ class ControllerInstallStep3 extends Controller {
 			$data['error_warning'] = '';
 		}
 
+		if (isset($this->error['db_driver'])) {
+			$data['error_db_driver'] = $this->error['db_driver'];
+		} else {
+			$data['error_db_driver'] = '';
+		}
+
 		if (isset($this->error['db_hostname'])) {
 			$data['error_db_hostname'] = $this->error['db_hostname'];
 		} else {
@@ -173,6 +181,23 @@ class ControllerInstallStep3 extends Controller {
 		}
 
 		$data['action'] = $this->url->link('install/step_3');
+
+		$db_drivers = array(
+			'mysqli',
+			'pdo',
+			'pgsql'
+		);
+
+		$data['drivers'] = array();
+
+		foreach ($db_drivers as $db_driver) {
+			if (extension_loaded($db_driver)) {
+				$data['drivers'][] = array(
+					'text'  => $this->language->get('text_' . $db_driver),
+					'value' => $db_driver
+				);
+			}
+		}
 
 		if (isset($this->request->post['db_driver'])) {
 			$data['db_driver'] = $this->request->post['db_driver'];
@@ -234,11 +259,6 @@ class ControllerInstallStep3 extends Controller {
 			$data['email'] = '';
 		}
 
-		$data['mysqli'] = extension_loaded('mysqli');
-		$data['mysql'] = extension_loaded('mysql');
-		$data['pdo'] = extension_loaded('pdo');
-		$data['pgsql'] = extension_loaded('pgsql');
-
 		$data['back'] = $this->url->link('install/step_2');
 
 		$data['footer'] = $this->load->controller('common/footer');
@@ -263,34 +283,28 @@ class ControllerInstallStep3 extends Controller {
 
 		if (!$this->request->post['db_port']) {
 			$this->error['db_port'] = $this->language->get('error_db_port');
-		}		
+		}
 
-		if ($this->request->post['db_prefix'] && preg_match('/[^a-z0-9_]/', $this->request->post['db_prefix'])) {
+        if ($this->request->post['db_prefix'] && preg_match('/[^a-z0-9_]/', $this->request->post['db_prefix'])) {
 			$this->error['db_prefix'] = $this->language->get('error_db_prefix');
 		}
 
-		if ($this->request->post['db_driver'] == 'mysqli') {
+		$db_drivers = array(
+			'mysqli',
+			'pdo',
+			'pgsql'
+		);
+
+		if (!in_array($this->request->post['db_driver'], $db_drivers)) {
+			$this->error['db_driver'] = $this->language->get('error_db_driver');
+		} else {
 			try {
-				$db = new \DB\MySQLi($this->request->post['db_hostname'], $this->request->post['db_username'], html_entity_decode($this->request->post['db_password'], ENT_QUOTES, 'UTF-8'), $this->request->post['db_database'], $this->request->post['db_port']);
-				
-				if (is_resource($db)) {
-					$db->close();
-				}
-			} catch(Exception $e) {
-				$this->error['warning'] = $mysql->connect_error;
-			}
-		} elseif ($this->request->post['db_driver'] == 'mpdo') {
-			try {
-				$db = new \DB\mPDO($this->request->post['db_hostname'], $this->request->post['db_username'], html_entity_decode($this->request->post['db_password'], ENT_QUOTES, 'UTF-8'), $this->request->post['db_database'], $this->request->post['db_port']);
-			
-				if (is_resource($db)) {
-					$db->close();
-				}
+				$db = new \DB($this->request->post['db_driver'], html_entity_decode($this->request->post['db_hostname'], ENT_QUOTES, 'UTF-8'), html_entity_decode($this->request->post['db_username'], ENT_QUOTES, 'UTF-8'), html_entity_decode($this->request->post['db_password'], ENT_QUOTES, 'UTF-8'), html_entity_decode($this->request->post['db_database'], ENT_QUOTES, 'UTF-8'), $this->request->post['db_port']);
 			} catch(Exception $e) {
 				$this->error['warning'] = $e->getMessage();
 			}
-		}			
-		
+		}
+
 		if (!$this->request->post['username']) {
 			$this->error['username'] = $this->language->get('error_username');
 		}

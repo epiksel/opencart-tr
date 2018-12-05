@@ -12,6 +12,10 @@ $_['text_edit']                  = 'Sipariş Düzenle';
 $_['text_filter']                = 'Filtre';
 $_['text_order_detail']          = 'Sipariş Detayları';
 $_['text_customer_detail']       = 'Müşteri Detayları';
+$_['text_cart']                  = 'Alışveriş Sepeti';
+$_['text_payment_detail']        = 'Ödeme Detayları';
+$_['text_shipping_detail']       = 'Kargo Detayları';
+$_['text_total_detail']          = 'Toplam';
 $_['text_option']                = 'Seçenekler';
 $_['text_store']                 = 'Mağaza';
 $_['text_date_added']            = 'Ekleme Tarihi';
@@ -62,6 +66,7 @@ $_['text_commission_removed']    = 'Başarılı: Komisyon kaldırıldı!';
 $_['text_restock']               = 'Başarılı: Ürünler yeniden stoğa eklendi!';
 $_['text_upload']                = 'Dosyanız başarıyla yüklendi!';
 $_['text_picklist']              = 'İrsaliye Belgesi';
+$_['text_reward']                = 'Ödül Puanları';
 
 // Column
 $_['column_order_id']            = 'Sipariş No';

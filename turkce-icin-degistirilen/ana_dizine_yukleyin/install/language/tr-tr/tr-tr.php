@@ -1,6 +1,9 @@
 <?php
 /* Turkceye Ceviren eka7a - http://e-piksel.com */
 
+// Text
+$_['text_loading']    = 'Yükleniyor...';
+
 // Buttons
 $_['button_continue'] = 'Devam Et';
 $_['button_back']     = 'Geri';

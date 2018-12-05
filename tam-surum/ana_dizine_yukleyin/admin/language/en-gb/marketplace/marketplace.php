@@ -22,6 +22,7 @@ $_['text_other']         = 'Other';
 $_['text_free']          = 'Free';
 $_['text_paid']          = 'Paid';
 $_['text_purchased']     = 'Purchased';
+$_['text_recommended']   = 'Recommended';
 $_['text_date_modified'] = 'Date Modified';
 $_['text_date_added']    = 'Date Added';
 $_['text_rating']        = 'Rating';
@@ -63,6 +64,7 @@ $_['button_view_all']    = 'View all extensions';
 $_['button_get_support'] = 'Get Support';
 $_['button_comment']     = 'Comment';
 $_['button_reply']       = 'Reply';
+$_['button_forgot_pin']  = 'Forgot PIN?';
 
 // Error
 $_['error_permission']   = 'Warning: You do not have permission to modify extensions!';

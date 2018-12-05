@@ -5,7 +5,7 @@
 $_['code']                  = 'tr';
 $_['direction']             = 'ltr';
 $_['date_format_short']     = 'd/m/Y';
-$_['date_format_long']      = 'l dS F Y';
+$_['date_format_long']      = 'l jS F Y';
 $_['time_format']           = 'h:i:s A';
 $_['datetime_format']       = 'd/m/Y H:i:s';
 $_['decimal_point']         = ',';
@@ -31,7 +31,7 @@ $_['button_cancel']         = 'İptal';
 $_['button_compare']        = 'Karşılaştırma listesine ekle';
 $_['button_wishlist']       = 'Alışveriş Listeme Ekle';
 $_['button_checkout']       = 'Alışverişi Tamamla';
-$_['button_confirm']        = 'Siparişi Onaylıyorum';
+$_['button_confirm']        = 'Onaylıyorum';
 $_['button_coupon']         = 'Kuponu Kullan';
 $_['button_delete']         = 'Sil';
 $_['button_download']       = 'İndir';

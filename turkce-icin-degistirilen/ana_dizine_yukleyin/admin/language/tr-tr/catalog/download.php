@@ -10,9 +10,15 @@ $_['text_list']         = 'Dosya Listesi';
 $_['text_add']          = 'Dosya Ekle';
 $_['text_edit']         = 'Dosya Düzenle';
 $_['text_upload']       = 'Dosyanız başarılı bir şekilde yüklendi!';
+$_['text_report']       = 'Report';
+
 
 // Column
 $_['column_name']       = 'İndirme Adı';
+$_['column_ip']         = 'IP';
+$_['column_account']    = 'Accounts';
+$_['column_store']      = 'Store';
+$_['column_country']    = 'Country';
 $_['column_date_added'] = 'Ekleme Tarihi';
 $_['column_action']     = 'Eylem';
 
@@ -22,8 +28,8 @@ $_['entry_filename']    = 'Dosya Adı';
 $_['entry_mask']        = 'Maske';
 
 // Help
-$_['help_filename']     = 'Download dizinine dosya yüklemek için "Yükle" butonuyla ya da FTP kullanarak yükleyebilir ve aşağıda maske adını girebilirsiniz.';
-$_['help_mask']         = 'Ayrıca tavsiye edilir, dosya adı ve maske insanların direk bağlantı adresi girerek dosyalarınızı indirmelerini engeller.';
+$_['help_filename']     = 'Yükle butonunu ya da FTP kullanarak dosyanızı yükleyebilir ve aşağıya ayrıntıları girebilirsiniz.';
+$_['help_mask']         = 'Maske kullanmanız tavsiye edilir. Dosya adı ve maske insanların direk bağlantı adresi girerek dosyalarınızı indirmelerini engeller.';
 
 // Error
 $_['error_permission']  = 'Uyarı: Dosyaları düzenleme iznine sahip değilsiniz!';

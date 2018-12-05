@@ -20,7 +20,7 @@ $_['text_status']        = 'Durumu:';
 $_['text_date_added']    = 'Ekleme Tarihi:';
 $_['text_comment']       = 'İade Açıklamları';
 $_['text_history']       = 'İade Geçmişi';
-$_['text_empty']         = 'Daha önce iade isteğinde bulunmadınız!';
+$_['text_no_results']    = 'Daha önce iade isteğinde bulunmadınız!';
 $_['text_agree']         = '<a href="%s" class="agree"><b>%s</b></a>\'nı okudum ve kabul ediyorum.';
 
 // Column

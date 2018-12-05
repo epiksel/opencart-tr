@@ -15,6 +15,7 @@ $_['text_iso']             = 'You can find a full list of ISO currency codes and
 $_['column_title']         = 'Para Birimi Adı';
 $_['column_code']          = 'Kodu';
 $_['column_value']         = 'Değeri';
+$_['column_status']        = 'Durumu';
 $_['column_date_modified'] = 'Son Güncelleme';
 $_['column_action']        = 'Eylem';
 

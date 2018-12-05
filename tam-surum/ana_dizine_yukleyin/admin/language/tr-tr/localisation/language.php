@@ -29,8 +29,8 @@ $_['help_status']       = 'Dili göster/gizle';
 
 // Error
 $_['error_permission']  = 'Uyarı: Dilleri düzenleme iznine sahip değilsiniz!';
-$_['error_exists']      = 'Uyarı: Bu dili daha önce eklediniz!';
-$_['error_name']        = 'Dil Adı 3 ile 32 karakter arasında olmalı!';
+$_['error_exists']      = 'Uyarı: Bu dili zaten eklediniz!';
+$_['error_name']        = 'Dil Adı 1 ile 32 karakter arasında olmalı!';
 $_['error_code']        = 'Dil Kodu en az 2 karakter olmalı!';
 $_['error_locale']      = 'Yerel gerekli!';
 $_['error_default']     = 'Uyarı: Bu dili silemezsiniz, varsayılan mağaza tarafından kullanılıyor!';

@@ -30,6 +30,6 @@ $_['entry_type']        = 'Türü';
 // Error
 $_['error_permission']  = 'Uyarı: Üreticileri düzenleme iznine sahip değilsiniz!';
 $_['error_name']        = 'Üretici Adı 1 ile 64 karakter arasında olmalı!';
-$_['error_keyword']     = 'SEO Bağlantısı zaten kullanılıyor!';
-$_['error_unique']      = 'SEO Bağlantısı benzersiz olmalı!';
+$_['error_seo']         = 'SEO Bağlantısı gerekli!';
+$_['error_keyword']     = 'SEO Bağlantısı benzersiz olmalı!';
 $_['error_product']     = 'Uyarı: Bu üreticiyi silemezsiniz, %s ürün tarafından kullanılıyor!';

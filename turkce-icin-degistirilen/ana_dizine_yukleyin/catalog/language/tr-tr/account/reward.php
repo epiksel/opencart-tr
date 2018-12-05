@@ -13,4 +13,4 @@ $_['column_points']      = 'Puan';
 $_['text_account']       = 'Hesabım';
 $_['text_reward']        = 'Puanlarım';
 $_['text_total']         = 'Toplam puanınız:';
-$_['text_empty']         = 'Hiç puanınız yok!';
+$_['text_no_results']    = 'Hiç puanınız yok!';

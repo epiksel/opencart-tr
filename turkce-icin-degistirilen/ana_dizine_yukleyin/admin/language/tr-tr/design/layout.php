@@ -31,6 +31,7 @@ $_['entry_module']        = 'Modül';
 // Error
 $_['error_permission']    = 'Uyarı: Bölümleri düzenleme iznine sahip değilsiniz!';
 $_['error_name']          = 'Bölüm Adı 3 ile 64 karakter arasında olmalı!';
+$_['error_module']        = 'Modül gerekli!';
 $_['error_default']       = 'Uyarı: Bu bölümü silemezsiniz, varsayılan mağaza bölümü olarak kullanılıyor!';
 $_['error_store']         = 'Uyarı: Bu bölümü silemezsiniz, %s mağaza tarafından kullanılıyor!';
 $_['error_product']       = 'Uyarı: Bu bölümü silemezsiniz, %s ürün tarafından kullanılıyor!';

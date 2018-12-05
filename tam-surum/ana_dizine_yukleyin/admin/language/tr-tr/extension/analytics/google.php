@@ -8,7 +8,7 @@ $_['heading_title']    = 'Google Analitik';
 $_['text_extension']   = 'Eklentiler';
 $_['text_success']     = 'Başarılı: Google Analitik başarılı bir şekilde değiştirildi!';
 $_['text_edit']        = 'Google Analitik Düzenle';
-$_['text_signup']      = '<a href="http://www.google.com/analytics/" target="_blank"><u>Google Analitik</u></a> hesabınızda oturum açın ve mağazanız için bir profil oluşturun. Oluşturduğunuz profile ait kodu buraya yapıştırın.';
+$_['text_signup']      = '<a href="http://www.google.com/analytics/" target="_blank" class="alert-link">Google Analitik</a> hesabınızda oturum açın ve mağazanız için bir profil oluşturun. Oluşturduğunuz profile ait kodu buraya yapıştırın.';
 $_['text_default']     = 'Varsayılan';
 
 // Entry

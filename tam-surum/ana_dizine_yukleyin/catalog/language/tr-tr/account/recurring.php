@@ -18,15 +18,12 @@ $_['text_quantity']                        = 'Adet:';
 $_['text_description']                     = 'Açıklama';
 $_['text_reference']                       = 'Referans';
 $_['text_transaction']                     = 'İşlemler';
-
-
 $_['text_status_1']                        = 'Aktif';
 $_['text_status_2']                        = 'Pasif';
 $_['text_status_3']                        = 'İptal Edildi';
 $_['text_status_4']                        = 'Askıya Alınmış';
 $_['text_status_5']                        = 'Süresi Bitmiş';
 $_['text_status_6']                        = 'Onay Bekliyor';
-
 $_['text_transaction_date_added']          = 'Oluşturuldu';
 $_['text_transaction_payment']             = 'Ödeme';
 $_['text_transaction_outstanding_payment'] = 'Olağanüstü Ödeme';
@@ -37,10 +34,8 @@ $_['text_transaction_suspended']           = 'Askıya Alındı';
 $_['text_transaction_suspended_failed']    = 'Başarısız Ödemeden Askıya Alındı';
 $_['text_transaction_outstanding_failed']  = 'Olağanüstü Ödeme Başarısız';
 $_['text_transaction_expired']             = 'Süresi Geçdi';
-
-$_['text_empty']                           = 'Otomatik ödeme yok.';
+$_['text_no_results']                      = 'Otomatik ödeme yok.';
 $_['text_error']                           = 'İstediğiniz otomatik ödeme siparişi bulunamadı!';
-
 $_['text_cancelled']                       = 'Otomatik ödeme şu an iptal edildi';
 
 // Column

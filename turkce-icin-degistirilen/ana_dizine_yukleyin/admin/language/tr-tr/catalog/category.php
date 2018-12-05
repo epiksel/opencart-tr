@@ -35,6 +35,7 @@ $_['entry_status']            = 'Durumu';
 $_['entry_layout']            = 'Bu Bölüm Gibi Davran';
 
 // Help
+$_['help_parent']             = '(Otomatik Tamamlama)';
 $_['help_filter']             = '(Otomatik Tamamlama)';
 $_['help_top']                = 'Kategoriyi katalog sayfasında üst menüde göster (sadece ana kategoriler).';
 $_['help_column']             = 'Üst menüdeki alt kategoriler için kullanılacak sütun sayısı (sadece ana kategoriler).';
@@ -42,8 +43,8 @@ $_['help_column']             = 'Üst menüdeki alt kategoriler için kullanıla
 // Error
 $_['error_warning']           = 'Uyarı: Oluşan hatalar için lütfen formu dikkatli kontrol ediniz!';
 $_['error_permission']        = 'Uyarı: Kategorileri değiştirme iznine sahip değilsiniz!';
-$_['error_name']              = 'Uyarı: Kategori adı 1 ile 255 karakter arasında olmalı!';
-$_['error_meta_title']        = 'Uyarı: Meta başlığı 1 ile 255 karakter arasında olmalı!';
-$_['error_keyword']           = 'SEO Bağlantısı zaten kullanılıyor!';
-$_['error_unique']            = 'SEO Bağlantısı benzersiz olmalı!';
+$_['error_name']              = 'Kategori adı 1 ile 255 karakter arasında olmalı!';
+$_['error_meta_title']        = 'Meta başlığı 1 ile 255 karakter arasında olmalı!';
+$_['error_seo']               = 'SEO Bağlantısı gerekli!';
+$_['error_keyword']           = 'SEO Bağlantısı benzersiz olmalı!';
 $_['error_parent']            = 'Kategorinin kendisi ana kategori olarak seçilemez!';

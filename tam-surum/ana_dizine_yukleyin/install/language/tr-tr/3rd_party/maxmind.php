@@ -7,7 +7,7 @@ $_['heading_title']      = 'MaxMind';
 // Text
 $_['text_maxmind']       = 'Fraud detection service.';
 $_['text_success']       = 'MaxMind fraud service has been installed';
-$_['text_signup']        = 'If you don\'t have a license key you can sign up <a href="http://www.maxmind.com/?rId=epiksel" target="_blank">here</a>.';
+$_['text_signup']        = 'If you don\'t have a license key you can sign up <a href="https://www.maxmind.com/?rId=epiksel" target="_blank">here</a>.';
 
 // Entry
 $_['entry_key']          = 'Lisans Anahtarı';
