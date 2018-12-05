@@ -1,5 +1,6 @@
 <?php
-/* Turkceye Ceviren eka7a - http://e-piksel.com */
+// Translator : Ekrem KAYA
+// Website    : https://e-piksel.com
 
 // Text
 $_['text_information']  = 'Bilgiler';
@@ -17,7 +18,7 @@ $_['text_account']      = 'Hesabım';
 $_['text_order']        = 'Siparişlerim';
 $_['text_wishlist']     = 'Alışveriş Listem';
 $_['text_newsletter']   = 'Bülten Aboneliği';
-$_['text_powered']      = '%s &copy; %s - Tüm Hakları Saklıdır.<br />Altyapı: <a href="//www.opencart.com" title="OpenCart">OpenCart</a> - Geliştirici: <a href="//e-piksel.com" title="E-Piksel E-Ticaret ve Bilgi Teknolojileri">E-Piksel</a>';
+$_['text_powered']      = '%s &copy; %s - Tüm Hakları Saklıdır.<br />Altyapı: <a href="https://www.opencart.com" title="OpenCart">OpenCart</a> - Türkçe Çeviri: <a href="https://e-piksel.com" title="E-Piksel E-Ticaret ve Bilgi Teknolojileri">E-Piksel</a>';
 
 $_['text_address']      = 'Adres';
 $_['text_open']         = 'Çalışma Saatleri';

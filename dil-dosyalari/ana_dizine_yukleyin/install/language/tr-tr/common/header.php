@@ -1,2 +1,3 @@
 <?php
-/* Turkceye Ceviren eka7a - http://e-piksel.com */
+// Translator : Ekrem KAYA
+// Website    : https://e-piksel.com
