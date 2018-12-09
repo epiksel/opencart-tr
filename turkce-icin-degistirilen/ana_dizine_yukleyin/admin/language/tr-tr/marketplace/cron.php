@@ -1,27 +1,30 @@
 <?php
+// Translator : Ekrem KAYA
+// Website    : https://e-piksel.com
+
 // Heading
-$_['heading_title']        = 'Cron Jobs';
+$_['heading_title']        = 'Zamanlanmış Görevler';
 
 // Text
-$_['text_success']         = 'Success: You have modified cron jobs!';
-$_['text_instruction']     = 'CRON Instructions';
-$_['text_list']            = 'Cron List';
-$_['text_cron_1']          = 'Cron Job\'s are scheduled tasks that are run periodically. To setup your servers to use cron job you can read the <a href="http://docs.opencart.com/extension/cron/" target="_blank" class="alert-link">opencart documentation</a> page.';
-$_['text_cron_2']          = 'You need to set your Cron task to run every hour.';
-$_['text_hour']            = 'Hour';
-$_['text_day']             = 'Day';
-$_['text_month']           = 'Month';
+$_['text_success']         = 'Başarılı: Zamanlanmış Görevler başarılı bir şekilde değiştirildi!';
+$_['text_instruction']     = 'Görev Talimatları';
+$_['text_list']            = 'Görev Listesi';
+$_['text_cron_1']          = 'Cron İşleri, periyodik olarak çalıştırılan zamanlanmış görevlerdir. Sunucularınızı Zamanlanmış Görevleri kullanacak şekilde ayarlamak için <a href="http://docs.opencart.com/extension/cron/" target="_blank" class="alert-link">opencart dokümantasyon</a> sayfasını okuyabilirsiniz.';
+$_['text_cron_2']          = 'Zamanlanmış görevinizi her saatte çalışacak şekilde ayarlamanız gerekir.';
+$_['text_hour']            = 'Saat';
+$_['text_day']             = 'Gün';
+$_['text_month']           = 'Ay';
 
 // Column
-$_['column_code']          = 'Cron Code';
-$_['column_cycle']         = 'Cycle';
-$_['column_status']        = 'Status';
-$_['column_date_added']    = 'Date Added';
-$_['column_date_modified'] = 'Date Modified';
-$_['column_action']        = 'Action';
+$_['column_code']          = 'Görev Kodu';
+$_['column_cycle']         = 'Döngü';
+$_['column_status']        = 'Durumu';
+$_['column_date_added']    = 'Ekleme Tarihi';
+$_['column_date_modified'] = 'Düzenleme Tarihi';
+$_['column_action']        = 'Eylem';
 
 // entry
-$_['entry_cron']           = 'Cron URL';
+$_['entry_cron']           = 'Görev Adresi';
 
 // Error
-$_['error_permission']     = 'Warning: You do not have permission to modify cron jobs!';
+$_['error_permission']     = 'Uyarı: Zamanlanmış Görevleri düzenleme iznine sahip değilsiniz!';

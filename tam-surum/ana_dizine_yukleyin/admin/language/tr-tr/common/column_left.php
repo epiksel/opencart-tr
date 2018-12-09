@@ -1,5 +1,6 @@
 <?php
-/* Turkceye Ceviren eka7a - http://e-piksel.com */
+// Translator : Ekrem KAYA
+// Website    : https://e-piksel.com
 
 // Text
 $_['text_affiliate']            = 'Ortaklar';
@@ -38,8 +39,8 @@ $_['text_location']             = 'Konumlar';
 $_['text_contact']              = 'E-Posta';
 $_['text_maintenance']          = 'Bakım Modu';
 $_['text_manufacturer']         = 'Üreticiler';
-$_['text_marketplace']          = 'Pazaryeri';
 $_['text_marketing']            = 'Pazarlama';
+$_['text_marketplace']          = 'Pazaryeri';
 $_['text_menu']                 = 'Menü Yöneticisi';
 $_['text_modification']         = 'Modifikasyonlar';
 $_['text_navigation']           = 'Navigasyon';
@@ -68,6 +69,8 @@ $_['text_tax']                  = 'Vergiler';
 $_['text_tax_class']            = 'Vergi Sınıfları';
 $_['text_tax_rate']             = 'Vergi Oranları';
 $_['text_theme']                = 'Tema Editörü';
+$_['text_translation']          = 'Çeviriler';
+$_['text_upgrade']              = 'Güncelleme';
 $_['text_upload']               = 'Yüklemeler';
 $_['text_user']                 = 'Kullanıcılar';
 $_['text_users']                = 'Kullanıcılar';

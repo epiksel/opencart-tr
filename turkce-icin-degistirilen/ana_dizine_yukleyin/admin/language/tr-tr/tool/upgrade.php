@@ -1,52 +1,54 @@
 <?php
+// Translator : Ekrem KAYA
+// Website    : https://e-piksel.com
+
 // Heading
-$_['heading_title']      = 'Upgrade';
+$_['heading_title']       = 'Güncelleme';
 
 // Text
-$_['text_success']       = 'Success: You are using the latest version %s!';
-$_['error_version']      = 'Your current OpenCart version is out of date! The current latest version is <strong>%s</strong>';
+$_['text_success']        = 'Başarılı: En son sürümü kullanıyorsunuz %s!';
+$_['error_version']       = 'Mevcut OpenCart sürümünüz güncel değil! Geçerli son güncel sürümü: <strong>%s</strong>';
 
-$_['text_version']       = 'Check Latest Version';
-$_['text_compatibility'] = 'Compatibility';
-$_['text_upgrade']       = 'Upgrade System';
-$_['text_change']        = 'Change Log';
-$_['text_progress_short'] = 'Progress';
-$_['text_progress']      = 'Upgrade Progress';
-$_['text_log']           = 'Upgrade Log';
-$_['text_download']      = 'Downloading latest version';
-$_['text_unzip']         = 'Extracting files!';
-$_['text_move']          = 'Copying files!';
-$_['text_remove']        = 'Removing unnecessary files';
-$_['text_db']            = 'Modifying database!';
-$_['text_clear']         = 'Clearing temporary files!';
-$_['text_update']        = 'Upgrade Instructions';
-$_['text_before']        = 'Before upgrading, it\'s very important to check the extensions installed are compatible with the latest version!';
-$_['text_make']          = 'Make a complete backup of your web site!';
-$_['text_check']         = 'Check the extensions installed are compatible with the latest version';
-$_['text_better']        = 'It\'s better if you could copy your site to a test server and practise upgrading before starting with the live web site.';
-$_['text_tips']          = 'Tips: Before upgrading it\'s very important to';
-$_['text_here']          = 'here';
-$_['text_backup']        = 'Backup';
-$_['text_cloud']         = 'If you are using the cloud version, you can backup with your opencart account';
+$_['text_version']        = 'Son Sürümü Kontrol Et';
+$_['text_compatibility']  = 'Uyumluluk';
+$_['text_upgrade']        = 'Yükseltme Sistemi';
+$_['text_change']         = 'Değişiklikler';
+$_['text_progress_short'] = 'İşlemler';
+$_['text_progress']       = 'Güncelleme Süreçleri';
+$_['text_log']            = 'Güncelleme Kayıtları';
+$_['text_download']       = 'Son sürüm indiriliyor';
+$_['text_unzip']          = 'Dosyalar çıkartılıyor!';
+$_['text_move']           = 'Dosyalar kopyalanıyor!';
+$_['text_remove']         = 'Gereksiz dosyaları kaldırılıyor';
+$_['text_db']             = 'Veritabanı değiştiriliyor!';
+$_['text_clear']          = 'Geçici dosyaları temizleniyor!';
+$_['text_update']         = 'Yükseltme Talimatları';
+$_['text_before']         = 'Yükseltmeden önce, yüklenen eklentilerin en son sürümle uyumlu olup olmadığını kontrol etmek çok önemlidir!';
+$_['text_make']           = 'Web sitenizin tam yedeğini alın!';
+$_['text_check']          = 'Yüklenen eklentilerin en son sürümle uyumlu olup olmadığını kontrol edin.';
+$_['text_better']         = 'Canlı web sitesinde denemeden önce, sitenizi test sunucusuna kopyalayıp yeni sürümü test etmek her zaman daha iyi olur.';
+$_['text_tips']           = 'İpuç: Yeni sürüme geçmeden önce çok önemlidir';
+$_['text_here']           = 'buradan';
+$_['text_backup']         = 'Yedekle';
+$_['text_cloud']          = 'Eğer bulut sürümünü kullanıyorsanız, opencart hesabınızla yedekleyebilirsiniz';
 
 // Column
-$_['column_name']        = 'Extension Name';
-$_['column_compatible']  = 'Latest Version Compatible';
-$_['column_available']   = 'Available';
+$_['column_name']         = 'Eklenti Adı';
+$_['column_compatible']   = 'Son Sürüm Uyumluluk';
+$_['column_available']    = 'Kullanılabilir';
 
 // Entry
-$_['entry_name']         = 'Upload Name';
-$_['entry_filename']     = 'Filename';
-$_['entry_date_added']   = 'Date Added';
-$_['entry_name']         = 'Upload Name';
+$_['entry_name']          = 'Yükleme Adı';
+$_['entry_filename']      = 'Dosya Adı';
+$_['entry_date_added']    = 'Ekleme Tarihi';
 
 // Button
-$_['button_start']       = 'Start';
+$_['button_start']        = 'Başlat';
 
 // Error
-$_['error_permission']   = 'Warning: You do not have permission to modify upgrades!';
-$_['error_connection']   = 'Could not connect to the upgrade server!';
-$_['error_download']     = 'Upgrade could not be downloaded!';
-$_['error_file']         = 'Upgrade file could not be found!';
-$_['error_directory']    = 'Upgrade directory could not be found!';
-$_['error_unzip']        = 'Zip file could not be opened!';
+$_['error_permission']    = 'Uyarı: Güncellemeleri düzenleme iznine sahip değilsiniz!';
+$_['error_connection']    = 'Yükseltme sunucusuna bağlanılamadı!';
+$_['error_download']      = 'Yükseltme indirilemedi!';
+$_['error_file']          = 'Yükseltme dosyası bulunamadı!';
+$_['error_directory']     = 'Yükseltme dizini bulunamadı!';
+$_['error_unzip']         = 'Zip dosyası açılamadı!';

@@ -1,16 +1,19 @@
 <?php
+// Translator : Ekrem KAYA
+// Website    : https://e-piksel.com
+
 // Heading
 $_['heading_title']    = 'GDPR';
 
 // Text
-$_['text_extension']   = 'Extensions';
-$_['text_success']     = 'Success: You have modified GDPR module!';
-$_['text_edit']        = 'Edit GDPR Module';
+$_['text_extension']   = 'Eklentiler';
+$_['text_success']     = 'Başarılı: GDPR modülü başarılı bir şekilde değiştirildi!';
+$_['text_edit']        = 'GDPR Modülü Düzenle';
 
 // Entry
-$_['entry_policy_url']       = 'Cookie Policy URL';
-$_['entry_status']     = 'Status';
+$_['entry_policy_url'] = 'GDPR Politika Bağlantısı';
+$_['entry_status']     = 'Durumu';
 
 
 // Error
-$_['error_permission'] = 'Warning: You do not have permission to modify GDPR module!';
+$_['error_permission'] = 'Uyarı: GDPR Modülünü düzenleme iznine sahip değilsiniz!';

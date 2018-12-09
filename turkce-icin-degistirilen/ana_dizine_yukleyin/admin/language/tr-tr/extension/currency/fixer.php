@@ -1,18 +1,21 @@
 <?php
+// Translator : Ekrem KAYA
+// Website    : https://e-piksel.com
+
 // Heading
 $_['heading_title']    = 'Fixer';
 
 // Text
-$_['text_extension']   = 'Extensions';
-$_['text_success']     = 'Success: You have modified fixer currency rates!';
-$_['text_edit']        = 'Edit Fixer';
-$_['text_signup']      = 'Fixer.io is a currency conversion service <a href="https://fixer.io/" target="_blank" class="alert-link">signup here</a>.';
-$_['text_support']     = 'This extension Requires at EUR currency to be available currency option.';
+$_['text_extension']   = 'Eklentiler';
+$_['text_success']     = 'Başarılı: Fixer döviz oranları başarılı bir şekilde değiştirildi!';
+$_['text_edit']        = 'Fixer Düzenle';
+$_['text_signup']      = 'Fixer döviz çeviri servisi için <a href="https://fixer.io/" target="_blank" class="alert-link">buradan</a> kayıt olun.';
+$_['text_support']     = 'Bu uzantı için EUR para biriminin geçerli olmasını gerektirir.';
 
 // Entry
-$_['entry_api']        = 'API Access Key';
-$_['entry_status']     = 'Status';
+$_['entry_api']        = 'API Erişim Anahtarı';
+$_['entry_status']     = 'Durumu';
 
 // Error
-$_['error_permission'] = 'Warning: You do not have permission to modify fixer currency rates!';
-$_['error_api']        = 'API Access Key required!';
+$_['error_permission'] = 'Uyarı: Fixer Döviz Oranlarını düzenleme iznine sahip değilsiniz!';
+$_['error_api']        = 'API Erişim Anahtarı gerekli!';

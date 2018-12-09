@@ -1,5 +1,6 @@
 <?php
-/* Turkceye Ceviren eka7a - http://e-piksel.com */
+// Translator : Ekrem KAYA
+// Website    : https://e-piksel.com
 
 // Heading
 $_['heading_title']      = 'Pazaryeri';
@@ -62,7 +63,7 @@ $_['tab_comment']        = 'Yorum';
 // Button
 $_['button_opencart']    = 'Pazaryeri API';
 $_['button_purchase']    = 'Satın Al';
-$_['button_view_all']    = 'Tüm Uzantıları Göster';
+$_['button_view_all']    = 'Tüm Eklentileri';
 $_['button_get_support'] = 'Destek Al';
 $_['button_comment']     = 'Yorum';
 $_['button_reply']       = 'Cevapla';

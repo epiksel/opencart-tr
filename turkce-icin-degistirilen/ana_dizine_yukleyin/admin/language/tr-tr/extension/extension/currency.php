@@ -1,15 +1,18 @@
 <?php
+// Translator : Ekrem KAYA
+// Website    : https://e-piksel.com
+
 // Heading
-$_['heading_title']    = 'Currency Rates';
+$_['heading_title']    = 'Döviz Kurları';
 
 // Text
-$_['text_success']     = 'Success: You have modified currencies rates!';
-$_['text_list']        = 'Currency Rate List';
+$_['text_success']     = 'Başarılı: Döviz Kurları başarılı bir şekilde değiştirildi!';
+$_['text_list']        = 'Döviz Kur Listesi';
 
 // Column
-$_['column_name']      = 'Currency Rate Name';
-$_['column_status']    = 'Status';
-$_['column_action']    = 'Action';
+$_['column_name']      = 'Döviz Kur Adı';
+$_['column_status']    = 'Durumu';
+$_['column_action']    = 'Eylem';
 
 // Error
-$_['error_permission'] = 'Warning: You do not have permission to modify currencies rates!';
+$_['error_permission'] = 'Uyarı: Döviz Kurlarını düzenleme iznine sahip değilsiniz!';

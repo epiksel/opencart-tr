@@ -1,15 +1,18 @@
 <?php
+// Translator : Ekrem KAYA
+// Website    : https://e-piksel.com
+
 // Heading
-$_['heading_title']    = 'European Central Bank Currency Converter';
+$_['heading_title']    = 'Avrupa Merkez Bankası';
 
 // Text
-$_['text_extension']   = 'Extensions';
-$_['text_success']     = 'Success: You have modified fixer ECB rates!';
-$_['text_edit']        = 'Edit European Central Bank';
-$_['text_support']     = 'This extension requires at EUR currency to be available currency option.';
+$_['text_extension']   = 'Eklentiler';
+$_['text_success']     = 'Başarılı: ECB Döviz Oranları başarılı bir şekilde değiştirildi!';
+$_['text_edit']        = 'Avrupa Merkez Bankası Düzenle';
+$_['text_support']     = 'Bu uzantı için EUR para biriminin geçerli olmasını gerektirir.';
 
 // Entry
-$_['entry_status']     = 'Status';
+$_['entry_status']     = 'Durumu';
 
 // Error
-$_['error_permission'] = 'Warning: You do not have permission to modify ECB currency rates!';
+$_['error_permission'] = 'Uyarı: ECB Döviz Oranlarını düzenleme iznine sahip değilsiniz!';

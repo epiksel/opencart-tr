@@ -1,44 +1,47 @@
 <?php
+// Translator : Ekrem KAYA
+// Website    : https://e-piksel.com
+
 // Heading
-$_['heading_title']      = 'Product Options';
+$_['heading_title']      = 'Ürün Seçenekleri';
 
 // Text
-$_['text_success']       = 'Success: You have modified product options!';
-$_['text_list']          = 'Product Option List';
-$_['text_add']           = 'Add Product Option';
-$_['text_edit']          = 'Edit Product Option';
-$_['text_option']        = 'Product Option';
-$_['text_option_value']  = 'Product Option Values';
-$_['text_select']        = 'Select';
-$_['text_radio']         = 'Radio';
-$_['text_checkbox']      = 'Checkbox';
-$_['text_input']         = 'Input';
-$_['text_text']          = 'Text';
-$_['text_textarea']      = 'Textarea';
-$_['text_file']          = 'File';
-$_['text_date']          = 'Date';
-$_['text_datetime']      = 'Date &amp; Time';
-$_['text_time']          = 'Time';
+$_['text_success']       = 'Başarılı: Ürün Seçenekleri başarılı bir şekilde değiştirildi!';
+$_['text_list']          = 'Ürün Seçenek Listesi';
+$_['text_add']           = 'Ürün Seçeneği Ekle';
+$_['text_edit']          = 'Ürün Seçeneği Düzenle';
+$_['text_option']        = 'Ürün Seçeneği';
+$_['text_option_value']  = 'Ürün Seçenek Değerleri';
+$_['text_select']        = 'Seçenek';
+$_['text_radio']         = 'Radyo Düğmesi';
+$_['text_checkbox']      = 'Onay Kutusu';
+$_['text_input']         = 'Veri Girişi';
+$_['text_text']          = 'Metin';
+$_['text_textarea']      = 'Metin Alanı';
+$_['text_file']          = 'Dosya';
+$_['text_date']          = 'Tarih';
+$_['text_datetime']      = 'Tarih &amp; Zaman';
+$_['text_time']          = 'Zaman';
 
 // Column
-$_['column_product']     = 'Product';
-$_['column_option']      = 'Option';
-$_['column_type']        = 'Type';
-$_['column_sort_order']  = 'Sort Order';
-$_['column_action']      = 'Action';
+$_['column_product']     = 'Ürün';
+$_['column_option']      = 'Seçenek';
+$_['column_type']        = 'Türü';
+$_['column_sort_order']  = 'Sıralama';
+$_['column_action']      = 'Eylem';
 
 // Entry
-$_['entry_product']      = 'Product';
-$_['entry_option']       = 'Option';
-$_['entry_required']     = 'Required';
-$_['entry_option_value'] = 'Option Value';
-$_['entry_quantity']     = 'Quantity';
-$_['entry_subtract']     = 'Subtract Stock';
-$_['entry_price']        = 'Price';
-$_['entry_points']       = 'Points';
-$_['entry_weight']       = 'Weight';
+$_['entry_product']      = 'Ürün';
+$_['entry_option']       = 'Seçenek';
+$_['entry_required']     = 'Gerekli';
+$_['entry_option_value'] = 'Seçenek Değeri';
+$_['entry_quantity']     = 'Adet';
+$_['entry_subtract']     = 'Stoktan Düş';
+$_['entry_price']        = 'Fiyatı';
+$_['entry_points']       = 'Puan';
+$_['entry_weight']       = 'Ağırlık';
 
 // Error
-$_['error_permission']   = 'Warning: You do not have permission to modify product options!';
-$_['error_product']      = 'Product required!';
-$_['error_option']       = 'Option required!';
+$_['error_permission']   = 'Uyarı: Ürün Seçeneklerini düzenleme iznine sahip değilsiniz!';
+$_['error_product']      = 'Ürün gerekli!';
+$_['error_option']       = 'Seçenek gerekli!';

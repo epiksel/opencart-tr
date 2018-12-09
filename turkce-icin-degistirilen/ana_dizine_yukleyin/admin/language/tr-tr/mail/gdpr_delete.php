@@ -1,11 +1,14 @@
 <?php
+// Translator : Ekrem KAYA
+// Website    : https://e-piksel.com
+
 // Text
-$_['text_subject']   = '%s - GDPR request has been processed!';
-$_['text_gdpr']      = 'Account Deletion Request';
-$_['text_hello']     = 'Hello <strong>%s</strong>';
-$_['text_greeting']  = 'Your GDPR data deletion request has been completed.';
-$_['text_contact']   = 'For more information you can contact the store owner here:';
-$_['text_thanks']    = 'Thanks,';
+$_['text_subject']   = '%s - GDPR İsteğiniz Uygulandı!';
+$_['text_gdpr']      = 'Hesap Silme İsteği';
+$_['text_hello']     = 'Merhaba <strong>%s</strong>';
+$_['text_greeting']  = 'GDPR veri silme isteğiniz tamamlandı.';
+$_['text_contact']   = 'Daha fazla bilgi için buradan mağazaya ulaşabilirsiniz:';
+$_['text_thanks']    = 'Teşekkürler,';
 
 // Button
-$_['button_contact'] = 'Contact Us';
+$_['button_contact'] = 'İletişime Geçin';

@@ -1,24 +1,27 @@
 <?php
+// Translator : Ekrem KAYA
+// Website    : https://e-piksel.com
+
 // Heading
-$_['heading_title']    = 'Google Calendar';
+$_['heading_title']    = 'Google Takvim';
 
 // Text
-$_['text_extension']   = 'Extensions';
-$_['text_success']     = 'Success: You have modified Google Calendar module!';
-$_['text_edit']        = 'Edit Google Calendar Module';
-$_['text_setup']       = 'Google Calendar is not set up or disabled';
-$_['text_note']        = 'Please note, you have to be logged in into your Google account';
+$_['text_extension']   = 'Eklentiler';
+$_['text_success']     = 'Başarılı: Google Takvim modülü başarılı bir şekilde değiştirildi!';
+$_['text_edit']        = 'Google Takvimi Düzenle';
+$_['text_setup']       = 'Google Takvim kurulu değil veya devre dışı';
+$_['text_note']        = 'Lütfen unutmayın, Google hesabınıza giriş yapmanız gerekmektedir.';
 
 // Entry
-$_['entry_code']       = 'Google Talk Code';
-$_['entry_status']     = 'Status';
+$_['entry_code']       = 'Google Takvim Kodu';
+$_['entry_status']     = 'Durumu';
 
 // Help
-$_['help_code']        = 'Go to <a href="https://calendar.google.com/calendar/embedhelper" target="_blank">Google Calendar</a> choose calendars to display &amp; paste the generated code into the text box.';
+$_['help_code']        = '<a href="https://calendar.google.com/calendar/embedhelper" target="_blank">Google Takvim\'e</a> gidin, göstermek istediğiniz takvimleri seçin ve oluşturulan kodu metin kutusuna yapıştırın.';
 
 // Error
-$_['error_permission'] = 'Warning: You do not have permission to modify Google Calendar module!';
-$_['error_code']       = 'Code Required';
+$_['error_permission'] = 'Uyarı: Google Takvim Modülünü düzenleme iznine sahip değilsiniz!';
+$_['error_code']       = 'Kod gerekli!';
 
-$_['tab_google_calendar']               = 'Google Calendar';
-$_['tab_google_calendar_settings']      = 'Settings';
+$_['tab_google_calendar']          = 'Google Takvimi';
+$_['tab_google_calendar_settings'] = 'Ayarlar';
