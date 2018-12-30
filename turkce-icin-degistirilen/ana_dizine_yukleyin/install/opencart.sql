@@ -609,7 +609,7 @@ INSERT INTO `oc_cron` (`cron_id`, `code`, `cycle`, `action`, `status`, `date_add
 --
 
 INSERT INTO `oc_currency` (`currency_id`, `title`, `code`, `symbol_left`, `symbol_right`, `decimal_place`, `value`, `status`, `date_modified`) VALUES
-(1, 'Türk Lirası', 'TRY', '', 'TL', '2', 1.00000000, 1, '2015-09-20 14:30:52'),
+(1, 'Türk Lirası', 'TRY', '', '₺', '2', 1.00000000, 1, '2015-09-20 14:30:52'),
 (2, 'US Dollar', 'USD', '$', '', '2', 0.33280000, 1, '2015-09-20 14:30:52'),
 (3, 'Euro', 'EUR', '', '€', '2', 0.29429999, 1, '2015-09-20 14:30:52');
 
@@ -816,7 +816,6 @@ INSERT INTO `oc_event` (`event_id`, `code`, `trigger`, `action`, `status`) VALUE
 INSERT INTO `oc_extension` (`extension_id`, `type`, `code`) VALUES
 (1, 'module', 'carousel'),
 (2, 'module', 'category'),
-(3, 'module', 'affiliate'),
 (4, 'module', 'account'),
 (5, 'module', 'featured'),
 (6, 'module', 'slideshow'),
@@ -1038,7 +1037,7 @@ INSERT INTO `oc_module` (`module_id`, `name`, `code`, `setting`) VALUES
 (3, 'Ana sayfa', 'carousel', '{"name":"Ana Sayfa","banner_id":"3","width":"130","height":"100","status":"1"}'),
 (4, 'Kategoriler', 'banner', '{"name":"Kategoriler","banner_id":"1","width":"182","height":"182","status":"1"}'),
 (5, 'Sponsorlarımız Anasayfa', 'html', '{"name":"Sponsorlar\\u0131m\\u0131z","module_description":{"1":{"title":"","description":"&lt;script async src=&quot;https:\\/\\/adsenix.com\\/api\\/adsload.js&quot;&gt;&lt;\\/script&gt;\\r\\n&lt;div class=&quot;adsenix-preloader&quot;&gt;&lt;\\/div&gt;\\r\\n&lt;div class=&quot;adsenix-wrapper&quot; data-adsenix-publisher=&quot;1&quot; data-adsenix-group=&quot;1&quot; data-adsenix-format=&quot;1&quot;&gt;&lt;\\/div&gt;\\r\\n&lt;div class=&quot;adsenix-wrapper&quot; data-adsenix-publisher=&quot;1&quot; data-adsenix-group=&quot;1&quot; data-adsenix-format=&quot;4&quot;&gt;&lt;\\/div&gt;"}},"status":"1"}'),
-(6, 'Sponsorlarımız Ürün/Kategori', 'html', '{"name":"Sponsorlar\u0131m\u0131z \u00dcr\u00fcn\/Kategori","module_description":{"1":{"title":"","description":"&lt;script async src=&quot;https:\/\/adsenix.com\/api\/adsload.js&quot;&gt;&lt;\/script&gt;\r\n&lt;div class=&quot;adsenix-preloader&quot;&gt;&lt;\/div&gt;\r\n&lt;div class=&quot;adsenix-wrapper&quot; data-adsenix-publisher=&quot;1&quot; data-adsenix-group=&quot;1&quot; data-adsenix-format=&quot;1&quot;&gt;&lt;\/div&gt;"}},"status":"1"}');
+(6, 'Sponsorlarımız Ürün/Kategori', 'html', '{"name":"Sponsorlar\\u0131m\\u0131z \\u00dcr\\u00fcn\\/Kategori","module_description":{"1":{"title":"","description":"&lt;script async src=&quot;https:\\/\\/adsenix.com\\/api\\/adsload.js&quot;&gt;&lt;\\/script&gt;\\r\\n&lt;div class=&quot;adsenix-preloader&quot;&gt;&lt;\\/div&gt;\\r\\n&lt;div class=&quot;adsenix-wrapper&quot; data-adsenix-publisher=&quot;1&quot; data-adsenix-group=&quot;1&quot; data-adsenix-format=&quot;1&quot;&gt;&lt;\\/div&gt;"}},"status":"1"}');
 
 -----------------------------------------------------------
 
