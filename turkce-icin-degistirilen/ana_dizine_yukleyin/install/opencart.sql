@@ -208,8 +208,7 @@ CREATE TABLE `oc_banner` (
 INSERT INTO `oc_banner` (`banner_id`, `name`, `status`) VALUES
 (1, 'HP Products', 1),
 (2, 'Anasayfa Slayt', 1),
-(3, 'Manufacturers', 1),
-(4, 'OpenCart SSL', 1);
+(3, 'Manufacturers', 1);
 
 -----------------------------------------------------------
 
@@ -247,8 +246,7 @@ INSERT INTO `oc_banner_image` (`banner_image_id`, `banner_id`, `language_id`, `t
 (11, 3, 1, 'Disney', '', 'catalog/demo/manufacturer/disney.png', 0),
 (12, 2, 1, 'MacBookAir', '', 'catalog/demo/banners/MacBookAir.jpg', 0),
 (13, 3, 1, 'Starbucks', '', 'catalog/demo/manufacturer/starbucks.png', 0),
-(14, 3, 1, 'Nintendo', '', 'catalog/demo/manufacturer/nintendo.png', 0),
-(15, 4, 1, 'OpenCart SSL Certificate', 'https://openix.io/?tracking=octrdemo', 'catalog/demo/banners/opencart-ssl-certificate.png', 1);
+(14, 3, 1, 'Nintendo', '', 'catalog/demo/manufacturer/nintendo.png', 0);
 
 -----------------------------------------------------------
 
@@ -1483,7 +1481,8 @@ INSERT INTO `oc_extension` (`extension_id`, `type`, `code`) VALUES
 (38, 'report', 'sale_tax'),
 (39, 'report', 'customer_activity'),
 (40, 'report', 'customer_order'),
-(41, 'report', 'customer_reward');
+(41, 'report', 'customer_reward'),
+(42, 'module', 'html');
 
 -----------------------------------------------------------
 
@@ -1770,13 +1769,13 @@ INSERT INTO `oc_layout_module` (`layout_module_id`, `layout_id`, `code`, `positi
 (4, 10, 'account', 'column_right', 1),
 (5, 6, 'account', 'column_right', 1),
 (6, 1, 'featured.2', 'content_top', 3),
-(7, 1, 'slideshow.1', 'content_top', 1),
+(7, 1, 'slideshow.1', 'content_top', 2),
 (8, 3, 'banner.4', 'column_left', 2),
 (9, 3, 'account', 'column_left', 1),
 (10, 1, 'carousel.3', 'content_top', 4),
-(11, 1, 'banner.5', 'content_top', 2),
-(12, 3, 'banner.5', 'content_top', 1),
-(13, 2, 'banner.5', 'content_top', 1);
+(11, 1, 'html.5', 'content_top', 1),
+(12, 3, 'html.6', 'content_top', 1),
+(13, 2, 'html.6', 'content_top', 1);
 
 -----------------------------------------------------------
 
@@ -1992,7 +1991,8 @@ INSERT INTO `oc_module` (`module_id`, `name`, `code`, `setting`) VALUES
 (2, 'Ana sayfa', 'featured', '{"name":"Ana Sayfa","product":["12","3","17","1"],"limit":"4","width":"200","height":"200","status":"1"}'),
 (3, 'Ana sayfa', 'carousel', '{"name":"Ana Sayfa","banner_id":"3","width":"130","height":"100","status":"1"}'),
 (4, 'Kategoriler', 'banner', '{"name":"Kategoriler","banner_id":"1","width":"182","height":"182","status":"1"}'),
-(5, 'OpenCart SSL', 'banner', '{"name":"OpenCart SSL","banner_id":"4","width":"1132","height":"140","status":"1"}');
+(5, 'Sponsorlarımız Anasayfa', 'html', '{"name":"Sponsorlar\\u0131m\\u0131z","module_description":{"1":{"title":"","description":"&lt;script async src=&quot;https:\\/\\/adsenix.com\\/api\\/adsload.js&quot;&gt;&lt;\\/script&gt;\\r\\n&lt;div class=&quot;adsenix-preloader&quot;&gt;&lt;\\/div&gt;\\r\\n&lt;div class=&quot;adsenix-wrapper&quot; data-adsenix-publisher=&quot;1&quot; data-adsenix-group=&quot;1&quot; data-adsenix-format=&quot;1&quot;&gt;&lt;\\/div&gt;\\r\\n&lt;div class=&quot;adsenix-wrapper&quot; data-adsenix-publisher=&quot;1&quot; data-adsenix-group=&quot;1&quot; data-adsenix-format=&quot;4&quot;&gt;&lt;\\/div&gt;"}},"status":"1"}'),
+(6, 'Sponsorlarımız Ürün/Kategori', 'html', '{"name":"Sponsorlar\\u0131m\\u0131z \\u00dcr\\u00fcn\\/Kategori","module_description":{"1":{"title":"","description":"&lt;script async src=&quot;https:\\/\\/adsenix.com\\/api\\/adsload.js&quot;&gt;&lt;\\/script&gt;\\r\\n&lt;div class=&quot;adsenix-preloader&quot;&gt;&lt;\\/div&gt;\\r\\n&lt;div class=&quot;adsenix-wrapper&quot; data-adsenix-publisher=&quot;1&quot; data-adsenix-group=&quot;1&quot; data-adsenix-format=&quot;1&quot;&gt;&lt;\\/div&gt;"}},"status":"1"}');
 
 -----------------------------------------------------------
 
@@ -3273,7 +3273,7 @@ INSERT INTO `oc_setting` (`store_id`, `code`, `key`, `value`, `serialized`) VALU
 (0, 'config', 'config_affiliate_id', '4', 0),
 (0, 'config', 'config_return_id', '0', 0),
 (0, 'config', 'config_return_status_id', '2', 0),
-(0, 'config', 'config_logo', 'catalog/logo.png', 0),
+(0, 'config', 'config_logo', 'catalog/opencarttr-logo.png', 0),
 (0, 'config', 'config_icon', 'catalog/cart.png', 0),
 (0, 'config', 'config_comment', '', 0),
 (0, 'config', 'config_open', '', 0),
