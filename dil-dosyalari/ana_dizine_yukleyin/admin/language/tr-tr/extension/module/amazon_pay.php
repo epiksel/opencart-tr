@@ -1,15 +1,16 @@
 <?php
 // Heading
-$_['heading_title']         = 'Pay with Amazon';
+$_['heading_title']         = 'Amazon Pay';
 
 //Text
+$_['text_module']           = 'Modules';
 $_['text_extension']        = 'Eklentiler';
-$_['text_success']          = 'Success: You have modified module Pay with Amazon!';
+$_['text_success']          = 'Success: You have modified module Amazon Pay!';
 $_['text_content_top']      = 'Content Top';
 $_['text_content_bottom']   = 'Content Bottom';
 $_['text_column_left']      = 'Column Left';
 $_['text_column_right']     = 'Column Right';
-$_['text_pwa_button']       = 'Pay with Amazon';
+$_['text_pwa_button']       = 'Amazon Pay';
 $_['text_pay_button']       = 'Pay';
 $_['text_a_button']         = 'A';
 $_['text_gold_button']      = 'Gold';
@@ -30,4 +31,4 @@ $_['entry_status']          = 'Status';
 $_['entry_sort_order']      = 'Sort Order';
 
 //Error
-$_['error_permission']      = 'Warning: You do not have permission to modify module Pay with Amazon!';
+$_['error_permission']      = 'Warning: You do not have permission to modify module Amazon Pay!';

@@ -52,16 +52,21 @@ class ModelExtensionPaymentPPExpress extends Model {
 		$defaults['payment_pp_express_reversed_status_id'] = 12;
 		$defaults['payment_pp_express_voided_status_id'] = 16;
 
-		$defaults['payment_pp_express_incontext_disable'] = 0;
 		$defaults['payment_pp_express_status'] = 0;
 		$defaults['payment_pp_express_currency'] = "USD";
 
 		$this->model_setting_setting->editSetting('payment_pp_express', $defaults);
+
+		$this->load->model('setting/event');
+		$this->model_setting_event->addEvent('extension_pp_express_checkout_js', 'catalog/controller/checkout/checkout/before', 'extension/payment/pp_express/eventLoadCheckoutJs');
 	}
 
 	public function uninstall() {
 		$this->db->query("DROP TABLE IF EXISTS `" . DB_PREFIX . "paypal_order_transaction`");
 		$this->db->query("DROP TABLE IF EXISTS `" . DB_PREFIX . "paypal_order`");
+
+		$this->load->model('setting/event');
+		$this->model_setting_event->deleteEventByCode('extension_pp_express_checkout_js');
 	}
 
 	public function getPayPalOrder($order_id) {
