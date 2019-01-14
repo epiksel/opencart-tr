@@ -6,6 +6,6 @@
 $_['text_subject']  = '%s - Parola sıfırlama isteği';
 $_['text_greeting'] = '<strong>%s</strong> müşteri hesabınız için parola sıfırlama talebinde bulundunuz.';
 $_['text_change']   = 'Parolanızı sıfırlamak için aşağıdaki bağlantıya tıklayın:';
-$_['text_ip']       = 'Parola sıfırlama isteğiniz bu IP adresinden yapıldı: %s';
+$_['text_ip']       = 'Parola sıfırlama isteğiniz bu IP adresinden yapıldı:';
 
 $_['button_reset']  = 'Parola Sıfırla';
