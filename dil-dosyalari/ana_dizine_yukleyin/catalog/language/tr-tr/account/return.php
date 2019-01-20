@@ -54,11 +54,11 @@ $_['entry_fault_detail'] = 'Arıza ya da diğer detaylar';
 // Error
 $_['text_error']         = 'İstediğiniz ürün iadesi bulunamadı!';
 $_['error_order_id']     = 'Sipariş No gerekli!';
-$_['error_firstname']    = 'Ad alanı 1 ile 32 karakter arasında olmalı!';
-$_['error_lastname']     = 'Soyad alanı 1 ile 32 karakter arasında olmalı!';
+$_['error_firstname']    = 'Ad 1 ile 32 karakter arasında olmalı!';
+$_['error_lastname']     = 'Soyad 1 ile 32 karakter arasında olmalı!';
 $_['error_email']        = 'Geçerli bir E-Posta adresi yazınız!';
-$_['error_telephone']    = 'Telefon alanı 3 ile 32 karakter arasında olmalı!';
-$_['error_product']      = 'Ürün adı alanı 3 ile 255 karakter arasında olmalı!';
+$_['error_telephone']    = 'Telefon 3 ile 32 karakter arasında olmalı!';
+$_['error_product']      = 'Ürün adı 3 ile 255 karakter arasında olmalı!';
 $_['error_model']        = 'Ürün kodu 3 ile 64 karakter arasında olmalı!';
 $_['error_reason']       = 'İade nedeni seçmelisiniz!';
 $_['error_agree']        = 'Uyarı: %s\'nı kabul etmelisiniz!';

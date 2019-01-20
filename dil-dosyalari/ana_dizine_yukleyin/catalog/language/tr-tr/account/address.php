@@ -30,11 +30,11 @@ $_['entry_default']      = 'Varsayılan Adres';
 // Error
 $_['error_delete']       = 'Uyarı: En az bir adres yazmalısınız!';
 $_['error_default']      = 'Uyarı: Varsayılan adresinizi silemezsiniz!';
-$_['error_firstname']    = 'Ad alanı 1 ile 32 karakter arasında olmalı!';
-$_['error_lastname']     = 'Soyad alanı 1 ile 32 karakter arasında olmalı!';
-$_['error_address_1']    = 'Adres alanı 3 ile 128 karakter arasında olmalı!';
-$_['error_postcode']     = 'Posta kodu alanı 2 ile 10 karakter arasında olmalı!';
-$_['error_city']         = 'İlçe / semt alanı 2 ile 128 karakter arasında olmalı!';
+$_['error_firstname']    = 'Ad 1 ile 32 karakter arasında olmalı!';
+$_['error_lastname']     = 'Soyad 1 ile 32 karakter arasında olmalı!';
+$_['error_address_1']    = 'Adres 1, 3 ile 128 karakter arasında olmalı!';
+$_['error_postcode']     = 'Posta kodu 2 ile 10 karakter arasında olmalı!';
+$_['error_city']         = 'İlçe / semt 2 ile 128 karakter arasında olmalı!';
 $_['error_country']      = 'Lütfen bir ülke seçiniz!';
 $_['error_zone']         = 'Lütfen bir şehir seçiniz!';
 $_['error_custom_field'] = '%s gerekli!';

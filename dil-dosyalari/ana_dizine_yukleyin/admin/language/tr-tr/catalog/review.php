@@ -35,5 +35,5 @@ $_['help_product']      = '(Otomatik Tamamlama)';
 $_['error_permission']  = 'Uyarı: Yorumları düzenleme iznine sahip değilsiniz!';
 $_['error_product']     = 'Ürün gerekli!';
 $_['error_author']      = 'Ekleyen adı 3 ile 64 karakter arasında olmalı!';
-$_['error_text']        = 'Yorum metin alanı en az 1 karakter olmalı!';
+$_['error_text']        = 'Yorum metin en az 1 karakter olmalı!';
 $_['error_rating']      = 'İnceleme değerlendirmesi gerekli!';
