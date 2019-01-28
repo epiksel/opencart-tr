@@ -9,7 +9,7 @@ $_['heading_title']                  = 'PayPal Payments Standard';
 $_['text_extension']                 = 'Eklentiler';
 $_['text_success']                   = 'Başarılı: PayPal Payments Standard hesap detayları başarılı bir şekilde değiştirildi!';
 $_['text_edit']                      = 'PayPal Payments Standard Düzenle';
-$_['text_pp_standard']               = '<a onclick="window.open(\'https://www.paypal.com/uk/mrb/pal=YS4L83BNSEC6A\');"><img src="view/image/payment/paypal.png" alt="PayPal Payments Standard" title="PayPal Payments Standard" style="border: 1px solid #EEEEEE;" /></a>';
+$_['text_pp_standard']               = '<a target="_BLANK" href="https://www.paypal.com/uk/merchantsignup/applicationChecklist?utm_source=A_partner_UK_201812_X_B2B_OpenCart_SMB_gb_EN&utm_medium=web&pal=V4T754QB63XXL"><img src="view/image/payment/paypal.png" alt="PayPal Payments Standard" title="PayPal Payments Standard" style="border: 1px solid #EEEEEE;" /></a>';
 $_['text_authorization']             = 'Onaylı Ödeme';
 $_['text_sale']                      = 'Direk Ödeme';
 
