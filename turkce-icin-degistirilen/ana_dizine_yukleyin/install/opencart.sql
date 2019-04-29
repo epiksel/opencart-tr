@@ -33,25 +33,6 @@ CREATE TABLE `oc_address` (
 -----------------------------------------------------------
 
 --
--- Table structure for table `oc_advertise_google_target`
---
-
-DROP TABLE IF EXISTS `oc_advertise_google_target`;
-CREATE TABLE `oc_advertise_google_target` (
-  `advertise_google_target_id` int(11) UNSIGNED NOT NULL,
-  `store_id` int(11) NOT NULL DEFAULT '0',
-  `campaign_name` varchar(255) NOT NULL DEFAULT '',
-  `country` varchar(2) NOT NULL DEFAULT '',
-  `budget` decimal(15,4) NOT NULL DEFAULT '0.0000',
-  `feeds` text NOT NULL,
-  `status` enum('paused','active') NOT NULL DEFAULT 'paused',
-  PRIMARY KEY (`advertise_google_target_id`),
-  KEY `store_id` (`store_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
------------------------------------------------------------
-
---
 -- Table structure for table `oc_api`
 --
 
@@ -519,21 +500,6 @@ INSERT INTO `oc_category_path` (`category_id`, `path_id`, `level`) VALUES
 (56, 34, 0),
 (56, 56, 1),
 (57, 57, 0);
-
------------------------------------------------------------
-
---
--- Table structure for table `oc_category_to_google_product_category`
---
-
-DROP TABLE IF EXISTS `oc_category_to_google_product_category`;
-CREATE TABLE `oc_category_to_google_product_category` (
-  `google_product_category` varchar(10) NOT NULL,
-  `store_id` int(11) NOT NULL DEFAULT '0',
-  `category_id` int(11) NOT NULL,
-  PRIMARY KEY (`google_product_category`,`store_id`),
-  KEY `category_id_store_id` (`category_id`,`store_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -----------------------------------------------------------
 
@@ -1655,6 +1621,108 @@ INSERT INTO `oc_geo_zone` (`geo_zone_id`, `name`, `description`, `date_modified`
 -----------------------------------------------------------
 
 --
+-- Table structure for table `oc_googleshopping_category`
+--
+
+DROP TABLE IF EXISTS `oc_googleshopping_category`;
+CREATE TABLE `oc_googleshopping_category` (
+  `google_product_category` varchar(10) NOT NULL,
+  `store_id` int(11) NOT NULL DEFAULT '0',
+  `category_id` int(11) NOT NULL,
+  PRIMARY KEY (`google_product_category`,`store_id`),
+  KEY `category_id_store_id` (`category_id`,`store_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+-----------------------------------------------------------
+
+--
+-- Table structure for table `oc_googleshopping_product`
+--
+
+DROP TABLE IF EXISTS `oc_googleshopping_product`;
+CREATE TABLE `oc_googleshopping_product` (
+  `product_advertise_google_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `product_id` int(11) DEFAULT NULL,
+  `store_id` int(11) NOT NULL DEFAULT '0',
+  `has_issues` tinyint(1) DEFAULT NULL,
+  `destination_status` enum('pending','approved','disapproved') NOT NULL DEFAULT 'pending',
+  `impressions` int(11) NOT NULL DEFAULT '0',
+  `clicks` int(11) NOT NULL DEFAULT '0',
+  `conversions` int(11) NOT NULL DEFAULT '0',
+  `cost` decimal(15,4) NOT NULL DEFAULT '0.0000',
+  `conversion_value` decimal(15,4) NOT NULL DEFAULT '0.0000',
+  `google_product_category` varchar(10) DEFAULT NULL,
+  `condition` enum('new','refurbished','used') DEFAULT NULL,
+  `adult` tinyint(1) DEFAULT NULL,
+  `multipack` int(11) DEFAULT NULL,
+  `is_bundle` tinyint(1) DEFAULT NULL,
+  `age_group` enum('newborn','infant','toddler','kids','adult') DEFAULT NULL,
+  `color` int(11) DEFAULT NULL,
+  `gender` enum('male','female','unisex') DEFAULT NULL,
+  `size_type` enum('regular','petite','plus','big and tall','maternity') DEFAULT NULL,
+  `size_system` enum('AU','BR','CN','DE','EU','FR','IT','JP','MEX','UK','US') DEFAULT NULL,
+  `size` int(11) DEFAULT NULL,
+  `is_modified` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`product_advertise_google_id`),
+  UNIQUE KEY `product_id_store_id` (`product_id`,`store_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+-----------------------------------------------------------
+
+--
+-- Table structure for table `oc_googleshopping_product_status`
+--
+
+DROP TABLE IF EXISTS `oc_googleshopping_product_status`;
+CREATE TABLE `oc_googleshopping_product_status` (
+  `product_id` int(11) NOT NULL DEFAULT '0',
+  `store_id` int(11) NOT NULL DEFAULT '0',
+  `product_variation_id` varchar(64) NOT NULL DEFAULT '',
+  `destination_statuses` text NOT NULL,
+  `data_quality_issues` text NOT NULL,
+  `item_level_issues` text NOT NULL,
+  `google_expiration_date` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`product_id`,`store_id`,`product_variation_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+-----------------------------------------------------------
+
+--
+-- Table structure for table `oc_googleshopping_product_target`
+--
+
+DROP TABLE IF EXISTS `oc_googleshopping_product_target`;
+CREATE TABLE `oc_googleshopping_product_target` (
+  `product_id` int(11) NOT NULL,
+  `store_id` int(11) NOT NULL DEFAULT '0',
+  `advertise_google_target_id` int(11) UNSIGNED NOT NULL,
+  PRIMARY KEY (`product_id`,`advertise_google_target_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+-----------------------------------------------------------
+
+--
+-- Table structure for table `oc_googleshopping_target`
+--
+
+DROP TABLE IF EXISTS `oc_googleshopping_target`;
+CREATE TABLE `oc_googleshopping_target` (
+  `advertise_google_target_id` int(11) UNSIGNED NOT NULL,
+  `store_id` int(11) NOT NULL DEFAULT '0',
+  `campaign_name` varchar(255) NOT NULL DEFAULT '',
+  `country` varchar(2) NOT NULL DEFAULT '',
+  `budget` decimal(15,4) NOT NULL DEFAULT '0.0000',
+  `feeds` text NOT NULL,
+  `status` enum('paused','active') NOT NULL DEFAULT 'paused',
+  `date_added` DATE,
+  `roas` INT(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`advertise_google_target_id`),
+  KEY `store_id` (`store_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+-----------------------------------------------------------
+
+--
 -- Table structure for table `oc_information`
 --
 
@@ -2546,72 +2614,6 @@ INSERT INTO `oc_product` (`product_id`, `model`, `sku`, `upc`, `ean`, `jan`, `is
 (17, 'Product 21', '', '', '', '', '', '', '', 1000, 5, 'catalog/demo/hp_1.jpg', 7, 1, '100.0000', 400, 9, '2009-02-03', '1.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 0, 1, 0, 1, 0, '2009-02-03 21:08:40', '2011-09-30 01:05:28'),
 (18, 'product 20', 'test 1', '', '', '', '', '', 'test 2', 995, 5, 'catalog/demo/ipod_classic_1.jpg', 8, 1, '100.0000', 0, 9, '2009-02-08', '1.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 2, 1, 1, 0, 1, 0, '2009-02-08 17:21:51', '2011-09-30 01:07:06'),
 (19, 'SAM1', '', '', '', '', '', '', '', 0, 8, 'catalog/demo/samsung_tab_1.jpg', 0, 1, '199.9900', 0, 9, '2011-04-25', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 1, 1, 1, '2011-04-26 08:57:34', '2011-09-30 01:06:23');
-
------------------------------------------------------------
-
---
--- Table structure for table `oc_product_advertise_google`
---
-
-DROP TABLE IF EXISTS `oc_product_advertise_google`;
-CREATE TABLE `oc_product_advertise_google` (
-  `product_advertise_google_id` int(11) UNSIGNED NOT NULL,
-  `product_id` int(11) DEFAULT NULL,
-  `store_id` int(11) NOT NULL DEFAULT '0',
-  `has_issues` tinyint(1) DEFAULT NULL,
-  `destination_status` enum('pending','approved','disapproved') NOT NULL DEFAULT 'pending',
-  `impressions` int(11) NOT NULL DEFAULT '0',
-  `clicks` int(11) NOT NULL DEFAULT '0',
-  `conversions` int(11) NOT NULL DEFAULT '0',
-  `cost` decimal(15,4) NOT NULL DEFAULT '0.0000',
-  `conversion_value` decimal(15,4) NOT NULL DEFAULT '0.0000',
-  `google_product_category` varchar(10) DEFAULT NULL,
-  `condition` enum('new','refurbished','used') DEFAULT NULL,
-  `adult` tinyint(1) DEFAULT NULL,
-  `multipack` int(11) DEFAULT NULL,
-  `is_bundle` tinyint(1) DEFAULT NULL,
-  `age_group` enum('newborn','infant','toddler','kids','adult') DEFAULT NULL,
-  `color` int(11) DEFAULT NULL,
-  `gender` enum('male','female','unisex') DEFAULT NULL,
-  `size_type` enum('regular','petite','plus','big and tall','maternity') DEFAULT NULL,
-  `size_system` enum('AU','BR','CN','DE','EU','FR','IT','JP','MEX','UK','US') DEFAULT NULL,
-  `size` int(11) DEFAULT NULL,
-  `is_modified` tinyint(1) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`product_advertise_google_id`),
-  UNIQUE KEY `product_id_store_id` (`product_id`,`store_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
------------------------------------------------------------
-
---
--- Table structure for table `oc_product_advertise_google_status`
---
-
-DROP TABLE IF EXISTS `oc_product_advertise_google_status`;
-CREATE TABLE `oc_product_advertise_google_status` (
-  `product_id` int(11) NOT NULL DEFAULT '0',
-  `store_id` int(11) NOT NULL DEFAULT '0',
-  `product_variation_id` varchar(64) NOT NULL DEFAULT '',
-  `destination_statuses` text NOT NULL,
-  `data_quality_issues` text NOT NULL,
-  `item_level_issues` text NOT NULL,
-  `google_expiration_date` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`product_id`,`store_id`,`product_variation_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
------------------------------------------------------------
-
---
--- Table structure for table `oc_product_advertise_google_target`
---
-
-DROP TABLE IF EXISTS `oc_product_advertise_google_target`;
-CREATE TABLE `oc_product_advertise_google_target` (
-  `product_id` int(11) NOT NULL,
-  `store_id` int(11) NOT NULL DEFAULT '0',
-  `advertise_google_target_id` int(11) UNSIGNED NOT NULL,
-  PRIMARY KEY (`product_id`,`advertise_google_target_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -----------------------------------------------------------
 
