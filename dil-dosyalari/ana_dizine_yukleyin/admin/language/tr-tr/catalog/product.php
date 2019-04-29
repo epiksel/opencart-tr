@@ -26,6 +26,8 @@ $_['text_file']              = 'Dosya';
 $_['text_date']              = 'Tarih';
 $_['text_datetime']          = 'Tarih &amp; Zaman';
 $_['text_time']              = 'Zaman';
+$_['text_reward']            = 'Puan ile Satın Al';
+$_['text_points']            = 'Kazanılacak Puanlar';
 
 // Column
 $_['column_name']            = 'Ürün Adı';

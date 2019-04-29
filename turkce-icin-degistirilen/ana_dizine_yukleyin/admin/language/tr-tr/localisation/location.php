@@ -37,5 +37,5 @@ $_['help_comment']     = 'Bu alana müşterileriniz için özel bir not yazabili
 // Error
 $_['error_permission'] = 'Uyarı: Mağaza konumlarını düzenleme iznine sahip değilsiniz!';
 $_['error_name']       = 'Mağaza adı 3 ile 32 karakter arasında olmalıdır!';
-$_['error_address']    = 'Adres alanı 3 ile 128 karakter arasında olmalıdır!';
-$_['error_telephone']  = 'Telefon alanı 3 ile 32 karakter arasında olmalıdır!';
+$_['error_address']    = 'Adres 3 ile 128 karakter arasında olmalıdır!';
+$_['error_telephone']  = 'Telefon 3 ile 32 karakter arasında olmalıdır!';

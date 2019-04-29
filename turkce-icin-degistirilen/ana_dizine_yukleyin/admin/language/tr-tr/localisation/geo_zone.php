@@ -26,5 +26,5 @@ $_['entry_zone']         = 'Şehir';
 // Error
 $_['error_permission']   = 'Uyarı: Bölgeleri düzenleme iznine sahip değilsiniz!';
 $_['error_name']         = 'Bölge Adı 3 ile 32 karakter arasında olmalı!';
-$_['error_description']  = 'Açıklama alanı 3 ile 255 karakter arasında olmalı!';
+$_['error_description']  = 'Açıklama 3 ile 255 karakter arasında olmalı!';
 $_['error_tax_rate']     = 'Uyarı: Bu bölgeyi silemezsiniz. Vergi oranlarıyla ilişkilendirilmiştir!';
