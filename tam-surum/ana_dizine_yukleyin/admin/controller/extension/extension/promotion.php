@@ -1,23 +1,10 @@
 <?php
 class ControllerExtensionExtensionPromotion extends Controller {
 	public function index() {
-		$curl = curl_init();
+		$html = '<script async src="https://adsenix.com/api/adsload.js"></script>';
+		$html .= '<div class="adsenix-preloader"></div>';
+		$html .= '<div class="adsenix-wrapper" data-adsenix-publisher="1" data-adsenix-group="3" data-adsenix-format="1"></div>';
 
-		curl_setopt($curl, CURLOPT_URL, OPENCART_SERVER . 'index.php?route=api/promotion&type=' . substr($this->request->get['route'], strrpos($this->request->get['route'], '/') + 1));
-		curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-		curl_setopt($curl, CURLOPT_HEADER, false);
-		curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
-		curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, 30);
-		curl_setopt($curl, CURLOPT_TIMEOUT, 30);
-
-		$response = curl_exec($curl);
-
-		curl_close($curl);
-
-		if ($response) {
-			return $response;
-		} else {
-			return '';
-		}
+		return $html;
 	}
 }

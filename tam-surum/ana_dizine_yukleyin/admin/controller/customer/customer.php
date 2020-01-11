@@ -361,8 +361,8 @@ class ControllerCustomerCustomer extends Controller {
 			'filter_ip'                => $filter_ip,
 			'sort'                     => $sort,
 			'order'                    => $order,
-			'start'                    => ($page - 1) * $this->config->get('config_limit_admin'),
-			'limit'                    => $this->config->get('config_limit_admin')
+			'start'                    => ($page - 1) * $this->config->get('config_pagination'),
+			'limit'                    => $this->config->get('config_pagination')
 		);
 
 		$customer_total = $this->model_customer_customer->getTotalCustomers($filter_data);
@@ -388,7 +388,7 @@ class ControllerCustomerCustomer extends Controller {
 			foreach ($stores as $store) {
 				$store_data[] = array(
 					'name' => $store['name'],
-					'href' => $this->url->link('customer/customer/login', 'user_token=' . $this->session->data['user_token'] . '&customer_id=' . $result['customer_id'] . '&store_id=' . $result['store_id'])
+					'href' => $this->url->link('customer/customer/login', 'user_token=' . $this->session->data['user_token'] . '&customer_id=' . $result['customer_id'] . '&store_id=' . $store['store_id'])
 				);
 			}
 
@@ -398,7 +398,6 @@ class ControllerCustomerCustomer extends Controller {
 				'email'          => $result['email'],
 				'customer_group' => $result['customer_group'],
 				'status'         => ($result['status'] ? $this->language->get('text_enabled') : $this->language->get('text_disabled')),
-				'ip'             => $result['ip'],
 				'date_added'     => date($this->language->get('date_format_short'), strtotime($result['date_added'])),
 				'unlock'         => $unlock,
 				'store'          => $store_data,
@@ -468,7 +467,6 @@ class ControllerCustomerCustomer extends Controller {
 		$data['sort_email'] = $this->url->link('customer/customer', 'user_token=' . $this->session->data['user_token'] . '&sort=c.email' . $url);
 		$data['sort_customer_group'] = $this->url->link('customer/customer', 'user_token=' . $this->session->data['user_token'] . '&sort=customer_group' . $url);
 		$data['sort_status'] = $this->url->link('customer/customer', 'user_token=' . $this->session->data['user_token'] . '&sort=c.status' . $url);
-		$data['sort_ip'] = $this->url->link('customer/customer', 'user_token=' . $this->session->data['user_token'] . '&sort=c.ip' . $url);
 		$data['sort_date_added'] = $this->url->link('customer/customer', 'user_token=' . $this->session->data['user_token'] . '&sort=c.date_added' . $url);
 
 		$url = '';
@@ -508,11 +506,11 @@ class ControllerCustomerCustomer extends Controller {
 		$data['pagination'] = $this->load->controller('common/pagination', array(
 			'total' => $customer_total,
 			'page'  => $page,
-			'limit' => $this->config->get('config_limit_admin'),
+			'limit' => $this->config->get('config_pagination'),
 			'url'   => $this->url->link('customer/customer', 'user_token=' . $this->session->data['user_token'] . $url . '&page={page}')
 		));
 
-		$data['results'] = sprintf($this->language->get('text_pagination'), ($customer_total) ? (($page - 1) * $this->config->get('config_limit_admin')) + 1 : 0, ((($page - 1) * $this->config->get('config_limit_admin')) > ($customer_total - $this->config->get('config_limit_admin'))) ? $customer_total : ((($page - 1) * $this->config->get('config_limit_admin')) + $this->config->get('config_limit_admin')), $customer_total, ceil($customer_total / $this->config->get('config_limit_admin')));
+		$data['results'] = sprintf($this->language->get('text_pagination'), ($customer_total) ? (($page - 1) * $this->config->get('config_pagination')) + 1 : 0, ((($page - 1) * $this->config->get('config_pagination')) > ($customer_total - $this->config->get('config_pagination'))) ? $customer_total : ((($page - 1) * $this->config->get('config_pagination')) + $this->config->get('config_pagination')), $customer_total, ceil($customer_total / $this->config->get('config_pagination')));
 
 		$data['filter_name'] = $filter_name;
 		$data['filter_email'] = $filter_email;
@@ -745,13 +743,13 @@ class ControllerCustomerCustomer extends Controller {
 		foreach ($custom_fields as $custom_field) {
 			if ($custom_field['status']) {
 				$data['custom_fields'][] = array(
-					'custom_field_id' => $custom_field['custom_field_id'],
+					'custom_field_id'    => $custom_field['custom_field_id'],
 					'custom_field_value' => $this->model_customer_custom_field->getCustomFieldValues($custom_field['custom_field_id']),
-					'name' => $custom_field['name'],
-					'value' => $custom_field['value'],
-					'type' => $custom_field['type'],
-					'location' => $custom_field['location'],
-					'sort_order' => $custom_field['sort_order']
+					'name'               => $custom_field['name'],
+					'value'              => $custom_field['value'],
+					'type'               => $custom_field['type'],
+					'location'           => $custom_field['location'],
+					'sort_order'         => $custom_field['sort_order']
 				);
 			}
 		}
@@ -903,16 +901,17 @@ class ControllerCustomerCustomer extends Controller {
 					$this->error['address'][$key]['city'] = $this->language->get('error_city');
 				}
 
-				$this->load->model('localisation/country');
-
-				$country_info = $this->model_localisation_country->getCountry($value['country_id']);
-
-				if ($country_info && $country_info['postcode_required'] && (utf8_strlen($value['postcode']) < 2 || utf8_strlen($value['postcode']) > 10)) {
-					$this->error['address'][$key]['postcode'] = $this->language->get('error_postcode');
-				}
-
-				if ($value['country_id'] == '') {
+				if (!isset($value['country_id']) || $value['country_id'] == '') {
 					$this->error['address'][$key]['country'] = $this->language->get('error_country');
+				} else {
+					
+					$this->load->model('localisation/country');
+
+					$country_info = $this->model_localisation_country->getCountry($value['country_id']);
+	
+					if ($country_info && $country_info['postcode_required'] && (utf8_strlen($value['postcode']) < 2 || utf8_strlen($value['postcode']) > 10)) {
+						$this->error['address'][$key]['postcode'] = $this->language->get('error_postcode');
+					}
 				}
 
 				if (!isset($value['zone_id']) || $value['zone_id'] == '') {

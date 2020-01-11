@@ -31,13 +31,13 @@
           <div class="card-header"><i class="fas fa-filter"></i> {{ text_filter }}</div>
           <div class="card-body">
             <div class="form-group">
-              <label class="col-form-label" for="input-name">{{ entry_name }}</label> <input type="text" name="filter_name" value="{{ filter_name }}" placeholder="{{ entry_name }}" id="input-name" class="form-control"/>
+              <label class="col-form-label">{{ entry_name }}</label> <input type="text" name="filter_name" value="{{ filter_name }}" placeholder="{{ entry_name }}" id="input-name" class="form-control"/>
             </div>
             <div class="form-group">
-              <label class="col-form-label" for="input-email">{{ entry_email }}</label> <input type="text" name="filter_email" value="{{ filter_email }}" placeholder="{{ entry_email }}" id="input-email" class="form-control"/>
+              <label class="col-form-label">{{ entry_email }}</label> <input type="text" name="filter_email" value="{{ filter_email }}" placeholder="{{ entry_email }}" id="input-email" class="form-control"/>
             </div>
             <div class="form-group">
-              <label class="col-form-label" for="input-customer-group">{{ entry_customer_group }}</label> <select name="filter_customer_group_id" id="input-customer-group" class="form-control">
+              <label for="input-customer-group" class="col-form-label">{{ entry_customer_group }}</label> <select name="filter_customer_group_id" id="input-customer-group" class="form-control">
                 <option value=""></option>
                 {% for customer_group in customer_groups %}
                   {% if customer_group.customer_group_id == filter_customer_group_id %}
@@ -49,7 +49,7 @@
               </select>
             </div>
             <div class="form-group">
-              <label class="col-form-label" for="input-status">{{ entry_status }}</label> <select name="filter_status" id="input-status" class="form-control">
+              <label for="input-status" class="col-form-label">{{ entry_status }}</label> <select name="filter_status" id="input-status" class="form-control">
                 <option value=""></option>
                 {% if filter_status == '1' %}
                   <option value="1" selected="selected">{{ text_enabled }}</option>
@@ -64,10 +64,10 @@
               </select>
             </div>
             <div class="form-group">
-              <label class="col-form-label" for="input-ip">{{ entry_ip }}</label> <input type="text" name="filter_ip" value="{{ filter_ip }}" placeholder="{{ entry_ip }}" id="input-ip" class="form-control"/>
+              <label for="input-ip" class="col-form-label">{{ entry_ip }}</label> <input type="text" name="filter_ip" value="{{ filter_ip }}" placeholder="{{ entry_ip }}" id="input-ip" class="form-control"/>
             </div>
             <div class="form-group">
-              <label class="col-form-label" for="input-date-added">{{ entry_date_added }}</label>
+              <label for="input-date-added" class="col-form-label">{{ entry_date_added }}</label>
               <div class="input-group date">
                 <input type="text" name="filter_date_added" value="{{ filter_date_added }}" placeholder="{{ entry_date_added }}" id="input-date-added" class="form-control"/>
                 <div class="input-group-append">
@@ -95,7 +95,6 @@
                       <td class="text-left">{% if sort == 'c.email' %}<a href="{{ sort_email }}" class="{{ order|lower }}">{{ column_email }}</a>{% else %}<a href="{{ sort_email }}">{{ column_email }}</a>{% endif %}</td>
                       <td class="text-left">{% if sort == 'customer_group' %}<a href="{{ sort_customer_group }}" class="{{ order|lower }}">{{ column_customer_group }}</a> {% else %} <a href="{{ sort_customer_group }}">{{ column_customer_group }}</a>{% endif %}</td>
                       <td class="text-left">{% if sort == 'c.status' %}<a href="{{ sort_status }}" class="{{ order|lower }}">{{ column_status }}</a>{% else %}<a href="{{ sort_status }}">{{ column_status }}</a>{% endif %}</td>
-                      <td class="text-left">{% if sort == 'c.ip' %}<a href="{{ sort_ip }}" class="{{ order|lower }}">{{ column_ip }}</a>{% else %}<a href="{{ sort_ip }}">{{ column_ip }}</a>{% endif %}</td>
                       <td class="text-left">{% if sort == 'c.date_added' %}<a href="{{ sort_date_added }}" class="{{ order|lower }}">{{ column_date_added }}</a>{% else %}<a href="{{ sort_date_added }}">{{ column_date_added }}</a>{% endif %}</td>
                       <td class="text-right">{{ column_action }}</td>
                     </tr>
@@ -113,7 +112,6 @@
                           <td class="text-left">{{ customer.email }}</td>
                           <td class="text-left">{{ customer.customer_group }}</td>
                           <td class="text-left">{{ customer.status }}</td>
-                          <td class="text-left">{{ customer.ip }}</td>
                           <td class="text-left">{{ customer.date_added }}</td>
                           <td class="text-right">
                             <div class="btn-group">

@@ -29,5 +29,4 @@ $_['error_name']             = 'Şehir Adı 1 ile 128 karakter arasında olmalı
 $_['error_default']          = 'Uyarı: Bu şehri silemezsiniz, varsayılan mağaza tarafından kullanılıyor!';
 $_['error_store']            = 'Uyarı: Bu şehri silemezsiniz, %s mağaza tarafından kullanılıyor!';
 $_['error_address']          = 'Uyarı: Bu şehri silemezsiniz, %s adres defteri tarafından kullanılıyor!';
-$_['error_affiliate']        = 'Uyarı: Bu şehri silemezsiniz, %s ortak tarafından kullanılıyor!';
 $_['error_zone_to_geo_zone'] = 'Uyarı: Bu şehri silemezsiniz, %s bölge tarafından kullanılıyor!';

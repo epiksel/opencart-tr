@@ -31,8 +31,8 @@ $_['entry_status']          = 'Durumu';
 // Error
 $_['error_permission']      = 'Uyarı: Kullanıcıları düzenleme iznine sahip değilsiniz!';
 $_['error_account']         = 'Uyarı: Kendi hesabınızı silemezsiniz!';
-$_['error_exists_username'] = 'Uyarı: Kullanıcı adı zaten kullanılıyor!';
 $_['error_username']        = 'Kullanıcı Adı 3 ile 20 karakter arasında olmalı!';
+$_['error_exists_username'] = 'Uyarı: Kullanıcı adı zaten kullanılıyor!';
 $_['error_password']        = 'Parola 4 ile 20 karakter arasında olmalı!';
 $_['error_confirm']         = 'Parolanız birbiriyle uyuşmuyor!';
 $_['error_firstname']       = 'Ad 1 ile 32 karakter arasında olmalı!';

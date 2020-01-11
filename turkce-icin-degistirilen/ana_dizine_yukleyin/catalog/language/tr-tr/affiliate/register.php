@@ -11,7 +11,6 @@ $_['text_register']             = 'Yeni Ortak';
 $_['text_account_already']      = 'Daha önceden ortaklık hesabı açtıysanız, lütfen giriş sayfasından <a href="%s">oturum açınız</a>.';
 $_['text_signup']               = 'Yeni bir ortaklık hesabı açmak için aşağıdaki tüm gerekli alanları doldurunuz:';
 $_['text_your_details']         = 'Kişisel Bilgileriniz';
-$_['text_your_address']         = 'Adres Bilgileriniz';
 $_['text_your_affiliate']       = 'Ortaklık Bilgileri';
 $_['text_your_password']        = 'Parolanız';
 $_['text_cheque']               = 'Çek';

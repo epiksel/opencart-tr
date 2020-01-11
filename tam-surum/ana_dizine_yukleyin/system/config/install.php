@@ -8,13 +8,15 @@ $_['language_default']  = 'tr-tr';
 $_['language_autoload'] = array('tr-tr');
 
 // Session
-$_['session_engine']     = 'file';
 $_['session_autostart']  = true;
+$_['session_engine']     = 'file';
 $_['session_name']       = 'OCSESSID';
 
 // Template
 $_['template_engine']   = 'twig';
-$_['template_cache']    = true;
+
+// Error
+$_['error_display']     = true;
 
 // Actions
 $_['action_default']    = 'install/step_1';
@@ -27,8 +29,4 @@ $_['action_pre_action'] = array(
 );
 
 // Action Events
-$_['action_event'] = array(
-    'view/*/before' => array(
-        'event/theme'
-    )
-);
+$_['action_event'] = array();

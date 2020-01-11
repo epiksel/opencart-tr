@@ -163,8 +163,8 @@ class ControllerMarketingCoupon extends Controller {
 		$filter_data = array(
 			'sort'  => $sort,
 			'order' => $order,
-			'start' => ($page - 1) * $this->config->get('config_limit_admin'),
-			'limit' => $this->config->get('config_limit_admin')
+			'start' => ($page - 1) * $this->config->get('config_pagination'),
+			'limit' => $this->config->get('config_pagination')
 		);
 
 		$coupon_total = $this->model_marketing_coupon->getTotalCoupons();
@@ -236,11 +236,11 @@ class ControllerMarketingCoupon extends Controller {
 		$data['pagination'] = $this->load->controller('common/pagination', array(
 			'total' => $coupon_total,
 			'page'  => $page,
-			'limit' => $this->config->get('config_limit_admin'),
+			'limit' => $this->config->get('config_pagination'),
 			'url'   => $this->url->link('marketing/coupon', 'user_token=' . $this->session->data['user_token'] . $url . '&page={page}')
 		));
 
-		$data['results'] = sprintf($this->language->get('text_pagination'), ($coupon_total) ? (($page - 1) * $this->config->get('config_limit_admin')) + 1 : 0, ((($page - 1) * $this->config->get('config_limit_admin')) > ($coupon_total - $this->config->get('config_limit_admin'))) ? $coupon_total : ((($page - 1) * $this->config->get('config_limit_admin')) + $this->config->get('config_limit_admin')), $coupon_total, ceil($coupon_total / $this->config->get('config_limit_admin')));
+		$data['results'] = sprintf($this->language->get('text_pagination'), ($coupon_total) ? (($page - 1) * $this->config->get('config_pagination')) + 1 : 0, ((($page - 1) * $this->config->get('config_pagination')) > ($coupon_total - $this->config->get('config_pagination'))) ? $coupon_total : ((($page - 1) * $this->config->get('config_pagination')) + $this->config->get('config_pagination')), $coupon_total, ceil($coupon_total / $this->config->get('config_pagination')));
 
 		$data['sort'] = $sort;
 		$data['order'] = $order;
@@ -397,13 +397,13 @@ class ControllerMarketingCoupon extends Controller {
 
 		$this->load->model('catalog/product');
 
-		$data['coupon_product'] = array();
+		$data['coupon_products'] = array();
 
 		foreach ($products as $product_id) {
 			$product_info = $this->model_catalog_product->getProduct($product_id);
 
 			if ($product_info) {
-				$data['coupon_product'][] = array(
+				$data['coupon_products'][] = array(
 					'product_id' => $product_info['product_id'],
 					'name'       => $product_info['name']
 				);
@@ -420,13 +420,13 @@ class ControllerMarketingCoupon extends Controller {
 
 		$this->load->model('catalog/category');
 
-		$data['coupon_category'] = array();
+		$data['coupon_categories'] = array();
 
 		foreach ($categories as $category_id) {
 			$category_info = $this->model_catalog_category->getCategory($category_id);
 
 			if ($category_info) {
-				$data['coupon_category'][] = array(
+				$data['coupon_categories'][] = array(
 					'category_id' => $category_info['category_id'],
 					'name'        => ($category_info['path'] ? $category_info['path'] . ' &gt; ' : '') . $category_info['name']
 				);

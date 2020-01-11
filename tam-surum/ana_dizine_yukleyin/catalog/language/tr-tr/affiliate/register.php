@@ -11,7 +11,6 @@ $_['text_register']             = 'Yeni Ortak';
 $_['text_account_already']      = 'Daha önceden ortaklık hesabı açtıysanız, lütfen giriş sayfasından <a href="%s">oturum açınız</a>.';
 $_['text_signup']               = 'Yeni bir ortaklık hesabı açmak için aşağıdaki tüm gerekli alanları doldurunuz:';
 $_['text_your_details']         = 'Kişisel Bilgileriniz';
-$_['text_your_address']         = 'Adres Bilgileriniz';
 $_['text_your_affiliate']       = 'Ortaklık Bilgileri';
 $_['text_your_password']        = 'Parolanız';
 $_['text_cheque']               = 'Çek';
@@ -41,10 +40,10 @@ $_['entry_confirm']             = 'Parola(tekar)';
 
 // Error
 $_['error_exists']              = 'Uyarı: E-Posta adresi ile daha önce kayıt olunmuştur!';
-$_['error_firstname']           = 'Ad alanı 1 ile 32 karakter arasında olmalı!';
-$_['error_lastname']            = 'Soyad alanı 1 ile 32 karakter arasında olmalı!';
+$_['error_firstname']           = 'Ad 1 ile 32 karakter arasında olmalı!';
+$_['error_lastname']            = 'Soyad 1 ile 32 karakter arasında olmalı!';
 $_['error_email']               = 'Geçerli bir E-Posta adresi yazınız!';
-$_['error_telephone']           = 'Telefon alanı 3 ile 32 karakter arasında olmalı!';
+$_['error_telephone']           = 'Telefon 3 ile 32 karakter arasında olmalı!';
 $_['error_custom_field']        = '%s gerekli!';
 $_['error_cheque']              = 'Alacaklı adı gerekli!';
 $_['error_paypal']              = 'PayPal e-posta adresi geçersiz!';

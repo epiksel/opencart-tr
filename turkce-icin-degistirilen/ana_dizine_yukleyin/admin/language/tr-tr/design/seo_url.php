@@ -28,14 +28,14 @@ $_['entry_store']          = 'Mağaza';
 $_['entry_language']       = 'Dil';
 
 // Help
-$_['help_query']           = 'Değiştirilecek URL sorgusu.';
 $_['help_keyword']         = 'Sadece a-z ya da 0-9 karakter ve boşluklar için - ya da _ kullandığınızdan emin olun. Sadece çevreyi kaldırmak istiyorsanız boş bırakın.';
+$_['help_query']           = 'Değiştirilecek URL sorgusu.';
 $_['help_push']            = 'Kullanılan anahtar kelime yüklendikten sonra GET isteğine aktarılacak URL parametreleri.';
 
 // Error
 $_['error_permission']     = 'Uyarı: SEO Bağlantılarını düzenleme iznine sahip değilsiniz!';
-$_['error_query']          = 'Sorgu 3 ile 255 karakter arasında olmalı!';
-$_['error_query_exists']   = 'Sorgu zaten kullanımda!';
 $_['error_keyword']        = 'Anahtar Kelime 3 ile 64 karakter arasında olmalı!';
 $_['error_keyword_exists'] = 'Anahtar Kelime zaten kullanılıyor!';
+$_['error_query']          = 'Sorgu 3 ile 255 karakter arasında olmalı!';
+$_['error_query_exists']   = 'Sorgu zaten kullanımda!';
 $_['error_push']           = 'Aktarma parametreleri gerekli!';

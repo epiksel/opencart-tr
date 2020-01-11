@@ -25,6 +25,7 @@ $_['text_success']             = 'Yorum için teşekkür ederiz. Onaylandıktan 
 $_['text_related']             = 'Benzer Ürünler';
 $_['text_tags']                = 'Etiketler:';
 $_['text_error']               = 'Ürün bulunamadı!';
+
 $_['text_payment_recurring']   = 'Ödeme Profili';
 $_['text_trial_description']   = '%s için her %d %s %d ödeme ardından';
 $_['text_payment_description'] = '%s için her %d %s %d ödeme';

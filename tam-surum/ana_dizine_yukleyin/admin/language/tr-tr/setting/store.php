@@ -14,6 +14,11 @@ $_['text_edit']                    = 'Mağaza Düzenle';
 $_['text_items']                   = 'Öğeler';
 $_['text_shipping']                = 'Teslimat Adresi';
 $_['text_payment']                 = 'Fatura Adresi';
+$_['text_legal']                   = 'Yasal';
+$_['text_tax']                     = 'Vergiler';
+$_['text_account']                 = 'Hesap';
+$_['text_checkout']                = 'Kasaya Git';
+$_['text_stock']                   = 'Stok';
 
 // Column
 $_['column_name']                  = 'Mağaza Adı';
@@ -60,15 +65,8 @@ $_['entry_stock_checkout']         = 'Stok Dışı Sipariş';
 $_['entry_logo']                   = 'Mağaza Logosu';
 $_['entry_icon']                   = 'Favicon';
 
-// Tab
-$_['tab_legal']                    = 'Yasal';
-$_['tab_tax']                      = 'Vergiler';
-$_['tab_account']                  = 'Hesap';
-$_['tab_checkout']                 = 'Kasaya Git';
-$_['tab_stock']                    = 'Stok';
-
 // Help
-$_['help_url']                     = 'Mağazanızın tam adresini yazınız. Sonuna \'/\' işaretini eklemeyi unutmayınız. Örneğin: http://e-piksel.com/shop/<br />Yeni bir mağaza oluşturmak için dizin oluşturmayınız. Hostinginiz her zaman başka bir etki alanı veya alt etki alanını işaret etmelidir.';
+$_['help_url']                     = 'Mağazanızın tam adresini yazınız. Sonuna \'/\' işaretini eklemeyi unutmayınız. Örneğin: https://e-piksel.com/shop/<br />Yeni bir mağaza oluşturmak için dizin oluşturmayınız. Hostinginiz her zaman başka bir etki alanı veya alt etki alanını işaret etmelidir.';
 $_['help_geocode']                 = 'Lütfen mağazanızın coğrafi kodunu elle giriniz.';
 $_['help_open']                    = 'Mağazanızın çalışma saatlerini yazınız.';
 $_['help_comment']                 = 'Bu alana müşterilerinize belirtmek istediğiniz özel bir not ya da açıklama için kullanabilirsiniz. Örn: Mağazamızda çek kabul edilmez gibi.';

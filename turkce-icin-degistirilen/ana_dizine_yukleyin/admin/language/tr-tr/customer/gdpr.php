@@ -12,6 +12,7 @@ $_['text_info']         = '<strong>GDPR</strong> hesabı silme istekleri, herhan
 $_['text_approve']      = 'Onayla';
 $_['text_deny']         = 'Reddet';
 $_['text_delete']       = 'Sil';
+$_['text_unverified']   = 'Doğrulanmadı';
 $_['text_pending']      = 'Onay Bekliyor';
 $_['text_processing']   = 'İnceleniyor';
 $_['text_complete']     = 'Tamamlandı';

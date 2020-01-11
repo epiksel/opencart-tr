@@ -7,12 +7,12 @@ $_['heading_title']     = 'Yedekle &amp; Geri Yükle';
 
 // Text
 $_['text_success']      = 'Başarılı: Veritabanı başarı bir şekilde değiştirildi!';
-$_['text_backup']       = 'Backing up table %s records %s to %s records';
+$_['text_backup']       = 'Yedeklenen %s tablosunda %s ile %s arasındaki kayıtlar';
 $_['text_restore']      = 'Geri Yükleniyor %s ile %s';
 $_['text_option']       = 'Yedekleme Seçenekleri';
 $_['text_history']      = 'Ydekleme Geçmişi';
 $_['text_progress']     = 'İlerleme';
-$_['text_import']       = 'Büyük yedekleme dosyalarında SQL dosyasını FTP <strong>~/storage/backup/</strong> dizinine yüklemek daha iyidir.';
+$_['text_import']       = 'Büyük boyutlu SQL yedekleme dosyalarını FTP ile <strong>~/storage/backup/</strong> dizinine yüklemek daha iyidir.';
 
 // Column
 $_['column_filename']   = 'Dosya Adı';

@@ -19,14 +19,16 @@ $_['text_week']                = 'hafta';
 $_['text_semi_month']          = 'yarım ay';
 $_['text_month']               = 'ay';
 $_['text_year']                = 'yıl';
-$_['text_trial']               = '%s her %s %s %s ödemelerinde sonra  ';
+
 $_['text_recurring']           = '%s her %s %s';
-$_['text_payment_cancel']      = 'iptal edilinceye kadar';
+$_['text_recurring_payment']   = 'Ödeme Profili';
 $_['text_recurring_item']      = 'Abonelik';
-$_['text_payment_recurring']   = 'Ödeme Profili';
-$_['text_trial_description']   = '%s için her %d %s %d ödeme ardından';
+$_['text_recurring_cancel']    = 'iptal edilinceye kadar';
 $_['text_payment_description'] = '%s için her %d %s da bir %d ödeme';
 $_['text_payment_cancel']      = '%s için her %d %s iptal ediline dek';
+
+$_['text_trial']               = '%s her %s %s %s ödemelerinde sonra ';
+$_['text_trial_description']   = '%s için her %d %s %d ödeme ardından';
 
 // Column
 $_['column_image']             = 'Resim';

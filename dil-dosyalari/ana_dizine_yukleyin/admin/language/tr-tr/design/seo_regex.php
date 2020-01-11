@@ -13,12 +13,14 @@ $_['text_edit']         = 'SEO Regex Düzenle';
 
 // Column
 $_['column_name']       = 'Regex Adı';
+$_['column_key']        = 'Anahtar';
 $_['column_regex']      = 'Regex';
 $_['column_sort_order'] = 'Sıralama';
 $_['column_action']     = 'Eylem';
 
 // Entry
 $_['entry_name']        = 'Regex Adı';
+$_['entry_key']         = 'Anahtar';
 $_['entry_regex']       = 'Regex';
 $_['entry_sort_order']  = 'Sıralama';
 
@@ -28,5 +30,5 @@ $_['help_regex']        = 'URL\'nin bölümleriyle eşleşen düzenli ifade.';
 // Error
 $_['error_permission']  = 'Uyarı: SEO Regex düzenleme iznine sahip değilsiniz!';
 $_['error_name']        = 'Regex Adı gerekli!';
-$_['error_regex']       = 'Regex gerekli!';
-$_['error_invalid']     = 'Regex geçersiz!';
+$_['error_key']         = 'Anahtar gerekli!';
+$_['error_regex']       = 'Regex geçersiz!';

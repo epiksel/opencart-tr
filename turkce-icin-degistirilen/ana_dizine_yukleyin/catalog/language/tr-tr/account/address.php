@@ -28,7 +28,7 @@ $_['entry_zone']         = 'Şehir';
 $_['entry_default']      = 'Varsayılan Adres';
 
 // Error
-$_['error_delete']       = 'Uyarı: En az bir adres yazmalısınız!';
+$_['error_delete']       = 'Uyarı: En az bir adres olmalıdır!';
 $_['error_default']      = 'Uyarı: Varsayılan adresinizi silemezsiniz!';
 $_['error_firstname']    = 'Ad 1 ile 32 karakter arasında olmalı!';
 $_['error_lastname']     = 'Soyad 1 ile 32 karakter arasında olmalı!';

@@ -25,6 +25,7 @@ $_['text_success']             = 'Yorum için teşekkür ederiz. Onaylandıktan 
 $_['text_related']             = 'Benzer Ürünler';
 $_['text_tags']                = 'Etiketler:';
 $_['text_error']               = 'Ürün bulunamadı!';
+
 $_['text_payment_recurring']   = 'Ödeme Profili';
 $_['text_trial_description']   = '%s için her %d %s %d ödeme ardından';
 $_['text_payment_description'] = '%s için her %d %s %d ödeme';
@@ -49,6 +50,6 @@ $_['tab_attribute']            = 'Özellikler';
 $_['tab_review']               = 'Yorumlar (%s)';
 
 // Error
-$_['error_name']               = 'Uyarı: Adınız alanı 3 ile 25 karakter arasında olmalı!';
-$_['error_text']               = 'Uyarı: Yorum alanı 25 ile 1000 karakter arasında olmalı!';
+$_['error_name']               = 'Uyarı: Ad 3 ile 25 karakter arasında olmalı!';
+$_['error_text']               = 'Uyarı: Yorum 25 ile 1000 karakter arasında olmalı!';
 $_['error_rating']             = 'Uyarı: Lütfen yorumunuz için oylama seçiniz!';

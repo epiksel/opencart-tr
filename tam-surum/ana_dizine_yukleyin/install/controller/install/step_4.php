@@ -14,7 +14,6 @@ class ControllerInstallStep4 extends Controller {
 		$data['text_extension'] = $this->language->get('text_extension');
 		$data['text_mail'] = $this->language->get('text_mail');
 		$data['text_mail_description'] = $this->language->get('text_mail_description');
-		$data['text_openbay'] = $this->language->get('text_openbay');
 		$data['text_maxmind'] = $this->language->get('text_maxmind');
 		$data['text_facebook'] = $this->language->get('text_facebook');
 		$data['text_facebook_description'] = $this->language->get('text_facebook_description');
@@ -29,7 +28,6 @@ class ControllerInstallStep4 extends Controller {
 		$data['text_download'] = $this->language->get('text_download');
 		$data['text_downloads'] = $this->language->get('text_downloads');
 		$data['text_price'] = $this->language->get('text_price');
-		$data['text_view'] = $this->language->get('text_view');
 
 		$data['button_mail'] = $this->language->get('button_mail');
 		$data['button_setup'] = $this->language->get('button_setup');
@@ -45,7 +43,7 @@ class ControllerInstallStep4 extends Controller {
 		}
 
 		$data['maxmind'] = $this->url->link('3rd_party/maxmind');
-		$data['openbay'] = $this->url->link('3rd_party/openbay');
+		$data['facebook'] = $this->url->link('3rd_party/facebook');
 
 		$data['footer'] = $this->load->controller('common/footer');
 		$data['header'] = $this->load->controller('common/header');

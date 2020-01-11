@@ -426,7 +426,7 @@ footer {
 }
 
 /* default font size */
-.fa {
+.fas, .far, .fab {
   font-size: 14px;
 }
 
@@ -435,22 +435,12 @@ footer {
   padding: 8px 14px 8px 14px;
 }
 
-#alert-box {
+/* toast */
+#toast {
   position: fixed;
-  top: 15px;
-  right: 0;
-  transition: all 0.5s;
-  z-index: 99;
-  &.open {
-    right: 15px;
-  }
-
-  > .alert {
-    padding-right: 28px;
-  }
-  .close {
-    padding: 5px 8px;
-  }
+  top: 10px;
+  right: 10px;
+  z-index: 999;
 }
 
 /* breadcrumb */
@@ -496,19 +486,6 @@ footer {
 }
 
 /* buttons */
-/*
-.btn {
-  padding: 7.5px 12px;
-  font-size: 12px;
-  border: 1px solid #cccccc;
-  border-radius: 4px;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .2), 0 1px 2px rgba(0, 0, 0, .05);
-
-  &.active {
-    box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
-  }
-}
- */
 .btn-light {
   color: #777;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
@@ -642,9 +619,24 @@ footer {
   }
 }
 
-
-
-
+.rating {
+  .fa-stack {
+    font-size: 8px;
+  }
+  .far {
+    &.fa-star {
+      color: #999;
+      font-size: 15px;
+    }
+  }
+  .fa-star {
+    color: #FC0;
+    font-size: 15px;
+    + .far.fa-star {
+      color: #E69500;
+    }
+  }
+}
 
 /* list group */
 .list-group {
@@ -661,20 +653,6 @@ footer {
         text-shadow: 0 1px 0 #FFF;
       }
     }
-  }
-}
-
-/* carousel */
-.carousel-caption {
-  color: #FFFFFF;
-  text-shadow: 0 1px 0 #000000;
-  .icon-prev:before {
-    content: '\f053';
-    font-family: FontAwesome;
-  }
-  .icon-next:before {
-    content: '\f054';
-    font-family: FontAwesome;
   }
 }
 
@@ -711,6 +689,11 @@ footer {
   }
   .rating {
     padding-bottom: 10px;
+    .far {
+      &.fa-star {
+        color: #FC0;
+      }
+    }
   }
   .price {
     color: #444;
@@ -808,13 +791,12 @@ footer {
         //float: left;
         padding: 0 15px;
         display: inline-block;
-        width: 30%;
+        //width: 30%;
 
         + div {
-          display: inline-block;
+          //display: inline-block;
           margin-left: 0%;
-          width: 69.5%;
-
+          //width: 69.5%;
         }
       }
     }
@@ -829,23 +811,6 @@ footer {
       .button-group {
         border-left: none;
       }
-    }
-  }
-}
-
-.rating {
-  .fa-stack {
-    font-size: 8px;
-  }
-  .fa-star-o {
-    color: #999;
-    font-size: 15px;
-  }
-  .fa-star {
-    color: #FC0;
-    font-size: 15px;
-    + .fa-star-o {
-      color: #E69500;
     }
   }
 }
@@ -989,16 +954,18 @@ footer {
 }
 
 #checkout-cart #accordion h4:before {
-  font-family: FontAwesome;
+  font-family: 'Font Awesome 5 Free';
   font-size: 14px/1;
-  content: "\f0d7  ";
+  font-weight: 900;
+  content: '\f0d7  ';
   margin-right: 10px;
 }
 
 #checkout-cart #accordion h4.collapsed:before {
-  font-family: FontAwesome;
+  font-family: 'Font Awesome 5 Free';
   font-size: 14px/1;
-  content: "\f0da";
+  font-weight: 900;
+  content: '\f0da';
   margin-right: 10px;
 }
 
@@ -1007,16 +974,18 @@ footer {
 }
 
 #checkout-checkout #accordion h4:before {
-  font-family: FontAwesome;
+  font-family: 'Font Awesome 5 Free';
   font-size: 14px/1;
-  content: "\f0d7  ";
+  font-weight: 900;
+  content: '\f0d7  ';
   margin-right: 10px;
 }
 
 #checkout-checkout #accordion h4.collapsed:before {
-  font-family: FontAwesome;
+  font-family: 'Font Awesome 5 Free';
   font-size: 14px/1;
-  content: "\f0da";
+  font-weight: 900;
+  content: '\f0da';
   margin-right: 10px;
 }
 

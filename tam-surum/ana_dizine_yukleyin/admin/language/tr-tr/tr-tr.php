@@ -107,6 +107,7 @@ $_['button_restore']                = 'Geri Yükle';
 $_['button_run']                    = 'Zamanlanmış Görevi Çalıştır';
 $_['button_backup']                 = 'Yedek Al';
 $_['button_developer']              = 'Geliştirici Ayarları';
+$_['button_master']                 = 'Ana Ürün';
 
 // Tab
 $_['tab_address']                   = 'Adresler';

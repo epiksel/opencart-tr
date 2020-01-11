@@ -11,8 +11,6 @@ $_['text_success']                 = 'Başarılı: Ayarlar başarılı bir şeki
 $_['text_edit']                    = 'Ayarları Düzenle';
 $_['text_register']                = 'Kayıt Olma';
 $_['text_guest']                   = 'Misafir Alışverişi';
-$_['text_review']                  = 'Yorumlar';
-$_['text_return']                  = 'Ürün İadesi';
 $_['text_contact']                 = 'İletişim';
 $_['text_shipping']                = 'Teslimat Adresi';
 $_['text_payment']                 = 'Fatura Adresi';
@@ -28,6 +26,17 @@ $_['text_general']                 = 'Genel';
 $_['text_security']                = 'Güvenlik';
 $_['text_upload']                  = 'Yüklemeler';
 $_['text_error']                   = 'Hata İşleme';
+$_['text_product']                 = 'Ürünler';
+$_['text_review']                  = 'Yorumlar';
+$_['text_voucher']                 = 'Hediye Çeki';
+$_['text_legal']                   = 'Yasal';
+$_['text_tax']                     = 'Vergiler';
+$_['text_account']                 = 'Hesap';
+$_['text_checkout']                = 'Kasaya Git';
+$_['text_stock']                   = 'Stok';
+$_['text_affiliate']               = 'Ortaklık Sistemi';
+$_['text_return']                  = 'İadeler';
+$_['text_captcha']                 = 'Doğrulama';
 
 // Entry
 $_['entry_meta_title']             = 'Meta Başlığı';
@@ -107,8 +116,8 @@ $_['entry_mail_smtp_username']     = 'SMTP Kullanıcı Adı';
 $_['entry_mail_smtp_password']     = 'SMTP Parola';
 $_['entry_mail_smtp_port']         = 'SMTP Port';
 $_['entry_mail_smtp_timeout']      = 'SMTP Zaman Aşımı';
-$_['entry_mail_alert']              = 'Uyarı Mesajları';
-$_['entry_mail_alert_email']        = 'İlave Uyarı E-Posta Adresleri';
+$_['entry_mail_alert']             = 'Uyarı Mesajları';
+$_['entry_mail_alert_email']       = 'İlave Uyarı E-Posta Adresleri';
 $_['entry_shared']                 = 'Paylaşılan Oturumları Kullan';
 $_['entry_robots']                 = 'Robotlar';
 $_['entry_seo_url']                = 'SEO URL Kullan';
@@ -123,18 +132,6 @@ $_['entry_error_display']          = 'Hataları Göster';
 $_['entry_error_log']              = 'Hata Kayıtları';
 $_['entry_error_filename']         = 'Hata Kayıtları Dosya Adı';
 $_['entry_status']                 = 'Status';
-
-// Tab
-$_['tab_product']                  = 'Ürünler';
-$_['tab_review']                   = 'Yorumlar';
-$_['tab_voucher']                  = 'Hediye Çeki';
-$_['tab_legal']                    = 'Yasal';
-$_['tab_tax']                      = 'Vergiler';
-$_['tab_account']                  = 'Hesap';
-$_['tab_checkout']                 = 'Kasaya Git';
-$_['tab_stock']                    = 'Stok';
-$_['tab_affiliate']                = 'Ortaklık Sistemi';
-$_['tab_captcha']                  = 'Doğrulama';
 
 // Help
 $_['help_geocode']                 = 'Lütfen mağazanızın coğrafi kodunu elle giriniz.';
