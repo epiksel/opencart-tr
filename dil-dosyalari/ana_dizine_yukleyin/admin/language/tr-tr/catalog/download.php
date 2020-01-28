@@ -11,15 +11,15 @@ $_['text_list']         = 'Dosya Listesi';
 $_['text_add']          = 'Dosya Ekle';
 $_['text_edit']         = 'Dosya Düzenle';
 $_['text_upload']       = 'Dosyanız başarılı bir şekilde yüklendi!';
-$_['text_report']       = 'Report';
+$_['text_report']       = 'Rapor';
 
 
 // Column
 $_['column_name']       = 'İndirme Adı';
-$_['column_ip']         = 'IP';
-$_['column_account']    = 'Accounts';
-$_['column_store']      = 'Store';
-$_['column_country']    = 'Country';
+$_['column_ip']         = 'IP Adresi';
+$_['column_account']    = 'Hesaplar';
+$_['column_store']      = 'Mağaza';
+$_['column_country']    = 'Ülke';
 $_['column_date_added'] = 'Ekleme Tarihi';
 $_['column_action']     = 'Eylem';
 
