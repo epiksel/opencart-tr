@@ -131,7 +131,7 @@ $_['entry_date_added']           = 'Ekleme Tarihi';
 $_['entry_date_modified']        = 'Değiştirme Tarihi';
 
 // Help
-$_['help_override']              = 'Eğer müşteri sipariş durumu bir sahtekârlık araçları tarafından değiştirilmesi engelleniyorsa geçersiz kılmayı etkinleştirin.';
+$_['help_override']              = 'Eğer sipariş durumu değiştirilmesi, sahtekârlık araçları tarafından engelleniyorsa, geçersiz kılmayı etkinleştirin.';
 
 // Error
 $_['error_warning']              = 'Uyarı: Oluşan hatalar için lütfen formu dikkatli kontrol ediniz!';

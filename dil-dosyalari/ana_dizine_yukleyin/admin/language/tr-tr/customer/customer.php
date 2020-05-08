@@ -23,6 +23,9 @@ $_['text_transaction_add']  = 'İşlem Ekle';
 $_['text_reward']           = 'Ödül Puanları';
 $_['text_reward_add']       = 'Ödül Puanı Ekle';
 $_['text_ip']               = 'IP';
+$_['text_option']           = 'Seçenekler';
+$_['text_login']            = 'Mağazada Oturum Aç';
+$_['text_unlock']           = 'Hesap Kilidini Kaldır';
 
 
 // Column

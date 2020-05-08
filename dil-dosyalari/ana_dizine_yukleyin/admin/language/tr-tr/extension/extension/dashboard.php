@@ -1,17 +1,20 @@
 <?php
+// Translator : Ekrem KAYA
+// Website    : https://e-piksel.com
+
 // Heading
-$_['heading_title']     = 'Dashboard';
+$_['heading_title']     = 'Gösterge Panelleri';
 
 // Text
-$_['text_success']      = 'Success: You have modified dashboards!';
-$_['text_list']         = 'Dashboard List';
+$_['text_success']      = 'Başarılı: Gösterge panelleri başarılı bir şekilde değiştirildi!';
+$_['text_list']         = 'Gösterge Panel Listesi';
 
 // Column
-$_['column_name']       = 'Dashboard Name';
-$_['column_width']      = 'Width';
-$_['column_status']     = 'Status';
-$_['column_sort_order'] = 'Sort Order';
-$_['column_action']     = 'Action';
+$_['column_name']       = 'Panel Adı';
+$_['column_width']      = 'Genişlik';
+$_['column_status']     = 'Durumu';
+$_['column_sort_order'] = 'Sırlama';
+$_['column_action']     = 'Eylem';
 
 // Error
-$_['error_permission']  = 'Warning: You do not have permission to modify dashboards!';
+$_['error_permission']  = 'Uyarı: Gösterge panellerini düzenleme iznine sahip değilsiniz!';
