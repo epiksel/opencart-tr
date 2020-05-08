@@ -3452,7 +3452,7 @@ INSERT INTO `oc_setting` (`store_id`, `code`, `key`, `value`, `serialized`) VALU
 (0, 'total_sub_total', 'total_sub_total_status', '1', 0),
 (0, 'total_tax', 'total_tax_sort_order', '5', 0),
 (0, 'total_tax', 'total_tax_status', '1', 0),
-(0, 'total_total', 'total_sort_order', '9', 0),
+(0, 'total_total', 'total_total_sort_order', '9', 0),
 (0, 'total_total', 'total_total_status', '1', 0),
 (0, 'total_shipping', 'total_shipping_sort_order', '3', 0),
 (0, 'total_shipping', 'total_shipping_status', '1', 0),
