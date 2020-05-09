@@ -158,7 +158,6 @@ $_['help_customer_group']          = 'Varsayılan müşteri grubu.';
 $_['help_customer_group_display']  = 'Yeni kayıtlarda müşterilerinizin seçebilmesi için müşteri gruplarını göster.';
 $_['help_customer_price']          = 'Fiyatları müşteri giriş yaptıktan sonra gösterir.';
 $_['help_login_attempts']          = 'Maksimum oturum açma denemesinden sonra hesap 1 saat süre ile kitlenir. Kilidli Üye ve Ortak hesapları yönetim üye ya da ortak sayfasından kilidi açılabilir.';
-$_['help_login_attempts']          = 'Maximum login attempts allowed before the account is locked for 1 hour. Customer and affiliate accounts can be unlocked on the customer or affiliate admin pages.';
 $_['help_account']                 = 'Müşteri kayıt olurken hesap koşulları kabul edilmelidir.';
 $_['help_invoice_prefix']          = 'Fatura numarasına ön-ek ekler (örn. INV-2011-00). Benzersiz ön-ek için Fatura No 1\'den başlayacaktır.';
 $_['help_cart_weight']             = 'Sepetim sayfasında sepetteki ürünlerin ağırlığını göster.';

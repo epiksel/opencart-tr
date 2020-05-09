@@ -11,7 +11,7 @@ $_['text_reward']              = 'Kazanacağınız Puan:';
 $_['text_points']              = 'Satın almak için gerekli puan:';
 $_['text_stock']               = 'Stok Durumu:';
 $_['text_instock']             = 'Stokta var';
-$_['text_tax']                 = 'Vergiler Hariç:';
+$_['text_tax']                 = 'Vergisiz:';
 $_['text_discount']            = ' adet ve üzeri ';
 $_['text_option']              = 'Mevcut Seçenekler:';
 $_['text_minimum']             = 'Satın alabilmek için asgari adet: %s';
@@ -25,7 +25,6 @@ $_['text_success']             = 'Yorum için teşekkür ederiz. Onaylandıktan 
 $_['text_related']             = 'Benzer Ürünler';
 $_['text_tags']                = 'Etiketler:';
 $_['text_error']               = 'Ürün bulunamadı!';
-
 $_['text_payment_recurring']   = 'Ödeme Profili';
 $_['text_trial_description']   = '%s için her %d %s %d ödeme ardından';
 $_['text_payment_description'] = '%s için her %d %s %d ödeme';
