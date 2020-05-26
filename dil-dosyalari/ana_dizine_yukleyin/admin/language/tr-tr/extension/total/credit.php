@@ -4,11 +4,11 @@
 
 // Heading
 $_['heading_title']    = 'Mağaza Kredisi';
-$_['text_edit']        = 'Mağaza Kredisi Düzenle';
 
 // Text
 $_['text_extension']   = 'Eklentiler';
 $_['text_success']     = 'Başarılı: Mağaza kredi toplamı başarılı bir şekilde değiştirildi!';
+$_['text_edit']        = 'Mağaza Kredisi Düzenle';
 
 // Entry
 $_['entry_status']     = 'Durum';

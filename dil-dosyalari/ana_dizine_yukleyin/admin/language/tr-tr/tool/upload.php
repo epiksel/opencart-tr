@@ -6,7 +6,7 @@
 $_['heading_title']     = 'Yüklemeler';
 
 // Text
-$_['text_success']      = 'Başarılı: Yükleme başarı bir şekilde geri yüklendi!';
+$_['text_success']      = 'Başarılı: Yüklemeler başarılı bir şekilde değiştirildi!';
 $_['text_list']         = 'Yükleme Listesi';
 
 // Column

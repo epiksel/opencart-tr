@@ -11,7 +11,7 @@ $_['text_success']       = 'Başarılı: Çek / Posta Havale ödeme detayları g
 $_['text_edit']          = 'Çek / Posta Havalesi Düzenle';
 
 // Entry
-$_['entry_payable']      = 'Ödencek Kişi';
+$_['entry_payable']      = 'Ödenecek Kişi';
 $_['entry_total']        = 'Toplam';
 $_['entry_order_status'] = 'Sipariş Durumu';
 $_['entry_geo_zone']     = 'Bölge';
@@ -23,4 +23,4 @@ $_['help_total']         = 'Bu ödeme metodunun aktif olması için toplam sipar
 
 // Error
 $_['error_permission']   = 'Uyarı: Çek / Posta Havalesi ödeme metodunu düzenleme iznine sahip değilsiniz!';
-$_['error_payable']      = 'Ödenen kişi gerekli!';
+$_['error_payable']      = 'Ödenecek kişi gerekli!';

@@ -39,7 +39,7 @@ $_['text_ip_country_name']                    = 'IP Ülke Adı';
 $_['text_ip_continent_code']                  = 'IP Kıta Kodu';
 $_['text_ip_corporate_proxy']                 = 'IP Eş Proksi';
 $_['text_anonymous_proxy']                    = 'Anonim Proksi';
-$_['text_proxy_score']                        = 'Proksi Puanı';
+$_['text_proxy_score']                        = 'Proksi Skoru';
 $_['text_is_trans_proxy']                     = 'Saydam Proksi mi?';
 $_['text_free_mail']                          = 'Ücretsiz E-posta';
 $_['text_carder_email']                       = 'Sakıncalı E-posta';
@@ -57,20 +57,20 @@ $_['text_city_postal_match']                  = 'Şehir Posta Kodu Eşleştirme'
 $_['text_ship_city_postal_match']             = 'Kargo Şehir Posta Kodu Eşleştirme';
 $_['text_score']                              = 'Güvenilirlik Puan';
 $_['text_explanation']                        = 'Yorum';
-$_['text_risk_score']                         = 'Risk Puanı';
+$_['text_risk_score']                         = 'Risk Skoru';
 $_['text_queries_remaining']                  = 'Kalan İstek';
 $_['text_maxmind_id']                         = 'Maxmind ID';
 $_['text_error']                              = 'Hata';
 
 // Entry
-$_['entry_key']                               = 'MaxMind License Key';
-$_['entry_score']                             = 'Risk Score';
-$_['entry_order_status']                      = 'Order Status';
+$_['entry_key']                               = 'Maxmind Lisans Anahtarı';
+$_['entry_score']                             = 'Risk Skoru';
+$_['entry_order_status']                      = 'Sipariş Durumu';
 $_['entry_status']                            = 'Status';
 
 // Help
 $_['help_custom_score']                       = 'Puan ne kadar yüksekse sahtekârlık olasılığı daha yüksektir. 0 ile 100 arasında bir puan belirleyiniz.';
-$_['help_order_status']                       = 'Ayarladığınız risk puanı üzerindeki siparişleriniz durumları otomatik olarak sahtekârlık sipariş durumu atanacaktır.';
+$_['help_order_status']                       = 'Ayarladığınız risk skoru üzerindeki siparişleriniz durumları otomatik olarak sahtekârlık sipariş durumu atanacaktır.';
 
 $_['help_country_match']                      = 'IP adresinin bulunduğu ülke ile fatura adresindeki ülke bilgisinin aynı olup olmadığını gösterir(Eş Değilse= Büyük Risk).';
 $_['help_country_code']                       = 'IP adresinin ülke kodu.';
@@ -116,7 +116,7 @@ $_['help_customer_phone_in_billing_location'] = 'Müşteri telefon numarasının
 $_['help_ship_forward']                       = 'Teslimat adresinin bilinen gönderi adresleri veritabanında olup olmadığını gösterir.';
 $_['help_city_postal_match']                  = 'Faturadaki şehir ve bölge bilgisinin posta koduyla uyumulu olup olmadığını gösterir. Şu anda sadece ABD adresleri için kullanılabilmektedir. ABD dışındaki adreslerde boş bir değer görünür.';
 $_['help_ship_city_postal_match']             = 'Teslimat adresindeki şehir ve bölge bilgisinin posta koduyla uyumulu olup olmadığını gösterir. Şu anda sadece ABD adresleri için kullanılabilmektedir. ABD dışındaki adreslerde boş bir değer görünür.';
-$_['help_explanation']                        = 'Güvenilirlik puanının kısa bir yorumudur, formülümüze dayanarak bu puanı etkileyen faktörleri açıklar. Bu yorumun Risk Puanına göre değil Güvenilirlik puanına karşılık yapıldığına dikkat ediniz.';
+$_['help_explanation']                        = 'Güvenilirlik puanının kısa bir yorumudur, formülümüze dayanarak bu puanı etkileyen faktörleri açıklar. Bu yorumun Risk Skoruna göre değil Güvenilirlik puanına karşılık yapıldığına dikkat ediniz.';
 $_['help_risk_score']                         = 'Siparişin dolandırıcı olma ihtimalini yaklaşık olarak gösteren Yeni Güvenilirlik Puanıdır(daha önceki minFraud(www.maxmind.com) işlemleri esas alınmıştır).';
 $_['help_queries_remaining']                  = 'Hesabınızda kalan istek miktarı, yeni istek eklemeniz gerektiğine dair bilgilendirme amaçlı gönderilmektedir.';
 $_['help_maxmind_id']                         = 'Eşsiz tanımlayıcı, dolandırıcılık etkinliği hakkında oluşturulan raporun MaxMind a gönderilmesinde kullanılmaktadır. Bu raporlama MaxMind ın size sunduğu servisin gelişmesine katkı sağlar ve sitenizde yapılan ödemeler esas alınarak oluşturulacak Güvenilirlik Puanı hesaplama formülünü ilerleyen sürümlerde kullanabileceksiniz.';

@@ -6,7 +6,7 @@
 $_['heading_title']     = 'Dosyalar';
 
 // Text
-$_['text_success']      = 'Başarılı: Dosya başarılı bir şekilde değiştirildi!';
+$_['text_success']      = 'Başarılı: Dosyalar başarılı bir şekilde değiştirildi!';
 $_['text_list']         = 'Dosya Listesi';
 $_['text_add']          = 'Dosya Ekle';
 $_['text_edit']         = 'Dosya Düzenle';

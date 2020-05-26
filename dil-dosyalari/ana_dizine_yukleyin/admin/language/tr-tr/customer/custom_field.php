@@ -55,5 +55,5 @@ $_['help_sort_order']      = 'Son alandan geriye doğru ayarlamak için eksi de�
 // Error
 $_['error_permission']     = 'Uyarı: Özel alanları düzenleme yetkisine sahip değilsiniz!';
 $_['error_name']           = 'Özel alan adı 1 ile 128 karakter arasında olmalıdır!';
-$_['error_type']           = 'Uyarı: Özel alan türü gerekli!';
+$_['error_type']           = 'Uyarı: Özel Alan Değerleri gerekli!';
 $_['error_custom_value']   = 'Özel alan değer adı 1 ile 128 karakter arasında olmalıdır!';
