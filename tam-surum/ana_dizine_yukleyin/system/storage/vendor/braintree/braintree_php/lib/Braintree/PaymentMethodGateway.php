@@ -1,10 +1,13 @@
 <?php
+namespace Braintree;
+
+use InvalidArgumentException;
+
 /**
  * Braintree PaymentMethodGateway module
  *
  * @package    Braintree
  * @category   Resources
- * @copyright  2014 Braintree, a division of PayPal, Inc.
  */
 
 /**
@@ -15,10 +18,8 @@
  *
  * @package    Braintree
  * @category   Resources
- * @copyright  2014 Braintree, a division of PayPal, Inc.
- *
  */
-class Braintree_PaymentMethodGateway
+class PaymentMethodGateway
 {
     private $_gateway;
     private $_config;
@@ -29,23 +30,22 @@ class Braintree_PaymentMethodGateway
         $this->_gateway = $gateway;
         $this->_config = $gateway->config;
         $this->_config->assertHasAccessTokenOrKeys();
-        $this->_http = new Braintree_Http($gateway->config);
+        $this->_http = new Http($gateway->config);
     }
 
 
     public function create($attribs)
     {
-        Braintree_Util::verifyKeys(self::createSignature(), $attribs);
-        return $this->_doCreate('/payment_methods', array('payment_method' => $attribs));
+        Util::verifyKeys(self::createSignature(), $attribs);
+        return $this->_doCreate('/payment_methods', ['payment_method' => $attribs]);
     }
 
     /**
      * find a PaymentMethod by token
      *
-     * @access public
      * @param string $token payment method unique id
-     * @return object Braintree_CreditCard or Braintree_PayPalAccount
-     * @throws Braintree_Exception_NotFound
+     * @return CreditCard|PayPalAccount
+     * @throws Exception\NotFound
      */
     public function find($token)
     {
@@ -53,51 +53,88 @@ class Braintree_PaymentMethodGateway
         try {
             $path = $this->_config->merchantPath() . '/payment_methods/any/' . $token;
             $response = $this->_http->get($path);
-            if (isset($response['creditCard'])) {
-                return Braintree_CreditCard::factory($response['creditCard']);
-            } else if (isset($response['paypalAccount'])) {
-                return Braintree_PayPalAccount::factory($response['paypalAccount']);
-            } else if (isset($response['coinbaseAccount'])) {
-                return Braintree_CoinbaseAccount::factory($response['coinbaseAccount']);
-            } else if (isset($response['applePayCard'])) {
-                return Braintree_ApplePayCard::factory($response['applePayCard']);
-            } else if (isset($response['androidPayCard'])) {
-                return Braintree_AndroidPayCard::factory($response['androidPayCard']);
-            } else if (is_array($response)) {
-                return Braintree_UnknownPaymentMethod::factory($response);
-            }
-        } catch (Braintree_Exception_NotFound $e) {
-            throw new Braintree_Exception_NotFound(
+            return PaymentMethodParser::parsePaymentMethod($response);
+        } catch (Exception\NotFound $e) {
+            throw new Exception\NotFound(
                 'payment method with token ' . $token . ' not found'
             );
         }
-
     }
 
     public function update($token, $attribs)
     {
-        Braintree_Util::verifyKeys(self::updateSignature(), $attribs);
-        return $this->_doUpdate('/payment_methods/any/' . $token, array('payment_method' => $attribs));
+        Util::verifyKeys(self::updateSignature(), $attribs);
+        return $this->_doUpdate('/payment_methods/any/' . $token, ['payment_method' => $attribs]);
     }
 
-    public function delete($token)
+    public function delete($token, $options=[])
     {
+        Util::verifyKeys(self::deleteSignature(), $options);
         $this->_validateId($token);
-        $path = $this->_config->merchantPath() . '/payment_methods/any/' . $token;
-        $this->_http->delete($path);
-        return new Braintree_Result_Successful();
+        $queryString = "";
+        if (!empty($options)) {
+            $queryString = "?" . http_build_query(Util::camelCaseToDelimiterArray($options, '_'));
+        }
+        return $this->_doDelete('/payment_methods/any/' . $token  . $queryString);
+    }
+
+    public function grant($sharedPaymentMethodToken, $attribs=[])
+    {
+        if (is_bool($attribs) === true) {
+            $attribs = ['allow_vaulting' => $attribs];
+        }
+        $options = [ 'shared_payment_method_token' => $sharedPaymentMethodToken ];
+
+        return $this->_doGrant(
+            '/payment_methods/grant',
+            [
+                'payment_method' => array_merge($attribs, $options)
+            ]
+        );
+    }
+
+    public function revoke($sharedPaymentMethodToken)
+    {
+        return $this->_doRevoke(
+            '/payment_methods/revoke',
+            [
+                'payment_method' => [
+                    'shared_payment_method_token' => $sharedPaymentMethodToken
+                ]
+            ]
+        );
     }
 
     private static function baseSignature()
     {
-        $billingAddressSignature = Braintree_AddressGateway::createSignature();
-        $optionsSignature = array(
+        $billingAddressSignature = AddressGateway::createSignature();
+        $optionsSignature = [
             'failOnDuplicatePaymentMethod',
             'makeDefault',
             'verificationMerchantAccountId',
-            'verifyCard'
-        );
-        return array(
+            'verifyCard',
+            'verificationAccountType',
+            'verificationAmount',
+            'usBankAccountVerificationMethod',
+            ['paypal' => [
+                'payee_email',
+                'payeeEmail',
+                'order_id',
+                'orderId',
+                'custom_field',
+                'customField',
+                'description',
+                'amount',
+                ['shipping' =>
+                    [
+                        'firstName', 'lastName', 'company', 'countryName',
+                        'countryCodeAlpha2', 'countryCodeAlpha3', 'countryCodeNumeric',
+                        'extendedAddress', 'locality', 'postalCode', 'region',
+                        'streetAddress'],
+                ],
+            ]],
+        ];
+        return [
             'billingAddressId',
             'cardholderName',
             'cvv',
@@ -108,32 +145,37 @@ class Braintree_PaymentMethodGateway
             'number',
             'paymentMethodNonce',
             'token',
-            array('options' => $optionsSignature),
-            array('billingAddress' => $billingAddressSignature)
-        );
+            ['options' => $optionsSignature],
+            ['billingAddress' => $billingAddressSignature]
+        ];
     }
 
     public static function createSignature()
     {
-        $signature = array_merge(self::baseSignature(), array('customerId'));
+        $signature = array_merge(self::baseSignature(), ['customerId', 'paypalRefreshToken', 'paypalVaultWithoutUpgrade']);
         return $signature;
     }
 
     public static function updateSignature()
     {
-        $billingAddressSignature = Braintree_AddressGateway::updateSignature();
-        array_push($billingAddressSignature, array(
-            'options' => array(
+        $billingAddressSignature = AddressGateway::updateSignature();
+        array_push($billingAddressSignature, [
+            'options' => [
                 'updateExisting'
-            )
-        ));
-        $signature = array_merge(self::baseSignature(), array(
+            ]
+        ]);
+        $signature = array_merge(self::baseSignature(), [
             'deviceSessionId',
             'venmoSdkPaymentMethodCode',
             'fraudMerchantId',
-            array('billingAddress' => $billingAddressSignature)
-        ));
+            ['billingAddress' => $billingAddressSignature]
+        ]);
         return $signature;
+    }
+
+    private static function deleteSignature()
+    {
+        return ['revokeAllGrants'];
     }
 
     /**
@@ -152,6 +194,22 @@ class Braintree_PaymentMethodGateway
         return $this->_verifyGatewayResponse($response);
     }
 
+    public function _doGrant($subPath, $params)
+    {
+        $fullPath = $this->_config->merchantPath() . $subPath;
+        $response = $this->_http->post($fullPath, $params);
+
+        return $this->_verifyGrantResponse($response);
+    }
+
+    public function _doRevoke($subPath, $params)
+    {
+        $fullPath = $this->_config->merchantPath() . $subPath;
+        $response = $this->_http->post($fullPath, $params);
+
+        return $this->_verifyRevokeResponse($response);
+    }
+
     /**
      * sends the update request to the gateway
      *
@@ -168,61 +226,73 @@ class Braintree_PaymentMethodGateway
         return $this->_verifyGatewayResponse($response);
     }
 
+
+    /**
+     * sends the delete request to the gateway
+     *
+     * @ignore
+     * @param string $subPath
+     * @return mixed
+     */
+    public function _doDelete($subPath)
+    {
+        $fullPath = $this->_config->merchantPath() . $subPath;
+        $this->_http->delete($fullPath);
+        return new Result\Successful();
+    }
+
     /**
      * generic method for validating incoming gateway responses
      *
-     * creates a new Braintree_CreditCard or Braintree_PayPalAccount object
-     * and encapsulates it inside a Braintree_Result_Successful object, or
-     * encapsulates a Braintree_Errors object inside a Result_Error
+     * creates a new CreditCard or PayPalAccount object
+     * and encapsulates it inside a Result\Successful object, or
+     * encapsulates a Errors object inside a Result\Error
      * alternatively, throws an Unexpected exception if the response is invalid.
      *
      * @ignore
      * @param array $response gateway response values
-     * @return object Result_Successful or Result_Error
-     * @throws Braintree_Exception_Unexpected
+     * @return Result\Successful|Result\Error
+     * @throws Exception\Unexpected
      */
     private function _verifyGatewayResponse($response)
     {
-        if (isset($response['creditCard'])) {
-            // return a populated instance of Braintree_CreditCard
-            return new Braintree_Result_Successful(
-                Braintree_CreditCard::factory($response['creditCard']),
-                "paymentMethod"
-            );
-        } else if (isset($response['paypalAccount'])) {
-            // return a populated instance of Braintree_PayPalAccount
-            return new Braintree_Result_Successful(
-                Braintree_PayPalAccount::factory($response['paypalAccount']),
-                "paymentMethod"
-            );
-        } else if (isset($response['coinbaseAccount'])) {
-            // return a populated instance of Braintree_CoinbaseAccount
-            return new Braintree_Result_Successful(
-                Braintree_CoinbaseAccount::factory($response['coinbaseAccount']),
-                "paymentMethod"
-            );
-        } else if (isset($response['applePayCard'])) {
-            // return a populated instance of Braintree_ApplePayCard
-            return new Braintree_Result_Successful(
-                Braintree_ApplePayCard::factory($response['applePayCard']),
-                "paymentMethod"
-            );
-        } else if (isset($response['androidPayCard'])) {
-            // return a populated instance of Braintree_AndroidPayCard
-            return new Braintree_Result_Successful(
-                Braintree_AndroidPayCard::factory($response['androidPayCard']),
-                "paymentMethod"
-            );
-        } else if (isset($response['apiErrorResponse'])) {
-            return new Braintree_Result_Error($response['apiErrorResponse']);
-        } else if (is_array($response)) {
-            return new Braintree_Result_Successful(
-                Braintree_UnknownPaymentMethod::factory($response),
-                "paymentMethod"
+        if (isset($response['apiErrorResponse'])) {
+            return new Result\Error($response['apiErrorResponse']);
+        } else if (($response)) {
+            return new Result\Successful(
+                PaymentMethodParser::parsePaymentMethod($response),
+                'paymentMethod'
             );
         } else {
-            throw new Braintree_Exception_Unexpected(
+            throw new Exception\Unexpected(
             'Expected payment method or apiErrorResponse'
+            );
+        }
+    }
+
+    private function _verifyGrantResponse($response) {
+        if (isset($response['apiErrorResponse'])) {
+            return new Result\Error($response['apiErrorResponse']);
+        } else if (isset($response['paymentMethodNonce'])) {
+            return new Result\Successful(
+                PaymentMethodNonce::factory($response['paymentMethodNonce']),
+                'paymentMethodNonce'
+            );
+        } else {
+            throw new Exception\Unexpected(
+                'Expected paymentMethodNonce or apiErrorResponse'
+            );
+        }
+    }
+
+    private function _verifyRevokeResponse($response) {
+        if (isset($response['apiErrorResponse'])) {
+            return new Result\Error($response['apiErrorResponse']);
+        } else if (isset($response['success'])) {
+            return new Result\Successful();
+        } else {
+            throw new Exception\Unexpected(
+                'Expected success or apiErrorResponse'
             );
         }
     }
@@ -248,3 +318,4 @@ class Braintree_PaymentMethodGateway
         }
     }
 }
+class_alias('Braintree\PaymentMethodGateway', 'Braintree_PaymentMethodGateway');

@@ -1,22 +1,25 @@
 <?php
+namespace Braintree\Error;
+
+use Braintree\Collection;
+
 /**
  * collection of errors enumerating all validation errors for a given request
  *
  * <b>== More information ==</b>
  *
- * For more detailed information on Validation errors, see {@link http://www.braintreepayments.com/gateway/validation-errors http://www.braintreepaymentsolutions.com/gateway/validation-errors}
+ * For more detailed information on Validation errors, see {@link https://developers.braintreepayments.com/reference/general/validation-errors/overview/php https://developers.braintreepayments.com/reference/general/validation-errors/overview/php}
  *
  * @package    Braintree
  * @subpackage Error
- * @copyright  2014 Braintree, a division of PayPal, Inc.
  *
  * @property-read array $errors
  * @property-read array $nested
  */
-class Braintree_Error_ValidationErrorCollection extends Braintree_Collection
+class ValidationErrorCollection extends Collection
 {
-    private $_errors = array();
-    private $_nested = array();
+    private $_errors = [];
+    private $_nested = [];
 
     /**
      * @ignore
@@ -27,17 +30,17 @@ class Braintree_Error_ValidationErrorCollection extends Braintree_Collection
             // map errors to new collections recursively
             if ($key == 'errors') {
                 foreach ($errorData AS $error) {
-                    $this->_errors[] = new Braintree_Error_Validation($error);
+                    $this->_errors[] = new Validation($error);
                 }
             } else {
-                $this->_nested[$key] = new Braintree_Error_ValidationErrorCollection($errorData);
+                $this->_nested[$key] = new ValidationErrorCollection($errorData);
             }
 
     }
 
     public function deepAll()
     {
-        $validationErrors = array_merge(array(), $this->_errors);
+        $validationErrors = array_merge([], $this->_errors);
         foreach($this->_nested as $nestedErrors)
         {
             $validationErrors = array_merge($validationErrors, $nestedErrors->deepAll());
@@ -67,7 +70,7 @@ class Braintree_Error_ValidationErrorCollection extends Braintree_Collection
 
     public function onAttribute($attribute)
     {
-        $matches = array();
+        $matches = [];
         foreach ($this->_errors AS $key => $error) {
            if($error->attribute == $attribute) {
                $matches[] = $error;
@@ -97,7 +100,7 @@ class Braintree_Error_ValidationErrorCollection extends Braintree_Collection
      */
     public function __toString()
     {
-        $output = array();
+        $output = [];
 
         // TODO: implement scope
         if (!empty($this->_errors)) {
@@ -125,3 +128,4 @@ class Braintree_Error_ValidationErrorCollection extends Braintree_Collection
         return $eOutput;
     }
 }
+class_alias('Braintree\Error\ValidationErrorCollection', 'Braintree_Error_ValidationErrorCollection');

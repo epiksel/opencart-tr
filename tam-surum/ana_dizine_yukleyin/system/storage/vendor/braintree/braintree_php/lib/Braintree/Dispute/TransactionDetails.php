@@ -1,9 +1,12 @@
 <?php
+namespace Braintree\Dispute;
+
+use Braintree\Instance;
+
 /**
  * Transaction details for a dispute
  *
  * @package    Braintree
- * @copyright  2010 Braintree Payment Solutions
  */
 
 /**
@@ -11,12 +14,12 @@
  *
  *
  * @package    Braintree
- * @copyright  2010 Braintree Payment Solutions
  *
  * @property-read string $amount
  * @property-read string $id
- * @uses Braintree_Instance inherits methods
  */
-class Braintree_Dispute_TransactionDetails extends Braintree_Instance
+class TransactionDetails extends Instance
 {
 }
+
+class_alias('Braintree\Dispute\TransactionDetails', 'Braintree_Dispute_TransactionDetails');

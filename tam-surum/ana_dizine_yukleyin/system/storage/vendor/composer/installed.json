@@ -1,17 +1,17 @@
 [
     {
         "name": "braintree/braintree_php",
-        "version": "3.2.0",
-        "version_normalized": "3.2.0.0",
+        "version": "3.40.0",
+        "version_normalized": "3.40.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/braintree/braintree_php.git",
-            "reference": "c7e0e2d1ae21d659cddb5507fb0bf181813b5733"
+            "reference": "840fc6ebf8d96756fed475cce94565fef178187d"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/braintree/braintree_php/zipball/c7e0e2d1ae21d659cddb5507fb0bf181813b5733",
-            "reference": "c7e0e2d1ae21d659cddb5507fb0bf181813b5733",
+            "url": "https://api.github.com/repos/braintree/braintree_php/zipball/840fc6ebf8d96756fed475cce94565fef178187d",
+            "reference": "840fc6ebf8d96756fed475cce94565fef178187d",
             "shasum": ""
         },
         "require": {
@@ -136,17 +136,17 @@
     },
     {
         "name": "guzzlehttp/guzzle",
-        "version": "5.3.3",
-        "version_normalized": "5.3.3.0",
+        "version": "5.3.4",
+        "version_normalized": "5.3.4.0",
         "source": {
             "type": "git",
             "url": "https://github.com/guzzle/guzzle.git",
-            "reference": "93bbdb30d59be6cd9839495306c65f2907370eb9"
+            "reference": "b87eda7a7162f95574032da17e9323c9899cb6b2"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/guzzle/guzzle/zipball/93bbdb30d59be6cd9839495306c65f2907370eb9",
-            "reference": "93bbdb30d59be6cd9839495306c65f2907370eb9",
+            "url": "https://api.github.com/repos/guzzle/guzzle/zipball/b87eda7a7162f95574032da17e9323c9899cb6b2",
+            "reference": "b87eda7a7162f95574032da17e9323c9899cb6b2",
             "shasum": ""
         },
         "require": {
@@ -158,7 +158,7 @@
             "ext-curl": "*",
             "phpunit/phpunit": "^4.0"
         },
-        "time": "2018-07-31T13:33:10+00:00",
+        "time": "2019-10-30T09:32:00+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -242,7 +242,8 @@
             "Guzzle",
             "log",
             "plugin"
-        ]
+        ],
+        "abandoned": true
     },
     {
         "name": "guzzlehttp/oauth-subscriber",
@@ -348,7 +349,8 @@
                 "homepage": "https://github.com/mtdowling"
             }
         ],
-        "description": "Provides a simple API and specification that abstracts away the details of HTTP into a single PHP function."
+        "description": "Provides a simple API and specification that abstracts away the details of HTTP into a single PHP function.",
+        "abandoned": true
     },
     {
         "name": "guzzlehttp/streams",
@@ -400,7 +402,8 @@
         "keywords": [
             "Guzzle",
             "stream"
-        ]
+        ],
+        "abandoned": true
     },
     {
         "name": "klarna/kco_rest",
@@ -450,45 +453,45 @@
             }
         ],
         "description": "Klarna Checkout PHP SDK",
-        "homepage": "http://developers.klarna.com"
+        "homepage": "http://developers.klarna.com",
+        "abandoned": true
     },
     {
         "name": "leafo/scssphp",
-        "version": "v0.0.12",
-        "version_normalized": "0.0.12.0",
+        "version": "v0.7.7",
+        "version_normalized": "0.7.7.0",
         "source": {
             "type": "git",
             "url": "https://github.com/leafo/scssphp.git",
-            "reference": "ff76df3e45af45e808f3fcd516a2cb5cbc77f45e"
+            "reference": "1d656f8c02a3a69404bba6b28ec4e06edddf0f49"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/leafo/scssphp/zipball/ff76df3e45af45e808f3fcd516a2cb5cbc77f45e",
-            "reference": "ff76df3e45af45e808f3fcd516a2cb5cbc77f45e",
+            "url": "https://api.github.com/repos/leafo/scssphp/zipball/1d656f8c02a3a69404bba6b28ec4e06edddf0f49",
+            "reference": "1d656f8c02a3a69404bba6b28ec4e06edddf0f49",
             "shasum": ""
         },
         "require": {
-            "php": ">=5.2.0"
+            "php": ">=5.4.0"
         },
         "require-dev": {
-            "php": ">=5.3.0",
-            "phpunit/phpunit": "3.7.*"
+            "phpunit/phpunit": "~4.6",
+            "squizlabs/php_codesniffer": "~2.5"
         },
-        "time": "2014-07-07T01:51:39+00:00",
+        "time": "2018-07-22T01:22:08+00:00",
         "bin": [
-            "pscss"
+            "bin/pscss"
         ],
         "type": "library",
         "installation-source": "dist",
         "autoload": {
-            "classmap": [
-                "scss.inc.php"
-            ]
+            "psr-4": {
+                "Leafo\\ScssPhp\\": "src/"
+            }
         },
         "notification-url": "https://packagist.org/downloads/",
         "license": [
-            "MIT",
-            "GPL-3.0"
+            "MIT"
         ],
         "authors": [
             {
@@ -498,31 +501,39 @@
             }
         ],
         "description": "scssphp is a compiler for SCSS written in PHP.",
-        "homepage": "http://leafo.net/scssphp/"
+        "homepage": "http://leafo.github.io/scssphp/",
+        "keywords": [
+            "css",
+            "less",
+            "sass",
+            "scss",
+            "stylesheet"
+        ],
+        "abandoned": "scssphp/scssphp"
     },
     {
         "name": "psr/log",
-        "version": "1.1.0",
-        "version_normalized": "1.1.0.0",
+        "version": "1.1.3",
+        "version_normalized": "1.1.3.0",
         "source": {
             "type": "git",
             "url": "https://github.com/php-fig/log.git",
-            "reference": "6c001f1daafa3a3ac1d8ff69ee4db8e799a654dd"
+            "reference": "0f73288fd15629204f9d42b7055f72dacbe811fc"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/php-fig/log/zipball/6c001f1daafa3a3ac1d8ff69ee4db8e799a654dd",
-            "reference": "6c001f1daafa3a3ac1d8ff69ee4db8e799a654dd",
+            "url": "https://api.github.com/repos/php-fig/log/zipball/0f73288fd15629204f9d42b7055f72dacbe811fc",
+            "reference": "0f73288fd15629204f9d42b7055f72dacbe811fc",
             "shasum": ""
         },
         "require": {
             "php": ">=5.3.0"
         },
-        "time": "2018-11-20T15:27:04+00:00",
+        "time": "2020-03-23T09:12:05+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "1.0.x-dev"
+                "dev-master": "1.1.x-dev"
             }
         },
         "installation-source": "dist",
@@ -551,26 +562,26 @@
     },
     {
         "name": "react/promise",
-        "version": "v2.7.1",
-        "version_normalized": "2.7.1.0",
+        "version": "v2.8.0",
+        "version_normalized": "2.8.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/reactphp/promise.git",
-            "reference": "31ffa96f8d2ed0341a57848cbb84d88b89dd664d"
+            "reference": "f3cff96a19736714524ca0dd1d4130de73dbbbc4"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/reactphp/promise/zipball/31ffa96f8d2ed0341a57848cbb84d88b89dd664d",
-            "reference": "31ffa96f8d2ed0341a57848cbb84d88b89dd664d",
+            "url": "https://api.github.com/repos/reactphp/promise/zipball/f3cff96a19736714524ca0dd1d4130de73dbbbc4",
+            "reference": "f3cff96a19736714524ca0dd1d4130de73dbbbc4",
             "shasum": ""
         },
         "require": {
             "php": ">=5.4.0"
         },
         "require-dev": {
-            "phpunit/phpunit": "~4.8"
+            "phpunit/phpunit": "^7.0 || ^6.5 || ^5.7 || ^4.8.36"
         },
-        "time": "2019-01-07T21:25:54+00:00",
+        "time": "2020-05-12T15:16:56+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -599,17 +610,17 @@
     },
     {
         "name": "symfony/polyfill-ctype",
-        "version": "v1.11.0",
-        "version_normalized": "1.11.0.0",
+        "version": "v1.17.1",
+        "version_normalized": "1.17.1.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/polyfill-ctype.git",
-            "reference": "82ebae02209c21113908c229e9883c419720738a"
+            "reference": "2edd75b8b35d62fd3eeabba73b26b8f1f60ce13d"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/82ebae02209c21113908c229e9883c419720738a",
-            "reference": "82ebae02209c21113908c229e9883c419720738a",
+            "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/2edd75b8b35d62fd3eeabba73b26b8f1f60ce13d",
+            "reference": "2edd75b8b35d62fd3eeabba73b26b8f1f60ce13d",
             "shasum": ""
         },
         "require": {
@@ -618,11 +629,15 @@
         "suggest": {
             "ext-ctype": "For best performance"
         },
-        "time": "2019-02-06T07:57:58+00:00",
+        "time": "2020-06-06T08:46:27+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "1.11-dev"
+                "dev-master": "1.17-dev"
+            },
+            "thanks": {
+                "name": "symfony/polyfill",
+                "url": "https://github.com/symfony/polyfill"
             }
         },
         "installation-source": "dist",
@@ -640,12 +655,12 @@
         ],
         "authors": [
             {
-                "name": "Symfony Community",
-                "homepage": "https://symfony.com/contributors"
+                "name": "Gert de Pagter",
+                "email": "BackEndTea@gmail.com"
             },
             {
-                "name": "Gert de Pagter",
-                "email": "backendtea@gmail.com"
+                "name": "Symfony Community",
+                "homepage": "https://symfony.com/contributors"
             }
         ],
         "description": "Symfony polyfill for ctype functions",
@@ -655,21 +670,35 @@
             "ctype",
             "polyfill",
             "portable"
+        ],
+        "funding": [
+            {
+                "url": "https://symfony.com/sponsor",
+                "type": "custom"
+            },
+            {
+                "url": "https://github.com/fabpot",
+                "type": "github"
+            },
+            {
+                "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                "type": "tidelift"
+            }
         ]
     },
     {
         "name": "symfony/polyfill-mbstring",
-        "version": "v1.11.0",
-        "version_normalized": "1.11.0.0",
+        "version": "v1.17.1",
+        "version_normalized": "1.17.1.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/polyfill-mbstring.git",
-            "reference": "fe5e94c604826c35a32fa832f35bd036b6799609"
+            "reference": "7110338d81ce1cbc3e273136e4574663627037a7"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/fe5e94c604826c35a32fa832f35bd036b6799609",
-            "reference": "fe5e94c604826c35a32fa832f35bd036b6799609",
+            "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/7110338d81ce1cbc3e273136e4574663627037a7",
+            "reference": "7110338d81ce1cbc3e273136e4574663627037a7",
             "shasum": ""
         },
         "require": {
@@ -678,11 +707,15 @@
         "suggest": {
             "ext-mbstring": "For best performance"
         },
-        "time": "2019-02-06T07:57:58+00:00",
+        "time": "2020-06-06T08:46:27+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "1.11-dev"
+                "dev-master": "1.17-dev"
+            },
+            "thanks": {
+                "name": "symfony/polyfill",
+                "url": "https://github.com/symfony/polyfill"
             }
         },
         "installation-source": "dist",
@@ -716,6 +749,20 @@
             "polyfill",
             "portable",
             "shim"
+        ],
+        "funding": [
+            {
+                "url": "https://symfony.com/sponsor",
+                "type": "custom"
+            },
+            {
+                "url": "https://github.com/fabpot",
+                "type": "github"
+            },
+            {
+                "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                "type": "tidelift"
+            }
         ]
     },
     {
@@ -786,8 +833,8 @@
     },
     {
         "name": "symfony/validator",
-        "version": "v2.8.49",
-        "version_normalized": "2.8.49.0",
+        "version": "v2.8.52",
+        "version_normalized": "2.8.52.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/validator.git",
@@ -861,24 +908,116 @@
         "homepage": "https://symfony.com"
     },
     {
-        "name": "zoujingli/wechat-php-sdk",
-        "version": "v1.3.17",
-        "version_normalized": "1.3.17.0",
+        "name": "twig/twig",
+        "version": "v2.13.0",
+        "version_normalized": "2.13.0.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/zoujingli/wechat-php-sdk.git",
-            "reference": "afb0dfd1a0fd71cfe58b6811d559b6b0fc8f9de0"
+            "url": "https://github.com/twigphp/Twig.git",
+            "reference": "46a612ba1bbf6ee1c58acabacd868212ff8a2911"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/zoujingli/wechat-php-sdk/zipball/afb0dfd1a0fd71cfe58b6811d559b6b0fc8f9de0",
-            "reference": "afb0dfd1a0fd71cfe58b6811d559b6b0fc8f9de0",
+            "url": "https://api.github.com/repos/twigphp/Twig/zipball/46a612ba1bbf6ee1c58acabacd868212ff8a2911",
+            "reference": "46a612ba1bbf6ee1c58acabacd868212ff8a2911",
             "shasum": ""
         },
         "require": {
+            "php": ">=7.1.3",
+            "symfony/polyfill-ctype": "^1.8",
+            "symfony/polyfill-mbstring": "^1.3"
+        },
+        "require-dev": {
+            "psr/container": "^1.0",
+            "symfony/phpunit-bridge": "^4.4.9|^5.0.9"
+        },
+        "time": "2020-07-05T13:08:05+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.13-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Twig_": "lib/"
+            },
+            "psr-4": {
+                "Twig\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Fabien Potencier",
+                "email": "fabien@symfony.com",
+                "homepage": "http://fabien.potencier.org",
+                "role": "Lead Developer"
+            },
+            {
+                "name": "Twig Team",
+                "role": "Contributors"
+            },
+            {
+                "name": "Armin Ronacher",
+                "email": "armin.ronacher@active-4.com",
+                "role": "Project Founder"
+            }
+        ],
+        "description": "Twig, the flexible, fast, and secure template language for PHP",
+        "homepage": "https://twig.symfony.com",
+        "keywords": [
+            "templating"
+        ],
+        "funding": [
+            {
+                "url": "https://certification.symfony.com/",
+                "type": "custom"
+            },
+            {
+                "url": "https://live.symfony.com/",
+                "type": "custom"
+            },
+            {
+                "url": "https://symfony.com/cloud/",
+                "type": "custom"
+            },
+            {
+                "url": "https://github.com/fabpot",
+                "type": "github"
+            },
+            {
+                "url": "https://tidelift.com/funding/github/packagist/twig/twig",
+                "type": "tidelift"
+            }
+        ]
+    },
+    {
+        "name": "zoujingli/wechat-php-sdk",
+        "version": "v1.3.18",
+        "version_normalized": "1.3.18.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/zoujingli/wechat-php-sdk.git",
+            "reference": "d37d0c1919ede2ee54e65100ac3792e947b1e0ef"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/zoujingli/wechat-php-sdk/zipball/d37d0c1919ede2ee54e65100ac3792e947b1e0ef",
+            "reference": "d37d0c1919ede2ee54e65100ac3792e947b1e0ef",
+            "shasum": ""
+        },
+        "require": {
+            "ext-json": "*",
+            "ext-libxml": "*",
+            "ext-simplexml": "*",
             "php": ">=5.3.3"
         },
-        "time": "2018-10-23T09:57:56+00:00",
+        "time": "2019-10-10T09:42:15+00:00",
         "type": "project",
         "installation-source": "dist",
         "autoload": {

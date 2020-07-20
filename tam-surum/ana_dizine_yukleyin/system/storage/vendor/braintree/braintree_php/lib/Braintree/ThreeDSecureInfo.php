@@ -1,5 +1,12 @@
 <?php
-class Braintree_ThreeDSecureInfo extends Braintree_Base
+namespace Braintree;
+
+/**
+ * @property-read string $enrolled
+ * @property-read boolean $liabilityShiftPossible
+ * @property-read string $status
+ */
+class ThreeDSecureInfo extends Base
 {
     public static function factory($attributes)
     {
@@ -21,7 +28,8 @@ class Braintree_ThreeDSecureInfo extends Braintree_Base
     public function  __toString()
     {
         return __CLASS__ . '[' .
-                Braintree_Util::attributesToString($this->_attributes) .']';
+                Util::attributesToString($this->_attributes) .']';
     }
 
 }
+class_alias('Braintree\ThreeDSecureInfo', 'Braintree_ThreeDSecureInfo');

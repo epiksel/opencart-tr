@@ -1,10 +1,11 @@
 <?php
+namespace Braintree;
+
 /**
  * Braintree PaymentMethodNonce module
  *
  * @package    Braintree
  * @category   Resources
- * @copyright  2014 Braintree, a division of PayPal, Inc.
  */
 
 /**
@@ -15,21 +16,25 @@
  *
  * @package    Braintree
  * @category   Resources
- * @copyright  2014 Braintree, a division of PayPal, Inc.
- *
+ * 
+ * @property-read \Braintree\BinData $binData
+ * @property-read boolean $default
+ * @property-read string $nonce
+ * @property-read \Braintree\ThreeDSecureInfo $threeDSecureInfo
+ * @property-read string $type
  */
-class Braintree_PaymentMethodNonce extends Braintree_Base
+class PaymentMethodNonce extends Base
 {
     // static methods redirecting to gateway
 
     public static function create($token)
     {
-        return Braintree_Configuration::gateway()->paymentMethodNonce()->create($token);
+        return Configuration::gateway()->paymentMethodNonce()->create($token);
     }
 
     public static function find($nonce)
     {
-        return Braintree_Configuration::gateway()->paymentMethodNonce()->find($nonce);
+        return Configuration::gateway()->paymentMethodNonce()->find($nonce);
     }
 
     public static function factory($attributes)
@@ -46,7 +51,12 @@ class Braintree_PaymentMethodNonce extends Braintree_Base
         $this->_set('type', $nonceAttributes['type']);
 
         if(isset($nonceAttributes['threeDSecureInfo'])) {
-            $this->_set('threeDSecureInfo', Braintree_ThreeDSecureInfo::factory($nonceAttributes['threeDSecureInfo']));
+            $this->_set('threeDSecureInfo', ThreeDSecureInfo::factory($nonceAttributes['threeDSecureInfo']));
+        }
+
+        if(isset($nonceAttributes['binData'])) {
+            $this->_set('binData', BinData::factory($nonceAttributes['binData']));
         }
     }
 }
+class_alias('Braintree\PaymentMethodNonce', 'Braintree_PaymentMethodNonce');

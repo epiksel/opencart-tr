@@ -40,7 +40,7 @@ $_['text_unwritable']        = 'Yazılamaz';
 // Error
 $_['error_missing']          = 'Eksik';
 $_['error_unwritable']       = 'Yazılamaz';
-$_['error_version']          = 'Uyarı: You need to use PHP 5.4 or above for OpenCart to work!';
+$_['error_version']          = 'Uyarı: You need to use 7.3 or above for OpenCart to work!';
 $_['error_file_upload']      = 'Uyarı: file_uploads needs to be enabled!';
 $_['error_session']          = 'Uyarı: OpenCart will not work with session.auto_start enabled!';
 $_['error_db']               = 'Uyarı: A database extension needs to be loaded in the php.ini for OpenCart to work!';

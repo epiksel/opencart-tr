@@ -1,6 +1,12 @@
 <?php
-final class Braintree_Disbursement extends Braintree_Base
+namespace Braintree;
+
+class Disbursement extends Base
 {
+
+    const TYPE_CREDIT = "credit";
+    const TYPE_DEBIT  = "debit";
+
     private $_merchantAccount;
 
     protected function _initialize($disbursementAttribs)
@@ -10,16 +16,16 @@ final class Braintree_Disbursement extends Braintree_Base
 
         if (isset($disbursementAttribs['merchantAccount'])) {
             $this->_set('merchantAccount',
-                Braintree_MerchantAccount::factory($disbursementAttribs['merchantAccount'])
+                MerchantAccount::factory($disbursementAttribs['merchantAccount'])
             );
         }
     }
 
     public function transactions()
     {
-        $collection = Braintree_Transaction::search(array(
-            Braintree_TransactionSearch::ids()->in($this->transactionIds)
-        ));
+        $collection = Transaction::search([
+            TransactionSearch::ids()->in($this->transactionIds),
+        ]);
 
         return $collection;
     }
@@ -33,17 +39,28 @@ final class Braintree_Disbursement extends Braintree_Base
 
     public function  __toString()
     {
-        $display = array(
+        $display = [
             'id', 'merchantAccountDetails', 'exceptionMessage', 'amount',
             'disbursementDate', 'followUpAction', 'retry', 'success',
-            'transactionIds'
-            );
+            'transactionIds', 'disbursementType'
+            ];
 
-        $displayAttributes = array();
+        $displayAttributes = [];
         foreach ($display AS $attrib) {
             $displayAttributes[$attrib] = $this->$attrib;
         }
         return __CLASS__ . '[' .
-                Braintree_Util::attributesToString($displayAttributes) .']';
+                Util::attributesToString($displayAttributes) .']';
+    }
+
+    public function isDebit()
+    {
+        return $this->disbursementType == Disbursement::TYPE_DEBIT;
+    }
+
+    public function isCredit()
+    {
+        return $this->disbursementType == Disbursement::TYPE_CREDIT;
     }
 }
+class_alias('Braintree\Disbursement', 'Braintree_Disbursement');

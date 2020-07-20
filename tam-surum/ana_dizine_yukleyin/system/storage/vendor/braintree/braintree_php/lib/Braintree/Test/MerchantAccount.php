@@ -1,12 +1,13 @@
 <?php
+namespace Braintree\Test;
+
 /**
  * Merchant Account constants used for testing purposes
  *
  * @package    Braintree
  * @subpackage Test
- * @copyright  2014 Braintree, a division of PayPal, Inc.
  */
-class Braintree_Test_MerchantAccount
+class MerchantAccount
 {
     public static $approve = "approve_me";
 
@@ -17,3 +18,4 @@ class Braintree_Test_MerchantAccount
 
 
 }
+class_alias('Braintree\Test\MerchantAccount', 'Braintree_Test_MerchantAccount');

@@ -1,33 +1,48 @@
 <?php
+namespace Braintree;
+
 /**
  * Braintree CreditCard module
  * Creates and manages Braintree CreditCards
  *
  * <b>== More information ==</b>
  *
- * For more detailed information on CreditCards, see {@link http://www.braintreepayments.com/gateway/credit-card-api http://www.braintreepaymentsolutions.com/gateway/credit-card-api}<br />
- * For more detailed information on CreditCard verifications, see {@link http://www.braintreepayments.com/gateway/credit-card-verification-api http://www.braintreepaymentsolutions.com/gateway/credit-card-verification-api}
+ * For more detailed information on CreditCards, see {@link https://developers.braintreepayments.com/reference/response/credit-card/php https://developers.braintreepayments.com/reference/response/credit-card/php}<br />
+ * For more detailed information on CreditCard verifications, see {@link https://developers.braintreepayments.com/reference/response/credit-card-verification/php https://developers.braintreepayments.com/reference/response/credit-card-verification/php}
  *
  * @package    Braintree
  * @category   Resources
- * @copyright  2014 Braintree, a division of PayPal, Inc.
  *
- * @property-read string $billingAddress
+ * @property-read \Braintree\Address $billingAddress
  * @property-read string $bin
  * @property-read string $cardType
  * @property-read string $cardholderName
- * @property-read string $createdAt
+ * @property-read string $commercial
+ * @property-read \DateTime $createdAt
  * @property-read string $customerId
+ * @property-read string $customerLocation
+ * @property-read string $debit
+ * @property-read boolean $default
+ * @property-read string $durbinRegulated
  * @property-read string $expirationDate
  * @property-read string $expirationMonth
  * @property-read string $expirationYear
+ * @property-read boolean $expired
+ * @property-read boolean $healthcare
  * @property-read string $imageUrl
+ * @property-read string $issuingBank
  * @property-read string $last4
  * @property-read string $maskedNumber
+ * @property-read string $payroll
+ * @property-read string $prepaid
+ * @property-read string $productId
+ * @property-read \Braintree\Subscription[] $subscriptions
  * @property-read string $token
- * @property-read string $updatedAt
+ * @property-read string $uniqueNumberIdentifier
+ * @property-read \DateTime $updatedAt
+ * @property-read \Braintree\CreditCardVerification|null $verification
  */
-class Braintree_CreditCard extends Braintree_Base
+class CreditCard extends Base
 {
     // Card Type
     const AMEX = 'American Express';
@@ -35,9 +50,11 @@ class Braintree_CreditCard extends Braintree_Base
     const CHINA_UNION_PAY = 'China UnionPay';
     const DINERS_CLUB_INTERNATIONAL = 'Diners Club';
     const DISCOVER = 'Discover';
+    const ELO = 'Elo';
     const JCB = 'JCB';
     const LASER = 'Laser';
     const MAESTRO = 'Maestro';
+    const UK_MAESTRO = 'UK Maestro';
     const MASTER_CARD = 'MasterCard';
     const SOLO = 'Solo';
     const SWITCH_TYPE = 'Switch';
@@ -45,8 +62,8 @@ class Braintree_CreditCard extends Braintree_Base
     const UNKNOWN = 'Unknown';
 
     // Credit card origination location
-	const INTERNATIONAL = "international";
-	const US            = "us";
+    const INTERNATIONAL = "international";
+    const US = "us";
 
     const PREPAID_YES = 'Yes';
     const PREPAID_NO = 'No';
@@ -74,6 +91,7 @@ class Braintree_CreditCard extends Braintree_Base
 
     const COUNTRY_OF_ISSUANCE_UNKNOWN = "Unknown";
     const ISSUING_BANK_UNKNOWN = "Unknown";
+    const PRODUCT_ID_UNKNOWN = "Unknown";
 
     /* instance methods */
     /**
@@ -111,7 +129,7 @@ class Braintree_CreditCard extends Braintree_Base
      *
      * @access protected
      * @param array $creditCardAttribs array of creditcard data
-     * @return none
+     * @return void
      */
     protected function _initialize($creditCardAttribs)
     {
@@ -120,13 +138,13 @@ class Braintree_CreditCard extends Braintree_Base
 
         // map each address into its own object
         $billingAddress = isset($creditCardAttribs['billingAddress']) ?
-            Braintree_Address::factory($creditCardAttribs['billingAddress']) :
+            Address::factory($creditCardAttribs['billingAddress']) :
             null;
 
-        $subscriptionArray = array();
+        $subscriptionArray = [];
         if (isset($creditCardAttribs['subscriptions'])) {
             foreach ($creditCardAttribs['subscriptions'] AS $subscription) {
-                $subscriptionArray[] = Braintree_Subscription::factory($subscription);
+                $subscriptionArray[] = Subscription::factory($subscription);
             }
         }
 
@@ -137,9 +155,9 @@ class Braintree_CreditCard extends Braintree_Base
 
         if(isset($creditCardAttribs['verifications']) && count($creditCardAttribs['verifications']) > 0) {
             $verifications = $creditCardAttribs['verifications'];
-            usort($verifications, array($this, '_compareCreatedAtOnVerifications'));
+            usort($verifications, [$this, '_compareCreatedAtOnVerifications']);
 
-            $this->_set('verification', Braintree_CreditCardVerification::factory($verifications[0]));
+            $this->_set('verification', CreditCardVerification::factory($verifications[0]));
         }
     }
 
@@ -149,15 +167,15 @@ class Braintree_CreditCard extends Braintree_Base
     }
 
     /**
-     * returns false if comparing object is not a Braintree_CreditCard,
-     * or is a Braintree_CreditCard with a different id
+     * returns false if comparing object is not a CreditCard,
+     * or is a CreditCard with a different id
      *
      * @param object $otherCreditCard customer to compare against
      * @return boolean
      */
     public function isEqual($otherCreditCard)
     {
-        return !($otherCreditCard instanceof Braintree_CreditCard) ? false : $this->token === $otherCreditCard->token;
+        return !($otherCreditCard instanceof self) ? false : $this->token === $otherCreditCard->token;
     }
 
     /**
@@ -168,24 +186,24 @@ class Braintree_CreditCard extends Braintree_Base
     public function  __toString()
     {
         return __CLASS__ . '[' .
-                Braintree_Util::attributesToString($this->_attributes) .']';
+                Util::attributesToString($this->_attributes) .']';
     }
 
     /**
-     *  factory method: returns an instance of Braintree_CreditCard
+     *  factory method: returns an instance of CreditCard
      *  to the requesting method, with populated properties
      *
      * @ignore
-     * @return object instance of Braintree_CreditCard
+     * @return CreditCard
      */
     public static function factory($attributes)
     {
-        $defaultAttributes = array(
+        $defaultAttributes = [
             'bin' => '',
             'expirationMonth'    => '',
             'expirationYear'    => '',
             'last4'  => '',
-        );
+        ];
 
         $instance = new self();
         $instance->_initialize(array_merge($defaultAttributes, $attributes));
@@ -197,115 +215,118 @@ class Braintree_CreditCard extends Braintree_Base
 
     public static function create($attribs)
     {
-        return Braintree_Configuration::gateway()->creditCard()->create($attribs);
+        return Configuration::gateway()->creditCard()->create($attribs);
     }
 
     public static function createNoValidate($attribs)
     {
-        return Braintree_Configuration::gateway()->creditCard()->createNoValidate($attribs);
+        return Configuration::gateway()->creditCard()->createNoValidate($attribs);
     }
 
     public static function createFromTransparentRedirect($queryString)
     {
-        return Braintree_Configuration::gateway()->creditCard()->createFromTransparentRedirect($queryString);
+        return Configuration::gateway()->creditCard()->createFromTransparentRedirect($queryString);
     }
 
     public static function createCreditCardUrl()
     {
-        return Braintree_Configuration::gateway()->creditCard()->createCreditCardUrl();
+        return Configuration::gateway()->creditCard()->createCreditCardUrl();
     }
 
     public static function expired()
     {
-        return Braintree_Configuration::gateway()->creditCard()->expired();
+        return Configuration::gateway()->creditCard()->expired();
     }
 
     public static function fetchExpired($ids)
     {
-        return Braintree_Configuration::gateway()->creditCard()->fetchExpired($ids);
+        return Configuration::gateway()->creditCard()->fetchExpired($ids);
     }
 
     public static function expiringBetween($startDate, $endDate)
     {
-        return Braintree_Configuration::gateway()->creditCard()->expiringBetween($startDate, $endDate);
+        return Configuration::gateway()->creditCard()->expiringBetween($startDate, $endDate);
     }
 
     public static function fetchExpiring($startDate, $endDate, $ids)
     {
-        return Braintree_Configuration::gateway()->creditCard()->fetchExpiring($startDate, $endDate, $ids);
+        return Configuration::gateway()->creditCard()->fetchExpiring($startDate, $endDate, $ids);
     }
 
     public static function find($token)
     {
-        return Braintree_Configuration::gateway()->creditCard()->find($token);
+        return Configuration::gateway()->creditCard()->find($token);
     }
 
     public static function fromNonce($nonce)
     {
-        return Braintree_Configuration::gateway()->creditCard()->fromNonce($nonce);
+        return Configuration::gateway()->creditCard()->fromNonce($nonce);
     }
 
     public static function credit($token, $transactionAttribs)
     {
-        return Braintree_Configuration::gateway()->creditCard()->credit($token, $transactionAttribs);
+        return Configuration::gateway()->creditCard()->credit($token, $transactionAttribs);
     }
 
     public static function creditNoValidate($token, $transactionAttribs)
     {
-        return Braintree_Configuration::gateway()->creditCard()->creditNoValidate($token, $transactionAttribs);
+        return Configuration::gateway()->creditCard()->creditNoValidate($token, $transactionAttribs);
     }
 
     public static function sale($token, $transactionAttribs)
     {
-        return Braintree_Configuration::gateway()->creditCard()->sale($token, $transactionAttribs);
+        return Configuration::gateway()->creditCard()->sale($token, $transactionAttribs);
     }
 
     public static function saleNoValidate($token, $transactionAttribs)
     {
-        return Braintree_Configuration::gateway()->creditCard()->saleNoValidate($token, $transactionAttribs);
+        return Configuration::gateway()->creditCard()->saleNoValidate($token, $transactionAttribs);
     }
 
     public static function update($token, $attributes)
     {
-        return Braintree_Configuration::gateway()->creditCard()->update($token, $attributes);
+        return Configuration::gateway()->creditCard()->update($token, $attributes);
     }
 
     public static function updateNoValidate($token, $attributes)
     {
-        return Braintree_Configuration::gateway()->creditCard()->updateNoValidate($token, $attributes);
+        return Configuration::gateway()->creditCard()->updateNoValidate($token, $attributes);
     }
 
     public static function updateCreditCardUrl()
     {
-        return Braintree_Configuration::gateway()->creditCard()->updateCreditCardUrl();
+        return Configuration::gateway()->creditCard()->updateCreditCardUrl();
     }
 
     public static function updateFromTransparentRedirect($queryString)
     {
-        return Braintree_Configuration::gateway()->creditCard()->updateFromTransparentRedirect($queryString);
+        return Configuration::gateway()->creditCard()->updateFromTransparentRedirect($queryString);
     }
 
     public static function delete($token)
     {
-        return Braintree_Configuration::gateway()->creditCard()->delete($token);
+        return Configuration::gateway()->creditCard()->delete($token);
     }
 
+    /** @return array */
     public static function allCardTypes()
     {
-        return array(
-             Braintree_CreditCard::AMEX,
-             Braintree_CreditCard::CARTE_BLANCHE,
-             Braintree_CreditCard::CHINA_UNION_PAY,
-             Braintree_CreditCard::DINERS_CLUB_INTERNATIONAL,
-             Braintree_CreditCard::DISCOVER,
-             Braintree_CreditCard::JCB,
-             Braintree_CreditCard::LASER,
-             Braintree_CreditCard::MAESTRO,
-             Braintree_CreditCard::MASTER_CARD,
-             Braintree_CreditCard::SOLO,
-             Braintree_CreditCard::SWITCH_TYPE,
-             Braintree_CreditCard::VISA,
-             Braintree_CreditCard::UNKNOWN
-        );
+        return [
+            CreditCard::AMEX,
+            CreditCard::CARTE_BLANCHE,
+            CreditCard::CHINA_UNION_PAY,
+            CreditCard::DINERS_CLUB_INTERNATIONAL,
+            CreditCard::DISCOVER,
+            CreditCard::ELO,
+            CreditCard::JCB,
+            CreditCard::LASER,
+            CreditCard::MAESTRO,
+            CreditCard::MASTER_CARD,
+            CreditCard::SOLO,
+            CreditCard::SWITCH_TYPE,
+            CreditCard::VISA,
+            CreditCard::UNKNOWN
+        ];
     }
 }
+class_alias('Braintree\CreditCard', 'Braintree_CreditCard');
