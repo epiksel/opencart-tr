@@ -7,9 +7,9 @@ $_['heading_title']     = 'Kişisel Veri Kullanma İsteği';
 
 // Text
 $_['text_account']      = 'Hesabım';
-$_['text_gdpr']         = '%s mağazası için GDPR politikasını <a href="%s" target="_blank">%s<a/> sayfasından görebilirsiniz.';
+$_['text_gdpr']         = '%s mağazası için KVKK politikasını <a href="%s" target="_blank">%s<a/> sayfasından görebilirsiniz.';
 $_['text_verification'] = 'Hesap Doğrulama';
-$_['text_email']        = 'Herhangi bir GDPR isteğinde bulunabilmemiz için hesabınızı doğrulamamız gerekir. Lütfen e-postanızı aşağıya girin.';
+$_['text_email']        = 'Herhangi bir KVKK isteğinde bulunabilmemiz için hesabınızı doğrulamamız gerekir. Lütfen e-postanızı aşağıya girin.';
 $_['text_action']       = 'Bir eylem seçin';
 $_['text_export']       = 'Kişisel Verileri Dışarı Aktar';
 $_['text_remove']       = 'Kişisel Verileri Kaldır';
@@ -24,4 +24,4 @@ $_['entry_email']       = 'E-Posta Adresi';
 
 // Error
 $_['error_email']       = 'Geçerli bir E-Posta Adresi yazınız!';
-$_['error_action']      = 'Geçerli GDPR eylemi seçmelisiniz!';
+$_['error_action']      = 'Geçerli KVKK eylemi seçmelisiniz!';

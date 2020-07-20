@@ -1,4 +1,7 @@
 <?php
+// Translator : Ekrem KAYA
+// Website    : https://e-piksel.com
+
 // Text
 $_['text_subject']    = '%s - Kişisel Genel Veri İsteği';
 $_['text_request']    = 'Kişisel Verileri Dışa Aktar';

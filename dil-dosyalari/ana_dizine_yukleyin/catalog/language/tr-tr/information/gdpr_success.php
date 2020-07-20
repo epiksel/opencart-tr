@@ -1,6 +1,6 @@
 <?php
 // Heading
-$_['heading_title'] = 'GDPR Başarılı';
+$_['heading_title'] = 'KVKK Başarılı';
 
 // Text
 $_['text_account']  = 'Hesabım';

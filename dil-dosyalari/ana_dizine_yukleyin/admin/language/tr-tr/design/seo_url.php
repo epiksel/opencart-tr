@@ -28,7 +28,7 @@ $_['entry_store']          = 'Mağaza';
 $_['entry_language']       = 'Dil';
 
 // Help
-$_['help_keyword']         = 'Sadece a-z ya da 0-9 karakter ve boşluklar için - ya da _ kullandığınızdan emin olun. Sadece çevreyi kaldırmak istiyorsanız boş bırakın.';
+$_['help_keyword']         = 'Sadece a-z ya da 0-9 karakterlerini ve boşluk içinde - ya da _ kullanın. Sadece çevreyi kaldırmak istiyorsanız boş bırakın.';
 $_['help_query']           = 'Değiştirilecek URL sorgusu.';
 $_['help_push']            = 'Kullanılan anahtar kelime yüklendikten sonra GET isteğine aktarılacak URL parametreleri.';
 

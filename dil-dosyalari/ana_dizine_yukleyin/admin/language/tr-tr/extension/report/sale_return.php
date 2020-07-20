@@ -24,7 +24,7 @@ $_['column_returns']    = 'İade Sayısı';
 // Entry
 $_['entry_date_start']  = 'Başlangıç';
 $_['entry_date_end']    = 'Bitiş';
-$_['entry_group']       = 'Dilimi';
+$_['entry_group']       = 'Gruplandır';
 $_['entry_status']      = 'Durumu';
 $_['entry_sort_order']  = 'Sıralama';
 
