@@ -15,6 +15,9 @@ $_['text_to']          = 'to';
 $_['text_config']      = 'Düzenle ve Değiştir (config.php)';
 $_['text_admin']       = 'Düzenle ve Değiştir (admin/config.php)';
 
+// Entry
+$_['entry_directory']  = 'Dizin';
+
 // Button
 $_['button_move']      = 'Taşı';
 $_['button_manual']    = 'Elle';

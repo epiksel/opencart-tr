@@ -383,7 +383,7 @@ class ControllerSaleOrder extends Controller {
 			
 			$session->start();
 					
-			$this->model_user_api->deleteApiSessionBySessonId($session->getId());
+			$this->model_user_api->deleteApiSessionBySessionId($session->getId());
 			
 			$this->model_user_api->addApiSession($api_info['api_id'], $session->getId(), $this->request->server['REMOTE_ADDR']);
 			
@@ -467,7 +467,7 @@ class ControllerSaleOrder extends Controller {
 		}
 
 		if (!empty($order_info)) {
-			$data['order_id'] = $this->request->get['order_id'];
+			$data['order_id'] = (int)$this->request->get['order_id'];
 			$data['store_id'] = $order_info['store_id'];
 			$data['store_url'] = $this->request->server['HTTPS'] ? HTTPS_CATALOG : HTTP_CATALOG;
 
@@ -690,7 +690,7 @@ class ControllerSaleOrder extends Controller {
 			
 			$session->start();
 					
-			$this->model_user_api->deleteApiSessionBySessonId($session->getId());
+			$this->model_user_api->deleteApiSessionBySessionId($session->getId());
 			
 			$this->model_user_api->addApiSession($api_info['api_id'], $session->getId(), $this->request->server['REMOTE_ADDR']);
 			
@@ -788,7 +788,7 @@ class ControllerSaleOrder extends Controller {
 
 			$data['user_token'] = $this->session->data['user_token'];
 
-			$data['order_id'] = $this->request->get['order_id'];
+			$data['order_id'] = (int)$this->request->get['order_id'];
 
 			$data['store_id'] = $order_info['store_id'];
 			$data['store_name'] = $order_info['store_name'];
@@ -989,8 +989,6 @@ class ControllerSaleOrder extends Controller {
 			}
 
 			$data['commission'] = $this->currency->format($order_info['commission'], $order_info['currency_code'], $order_info['currency_value']);
-
-			$this->load->model('customer/customer');
 
 			$data['commission_total'] = $this->model_customer_customer->getTotalTransactionsByOrderId($this->request->get['order_id']);
 
@@ -1233,7 +1231,7 @@ class ControllerSaleOrder extends Controller {
 				
 				$session->start();
 				
-				$this->model_user_api->deleteApiSessionBySessonId($session->getId());
+				$this->model_user_api->deleteApiSessionBySessionId($session->getId());
 				
 				$this->model_user_api->addApiSession($api_info['api_id'], $session->getId(), $this->request->server['REMOTE_ADDR']);
 				
@@ -1794,7 +1792,7 @@ class ControllerSaleOrder extends Controller {
 
 							$product_option_value_info = $this->model_catalog_product->getProductOptionValue($product['product_id'], $option['product_option_value_id']);
 
-							if ($product_option_value_info) {
+							if (!empty($product_option_value_info['weight'])) {
 								if ($product_option_value_info['weight_prefix'] == '+') {
 									$option_weight += $product_option_value_info['weight'];
 								} elseif ($product_option_value_info['weight_prefix'] == '-') {
