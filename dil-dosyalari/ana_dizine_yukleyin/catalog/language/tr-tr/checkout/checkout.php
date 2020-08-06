@@ -72,8 +72,8 @@ $_['entry_shipping']                 = 'Fatura ve Teslimat adresim aynı.';
 
 // Error
 $_['error_warning']                  = 'Siparişiniz işlenirken bir sorun oluştu! Sorun devam ederse farklı bir ödeme metodu seçip tekar deneyiniz ya da iletişime geçmek için <a href="%s">buraya tıklayınız</a>.';
-$_['error_attempts']                 = 'Uyarı: Oturum açma deneme sınırına ulaştınız. Lütfen 1 saat içinde tekrar deneyiniz!';
 $_['error_login']                    = 'Uyarı: E-Posta Adresi ve/ya da parolanız yanlış';
+$_['error_attempts']                 = 'Uyarı: Oturum açma deneme sınırına ulaştınız. Lütfen 1 saat içinde tekrar deneyiniz!';
 $_['error_approved']                 = 'Uyarı: Oturum açabilmek için hesabınızın onaylanması gereklidir.';
 $_['error_exists']                   = 'Uyarı: E-Posta adresi ile daha önce kayıt olunmuştur!';
 $_['error_firstname']                = 'Ad 1 ile 32 karakter arasında olmalı!';

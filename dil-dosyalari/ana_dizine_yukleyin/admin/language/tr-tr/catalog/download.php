@@ -33,6 +33,7 @@ $_['help_filename']     = 'Yükle butonunu ya da FTP kullanarak dosyanızı yük
 $_['help_mask']         = 'Maske kullanmanız tavsiye edilir. Dosya adı ve maske insanların direk bağlantı adresi girerek dosyalarınızı indirmelerini engeller.';
 
 // Error
+$_['error_warning']     = 'Uyarı: Oluşan hatalar için lütfen formu dikkatli kontrol ediniz!';
 $_['error_permission']  = 'Uyarı: Dosyaları düzenleme iznine sahip değilsiniz!';
 $_['error_name']        = 'İndirme Adı 3 ile 64 karakter arasında olmalı!';
 $_['error_upload']      = 'Yükleme gerekli!';

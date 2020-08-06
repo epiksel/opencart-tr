@@ -40,7 +40,6 @@ $_['help_example']      = 'Site bağlantınızın sonuna takip kodu ekleyerek ka
 
 // Error
 $_['error_permission']  = 'Uyarı: Pazarlama takip bilgilerini düzenleme iznine sahip değilsiniz!';
-$_['error_delete']      = 'Uyarı: Pazarlama takip bilgilerini silme iznine sahip değilsiniz!';
 $_['error_name']        = 'Kampanya Adı 1 ile 32 karakter arasında olmalı!';
 $_['error_code']        = 'Takip kodu gerekli!';
 $_['error_exists']      = 'Takip kodu başka kampanya tarafından kullanılıyor!';

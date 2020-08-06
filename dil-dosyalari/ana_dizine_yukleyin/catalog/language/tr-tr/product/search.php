@@ -12,7 +12,6 @@ $_['text_keyword']      = 'Aranacak kelime';
 $_['text_category']     = 'Tüm Kategoriler';
 $_['text_sub_category'] = 'Alt kategoriler içinde ara';
 $_['text_no_results']   = 'Aradığınız kriterlerde ürün bulunamadı.';
-$_['text_reviews']      = '%s yorum yapılmış.';
 $_['text_compare']      = 'Ürün Karşılaştır (%s)';
 $_['text_sort']         = 'Sırala';
 $_['text_default']      = 'Varsayılan';

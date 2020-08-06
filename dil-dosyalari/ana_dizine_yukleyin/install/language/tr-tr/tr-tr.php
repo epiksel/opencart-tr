@@ -5,7 +5,7 @@
 // Text
 $_['text_loading']    = 'Yükleniyor...';
 
-// Buttons
+// Button
 $_['button_continue'] = 'Devam Et';
 $_['button_back']     = 'Geri';
 

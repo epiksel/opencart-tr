@@ -3,7 +3,7 @@
 // Website    : https://e-piksel.com
 
 // Heading
-$_['heading_title']        = 'Toplu E-Posta';
+$_['heading_title']        = 'E-Posta Gönder';
 
 // Text
 $_['text_success']         = 'Mesaj başarılı bir şekilde gönderildi!';

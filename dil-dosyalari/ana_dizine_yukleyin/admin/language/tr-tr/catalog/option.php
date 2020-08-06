@@ -37,6 +37,7 @@ $_['entry_image']        = 'Resim';
 $_['entry_sort_order']   = 'Sıralama';
 
 // Error
+$_['error_warning']      = 'Uyarı: Oluşan hatalar için lütfen formu dikkatli kontrol ediniz!';
 $_['error_permission']   = 'Uyarı: Seçenekleri düzenleme iznine sahip değilsiniz!';
 $_['error_name']         = 'Seçenek Adı 1 ile 128 karakter arasında olmalı!';
 $_['error_type']         = 'Uyarı: Seçenek Değeri gerekli!';

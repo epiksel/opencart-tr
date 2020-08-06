@@ -47,9 +47,11 @@ $_['text_purchase']      = 'Lütfen kim olduğunuzu teyit edin!';
 $_['text_pin']           = 'Lütfen 4 basamaklı PIN numaranızı giriniz. Bu PIN numarası, hesabınızı korumak içindir.';
 $_['text_secure']        = 'PIN\'inizi geliştiriciler dahil herhangi birisine vermeyin. Bir uzantı satıcısının sizin için bir uzantı kurmasını istiyorsanız, onlara gerekli uzantıyı e-postayla göndermelisin.';
 $_['text_name']          = 'Dosya Adı';
-$_['text_progress']      = 'İlerleme';
 $_['text_available']     = 'Mevcut Dosyalar';
 $_['text_action']        = 'Eylem';
+$_['text_install']       = 'Kur';
+$_['text_uninstall']     = 'Kaldır';
+$_['text_delete']        = 'Sil';
 
 // Entry
 $_['entry_pin']          = 'PIN';
@@ -64,7 +66,7 @@ $_['tab_comment']        = 'Yorum';
 $_['button_opencart']    = 'Pazaryeri API';
 $_['button_purchase']    = 'Satın Al';
 $_['button_view_all']    = 'Tüm Eklentileri';
-$_['button_get_support'] = 'Destek Al';
+$_['button_support']     = 'Destek Al';
 $_['button_comment']     = 'Yorum';
 $_['button_reply']       = 'Cevapla';
 $_['button_forgot_pin']  = 'PIN\'i Unuttun Mu?';
@@ -72,6 +74,5 @@ $_['button_forgot_pin']  = 'PIN\'i Unuttun Mu?';
 // Error
 $_['error_permission']   = 'Uyarı: Eklentileri değiştirme iznine sahip değilsiniz!';
 $_['error_opencart']     = 'Uyarı: Satın alma işlemi yapabilmek için OpenCart API bilgilerinizi girmelisiniz!';
-$_['error_install']      = 'Uzantı kurulumu gerçekleşiyor. Lütfen yüklemeye çalışmadan önce birkaç saniye bekleyin!';
 $_['error_purchase']     = 'Uzantı satın alınamadı!';
 $_['error_download']     = 'Uzantı indirilemedi!';

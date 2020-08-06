@@ -7,7 +7,7 @@ $_['heading_title']    = 'Geliştirici Ayarları';
 
 // Text
 $_['text_success']     = 'Başarılı: Geliştirici ayarları başarılı bir şekilde değiştirildi!';
-$_['text_theme']       = 'tema';
+$_['text_theme']       = 'Tema';
 $_['text_sass']        = 'SASS';
 $_['text_cache']       = 'Başarılı: %s önbelleği temizlendi!';
 

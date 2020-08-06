@@ -29,6 +29,7 @@ $_['entry_sort_order']  = 'Sıralama';
 $_['entry_type']        = 'Türü';
 
 // Error
+$_['error_warning']     = 'Uyarı: Oluşan hatalar için lütfen formu dikkatli kontrol ediniz!';
 $_['error_permission']  = 'Uyarı: Üreticileri düzenleme iznine sahip değilsiniz!';
 $_['error_name']        = 'Üretici Adı 1 ile 64 karakter arasında olmalı!';
 $_['error_seo']         = 'SEO Bağlantısı gerekli!';

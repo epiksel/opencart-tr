@@ -850,7 +850,7 @@ INSERT INTO `oc_extension` (`extension_id`, `type`, `code`) VALUES
 (39, 'report', 'customer_activity'),
 (40, 'report', 'customer_order'),
 (41, 'report', 'customer_reward'),
-(42, 'currency', 'fixer');
+(42, 'currency', 'ecb');
 
 -----------------------------------------------------------
 
@@ -895,8 +895,7 @@ INSERT INTO `oc_information_to_store` (`information_id`, `store_id`) VALUES
 (1, 0),
 (2, 0),
 (3, 0),
-(4, 0),
-(5, 0);
+(4, 0);
 
 -----------------------------------------------------------
 
@@ -1500,7 +1499,7 @@ INSERT INTO `oc_setting` (`store_id`, `code`, `key`, `value`, `serialized`) VALU
 (0, 'config', 'config_admin_language', 'tr-tr', 0),
 (0, 'config', 'config_currency', 'TRY', 0),
 (0, 'config', 'config_currency_auto', '1', 0),
-(0, 'config', 'config_currency_engine', 'fixer', 0),
+(0, 'config', 'config_currency_engine', 'ecb', 0),
 (0, 'config', 'config_length_class_id', '1', 0),
 (0, 'config', 'config_weight_class_id', '1', 0),
 (0, 'config', 'config_product_count', '1', 0),
@@ -1534,6 +1533,7 @@ INSERT INTO `oc_setting` (`store_id`, `code`, `key`, `value`, `serialized`) VALU
 (0, 'config', 'config_stock_display', '0', 0),
 (0, 'config', 'config_stock_warning', '0', 0),
 (0, 'config', 'config_stock_checkout', '0', 0),
+(0, 'config', 'config_affiliate_status', '1', 0),
 (0, 'config', 'config_affiliate_approval', '0', 0),
 (0, 'config', 'config_affiliate_auto', '0', 0),
 (0, 'config', 'config_affiliate_commission', '5', 0),
@@ -1577,7 +1577,7 @@ INSERT INTO `oc_setting` (`store_id`, `code`, `key`, `value`, `serialized`) VALU
 (0, 'config', 'config_captcha_page', '["review","return","contact"]', 1),
 (0, 'config', 'config_login_attempts', '5', 0),
 (0, 'developer', 'developer_sass', '1', 0),
-(0, 'currency_fixer', 'currency_fixer_status', '1', 0),
+(0, 'currency_ecb', 'currency_ecb_status', '1', 0),
 (0, 'payment_free_checkout', 'payment_free_checkout_status', '1', 0),
 (0, 'payment_free_checkout', 'payment_free_checkout_order_status_id', '1', 0),
 (0, 'payment_free_checkout', 'payment_free_checkout_sort_order', '1', 0),
@@ -1688,24 +1688,20 @@ INSERT INTO `oc_setting` (`store_id`, `code`, `key`, `value`, `serialized`) VALU
 -----------------------------------------------------------
 
 --
--- Dumping data for table `oc_seo_regex`
+-- Dumping data for table `oc_seo_profile`
 --
 
-INSERT INTO `oc_seo_regex` (`name`, `regex`, `sort_order`) VALUES
-('Category', '(path=)', 1),
-('Category Level 1', '(path=\\d+)(?:[_&]|$)', 1),
-('Category Level 2', '(path=\\d+_\\d+)(?:[_&]|$)', 2),
-('Category Level 3', '(path=\\d+_\\d+_\\d+)(?:[_&]|$)', 3),
-('Category Level 4', '(path=\\d+_\\d+_\\d+_\\d+)(?:[_&]|$)', 4),
-('Category Level 5', '(path=\\d+_\\d+_\\d+_\\d+_\\d+)(?:[_&]|$)', 5),
-('Language', '(language=[a-z-]+)(?:[&]|$)', -1),
-('Information', '(information_id=)', 1),
-('Information', '(information_id=\\d+)(?:[&]|$)', 1),
-('Manufacturer', '(manufacturer_id=)', 1),
-('Manufacturer', '(manufacturer_id=\\d+)(?:[&]|$)', 2),
-('Product', '(product_id=)', 99),
-('Product', '(product_id=\\d+)(?:[&]|$)', 100),
-('Route', '(route=[a-zA-Z0-9\\/]+)(?:[&]|$)', 0);
+INSERT INTO `oc_seo_profile` (`seo_profile_id`, `name`, `key`, `regex`, `push`, `remove`, `sort_order`) VALUES
+(1, 'Category Level 1', 'path', '(\\d+)', 'route=product/category', 'route,path', 1),
+(2, 'Category Level 2', 'path', '(\\d+_\\d+)', 'route=product/category', 'route,path', 2),
+(3, 'Category Level 3', 'path', '(\\d+_\\d+_\\d+)', 'route=product/category', 'route,path', 3),
+(4, 'Category Level 4', 'path', '(\\d+_\\d+_\\d+_\\d+)', 'route=product/category', 'route,path', 4),
+(5, 'Category Level 5', 'path', '(\\d+_\\d+_\\d+_\\d+_\\d+)', 'route=product/category', 'route,path', 5),
+(6, 'Information', 'information_id', '(\\d+)', 'route=information/information', 'route,information_id', 1),
+(7, 'Manufacturer', 'manufacturer_id', '(\\d+)', 'route=product/manufacturer/info', 'route,manufacturer_id', 2),
+(8, 'Language', 'language', '([a-z-]+)', '', 'language', -1),
+(9, 'Product', 'product_id', '(\\d+)', 'route=product/product', 'route,product_id', 100),
+(10, 'Route', 'route', '([a-zA-Z0-9\/]+)', '', 'route', 0);
 
 -----------------------------------------------------------
 
@@ -1713,80 +1709,13 @@ INSERT INTO `oc_seo_regex` (`name`, `regex`, `sort_order`) VALUES
 -- Dumping data for table `oc_seo_url`
 --
 
-INSERT INTO `oc_seo_url` (`seo_url_id`, `store_id`, `language_id`, `keyword`, `query`, `push`) VALUES
-
-(0, 0, 1, 'hakkimizda', 'information_id=1', 'route=information/information&information_id=1'),
-(0, 0, 1, 'sartlar-kosullar', 'information_id=2', 'route=information/information&information_id=2'),
-(0, 0, 1, 'gizlilik-ilkeleri', 'information_id=3', 'route=information/information&information_id=3'),
-(0, 0, 1, 'teslimat-kosullari', 'information_id=4', 'route=information/information&information_id=4'),
-(0, 0, 1, 'tr', 'language=tr-tr', 'language=tr-tr'),
-(0, 0, 1, 'markalar', 'manufacturer_id=', ''),
-(0, 0, 1, 'htc', 'manufacturer_id=1', 'route=product/manufacturer/info&manufacturer_id=1'),
-(0, 0, 1, 'palm', 'manufacturer_id=2', 'route=product/manufacturer/info&manufacturer_id=2'),
-(0, 0, 1, 'hewlett-packard', 'manufacturer_id=3', 'route=product/manufacturer/info&manufacturer_id=3'),
-(0, 0, 1, 'apple', 'manufacturer_id=4', 'route=product/manufacturer/info&manufacturer_id=4'),
-(0, 0, 1, 'canon', 'manufacturer_id=5', 'route=product/manufacturer/info&manufacturer_id=5'),
-(0, 0, 1, 'sony', 'manufacturer_id=6', 'route=product/manufacturer/info&manufacturer_id=6'),
-(0, 0, 1, 'masaustu-pc', 'path=20', 'route=product/category&path=20'),
-(0, 0, 1, 'pc', 'path=20_26', 'route=product/category&path=20_26'),
-(0, 0, 1, 'mac', 'path=20_27', 'route=product/category&path=20_27'),
-(0, 0, 1, 'mp3-calarlar', 'path=34', 'route=product/category&path=34'),
-(0, 0, 1, 'laptop-notebook', 'path=18', 'route=product/category&path=18'),
-(0, 0, 1, 'macs', 'path=18_46', 'route=product/category&path=18_46'),
-(0, 0, 1, 'windows', 'path=18_45', 'route=product/category&path=18_45'),
-(0, 0, 1, 'cevre-bilesenleri', 'path=25', 'route=product/category&path=25'),
-(0, 0, 1, 'fareler', 'path=25_29', 'route=product/category&path=25_29'),
-(0, 0, 1, 'monitorler', 'path=25_28', 'route=product/category&path=25_28'),
-(0, 0, 1, 'yazicilar', 'path=25_30', 'route=product/category&path=25_30'),
-(0, 0, 1, 'tarayicilar', 'path=25_31', 'route=product/category&path=25_31'),
-(0, 0, 1, 'web-kameralari', 'path=25_32', 'route=product/category&path=25_32'),
-(0, 0, 1, 'tabletler', 'path=57', 'route=product/category&path=57'),
-(0, 0, 1, 'yazilimlar', 'path=17', 'route=product/category&path=17'),
-(0, 0, 1, 'akili-telefon', 'path=24', 'route=product/category&path=24'),
-(0, 0, 1, 'kameralar', 'path=33', 'route=product/category&path=33'),
-(0, 0, 1, 'test-11', 'path=34_43', 'route=product/category&path=34_43'),
-(0, 0, 1, 'test-12', 'path=34_44', 'route=product/category&path=34_44'),
-(0, 0, 1, 'test-15', 'path=34_47', 'route=product/category&path=34_47'),
-(0, 0, 1, 'test-16', 'path=34_48', 'route=product/category&path=34_48'),
-(0, 0, 1, 'test-17', 'path=34_49', 'route=product/category&path=34_49'),
-(0, 0, 1, 'test-18', 'path=34_50', 'route=product/category&path=34_50'),
-(0, 0, 1, 'test-19', 'path=34_51', 'route=product/category&path=34_51'),
-(0, 0, 1, 'test-20', 'path=34_52', 'route=product/category&path=34_52'),
-(0, 0, 1, 'test-25', 'path=34_58', 'route=product/category&path=34_58'),
-(0, 0, 1, 'test-21', 'path=34_53', 'route=product/category&path=34_53'),
-(0, 0, 1, 'test-22', 'path=34_54', 'route=product/category&path=34_54'),
-(0, 0, 1, 'test-23', 'path=34_55', 'route=product/category&path=34_55'),
-(0, 0, 1, 'test-24', 'path=34_56', 'route=product/category&path=34_56'),
-(0, 0, 1, 'test-4', 'path=34_38', 'route=product/category&path=34_38'),
-(0, 0, 1, 'test-5', 'path=34_37', 'route=product/category&path=34_37'),
-(0, 0, 1, 'test-6', 'path=34_39', 'route=product/category&path=34_39'),
-(0, 0, 1, 'test-7', 'path=34_40', 'route=product/category&path=34_40'),
-(0, 0, 1, 'test-8', 'path=34_41', 'route=product/category&path=34_41'),
-(0, 0, 1, 'test-9', 'path=34_42', 'route=product/category&path=34_42'),
-(0, 0, 1, 'product-8', 'product_id=1', 'route=product/product&product_id=1'),
-(0, 0, 1, 'ipod-classic', 'product_id=2', 'route=product/product&product_id=2'),
-(0, 0, 1, 'iphone', 'product_id=3', 'route=product/product&product_id=3'),
-(0, 0, 1, 'htc-touch-hd', 'product_id=4', 'route=product/product&product_id=4'),
-(0, 0, 1, 'macbook-air', 'product_id=5', 'route=product/product&product_id=5'),
-(0, 0, 1, 'macbook-pro', 'product_id=6', 'route=product/product&product_id=6'),
-(0, 0, 1, 'palm-treo-pro', 'product_id=7', 'route=product/product&product_id=7'),
-(0, 0, 1, 'ipod_nano', 'product_id=8', 'route=product/product&product_id=8'),
-(0, 0, 1, 'sony-vaio', 'product_id=9', 'route=product/product&product_id=9'),
-(0, 0, 1, 'hp-lp3065', 'product_id=10', 'route=product/product&product_id=10'),
-(0, 0, 1, 'ipod-touch', 'product_id=11', 'route=product/product&product_id=11'),
-(0, 0, 1, 'samsung-syncmaster-941bw', 'product_id=13', 'route=product/product&product_id=13'),
-(0, 0, 1, 'imac', 'product_id=12', 'route=product/product&product_id=12'),
-(0, 0, 1, 'ipod-shuffle', 'product_id=14', 'route=product/product&product_id=14'),
-(0, 0, 1, 'macbook', 'product_id=15', 'route=product/product&product_id=15'),
-(0, 0, 1, 'nikon-d300', 'product_id=16', 'route=product/product&product_id=16'),
-(0, 0, 1, 'samsung-galaxy-tab-10.1', 'product_id=17', 'route=product/product&product_id=17'),
-(0, 0, 1, 'apple-cinema-30', 'product_id=18', 'route=product/product&product_id=18'),
-(0, 0, 1, 'canon-eos-5d', 'product_id=19', 'route=product/product&product_id=19'),
-(0, 0, 1, 'route=information/information', '', ''),
-(0, 0, 1, 'route=product/category', '', ''),
-(0, 0, 1, 'route=product/product', '', ''),
-(0, 0, 1, 'route=product/manufacturer', 'markalar', 'route=product/manufacturer'),
-(0, 0, 1, 'route=product/manufacturer/info', '', '');
+INSERT INTO `oc_seo_url` (`store_id`, `language_id`, `key`, `value`, `keyword`) VALUES
+(0, 1, 'information_id', '1', 'hakkimizda'),
+(0, 1, 'information_id', '2', 'sartlar-ve-kosullar'),
+(0, 1, 'information_id', '3', 'gizlilik-ilkeleri'),
+(0, 1, 'information_id', '4', 'teslimat-bilgileri'),
+(0, 1, 'language', 'tr-tr', 'tr'),
+(0, 1, 'route', 'product/manufacturer', 'markalar');
 
 -----------------------------------------------------------
 
@@ -1882,7 +1811,7 @@ INSERT INTO `oc_tax_rule` (`tax_rule_id`, `tax_class_id`, `tax_rate_id`, `based`
 --
 
 INSERT INTO `oc_user_group` (`user_group_id`, `name`, `permission`) VALUES
-(1, 'Kurucu Yönetici', '{"access":["catalog\/attribute","catalog\/attribute_group","catalog\/category","catalog\/download","catalog\/filter","catalog\/information","catalog\/manufacturer","catalog\/option","catalog\/product","catalog\/product_option","catalog\/product_variant","catalog\/recurring","catalog\/review","common\/column_left","common\/cron","common\/developer","common\/filemanager","common\/pagination","common\/profile","common\/security","cron\/currency","cron\/gdpr","customer\/custom_field","customer\/customer","customer\/customer_approval","customer\/customer_group","customer\/gdpr","design\/banner","design\/layout","design\/seo_regex","design\/seo_url","design\/theme","design\/translation","event\/currency","event\/debug","event\/language","event\/statistics","event\/theme","extension\/analytics\/google","extension\/captcha\/basic","extension\/captcha\/google","extension\/currency\/ecb","extension\/currency\/fixer","extension\/dashboard\/activity","extension\/dashboard\/chart","extension\/dashboard\/customer","extension\/dashboard\/map","extension\/dashboard\/online","extension\/dashboard\/order","extension\/dashboard\/recent","extension\/dashboard\/sale","extension\/extension\/analytics","extension\/extension\/captcha","extension\/extension\/currency","extension\/extension\/dashboard","extension\/extension\/feed","extension\/extension\/fraud","extension\/extension\/menu","extension\/extension\/module","extension\/extension\/payment","extension\/extension\/promotion","extension\/extension\/report","extension\/extension\/shipping","extension\/extension\/theme","extension\/extension\/total","extension\/feed\/google_base","extension\/feed\/google_sitemap","extension\/fraud\/fraudlabspro","extension\/fraud\/ip","extension\/fraud\/maxmind","extension\/module\/account","extension\/module\/amazon_login","extension\/module\/amazon_pay","extension\/module\/banner","extension\/module\/bestseller","extension\/module\/carousel","extension\/module\/category","extension\/module\/divido_calculator","extension\/module\/featured","extension\/module\/filter","extension\/module\/google_calendar","extension\/module\/google_hangouts","extension\/module\/html","extension\/module\/information","extension\/module\/klarna_checkout_module","extension\/module\/latest","extension\/module\/laybuy_layout","extension\/module\/pilibaba_button","extension\/module\/pp_braintree_button","extension\/module\/pp_button","extension\/module\/pp_login","extension\/module\/sagepay_direct_cards","extension\/module\/sagepay_server_cards","extension\/module\/slideshow","extension\/module\/special","extension\/module\/store","extension\/payment\/alipay","extension\/payment\/alipay_cross","extension\/payment\/amazon_login_pay","extension\/payment\/authorizenet_aim","extension\/payment\/authorizenet_sim","extension\/payment\/bank_transfer","extension\/payment\/bluepay_hosted","extension\/payment\/bluepay_redirect","extension\/payment\/cardconnect","extension\/payment\/cardinity","extension\/payment\/cheque","extension\/payment\/cod","extension\/payment\/divido","extension\/payment\/eway","extension\/payment\/firstdata","extension\/payment\/firstdata_remote","extension\/payment\/free_checkout","extension\/payment\/g2apay","extension\/payment\/globalpay","extension\/payment\/globalpay_remote","extension\/payment\/klarna_account","extension\/payment\/klarna_checkout","extension\/payment\/klarna_invoice","extension\/payment\/laybuy","extension\/payment\/liqpay","extension\/payment\/nochex","extension\/payment\/paymate","extension\/payment\/paypoint","extension\/payment\/payza","extension\/payment\/perpetual_payments","extension\/payment\/pilibaba","extension\/payment\/pp_braintree","extension\/payment\/pp_express","extension\/payment\/pp_payflow","extension\/payment\/pp_payflow_iframe","extension\/payment\/pp_pro","extension\/payment\/pp_pro_iframe","extension\/payment\/pp_standard","extension\/payment\/realex","extension\/payment\/realex_remote","extension\/payment\/sagepay_direct","extension\/payment\/sagepay_server","extension\/payment\/sagepay_us","extension\/payment\/securetrading_pp","extension\/payment\/securetrading_ws","extension\/payment\/skrill","extension\/payment\/squareup","extension\/payment\/twocheckout","extension\/payment\/web_payment_software","extension\/payment\/wechat_pay","extension\/payment\/worldpay","extension\/report\/customer_activity","extension\/report\/customer_order","extension\/report\/customer_reward","extension\/report\/customer_search","extension\/report\/customer_transaction","extension\/report\/marketing","extension\/report\/product_purchased","extension\/report\/product_viewed","extension\/report\/sale_coupon","extension\/report\/sale_order","extension\/report\/sale_return","extension\/report\/sale_shipping","extension\/report\/sale_tax","extension\/shipping\/auspost","extension\/shipping\/ec_ship","extension\/shipping\/fedex","extension\/shipping\/flat","extension\/shipping\/free","extension\/shipping\/item","extension\/shipping\/parcelforce_48","extension\/shipping\/pickup","extension\/shipping\/royal_mail","extension\/shipping\/ups","extension\/shipping\/usps","extension\/shipping\/weight","extension\/theme\/default","extension\/total\/coupon","extension\/total\/credit","extension\/total\/handling","extension\/total\/klarna_fee","extension\/total\/low_order_fee","extension\/total\/reward","extension\/total\/shipping","extension\/total\/sub_total","extension\/total\/tax","extension\/total\/total","extension\/total\/voucher","localisation\/country","localisation\/currency","localisation\/geo_zone","localisation\/language","localisation\/length_class","localisation\/location","localisation\/order_status","localisation\/return_action","localisation\/return_reason","localisation\/return_status","localisation\/stock_status","localisation\/tax_class","localisation\/tax_rate","localisation\/weight_class","localisation\/zone","mail\/affiliate","mail\/customer","mail\/forgotten","mail\/gdpr","mail\/return","mail\/reward","mail\/transaction","marketing\/affiliate","marketing\/contact","marketing\/coupon","marketing\/marketing","marketplace\/api","marketplace\/cron","marketplace\/event","marketplace\/extension","marketplace\/install","marketplace\/installer","marketplace\/marketplace","marketplace\/modification","report\/online","report\/report","report\/statistics","sale\/order","sale\/recurring","sale\/return","sale\/voucher","sale\/voucher_theme","setting\/setting","setting\/store","startup\/error","startup\/event","startup\/login","startup\/permission","startup\/router","startup\/sass","startup\/startup","tool\/backup","tool\/log","tool\/upgrade","tool\/upload","user\/api","user\/user","user\/user_permission"],"modify":["catalog\/attribute","catalog\/attribute_group","catalog\/category","catalog\/download","catalog\/filter","catalog\/information","catalog\/manufacturer","catalog\/option","catalog\/product","catalog\/product_option","catalog\/product_variant","catalog\/recurring","catalog\/review","common\/column_left","common\/cron","common\/developer","common\/filemanager","common\/pagination","common\/profile","common\/security","cron\/currency","cron\/gdpr","customer\/custom_field","customer\/customer","customer\/customer_approval","customer\/customer_group","customer\/gdpr","design\/banner","design\/layout","design\/seo_regex","design\/seo_url","design\/theme","design\/translation","event\/currency","event\/debug","event\/language","event\/statistics","event\/theme","extension\/analytics\/google","extension\/captcha\/basic","extension\/captcha\/google","extension\/currency\/ecb","extension\/currency\/fixer","extension\/dashboard\/activity","extension\/dashboard\/chart","extension\/dashboard\/customer","extension\/dashboard\/map","extension\/dashboard\/online","extension\/dashboard\/order","extension\/dashboard\/recent","extension\/dashboard\/sale","extension\/extension\/analytics","extension\/extension\/captcha","extension\/extension\/currency","extension\/extension\/dashboard","extension\/extension\/feed","extension\/extension\/fraud","extension\/extension\/menu","extension\/extension\/module","extension\/extension\/payment","extension\/extension\/promotion","extension\/extension\/report","extension\/extension\/shipping","extension\/extension\/theme","extension\/extension\/total","extension\/feed\/google_base","extension\/feed\/google_sitemap","extension\/fraud\/fraudlabspro","extension\/fraud\/ip","extension\/fraud\/maxmind","extension\/module\/account","extension\/module\/amazon_login","extension\/module\/amazon_pay","extension\/module\/banner","extension\/module\/bestseller","extension\/module\/carousel","extension\/module\/category","extension\/module\/divido_calculator","extension\/module\/featured","extension\/module\/filter","extension\/module\/google_calendar","extension\/module\/google_hangouts","extension\/module\/html","extension\/module\/information","extension\/module\/klarna_checkout_module","extension\/module\/latest","extension\/module\/laybuy_layout","extension\/module\/pilibaba_button","extension\/module\/pp_braintree_button","extension\/module\/pp_button","extension\/module\/pp_login","extension\/module\/sagepay_direct_cards","extension\/module\/sagepay_server_cards","extension\/module\/slideshow","extension\/module\/special","extension\/module\/store","extension\/payment\/alipay","extension\/payment\/alipay_cross","extension\/payment\/amazon_login_pay","extension\/payment\/authorizenet_aim","extension\/payment\/authorizenet_sim","extension\/payment\/bank_transfer","extension\/payment\/bluepay_hosted","extension\/payment\/bluepay_redirect","extension\/payment\/cardconnect","extension\/payment\/cardinity","extension\/payment\/cheque","extension\/payment\/cod","extension\/payment\/divido","extension\/payment\/eway","extension\/payment\/firstdata","extension\/payment\/firstdata_remote","extension\/payment\/free_checkout","extension\/payment\/g2apay","extension\/payment\/globalpay","extension\/payment\/globalpay_remote","extension\/payment\/klarna_account","extension\/payment\/klarna_checkout","extension\/payment\/klarna_invoice","extension\/payment\/laybuy","extension\/payment\/liqpay","extension\/payment\/nochex","extension\/payment\/paymate","extension\/payment\/paypoint","extension\/payment\/payza","extension\/payment\/perpetual_payments","extension\/payment\/pilibaba","extension\/payment\/pp_braintree","extension\/payment\/pp_express","extension\/payment\/pp_payflow","extension\/payment\/pp_payflow_iframe","extension\/payment\/pp_pro","extension\/payment\/pp_pro_iframe","extension\/payment\/pp_standard","extension\/payment\/realex","extension\/payment\/realex_remote","extension\/payment\/sagepay_direct","extension\/payment\/sagepay_server","extension\/payment\/sagepay_us","extension\/payment\/securetrading_pp","extension\/payment\/securetrading_ws","extension\/payment\/skrill","extension\/payment\/squareup","extension\/payment\/twocheckout","extension\/payment\/web_payment_software","extension\/payment\/wechat_pay","extension\/payment\/worldpay","extension\/report\/customer_activity","extension\/report\/customer_order","extension\/report\/customer_reward","extension\/report\/customer_search","extension\/report\/customer_transaction","extension\/report\/marketing","extension\/report\/product_purchased","extension\/report\/product_viewed","extension\/report\/sale_coupon","extension\/report\/sale_order","extension\/report\/sale_return","extension\/report\/sale_shipping","extension\/report\/sale_tax","extension\/shipping\/auspost","extension\/shipping\/ec_ship","extension\/shipping\/fedex","extension\/shipping\/flat","extension\/shipping\/free","extension\/shipping\/item","extension\/shipping\/parcelforce_48","extension\/shipping\/pickup","extension\/shipping\/royal_mail","extension\/shipping\/ups","extension\/shipping\/usps","extension\/shipping\/weight","extension\/theme\/default","extension\/total\/coupon","extension\/total\/credit","extension\/total\/handling","extension\/total\/klarna_fee","extension\/total\/low_order_fee","extension\/total\/reward","extension\/total\/shipping","extension\/total\/sub_total","extension\/total\/tax","extension\/total\/total","extension\/total\/voucher","localisation\/country","localisation\/currency","localisation\/geo_zone","localisation\/language","localisation\/length_class","localisation\/location","localisation\/order_status","localisation\/return_action","localisation\/return_reason","localisation\/return_status","localisation\/stock_status","localisation\/tax_class","localisation\/tax_rate","localisation\/weight_class","localisation\/zone","mail\/affiliate","mail\/customer","mail\/forgotten","mail\/gdpr","mail\/return","mail\/reward","mail\/transaction","marketing\/affiliate","marketing\/contact","marketing\/coupon","marketing\/marketing","marketplace\/api","marketplace\/cron","marketplace\/event","marketplace\/extension","marketplace\/install","marketplace\/installer","marketplace\/marketplace","marketplace\/modification","report\/online","report\/report","report\/statistics","sale\/order","sale\/recurring","sale\/return","sale\/voucher","sale\/voucher_theme","setting\/setting","setting\/store","startup\/error","startup\/event","startup\/login","startup\/permission","startup\/router","startup\/sass","startup\/startup","tool\/backup","tool\/log","tool\/upgrade","tool\/upload","user\/api","user\/user","user\/user_permission"]}'),
+(1, 'Kurucu Yönetici', '{\"access\":[\"catalog\\/attribute\",\"catalog\\/attribute_group\",\"catalog\\/category\",\"catalog\\/download\",\"catalog\\/filter\",\"catalog\\/information\",\"catalog\\/manufacturer\",\"catalog\\/option\",\"catalog\\/product\",\"catalog\\/recurring\",\"catalog\\/review\",\"common\\/column_left\",\"common\\/cron\",\"common\\/developer\",\"common\\/filemanager\",\"common\\/pagination\",\"common\\/profile\",\"common\\/security\",\"cron\\/currency\",\"cron\\/gdpr\",\"customer\\/custom_field\",\"customer\\/customer\",\"customer\\/customer_approval\",\"customer\\/customer_group\",\"customer\\/gdpr\",\"design\\/banner\",\"design\\/layout\",\"design\\/seo_profile\",\"design\\/seo_url\",\"design\\/theme\",\"design\\/translation\",\"event\\/currency\",\"event\\/debug\",\"event\\/language\",\"event\\/statistics\",\"extension\\/captcha\\/basic\",\"extension\\/currency\\/ecb\",\"extension\\/currency\\/fixer\",\"extension\\/dashboard\\/activity\",\"extension\\/dashboard\\/chart\",\"extension\\/dashboard\\/customer\",\"extension\\/dashboard\\/map\",\"extension\\/dashboard\\/online\",\"extension\\/dashboard\\/order\",\"extension\\/dashboard\\/recent\",\"extension\\/dashboard\\/sale\",\"extension\\/extension\\/analytics\",\"extension\\/extension\\/captcha\",\"extension\\/extension\\/currency\",\"extension\\/extension\\/dashboard\",\"extension\\/extension\\/feed\",\"extension\\/extension\\/fraud\",\"extension\\/extension\\/menu\",\"extension\\/extension\\/module\",\"extension\\/extension\\/payment\",\"extension\\/extension\\/promotion\",\"extension\\/extension\\/report\",\"extension\\/extension\\/shipping\",\"extension\\/extension\\/theme\",\"extension\\/extension\\/total\",\"extension\\/fraud\\/ip\",\"extension\\/module\\/account\",\"extension\\/module\\/banner\",\"extension\\/module\\/bestseller\",\"extension\\/module\\/carousel\",\"extension\\/module\\/category\",\"extension\\/module\\/featured\",\"extension\\/module\\/filter\",\"extension\\/module\\/html\",\"extension\\/module\\/information\",\"extension\\/module\\/latest\",\"extension\\/module\\/slideshow\",\"extension\\/module\\/special\",\"extension\\/module\\/store\",\"extension\\/payment\\/bank_transfer\",\"extension\\/payment\\/cheque\",\"extension\\/payment\\/cod\",\"extension\\/payment\\/free_checkout\",\"extension\\/report\\/customer_activity\",\"extension\\/report\\/customer_order\",\"extension\\/report\\/customer_reward\",\"extension\\/report\\/customer_search\",\"extension\\/report\\/customer_transaction\",\"extension\\/report\\/marketing\",\"extension\\/report\\/product_purchased\",\"extension\\/report\\/product_viewed\",\"extension\\/report\\/sale_coupon\",\"extension\\/report\\/sale_order\",\"extension\\/report\\/sale_return\",\"extension\\/report\\/sale_shipping\",\"extension\\/report\\/sale_tax\",\"extension\\/shipping\\/flat\",\"extension\\/shipping\\/free\",\"extension\\/shipping\\/item\",\"extension\\/shipping\\/pickup\",\"extension\\/shipping\\/weight\",\"extension\\/theme\\/default\",\"extension\\/total\\/coupon\",\"extension\\/total\\/credit\",\"extension\\/total\\/handling\",\"extension\\/total\\/low_order_fee\",\"extension\\/total\\/reward\",\"extension\\/total\\/shipping\",\"extension\\/total\\/sub_total\",\"extension\\/total\\/tax\",\"extension\\/total\\/total\",\"extension\\/total\\/voucher\",\"localisation\\/country\",\"localisation\\/currency\",\"localisation\\/geo_zone\",\"localisation\\/language\",\"localisation\\/length_class\",\"localisation\\/location\",\"localisation\\/order_status\",\"localisation\\/return_action\",\"localisation\\/return_reason\",\"localisation\\/return_status\",\"localisation\\/stock_status\",\"localisation\\/tax_class\",\"localisation\\/tax_rate\",\"localisation\\/weight_class\",\"localisation\\/zone\",\"mail\\/affiliate\",\"mail\\/customer\",\"mail\\/forgotten\",\"mail\\/gdpr\",\"mail\\/return\",\"mail\\/reward\",\"mail\\/transaction\",\"marketing\\/affiliate\",\"marketing\\/contact\",\"marketing\\/coupon\",\"marketing\\/marketing\",\"marketplace\\/api\",\"marketplace\\/cron\",\"marketplace\\/event\",\"marketplace\\/extension\",\"marketplace\\/install\",\"marketplace\\/installer\",\"marketplace\\/marketplace\",\"marketplace\\/modification\",\"report\\/online\",\"report\\/report\",\"report\\/statistics\",\"sale\\/order\",\"sale\\/recurring\",\"sale\\/return\",\"sale\\/voucher\",\"sale\\/voucher_theme\",\"setting\\/setting\",\"setting\\/store\",\"startup\\/error\",\"startup\\/event\",\"startup\\/login\",\"startup\\/permission\",\"startup\\/router\",\"startup\\/sass\",\"startup\\/startup\",\"tool\\/backup\",\"tool\\/log\",\"tool\\/upgrade\",\"tool\\/upload\",\"user\\/api\",\"user\\/user\",\"user\\/user_permission\"],\"modify\":[\"catalog\\/attribute\",\"catalog\\/attribute_group\",\"catalog\\/category\",\"catalog\\/download\",\"catalog\\/filter\",\"catalog\\/information\",\"catalog\\/manufacturer\",\"catalog\\/option\",\"catalog\\/product\",\"catalog\\/recurring\",\"catalog\\/review\",\"common\\/column_left\",\"common\\/cron\",\"common\\/developer\",\"common\\/filemanager\",\"common\\/pagination\",\"common\\/profile\",\"common\\/security\",\"cron\\/currency\",\"cron\\/gdpr\",\"customer\\/custom_field\",\"customer\\/customer\",\"customer\\/customer_approval\",\"customer\\/customer_group\",\"customer\\/gdpr\",\"design\\/banner\",\"design\\/layout\",\"design\\/seo_profile\",\"design\\/seo_url\",\"design\\/theme\",\"design\\/translation\",\"event\\/currency\",\"event\\/debug\",\"event\\/language\",\"event\\/statistics\",\"extension\\/captcha\\/basic\",\"extension\\/currency\\/ecb\",\"extension\\/currency\\/fixer\",\"extension\\/dashboard\\/activity\",\"extension\\/dashboard\\/chart\",\"extension\\/dashboard\\/customer\",\"extension\\/dashboard\\/map\",\"extension\\/dashboard\\/online\",\"extension\\/dashboard\\/order\",\"extension\\/dashboard\\/recent\",\"extension\\/dashboard\\/sale\",\"extension\\/extension\\/analytics\",\"extension\\/extension\\/captcha\",\"extension\\/extension\\/currency\",\"extension\\/extension\\/dashboard\",\"extension\\/extension\\/feed\",\"extension\\/extension\\/fraud\",\"extension\\/extension\\/menu\",\"extension\\/extension\\/module\",\"extension\\/extension\\/payment\",\"extension\\/extension\\/promotion\",\"extension\\/extension\\/report\",\"extension\\/extension\\/shipping\",\"extension\\/extension\\/theme\",\"extension\\/extension\\/total\",\"extension\\/fraud\\/ip\",\"extension\\/module\\/account\",\"extension\\/module\\/banner\",\"extension\\/module\\/bestseller\",\"extension\\/module\\/carousel\",\"extension\\/module\\/category\",\"extension\\/module\\/featured\",\"extension\\/module\\/filter\",\"extension\\/module\\/html\",\"extension\\/module\\/information\",\"extension\\/module\\/latest\",\"extension\\/module\\/slideshow\",\"extension\\/module\\/special\",\"extension\\/module\\/store\",\"extension\\/payment\\/bank_transfer\",\"extension\\/payment\\/cheque\",\"extension\\/payment\\/cod\",\"extension\\/payment\\/free_checkout\",\"extension\\/report\\/customer_activity\",\"extension\\/report\\/customer_order\",\"extension\\/report\\/customer_reward\",\"extension\\/report\\/customer_search\",\"extension\\/report\\/customer_transaction\",\"extension\\/report\\/marketing\",\"extension\\/report\\/product_purchased\",\"extension\\/report\\/product_viewed\",\"extension\\/report\\/sale_coupon\",\"extension\\/report\\/sale_order\",\"extension\\/report\\/sale_return\",\"extension\\/report\\/sale_shipping\",\"extension\\/report\\/sale_tax\",\"extension\\/shipping\\/flat\",\"extension\\/shipping\\/free\",\"extension\\/shipping\\/item\",\"extension\\/shipping\\/pickup\",\"extension\\/shipping\\/weight\",\"extension\\/theme\\/default\",\"extension\\/total\\/coupon\",\"extension\\/total\\/credit\",\"extension\\/total\\/handling\",\"extension\\/total\\/klarna_fee\",\"extension\\/total\\/low_order_fee\",\"extension\\/total\\/reward\",\"extension\\/total\\/shipping\",\"extension\\/total\\/sub_total\",\"extension\\/total\\/tax\",\"extension\\/total\\/total\",\"extension\\/total\\/voucher\",\"localisation\\/country\",\"localisation\\/currency\",\"localisation\\/geo_zone\",\"localisation\\/language\",\"localisation\\/length_class\",\"localisation\\/location\",\"localisation\\/order_status\",\"localisation\\/return_action\",\"localisation\\/return_reason\",\"localisation\\/return_status\",\"localisation\\/stock_status\",\"localisation\\/tax_class\",\"localisation\\/tax_rate\",\"localisation\\/weight_class\",\"localisation\\/zone\",\"mail\\/affiliate\",\"mail\\/customer\",\"mail\\/forgotten\",\"mail\\/gdpr\",\"mail\\/return\",\"mail\\/reward\",\"mail\\/transaction\",\"marketing\\/affiliate\",\"marketing\\/contact\",\"marketing\\/coupon\",\"marketing\\/marketing\",\"marketplace\\/api\",\"marketplace\\/cron\",\"marketplace\\/event\",\"marketplace\\/extension\",\"marketplace\\/install\",\"marketplace\\/installer\",\"marketplace\\/marketplace\",\"marketplace\\/modification\",\"report\\/online\",\"report\\/report\",\"report\\/statistics\",\"sale\\/order\",\"sale\\/recurring\",\"sale\\/return\",\"sale\\/voucher\",\"sale\\/voucher_theme\",\"setting\\/setting\",\"setting\\/store\",\"startup\\/error\",\"startup\\/event\",\"startup\\/login\",\"startup\\/permission\",\"startup\\/router\",\"startup\\/sass\",\"startup\\/startup\",\"tool\\/backup\",\"tool\\/log\",\"tool\\/upgrade\",\"tool\\/upload\",\"user\\/api\",\"user\\/user\",\"user\\/user_permission\"]}'),
 (10, 'Yönetici', '');
 
 -----------------------------------------------------------

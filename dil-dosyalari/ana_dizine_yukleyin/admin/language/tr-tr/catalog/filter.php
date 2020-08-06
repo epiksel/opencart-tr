@@ -24,6 +24,8 @@ $_['entry_name']        = 'Filtre Adı';
 $_['entry_sort_order']  = 'Sıralama';
 
 // Error
+$_['error_warning']     = 'Uyarı: Oluşan hatalar için lütfen formu dikkatli kontrol ediniz!';
 $_['error_permission']  = 'Uyarı: Filtreleri düzenleme iznine sahip değilsiniz!';
 $_['error_group']       = 'Filtre grup adı 1 ile 64 karakter arasında olmalı!';
 $_['error_name']        = 'Filtre adı 1 ile 64 karakter arasında olmalı!';
+$_['error_values']      = 'Uyarı: Filtre değeri gerekli!';

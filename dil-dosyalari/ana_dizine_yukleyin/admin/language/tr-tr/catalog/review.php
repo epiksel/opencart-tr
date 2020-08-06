@@ -32,6 +32,7 @@ $_['entry_date_added']  = 'Ekleme Tarihi';
 $_['help_product']      = '(Otomatik Tamamlama)';
 
 // Error
+$_['error_warning']     = 'Uyarı: Oluşan hatalar için lütfen formu dikkatli kontrol ediniz!';
 $_['error_permission']  = 'Uyarı: Yorumları düzenleme iznine sahip değilsiniz!';
 $_['error_product']     = 'Ürün gerekli!';
 $_['error_author']      = 'Ekleyen adı 3 ile 64 karakter arasında olmalı!';

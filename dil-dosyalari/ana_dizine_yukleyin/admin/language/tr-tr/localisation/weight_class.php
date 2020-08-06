@@ -23,7 +23,7 @@ $_['entry_unit']       = 'Ağırlık Birimi';
 $_['entry_value']      = 'Birim Değeri';
 
 // Help
-$_['help_value']       = 'Varsayılan ağırlık birim değerini 1.00000 olarak ayarlayın.';
+$_['help_value']       = 'Geçerli ağırlık birimindeki varsayılan kilonuzun değeri. Varsayılan ağırlığınız için 1 olarak ayarlayın.';
 
 // Error
 $_['error_permission'] = 'Uyarı: Ağırlık Birimlerini düzenleme iznine sahip değilsiniz!';

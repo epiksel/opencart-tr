@@ -32,7 +32,7 @@ $_['text_date']              = 'Tarih';
 $_['text_datetime']          = 'Tarih &amp; Zaman';
 $_['text_time']              = 'Zaman';
 $_['text_image']             = 'Resim';
-$_['text_additional_image']  = 'Ek Resimler';
+$_['text_image_additional']  = 'Ek Resimler';
 $_['text_reward']            = 'Puan ile Satın Al';
 $_['text_points']            = 'Kazanılacak Puanlar';
 
@@ -118,6 +118,7 @@ $_['help_category']          = '(Otomatik Tamamlama)';
 $_['help_filter']            = '(Otomatik Tamamlama)';
 $_['help_download']          = '(Otomatik Tamamlama)';
 $_['help_related']           = '(Otomatik Tamamlama)';
+$_['help_option']            = '(Otomatik Tamamlama)';
 $_['help_points']            = 'Bu ürünü satın almak için gerekli puan. Puan ile satılmasını istemiyorsanız 0 yapınız.';
 
 // Error

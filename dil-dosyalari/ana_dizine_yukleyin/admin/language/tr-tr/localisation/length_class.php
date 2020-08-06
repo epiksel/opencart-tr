@@ -23,7 +23,7 @@ $_['entry_unit']       = 'Uzunluk Birimi';
 $_['entry_value']      = 'Birim Değeri';
 
 // Help
-$_['help_value']       = 'Varsayılan ağırlık birim değerini 1.00000 olarak ayarlayın.';
+$_['help_value']       = 'Geçerli uzunluk birimindeki varsayılan uzunluğunuzun değeri. Varsayılan uzunluğunuz için 1 olarak ayarlayın.';
 
 // Error
 $_['error_permission'] = 'Uyarı: Uzunluk sınıflarını düzenleme iznine sahip değilsiniz!';

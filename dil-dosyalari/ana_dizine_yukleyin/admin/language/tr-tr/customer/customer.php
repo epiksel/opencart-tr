@@ -11,6 +11,7 @@ $_['text_list']             = 'Müşteri Listesi';
 $_['text_add']              = 'Müşteri Ekle';
 $_['text_edit']             = 'Müşteri Düzenle';
 $_['text_default']          = 'Varsayılan';
+$_['text_store']            = 'Mağaza';
 $_['text_account']          = 'Müşteri Detayları';
 $_['text_password']         = 'Parola';
 $_['text_other']            = 'Diğer';
@@ -46,6 +47,7 @@ $_['column_action']         = 'Eylem';
 
 // Entry
 $_['entry_customer_group']  = 'Müşteri Grubu';
+$_['entry_store']           = 'Müşteri Mağazası';
 $_['entry_firstname']       = 'Adı';
 $_['entry_lastname']        = 'Soyadı';
 $_['entry_email']           = 'E-Posta';

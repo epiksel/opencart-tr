@@ -57,4 +57,4 @@ $_['help_uses_customer']  = 'Tek müşterinin bu kuponu kaç kez kullanabileceğ
 $_['error_permission']    = 'Uyarı: Kuponları düzenleme iznine sahip değilsiniz!';
 $_['error_exists']        = 'Uyarı: Kupon kodu zaten kullanımda!';
 $_['error_name']          = 'Kupon Adı 3 ile 128 karakter arasında olmalı!';
-$_['error_code']          = 'Kupon kodu 3 ile 10 karakter arasında olmalı!';
+$_['error_code']          = 'Kupon kodu 3 ile 20 karakter arasında olmalı!';

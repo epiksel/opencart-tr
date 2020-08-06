@@ -3,10 +3,10 @@
 // Website    : https://e-piksel.com
 
 // Text
-$_['text_subject']  = '%s - Kişisel Genel Veri İsteği';
+$_['text_subject']  = '%s - KVKK Dışa Aktarma/Silme İsteği!';
 $_['text_export']   = 'Veri Aktarma İsteği';
 $_['text_remove']   = 'Hesap Silme İsteği';
-$_['text_gdpr']     = 'Bu e-posta adresi için GDPR isteği, işlemi onaylamak için lütfen aşağıdaki bağlantıyı tıklayın:';
+$_['text_gdpr']     = 'Bu e-posta adresi için KVKK isteği, işlemi onaylamak için lütfen aşağıdaki bağlantıyı tıklayın:';
 $_['text_ip']       = 'Bu isteği yapan IP adresi:';
 $_['text_contact']  = 'Eğer bu isteği siz yapmadıysanız lütfen mağaza sahibiyle iletişim kurun:';
 $_['text_thanks']   = 'Teşekkürler,';

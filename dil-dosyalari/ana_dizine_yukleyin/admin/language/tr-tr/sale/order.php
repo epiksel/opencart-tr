@@ -137,4 +137,5 @@ $_['help_override']              = 'Eğer sipariş durumu değiştirilmesi, saht
 $_['error_warning']              = 'Uyarı: Oluşan hatalar için lütfen formu dikkatli kontrol ediniz!';
 $_['error_permission']           = 'Uyarı: Siparişleri düzenleme iznine sahip değilsiniz!';
 $_['error_action']               = 'Uyarı: Bu eylem tamamlanamadı!';
+$_['error_empty']                = 'Uyarı: Alışveriş sepeti boş!';
 $_['error_filetype']             = 'Dosya türü geçersiz!';
