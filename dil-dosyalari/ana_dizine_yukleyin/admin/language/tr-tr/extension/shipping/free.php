@@ -17,7 +17,7 @@ $_['entry_status']     = 'Durumu';
 $_['entry_sort_order'] = 'Sıralama';
 
 // Help
-$_['help_total']       = 'Ücretsiz kargo modülünü kullanılabilir duruma getirmek için Alt-Toplam tutarını giriniz.';
+$_['help_total']       = 'Ücretsiz kargo seçeneğinin aktif olması için Alt-Toplam tutarını giriniz.';
 
 // Error
 $_['error_permission'] = 'Uyarı: Ücretsiz kargoyu düzenleme iznine sahip değilsiniz!';
