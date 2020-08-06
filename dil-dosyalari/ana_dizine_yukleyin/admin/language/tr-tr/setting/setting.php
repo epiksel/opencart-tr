@@ -55,6 +55,7 @@ $_['entry_comment']                = 'Açıklama';
 $_['entry_location']               = 'Mağaza Konumu';
 $_['entry_country']                = 'Ülke';
 $_['entry_zone']                   = 'Şehir';
+$_['entry_timezone']               = 'Zaman Bölgesi';
 $_['entry_language']               = 'Mağaza Dili';
 $_['entry_admin_language']         = 'Yönetim Dili';
 $_['entry_currency']               = 'Para Birimi';

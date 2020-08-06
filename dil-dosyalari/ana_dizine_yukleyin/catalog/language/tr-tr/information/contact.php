@@ -13,7 +13,7 @@ $_['text_telephone'] = 'Telefon:';
 $_['text_fax']       = 'Faks:';
 $_['text_open']      = 'Çalışma Saatleri';
 $_['text_comment']   = 'Açıklamalar';
-$_['text_success']   = '<p>Mesajınız başarıyla gönderildi!</p><p>En kısa sürede size geri dönüş yapılacaktır.</p>';
+$_['text_message']   = '<p>Mesajınız başarıyla gönderildi!</p><p>En kısa sürede size geri dönüş yapılacaktır.</p>';
 
 // Entry
 $_['entry_name']     = 'Adınız';

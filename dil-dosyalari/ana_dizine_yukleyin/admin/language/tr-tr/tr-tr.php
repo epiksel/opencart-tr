@@ -101,6 +101,7 @@ $_['button_category_add']           = 'Kategori Ekle';
 $_['button_order']                  = 'Siparişi Görüntüle';
 $_['button_order_recurring']        = 'Abonelik Siparişini Göster';
 $_['button_buy']                    = 'Satın Al';
+$_['button_developer']              = 'Geliştirici Ayarları';
 
 // Tab
 $_['tab_address']                   = 'Adres';
