@@ -3,7 +3,7 @@
 // Website    : https://e-piksel.com
 
 // Heading
-$_['heading_title']    = 'Takip Kodu Oluştur';
+$_['heading_title']    = 'Ortaklık Takip Kodu';
 
 // Text
 $_['text_account']     = 'Hesabım';

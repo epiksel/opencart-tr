@@ -68,17 +68,14 @@ final class Loader {
 	 *
 	 * @param    string $route
 	 */
-	public function model($route, $path = '') {
+	public function model($route) {
 		// Sanitize the call
 		$route = preg_replace('/[^a-zA-Z0-9_\/]/', '', (string)$route);
 
 		if (!$this->registry->has('model_' . str_replace('/', '_', $route))) {
-			if (!$path) {
-				$file = DIR_APPLICATION . 'model/' . $route . '.php';
-			} else {
-				$file = $path . $route . '.php';
-			}
 
+
+			$file = DIR_APPLICATION . 'model/' . $route . '.php';
 			$class = 'Model' . preg_replace('/[^a-zA-Z0-9]/', '', $route);
 
 			if (is_file($file)) {
@@ -89,9 +86,7 @@ final class Loader {
 				// Overriding models is a little harder so we have to use PHP's magic methods
 				// In future version we can use runkit
 				foreach (get_class_methods($class) as $method) {
-					$function = $this->callback($route . '/' . $method);
-
-					$proxy->attach($method, $function);
+					$proxy->{$method} = $this->callback($route . '/' . $method);
 				}
 
 				$this->registry->set('model_' . str_replace('/', '_', (string)$route), $proxy);
@@ -109,7 +104,7 @@ final class Loader {
 	 *
 	 * @return   string
 	 */
-	public function view($route, $data = array(), $path = '') {
+	public function view($route, $data = array()) {
 		// Sanitize the call
 		$route = preg_replace('/[^a-zA-Z0-9_\/]/', '', (string)$route);
 
@@ -187,11 +182,17 @@ final class Loader {
 	 * @param    string $route
 	 */
 	public function config($route) {
-		$this->registry->get('event')->trigger('config/' . $route . '/before', array(&$route));
+		// Sanitize the call
+		$route = preg_replace('/[^a-zA-Z0-9_\-\/]/', '', (string)$route);
+
+		// Keep the original trigger
+		$trigger = $route;
+
+		$this->registry->get('event')->trigger('config/' . $trigger . '/before', array(&$route));
 
 		$this->registry->get('config')->load($route);
 
-		$this->registry->get('event')->trigger('config/' . $route . '/after', array(&$route));
+		$this->registry->get('event')->trigger('config/' . $trigger . '/after', array(&$route));
 	}
 
 	/**

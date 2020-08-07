@@ -353,7 +353,7 @@ class ControllerCustomerCustomField extends Controller {
 		if (isset($this->request->post['custom_field_description'])) {
 			$data['custom_field_description'] = $this->request->post['custom_field_description'];
 		} elseif (!empty($custom_field_info)) {
-			$data['custom_field_description'] = $this->model_customer_custom_field->getCustomFieldDescriptions($this->request->get['custom_field_id']);
+			$data['custom_field_description'] = $this->model_customer_custom_field->getDescriptions($this->request->get['custom_field_id']);
 		} else {
 			$data['custom_field_description'] = array();
 		}
@@ -409,7 +409,7 @@ class ControllerCustomerCustomField extends Controller {
 		if (isset($this->request->post['custom_field_value'])) {
 			$custom_field_values = $this->request->post['custom_field_value'];
 		} elseif (!empty($custom_field_info)) {
-			$custom_field_values = $this->model_customer_custom_field->getCustomFieldValueDescriptions($this->request->get['custom_field_id']);
+			$custom_field_values = $this->model_customer_custom_field->getValueDescriptions($this->request->get['custom_field_id']);
 		} else {
 			$custom_field_values = array();
 		}
@@ -427,7 +427,7 @@ class ControllerCustomerCustomField extends Controller {
 		if (isset($this->request->post['custom_field_customer_group'])) {
 			$custom_field_customer_groups = $this->request->post['custom_field_customer_group'];
 		} elseif (!empty($custom_field_info)) {
-			$custom_field_customer_groups = $this->model_customer_custom_field->getCustomFieldCustomerGroups($this->request->get['custom_field_id']);
+			$custom_field_customer_groups = $this->model_customer_custom_field->getCustomerGroups($this->request->get['custom_field_id']);
 		} else {
 			$custom_field_customer_groups = array();
 		}
@@ -437,18 +437,14 @@ class ControllerCustomerCustomField extends Controller {
 		foreach ($custom_field_customer_groups as $custom_field_customer_group) {
 			if (isset($custom_field_customer_group['customer_group_id'])) {
 				$data['custom_field_customer_group'][] = $custom_field_customer_group['customer_group_id'];
-			} else {
-				$data['custom_field_customer_group'][] = '';
 			}
 		}
 
 		$data['custom_field_required'] = array();
 
 		foreach ($custom_field_customer_groups as $custom_field_customer_group) {
-			if (isset($custom_field_customer_group['required'])  && isset($custom_field_customer_group['customer_group_id'])) {
+			if (isset($custom_field_customer_group['required']) && $custom_field_customer_group['required'] && isset($custom_field_customer_group['customer_group_id'])) {
 				$data['custom_field_required'][] = $custom_field_customer_group['customer_group_id'];
-			} else {
-				$data['custom_field_required'][] = '';
 			}
 		}
 

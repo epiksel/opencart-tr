@@ -5,8 +5,6 @@ class ControllerProductManufacturer extends Controller {
 
 		$this->load->model('catalog/manufacturer');
 
-		$this->load->model('tool/image');
-
 		$this->document->setTitle($this->language->get('heading_title'));
 
 		$data['breadcrumbs'] = array();
@@ -34,6 +32,7 @@ class ControllerProductManufacturer extends Controller {
 
 			if (!isset($data['categories'][$key])) {
 				$data['categories'][$key]['name'] = $key;
+				$data['categories'][$key]['href'] = $this->url->link('product/manufacturer', 'language=' . $this->config->get('config_language'));
 			}
 
 			$data['categories'][$key]['manufacturer'][] = array(
@@ -178,13 +177,7 @@ class ControllerProductManufacturer extends Controller {
 					$tax = false;
 				}
 
-				if ($this->config->get('config_review_status')) {
-					$rating = (int)$result['rating'];
-				} else {
-					$rating = false;
-				}
-
-				$data['products'][] = array(
+				$product_data = array(
 					'product_id'  => $result['product_id'],
 					'thumb'       => $image,
 					'name'        => $result['name'],
@@ -196,6 +189,8 @@ class ControllerProductManufacturer extends Controller {
 					'rating'      => $result['rating'],
 					'href'        => $this->url->link('product/product', 'language=' . $this->config->get('config_language') . '&manufacturer_id=' . $result['manufacturer_id'] . '&product_id=' . $result['product_id'] . $url)
 				);
+
+				$data['products'][] = $this->load->controller('product/thumb', $product_data);
 			}
 
 			$url = '';
@@ -278,7 +273,7 @@ class ControllerProductManufacturer extends Controller {
 
 			sort($limits);
 
-			foreach($limits as $value) {
+			foreach ($limits as $value) {
 				$data['limits'][] = array(
 					'text'  => $value,
 					'value' => $value,
@@ -317,7 +312,7 @@ class ControllerProductManufacturer extends Controller {
 			}
 
 			if ($page > 1) {
-			    $this->document->addLink($this->url->link('product/manufacturer/info', 'language=' . $this->config->get('config_language') . '&manufacturer_id=' . $this->request->get['manufacturer_id'] . $url . '&page='. (($page - 2) ? '&page='. ($page - 1) : '')), 'prev');
+			    $this->document->addLink($this->url->link('product/manufacturer/info', 'language=' . $this->config->get('config_language') . '&manufacturer_id=' . $this->request->get['manufacturer_id'] . $url . (($page - 2) ? '&page='. ($page - 1) : '')), 'prev');
 			}
 
 			if ($limit && ceil($product_total / $limit) > $page) {

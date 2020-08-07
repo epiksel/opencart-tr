@@ -23,6 +23,7 @@ $_['entry_attribute_group']  = 'Özellik Grubu';
 $_['entry_sort_order']       = 'Sıralama';
 
 // Error
+$_['error_warning']          = 'Uyarı: Oluşan hatalar için lütfen formu dikkatli kontrol ediniz!';
 $_['error_permission']       = 'Uyarı: Özellikleri düzenleme iznine sahip değilsiniz!';
 $_['error_attribute_group']  = 'Özellik grubu gerekli!';
 $_['error_name']             = 'Özellik adı 1 ile 64 karakter arasında olmalı!';

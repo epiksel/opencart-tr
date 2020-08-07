@@ -381,12 +381,14 @@ class ControllerCustomerCustomer extends Controller {
 			$store_data = array();
 
 			$store_data[] = array(
+				'store_id' => 0,
 				'name' => $this->config->get('config_name'),
 				'href' => $this->url->link('customer/customer/login', 'user_token=' . $this->session->data['user_token'] . '&customer_id=' . $result['customer_id'] . '&store_id=0')
 			);
 
 			foreach ($stores as $store) {
 				$store_data[] = array(
+					'store_id' => $store['store_id'],
 					'name' => $store['name'],
 					'href' => $this->url->link('customer/customer/login', 'user_token=' . $this->session->data['user_token'] . '&customer_id=' . $result['customer_id'] . '&store_id=' . $store['store_id'])
 				);
@@ -396,6 +398,7 @@ class ControllerCustomerCustomer extends Controller {
 				'customer_id'    => $result['customer_id'],
 				'name'           => $result['name'],
 				'email'          => $result['email'],
+				'store_id'       => $result['store_id'],
 				'customer_group' => $result['customer_group'],
 				'status'         => ($result['status'] ? $this->language->get('text_enabled') : $this->language->get('text_disabled')),
 				'date_added'     => date($this->language->get('date_format_short'), strtotime($result['date_added'])),
@@ -574,30 +577,6 @@ class ControllerCustomerCustomer extends Controller {
 			$data['error_telephone'] = '';
 		}
 
-		if (isset($this->error['cheque'])) {
-			$data['error_cheque'] = $this->error['cheque'];
-		} else {
-			$data['error_cheque'] = '';
-		}
-
-		if (isset($this->error['paypal'])) {
-			$data['error_paypal'] = $this->error['paypal'];
-		} else {
-			$data['error_paypal'] = '';
-		}
-
-		if (isset($this->error['bank_account_name'])) {
-			$data['error_bank_account_name'] = $this->error['bank_account_name'];
-		} else {
-			$data['error_bank_account_name'] = '';
-		}
-
-		if (isset($this->error['bank_account_number'])) {
-			$data['error_bank_account_number'] = $this->error['bank_account_number'];
-		} else {
-			$data['error_bank_account_number'] = '';
-		}
-
 		if (isset($this->error['password'])) {
 			$data['error_password'] = $this->error['password'];
 		} else {
@@ -672,6 +651,35 @@ class ControllerCustomerCustomer extends Controller {
 			'href' => $this->url->link('customer/customer', 'user_token=' . $this->session->data['user_token'] . $url)
 		);
 
+		$this->load->model('setting/store');
+
+		$data['stores'] = array();
+		$data['multistore'] = 0;
+		
+		$data['stores'][] = array(
+			'store_id' => 0,
+			'name'     => $this->language->get('text_default')
+		);
+		
+		$stores = $this->model_setting_store->getStores();
+
+		foreach ($stores as $store) {
+			$data['stores'][] = array(
+				'store_id' => $store['store_id'],
+				'name'     => $store['name']
+			);
+
+			$data['multistore'] = $data['multistore'] + 1;
+		}
+
+		if (isset($this->request->post['store_id'])) {
+			$data['store_id'] = $this->request->post['store_id'];
+		} elseif (!empty($customer_info)) {
+			$data['store_id'] = $customer_info['store_id'];
+		} else {
+			$data['store_id'] = array(0);
+		}
+		
 		if (!isset($this->request->get['customer_id'])) {
 			$data['action'] = $this->url->link('customer/customer/add', 'user_token=' . $this->session->data['user_token'] . $url);
 		} else {
@@ -744,7 +752,7 @@ class ControllerCustomerCustomer extends Controller {
 			if ($custom_field['status']) {
 				$data['custom_fields'][] = array(
 					'custom_field_id'    => $custom_field['custom_field_id'],
-					'custom_field_value' => $this->model_customer_custom_field->getCustomFieldValues($custom_field['custom_field_id']),
+					'custom_field_value' => $this->model_customer_custom_field->getValues($custom_field['custom_field_id']),
 					'name'               => $custom_field['name'],
 					'value'              => $custom_field['value'],
 					'type'               => $custom_field['type'],

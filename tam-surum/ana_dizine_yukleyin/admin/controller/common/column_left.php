@@ -155,14 +155,6 @@ class ControllerCommonColumnLeft extends Controller {
 				);
 			}
 
-			if ($this->user->hasPermission('access', 'marketplace/modification')) {
-				$marketplace[] = array(
-					'name'	   => $this->language->get('text_modification'),
-					'href'     => $this->url->link('marketplace/modification', 'user_token=' . $this->session->data['user_token']),
-					'children' => array()
-				);
-			}
-
 			if ($this->user->hasPermission('access', 'marketplace/event')) {
 				$marketplace[] = array(
 					'name'	   => $this->language->get('text_event'),
@@ -226,10 +218,10 @@ class ControllerCommonColumnLeft extends Controller {
 
 			$seo = array();
 
-			if ($this->user->hasPermission('access', 'design/seo_regex')) {
+			if ($this->user->hasPermission('access', 'design/seo_profile')) {
 				$seo[] = array(
-					'name'	   => $this->language->get('text_seo_regex'),
-					'href'     => $this->url->link('design/seo_regex', 'user_token=' . $this->session->data['user_token']),
+					'name'	   => $this->language->get('text_seo_profile'),
+					'href'     => $this->url->link('design/seo_profile', 'user_token=' . $this->session->data['user_token']),
 					'children' => array()
 				);
 			}

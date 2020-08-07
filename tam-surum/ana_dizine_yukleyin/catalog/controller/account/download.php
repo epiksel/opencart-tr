@@ -31,7 +31,7 @@ class ControllerAccountDownload extends Controller {
 		$this->load->model('account/download');
 
 		if (isset($this->request->get['page'])) {
-			$page = $this->request->get['page'];
+			$page = (int)$this->request->get['page'];
 		} else {
 			$page = 1;
 		}
@@ -40,7 +40,7 @@ class ControllerAccountDownload extends Controller {
 
 		$download_total = $this->model_account_download->getTotalDownloads();
 
-		$results = $this->model_account_download->getDownloads(($page - 1) * $this->config->get('theme_' . $this->config->get('config_theme') . '_pagination'), $this->config->get('theme_' . $this->config->get('config_theme') . '_pagination'));
+		$results = $this->model_account_download->getDownloads(($page - 1) * 10);
 
 		foreach ($results as $result) {
 			if (is_file(DIR_DOWNLOAD . $result['filename'])) {
@@ -106,7 +106,7 @@ class ControllerAccountDownload extends Controller {
 		$this->load->model('account/download');
 
 		if (isset($this->request->get['download_id'])) {
-			$download_id = $this->request->get['download_id'];
+			$download_id = (int)$this->request->get['download_id'];
 		} else {
 			$download_id = 0;
 		}
@@ -118,7 +118,7 @@ class ControllerAccountDownload extends Controller {
 			$mask = basename($download_info['mask']);
 
 			if (!headers_sent()) {
-				if (file_exists($file)) {
+				if (is_file($file)) {
 					header('Content-Type: application/octet-stream');
 					header('Content-Disposition: attachment; filename="' . ($mask ? $mask : basename($file)) . '"');
 					header('Expires: 0');
@@ -132,7 +132,7 @@ class ControllerAccountDownload extends Controller {
 
 					readfile($file, 'rb');
 
-					$this->model_account_download->addDownloadReport($download_id, $this->request->server['REMOTE_ADDR']);
+					$this->model_account_download->addReport($download_id, $this->request->server['REMOTE_ADDR']);
 
 					exit();
 				} else {

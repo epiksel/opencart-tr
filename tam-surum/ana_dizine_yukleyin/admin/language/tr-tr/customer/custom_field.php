@@ -10,7 +10,7 @@ $_['text_success']         = 'Başarılı: Özel alan başarılı bir şekilde d
 $_['text_list']            = 'Özel Alan Listesi';
 $_['text_add']             = 'Özel Alan Ekle';
 $_['text_edit']            = 'Özel Alan Düzenle';
-$_['text_choose']          = 'Seçiniz';
+$_['text_choose']          = 'Seçim';
 $_['text_select']          = 'Seçenek';
 $_['text_radio']           = 'Radyo Buton';
 $_['text_checkbox']        = 'Seçim Kutusu';
@@ -55,5 +55,5 @@ $_['help_sort_order']      = 'Son alandan geriye doğru ayarlamak için eksi de�
 // Error
 $_['error_permission']     = 'Uyarı: Özel alanları düzenleme yetkisine sahip değilsiniz!';
 $_['error_name']           = 'Özel alan adı 1 ile 128 karakter arasında olmalıdır!';
-$_['error_type']           = 'Uyarı: Özel alan türü gerekli!';
+$_['error_type']           = 'Uyarı: Özel Alan Değerleri gerekli!';
 $_['error_custom_value']   = 'Özel alan değer adı 1 ile 128 karakter arasında olmalıdır!';

@@ -8,9 +8,9 @@ $_['language_default']  = 'tr-tr';
 $_['language_autoload'] = array('tr-tr');
 
 // Session
-$_['session_autostart']  = true;
-$_['session_engine']     = 'file';
-$_['session_name']       = 'OCSESSID';
+$_['session_autostart'] = true;
+$_['session_engine']    = 'file'; // db or file
+$_['session_name']      = 'OCSESSID';
 
 // Template
 $_['template_engine']   = 'twig';

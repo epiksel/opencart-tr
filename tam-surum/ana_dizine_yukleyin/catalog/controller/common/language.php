@@ -1,9 +1,6 @@
 <?php
 class ControllerCommonLanguage extends Controller {
 	public function index() {
-		//public function index(&$test) {
-		//$test = 99;
-
 		$this->load->language('common/language');
 
 		$data['code'] = $this->config->get('config_language');
@@ -16,8 +13,8 @@ class ControllerCommonLanguage extends Controller {
 			$route = $this->config->get('action_default');
 		}
 
-		unset($url_data['_route_']);
 		unset($url_data['route']);
+		unset($url_data['_route_']);
 		unset($url_data['language']);
 
 		$url = '';
@@ -33,13 +30,11 @@ class ControllerCommonLanguage extends Controller {
 		$results = $this->model_localisation_language->getLanguages();
 
 		foreach ($results as $result) {
-			if ($result['status']) {
-				$data['languages'][] = array(
-					'name' => $result['name'],
-					'code' => $result['code'],
-					'href' => $this->url->link('common/language/language', 'language=' . $this->config->get('config_language') . '&code=' . $result['code'] . '&redirect=' . urlencode(str_replace('&amp;', '&', $this->url->link($route, 'language=' . $result['code'] . $url))))
-				);
-			}
+            $data['languages'][] = array(
+                'name' => $result['name'],
+                'code' => $result['code'],
+                'href' => $this->url->link('common/language/language', 'language=' . $this->config->get('config_language') . '&code=' . $result['code'] . '&redirect=' . urlencode(str_replace('&amp;', '&', $this->url->link($route, 'language=' . $result['code'] . $url))))
+            );
 		}
 
 		return $this->load->view('common/language', $data);
@@ -53,12 +48,18 @@ class ControllerCommonLanguage extends Controller {
 		}
 
 		if (isset($this->request->get['redirect'])) {
-			$redirect = $this->request->get['redirect'];
+			$redirect =  htmlspecialchars_decode($this->request->get['redirect'], ENT_COMPAT, 'UTF-8');
 		} else {
 			$redirect = '';
 		}
 
-		setcookie('language', $code, time() + 60 * 60 * 24 * 30, '/', $this->request->server['HTTP_HOST']);
+		$option = array(
+			'max-age'  => time() + 60 * 60 * 24 * 30,
+			'path'     => '/',
+			'SameSite' => 'lax'
+		);
+
+		oc_setcookie('language', $code, $option);
 
 		if ($redirect && substr($redirect, 0, strlen($this->config->get('config_url'))) == $this->config->get('config_url')) {
 			$this->response->redirect($redirect);

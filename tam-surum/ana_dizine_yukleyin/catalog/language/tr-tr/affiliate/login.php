@@ -21,5 +21,5 @@ $_['entry_password']                = 'Parola';
 
 // Error
 $_['error_login']                   = 'Uyarı: E-Posta adresi ya da parolanız yanlış';
-$_['error_attempts']                            = 'Uyarı: Oturum açma deneme sınırına ulaştınız. Lütfen 1 saat içinde tekrar deneyiniz!';
+$_['error_attempts']                = 'Uyarı: Oturum açma deneme sınırına ulaştınız. Lütfen 1 saat içinde tekrar deneyiniz!';
 $_['error_approved']                = 'Uyarı: Hesabınıza giriş yapabilmek için önce hesabınızın onaylanması gerekmektedir.';

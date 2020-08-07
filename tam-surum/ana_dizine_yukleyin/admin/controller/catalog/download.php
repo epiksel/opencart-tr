@@ -326,7 +326,7 @@ class ControllerCatalogDownload extends Controller {
 		if (isset($this->request->post['download_description'])) {
 			$data['download_description'] = $this->request->post['download_description'];
 		} elseif (!empty($download_info)) {
-			$data['download_description'] = $this->model_catalog_download->getDownloadDescriptions($this->request->get['download_id']);
+			$data['download_description'] = $this->model_catalog_download->getDescriptions($this->request->get['download_id']);
 		} else {
 			$data['download_description'] = array();
 		}
@@ -375,6 +375,10 @@ class ControllerCatalogDownload extends Controller {
 
 		if ((utf8_strlen(trim($this->request->post['mask'])) < 3) || (utf8_strlen($this->request->post['mask']) > 128)) {
 			$this->error['mask'] = $this->language->get('error_mask');
+		}
+
+		if ($this->error && !isset($this->error['warning'])) {
+			$this->error['warning'] = $this->language->get('error_warning');
 		}
 
 		return !$this->error;

@@ -8,7 +8,7 @@ $_['heading_title']     = 'Çevrimiçi Müşteri Raporu';
 // Text
 $_['text_extension']    = 'Eklentiler';
 $_['text_success']      = 'Başarılı: Çevrimiçi müşteri raporu başarılı bir şekilde değiştirildi!';
-$_['text_edit']         = 'Çevrimiçi Listesi';
+$_['text_list']         = 'Çevrimiçi Listesi';
 $_['text_filter']       = 'Filtre';
 $_['text_guest']        = 'Misafir';
 

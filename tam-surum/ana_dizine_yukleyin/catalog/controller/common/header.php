@@ -1,12 +1,6 @@
 <?php
 class ControllerCommonHeader extends Controller {
 	public function index() {
-		//$test = 200;
-
-		//$this->load->controller('common/language', $test);
-
-		//echo $test;
-
 		// Analytics
 		$this->load->model('setting/extension');
 
@@ -53,8 +47,6 @@ class ControllerCommonHeader extends Controller {
 		} else {
 			$data['text_wishlist'] = sprintf($this->language->get('text_wishlist'), (isset($this->session->data['wishlist']) ? count($this->session->data['wishlist']) : 0));
 		}
-
-		$data['text_logged'] = sprintf($this->language->get('text_logged'), $this->url->link('account/account', 'language=' . $this->config->get('config_language')), $this->customer->getFirstName(), $this->url->link('account/logout', 'language=' . $this->config->get('config_language')));
 
 		$data['home'] = $this->url->link('common/home', 'language=' . $this->config->get('config_language'));
 		$data['wishlist'] = $this->url->link('account/wishlist', 'language=' . $this->config->get('config_language'));

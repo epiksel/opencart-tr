@@ -158,10 +158,12 @@ class ModelUpgrade1004 extends Model {
 								foreach ($query->rows as $result2) {
 									if ($result2['key'] == 'featured_product') {
 										$module_data['product'] = explode(",", $result2['value']);
+
 										$module_data['limit'] = 4;
 										break;
 									} else {
 										$featured_product_query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "setting` WHERE `key` = 'featured_product'");
+
 										if ($featured_product_query->num_rows) {
 											$module_data['product'] = explode(",", $featured_product_query->row['value']);
 											$module_data['limit'] = 4;
@@ -224,7 +226,7 @@ class ModelUpgrade1004 extends Model {
 						foreach ($value as $k => $v) {
 							$module_data['name'] = ($result['key'] . '_' . $k);
 							$module_data['status'] = $v['status'];
-							foreach($v['description'] as $language_id => $description) {
+							foreach ($v['description'] as $language_id => $description) {
 								$module_data['module_description'][$language_id]['title'] = '';
 								$module_data['module_description'][$language_id]['description'] = str_replace('image/data', 'image/catalog', $description);
 							}

@@ -3,12 +3,12 @@
 // Website    : https://e-piksel.com
 
 // Heading
-$_['heading_title']     = 'GDPR Onaylamaları';
+$_['heading_title']     = 'KVKK İstekleri';
 
 // Text
-$_['text_success']      = 'Başarılı: GDPR Onaylamaları başarılı bir şekilde değiştirildi!';
-$_['text_list']         = 'GDPR Onay Listesi';
-$_['text_info']         = '<strong>GDPR</strong> hesabı silme istekleri, herhangi bir sahtekarlık tespiti, ters ibrazlar veya geri ödeme işlemeleri için <strong>%s günden</strong> sonra işlenecektir.';
+$_['text_success']      = 'Başarılı: KVKK İstekleri başarılı bir şekilde değiştirildi!';
+$_['text_list']         = 'KVKK İstek Listesi';
+$_['text_info']         = '<strong>KVKK</strong> hesabı silme istekleri, herhangi bir sahtekarlık tespiti, ters ibrazlar veya geri ödeme işlemeleri için <strong>%s günden</strong> sonra işlenecektir.';
 $_['text_approve']      = 'Onayla';
 $_['text_deny']         = 'Reddet';
 $_['text_delete']       = 'Sil';
@@ -17,8 +17,8 @@ $_['text_pending']      = 'Onay Bekliyor';
 $_['text_processing']   = 'İnceleniyor';
 $_['text_complete']     = 'Tamamlandı';
 $_['text_denied']       = 'Reddedildi';
-$_['text_export']       = 'Dışarı Aktar';
-$_['text_remove']       = 'Kaldır';
+$_['text_export']       = 'Dışarı Aktarma';
+$_['text_remove']       = 'Veri Kaldırma';
 
 // Column
 $_['column_email']      = 'E-Posta';
@@ -34,4 +34,4 @@ $_['entry_status']      = 'Durumu';
 $_['entry_date_added']  = 'Ekleme Tarihi';
 
 // Error
-$_['error_permission']  = 'Uyarı: GDPR Onaylamalarını düzenleme iznine sahip değilsiniz!';
+$_['error_permission']  = 'Uyarı: KVKK İsteklerini düzenleme iznine sahip değilsiniz!';

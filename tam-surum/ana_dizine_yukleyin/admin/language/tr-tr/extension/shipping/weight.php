@@ -18,7 +18,7 @@ $_['entry_status']     = 'Durumu';
 $_['entry_sort_order'] = 'Sıralama';
 
 // Help
-$_['help_rate']        = 'Örnek: 5:10.00,7:12.00 Ağırlık:Fiyat,Ağırlık:Fiyat, gibi.. En yüksek ağırlığı ayarlamayı unutmayınız.';
+$_['help_rate']        = 'Örnek: 5:10.00,7:12.00 Ağırlık:Fiyat,Ağırlık:Fiyat, gibi.. En yüksek ağırlığı ayarlamayı unutmayın.';
 
 // Error
 $_['error_permission'] = 'Uyarı: Ağırlık orantılı kargo düzenleme iznine sahip değilsiniz!';

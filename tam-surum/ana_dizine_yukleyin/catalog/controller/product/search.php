@@ -215,13 +215,7 @@ class ControllerProductSearch extends Controller {
 					$tax = false;
 				}
 
-				if ($this->config->get('config_review_status')) {
-					$rating = (int)$result['rating'];
-				} else {
-					$rating = false;
-				}
-
-				$data['products'][] = array(
+				$product_data = array(
 					'product_id'  => $result['product_id'],
 					'thumb'       => $image,
 					'name'        => $result['name'],
@@ -233,6 +227,8 @@ class ControllerProductSearch extends Controller {
 					'rating'      => $result['rating'],
 					'href'        => $this->url->link('product/product', 'language=' . $this->config->get('config_language') . '&product_id=' . $result['product_id'] . $url)
 				);
+
+				$data['products'][] = $this->load->controller('product/thumb', $product_data);
 			}
 
 			$url = '';
@@ -355,7 +351,7 @@ class ControllerProductSearch extends Controller {
 
 			sort($limits);
 
-			foreach($limits as $value) {
+			foreach ($limits as $value) {
 				$data['limits'][] = array(
 					'text'  => $value,
 					'value' => $value,
@@ -435,6 +431,7 @@ class ControllerProductSearch extends Controller {
 			}
 		}
 
+		$data['language'] = $this->config->get('config_language');
 		$data['search'] = $search;
 		$data['description'] = $description;
 		$data['category_id'] = $category_id;

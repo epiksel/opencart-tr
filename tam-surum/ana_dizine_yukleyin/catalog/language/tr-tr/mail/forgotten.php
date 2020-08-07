@@ -8,4 +8,5 @@ $_['text_greeting'] = '<strong>%s</strong> müşteri hesabınız için parola s�
 $_['text_change']   = 'Parolanızı sıfırlamak için aşağıdaki bağlantıya tıklayın:';
 $_['text_ip']       = 'Parola sıfırlama isteğiniz bu IP adresinden yapıldı:';
 
+// Button
 $_['button_reset']  = 'Parola Sıfırla';
