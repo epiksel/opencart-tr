@@ -747,7 +747,7 @@ INSERT INTO `oc_event` (`event_id`, `code`, `trigger`, `action`, `status`) VALUE
 INSERT INTO `oc_event` (`event_id`, `code`, `trigger`, `action`, `status`) VALUES
 (11, 'activity_affiliate_edit', 'catalog/model/account/affiliate/editAffiliate/after', 'event/activity/editAffiliate', 1);
 INSERT INTO `oc_event` (`event_id`, `code`, `trigger`, `action`, `status`) VALUES
-(12, 'activity_order_add', 'catalog/model/checkout/order/addOrderHistory/before', 'event/activity/addOrderHistory', 1);
+(12, 'activity_order_add', 'catalog/model/checkout/order/addHistory/before', 'event/activity/addHistory', 1);
 INSERT INTO `oc_event` (`event_id`, `code`, `trigger`, `action`, `status`) VALUES
 (13, 'activity_return_add', 'catalog/model/account/return/addReturn/after', 'event/activity/addReturn', 1);
 INSERT INTO `oc_event` (`event_id`, `code`, `trigger`, `action`, `status`) VALUES
@@ -763,11 +763,11 @@ INSERT INTO `oc_event` (`event_id`, `code`, `trigger`, `action`, `status`) VALUE
 INSERT INTO `oc_event` (`event_id`, `code`, `trigger`, `action`, `status`) VALUES
 (19, 'mail_affiliate_alert', 'catalog/model/account/affiliate/addAffiliate/after', 'mail/affiliate/alert', 1);
 INSERT INTO `oc_event` (`event_id`, `code`, `trigger`, `action`, `status`) VALUES
-(20, 'mail_voucher', 'catalog/model/checkout/order/addOrderHistory/after', 'extension/total/voucher/send', 1);
+(20, 'mail_voucher', 'catalog/model/checkout/order/addHistory/after', 'extension/total/voucher/send', 1);
 INSERT INTO `oc_event` (`event_id`, `code`, `trigger`, `action`, `status`) VALUES
-(21, 'mail_order_add', 'catalog/model/checkout/order/addOrderHistory/before', 'mail/order', 1);
+(21, 'mail_order_add', 'catalog/model/checkout/order/addHistory/before', 'mail/order', 1);
 INSERT INTO `oc_event` (`event_id`, `code`, `trigger`, `action`, `status`) VALUES
-(22, 'mail_order_alert', 'catalog/model/checkout/order/addOrderHistory/before', 'mail/order/alert', 1);
+(22, 'mail_order_alert', 'catalog/model/checkout/order/addHistory/before', 'mail/order/alert', 1);
 INSERT INTO `oc_event` (`event_id`, `code`, `trigger`, `action`, `status`) VALUES
 (23, 'mail_gdpr', 'catalog/model/account/gdpr/addGdpr/after', 'mail/gdpr', 1);
 INSERT INTO `oc_event` (`event_id`, `code`, `trigger`, `action`, `status`) VALUES
@@ -777,7 +777,7 @@ INSERT INTO `oc_event` (`event_id`, `code`, `trigger`, `action`, `status`) VALUE
 INSERT INTO `oc_event` (`event_id`, `code`, `trigger`, `action`, `status`) VALUES
 (26, 'statistics_return_add', 'catalog/model/account/return/addReturn/after', 'event/statistics/addReturn', 1);
 INSERT INTO `oc_event` (`event_id`, `code`, `trigger`, `action`, `status`) VALUES
-(27, 'statistics_order_history', 'catalog/model/checkout/order/addOrderHistory/before', 'event/statistics/addOrderHistory', 1);
+(27, 'statistics_order_history', 'catalog/model/checkout/order/addHistory/before', 'event/statistics/addHistory', 1);
 INSERT INTO `oc_event` (`event_id`, `code`, `trigger`, `action`, `status`) VALUES
 (28, 'admin_mail_affiliate_approve', 'admin/model/customer/customer_approval/approveAffiliate/after', 'mail/affiliate/approve', 1);
 INSERT INTO `oc_event` (`event_id`, `code`, `trigger`, `action`, `status`) VALUES
@@ -791,7 +791,7 @@ INSERT INTO `oc_event` (`event_id`, `code`, `trigger`, `action`, `status`) VALUE
 INSERT INTO `oc_event` (`event_id`, `code`, `trigger`, `action`, `status`) VALUES
 (33, 'admin_mail_transaction', 'admin/model/customer/customer/addTransaction/after', 'mail/transaction', 1);
 INSERT INTO `oc_event` (`event_id`, `code`, `trigger`, `action`, `status`) VALUES
-(34, 'admin_mail_return', 'admin/model/sale/return/addReturnHistory/after', 'mail/return', 1);
+(34, 'admin_mail_return', 'admin/model/sale/return/addHistory/after', 'mail/return', 1);
 INSERT INTO `oc_event` (`event_id`, `code`, `trigger`, `action`, `status`) VALUES
 (35, 'admin_mail_forgotten', 'admin/model/user/user/editCode/after', 'mail/forgotten', 1);
 INSERT INTO `oc_event` (`event_id`, `code`, `trigger`, `action`, `status`) VALUES
@@ -956,19 +956,19 @@ INSERT INTO `oc_layout_module` (`layout_module_id`, `layout_id`, `code`, `positi
 
 INSERT INTO `oc_layout_route` (`layout_route_id`, `layout_id`, `store_id`, `route`) VALUES
 (1, 6, 0, 'account/%'),
-(2, 10, 0, 'affiliate/%'),
-(3, 6, 0, 'information/gdpr'),
-(6, 11, 0, 'information/information'),
-(7, 5, 0, 'product/manufacturer'),
+(2, 6, 0, 'information/gdpr'),
+(3, 10, 0, 'affiliate/%'),
+(4, 3, 0, 'product/category'),
+(5, 1, 0, 'common/home'),
+(6, 2, 0, 'product/product'),
+(7, 11, 0, 'information/information'),
 (8, 7, 0, 'checkout/%'),
 (9, 8, 0, 'information/contact'),
 (10, 9, 0, 'information/sitemap'),
 (11, 4, 0, ''),
-(12, 12, 0, 'product/compare'),
-(13, 13, 0, 'product/search'),
-(15, 1, 0, 'common/home'),
-(16, 3, 0, 'product/category'),
-(17, 2, 0, 'product/product');
+(12, 5, 0, 'product/manufacturer'),
+(13, 12, 0, 'product/compare'),
+(14, 13, 0, 'product/search');
 
 -----------------------------------------------------------
 
@@ -1508,12 +1508,12 @@ INSERT INTO `oc_setting` (`store_id`, `code`, `key`, `value`, `serialized`) VALU
 (0, 'config', 'config_review_guest', '1', 0),
 (0, 'config', 'config_voucher_min', '1', 0),
 (0, 'config', 'config_voucher_max', '1000', 0),
-(0, 'config', 'config_tax', '1', 0),
-(0, 'config', 'config_tax_default', 'payment', 0),
-(0, 'config', 'config_tax_customer', 'payment', 0),
 (0, 'config', 'config_cookie_id', '0', 0),
 (0, 'config', 'config_gdpr_id', '0', 0),
 (0, 'config', 'config_gdpr_limit', '180', 0),
+(0, 'config', 'config_tax', '1', 0),
+(0, 'config', 'config_tax_default', 'payment', 0),
+(0, 'config', 'config_tax_customer', 'payment', 0),
 (0, 'config', 'config_customer_online', '0', 0),
 (0, 'config', 'config_customer_activity', '0', 0),
 (0, 'config', 'config_customer_search', '0', 0),
@@ -1622,8 +1622,8 @@ INSERT INTO `oc_setting` (`store_id`, `code`, `key`, `value`, `serialized`) VALU
 (0, 'theme_default', 'theme_default_image_product_height', '250', 0),
 (0, 'theme_default', 'theme_default_image_additional_width', '74', 0),
 (0, 'theme_default', 'theme_default_image_additional_height', '74', 0),
-(0, 'theme_default', 'theme_default_image_related_width', '200', 0),
-(0, 'theme_default', 'theme_default_image_related_height', '200', 0),
+(0, 'theme_default', 'theme_default_image_related_width', '250', 0),
+(0, 'theme_default', 'theme_default_image_related_height', '250', 0),
 (0, 'theme_default', 'theme_default_image_compare_width', '90', 0),
 (0, 'theme_default', 'theme_default_image_compare_height', '90', 0),
 (0, 'theme_default', 'theme_default_image_wishlist_width', '47', 0),
