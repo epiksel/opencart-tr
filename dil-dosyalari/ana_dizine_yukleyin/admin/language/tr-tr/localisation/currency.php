@@ -31,7 +31,7 @@ $_['entry_status']         = 'Durumu';
 
 // Help
 $_['help_code']            = 'Bu varsayılan para biriminiz ise değiştirmeyiniz.';
-$_['help_value']           = 'Geçerli para birimindeki varsayılan para biriminizin değeri. Varsayılan para biriminiz için 1 olarak ayarlayın.';
+$_['help_value']           = 'Varsayılan para biriminize göre bu para biriminin değeri Varsayılan para biriminiz için 1 olarak ayarlayın.';
 
 // Error
 $_['error_permission']     = 'Uyarı: Para birimlerini düzenleme iznine sahip değilsiniz!';
