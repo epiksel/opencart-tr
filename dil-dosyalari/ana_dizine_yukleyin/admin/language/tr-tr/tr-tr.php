@@ -30,6 +30,20 @@ $_['text_loading']                  = 'Yükleniyor...';
 $_['text_no_results']               = 'Gösterilecek sonuç yok!';
 $_['text_confirm']                  = 'Emin misiniz?';
 $_['text_home']                     = 'Anasayfa';
+$_['text_just_now']                 = 'şimdi';
+$_['text_seconds_ago']              = '%s saniye önce';
+$_['text_minute_ago']               = '%s dakika önce';
+$_['text_minutes_ago']              = '%s dakika önce';
+$_['text_hour_ago']                 = '%s saat önce';
+$_['text_hours_ago']                = '%s saat önce';
+$_['text_day_ago']                  = '%s gün önce';
+$_['text_days_ago']                 = '%s gün önce';
+$_['text_week_ago']                 = '%s haft önce';
+$_['text_weeks_ago']                = '%s haft önce';
+$_['text_month_ago']                = '%s ay önce';
+$_['text_months_ago']               = '%s ay önce';
+$_['text_year_ago']                 = '%s yıl önce';
+$_['text_years_ago']                = '%s yıl önce';
 
 // Button
 $_['button_add']                    = 'Ekle';

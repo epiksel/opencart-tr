@@ -28,3 +28,5 @@ $_['help_order_status']  = 'Engelli IP adresine sahip müşteri hesapları sipar
 
 // Error
 $_['error_permission']   = 'Uyarı: Engelli IP\'leri düzenleme iznine sahip değilsiniz!';
+$_['error_required']     = 'IP Adresi gerekli!';
+$_['error_invalid']      = 'IP Adresi geçersiz!';

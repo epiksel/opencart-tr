@@ -15,4 +15,4 @@ $_['entry_generator']  = 'Takip Edilecek Ürün';
 $_['entry_link']       = 'Takip Bağlantısı';
 
 // Help
-$_['help_generator']  = 'Bağlantı oluşturmak için bir ürün adı yazınız.';
+$_['help_generator']   = 'Bağlantı oluşturmak için bir ürün adı yazınız.';

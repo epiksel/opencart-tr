@@ -34,6 +34,7 @@ $_['text_compatibility'] = 'Uyumluluk';
 $_['text_downloaded']    = 'İndirildi';
 $_['text_member_since']  = 'Üyelik tarihi:';
 $_['text_price']         = 'Fiyatı';
+$_['text_featured']      = 'Seçtiklerimiz';
 $_['text_partner']       = 'OpenCart Ortağı tarafından geliştirildi';
 $_['text_support']       = '12 Ay Ücretsiz Destek';
 $_['text_documentation'] = 'Dokümantasyon Eklendi';

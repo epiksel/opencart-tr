@@ -37,4 +37,5 @@ $_['error_default']       = 'Uyarı: Bu bölümü silemezsiniz, varsayılan mağ
 $_['error_store']         = 'Uyarı: Bu bölümü silemezsiniz, %s mağaza tarafından kullanılıyor!';
 $_['error_product']       = 'Uyarı: Bu bölümü silemezsiniz, %s ürün tarafından kullanılıyor!';
 $_['error_category']      = 'Uyarı: Bu bölümü silemezsiniz, %s kategori tarafından kullanılıyor!';
+$_['error_manufacturer']  = 'Uyarı: Bu bölümü silemezsiniz, %s üretici tarafından kullanılıyor!';
 $_['error_information']   = 'Uyarı: Bu bölümü silemezsiniz, %s bilgi sayfası tarafından kullanılıyor!';

@@ -14,7 +14,6 @@ $_['text_product']                     = 'Ürünler';
 $_['text_image']                       = 'Resimler';
 
 // Entry
-$_['entry_directory']                  = 'Tema Dizini';
 $_['entry_status']                     = 'Durumu';
 $_['entry_pagination']                 = 'Sayfa Başına Ürün';
 $_['entry_product_description_length'] = 'Liste Açıklama Limiti';
@@ -32,7 +31,6 @@ $_['entry_width']                      = 'Genişlik';
 $_['entry_height']                     = 'Yükseklik';
 
 // Help
-$_['help_directory']                   = 'Bu alan yalnızca yeni tema sistemi ile uyumlu olması için eski temalarda aktif edilir. Burada tanımlanan görüntü boyutu ayarlarını kullanmak için tema dizinini ayarlayabilirsiniz.';
 $_['help_pagination']                  = 'Mağazanızın sayfalarında, sayfa başına kaç ürün gösterileceğini seçin (ürünler, kategoriler vb).';
 $_['help_product_description_length']  = 'Liste görünümde kısa açıklama karakter limiti. (kategoriler, kampanya sayfaları vb).';
 

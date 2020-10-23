@@ -26,7 +26,7 @@ $_['entry_store']       = 'Mağazalar';
 $_['entry_keyword']     = 'SEO Bağlantısı';
 $_['entry_image']       = 'Resim';
 $_['entry_sort_order']  = 'Sıralama';
-$_['entry_type']        = 'Türü';
+$_['entry_layout']      = 'Bu Bölüm Gibi Davran';
 
 // Error
 $_['error_warning']     = 'Uyarı: Oluşan hatalar için lütfen formu dikkatli kontrol ediniz!';
