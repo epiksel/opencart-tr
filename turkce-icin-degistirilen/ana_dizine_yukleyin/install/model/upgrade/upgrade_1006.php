@@ -1,5 +1,6 @@
 <?php
-class ModelUpgrade1006 extends Model {
+namespace Install\Model\Upgrade;
+class Upgrade1006 extends \Opencart\System\Engine\Model {
 	public function upgrade() {
 		// Update some language settings
 		$this->db->query("UPDATE `" . DB_PREFIX . "setting` SET `value` = 'en-gb' WHERE `key` = 'config_language' AND `value` = 'en'");
@@ -14,10 +15,10 @@ class ModelUpgrade1006 extends Model {
 		$this->cache->delete('language');
 
 		// Update the template setting for v1.5.x
-		$this->db->query("UPDATE `" . DB_PREFIX . "setting` SET `key` = 'config_theme', value = 'default' WHERE `key` = 'config_template' AND `value` = 'default'");
+		$this->db->query("UPDATE `" . DB_PREFIX . "setting` SET `key` = 'config_theme', `value` = 'default' WHERE `key` = 'config_template' AND `value` = 'default'");
 
 		// update the template setting for v2.x
-		$this->db->query("UPDATE `" . DB_PREFIX . "setting` SET value = 'default' WHERE `key` = 'config_theme'");
+		$this->db->query("UPDATE `" . DB_PREFIX . "setting` SET `value` = 'default' WHERE `key` = 'config_theme'");
 
 		// Update the config.php by adding a DB_PORT
 		if (is_file(DIR_OPENCART . 'config.php')) {
@@ -91,22 +92,22 @@ class ModelUpgrade1006 extends Model {
 		}
 
 		// Disable any existing ocmods
-		$this->db->query("UPDATE `" . DB_PREFIX . "modification` SET status = 0");
+		$this->db->query("UPDATE `" . DB_PREFIX . "modification` SET `status` = 0");
 
 		// Cleanup files in old directories
-		$directories = array(
+		$directories = [
 			DIR_SYSTEM . 'modification/',
 			DIR_SYSTEM . 'storage/modification/',
 			DIR_SYSTEM . 'logs/',
 			DIR_SYSTEM . 'cache/',
-		);
+		];
 
-		$files = array();
+		$files = [];
 
 		foreach ($directories as $dir) {
-			if (is_dir($dir)){
+			if (is_dir($dir)) {
 				// Make path into an array
-				$path = array($dir . '*');
+				$path = [$dir . '*'];
 
 				// While the path array is still populated keep looping through
 				while (count($path) != 0) {
@@ -193,12 +194,14 @@ class ModelUpgrade1006 extends Model {
 		}
 
 		// Open the source directory to read in files
-		$i = new DirectoryIterator($src);
+		$i = new \DirectoryIterator($src);
+
 		foreach ($i as $f) {
 			if ($f->isFile() && !file_exists("$dest/" . $f->getFilename())) {
 				@rename($f->getRealPath(), "$dest/" . $f->getFilename());
 			} elseif (!$f->isDot() && $f->isDir()) {
 				$this->recursive_move($f->getRealPath(), "$dest/$f");
+
 				@unlink($f->getRealPath());
 			}
 		}

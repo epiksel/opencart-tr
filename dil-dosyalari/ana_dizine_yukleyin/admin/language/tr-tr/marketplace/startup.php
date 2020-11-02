@@ -1,17 +1,16 @@
 <?php
 // Heading
-$_['heading_title']     = 'Startup';
+$_['heading_title']     = 'Başlangıç';
 
 // Text
-$_['text_success']      = 'Success: You have modified startup!';
-$_['text_list']         = 'Startup List';
+$_['text_success']      = 'Başarılı: Başlangıç başarılı bir şekilde değiştirildi!';
+$_['text_list']         = 'Başlangıç Listesi';
 
 // Column
-$_['column_code']       = 'Startup Code';
-$_['column_action']     = 'Action';
-$_['column_status']     = 'Status';
-$_['column_sort_order'] = 'Sort Order';
-$_['column_action']     = 'Action';
+$_['column_code']       = 'Başlangıç Kodu';
+$_['column_status']     = 'Durumu';
+$_['column_sort_order'] = 'Sıralama';
+$_['column_action']     = 'Eylem';
 
 // Error
-$_['error_permission']  = 'Warning: You do not have permission to modify startup!';
+$_['error_permission']  = 'Uyarı: Başlangıçları düzenleme iznine sahip değilsiniz!';

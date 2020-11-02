@@ -1,5 +1,6 @@
 <?php
-class ControllerExtensionExtensionPromotion extends Controller {
+namespace Opencart\Application\Controller\Marketplace;
+class Promotion extends \Opencart\System\Engine\Controller {
 	public function index() {
 		$html = '<script async src="https://adsenix.com/api/adsload.js"></script>';
 		$html .= '<div class="adsenix-preloader"></div>';
