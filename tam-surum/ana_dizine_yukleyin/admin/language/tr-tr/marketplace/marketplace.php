@@ -48,6 +48,7 @@ $_['text_name']          = 'Dosya Adı';
 $_['text_progress']      = 'İlerleme';
 $_['text_available']     = 'Mevcut Dosyalar';
 $_['text_action']        = 'Eylem';
+$_['text_see_more']      = 'daha fazla yanıt gör...';
 
 // Entry
 $_['entry_pin']          = 'PIN';
@@ -65,6 +66,7 @@ $_['button_view_all']    = 'Tüm Uzantıları Göster';
 $_['button_get_support'] = 'Destek Al';
 $_['button_comment']     = 'Yorum';
 $_['button_reply']       = 'Cevapla';
+$_['button_refresh']     = 'Yenile';
 
 // Error
 $_['error_permission']   = 'Uyarı: Eklentileri değiştirme iznine sahip değilsiniz!';
