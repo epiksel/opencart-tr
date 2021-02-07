@@ -1,0 +1,6 @@
+<?php
+/* Turkceye Ceviren eka7a - http://e-piksel.com */
+
+// Text
+$_['text_title']       = 'Parça Başına Kargo';
+$_['text_description'] = 'Parça Başına Kargo';
