@@ -9,7 +9,7 @@ $_['text_step_3']            = 'Veritabanı ve Yönetim detaylarınızı girin.'
 $_['text_db_connection']     = '1. Lütfen veritabanı bağlantı bilgilerini girin.';
 $_['text_db_administration'] = '2. Lütfen yönetim için bir kullanıcı adı ve parola giriniz.';
 $_['text_mysqli']            = 'MySQLi';
-$_['text_mpdo']              = 'mPDO';
+$_['text_pdo']               = 'mPDO';
 $_['text_pgsql']             = 'PostgreSQL';
 
 // Entry

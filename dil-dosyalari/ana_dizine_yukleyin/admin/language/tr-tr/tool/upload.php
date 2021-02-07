@@ -21,3 +21,5 @@ $_['entry_date_added']  = 'Ekleme Tarihi';
 
 // Error
 $_['error_permission']  = 'Uyarı: Yüklemeleri düzenleme iznine sahip değilsiniz!';
+$_['error_upload']      = 'Geçersiz yükleme!';
+$_['error_file']        = 'Yükleme dosyası bulunamadı!';

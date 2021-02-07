@@ -13,6 +13,7 @@ $_['text_add']           = 'Adresinizi başarılı bir şekilde eklediniz';
 $_['text_edit']          = 'Adresiniz başarılı bir şekilde güncellediniz';
 $_['text_delete']        = 'Adresiniz başarılı bir şekilde sildiniz';
 $_['text_empty']         = 'Hesabınızda kayıtlı hiç adres yok.';
+$_['text_confirm']       = 'Emin misiniz?';
 
 // Entry
 $_['entry_firstname']    = 'Adınız';

@@ -10,8 +10,11 @@ $_['text_success']     = 'Başarılı: Mağazalar modülü güncellendi!';
 $_['text_edit']        = 'Mağaza Modülünü Düzenle';
 
 // Entry
-$_['entry_admin']      = 'Sadece Yöneticilere Göster';
+$_['entry_admin']      = 'Sadece Yöneticiler';
 $_['entry_status']     = 'Durumu';
+
+//Help
+$_['help_admin']       = 'Çoklu mağaza listesi yalnızca yönetici kullanıcı oturum açtığı zaman görünür olacaktır!';
 
 // Error
 $_['error_permission'] = 'Uyarı: Mağazalar modülünü değiştirme iznine sahip değilsiniz!';
