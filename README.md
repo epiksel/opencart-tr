@@ -15,6 +15,11 @@ E-Ticaret siteleriniz için [SSL Sertifikası](https://openix.io/tr/ssl-sertifik
 
 You can support us by purchasing an [SSL Certificate](https://openix.io/en/ssl-certificates?tracking=5b998465b6371) for your e-commerce sites.
 
+## Destek - Donate
+Cüzdan Adresi **(TRX - BTT - USDT)**: TH9RyofE7WiDDVVFLMJgFns2ByBRmgQzNB
+
+Wallet Address **(TRX - BTT - USDT)**: TH9RyofE7WiDDVVFLMJgFns2ByBRmgQzNB
+
 ## Lisans
 
 [GNU General Public License version 3 (GPLv3)](https://github.com/epiksel/opencart-tr/blob/master/lisans.txt)
