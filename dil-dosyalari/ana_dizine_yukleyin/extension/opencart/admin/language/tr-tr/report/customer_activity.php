@@ -25,7 +25,7 @@ $_['text_activity_order_account']  = '<a href="customer_id=%d">%s</a> adlı mü�
 $_['text_activity_order_guest']    = '%s adlı misafir müşteri tarafından <a href="order_id=%d">yeni sipariş</a> oluşturdu.';
 $_['text_activity_affiliate_add']  = '<a href="customer_id=%d">%s</a> adında yeni ortak kayıt oldu.';
 $_['text_activity_affiliate_edit'] = '<a href="customer_id=%d">%s</a> adlı ortak hesap detayları güncelledi.';
-$_['text_activity_transaction']    = '<a href="customer_id=%d">%s</a> adlı ortak yeni <a href="order_id=%d">şiparişden</a> komisyon kazandı.';
+$_['text_activity_transaction']    = '<a href="customer_id=%d">%s</a> adlı ortak yeni <a href="order_id=%d">siparişden</a> komisyon kazandı.';
 
 // Column
 $_['column_customer']              = 'Müşteri';
