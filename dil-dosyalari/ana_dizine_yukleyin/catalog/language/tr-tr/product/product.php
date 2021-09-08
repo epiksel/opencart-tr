@@ -1,5 +1,5 @@
 <?php
-/* Turkceye Ceviren eka7a - http://e-piksel.com */
+// Turkceye Ceviren eka7a - http://e-piksel.com
 
 // Text
 $_['text_search']              = 'Arama';
@@ -51,3 +51,4 @@ $_['tab_review']               = 'Yorumlar (%s)';
 $_['error_name']               = 'Uyarı: Adınız alanı 3 ile 25 karakter arasında olmalı!';
 $_['error_text']               = 'Uyarı: Yorum alanı 25 ile 1000 karakter arasında olmalı!';
 $_['error_rating']             = 'Uyarı: Lütfen yorumunuz için oylama seçiniz!';
+$_['error_product']            = 'Uyarı: Yorum eklemek için ürün gerekli!';

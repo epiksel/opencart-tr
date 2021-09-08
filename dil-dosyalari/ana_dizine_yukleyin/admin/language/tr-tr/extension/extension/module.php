@@ -1,5 +1,5 @@
 <?php
-/* Turkceye Ceviren eka7a - http://e-piksel.com */
+// Turkceye Ceviren eka7a - http://e-piksel.com
 
 // Heading
 $_['heading_title']    = 'Modüller';
@@ -22,4 +22,5 @@ $_['entry_name']       = 'Modül Adı';
 // Error
 $_['error_permission'] = 'Uyarı: Modülleri değiştirme iznine sahip değilsiniz!';
 $_['error_name']       = 'Modül Adı 3 ile 64 karakter arasında olmalıdır!';
+$_['error_code_name']  = 'Modül Kodu 3 ile 32 karakter arasında olmalıdır!';
 $_['error_code']       = 'Eklenti gerekli!';
