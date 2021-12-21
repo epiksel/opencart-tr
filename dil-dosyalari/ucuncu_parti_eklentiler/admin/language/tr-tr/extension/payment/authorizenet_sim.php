@@ -26,9 +26,9 @@ $_['entry_sort_order']      = 'Sıralama';
 // Help
 $_['help_callback']         = 'Please login and set this at <a href="https://secure.authorize.net" target="_blank" class="txtLink">https://secure.authorize.net</a>.';
 $_['help_md5']              = 'The MD5 Hash feature enables you to authenticate that a transaction response is securely received from Authorize.Net.Please login and set this at <a href="https://secure.authorize.net" target="_blank" class="txtLink">https://secure.authorize.net</a>.(Optional)';
-$_['help_total']            = 'Bu ödeme metodunun aktif olması için toplam sipariş tutarını giriniz.';
+$_['help_total']            = 'Bu ödeme metotunun aktif olması için toplam sipariş tutarını giriniz.';
 
 // Error
-$_['error_permission']      = 'Uyarı: Authorize.Net (SIM) ödeme metodunu düzenleme iznine sahip değilsiniz!';
+$_['error_permission']      = 'Uyarı: Authorize.Net (SIM) ödeme metotunu düzenleme iznine sahip değilsiniz!';
 $_['error_merchant']        = 'Merchant ID gerekli!';
 $_['error_key']             = 'Transaction Key gerekli!';

@@ -24,9 +24,9 @@ $_['entry_sort_order']   = 'Sıralama';
 
 // Help
 $_['help_secret']        = 'The secret word to confirm transactions with (must be the same as defined on the merchant account configuration page).';
-$_['help_total']         = 'Bu ödeme metodunun aktif olması için toplam sipariş tutarını giriniz.';
+$_['help_total']         = 'Bu ödeme metotunun aktif olması için toplam sipariş tutarını giriniz.';
 
 // Error
-$_['error_permission']   = 'Uyarı: 2Checkout ödeme metodunu düzenleme iznine sahip değilsiniz!';
+$_['error_permission']   = 'Uyarı: 2Checkout ödeme metotunu düzenleme iznine sahip değilsiniz!';
 $_['error_account']      = 'Account ID Required!';
 $_['error_secret']       = 'Secret Word Required!';

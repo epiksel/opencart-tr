@@ -16,7 +16,7 @@ $_['text_sale']                      = 'Direk Ödeme';
 // Entry
 $_['entry_email']                    = 'E-Posta';
 $_['entry_test']                     = 'Test Modu';
-$_['entry_transaction']              = 'Ödeme Metodu';
+$_['entry_transaction']              = 'Ödeme Metotu';
 $_['entry_debug']                    = 'Hata Ayıklama Modu';
 $_['entry_total']                    = 'Toplam';
 $_['entry_canceled_reversal_status'] = 'Değişim İptal Durumu';
@@ -40,8 +40,8 @@ $_['tab_order_status']               = 'Order Status';
 // Help
 $_['help_test']                      = 'Use the live or testing (sandbox) gateway server to process transactions?';
 $_['help_debug']                     = 'Sistem kayıtlarına hata bilgilerini ekler.';
-$_['help_total']                     = 'Bu ödeme metodunun aktif olması için toplam sipariş tutarını giriniz.';
+$_['help_total']                     = 'Bu ödeme metotunun aktif olması için toplam sipariş tutarını giriniz.';
 
 // Error
-$_['error_permission']               = 'Uyarı: PayPal Payments Standard ödeme metodunu düzenleme iznine sahip değilsiniz!';
+$_['error_permission']               = 'Uyarı: PayPal Payments Standard ödeme metotunu düzenleme iznine sahip değilsiniz!';
 $_['error_email']                    = 'E-Posta Gerekli!';

@@ -4,7 +4,7 @@
 
 // Text
 $_['text_address']       = 'Başarılı: Teslimat adresi ayarlandı!';
-$_['text_method']        = 'Başarılı: Kargo metodu ayarlandı!';
+$_['text_method']        = 'Başarılı: Kargo metotu ayarlandı!';
 
 // Error
 $_['error_permission']   = 'Uyarı: API erişim iznine sahip değilsiniz!';
@@ -17,5 +17,5 @@ $_['error_country']      = 'Lütfen bir ülke seçiniz';
 $_['error_zone']         = 'Lütfen bir şehir seçiniz!';
 $_['error_custom_field'] = '%s gerekli!';
 $_['error_address']      = 'Uyarı: Kargo adresi gerekli!';
-$_['error_method']       = 'Uyarı: Kargo metodu gerekli!';
+$_['error_method']       = 'Uyarı: Kargo metotu gerekli!';
 $_['error_no_shipping']  = 'Uyarı: Kullanılabilir kargo seçeneği yok!';

@@ -19,7 +19,7 @@ $_['text_all_status']    = 'Tüm Durumlar';
 // Column
 $_['column_date_start']  = 'Başlangıç';
 $_['column_date_end']    = 'Bitiş';
-$_['column_title']       = 'Kargo Metodu';
+$_['column_title']       = 'Kargo Metotu';
 $_['column_orders']      = 'Sipariş Sayısı';
 $_['column_total']       = 'Toplam';
 

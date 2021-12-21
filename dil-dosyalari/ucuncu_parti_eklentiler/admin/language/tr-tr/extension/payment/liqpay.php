@@ -24,9 +24,9 @@ $_['entry_status']       = 'Durumu';
 $_['entry_sort_order']   = 'Sıralama';
 
 // Help
-$_['help_total']         = 'Bu ödeme metodunun aktif olması için toplam sipariş tutarını giriniz.';
+$_['help_total']         = 'Bu ödeme metotunun aktif olması için toplam sipariş tutarını giriniz.';
 
 // Error
-$_['error_permission']   = 'Uyarı: LIQPAY ödeme metodunu düzenleme iznine sahip değilsiniz!';
+$_['error_permission']   = 'Uyarı: LIQPAY ödeme metotunu düzenleme iznine sahip değilsiniz!';
 $_['error_merchant']     = 'Merchant ID gerekli!';
 $_['error_signature']    = 'Signature gerekli!';

@@ -38,7 +38,7 @@ $_['entry_test']                     = 'Test (Sandbox) Modu';
 $_['entry_debug']                    = 'Hata Kayıtları';
 $_['entry_currency']                 = 'Varsayılan Para Birimi';
 $_['entry_recurring_cancel']         = 'Müşteriler abonelik ödemelerini iptal edebilir';
-$_['entry_transaction']              = 'İşlem Metodu';
+$_['entry_transaction']              = 'İşlem Metotu';
 $_['entry_total']                    = 'Toplam';
 $_['entry_geo_zone']                 = 'Bölge';
 $_['entry_status']                   = 'Durumu';
@@ -65,13 +65,13 @@ $_['tab_checkout']                   = 'Checkout';
 
 // Help
 $_['help_ipn']                       = 'Abonelikler için gerekli';
-$_['help_total']                     = 'Bu ödeme metodunun aktif olması için toplam sipariş tutarını giriniz.';
+$_['help_total']                     = 'Bu ödeme metotunun aktif olması için toplam sipariş tutarını giriniz.';
 $_['help_logo']                      = 'Max 750px(w) x 90px(h)<br />You should only use a logo if you have SSL set up.';
 $_['help_colour']                    = '6 character HTML colour code';
 $_['help_currency']                  = 'İşlem Aramaları için Kullanılan';
 
 // Error
-$_['error_permission']               = 'Uyarı: PayPal Express Checkout ödeme metodunu düzenleme iznine sahip değilsiniz!';
+$_['error_permission']               = 'Uyarı: PayPal Express Checkout ödeme metotunu düzenleme iznine sahip değilsiniz!';
 $_['error_username']                 = 'API kullanıcı adı gerekli!';
 $_['error_password']                 = 'API parolası gerekli!';
 $_['error_signature']                = 'API imzası gerekli!';

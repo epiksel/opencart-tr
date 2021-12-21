@@ -4,7 +4,7 @@
 
 // Text
 $_['text_address']       = 'Başarılı: Ödeme adresi ayarlandı!';
-$_['text_method']        = 'Başarılı: Ödeme metodu ayarlandı!';
+$_['text_method']        = 'Başarılı: Ödeme metotu ayarlandı!';
 
 // Error
 $_['error_permission']   = 'Uyarı: API erişim iznine sahip değilsiniz!';
@@ -17,5 +17,5 @@ $_['error_country']      = 'Lütfen bir ülke seçiniz';
 $_['error_zone']         = 'Lütfen bir şehir seçiniz!';
 $_['error_custom_field'] = '%s gerekli!';
 $_['error_address']      = 'Uyarı: Fatura adresi gerekli!';
-$_['error_method']       = 'Uyarı: Ödeme metodları gerekli!';
+$_['error_method']       = 'Uyarı: Ödeme metotları gerekli!';
 $_['error_no_payment']   = 'Uyarı: Kullanılabilir ödeme seçeneği yok!';

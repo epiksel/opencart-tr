@@ -26,8 +26,8 @@ $_['entry_sort_order']   = 'Sıralama';
 
 // Help
 $_['help_password']      = 'Leave empty if you do not have "Digest Key Authentication" enabled on your account.';
-$_['help_total']         = 'Bu ödeme metodunun aktif olması için toplam sipariş tutarını giriniz.';
+$_['help_total']         = 'Bu ödeme metotunun aktif olması için toplam sipariş tutarını giriniz.';
 
 // Error
-$_['error_permission']   = 'Uyarı: PayPoint ödeme metodunu düzenleme iznine sahip değilsiniz!';
+$_['error_permission']   = 'Uyarı: PayPoint ödeme metotunu düzenleme iznine sahip değilsiniz!';
 $_['error_merchant']     = 'Merchant ID Gerekli!';

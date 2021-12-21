@@ -3,17 +3,17 @@
 // Website    : https://e-piksel.com
 
 // Heading
-$_['heading_title']     = 'Ödeme Metodları';
+$_['heading_title']     = 'Ödeme Metotları';
 
 // Text
-$_['text_success']      = 'Başarılı: Ödeme metodları güncellendi!';
-$_['text_list']         = 'Ödeme Metod Listesi';
+$_['text_success']      = 'Başarılı: Ödeme metotları güncellendi!';
+$_['text_list']         = 'Ödeme Metot Listesi';
 
 // Column
-$_['column_name']       = 'Ödeme Metodu';
+$_['column_name']       = 'Ödeme Metotu';
 $_['column_status']     = 'Durum';
 $_['column_sort_order'] = 'Sıralama';
 $_['column_action']     = 'Eylem';
 
 // Error
-$_['error_permission']  = 'Uyarı: Ödeme Metodlarını değiştirme iznine sahip değilsiniz!';
+$_['error_permission']  = 'Uyarı: Ödeme Metotlarını değiştirme iznine sahip değilsiniz!';

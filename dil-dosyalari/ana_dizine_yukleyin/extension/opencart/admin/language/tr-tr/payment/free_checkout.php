@@ -16,4 +16,4 @@ $_['entry_status']       = 'Durumu';
 $_['entry_sort_order']   = 'Sıralama';
 
 // Error
-$_['error_permission']   = 'Uyarı: Ücretsiz ödeme metodunu düzenleme iznine sahip değilsiniz!';
+$_['error_permission']   = 'Uyarı: Ücretsiz ödeme metotunu düzenleme iznine sahip değilsiniz!';
