@@ -5,7 +5,7 @@
 |||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
 === GÜNCEL VE RESİMLİ DİL EKLEME AŞAMALARI İÇİN AŞAĞIDAKİ ADRESİ ZİYARET EDİN ===
-https://destekpaneli.com/viewtopic.php?t=21
+https://weblenti.com/tr/eticaret-yazilimlari/opencart-turkce-dil-nasil-eklenir
 
 Eğer kurulumunuzu OpenCart Türkçe Tam Sürümünü kullanarak yapmadıysanız Türkçe dil dosyalarını sonradan yükleyerek kolaylıkla sitenize Türkçe dilini ekleyebilirsiniz. Bu yöntemle sisteme Türkçe dil desteği eklenmiş olur ancak ilk kurulum İngilizce olarak yapıldığı için veritabanındaki bilgilerde bir değişiklik olmaz. Bu verileri OpenCart yönetim panelinden elle Türkçe'ye çevirmelisiniz.
 

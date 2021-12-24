@@ -8,7 +8,7 @@ NOT: SADECE YENİ KURULUM İÇİN KULLANIN!
 KURULU OLAN SÜRÜMÜNÜZÜ YÜKSELTMEK İÇİN GUNCELLEME.TXT DOSYASINA BAKINIZ
 
 === GÜNCEL VE RESİMLİ KURULUM AŞAMALARI İÇİN AŞAĞIDAKİ ADRESİ ZİYARET EDİN ===
-https://destekpaneli.com/viewtopic.php?t=19
+https://weblenti.com/tr/eticaret-yazilimlari/opencart-kurulumu-nasil-yapilir
 
 1. tam-surum/ana_dizine_yukleyin dizini içindeki tüm dizin ve dosyaları sunucunuza yükleyiniz.
 	Yükleyeceğiniz dizin sunucu özelliklerine göre değişiklik gösterebilir ya da kendi dizinize yüklemek isteyebilirsiniz.
