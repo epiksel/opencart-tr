@@ -6,7 +6,8 @@ OpenCart PHP tabanlı açık kaynak kodlu online alışveriş sepetidir. Tüccar
 
 ## OpenCart Türkçe Destek Forumu
 
-[Destek Paneli OpenCart Forumu](https://destekpaneli.com/viewforum.php?f=2)
+[OpenCart Kurulumu Nasıl Yapılır?](https://weblenti.com/tr/eticaret-yazilimlari/opencart-kurulumu-nasil-yapilir)
+[OpenCart Güncelleme Nasıl Yapılır?](https://weblenti.com/tr/eticaret-yazilimlari/opencart-guncelleme-nasil-yapilir)
 
 [Resmi Türkçe Destek Forumu](http://forum.opencart.com/viewforum.php?f=171)
 

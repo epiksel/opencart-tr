@@ -1,47 +1,43 @@
-		///////////////////////////////////////////////
-	   ///			 OpenCart V1.5.x			   ///
-	  ///			Kurulum Aşamaları			  ///
-	 ///		http://www.e-piksel.com			 ///
-	///		github.com/epiksel/opencart-tr		///
-   ///////////////////////////////////////////////
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||
+|||		OpenCart Kurulum Aşamaları					|||
+|||		https://e-piksel.com						|||
+|||		https://github.com/epiksel/opencart-tr		|||
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
+NOT: SADECE YENİ KURULUM İÇİN KULLANIN!
+KURULU OLAN SÜRÜMÜNÜZÜ YÜKSELTMEK İÇİN GUNCELLEME.TXT DOSYASINA BAKINIZ
 
-	NOT: SADECE YENİ KURULUM İÇİN KULLANIN!
-	KURULU OLAN SÜRÜMÜNÜZÜ YÜKSELTMEK İÇİN GUNCELLEME.TXT DOSYASINA BAKINIZ
+=== GÜNCEL VE RESİMLİ KURULUM AŞAMALARI İÇİN AŞAĞIDAKİ ADRESİ ZİYARET EDİN ===
+https://weblenti.com/tr/eticaret-yazilimlari/opencart-kurulumu-nasil-yapilir
 
+1. tam-surum/ana_dizine_yukleyin dizini içindeki tüm dizin ve dosyaları sunucunuza yükleyiniz.
+	Yükleyeceğiniz dizin sunucu özelliklerine göre değişiklik gösterebilir ya da kendi dizinize yüklemek isteyebilirsiniz.
 
-	=== KURULUM AŞAMALARI ===
-	
-	1. bu_dizinleri_ana_dizine_yukleyin dizini içindeki tüm dizin ve dosyaları sunucunuza yükleyiniz.
-		Yükleyeceğiniz dizin sunucu özelliklerine göre değişiklik gösterebilir ya da kendi dizinize yüklemek isteyebilirsiniz.
-	
-		örneğin /public_html/store YA DA /public_html
+	örneğin /public_html/store YA DA /public_html
 
-	2. Eğer Linux/Unix kullanıyorsanız aşağıdaki dizin ve klasörlerin yazılabilir olduklarına emin olunuz.
-		chmod 0755 YA DA 0777 image/
-		chmod 0755 YA DA 0777 image/cache/
-		chmod 0755 YA DA 0777 image/data/   
-		chmod 0755 YA DA 0777 system/cache/
-		chmod 0755 YA DA 0777 system/logs/
-		chmod 0755 YA DA 0777 download/
-		chmod 0755 YA DA 0777 config.php
-		chmod 0755 YA DA 0777 admin/config.php
+2. Eğer Linux/Unix kullanıyorsanız aşağıdaki dizin ve klasörlerin yazılabilir olduklarına emin olunuz.
+	chmod 0755 YA DA 0777 image/
+	chmod 0755 YA DA 0777 image/cache/
+	chmod 0755 YA DA 0777 image/catalog/   
+	chmod 0755 YA DA 0777 system/storage/cache/
+	chmod 0755 YA DA 0777 system/storage/logs/
+	chmod 0755 YA DA 0777 system/storage/download/
+	chmod 0755 YA DA 0777 system/storage/upload/
+	chmod 0755 YA DA 0777 system/storage/modification/
+	chmod 0755 YA DA 0777 config.php
+	chmod 0755 YA DA 0777 admin/config.php
 
-	3. Bir kullanıcıya atanmış MySQL veritabanı yüklediğinizden emin olunuz.
-		Buradan çeşitli video anlatımlara ulaşabilirsiniz: 
-		http://www.youtube.com/results?search_query=Veritaban%C4%B1+olu%C5%9Fturma
-   
-	ROOT KULLANICI ADINIZI VE ROOT PAROLANIZI KULLANMAYIN
+3. Bir kullanıcıya atanmış MySQL veritabanı yüklediğinizden emin olunuz. Veritabanı Nasıl Oluşturulur? rehberlerini aşağıdaki bağlantıdan inceleyebilirsiniz. 
+	https://destekpaneli.com/viewtopic.php?t=18
 
-	4. Mağaza anasayfanızı ziyaret ediniz.
-		örneğin. http://www.mağazam.com YA DA http://www.sitem.com/magaza/ YA DA http://magaza.sitem.com
+4. Mağaza anasayfanızı ziyaret ediniz.
+	örneğin. http://www.magazam.com YA DA http://www.sitem.com/magaza/ YA DA http://magaza.sitem.com
 
-	5. Adımları takip ediniz.
+5. Adımları takip ediniz.
 
-	6. Kurulumdan sonra install dizinini silmeyi unutmayınız
+6. Kurulumdan sonra install dizinini silmeyi unutmayınız
 
 ------------------------------------------------
 
-TÜRKÇE ÇEVİRİ
-E-Piksel E-Ticaret ve Bilgi Teknolojileri
-http://e-piksel.com
+=== TÜRKÇE ÇEVİRİ ===
+https://e-piksel.com
