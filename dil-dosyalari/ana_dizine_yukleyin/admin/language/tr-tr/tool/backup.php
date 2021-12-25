@@ -6,7 +6,7 @@
 $_['heading_title']     = 'Yedekle &amp; Geri Yükle';
 
 // Text
-$_['text_success']      = 'Başarılı: Veritabanı başarı bir şekilde değiştirildi!';
+$_['text_success']      = 'Başarılı: Veri tabanı başarı bir şekilde değiştirildi!';
 $_['text_backup']       = 'Yedeklenen %s tablosunda %s ile %s arasındaki kayıtlar';
 $_['text_restore']      = 'Geri Yükleniyor %s ile %s';
 $_['text_option']       = 'Yedekleme Seçenekleri';
