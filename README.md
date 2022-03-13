@@ -4,8 +4,10 @@
 
 OpenCart PHP tabanlı açık kaynak kodlu online alışveriş sepetidir. Tüccarların düşük bir maliyet ile kendi e-ticaret mağazalarını oluşturmada yardımcı olan güçlü bir e-ticaret yazılımıdır.
 
-## TronLink Wallet Address
-**TRX - BTC - BTT - USDT**: TH9RyofE7WiDDVVFLMJgFns2ByBRmgQzNB
+## Destek - Donate Wallet Address
+**(BTC)**: 1Cw2TguwNdSVHmjQDkAc6wmv1FNnwy1ru9
+
+**(TRX - USDT)**: TH9RyofE7WiDDVVFLMJgFns2ByBRmgQzNB
 
 ## OpenCart Türkçe Destek Forumu
 
