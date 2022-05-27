@@ -3,8 +3,8 @@
 error_reporting(E_ALL);
 
 // Check Version
-if (version_compare(phpversion(), '7.3.0', '<')) {
-	exit('PHP7+ Required');
+if (version_compare(phpversion(), '8.0.0', '<')) {
+	exit('PHP8+ Required');
 }
 
 if (!ini_get('date.timezone')) {
@@ -45,39 +45,22 @@ if ((isset($_SERVER['HTTPS']) && (($_SERVER['HTTPS'] == 'on') || ($_SERVER['HTTP
 	$_SERVER['HTTPS'] = false;
 }
 
-// Engine
-require_once(DIR_SYSTEM . 'engine/controller.php');
-require_once(DIR_SYSTEM . 'engine/model.php');
-require_once(DIR_SYSTEM . 'engine/action.php');
-require_once(DIR_SYSTEM . 'engine/event.php');
-require_once(DIR_SYSTEM . 'engine/router.php');
-require_once(DIR_SYSTEM . 'engine/loader.php');
-require_once(DIR_SYSTEM . 'engine/registry.php');
-require_once(DIR_SYSTEM . 'engine/proxy.php');
+// Check IP if forwarded IP
+if (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+	$_SERVER['REMOTE_ADDR'] = $_SERVER['HTTP_X_FORWARDED_FOR'];
+} elseif (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+	$_SERVER['REMOTE_ADDR'] = $_SERVER['HTTP_CLIENT_IP'];
+}
 
 // Helper
 require_once(DIR_SYSTEM . 'helper/general.php');
 require_once(DIR_SYSTEM . 'helper/utf8.php');
 
-// Vendor Autoloader
-require_once(DIR_STORAGE . 'vendor/autoload.php');
+// OpenCart Autoloader
+require_once(DIR_SYSTEM . 'engine/autoloader.php');
 
-// Library Autoloader
-function library($class) {
-	$file = DIR_SYSTEM . 'library/' . str_replace('\\', '/', strtolower($class)) . '.php';
+// Need Config to store application values
+require_once(DIR_SYSTEM . 'engine/config.php');
 
-	if (is_file($file)) {
-		include_once($file);
-
-		return true;
-	} else {
-		return false;
-	}
-}
-
-spl_autoload_register('library');
-spl_autoload_extensions('.php');
-
-function start($application) {
-	require_once(DIR_SYSTEM . 'framework.php');	
-}
+// Framework
+require_once(DIR_SYSTEM . 'framework.php');

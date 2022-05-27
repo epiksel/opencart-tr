@@ -1,50 +1,7 @@
 <?php
-/* Compatibility function Due to PHP 7.3 only being the PHP version to be able to use samesite attribute */
-function oc_setcookie(string $key, string $value, $option = array()) {
-	if (version_compare(phpversion(), '7.3.0', '>=')) {
-		// PHP need to update their setcookie function.
-		if (isset($option['max-age'])) {
-			$option['expires'] = $option['max-age'];
-
-			unset($option['max-age']);
-		}
-
-		setcookie($key, $value, $option);
-	} else {
-		$string = '';
-
-		if (isset($option['max-age'])) {
-			$string .= '; max-age=' . $option['max-age'];
-		} else {
-			$string .= '; max-age=0';
-		}
-
-		if (!empty($option['path'])) {
-			$string .= '; path=' . $option['path'];
-		}
-
-		if (!empty($option['domain'])) {
-			$string .= '; domain=' . $option['domain'];
-		}
-
-		if (!empty($option['HttpOnly'])) {
-			$string .= '; HttpOnly';
-		}
-
-		if (!empty($option['Secure'])) {
-			$string .= '; Secure';
-		}
-
-		if (isset($option['SameSite'])) {
-			$string .= '; SameSite=' . $option['SameSite'];
-		}
-
-		header('Set-Cookie: ' . rawurlencode($key) . '=' . rawurlencode($value) . $string);
-	}
-}
-
-function token($length = 32) {
-	if (!isset($length) || intval($length) <= 8) {
+//namespace Opencart\System\Helper;
+function token(int $length = 32) {
+	if (intval($length) <= 8) {
 		$length = 32;
 	}
 
@@ -66,9 +23,9 @@ function token($length = 32) {
  */
 
 if (!function_exists('hash_equals')) {
-	function hash_equals($known_string, $user_string) {
-		$known_string = (string)$known_string;
-		$user_string = (string)$user_string;
+	function hash_equals(string $known_string, string $user_string) {
+		$known_string = $known_string;
+		$user_string = $user_string;
 
 		if (strlen($known_string) != strlen($user_string)) {
 			return false;
@@ -83,62 +40,113 @@ if (!function_exists('hash_equals')) {
 	}
 }
 
-function date_added($date) {
+function date_added(string $date) {
 	$second = time() - strtotime($date);
 
 	if ($second < 10) {
-		$date_added = 'just now';
+		$code = 'second';
+		$date_added = $second;
 	} elseif ($second) {
-		$date_added = $second . ' seconds ago';
+		$code = 'seconds';
+		$date_added = $second;
 	}
 
 	$minute = floor($second / 60);
 
 	if ($minute == 1) {
-		$date_added = $minute . ' minute ago';
+		$code = 'minute';
+		$date_added = $minute;
 	} elseif ($minute) {
-		$date_added = $minute . ' minutes ago';
+		$code = 'minutes';
+		$date_added = $minute;
 	}
 
 	$hour = floor($minute / 60);
 
 	if ($hour == 1) {
-		$date_added = $hour . ' hour ago';
+		$code = 'hour';
+		$date_added = $hour;
 	} elseif ($hour) {
-		$date_added = $hour . ' hours ago';
+		$code = 'hours';
+		$date_added = $hour;
 	}
 
 	$day = floor($hour / 24);
 
 	if ($day == 1) {
-		$date_added = $day . ' day ago';
+		$code = 'day';
+		$date_added = $day;
 	} elseif ($day) {
-		$date_added = $day . ' days ago';
+		$code = 'days';
+		$date_added = $day;
 	}
 
 	$week = floor($day / 7);
 
 	if ($week == 1) {
-		$date_added = $week . ' week ago';
+		$code = 'week';
+		$date_added = $week;
 	} elseif ($week) {
-		$date_added = $week . ' weeks ago';
+		$code = 'weeks';
+		$date_added = $week;
 	}
 
 	$month = floor($week / 4);
 
 	if ($month == 1) {
-		$date_added = $month . ' month ago';
+		$code = 'month';
+		$date_added = $month;
 	} elseif ($month) {
-		$date_added = $month . ' months ago';
+		$code = 'months';
+		$date_added = $month;
 	}
 
 	$year = floor($week / 52.1429);
 
 	if ($year == 1) {
-		$date_added = $year . ' year ago';
+		$code = 'year';
+		$date_added = $year;
 	} elseif ($year) {
-		$date_added = $year . ' years ago';
+		$code = 'years';
+		$date_added = $year;
 	}
 
-	return $date_added;
+	return [$code, $date_added];
+}
+
+function format_size(string $file = '', bool $max = true) {
+	if ($max) {
+		$size = ini_get('upload_max_filesize');
+
+		$unit = substr($size, -1);
+		switch ($unit){
+			case 'K':
+			$size = (int)$size * 1024;
+			break;
+			case 'M':
+			$size = (int)$size * 1024 * 1024;
+			break;
+			case 'G':
+			$size = (int)$size*1024 * 1024 * 1024;
+			break;
+		}
+	} elseif (is_file($file)) {
+		$size = sprintf('%u', filesize($file));
+	}
+
+	if ($size) {
+		$suffix = [];
+
+		$suffix = [
+			'b',
+			'kb',
+			'mb',
+			'gb'
+		];
+		
+		$code = !empty($suffix[intval(log($size, 1024))]) ? $suffix[intval(log($size, 1024))] : end($suffix);
+		$format_size = $size / (1024 ** array_search($code, $suffix));
+		
+		return [$code, $format_size, $size];	
+	}
 }

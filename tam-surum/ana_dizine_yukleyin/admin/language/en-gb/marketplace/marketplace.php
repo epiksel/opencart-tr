@@ -31,6 +31,7 @@ $_['text_compatibility'] = 'Compatibility';
 $_['text_downloaded']    = 'Downloaded';
 $_['text_member_since']  = 'Member since:';
 $_['text_price']         = 'Price';
+$_['text_featured']      = 'Featured';
 $_['text_partner']       = 'Developed by OpenCart Partner';
 $_['text_support']       = '12 Months free support';
 $_['text_documentation'] = 'Documentation Included';
@@ -49,6 +50,9 @@ $_['text_action']        = 'Action';
 $_['text_install']       = 'Install';
 $_['text_uninstall']     = 'Uninstall';
 $_['text_delete']        = 'Delete';
+$_['text_more']          = 'see more replies...';
+$_['text_leave']         = 'see more replies...';
+$_['text_refresh']		 = 'refresh';
 
 // Entry
 $_['entry_pin']          = 'PIN';

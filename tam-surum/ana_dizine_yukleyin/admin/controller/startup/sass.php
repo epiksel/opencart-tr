@@ -1,6 +1,7 @@
 <?php
-class ControllerStartupSass extends Controller {
-	public function index() {
+namespace Opencart\Admin\Controller\Startup;
+class Sass extends \Opencart\System\Engine\Controller {
+	public function index(): void {
 		$files = glob(DIR_APPLICATION . 'view/stylesheet/*.scss');
 
 		if ($files) {
@@ -14,7 +15,7 @@ class ControllerStartupSass extends Controller {
 					$scss = new \ScssPhp\ScssPhp\Compiler();
 					$scss->setImportPaths(DIR_APPLICATION . 'view/stylesheet/');
 
-					$output = $scss->compile('@import "' . $filename . '.scss"');
+					$output = $scss->compileString('@import "' . $filename . '.scss"')->getCss();
 
 					$handle = fopen($stylesheet, 'w');
 

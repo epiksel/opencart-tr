@@ -1,8 +1,9 @@
 <?php
+//namespace Opencart\System\Helper;
 /* BBCode Converter that converts BBCode written for OpenCart */
-function bbcode_decode($string) {
-	$pattern = array();
-	$replace = array();
+function bbcode_decode(string $string) {
+	$pattern = [];
+	$replace = [];
 
 	// Bold
 	$pattern[0] = '/\[b\](.*?)\[\/b\]/is';

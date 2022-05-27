@@ -8,8 +8,6 @@ $_['text_list']         = 'Manufacturer List';
 $_['text_add']          = 'Add Manufacturer';
 $_['text_edit']         = 'Edit Manufacturer';
 $_['text_default']      = 'Default';
-$_['text_percent']      = 'Percentage';
-$_['text_amount']       = 'Fixed Amount';
 $_['text_keyword']      = 'Do not use spaces, instead replace spaces with - and make sure the SEO URL is globally unique.';
 
 // Column
@@ -23,7 +21,7 @@ $_['entry_store']       = 'Stores';
 $_['entry_keyword']     = 'Keyword';
 $_['entry_image']       = 'Image';
 $_['entry_sort_order']  = 'Sort Order';
-$_['entry_type']        = 'Type';
+$_['entry_layout']      = 'Layout Override';
 
 // Error
 $_['error_warning']     = 'Warning: Please check the form carefully for errors!';

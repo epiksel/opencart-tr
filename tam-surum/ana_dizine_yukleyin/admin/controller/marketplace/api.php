@@ -1,6 +1,7 @@
 <?php
-class ControllerMarketplaceApi extends Controller {
-	public function index() {	
+namespace Opencart\Admin\Controller\Marketplace;
+class Api extends \Opencart\System\Engine\Controller {
+	public function index(): void {
 		$this->load->language('marketplace/api');
 			
 		$data['user_token'] = $this->session->data['user_token'];	
@@ -8,10 +9,10 @@ class ControllerMarketplaceApi extends Controller {
 		$this->response->setOutput($this->load->view('marketplace/api', $data));
 	}
 	
-	public function save() {
+	public function save(): void {
 		$this->load->language('marketplace/api');
 
-		$json = array();
+		$json = [];
 		
 		if (!$this->user->hasPermission('modify', 'marketplace/api')) {
 			$json['error']['warning'] = $this->language->get('error_permission');

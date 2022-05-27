@@ -1,6 +1,7 @@
 <?php
-class ControllerCommonLogout extends Controller {
-	public function index() {
+namespace Opencart\Admin\Controller\Common;
+class Logout extends \Opencart\System\Engine\Controller {
+	public function index(): void {
 		$this->user->logout();
 
 		unset($this->session->data['user_token']);

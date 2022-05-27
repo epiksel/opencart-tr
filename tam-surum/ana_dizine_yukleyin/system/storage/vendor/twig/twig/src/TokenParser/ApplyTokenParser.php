@@ -22,7 +22,9 @@ use Twig\Token;
  *
  *   {% apply upper %}
  *      This text becomes uppercase
- *   {% endapplys %}
+ *   {% endapply %}
+ *
+ * @internal
  */
 final class ApplyTokenParser extends AbstractTokenParser
 {

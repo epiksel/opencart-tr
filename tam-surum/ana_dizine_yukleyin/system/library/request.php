@@ -10,12 +10,13 @@
 /**
 * Request class
 */
+namespace Opencart\System\Library;
 class Request {
-	public $get = array();
-	public $post = array();
-	public $cookie = array();
-	public $files = array();
-	public $server = array();
+	public array $get = [];
+	public array $post = [];
+	public array $cookie = [];
+	public array $files = [];
+	public array $server = [];
 	
 	/**
 	 * Constructor
@@ -35,7 +36,7 @@ class Request {
 	 *
      * @return	array
      */
-	public function clean($data) {
+	public function clean(mixed $data): mixed {
 		if (is_array($data)) {
 			foreach ($data as $key => $value) {
 				unset($data[$key]);

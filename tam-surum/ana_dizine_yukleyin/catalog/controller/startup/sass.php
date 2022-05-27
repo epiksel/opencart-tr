@@ -1,20 +1,21 @@
 <?php
-class ControllerStartupSass extends Controller {
-	public function index() {
-		$files = glob(DIR_APPLICATION . 'view/theme/' . $this->config->get('config_theme') . '/stylesheet/*.scss');
+namespace Opencart\Catalog\Controller\Startup;
+class Sass extends \Opencart\System\Engine\Controller {
+	public function index(): void {
+		$files = glob(DIR_APPLICATION . 'view/stylesheet/*.scss');
 
 		if ($files) {
 			foreach ($files as $file) {
 				// Get the filename
 				$filename = basename($file, '.scss');
 
-				$stylesheet = DIR_APPLICATION . 'view/theme/' . $this->config->get('config_theme') . '/stylesheet/' . $filename . '.css';
+				$stylesheet = DIR_APPLICATION . 'view/stylesheet/' . $filename . '.css';
 
 				if (!is_file($stylesheet) || !$this->config->get('developer_sass')) {
 					$scss = new \ScssPhp\ScssPhp\Compiler();
-					$scss->setImportPaths(DIR_APPLICATION . 'view/theme/' . $this->config->get('config_theme') . '/stylesheet/');
+					$scss->setImportPaths(DIR_APPLICATION . 'view/stylesheet/');
 
-					$output = $scss->compile('@import "' . $filename . '.scss"');
+					$output = $scss->compileString('@import "' . $filename . '.scss"')->getCss();
 
 					$handle = fopen($stylesheet, 'w');
 

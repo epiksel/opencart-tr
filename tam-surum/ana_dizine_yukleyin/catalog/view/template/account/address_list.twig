@@ -1,0 +1,14 @@
+{% if addresses %}
+  <div class="table-responsive">
+    <table class="table table-bordered table-hover">
+      {% for address in addresses %}
+        <tr>
+          <td class="text-start">{{ address.address }}</td>
+          <td class="text-end"><a href="{{ address.edit }}" class="btn btn-outline-primary">{{ button_edit }}</a> <a href="{{ address.delete }}" class="btn btn-danger">{{ button_delete }}</a></td>
+        </tr>
+      {% endfor %}
+    </table>
+  </div>
+{% else %}
+  <p>{{ text_no_results }}</p>
+{% endif %}

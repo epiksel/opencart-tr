@@ -1,36 +1,73 @@
 <?php
-namespace Template;
-final class Template {
-	protected $data = array();
+namespace Opencart\System\Library\Template;
+class Template {
+	protected string $directory = '';
+	protected array $path = [];
 
-	public function set($key, $value) {
-		$this->data[$key] = $value;
+	/**
+	 * addPath
+	 *
+	 * @param    string $namespace
+	 * @param    string $directory
+	 */
+	public function addPath(string $namespace, string $directory = ''): void {
+		if (!$directory) {
+			$this->directory = $namespace;
+		} else {
+			$this->path[$namespace] = $directory;
+		}
 	}
 
-	public function render($filename, $code = '') {
+	/**
+	 * Render
+	 *
+	 * @param	string	$filename
+	 * @param	array	$data
+	 * @param	string	$code
+	 *
+	 * @return	array
+	 */
+	public function render(string $filename, array $data = [], string $code = ''): string {
 		if (!$code) {
-			$file = DIR_TEMPLATE . $filename . '.tpl';
+			$file = $this->directory . $filename . '.tpl';
 
-			if (is_file($file)) {
+			$namespace = '';
+
+			$parts = explode('/', $filename);
+
+			foreach ($parts as $part) {
+				if (!$namespace) {
+					$namespace .= $part;
+				} else {
+					$namespace .= '/' . $part;
+				}
+
+				if (isset($this->path[$namespace])) {
+					$file = $this->path[$namespace] . substr($filename, strlen($namespace)) . '.tpl';
+				}
+			}
+
+			if (isset($file) && is_file($file)) {
 				$code = file_get_contents($file);
 			} else {
-				throw new \Exception('Error: Could not load template ' . $file . '!');
-				exit();
+				throw new \Exception('Error: Could not load template ' . $filename . '!');
 			}
 		}
 
 		if ($code) {
 			ob_start();
 
-			extract($this->data);
+			extract($data);
 
-			include($this->compile($filename . '.tpl', $code));
+			include($this->compile($filename, $code));
 
 			return ob_get_clean();
+		} else {
+			return '';
 		}
 	}
 
-	protected function compile($filename, $code) {
+	protected function compile(string $filename, string $code): string {
 		$file = DIR_CACHE . 'template/' . hash('md5', $filename . $code) . '.php';
 
 		if (!is_file($file)) {

@@ -1,16 +1,9 @@
 <?php
 // Site
-$_['site_base']         = HTTP_SERVER;
-$_['site_ssl']          = HTTP_SERVER;
+$_['site_url']          = HTTP_SERVER;
 
 // Language
-$_['language_default']  = 'tr-tr';
-$_['language_autoload'] = array('tr-tr');
-
-// Session
-$_['session_autostart'] = true;
-$_['session_engine']    = 'file'; // db or file
-$_['session_name']      = 'OCSESSID';
+$_['language_code']     = 'tr';
 
 // Template
 $_['template_engine']   = 'twig';
@@ -20,13 +13,12 @@ $_['error_display']     = true;
 
 // Actions
 $_['action_default']    = 'install/step_1';
-$_['action_router']     = 'startup/router';
 $_['action_error']      = 'error/not_found';
-$_['action_pre_action'] = array(
-    'startup/language',
-    'startup/upgrade',
-    'startup/database'
-);
+$_['action_pre_action'] = [
+	'startup/install',
+	'startup/upgrade',
+	'startup/database'
+];
 
 // Action Events
-$_['action_event'] = array();
+$_['action_event']      = [];

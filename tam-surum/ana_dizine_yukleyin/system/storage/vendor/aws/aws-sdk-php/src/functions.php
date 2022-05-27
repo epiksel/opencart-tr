@@ -330,8 +330,8 @@ function guzzle_major_version()
         if ($version[0] === '5') {
             return $cache = 5;
         }
-    } elseif (method_exists(Client::class, 'sendRequest')) {
-        return $cache = 7;
+    } elseif (defined('\GuzzleHttp\ClientInterface::MAJOR_VERSION')) {
+        return $cache = ClientInterface::MAJOR_VERSION;
     }
 
     throw new \RuntimeException('Unable to determine what Guzzle version is installed.');
@@ -433,6 +433,17 @@ function is_valid_hostname($hostname)
 }
 
 /**
+ * Checks if supplied parameter is a valid host label
+ *
+ * @param $label
+ * @return bool
+ */
+function is_valid_hostlabel($label)
+{
+    return preg_match("/^(?!-)[a-zA-Z0-9-]{1,63}(?<!-)$/", $label);
+}
+
+/**
  * Ignores '#' full line comments, which parse_ini_file no longer does
  * in PHP 7+.
  *
@@ -508,3 +519,26 @@ function is_valid_epoch($input)
     }
     return false;
 }
+
+/**
+ * Checks if an input is a fips pseudo region
+ *
+ * @param $region
+ * @return bool
+ */
+function is_fips_pseudo_region($region)
+{
+    return strpos($region, 'fips-') !== false || strpos($region, '-fips') !== false;
+}
+
+/**
+ * Returns a region without a fips label
+ *
+ * @param $region
+ * @return string
+ */
+function strip_fips_pseudo_regions($region)
+{
+    return str_replace(['fips-', '-fips'], ['', ''], $region);
+}
+

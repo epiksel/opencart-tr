@@ -1,6 +1,7 @@
 <?php
-class ControllerMailAffiliate extends Controller {
-	public function approve(&$route, &$args, &$output) {
+namespace Opencart\Admin\Controller\Mail;
+class Affiliate extends \Opencart\System\Engine\Controller {
+	public function approve(string &$route, array &$args, mixed &$output): void {
 		$this->load->model('customer/customer');
 
 		$customer_info = $this->model_customer_customer->getCustomer($args[0]);
@@ -28,18 +29,27 @@ class ControllerMailAffiliate extends Controller {
 				$language_code = $this->config->get('config_language');
 			}
 
-			$language = new Language($language_code);
-			$language->load($language_code);
-			$language->load('mail/affiliate_approve');
+			// Load the language for any mails using a different country code and prefixing it so it does not pollute the main data pool.
+			$this->language->load($language_code, 'mail', $language_code);
+			$this->language->load('mail/affiliate_approve', 'mail', $language_code);
 
-			$subject = sprintf($language->get('text_subject'), $store_name);
+			// Add language vars to the template folder
+			$results = $this->language->all('mail');
 
-			$data['text_welcome'] = sprintf($language->get('text_welcome'), $store_name);
+			foreach ($results as $key => $value) {
+				$data[$key] = $value;
+			}
+
+			$subject = sprintf($this->language->get('mail_text_subject'), $store_name);
+
+			$data['text_welcome'] = sprintf($this->language->get('mail_text_welcome'), $store_name);
 
 			$data['login'] = $store_url . 'index.php?route=affiliate/login';
-			$data['store'] = $store_name;
 
-			$mail = new Mail($this->config->get('config_mail_engine'));
+			$data['store'] = $store_name;
+			$data['store_url'] = $store_url;
+
+			$mail = new \Opencart\System\Library\Mail($this->config->get('config_mail_engine'));
 			$mail->parameter = $this->config->get('config_mail_parameter');
 			$mail->smtp_hostname = $this->config->get('config_mail_smtp_hostname');
 			$mail->smtp_username = $this->config->get('config_mail_smtp_username');
@@ -51,12 +61,12 @@ class ControllerMailAffiliate extends Controller {
 			$mail->setFrom($this->config->get('config_email'));
 			$mail->setSender($store_name);
 			$mail->setSubject($subject);
-			$mail->setText($this->load->view('mail/affiliate_approve', $data));
+			$mail->setHtml($this->load->view('mail/affiliate_approve', $data));
 			$mail->send();
 		}
 	}
 
-	public function deny(&$route, &$args, &$output) {
+	public function deny(string &$route, array &$args, mixed &$output): void {
 		$this->load->model('customer/customer');
 
 		$customer_info = $this->model_customer_customer->getCustomer($args[0]);
@@ -84,18 +94,27 @@ class ControllerMailAffiliate extends Controller {
 				$language_code = $this->config->get('config_language');
 			}
 
-			$language = new Language($language_code);
-			$language->load($language_code);
-			$language->load('mail/affiliate_deny');
+			// Load the language for any mails using a different country code and prefixing it so it does not pollute the main data pool.
+			$this->language->load($language_code, 'mail', $language_code);
+			$this->language->load('mail/affiliate_deny', 'mail', $language_code);
 
-			$subject = sprintf($language->get('text_subject'), $store_name);
+			// Add language vars to the template folder
+			$results = $this->language->all('mail');
 
-			$data['text_welcome'] = sprintf($language->get('text_welcome'), $store_name);
+			foreach ($results as $key => $value) {
+				$data[$key] = $value;
+			}
+
+			$subject = sprintf($this->language->get('mail_text_subject'), $store_name);
+
+			$data['text_welcome'] = sprintf($this->language->get('mail_text_welcome'), $store_name);
 
 			$data['contact'] = $store_url . 'index.php?route=information/contact';
-			$data['store'] = $store_name;
 
-			$mail = new Mail($this->config->get('config_mail_engine'));
+			$data['store'] = $store_name;
+			$data['store_url'] = $store_url;
+
+			$mail = new \Opencart\System\Library\Mail($this->config->get('config_mail_engine'));
 			$mail->parameter = $this->config->get('config_mail_parameter');
 			$mail->smtp_hostname = $this->config->get('config_mail_smtp_hostname');
 			$mail->smtp_username = $this->config->get('config_mail_smtp_username');
@@ -107,7 +126,7 @@ class ControllerMailAffiliate extends Controller {
 			$mail->setFrom($this->config->get('config_email'));
 			$mail->setSender($store_name);
 			$mail->setSubject($subject);
-			$mail->setText($this->load->view('mail/affiliate_deny', $data));
+			$mail->setHtml($this->load->view('mail/affiliate_deny', $data));
 			$mail->send();
 		}
 	}

@@ -1,6 +1,7 @@
 <?php
 namespace Aws\Crypto;
 
+use Aws\Exception\CryptoException;
 use GuzzleHttp\Psr7;
 use GuzzleHttp\Psr7\StreamDecoratorTrait;
 use Psr\Http\Message\StreamInterface;
@@ -73,7 +74,7 @@ class AesGcmDecryptingStream implements AesStreamInterface
     public function createStream()
     {
         if (version_compare(PHP_VERSION, '7.1', '<')) {
-            return Psr7\stream_for(AesGcm::decrypt(
+            return Psr7\Utils::streamFor(AesGcm::decrypt(
                 (string) $this->cipherText,
                 $this->initializationVector,
                 new Key($this->key),
@@ -82,7 +83,7 @@ class AesGcmDecryptingStream implements AesStreamInterface
                 $this->keySize
             ));
         } else {
-            return Psr7\stream_for(\openssl_decrypt(
+            $result = \openssl_decrypt(
                 (string)$this->cipherText,
                 $this->getOpenSslName(),
                 $this->key,
@@ -90,7 +91,12 @@ class AesGcmDecryptingStream implements AesStreamInterface
                 $this->initializationVector,
                 $this->tag,
                 $this->aad
-            ));
+            );
+            if ($result === false) {
+                throw new CryptoException('The requested object could not be'
+                    . ' decrypted due to an invalid authentication tag.');
+            }
+            return Psr7\Utils::streamFor($result);
         }
     }
 
