@@ -3,6 +3,7 @@
 // Website    : https://e-piksel.com
 
 // Text
+$_['text_name']       = 'Türkçe (Türkiye)';
 $_['text_loading']    = 'Yükleniyor...';
 
 // Button

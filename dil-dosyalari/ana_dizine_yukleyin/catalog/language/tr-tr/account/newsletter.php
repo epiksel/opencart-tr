@@ -11,4 +11,4 @@ $_['text_newsletter']  = 'Bülten Aboneliği';
 $_['text_success']     = 'Başarılı: Bülten aboneliğiniz başarılı bir şekilde güncellendi!';
 
 // Entry
-$_['entry_newsletter'] = 'Abonelik:';
+$_['entry_newsletter'] = 'Abonelik';

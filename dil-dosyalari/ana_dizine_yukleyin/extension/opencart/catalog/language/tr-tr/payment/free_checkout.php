@@ -2,5 +2,5 @@
 // Translator : Ekrem KAYA
 // Website    : https://e-piksel.com
 
-// Text
-$_['text_title'] = 'Ücretsiz Ödeme';
+// Heading
+$_['heading_title'] = 'Ücretsiz Ödeme';

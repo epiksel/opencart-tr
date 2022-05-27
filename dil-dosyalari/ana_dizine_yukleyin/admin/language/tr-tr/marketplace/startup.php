@@ -8,7 +8,6 @@ $_['text_list']         = 'Başlangıç Listesi';
 
 // Column
 $_['column_code']       = 'Başlangıç Kodu';
-$_['column_status']     = 'Durumu';
 $_['column_sort_order'] = 'Sıralama';
 $_['column_action']     = 'Eylem';
 

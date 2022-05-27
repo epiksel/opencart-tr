@@ -10,8 +10,6 @@ $_['text_success']     = 'Başarılı: Mağaza konumu başarılı bir şekilde d
 $_['text_list']        = 'Mağaza Konum Listesi';
 $_['text_add']         = 'Mağaza Konum Ekle';
 $_['text_edit']        = 'Mağaza Konum Düzenle';
-$_['text_default']     = 'Varsayılan';
-$_['text_time']        = 'Çalışma Saatleri';
 $_['text_geocode']     = 'Coğrafi kod aşağıdaki nedenden dolayı başarısız oldu';
 
 // Column
@@ -24,7 +22,6 @@ $_['entry_name']       = 'Mağaza Adı';
 $_['entry_address']    = 'Adres';
 $_['entry_geocode']    = 'Çoğrafi Kod';
 $_['entry_telephone']  = 'Telefon';
-$_['entry_fax']        = 'Faks';
 $_['entry_image']      = 'Resim';
 $_['entry_open']       = 'Çalışma Saatleri';
 $_['entry_comment']    = 'Açıklama';

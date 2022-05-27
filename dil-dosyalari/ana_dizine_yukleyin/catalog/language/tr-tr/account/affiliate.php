@@ -13,8 +13,8 @@ $_['text_payment']              = 'Ödeme Bilgileri';
 $_['text_cheque']               = 'Çek';
 $_['text_paypal']               = 'PayPal';
 $_['text_bank']                 = 'Havale / EFT';
-$_['text_success']              = 'Başarılı: Hesabınız başarılı bir şekilde güncellendi.';
-$_['text_agree']                = '<a href="%s" class="agree"><b>%s</b></a>\'nı okudum ve kabul ediyorum';
+$_['text_success']              = 'Başarılı: Ortaklık hesabınız başarılı bir şekilde güncellendi.';
+$_['text_agree']                = '<a href="%s" class="modal-link"><b>%s</b></a>\'nı okudum ve kabul ediyorum';
 
 // Entry
 $_['entry_company']             = 'Şirket Adı';
@@ -30,9 +30,11 @@ $_['entry_bank_account_name']   = 'Hesap Adı';
 $_['entry_bank_account_number'] = 'Hesap Numarası';
 
 // Error
+$_['error_token']               = 'Uyarı: Ortak belirteci geçersiz!';
 $_['error_agree']               = 'Uyarı: %s kabul etmelisiniz!';
 $_['error_cheque']              = 'Alacaklı adı gerekli!';
 $_['error_paypal']              = 'PayPal e-posta adresi geçersiz!';
 $_['error_bank_account_name']   = 'Hesap adı gerekli!';
 $_['error_bank_account_number'] = 'Hesap numarası gerekli!';
 $_['error_custom_field']        = '%s gerekli!';
+$_['error_regex']               = '%s geçerli bir giriş değil!';

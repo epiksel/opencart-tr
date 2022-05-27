@@ -22,5 +22,6 @@ $_['entry_name']       = 'Modül Adı';
 
 // Error
 $_['error_permission'] = 'Uyarı: Modülleri değiştirme iznine sahip değilsiniz!';
+$_['error_extension']  = 'Uyarı: Eklenti mevcut değil!';
 $_['error_name']       = 'Modül Adı 3 ile 64 karakter arasında olmalıdır!';
 $_['error_code']       = 'Eklenti gerekli!';

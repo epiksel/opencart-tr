@@ -3,46 +3,38 @@
 // Website    : https://e-piksel.com
 
 // Heading
-$_['heading_title']                = 'Alışveriş Sepetim';
+$_['heading_title']              = 'Alışveriş Sepetim';
 
 // Text
-$_['text_success']                 = 'Başarılı: <a href="%s">%s</a> başarılı bir şekilde <a href="%s">sepetinize</a> eklendi!';
-$_['text_remove']                  = 'Başarılı: Alışveriş sepetiniz güncellendi!';
-$_['text_login']                   = 'Dikkat: Ürün fiyatlarını görmek için <a href="%s">oturum açın</a> ya da <a href="%s">kayıt olunuz</a>!';
-$_['text_items']                   = '%s ürün - %s';
-$_['text_points']                  = 'Kazanacağınız Puan: %s';
-$_['text_next']                    = 'Bir sonraki adımda ne yapmak istersiniz?';
-$_['text_next_choice']             = 'Eğer kullanmak istediğiniz bir indirim kodu veya puan varsa ya da kargo maliyetini hesaplamak isterseniz bir seçim yapınız.';
-$_['text_no_results']              = 'Alışveriş sepetiniz boş!';
-$_['text_day']                     = 'gün';
-$_['text_week']                    = 'hafta';
-$_['text_semi_month']              = 'yarım ay';
-$_['text_month']                   = 'ay';
-$_['text_year']                    = 'yıl';
-
-$_['text_recurring']               = '%s her %s %s';
-$_['text_recurring_payment']       = 'Ödeme Profili';
-$_['text_recurring_item']          = 'Abonelik';
-$_['text_recurring_cancel']        = 'iptal edilinceye kadar';
-$_['text_payment_description']     = '%s için her %d %s da bir %d ödeme';
-$_['text_payment_cancel']          = '%s için her %d %s iptal ediline dek';
-
-$_['text_trial']                   = '%s her %s %s %s ödemelerinde sonra ';
-$_['text_trial_description']       = '%s için her %d %s %d ödeme ardından';
+$_['text_success']               = 'Başarılı: <a href="%s">%s</a> başarılı bir şekilde <a href="%s">sepetinize</a> eklendi!';
+$_['text_edit']                  = 'Başarılı: Alışveriş sepetiniz güncellendi!';
+$_['text_remove']                = 'Başarılı: Alışveriş sepetinizden bir ürün çıkardınız!';
+$_['text_login']                 = 'Dikkat: Ürün fiyatlarını görmek için <a href="%s">oturum açın</a> ya da <a href="%s">kayıt olunuz</a>!';
+$_['text_no_results']            = 'Alışveriş sepetiniz boş!';
+$_['text_next']                  = 'Bir sonraki adımda ne yapmak istersiniz?';
+$_['text_next_choice']           = 'Eğer kullanmak istediğiniz bir indirim kodu veya puan varsa ya da kargo maliyetini hesaplamak isterseniz bir seçim yapınız.';
+$_['text_points']                = 'Puanlar';
+$_['text_subscription']          = 'Abonelik';
+$_['text_subscription_trial']    = '%s için her %d %s %d ödeme ardından ';
+$_['text_subscription_duration'] = '%s için her %d %s da bir %d ödeme';
+$_['text_subscription_cancel']   = '%s için her %d %s iptal ediline dek';
+$_['text_day']                   = 'gün';
+$_['text_week']                  = 'hafta';
+$_['text_semi_month']            = 'yarım ay';
+$_['text_month']                 = 'ay';
+$_['text_year']                  = 'yıl';
 
 // Column
-$_['column_image']                 = 'Resim';
-$_['column_name']                  = 'Ürün Adı';
-$_['column_model']                 = 'Ürün Kodu';
-$_['column_quantity']              = 'Adet';
-$_['column_price']                 = 'Birim Fiyatı';
-$_['column_total']                 = 'Tutarı';
+$_['column_image']               = 'Resim';
+$_['column_name']                = 'Ürün Adı';
+$_['column_model']               = 'Ürün Kodu';
+$_['column_quantity']            = 'Adet';
+$_['column_price']               = 'Birim Fiyatı';
+$_['column_total']               = 'Tutarı';
 
 // Error
-$_['error_stock']                  = '<span style="color:#F00; font-weight:bold;">***</span> işaretli ürünler stokta yok ya da istenilen adet bulunmuyor!';
-$_['error_minimum']                = '%s ürünü için asgari %s adet sipariş verebilirsiniz!';
-$_['error_required']               = '%s gerekli!';
-$_['error_product']                = 'Uyarı: Alışveriş sepetinizde ürün bulunmamaktadır!';
-$_['error_recurring_required']     = 'Lütfen abonelik biçimini seçin!';
-$_['error_quantity_required']      = 'Lütfen sayı giriniz!';
-$_['error_quantity_required_zero'] = 'Miktar 0 olamaz!';
+$_['error_stock']                = '<span style="color:#F00; font-weight:bold;">***</span> işaretli ürünler stokta yok ya da istenilen adet bulunmuyor!';
+$_['error_minimum']              = '%s ürünü için asgari %s adet sipariş verebilirsiniz!';
+$_['error_required']             = '%s gerekli!';
+$_['error_product']              = 'Uyarı: Ürün bulunamadı!';
+$_['error_subscription']         = 'Lütfen bir abonelik planı seçin!';

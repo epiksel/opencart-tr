@@ -3,4 +3,4 @@
 // Website    : https://e-piksel.com
 
 // Heading
-$_['heading_title'] = 'Sizin için Seçtiklerimiz';
+$_['heading_title'] = 'Seçtiklerimiz';

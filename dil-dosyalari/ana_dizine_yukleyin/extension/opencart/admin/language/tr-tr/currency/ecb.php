@@ -7,7 +7,7 @@ $_['heading_title']    = 'Avrupa Merkez Bankası';
 
 // Text
 $_['text_extension']   = 'Eklentiler';
-$_['text_success']     = 'Başarılı: ECB Döviz Oranları başarılı bir şekilde değiştirildi!';
+$_['text_success']     = 'Başarılı: Avrupa Merkez Bankası Döviz Oranları başarılı bir şekilde değiştirildi!';
 $_['text_edit']        = 'Avrupa Merkez Bankası Düzenle';
 $_['text_support']     = 'Bu uzantı için EUR para biriminin geçerli olmasını gerektirir.';
 
@@ -15,4 +15,4 @@ $_['text_support']     = 'Bu uzantı için EUR para biriminin geçerli olmasın�
 $_['entry_status']     = 'Durumu';
 
 // Error
-$_['error_permission'] = 'Uyarı: ECB Döviz Oranlarını düzenleme iznine sahip değilsiniz!';
+$_['error_permission'] = 'Uyarı: Avrupa Merkez Bankası Döviz Oranlarını düzenleme iznine sahip değilsiniz!';

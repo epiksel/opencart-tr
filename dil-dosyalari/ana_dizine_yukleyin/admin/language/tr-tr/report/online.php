@@ -9,7 +9,7 @@ $_['heading_title']     = 'Çevrimiçi Müşteri Raporu';
 $_['text_extension']    = 'Eklentiler';
 $_['text_success']      = 'Başarılı: Çevrimiçi müşteri raporu başarılı bir şekilde değiştirildi!';
 $_['text_list']         = 'Çevrimiçi Listesi';
-$_['text_filter']       = 'Filtre';
+$_['text_filter']       = 'Filtrele';
 $_['text_guest']        = 'Misafir';
 
 // Column
@@ -23,8 +23,6 @@ $_['column_action']     = 'Eylem';
 // Entry
 $_['entry_ip']          = 'IP';
 $_['entry_customer']    = 'Müşteri';
-$_['entry_status']      = 'Durumu';
-$_['entry_sort_order']  = 'Sıralama';
 
 // Error
 $_['error_permission']  = 'Uyarı: Çevrimiçi müşteri raporunu düzenleme iznine sahip değilsiniz!';

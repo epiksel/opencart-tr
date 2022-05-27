@@ -22,11 +22,13 @@ $_['text_date_added']    = 'Ekleme Tarihi:';
 $_['text_comment']       = 'İade Açıklamları';
 $_['text_history']       = 'İade Geçmişi';
 $_['text_no_results']    = 'Daha önce iade isteğinde bulunmadınız!';
-$_['text_agree']         = '<a href="%s" class="agree"><b>%s</b></a>\'nı okudum ve kabul ediyorum.';
+$_['text_agree']         = '<a href="%s" class="modal-link"><b>%s</b></a>\'nı okudum ve kabul ediyorum.';
 
 // Column
 $_['column_return_id']   = 'İade No';
 $_['column_order_id']    = 'Sipariş No';
+$_['column_status']      = 'Durumu';
+$_['column_date_added']  = 'Ekleme Tarihi';
 $_['column_customer']    = 'Müşteri';
 $_['column_product']     = 'Ürün Adı';
 $_['column_model']       = 'Ürün Kodu';
@@ -53,6 +55,7 @@ $_['entry_fault_detail'] = 'Arıza ya da diğer detaylar';
 
 // Error
 $_['text_error']         = 'İstediğiniz ürün iadesi bulunamadı!';
+$_['error_token']        = 'Uyarı: İade belirteci geçersiz!';
 $_['error_order_id']     = 'Sipariş No gerekli!';
 $_['error_firstname']    = 'Ad 1 ile 32 karakter arasında olmalı!';
 $_['error_lastname']     = 'Soyad 1 ile 32 karakter arasında olmalı!';

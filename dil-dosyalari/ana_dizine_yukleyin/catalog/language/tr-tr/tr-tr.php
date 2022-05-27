@@ -85,7 +85,9 @@ $_['error_upload_6']        = 'Uyarı: Geçici klasör eksik!';
 $_['error_upload_7']        = 'Uyarı: Dosyayı diske yazma basarısız oldu!';
 $_['error_upload_8']        = 'Uyarı: Bu uzantı türdeki dosyaları yükleyemezsiniz!';
 $_['error_upload_999']      = 'Uyarı: Kod hatası mümkün olabilir!';
+$_['error_upload_size']     = 'Uyarı: Yüklenen dosya maksimum %smb dosya boyutunu aşıyor!';
 $_['error_curl']            = 'CURL: Hata Kodu(%s): %s';
+$_['error_session']         = 'Uyarı: Oturumun süresi doldu, lütfen formu tekrar gönderin!';
 
 // Datepicker
 $_['datepicker']            = 'tr';

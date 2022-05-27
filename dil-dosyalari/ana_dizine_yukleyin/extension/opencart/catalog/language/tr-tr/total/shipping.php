@@ -6,9 +6,10 @@
 $_['heading_title']        = 'Kargo ve Vergileri Hesapla';
 
 // Text
-$_['text_success']         = 'Başarılı: Kargo ve vergiler hesaplandı ve sepetinize başarıyla uygulandı!';
-$_['text_shipping']        = 'Kargo ve vergi hesaplaması için hedef giriniz.';
-$_['text_shipping_method'] = 'Lütfen bu siparişinizde kullanmak istediğiniz kargo metotunu seçiniz.';
+$_['text_shipping_method'] = 'Kargo Seçenekleri';
+$_['text_destination']     = 'Kargo tahmini almak için varış noktanızı girin.';
+$_['text_estimate']        = 'Lütfen bu siparişinizde kullanmak istediğiniz kargo metotunu seçin.';
+$_['text_success']         = 'Başarılı: Kargo tahmininiz uygulandı!';
 
 // Entry
 $_['entry_country']        = 'Ülke';

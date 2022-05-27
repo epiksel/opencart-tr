@@ -11,6 +11,7 @@ $_['text_list']             = 'Müşteri Onay Listesi';
 $_['text_default']          = 'Varsayılan';
 $_['text_customer']         = 'Müşteri';
 $_['text_affiliate']        = 'Ortak';
+$_['text_filter']           = 'Filtrele';
 
 // Column
 $_['column_customer']       = 'Müşteri';

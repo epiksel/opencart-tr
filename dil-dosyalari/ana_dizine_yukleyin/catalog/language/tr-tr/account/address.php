@@ -28,6 +28,7 @@ $_['entry_zone']         = 'Şehir';
 $_['entry_default']      = 'Varsayılan Adres';
 
 // Error
+$_['error_token']        = 'Uyarı: Adres belirteci geçersiz!';
 $_['error_delete']       = 'Uyarı: En az bir adres olmalıdır!';
 $_['error_default']      = 'Uyarı: Varsayılan adresinizi silemezsiniz!';
 $_['error_firstname']    = 'Ad 1 ile 32 karakter arasında olmalı!';
@@ -38,3 +39,4 @@ $_['error_city']         = 'İlçe / semt 2 ile 128 karakter arasında olmalı!'
 $_['error_country']      = 'Lütfen bir ülke seçiniz!';
 $_['error_zone']         = 'Lütfen bir şehir seçiniz!';
 $_['error_custom_field'] = '%s gerekli!';
+$_['error_regex']        = '%s geçerli bir giriş değil!';

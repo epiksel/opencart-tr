@@ -12,6 +12,9 @@ $_['text_db_administration'] = '2. Lütfen yönetim için bir kullanıcı adı v
 $_['text_mysqli']            = 'MySQLi';
 $_['text_pdo']               = 'mPDO';
 $_['text_pgsql']             = 'PostgreSQL';
+$_['text_help']              = 'Farklı platformlarda veri tabanı kurulumu hakkında bilgiler:';
+$_['text_cpanel']            = 'CPanel VT Ayarları';
+$_['text_plesk']             = 'Plesk VT Ayarları';
 
 // Entry
 $_['entry_db_driver']        = 'VT Sürücüsü';

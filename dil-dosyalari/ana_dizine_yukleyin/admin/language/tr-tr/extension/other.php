@@ -16,3 +16,4 @@ $_['column_action']    = 'Eylem';
 
 // Error
 $_['error_permission'] = 'Uyarı: Diğerleri değiştirme iznine sahip değilsiniz!';
+$_['error_extension']  = 'Uyarı: Uzantı mevcut değil!';

@@ -15,8 +15,6 @@ $_['text_current']           = 'Geçerli Olan';
 $_['text_required']          = 'Gerekli Olan';
 $_['text_extension']         = 'Eklenti Ayarları';
 $_['text_db']                = 'Veri Tabanı';
-$_['text_db_driver']         = 'Veri Tabanı Sürücüsü';
-$_['text_status']            = 'Durum';
 $_['text_version']           = 'PHP Versiyon';
 $_['text_global']            = 'Register Globals';
 $_['text_magic']             = 'Magic Quotes GPC';
@@ -37,7 +35,7 @@ $_['text_unwritable']        = 'Yazılamaz';
 $_['text_missing']           = 'Eksik';
 
 // Error
-$_['error_version']          = 'Uyarı: You need to use PHP7.3 or above for OpenCart to work!';
+$_['error_version']          = 'Uyarı: You need to use PHP8 or above for OpenCart to work!';
 $_['error_file_upload']      = 'Uyarı: file_uploads needs to be enabled!';
 $_['error_session']          = 'Uyarı: OpenCart will not work with session.auto_start enabled!';
 $_['error_db']               = 'Uyarı: A database extension needs to be loaded in the php.ini for OpenCart to work!';

@@ -22,6 +22,7 @@ $_['text_history_add']          = 'Geçmiş Ekle';
 $_['text_transaction']          = 'İşlemler';
 $_['text_transaction_add']      = 'İşlem Ekle';
 $_['text_report']               = 'Raporlar';
+$_['text_filter']               = 'Filtrele';
 
 // Column
 $_['column_name']               = 'Müşteri';

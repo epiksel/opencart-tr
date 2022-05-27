@@ -21,6 +21,6 @@ $_['error_folder']     = 'Uyarı: Klasör adı 3 ile 255 karakter arasında olma
 $_['error_exists']     = 'Uyarı: Aynı isimde dosya ya da dizin var!';
 $_['error_directory']  = 'Uyarı: Dizin yok!';
 $_['error_filesize']   = 'Uyarı: Geçersiz dosya boyutu!';
-$_['error_filetype']   = 'Uyarı: Geçersiz dosya türü!';
+$_['error_file_type']  = 'Uyarı: Geçersiz dosya türü!';
 $_['error_upload']     = 'Uyarı: Dosya bilinmeyen bir nedenden dolayı yüklenemedi!';
 $_['error_delete']     = 'Uyarı: Bu dizini silemezsiniz!';

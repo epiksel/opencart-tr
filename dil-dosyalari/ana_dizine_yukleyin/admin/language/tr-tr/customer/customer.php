@@ -17,6 +17,7 @@ $_['text_password']         = 'Parola';
 $_['text_other']            = 'Diğer';
 $_['text_balance']          = 'Bakiye';
 $_['text_address']          = 'Address';
+$_['text_payment_method']   = 'Ödeme metotları';
 $_['text_history']          = 'Geçmiş';
 $_['text_history_add']      = 'Geçmiş Ekle';
 $_['text_transaction']      = 'İşlemler';
@@ -27,6 +28,7 @@ $_['text_ip']               = 'IP';
 $_['text_option']           = 'Seçenekler';
 $_['text_login']            = 'Mağazada Oturum Aç';
 $_['text_unlock']           = 'Hesap Kilidini Kaldır';
+$_['text_filter']           = 'Filtrele';
 
 
 // Column
@@ -43,11 +45,15 @@ $_['column_ip']             = 'IP';
 $_['column_account']        = 'Hesaplar';
 $_['column_store']          = 'Mağaza';
 $_['column_country']        = 'Ülke';
+$_['column_payment_method'] = 'Ödeme Adı';
+$_['column_image']          = 'Resim';
+$_['column_type']           = 'Türü';
+$_['column_date_expire']    = 'Son Kullanma Tarihi';
 $_['column_action']         = 'Eylem';
 
 // Entry
+$_['entry_store']           = 'Mağaza';
 $_['entry_customer_group']  = 'Müşteri Grubu';
-$_['entry_store']           = 'Müşteri Mağazası';
 $_['entry_firstname']       = 'Adı';
 $_['entry_lastname']        = 'Soyadı';
 $_['entry_email']           = 'E-Posta';
@@ -56,7 +62,7 @@ $_['entry_newsletter']      = 'Bülten Aboneliği';
 $_['entry_status']          = 'Durumu';
 $_['entry_safe']            = 'Güvenilir';
 $_['entry_password']        = 'Parola';
-$_['entry_confirm']         = 'Parola(tekrar)';
+$_['entry_confirm']         = 'Parola (Tekrar)';
 $_['entry_company']         = 'Şirket Adı';
 $_['entry_address_1']       = 'Adres 1';
 $_['entry_address_2']       = 'Adres 2';
@@ -73,6 +79,9 @@ $_['entry_name']            = 'Müşteri Adı';
 $_['entry_ip']              = 'IP';
 $_['entry_date_added']      = 'Ekleme Tarihi';
 
+// Button
+$_['button_order']          = 'Siparişler';
+
 // Help
 $_['help_safe']             = 'Anti-Dolandırıcılık sistemi tarafından engellenmemesi için bu müşteriyi güvenilir olarak işaretleyebilirsiniz.';
 $_['help_points']           = 'Puan silmek için başına eksi işareti koyunuz.';
@@ -80,7 +89,9 @@ $_['help_points']           = 'Puan silmek için başına eksi işareti koyunuz.
 // Error
 $_['error_warning']         = 'Uyarı: Oluşan hatalar için lütfen formu dikkatli kontrol ediniz!';
 $_['error_permission']      = 'Uyarı: Müşterileri düzenleme iznine sahip değilsiniz!';
+$_['error_customer']        = 'Uyarı: Müşteri mevcut değil!';
 $_['error_exists']          = 'Uyarı: E-Posta adresi zaten kayıtlı!';
+$_['error_address']         = 'Uyarı: Adres mevcut değil!';
 $_['error_firstname']       = 'Ad 1 ile 32 karakter arasında olmalı!';
 $_['error_lastname']        = 'Soyad 1 ile 32 karakter arasında olmalı!';
 $_['error_email']           = 'E-Posta adresi geçersiz!';

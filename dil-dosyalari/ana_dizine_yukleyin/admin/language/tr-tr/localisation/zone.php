@@ -10,6 +10,7 @@ $_['text_success']           = 'Başarılı: Şehir başarılı bir şekilde de�
 $_['text_list']              = 'Şehir Listesi';
 $_['text_add']               = 'Şehir Ekle';
 $_['text_edit']              = 'Şehir Düzenle';
+$_['text_filter']            = 'Filtrele';
 
 // Column
 $_['column_name']            = 'Şehir Adı';

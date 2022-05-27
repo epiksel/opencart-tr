@@ -13,7 +13,7 @@ $_['text_template']     = 'Şablon Seçin';
 $_['text_default']      = 'Varsayılan';
 $_['text_extension']    = 'Eklenti';
 $_['text_history']      = 'Tema Geçmişi';
-$_['text_twig']         = 'Tema editörü twig şablon dilini kullanır. Twig tema şablon hakkında daha fazla bilgiye <a href="https://twig.sensiolabs.org/documentation" target="_blank" class="alert-link">buradan</a> ulaşabilirsiniz.';
+$_['text_twig']         = 'Tema editörü twig şablon dilini kullanır. Twig tema şablon hakkında daha fazla bilgiye <a href="https://twig.symfony.com/doc/" target="_blank" class="alert-link">buradan</a> ulaşabilirsiniz.';
 
 // Column
 $_['column_store']      = 'Mağaza';

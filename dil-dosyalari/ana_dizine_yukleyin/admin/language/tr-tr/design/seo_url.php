@@ -10,7 +10,7 @@ $_['text_success']         = 'Başarılı: SEO Bağlantıları başarılı bir �
 $_['text_list']            = 'SEO Bağlantı Listesi';
 $_['text_add']             = 'SEO Bağlantı Ekle';
 $_['text_edit']            = 'SEO Bağlantı Düzenle';
-$_['text_filter']          = 'Filtre';
+$_['text_filter']          = 'Filtrele';
 $_['text_default']         = 'Varsayılan';
 
 // Column
@@ -27,9 +27,11 @@ $_['entry_language']       = 'Dil';
 $_['entry_key']            = 'Anahta';
 $_['entry_value']          = 'Değer';
 $_['entry_keyword']        = 'Anahtar Kelime';
+$_['entry_sort_order']     = 'Sıralama';
 
 // Help
 $_['help_keyword']         = 'Sadece a-z ya da 0-9 karakterlerini ve boşluk içinde - ya da _ kullanın. Sadece çevreyi kaldırmak istiyorsanız boş bırakın.';
+$_['help_sort_order']      = 'URL\'deki anahtar kelimelerin sıralama düzeni.';
 
 // Error
 $_['error_permission']     = 'Uyarı: SEO Bağlantılarını düzenleme iznine sahip değilsiniz!';

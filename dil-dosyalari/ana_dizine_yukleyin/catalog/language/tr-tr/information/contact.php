@@ -11,7 +11,6 @@ $_['text_store']     = 'Mağazalarımız';
 $_['text_contact']   = 'İletişim Formu';
 $_['text_address']   = 'Adres:';
 $_['text_telephone'] = 'Telefon:';
-$_['text_fax']       = 'Faks:';
 $_['text_open']      = 'Çalışma Saatleri';
 $_['text_comment']   = 'Açıklamalar';
 $_['text_message']   = '<p>Mesajınız başarıyla gönderildi!</p><p>En kısa sürede size geri dönüş yapılacaktır.</p>';

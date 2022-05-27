@@ -15,5 +15,6 @@ $_['entry_password'] = 'Parola';
 $_['entry_confirm']  = 'Parola (Tekrar)';
 
 // Error
+$_['error_token']    = 'Uyarı: Parola belirteci geçersiz!';
 $_['error_password'] = 'Parolanız 4 ile 20 karakter arasında olmalı!';
 $_['error_confirm']  = 'Parolanız birbiriyle uyuşmuyor!';

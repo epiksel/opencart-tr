@@ -8,7 +8,7 @@ $_['heading_title']      = 'Pazaryeri';
 // Text
 $_['text_success']       = 'Başarılı: Eklentiler başarılı bir şekilde değiştirildi!';
 $_['text_list']          = 'Eklenti Listesi';
-$_['text_filter']        = 'Filtre';
+$_['text_filter']        = 'Filtrele';
 $_['text_search']        = 'Uzantıları ve temaları ara';
 $_['text_category']      = 'Kategoriler';
 $_['text_all']           = 'Tümü';
@@ -53,6 +53,9 @@ $_['text_action']        = 'Eylem';
 $_['text_install']       = 'Kur';
 $_['text_uninstall']     = 'Kaldır';
 $_['text_delete']        = 'Sil';
+$_['text_more']          = 'daha fazla yanıt göster...';
+$_['text_leave']         = 'daha fazla yanıt göster...';
+$_['text_refresh']       = 'Yenile';
 
 // Entry
 $_['entry_pin']          = 'PIN';

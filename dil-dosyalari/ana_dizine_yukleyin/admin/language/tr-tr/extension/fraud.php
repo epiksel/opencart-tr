@@ -16,3 +16,4 @@ $_['column_action']    = 'Eylem';
 
 // Error
 $_['error_permission'] = 'Uyarı: Sahtekârlık araçlarını değiştirme iznine sahip değilsiniz!';
+$_['error_extension']  = 'Uyarı: Eklenti mevcut değil!';

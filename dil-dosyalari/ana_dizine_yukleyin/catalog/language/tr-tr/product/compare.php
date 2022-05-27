@@ -23,3 +23,6 @@ $_['text_compare']      = 'Ürün Karşılaştır (%s)';
 $_['text_success']      = 'Başarılı: <a href="%s">%s</a> ürünü <a href="%s">ürün karşılaştırma</a> listenize eklendi!';
 $_['text_remove']       = 'Başarılı: Ürün karşılaştırma listeniz değiştirildi!';
 $_['text_no_results']   = 'Karşılaştırmak için bir ürün seçmediniz.';
+
+// Error
+$_['error_product']     = 'Uyarı: Ürün bulunamadı!';

@@ -19,6 +19,7 @@ $_['text_complete']     = 'Tamamlandı';
 $_['text_denied']       = 'Reddedildi';
 $_['text_export']       = 'Dışarı Aktarma';
 $_['text_remove']       = 'Veri Kaldırma';
+$_['text_filter']       = 'Filtrele';
 
 // Column
 $_['column_email']      = 'E-Posta';

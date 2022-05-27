@@ -9,7 +9,7 @@ $_['heading_title']      = 'Satılan Ürünler Raporu';
 $_['text_extension']     = 'Eklentiler';
 $_['text_edit']          = 'Satılan Ürünler Raporu Düzenle';
 $_['text_success']       = 'Başarılı: Satılan ürünler raporu güncellendi!';
-$_['text_filter']        = 'Filtre';
+$_['text_filter']        = 'Filtrele';
 $_['text_all_status']    = 'Tüm Durumlar';
 
 // Column

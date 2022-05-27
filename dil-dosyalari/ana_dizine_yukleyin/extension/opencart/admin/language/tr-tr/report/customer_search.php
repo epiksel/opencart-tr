@@ -9,7 +9,7 @@ $_['heading_title']     = 'Arama Raporları';
 $_['text_extension']    = 'Eklentiler';
 $_['text_edit']         = 'Arama Raporlarını Düzenle';
 $_['text_success']      = 'Başarılı: Arama raporları güncellendi!';
-$_['text_filter']       = 'Filtre';
+$_['text_filter']       = 'Filtrele';
 $_['text_guest']        = 'Misafir';
 $_['text_customer']     = '<a href="%s">%s</a>';
 

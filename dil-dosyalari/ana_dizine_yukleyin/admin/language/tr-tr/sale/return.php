@@ -13,6 +13,7 @@ $_['text_order']           = 'Sipariş Bilgileri';
 $_['text_product']         = 'İade için Ürün Bilgileri &amp; Nedeni';
 $_['text_history']         = 'Geçmiş';
 $_['text_history_add']     = 'İade Geçmişi Ekle';
+$_['text_filter']          = 'Filtrele';
 
 // Column
 $_['column_return_id']     = 'İade No';
@@ -54,6 +55,7 @@ $_['help_product']         = '(Otomatik tamamlama)';
 // Error
 $_['error_warning']        = 'Uyarı: Oluşan hatalar için lütfen formu dikkatli kontrol ediniz!';
 $_['error_permission']     = 'Uyarı: Ürün İadelerini düzenleme iznine sahip değilsiniz!';
+$_['error_return']         = 'Uyarı: Seçilen iade bulunamadı!';
 $_['error_order_id']       = 'Sipariş No gerekli!';
 $_['error_firstname']      = 'Ad 1 ile 32 karakter arasında olmalı!';
 $_['error_lastname']       = 'Soyadı 1 ile 32 karakter arasında olmalı!';

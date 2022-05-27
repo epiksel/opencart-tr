@@ -18,6 +18,7 @@ $_['text_access']       = 'Artık %s hesabınıza erişemeyeceksiniz.';
 $_['text_history']      = 'Artık sipariş geçmişinize, faturalarınıza, alışveriş listenize veya indirmelerinize erişemeyeceksiniz.';
 $_['text_limit']        = 'Hesap silme istekleri, herhangi bir sahtekarlık tespiti, ters ibrazlar veya geri ödeme işlemeleri için <strong>%s günden</strong> sonra işlenecektir.';
 $_['text_success']      = 'Başarılı: E-Posta adresinize bir e-posta gönderildi!';
+$_['text_cancel']       = 'İptal';
 
 // Entry
 $_['entry_email']       = 'E-Posta Adresi';

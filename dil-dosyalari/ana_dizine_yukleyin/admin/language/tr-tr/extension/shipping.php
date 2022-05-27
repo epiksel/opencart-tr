@@ -17,3 +17,4 @@ $_['column_action']     = 'Eylem';
 
 // Error
 $_['error_permission']  = 'Uyarı: Kargo Metotlarını değiştirme iznine sahip değilsiniz!';
+$_['error_extension']   = 'Uyarı: Eklenti mevcut değil!';

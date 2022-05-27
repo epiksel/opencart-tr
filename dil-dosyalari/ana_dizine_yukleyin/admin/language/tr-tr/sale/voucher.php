@@ -11,6 +11,7 @@ $_['text_list']         = 'Hediye Çeki Listesi';
 $_['text_add']          = 'Hediye Çeki Ekle';
 $_['text_edit']         = 'Hediye Çeki Düzenle';
 $_['text_sent']         = 'Başarılı: Hediye çeki e-postası gönderildi!';
+$_['text_history']      = 'Geçmiş';
 
 // Column
 $_['column_name']       = 'Çek Adı';

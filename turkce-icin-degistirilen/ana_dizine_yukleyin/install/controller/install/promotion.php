@@ -1,5 +1,5 @@
 <?php
-namespace Opencart\Application\Controller\Install;
+namespace Opencart\Install\Controller\Install;
 class Promotion extends \Opencart\System\Engine\Controller {
 	public function index() {
 		$html = '<script async src="https://adsenix.com/api/adsload.js"></script>';

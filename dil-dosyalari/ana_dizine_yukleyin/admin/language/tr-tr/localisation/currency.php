@@ -35,6 +35,7 @@ $_['help_value']           = 'Varsayılan para biriminize göre bu para birimini
 
 // Error
 $_['error_permission']     = 'Uyarı: Para birimlerini düzenleme iznine sahip değilsiniz!';
+$_['error_extension']      = 'Uyarı: Para birimi eklentisi bulunamadı!';
 $_['error_title']          = 'Para Birimi Adı 3 ile 32 karakter arasında olmalı!';
 $_['error_code']           = 'Para Birim Kodu en fazla 3 karakter olmalı!';
 $_['error_default']        = 'Uyarı: Bu para birimini silemezsiniz, varsayılan para birimi olarak kullanılıyor!';
