@@ -1572,10 +1572,10 @@ INSERT INTO `oc_manufacturer_to_store` (`manufacturer_id`, `store_id`) VALUES
 --
 
 INSERT INTO `oc_module` (`module_id`, `name`, `code`, `setting`) VALUES
-(1, 'Ana sayfa', 'opencart.banner', '{"name":"Ana Sayfa","banner_id":"2","effect":"slide","items":"1","controls":"0","indicators":"0","interval":"5000","width":"1140","height":"380","status":"1"}'),
-(2, 'Ana sayfa', 'opencart.featured', '{"name":"Ana Sayfa","product":["12","3","17","1"],"axis":"horizontal","limit":"4","width":"250","height":"250","status":"1"}'),
-(3, 'Ana sayfa', 'opencart.banner', '{"name":"Ana Sayfa","banner_id":"3","effect":"fade","items":"1","controls":"0","indicators":"0","interval":"5000","width":"130","height":"100","status":"1"}'),
-(4, 'Kategoriler', 'opencart.banner', '{"name":"Kategoriler","banner_id":"1","effect":"fade","items":"1","controls":"0","indicators":"0","interval":"5000","width":"182","height":"182","status":"1"}'),
+(1, 'Ana Sayfa Slider', 'opencart.banner', '{"name":"Ana Sayfa Slider","banner_id":"2","effect":"slide","items":"1","controls":"1","indicators":"1","interval":"5000","width":"1140","height":"380","status":"1"}'),
+(2, 'Ana Sayfa Seçtiklerimiz', 'opencart.featured', '{"name":"Ana Sayfa","product":["12","3","17","1"],"axis":"horizontal","limit":"4","width":"250","height":"250","status":"1"}'),
+(3, 'Ana Sayfa Üreticiler', 'opencart.banner', '{"name":"Anasayfa \\u00dcreticiler","banner_id":"3","effect":"slide","items":"5","controls":"1","indicators":"1","interval":"5000","width":"130","height":"100","status":"1"}'),
+(4, 'Kategoriler Afiş', 'opencart.banner', '{"name":"Kategoriler Afi\\u015f","banner_id":"1","effect":"fade","items":"1","controls":"0","indicators":"0","interval":"5000","width":"200","height":"180","status":"1"}'),
 (5, 'Sponsorlarımız Anasayfa', 'opencart.html', '{"name":"Sponsorlar\\u0131m\\u0131z","module_description":{"1":{"title":"","description":"&lt;script async src=&quot;https:\\/\\/adsenix.com\\/api\\/adsload.js&quot;&gt;&lt;\\/script&gt;\\r\\n&lt;div class=&quot;adsenix-preloader&quot;&gt;&lt;\\/div&gt;\\r\\n&lt;div class=&quot;adsenix-wrapper&quot; data-adsenix-publisher=&quot;1&quot; data-adsenix-group=&quot;1&quot; data-adsenix-format=&quot;1&quot;&gt;&lt;\\/div&gt;\\r\\n&lt;div class=&quot;adsenix-wrapper&quot; data-adsenix-publisher=&quot;1&quot; data-adsenix-group=&quot;1&quot; data-adsenix-format=&quot;4&quot;&gt;&lt;\\/div&gt;"}},"status":"1"}'),
 (6, 'Sponsorlarımız Ürün/Kategori', 'opencart.html', '{"name":"Sponsorlar\\u0131m\\u0131z \\u00dcr\\u00fcn\\/Kategori","module_description":{"1":{"title":"","description":"&lt;script async src=&quot;https:\\/\\/adsenix.com\\/api\\/adsload.js&quot;&gt;&lt;\\/script&gt;\\r\\n&lt;div class=&quot;adsenix-preloader&quot;&gt;&lt;\\/div&gt;\\r\\n&lt;div class=&quot;adsenix-wrapper&quot; data-adsenix-publisher=&quot;1&quot; data-adsenix-group=&quot;1&quot; data-adsenix-format=&quot;1&quot;&gt;&lt;\\/div&gt;"}},"status":"1"}');
 
@@ -2245,7 +2245,7 @@ INSERT INTO `oc_setting` (`store_id`, `code`, `key`, `value`, `serialized`) VALU
 INSERT INTO `oc_seo_url` (`store_id`, `language_id`, `key`, `value`, `keyword`, `sort_order`) VALUES
 (0, 1, 'information_id', '1', 'hakkimizda', 0),
 (0, 1, 'information_id', '2', 'sartlar-ve-kosullar', 0),
-(0, 1, 'information_id', '3', 'gizlilik-ilkeleri, 0'),
+(0, 1, 'information_id', '3', 'gizlilik-ilkeleri', 0),
 (0, 1, 'information_id', '4', 'teslimat-bilgileri', 0),
 (0, 1, 'language', 'tr', 'tr', 0),
 (0, 1, 'route', 'information/information|info', 'bilgi', 0),
