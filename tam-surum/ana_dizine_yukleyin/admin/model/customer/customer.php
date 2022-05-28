@@ -79,7 +79,7 @@ class Customer extends \Opencart\System\Engine\Model {
 			$sql .= " AND c.`email` LIKE '" . $this->db->escape((string)$data['filter_email'] . '%') . "'";
 		}
 
-		if (isset($data['filter_newsletter']) && !is_null($data['filter_newsletter'])) {
+		if (isset($data['filter_newsletter']) && $data['filter_newsletter'] !== '') {
 			$sql .= " AND c.`newsletter` = '" . (int)$data['filter_newsletter'] . "'";
 		}
 
@@ -158,7 +158,7 @@ class Customer extends \Opencart\System\Engine\Model {
 			$implode[] = "c.`email` LIKE '" . $this->db->escape((string)$data['filter_email'] . '%') . "'";
 		}
 
-		if (isset($data['filter_newsletter']) && !is_null($data['filter_newsletter'])) {
+		if (isset($data['filter_newsletter']) && $data['filter_newsletter'] !== '') {
 			$implode[] = "c.`newsletter` = '" . (int)$data['filter_newsletter'] . "'";
 		}
 
@@ -282,7 +282,11 @@ class Customer extends \Opencart\System\Engine\Model {
 	public function getTotalCustomersByCustomerGroupId(int $customer_group_id): int {
 		$query = $this->db->query("SELECT COUNT(*) AS `total` FROM `" . DB_PREFIX . "customer` WHERE `customer_group_id` = '" . (int)$customer_group_id . "'");
 
-		return (int)$query->row['total'];
+		if ($query->num_rows) {
+			return (int)$query->row['total'];
+		} else {
+			return 0;
+		}
 	}
 
 	public function addHistory(int $customer_id, string $comment): void {
