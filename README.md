@@ -1,5 +1,8 @@
 # OpenCart Türkçe
 
+[![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%208.0-8892BF.svg?style=flat-square)](https://php.net/)
+[![GitHub release](https://img.shields.io/github/v/release/epiksel/opencart-tr)](https://github.com/epiksel/opencart-tr)
+
 ## Genel Bakış
 
 OpenCart PHP tabanlı açık kaynak kodlu online alışveriş sepetidir. Tüccarların düşük bir maliyet ile kendi e-ticaret mağazalarını oluşturmada yardımcı olan güçlü bir e-ticaret yazılımıdır.
