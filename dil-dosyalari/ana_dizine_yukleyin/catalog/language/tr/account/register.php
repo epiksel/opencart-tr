@@ -35,5 +35,4 @@ $_['error_telephone']      = 'Telefon 3 ile 32 karakter arasında olmalı!';
 $_['error_custom_field']   = '%s gerekli!';
 $_['error_regex']          = '%s geçerli bir giriş değil!';
 $_['error_password']       = 'Parolanız 4 ile 20 karakter arasında olmalı!';
-$_['error_confirm']        = 'Parolanız birbiriyle uyuşmuyor!';
 $_['error_agree']          = 'Uyarı: %s kabul etmelisiniz!';

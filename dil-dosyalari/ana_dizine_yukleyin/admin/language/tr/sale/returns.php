@@ -46,8 +46,8 @@ $_['entry_return_action']  = 'İade Eylemi';
 $_['entry_return_status']  = 'İade Durumu';
 $_['entry_notify']         = 'Müşteriye Bildir';
 $_['entry_return_id']      = 'İade No';
-$_['entry_date_added']     = 'Ekleme Tarihi';
-$_['entry_date_modified']  = 'Değiştirme Tarihi';
+$_['entry_date_from']      = 'Başlangıç Tarihi';
+$_['entry_date_to']        = 'Bitiş Tarihi';
 
 // Help
 $_['help_product']         = '(Otomatik tamamlama)';

@@ -26,7 +26,8 @@ $_['entry_author']      = 'Ekleyen';
 $_['entry_rating']      = 'Oylama';
 $_['entry_status']      = 'Durumu';
 $_['entry_text']        = 'Metin';
-$_['entry_date_added']  = 'Ekleme Tarihi';
+$_['entry_date_from']   = 'Başlangıç Tarihi';
+$_['entry_date_to']     = 'Bitiş Tarihi';
 
 // Help
 $_['help_product']      = '(Otomatik Tamamlama)';

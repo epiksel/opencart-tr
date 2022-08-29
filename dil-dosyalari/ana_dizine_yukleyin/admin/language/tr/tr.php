@@ -124,6 +124,7 @@ $_['button_run']                    = 'Zamanlanmış Görevi Çalıştır';
 $_['button_backup']                 = 'Yedek Al';
 $_['button_developer']              = 'Geliştirici Ayarları';
 $_['button_master']                 = 'Ana Ürün';
+$_['button_resend']                 = 'Yeniden Gönder';
 
 // Tab
 $_['tab_address']                   = 'Adresler';

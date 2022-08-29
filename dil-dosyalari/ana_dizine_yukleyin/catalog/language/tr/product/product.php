@@ -17,10 +17,6 @@ $_['text_option']                = 'Mevcut Seçenekler:';
 $_['text_minimum']               = 'Satın alabilmek için asgari adet: %s';
 $_['text_reviews']               = '%s yorum';
 $_['text_write']                 = 'Yorum Yap';
-$_['text_login']                 = 'Lütfen yorum yazmak için <a href="%s">oturum açın</a> ya da <a href="%s">kayıt olun</a>.';
-$_['text_no_reviews']            = 'Bu ürün için daha önce yorum yapılmadı.';
-$_['text_note']                  = '<span class="text-danger">Not:</span> HTML\'e dönüştürülmez!';
-$_['text_success']               = 'Yorum için teşekkür ederiz. Onaylandıktan sonra yorumunuz yayınlanacaktır.';
 $_['text_related']               = 'Benzer Ürünler';
 $_['text_tags']                  = 'Etiketler:';
 $_['text_error']                 = 'Ürün bulunamadı!';
@@ -36,20 +32,8 @@ $_['text_year']                  = 'yıl';
 
 // Entry
 $_['entry_qty']                  = 'Adet';
-$_['entry_name']                 = 'Adınız';
-$_['entry_review']               = 'Yorumunuz';
 $_['entry_rating']               = 'Oylama';
-$_['entry_good']                 = 'İyi';
-$_['entry_bad']                  = 'Kötü';
 
 // Tabs
 $_['tab_description']            = 'Açıklama';
 $_['tab_attribute']              = 'Özellikler';
-$_['tab_review']                 = 'Yorumlar (%s)';
-
-// Error
-$_['error_product']              = 'Uyarı: Ürün bulunamadı!';
-$_['error_subscription']         = 'Uyarı: Abonelik planı bulunamadı!';
-$_['error_name']                 = 'Ad 3 ile 25 karakter arasında olmalı!';
-$_['error_text']                 = 'Yorum 25 ile 1000 karakter arasında olmalı!';
-$_['error_rating']               = 'Lütfen yorumunuz için oylama seçiniz!';

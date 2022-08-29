@@ -59,7 +59,8 @@ $_['entry_bank_account_number'] = 'Hesap Numarası';
 $_['entry_comment']             = 'Yorum';
 $_['entry_description']         = 'Açıklama';
 $_['entry_amount']              = 'Tutar';
-$_['entry_date_added']          = 'Ekleme Tarihi';
+$_['entry_date_from']           = 'Başlangıç Tarihi';
+$_['entry_date_to']             = 'Bitiş Tarihi';
 
 // Help
 $_['help_tracking']             = 'Ürün yönlendirmelerini izlemek için kullanılacak takip kodu.';

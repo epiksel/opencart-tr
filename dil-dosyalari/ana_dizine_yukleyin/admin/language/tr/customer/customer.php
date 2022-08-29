@@ -12,7 +12,7 @@ $_['text_add']              = 'Müşteri Ekle';
 $_['text_edit']             = 'Müşteri Düzenle';
 $_['text_default']          = 'Varsayılan';
 $_['text_store']            = 'Mağaza';
-$_['text_account']          = 'Müşteri Detayları';
+$_['text_customer']         = 'Müşteri Detayları';
 $_['text_password']         = 'Parola';
 $_['text_other']            = 'Diğer';
 $_['text_balance']          = 'Bakiye';
@@ -77,7 +77,8 @@ $_['entry_amount']          = 'Kredi Tutarı';
 $_['entry_points']          = 'Puan';
 $_['entry_name']            = 'Müşteri Adı';
 $_['entry_ip']              = 'IP';
-$_['entry_date_added']      = 'Ekleme Tarihi';
+$_['entry_date_from']       = 'Başlangıç Tarihi';
+$_['entry_date_to']         = 'Bitiş Tarihi';
 
 // Button
 $_['button_order']          = 'Siparişler';
