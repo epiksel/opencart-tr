@@ -5,12 +5,8 @@ $_['heading_title']         = 'Profile';
 // Text
 $_['text_success']          = 'Success: You have modified your profile!';
 $_['text_edit']             = 'Edit Your Profile';
-
-// Column
-$_['column_username']       = 'Username';
-$_['column_status']         = 'Status';
-$_['column_date_added']     = 'Date Added';
-$_['column_action']         = 'Action';
+$_['text_user']             = 'Users Details';
+$_['text_password']         = 'Password';
 
 // Entry
 $_['entry_username']        = 'Username';

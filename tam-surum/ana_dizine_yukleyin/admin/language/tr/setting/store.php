@@ -100,6 +100,7 @@ $_['help_checkout_guest']              = 'Müşterinin hesap oluşturmadan alı�
 $_['help_checkout']                    = 'Müşteri ürün satın alırken satın alma koşullarını kabul edilsin.';
 $_['help_stock_display']               = 'Ürün sayfasında stok adedini gösterir.';
 $_['help_stock_checkout']              = 'Müşteriler stokta olmayan ürünleri sipariş edebilsinler.';
+$_['help_product_count']               = 'Katalog sayfasında üst menüsünde alt kategorilerdeki ürün sayısını göster. Uyarı, ürün sayısı bir çok mağazada aşırı performans düşüklüğüne neden olabilir!';
 
 // Error
 $_['error_warning']                    = 'Uyarı: Oluşan hatalar için lütfen formu dikkatli kontrol ediniz!';

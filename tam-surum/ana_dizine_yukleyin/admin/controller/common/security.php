@@ -78,14 +78,16 @@ class Security extends \Opencart\System\Engine\Controller {
 			while (count($directory) != 0) {
 				$next = array_shift($directory);
 
-				foreach (glob($next . '/*') as $file) {
-					// If directory add to path array
-					if (is_dir($file)) {
-						$directory[] = $file;
-					}
+				if (is_dir($next)) {
+					foreach (glob(rtrim($next, '/') . '/{*,.[!.]*,..?*}', GLOB_BRACE) as $file) {
+						// If directory add to path array
+						if (is_dir($file)) {
+							$directory[] = $file;
+						}
 
-					// Add the file to the files to be deleted array
-					$files[] = $file;
+						// Add the file to the files to be deleted array
+						$files[] = $file;
+					}
 				}
 			}
 
@@ -115,7 +117,7 @@ class Security extends \Opencart\System\Engine\Controller {
 
 		if ($this->user->hasPermission('modify', 'common/security')) {
 			$path_old = DIR_STORAGE;
-			$path_new = $this->request->post['path'] . 'storage/';
+			$path_new = $this->request->post['path'] . preg_replace('[^a-zA-z0-9]', '', basename(html_entity_decode(trim($this->request->post['name']), ENT_QUOTES, 'UTF-8'))) . '/';
 
 			$path = '';
 
@@ -156,7 +158,7 @@ class Security extends \Opencart\System\Engine\Controller {
 			while (count($directory) != 0) {
 				$next = array_shift($directory);
 
-				foreach (glob($next . '/*') as $file) {
+				foreach (glob(rtrim($next, '/') . '/{*,.[!.]*,..?*}', GLOB_BRACE) as $file) {
 					// If directory add to path array
 					if (is_dir($file)) {
 						$directory[] = $file;
@@ -182,6 +184,21 @@ class Security extends \Opencart\System\Engine\Controller {
 					copy($file, $destination);
 				}
 			}
+
+			rsort($files);
+
+			foreach ($files as $file) {
+				// If file just delete
+				if (is_file($file)) {
+					unlink($file);
+				}
+
+				// If directory use the remove directory function
+				if (is_dir($file)) {
+					rmdir($file);
+				}
+			}
+			rmdir($path_old);
 
 			// Modify the config files
 			$files = [
@@ -257,7 +274,7 @@ class Security extends \Opencart\System\Engine\Controller {
 			while (count($directory) != 0) {
 				$next = array_shift($directory);
 
-				foreach (glob(trim($next, '/') . '/{*,.[!.]*,..?*}', GLOB_BRACE) as $file) {
+				foreach (glob(rtrim($next, '/') . '/{*,.[!.]*,..?*}', GLOB_BRACE) as $file) {
 					// If directory add to path array
 					if (is_dir($file)) {
 						$directory[] = $file;
@@ -318,14 +335,16 @@ class Security extends \Opencart\System\Engine\Controller {
 			fclose($file);
 
 			// 6. redirect to the new admin
-			$json['redirect'] = substr(HTTP_SERVER, 0, strrpos(HTTP_SERVER, 'admin/')) . '/' . $name . '/index.php?route=common/security|delete&user_token=' . $this->session->data['user_token'];
+			$url_without_admin_folder = substr(HTTP_SERVER, 0, strrpos(HTTP_SERVER, 'admin/'));
+			$url_with_new_admin_folder = $url_without_admin_folder . $name . '/index.php?route=common/security|delete&user_token=' . $this->session->data['user_token'];
+			$json['redirect'] = str_replace('&amp;', '&', $url_with_new_admin_folder);
 		}
 
 		$this->response->addHeader('Content-Type: application/json');
 		$this->response->setOutput(json_encode($json));
 	}
 
-	public function delete() {
+	public function delete(): void {
 		$status = true;
 
 		if (!$this->user->hasPermission('modify', 'common/security')) {
@@ -338,7 +357,7 @@ class Security extends \Opencart\System\Engine\Controller {
 			$status = false;
 		}
 
-		if ($path_old != DIR_APPLICATION) {
+		if ($path_old == DIR_APPLICATION) {
 			$status = false;
 		}
 
@@ -353,7 +372,7 @@ class Security extends \Opencart\System\Engine\Controller {
 			while (count($directory) != 0) {
 				$next = array_shift($directory);
 
-				foreach (glob(trim($next, '/') . '/{*,.[!.]*,..?*}', GLOB_BRACE) as $file) {
+				foreach (glob(rtrim($next, '/') . '/{*,.[!.]*,..?*}', GLOB_BRACE) as $file) {
 					// If directory add to path array
 					if (is_dir($file)) {
 						$directory[] = $file;

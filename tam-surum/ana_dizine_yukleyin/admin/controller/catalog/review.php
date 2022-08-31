@@ -1,10 +1,41 @@
 <?php
 namespace Opencart\Admin\Controller\Catalog;
+use \Opencart\System\Helper as Helper;
 class Review extends \Opencart\System\Engine\Controller {
 	public function index(): void {
 		$this->load->language('catalog/review');
 
 		$this->document->setTitle($this->language->get('heading_title'));
+
+		if (isset($this->request->get['filter_product'])) {
+			$filter_product = $this->request->get['filter_product'];
+		} else {
+			$filter_product = '';
+		}
+
+		if (isset($this->request->get['filter_author'])) {
+			$filter_author = $this->request->get['filter_author'];
+		} else {
+			$filter_author = '';
+		}
+
+		if (isset($this->request->get['filter_status'])) {
+			$filter_status = $this->request->get['filter_status'];
+		} else {
+			$filter_status = '';
+		}
+
+		if (isset($this->request->get['filter_date_from'])) {
+			$filter_date_from = $this->request->get['filter_date_from'];
+		} else {
+			$filter_date_from = '';
+		}
+
+		if (isset($this->request->get['filter_date_to'])) {
+			$filter_date_to = $this->request->get['filter_date_to'];
+		} else {
+			$filter_date_to = '';
+		}
 
 		$url = '';
 
@@ -20,8 +51,12 @@ class Review extends \Opencart\System\Engine\Controller {
 			$url .= '&filter_status=' . $this->request->get['filter_status'];
 		}
 
-		if (isset($this->request->get['filter_date_added'])) {
-			$url .= '&filter_date_added=' . $this->request->get['filter_date_added'];
+		if (isset($this->request->get['filter_date_from'])) {
+			$url .= '&filter_date_from=' . $this->request->get['filter_date_from'];
+		}
+
+		if (isset($this->request->get['filter_date_to'])) {
+			$url .= '&filter_date_to=' . $this->request->get['filter_date_to'];
 		}
 
 		if (isset($this->request->get['sort'])) {
@@ -87,10 +122,16 @@ class Review extends \Opencart\System\Engine\Controller {
 			$filter_status = '';
 		}
 
-		if (isset($this->request->get['filter_date_added'])) {
-			$filter_date_added = $this->request->get['filter_date_added'];
+		if (isset($this->request->get['filter_date_from'])) {
+			$filter_date_from = $this->request->get['filter_date_from'];
 		} else {
-			$filter_date_added = '';
+			$filter_date_from = '';
+		}
+
+		if (isset($this->request->get['filter_date_to'])) {
+			$filter_date_to = $this->request->get['filter_date_to'];
+		} else {
+			$filter_date_to = '';
 		}
 
 		if (isset($this->request->get['order'])) {
@@ -125,8 +166,12 @@ class Review extends \Opencart\System\Engine\Controller {
 			$url .= '&filter_status=' . $this->request->get['filter_status'];
 		}
 
-		if (isset($this->request->get['filter_date_added'])) {
-			$url .= '&filter_date_added=' . $this->request->get['filter_date_added'];
+		if (isset($this->request->get['filter_date_from'])) {
+			$url .= '&filter_date_from=' . $this->request->get['filter_date_from'];
+		}
+
+		if (isset($this->request->get['filter_date_to'])) {
+			$url .= '&filter_date_to=' . $this->request->get['filter_date_to'];
 		}
 
 		if (isset($this->request->get['sort'])) {
@@ -146,14 +191,15 @@ class Review extends \Opencart\System\Engine\Controller {
 		$data['reviews'] = [];
 
 		$filter_data = [
-			'filter_product'    => $filter_product,
-			'filter_author'     => $filter_author,
-			'filter_status'     => $filter_status,
-			'filter_date_added' => $filter_date_added,
-			'sort'              => $sort,
-			'order'             => $order,
-			'start'             => ($page - 1) * $this->config->get('config_pagination_admin'),
-			'limit'             => $this->config->get('config_pagination_admin')
+			'filter_product'   => $filter_product,
+			'filter_author'    => $filter_author,
+			'filter_status'    => $filter_status,
+			'filter_date_from' => $filter_date_from,
+			'filter_date_to'   => $filter_date_to,
+			'sort'             => $sort,
+			'order'            => $order,
+			'start'            => ($page - 1) * $this->config->get('config_pagination_admin'),
+			'limit'            => $this->config->get('config_pagination_admin')
 		];
 
 		$this->load->model('catalog/review');
@@ -188,8 +234,12 @@ class Review extends \Opencart\System\Engine\Controller {
 			$url .= '&filter_status=' . $this->request->get['filter_status'];
 		}
 
-		if (isset($this->request->get['filter_date_added'])) {
-			$url .= '&filter_date_added=' . $this->request->get['filter_date_added'];
+		if (isset($this->request->get['filter_date_from'])) {
+			$url .= '&filter_date_from=' . $this->request->get['filter_date_from'];
+		}
+
+		if (isset($this->request->get['filter_date_to'])) {
+			$url .= '&filter_date_to=' . $this->request->get['filter_date_to'];
 		}
 
 		if ($order == 'ASC') {
@@ -222,8 +272,12 @@ class Review extends \Opencart\System\Engine\Controller {
 			$url .= '&filter_status=' . $this->request->get['filter_status'];
 		}
 
-		if (isset($this->request->get['filter_date_added'])) {
-			$url .= '&filter_date_added=' . $this->request->get['filter_date_added'];
+		if (isset($this->request->get['filter_date_from'])) {
+			$url .= '&filter_date_from=' . $this->request->get['filter_date_from'];
+		}
+
+		if (isset($this->request->get['filter_date_to'])) {
+			$url .= '&filter_date_to=' . $this->request->get['filter_date_to'];
 		}
 
 		if (isset($this->request->get['sort'])) {
@@ -246,7 +300,8 @@ class Review extends \Opencart\System\Engine\Controller {
 		$data['filter_product'] = $filter_product;
 		$data['filter_author'] = $filter_author;
 		$data['filter_status'] = $filter_status;
-		$data['filter_date_added'] = $filter_date_added;
+		$data['filter_date_from'] = $filter_date_from;
+		$data['filter_date_to'] = $filter_date_to;
 
 		$data['sort'] = $sort;
 		$data['order'] = $order;
@@ -275,8 +330,12 @@ class Review extends \Opencart\System\Engine\Controller {
 			$url .= '&filter_status=' . $this->request->get['filter_status'];
 		}
 
-		if (isset($this->request->get['filter_date_added'])) {
-			$url .= '&filter_date_added=' . $this->request->get['filter_date_added'];
+		if (isset($this->request->get['filter_date_from'])) {
+			$url .= '&filter_date_from=' . $this->request->get['filter_date_from'];
+		}
+
+		if (isset($this->request->get['filter_date_to'])) {
+			$url .= '&filter_date_to=' . $this->request->get['filter_date_to'];
 		}
 
 		if (isset($this->request->get['sort'])) {
@@ -380,7 +439,7 @@ class Review extends \Opencart\System\Engine\Controller {
 			$json['error']['warning'] = $this->language->get('error_permission');
 		}
 
-		if ((utf8_strlen($this->request->post['author']) < 3) || (utf8_strlen($this->request->post['author']) > 64)) {
+		if ((Helper\Utf8\strlen($this->request->post['author']) < 3) || (Helper\Utf8\strlen($this->request->post['author']) > 64)) {
 			$json['error']['author'] = $this->language->get('error_author');
 		}
 
@@ -388,7 +447,7 @@ class Review extends \Opencart\System\Engine\Controller {
 			$json['error']['product'] = $this->language->get('error_product');
 		}
 
-		if (utf8_strlen($this->request->post['text']) < 1) {
+		if (Helper\Utf8\strlen($this->request->post['text']) < 1) {
 			$json['error']['text'] = $this->language->get('error_text');
 		}
 

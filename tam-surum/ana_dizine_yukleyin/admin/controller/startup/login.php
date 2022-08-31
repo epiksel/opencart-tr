@@ -12,14 +12,13 @@ class Login extends \Opencart\System\Engine\Controller {
 		$pos = strrpos($route, '|');
 
 		if ($pos !== false) {
-			$route = substr($this->request->get['route'], 0, $pos);
+			$route = substr($route, 0, $pos);
 		}
 
 		$ignore = [
 			'common/login',
 			'common/forgotten',
-			'common/reset',
-			'common/cron'
+			'cron/cron'
 		];
 
 		// User
@@ -33,16 +32,15 @@ class Login extends \Opencart\System\Engine\Controller {
 			'common/login',
 			'common/logout',
 			'common/forgotten',
-			'common/reset',
-			'common/cron',
+			'cron/cron',
 			'error/not_found',
 			'error/permission'
 		];
 
 		if (!in_array($route, $ignore) && (!isset($this->request->get['user_token']) || !isset($this->session->data['user_token']) || ($this->request->get['user_token'] != $this->session->data['user_token']))) {
 			return new \Opencart\System\Engine\Action('common/login');
-		} else {
-			return null;
 		}
+
+		return null;
 	}
 }

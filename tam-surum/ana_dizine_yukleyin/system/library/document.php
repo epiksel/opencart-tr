@@ -93,7 +93,7 @@ class Document {
 	 *
 	 * @return	array
      */
-	public function getLinks() {
+	public function getLinks(): array {
 		return $this->links;
 	}
 
@@ -128,7 +128,7 @@ class Document {
 	 * @param	string	$position
      */
 	public function addScript(string $href, $position = 'header'): void {
-		$this->scripts[$position][$href] = $href;
+		$this->scripts[$position][$href] = ['href' => $href];
 	}
 
 	/**

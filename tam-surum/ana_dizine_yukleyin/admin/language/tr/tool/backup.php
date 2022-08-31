@@ -32,3 +32,4 @@ $_['error_file']         = 'Dosya bulunamadı!';
 $_['error_directory']    = 'Dizin bulunamadı!';
 $_['error_not_found']    = 'Hata: %s dosyası bulunamadı!';
 $_['error_headers_sent'] = 'Hata: Başlıklar zaten gönderildi!';
+$_['error_upload_size']  = 'Yükleme dosyası %s\'den büyük olamaz!';

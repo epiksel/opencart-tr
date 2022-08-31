@@ -1,5 +1,6 @@
 <?php
 namespace Opencart\Admin\Controller\Tool;
+use \Opencart\System\Helper AS Helper;
 class Backup extends \Opencart\System\Engine\Controller {
 	public function index(): void {
 		$this->load->language('tool/backup');
@@ -9,7 +10,7 @@ class Backup extends \Opencart\System\Engine\Controller {
 		// Use the ini_get('upload_max_filesize') for the max file size
 		$data['error_upload_size'] = sprintf($this->language->get('error_upload_size'), ini_get('upload_max_filesize'));
 
-		$data['config_file_max_size'] = ((int)preg_filter('/[^0-9]/', '', ini_get('upload_max_filesize')) * 1024 * 1024);
+		$data['config_file_max_size'] = Helper\General\convert_bytes(ini_get('upload_max_filesize'));
 
 		$data['breadcrumbs'] = [];
 
@@ -328,7 +329,7 @@ class Backup extends \Opencart\System\Engine\Controller {
 			// Sanitize the filename
 			$filename = basename(html_entity_decode($this->request->files['upload']['name'], ENT_QUOTES, 'UTF-8'));
 
-			if ((utf8_strlen($filename) < 3) || (utf8_strlen($filename) > 128)) {
+			if ((Helper\Utf8\strlen($filename) < 3) || (Helper\Utf8\strlen($filename) > 128)) {
 				$json['error'] = $this->language->get('error_filename');
 			}
 

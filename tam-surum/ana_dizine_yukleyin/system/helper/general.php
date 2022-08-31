@@ -1,19 +1,7 @@
 <?php
-//namespace Opencart\System\Helper;
-function token(int $length = 32) {
-	if (intval($length) <= 8) {
-		$length = 32;
-	}
-
-	if (function_exists('random_bytes')) {
-		$token = bin2hex(random_bytes($length));
-	}
-
-	if (function_exists('openssl_random_pseudo_bytes')) {
-		$token = bin2hex(openssl_random_pseudo_bytes($length));
-	}
-
-	return substr($token, -$length, $length);
+namespace Opencart\System\Helper\General;
+function token(int $length = 32): string {
+	return substr(bin2hex(random_bytes($length)), 0, $length);
 }
 
 /**
@@ -40,7 +28,7 @@ if (!function_exists('hash_equals')) {
 	}
 }
 
-function date_added(string $date) {
+function date_added(string $date): array {
 	$second = time() - strtotime($date);
 
 	if ($second < 10) {
@@ -114,39 +102,25 @@ function date_added(string $date) {
 	return [$code, $date_added];
 }
 
-function format_size(string $file = '', bool $max = true) {
-	if ($max) {
-		$size = ini_get('upload_max_filesize');
-
-		$unit = substr($size, -1);
-		switch ($unit){
-			case 'K':
-			$size = (int)$size * 1024;
-			break;
-			case 'M':
-			$size = (int)$size * 1024 * 1024;
-			break;
-			case 'G':
-			$size = (int)$size*1024 * 1024 * 1024;
-			break;
-		}
-	} elseif (is_file($file)) {
-		$size = sprintf('%u', filesize($file));
-	}
-
-	if ($size) {
-		$suffix = [];
-
-		$suffix = [
-			'b',
-			'kb',
-			'mb',
-			'gb'
-		];
-		
-		$code = !empty($suffix[intval(log($size, 1024))]) ? $suffix[intval(log($size, 1024))] : end($suffix);
-		$format_size = $size / (1024 ** array_search($code, $suffix));
-		
-		return [$code, $format_size, $size];	
-	}
+// see https://stackoverflow.com/questions/13076480/php-get-actual-maximum-upload-size
+function convert_bytes(string $value): int {
+    if ( is_numeric( $value ) ) {
+        return (int)$value;
+    } else {
+        $value_length = strlen($value);
+        $qty = substr( $value, 0, $value_length - 1 );
+        $unit = strtolower( substr( $value, $value_length - 1 ) );
+        switch ( $unit ) {
+            case 'k':
+                $qty *= 1024;
+                break;
+            case 'm':
+                $qty *= 1048576;
+                break;
+            case 'g':
+                $qty *= 1073741824;
+                break;
+        }
+        return (int)$qty;
+    }
 }

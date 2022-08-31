@@ -1,10 +1,41 @@
 <?php
 namespace Opencart\Admin\Controller\Catalog;
+use \Opencart\System\Helper as Helper;
 class Product extends \Opencart\System\Engine\Controller {
 	public function index(): void {
 		$this->load->language('catalog/product');
 
 		$this->document->setTitle($this->language->get('heading_title'));
+
+		if (isset($this->request->get['filter_name'])) {
+			$filter_name = $this->request->get['filter_name'];
+		} else {
+			$filter_name = '';
+		}
+
+		if (isset($this->request->get['filter_model'])) {
+			$filter_model = $this->request->get['filter_model'];
+		} else {
+			$filter_model = '';
+		}
+
+		if (isset($this->request->get['filter_price'])) {
+			$filter_price = $this->request->get['filter_price'];
+		} else {
+			$filter_price = '';
+		}
+
+		if (isset($this->request->get['filter_quantity'])) {
+			$filter_quantity = $this->request->get['filter_quantity'];
+		} else {
+			$filter_quantity = '';
+		}
+
+		if (isset($this->request->get['filter_status'])) {
+			$filter_status = $this->request->get['filter_status'];
+		} else {
+			$filter_status = '';
+		}
 
 		$url = '';
 
@@ -58,13 +89,19 @@ class Product extends \Opencart\System\Engine\Controller {
 
 		$data['list'] = $this->getList();
 
+		$data['filter_name'] = $filter_name;
+		$data['filter_model'] = $filter_model;
+		$data['filter_price'] = $filter_price;
+		$data['filter_quantity'] = $filter_quantity;
+		$data['filter_status'] = $filter_status;
+
 		$data['user_token'] = $this->session->data['user_token'];
 
 		$data['header'] = $this->load->controller('common/header');
 		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['footer'] = $this->load->controller('common/footer');
 
-		$this->response->setOutput($this->load->view('catalog/product ', $data));
+		$this->response->setOutput($this->load->view('catalog/product', $data));
 	}
 
 	public function list(): void {
@@ -277,12 +314,6 @@ class Product extends \Opencart\System\Engine\Controller {
 		]);
 
 		$data['results'] = sprintf($this->language->get('text_pagination'), ($product_total) ? (($page - 1) * $this->config->get('config_pagination_admin')) + 1 : 0, ((($page - 1) * $this->config->get('config_pagination_admin')) > ($product_total - $this->config->get('config_pagination_admin'))) ? $product_total : ((($page - 1) * $this->config->get('config_pagination_admin')) + $this->config->get('config_pagination_admin')), $product_total, ceil($product_total / $this->config->get('config_pagination_admin')));
-
-		$data['filter_name'] = $filter_name;
-		$data['filter_model'] = $filter_model;
-		$data['filter_price'] = $filter_price;
-		$data['filter_quantity'] = $filter_quantity;
-		$data['filter_status'] = $filter_status;
 
 		$data['sort'] = $sort;
 		$data['order'] = $order;
@@ -958,13 +989,14 @@ class Product extends \Opencart\System\Engine\Controller {
 			];
 		}
 
-		// Rewards
+		// Points
 		if (!empty($product_info)) {
 			$data['points'] = $product_info['points'];
 		} else {
 			$data['points'] = '';
 		}
 
+		// Rewards
 		if ($product_id) {
 			$data['product_reward'] = $this->model_catalog_product->getRewards($product_id);
 		} else {
@@ -978,7 +1010,7 @@ class Product extends \Opencart\System\Engine\Controller {
 			$data['product_seo_url'] = [];
 		}
 
-		// Layout
+		// Layouts
 		$this->load->model('design/layout');
 
 		$data['layouts'] = $this->model_design_layout->getLayouts();
@@ -1010,16 +1042,16 @@ class Product extends \Opencart\System\Engine\Controller {
 		}
 
 		foreach ($this->request->post['product_description'] as $language_id => $value) {
-			if ((utf8_strlen(trim($value['name'])) < 1) || (utf8_strlen($value['name']) > 255)) {
+			if ((Helper\Utf8\strlen(trim($value['name'])) < 1) || (Helper\Utf8\strlen($value['name']) > 255)) {
 				$json['error']['name_' . $language_id] = $this->language->get('error_name');
 			}
 
-			if ((utf8_strlen(trim($value['meta_title'])) < 1) || (utf8_strlen($value['meta_title']) > 255)) {
+			if ((Helper\Utf8\strlen(trim($value['meta_title'])) < 1) || (Helper\Utf8\strlen($value['meta_title']) > 255)) {
 				$json['error']['meta_title_' . $language_id] = $this->language->get('error_meta_title');
 			}
 		}
 
-		if ((utf8_strlen($this->request->post['model']) < 1) || (utf8_strlen($this->request->post['model']) > 64)) {
+		if ((Helper\Utf8\strlen($this->request->post['model']) < 1) || (Helper\Utf8\strlen($this->request->post['model']) > 64)) {
 			$json['error']['model'] = $this->language->get('error_model');
 		}
 
@@ -1224,14 +1256,6 @@ class Product extends \Opencart\System\Engine\Controller {
 		} else {
 			$limit = 5;
 		}
-
-		$frequencies = [
-			'day'        => $this->language->get('text_day'),
-			'week'       => $this->language->get('text_week'),
-			'semi_month' => $this->language->get('text_semi_month'),
-			'month'      => $this->language->get('text_month'),
-			'year'       => $this->language->get('text_year'),
-		];
 
 		$filter_data = [
 			'filter_name'  => $filter_name,

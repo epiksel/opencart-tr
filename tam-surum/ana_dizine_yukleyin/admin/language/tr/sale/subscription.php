@@ -58,7 +58,8 @@ $_['entry_description']          = 'Açıklama';
 $_['entry_amount']               = 'Tutar';
 $_['entry_notify']               = 'Müşteriye Bildir';
 $_['entry_override']             = 'Geçersiz kıl';
-$_['entry_date_added']           = 'Ekleme Tarihi';
+$_['entry_date_from']            = 'Başlangıç Tarihi';
+$_['entry_date_to']              = 'Bitiş Tarihi';
 
 // Error
 $_['error_subscription']         = 'Uyarı: Abonelik bulunamadı!';

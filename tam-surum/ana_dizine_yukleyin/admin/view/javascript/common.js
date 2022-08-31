@@ -76,68 +76,86 @@ $(document).ready(function () {
     $('#menu a[href=\'' + sessionStorage.getItem('menu') + '\']').parents('li').addClass('active');
 });
 
-// Tooltip
-var tooltip = function () {
-    $('.tooltip').remove();
+$(document).ready(function () {
+    // Tooltip
+    var oc_tooltip = function () {
+        // Apply to all on current page
+        tooltip = bootstrap.Tooltip.getOrCreateInstance(this);
+        tooltip.show();
+    }
 
-    // Apply to all on current page
-    $('[data-bs-toggle=\'tooltip\']').each(function (i, element) {
-        bootstrap.Tooltip.getOrCreateInstance(element);
-    });
-}
+    $(document).on('mouseenter', '[data-bs-toggle=\'tooltip\']', oc_tooltip);
 
-$(document).ready(tooltip);
-// Makes tooltips work on ajax generated content
-$(document).on('click', 'button', tooltip);
-
-// Daterangepicker
-var datetimepicker = function () {
-    $('.date').daterangepicker({
-        singleDatePicker: true,
-        autoApply: true,
-        locale: {
-            format: 'YYYY-MM-DD'
-        }
+    $(document).on('click', 'button', function () {
+        $('.tooltip').remove();
     });
 
-    $('.time').daterangepicker({
-        singleDatePicker: true,
-        datePicker: false,
-        autoApply: true,
-        timePicker: true,
-        timePicker24Hour: true,
-        locale: {
-            format: 'HH:mm'
-        }
-    }).on('show.daterangepicker', function (ev, picker) {
-        picker.container.find('.calendar-table').hide();
-    });
-
-    $('.datetime').daterangepicker({
-        singleDatePicker: true,
-        autoApply: true,
-        timePicker: true,
-        timePicker24Hour: true,
-        locale: {
-            format: 'YYYY-MM-DD HH:mm'
-        }
-    });
-}
-
-$(document).ready(datetimepicker);
-$(document).on('click', 'button', datetimepicker);
-
-// Alert Fade
-var alert = function () {
-    window.setTimeout(function() {
-        $('.alert-dismissible').fadeTo(1000, 0, function() {
-            $(this).remove();
+    // Date
+    var oc_datetimepicker = function () {
+        $(this).daterangepicker({
+            singleDatePicker: true,
+            autoApply: true,
+            autoUpdateInput: false,
+            locale: {
+                format: 'YYYY-MM-DD'
+            }
+        }, function (start, end) {
+            $(this.element).val(start.format('YYYY-MM-DD'));
         });
-    }, 7000);
-}
+    }
 
-$(document).ready(alert);
-$(document).on('click', 'button', alert);
+    $(document).on('focus', '.date', oc_datetimepicker);
+
+    // Time
+    var oc_datetimepicker = function () {
+        $(this).daterangepicker({
+            singleDatePicker: true,
+            datePicker: false,
+            autoApply: true,
+            autoUpdateInput: false,
+            timePicker: true,
+            timePicker24Hour: true,
+            locale: {
+                format: 'HH:mm'
+            }
+        }, function (start, end) {
+            $(this.element).val(start.format('HH:mm'));
+        }).on('show.daterangepicker', function (ev, picker) {
+            picker.container.find('.calendar-table').hide();
+        });
+    }
+
+    $(document).on('focus', '.time', oc_datetimepicker);
+
+    // Date Time
+    var oc_datetimepicker = function () {
+        $('.datetime').daterangepicker({
+            singleDatePicker: true,
+            autoApply: true,
+            autoUpdateInput: false,
+            timePicker: true,
+            timePicker24Hour: true,
+            locale: {
+                format: 'YYYY-MM-DD HH:mm'
+            }
+        }, function (start, end) {
+            $(this.element).val(start.format('YYYY-MM-DD HH:mm'));
+        });
+    }
+
+    $(document).on('focus', '.datetime', oc_datetimepicker);
+
+    // Alert Fade
+    var oc_alert = function () {
+        window.setTimeout(function () {
+            $('.alert-dismissible').fadeTo(1000, 0, function () {
+                $(this).remove();
+            });
+        }, 7000);
+    }
+
+    $(document).on('click', 'button', oc_alert);
+});
 
 // Forms
 $(document).on('submit', 'form[data-oc-toggle=\'ajax\']', function (e) {
@@ -149,9 +167,7 @@ $(document).on('submit', 'form[data-oc-toggle=\'ajax\']', function (e) {
 
     var action = $(form).attr('action');
 
-    console.log();
-
-    if (e.originalEvent.submitter !== undefined) {
+    if (e.originalEvent !== undefined && e.originalEvent.submitter !== undefined) {
         var button = e.originalEvent.submitter;
     } else {
         var button = '';
@@ -175,13 +191,6 @@ $(document).on('submit', 'form[data-oc-toggle=\'ajax\']', function (e) {
         enctype = 'application/x-www-form-urlencoded';
     }
 
-    // https://github.com/opencart/opencart/issues/9690
-    if (typeof CKEDITOR != 'undefined') {
-        for (instance in CKEDITOR.instances) {
-            CKEDITOR.instances[instance].updateElement();
-        }
-    }
-
     console.log(e);
     console.log('element ' + element);
     console.log('action ' + action);
@@ -190,8 +199,15 @@ $(document).on('submit', 'form[data-oc-toggle=\'ajax\']', function (e) {
     console.log('method ' + method);
     console.log('enctype ' + enctype);
 
+    // https://github.com/opencart/opencart/issues/9690
+    if (typeof CKEDITOR != 'undefined') {
+        for (instance in CKEDITOR.instances) {
+            CKEDITOR.instances[instance].updateElement();
+        }
+    }
+
     $.ajax({
-        url: action,
+        url: action.replaceAll('&amp;', '&'),
         type: method,
         data: $(form).serialize(),
         dataType: 'json',
@@ -203,23 +219,23 @@ $(document).on('submit', 'form[data-oc-toggle=\'ajax\']', function (e) {
             $(button).prop('disabled', false).removeClass('loading');
         },
         success: function (json) {
+            console.log(json);
+
             $('.alert-dismissible').remove();
             $(element).find('.is-invalid').removeClass('is-invalid');
             $(element).find('.invalid-feedback').removeClass('d-block');
-
-            console.log(json);
 
             if (json['redirect']) {
                 location = json['redirect'];
             }
 
             if (typeof json['error'] == 'string') {
-                $('#alert').prepend('<div class="alert alert-danger alert-dismissible"><i class="fas fa-exclamation-circle"></i> ' + json['error'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
+                $('#alert').prepend('<div class="alert alert-danger alert-dismissible"><i class="fa-solid fa-circle-exclamation"></i> ' + json['error'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
             }
 
             if (typeof json['error'] == 'object') {
                 if (json['error']['warning']) {
-                    $('#alert').prepend('<div class="alert alert-danger alert-dismissible"><i class="fas fa-exclamation-circle"></i> ' + json['error']['warning'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
+                    $('#alert').prepend('<div class="alert alert-danger alert-dismissible"><i class="fa-solid fa-circle-exclamation"></i> ' + json['error']['warning'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
                 }
 
                 for (key in json['error']) {
@@ -229,7 +245,7 @@ $(document).on('submit', 'form[data-oc-toggle=\'ajax\']', function (e) {
             }
 
             if (json['success']) {
-                $('#alert').prepend('<div class="alert alert-success alert-dismissible"><i class="fas fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
+                $('#alert').prepend('<div class="alert alert-success alert-dismissible"><i class="fa-solid fa-circle-check"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
 
                 // Refresh
                 var url = $(form).attr('data-oc-load');
@@ -287,7 +303,7 @@ $(document).on('click', '[data-oc-toggle=\'upload\']', function () {
                     contentType: false,
                     processData: false,
                     beforeSend: function () {
-                        $(element).button('loading');
+                        $(element).prop('disabled', true).addClass('loading');
                     },
                     complete: function () {
                         $(element).prop('disabled', false).removeClass('loading');

@@ -1,5 +1,4 @@
 <?php
-namespace Install;
 //
 // Command line tool for installing cloud version of opencart
 //
@@ -12,25 +11,35 @@ namespace Install;
 //                             --password password
 //
 
+namespace Install;
+use \Opencart\System\Helper as Helper;
+
 ini_set('display_errors', 1);
 
 error_reporting(E_ALL);
 
+// APPLICATION
+define('APPLICATION', 'Install');
+
+// DIR
 define('DIR_OPENCART', str_replace('\\', '/', realpath(dirname(__FILE__) . '/../')) . '/');
 define('DIR_SYSTEM', DIR_OPENCART . 'system/');
 
 // Startup
+require_once(DIR_SYSTEM . 'startup.php');
+
+// Engine
 require_once(DIR_SYSTEM . 'engine/controller.php');
 require_once(DIR_SYSTEM . 'engine/registry.php');
 
+// Library
 require_once(DIR_SYSTEM . 'library/request.php');
 require_once(DIR_SYSTEM . 'library/response.php');
 require_once(DIR_SYSTEM . 'library/db.php');
 require_once(DIR_SYSTEM . 'library/db/mysqli.php');
 
-require_once(DIR_SYSTEM . 'helper/general.php');
+// Helper
 require_once(DIR_SYSTEM . 'helper/db_schema.php');
-require_once(DIR_SYSTEM . 'helper/utf8.php');
 
 // Registry
 $registry = new \Opencart\System\Engine\Registry();
@@ -49,8 +58,7 @@ set_error_handler(function($code, $message, $file, $line, array $errcontext) {
 		return false;
 	}
 
-	echo 'ERROR: ' . $code . ' ' . $message . ' in ' . $file . ' on line ' . $line . "\n";
-	exit();
+	throw new \ErrorException($message, 0, $code, $file, $line);
 });
 
 class CliCloud extends \Opencart\System\Engine\Controller {
@@ -124,11 +132,11 @@ class CliCloud extends \Opencart\System\Engine\Controller {
 		// Pre-installation check
 		$error = '';
 
-		if ((utf8_strlen($option['username']) < 3) || (utf8_strlen($option['username']) > 20)) {
+		if ((Helper\Utf8\strlen($option['username']) < 3) || (Helper\Utf8\strlen($option['username']) > 20)) {
 			$error .= 'ERROR: Username must be between 3 and 20 characters!' . "\n";
 		}
 
-		if ((utf8_strlen($option['email']) > 96) || !filter_var($option['email'], FILTER_VALIDATE_EMAIL)) {
+		if ((Helper\Utf8\strlen($option['email']) > 96) || !filter_var($option['email'], FILTER_VALIDATE_EMAIL)) {
 			$error .= 'ERROR: E-Mail Address does not appear to be valid!' . "\n";
 		}
 
@@ -166,7 +174,7 @@ class CliCloud extends \Opencart\System\Engine\Controller {
 		}
 
 		// Set up Database structure
-		$tables = db_schema();
+		$tables = Helper\DbSchema\db_schema();
 
 		foreach ($tables as $table) {
 			$table_query = $db->query("SELECT * FROM information_schema.COLUMNS WHERE TABLE_SCHEMA = '" . $db_database . "' AND TABLE_NAME = '" . $db_prefix . $table['name'] . "'");
@@ -239,7 +247,7 @@ class CliCloud extends \Opencart\System\Engine\Controller {
 
 			$db->query("SET @@session.sql_mode = ''");
 
-			$db->query("DELETE FROM `" . $db_prefix . "user` WHERE user_id = '1'");
+			$db->query("DELETE FROM `" . $db_prefix . "user` WHERE `user_id` = '1'");
 
 			// If cloud we do not need to hash the password as we will be passing the password hash
 			$db->query("INSERT INTO `" . $db_prefix . "user` SET `user_id` = '1', `user_group_id` = '1', `username` = '" . $db->escape($option['username']) . "', `password` = '" . $db->escape($option['password']) . "', `firstname` = 'John', `lastname` = 'Doe', `email` = '" . $db->escape($option['email']) . "', `status` = '1', `date_added` = NOW()");
@@ -248,11 +256,9 @@ class CliCloud extends \Opencart\System\Engine\Controller {
 			$db->query("INSERT INTO `" . $db_prefix . "setting` SET `code` = 'config', `key` = 'config_email', `value` = '" . $db->escape($option['email']) . "'");
 
 			$db->query("DELETE FROM `" . $db_prefix . "setting` WHERE `key` = 'config_encryption'");
-			$db->query("INSERT INTO `" . $db_prefix . "setting` SET `code` = 'config', `key` = 'config_encryption', `value` = '" . $db->escape(token(1024)) . "'");
+			$db->query("INSERT INTO `" . $db_prefix . "setting` SET `code` = 'config', `key` = 'config_encryption', `value` = '" . $db->escape(Helper\General\token(1024)) . "'");
 
-			$db->query("UPDATE `" . $db_prefix . "product` SET `viewed` = '0'");
-
-			$db->query("INSERT INTO `" . $db_prefix . "api` SET `username` = 'Default', `key` = '" . $db->escape(token(256)) . "', `status` = 1, `date_added` = NOW(), `date_modified` = NOW()");
+			$db->query("INSERT INTO `" . $db_prefix . "api` SET `username` = 'Default', `key` = '" . $db->escape(Helper\General\token(256)) . "', `status` = 1, `date_added` = NOW(), `date_modified` = NOW()");
 
 			$last_id = $db->getLastId();
 

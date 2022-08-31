@@ -116,6 +116,8 @@ $response->addHeader('Access-Control-Allow-Credentials: true');
 $response->addHeader('Access-Control-Max-Age: 1000');
 $response->addHeader('Access-Control-Allow-Headers: X-Requested-With, Content-Type, Origin, Cache-Control, Pragma, Authorization, Accept, Accept-Encoding');
 $response->addHeader('Access-Control-Allow-Methods: PUT, POST, GET, OPTIONS, DELETE');
+$response->addHeader('Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0');
+$response->addHeader('Pragma: no-cache');
 $response->setCompression($config->get('response_compression'));
 $registry->set('response', $response);
 
@@ -141,15 +143,10 @@ if ($config->get('session_autostart')) {
 
 	$session->start($session_id);
 
-	// Setting the cookie path to the store front so admin users can login to customers accounts.
-	$path = dirname($_SERVER['PHP_SELF']);
-
-	$path = substr($path, 0, strrpos($path, '/')) . '/';
-
 	// Require higher security for session cookies
 	$option = [
 		'expires'  => 0,
-		'path'     => $config->get('session_path'),
+		'path'     => !empty($request->server['PHP_SELF']) ? rtrim(dirname($request->server['PHP_SELF']), '/') . '/' : '/',
 		'domain'   => $config->get('session_domain'),
 		'secure'   => $request->server['HTTPS'],
 		'httponly' => false,
@@ -207,6 +204,10 @@ foreach ($config->get('action_pre_action') as $pre_action) {
 }
 
 // Route
+if (isset($request->get['route'])) {
+	$request->get['route'] = str_replace('%7C', '|', (string)$request->get['route']);
+}
+
 if (!$action) {
 	if (!empty($request->get['route'])) {
 		$action = new \Opencart\System\Engine\Action((string)$request->get['route']);
@@ -219,8 +220,8 @@ if (!$action) {
 while ($action) {
 	// Get the route path of the object to be executed.
 	$route = $action->getId();
-
 	$args = [];
+	$output = '';
 
 	// Keep the original trigger.
 	$trigger = $action->getId();

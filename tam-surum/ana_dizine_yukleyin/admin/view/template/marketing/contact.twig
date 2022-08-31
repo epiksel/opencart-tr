@@ -3,7 +3,7 @@
 	<div class="page-header">
 		<div class="container-fluid">
 			<div class="float-end">
-				<button type="button" id="button-send" class="btn btn-primary"><i class="fas fa-envelope"></i> {{ button_send }}</button></div>
+				<button type="button" id="button-send" class="btn btn-primary"><i class="fa-solid fa-envelope"></i> {{ button_send }}</button></div>
 			<h1>{{ heading_title }}</h1>
 			<ol class="breadcrumb">
 				{% for breadcrumb in breadcrumbs %}
@@ -14,7 +14,7 @@
 	</div>
 	<div class="container-fluid">
 		<div class="card">
-			<div class="card-header"><i class="fas fa-envelope"></i> {{ text_mail }}</div>
+			<div class="card-header"><i class="fa-solid fa-envelope"></i> {{ text_mail }}</div>
 			<div class="card-body">
 				<form>
 					<div class="row mb-3">
@@ -107,7 +107,7 @@
 	</div>
 </div>
 <script type="text/javascript"><!--
-$('#input-to').on('change', function() {
+$('#input-to').on('change', function () {
     $('.to').hide();
 
     $('#to-' + this.value.replaceAll('_', '-')).show();
@@ -117,112 +117,112 @@ $('#input-to').trigger('change');
 
 // Customers
 $('#input-customer').autocomplete({
-    'source': function(request, response) {
+    'source': function (request, response) {
         $.ajax({
             url: 'index.php?route=customer/customer|autocomplete&user_token={{ user_token }}&filter_name=' + encodeURIComponent(request),
             dataType: 'json',
-            success: function(json) {
-                response($.map(json, function(item) {
+            success: function (json) {
+                response($.map(json, function (item) {
                     return {
                         label: item['name'],
                         value: item['customer_id']
                     }
                 }));
             },
-            error: function(xhr, ajaxOptions, thrownError) {
+            error: function (xhr, ajaxOptions, thrownError) {
                 console.log(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
             }
         });
     },
-    'select': function(item) {
+    'select': function (item) {
         $('#input-customer').val('');
 
         $('#mail-customer-' + item['value']).remove();
 
         html = '<tr id="mail-customer-' + item['value'] + '">';
         html += '  <td>' + item['label'] + '<input type="hidden" name="customer[]" value="' + item['value'] + '"/></td>';
-        html += '  <td class="text-end"><button type="button" class="btn btn-danger btn-sm"><i class="fas fa-minus-circle"></i></button></td>';
+        html += '  <td class="text-end"><button type="button" class="btn btn-danger btn-sm"><i class="fa-solid fa-minus-circle"></i></button></td>';
         html += '</tr>';
 
         $('#mail-customer tbody').append(html);
     }
 });
 
-$('#mail-customer').on('click', '.btn', function() {
+$('#mail-customer').on('click', '.btn', function () {
     $(this).parent().parent().remove();
 });
 
 // Affiliates
 $('#input-affiliate').autocomplete({
-    'source': function(request, response) {
+    'source': function (request, response) {
         $.ajax({
             url: 'index.php?route=customer/customer|autocomplete&user_token={{ user_token }}&filter_name=' + encodeURIComponent(request) + '&filter_affiliate=1',
             dataType: 'json',
-            success: function(json) {
-                response($.map(json, function(item) {
+            success: function (json) {
+                response($.map(json, function (item) {
                     return {
                         label: item['name'],
                         value: item['customer_id']
                     }
                 }));
             },
-            error: function(xhr, ajaxOptions, thrownError) {
+            error: function (xhr, ajaxOptions, thrownError) {
                 console.log(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
             }
         });
     },
-    'select': function(item) {
+    'select': function (item) {
         $('#input-affiliate').val('');
 
         $('#mail-affiliate-' + item['value']).remove();
 
         html  = '<tr id="mail-affiliate-' + item['value'] + '">';
         html += '  <td>' + item['label'] + '<input type="hidden" name="affiliate[]" value="' + item['value'] + '"/></td>';
-        html += '  <td class="text-end"><button type="button" class="btn btn-danger btn-sm"><i class="fas fa-minus-circle"></i></button></td>';
+        html += '  <td class="text-end"><button type="button" class="btn btn-danger btn-sm"><i class="fa-solid fa-minus-circle"></i></button></td>';
         html += '</tr>';
 
         $('#mail-affiliate tbody').append(html);
     }
 });
 
-$('#input-affiliate').on('click', '.btn', function() {
+$('#input-affiliate').on('click', '.btn', function () {
     $(this).parent().parent().remove();
 });
 
 // Products
 $('#input-product').autocomplete({
-    'source': function(request, response) {
+    'source': function (request, response) {
         $.ajax({
             url: 'index.php?route=catalog/product|autocomplete&user_token={{ user_token }}&filter_name=' + encodeURIComponent(request),
             dataType: 'json',
-            success: function(json) {
-                response($.map(json, function(item) {
+            success: function (json) {
+                response($.map(json, function (item) {
                     return {
                         label: item['name'],
                         value: item['product_id']
                     }
                 }));
             },
-            error: function(xhr, ajaxOptions, thrownError) {
+            error: function (xhr, ajaxOptions, thrownError) {
                 console.log(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
             }
         });
     },
-    'select': function(item) {
+    'select': function (item) {
         $('#input-product').val('');
 
         $('#mail-product-' + item['value']).remove();
 
         html  = '<tr id="mail-product-' + item['value'] + '">';
         html += '  <td>' + item['label'] + '<input type="hidden" name="product[]" value="' + item['value'] + '"/></td>';
-        html += '  <td class="text-end"><button type="button" class="btn btn-danger btn-sm"><i class="fas fa-minus-circle"></i></button></td>';
+        html += '  <td class="text-end"><button type="button" class="btn btn-danger btn-sm"><i class="fa-solid fa-minus-circle"></i></button></td>';
         html += '</tr>';
 
         $('#mail-product tbody').append(html);
     }
 });
 
-$('#mail-product').on('click', '.btn', function() {
+$('#mail-product').on('click', '.btn', function () {
     $(this).parent().parent().remove();
 });
 
@@ -230,7 +230,7 @@ $('textarea[data-oc-toggle=\'ckeditor\']').ckeditor({
     language:'{{ ckeditor }}'
 });
 
-$('#button-send').on('click', function() {
+$('#button-send').on('click', function () {
     var element = this;
 
     for (instance in CKEDITOR.instances) {
@@ -239,24 +239,24 @@ $('#button-send').on('click', function() {
 
     var next = 'index.php?route=marketing/contact|send&user_token={{ user_token }}';
 
-    var send = function() {
+    var send = function () {
         $.ajax({
             url: next,
             type: 'post',
             data: $('#content form').serialize(),
             dataType: 'json',
-            beforeSend: function() {
+            beforeSend: function () {
                 $('#button-send').prop('disabled', true).addClass('loading');
             },
-            complete: function() {
+            complete: function () {
                 $('#button-send').prop('disabled', false).removeClass('loading');
             },
-            success: function(json) {
+            success: function (json) {
                 $('.invalid-feedback').removeClass('d-block');
 
                 if (json['error']) {
                     if (json['error']['warning']) {
-                        $('#alert').prepend('<div class="alert alert-danger"><i class="fas fa-exclamation-circle"></i> ' + json['error']['warning'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
+                        $('#alert').prepend('<div class="alert alert-danger alert-dismissible"><i class="fa-solid fa-circle-exclamation"></i> ' + json['error']['warning'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
                     }
 
                     for (key in json['error']) {
@@ -268,7 +268,7 @@ $('#button-send').on('click', function() {
                 }
 
                 if (json['success']) {
-                    $('#alert').prepend('<div class="alert alert-success"><i class="fas fa-check-circle-circle"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
+                    $('#alert').prepend('<div class="alert alert-success alert-dismissible"><i class="fa-solid fa-check-circle-circle"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
                 }
 
                 if (json['next']) {
@@ -277,7 +277,7 @@ $('#button-send').on('click', function() {
                     chain.attach(send);
                 }
             },
-            error: function(xhr, ajaxOptions, thrownError) {
+            error: function (xhr, ajaxOptions, thrownError) {
                 console.log(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
             }
         });

@@ -19,7 +19,7 @@ class Language extends \Opencart\System\Engine\Controller {
 		$url = '';
 
 		if ($url_data) {
-			$url = '&' . urldecode(http_build_query($url_data));
+			$url .= '&' . urldecode(http_build_query($url_data));
 		}
 
 		$data['languages'] = [];
@@ -30,34 +30,15 @@ class Language extends \Opencart\System\Engine\Controller {
 
 		foreach ($results as $result) {
 			$data['languages'][] = [
-				'name' => $result['name'],
-				'code' => $result['code'],
-				'href' => $this->url->link('common/language|save', 'language=' . $this->config->get('config_language') . '&code=' . $result['code'] . '&redirect=' . urlencode(str_replace('&amp;', '&', $this->url->link($route, 'language=' . $result['code'] . $url))))
+				'name'  => $result['name'],
+				'code'  => $result['code'],
+				'image' => $result['image'],
+				'href'  => $this->url->link($route, 'language=' . $result['code'] . $url, true)
 			];
 		}
 
 		$data['code'] = $this->config->get('config_language');
 
 		return $this->load->view('common/language', $data);
-	}
-
-	public function save(): void {
-		if (isset($this->request->get['code'])) {
-			$code = $this->request->get['code'];
-		} else {
-			$code = $this->config->get('config_language');
-		}
-
-		if (isset($this->request->get['redirect'])) {
-			$redirect =  htmlspecialchars_decode($this->request->get['redirect'], ENT_COMPAT);
-		} else {
-			$redirect = '';
-		}
-
-		if ($redirect && substr($redirect, 0, strlen($this->config->get('config_url'))) == $this->config->get('config_url')) {
-			$this->response->redirect($redirect);
-		} else {
-			$this->response->redirect($this->url->link($this->config->get('action_default'), 'language=' . $code));
-		}
 	}
 }

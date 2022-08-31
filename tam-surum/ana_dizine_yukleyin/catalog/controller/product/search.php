@@ -1,5 +1,6 @@
 <?php
 namespace Opencart\Catalog\Controller\Product;
+use \Opencart\System\Helper as Helper;
 class Search extends \Opencart\System\Engine\Controller {
 	public function index(): void {
 		$this->load->language('product/search');
@@ -58,7 +59,7 @@ class Search extends \Opencart\System\Engine\Controller {
 			$page = 1;
 		}
 
-		if (isset($this->request->get['limit'])) {
+		if (isset($this->request->get['limit']) && (int)$this->request->get['limit']) {
 			$limit = (int)$this->request->get['limit'];
 		} else {
 			$limit = $this->config->get('config_pagination');
@@ -218,7 +219,7 @@ class Search extends \Opencart\System\Engine\Controller {
 					'product_id'  => $result['product_id'],
 					'thumb'       => $image,
 					'name'        => $result['name'],
-					'description' => utf8_substr(trim(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8'))), 0, $this->config->get('config_product_description_length')) . '..',
+					'description' => Helper\Utf8\substr(trim(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8'))), 0, $this->config->get('config_product_description_length')) . '..',
 					'price'       => $price,
 					'special'     => $special,
 					'tax'         => $tax,

@@ -1,5 +1,6 @@
 <?php
 namespace Opencart\Admin\Controller\Localisation;
+use \Opencart\System\Helper AS Helper;
 class Language extends \Opencart\System\Engine\Controller {
 	public function index(): void {
 		$this->load->language('localisation/language');
@@ -212,21 +213,19 @@ class Language extends \Opencart\System\Engine\Controller {
 		} else {
 			$data['code'] = '';
 		}
-		
-		$data['languages'] = [];
-		
-		$folders = glob(DIR_LANGUAGE . '*', GLOB_ONLYDIR);
-
-		foreach ($folders as $folder) {
-			$data['languages'][] = basename($folder);
-		}
 
 		if (!empty($language_info)) {
 			$data['locale'] = $language_info['locale'];
 		} else {
 			$data['locale'] = '';
 		}
-		
+
+		if (!empty($language_info)) {
+			$data['extension'] = $language_info['extension'];
+		} else {
+			$data['extension'] = '';
+		}
+
 		if (!empty($language_info)) {
 			$data['sort_order'] = $language_info['sort_order'];
 		} else {
@@ -236,7 +235,7 @@ class Language extends \Opencart\System\Engine\Controller {
 		if (!empty($language_info)) {
 			$data['status'] = $language_info['status'];
 		} else {
-			$data['status'] = true;
+			$data['status'] = 1;
 		}
 
 		$data['header'] = $this->load->controller('common/header');
@@ -255,15 +254,15 @@ class Language extends \Opencart\System\Engine\Controller {
 			$json['error']['warning'] = $this->language->get('error_permission');
 		}
 
-		if ((utf8_strlen($this->request->post['name']) < 1) || (utf8_strlen($this->request->post['name']) > 32)) {
+		if ((Helper\Utf8\strlen($this->request->post['name']) < 1) || (Helper\Utf8\strlen($this->request->post['name']) > 32)) {
 			$json['error']['name'] = $this->language->get('error_name');
 		}
 
-		if ((utf8_strlen($this->request->post['code']) < 2) || (utf8_strlen($this->request->post['code']) > 5)) {
+		if ((Helper\Utf8\strlen($this->request->post['code']) < 2) || (Helper\Utf8\strlen($this->request->post['code']) > 5)) {
 			$json['error']['code'] = $this->language->get('error_code');
 		}
 		
-		if ((utf8_strlen($this->request->post['locale']) < 2) || (utf8_strlen($this->request->post['locale']) > 255)) {
+		if ((Helper\Utf8\strlen($this->request->post['locale']) < 2) || (Helper\Utf8\strlen($this->request->post['locale']) > 255)) {
 			$json['error']['locale'] = $this->language->get('error_locale');
 		}
 		

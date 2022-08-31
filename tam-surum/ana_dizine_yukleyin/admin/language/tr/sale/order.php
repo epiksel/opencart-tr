@@ -114,8 +114,8 @@ $_['entry_shipping_method']      = 'Kargo Metotu';
 $_['entry_payment_method']       = 'Ödeme Metotu';
 $_['entry_order_id']             = 'Sipariş No';
 $_['entry_total']                = 'Toplam';
-$_['entry_date_added']           = 'Ekleme Tarihi';
-$_['entry_date_modified']        = 'Değiştirme Tarihi';
+$_['entry_date_from']            = 'Başlangıç Tarihi';
+$_['entry_date_to']              = 'Bitiş Tarihi';
 
 // Help
 $_['help_override']              = 'Eğer sipariş durumu değiştirilmesi, sahtekârlık araçları tarafından engelleniyorsa, geçersiz kılmayı etkinleştirin.';

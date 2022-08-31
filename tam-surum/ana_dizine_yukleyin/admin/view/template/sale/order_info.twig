@@ -2,7 +2,7 @@
 <div id="content">
   <div class="page-header">
     <div class="container-fluid">
-      <div class="float-end"><a href="{{ invoice }}" target="_blank" data-bs-toggle="tooltip" title="{{ button_invoice_print }}" class="btn btn-info{% if not order_id %} disabled{% endif %}"><i class="fas fa-print"></i></a> <a href="{{ shipping }}" target="_blank" data-bs-toggle="tooltip" title="{{ button_shipping_print }}" class="btn btn-info{% if not shipping_code %} disabled{% endif %}"><i class="fas fa-truck"></i></a> <a href="{{ back }}" data-bs-toggle="tooltip" title="{{ button_back }}" class="btn btn-light"><i class="fas fa-reply"></i></a></div>
+      <div class="float-end"><a href="{{ invoice }}" target="_blank" data-bs-toggle="tooltip" title="{{ button_invoice_print }}" class="btn btn-info{% if not order_id %} disabled{% endif %}"><i class="fa-solid fa-print"></i></a> <a href="{{ shipping }}" target="_blank" data-bs-toggle="tooltip" title="{{ button_shipping_print }}" class="btn btn-info{% if not shipping_code %} disabled{% endif %}"><i class="fa-solid fa-truck"></i></a> <a href="{{ back }}" data-bs-toggle="tooltip" title="{{ button_back }}" class="btn btn-light"><i class="fa-solid fa-reply"></i></a></div>
       <h1>{{ heading_title }}</h1>
       <ol class="breadcrumb">
         {% for breadcrumb in breadcrumbs %}
@@ -13,7 +13,7 @@
   </div>
   <div class="container-fluid">
     <div class="card mb-3">
-      <div class="card-header"><i class="fas fa-info-circle"></i> {{ text_form }}</div>
+      <div class="card-header"><i class="fa-solid fa-info-circle"></i> {{ text_form }}</div>
       <div class="card-body">
         <div class="row row-cols-1 row-cols-sm-1 row-cols-md-3 row-cols-xl-3">
 
@@ -26,9 +26,9 @@
                 </div>
               </div>
               {% if not invoice_no %}
-                <button type="button" id="button-invoice" data-bs-toggle="tooltip" title="{{ button_generate }}" class="btn btn-outline-primary"><i class="fas fa-cog"></i></button>
+                <button type="button" id="button-invoice" data-bs-toggle="tooltip" title="{{ button_generate }}" class="btn btn-outline-primary"><i class="fa-solid fa-cog"></i></button>
               {% else %}
-                <button type="button" disabled="disabled" class="btn btn-outline-primary"><i class="fas fa-cog"></i></button>
+                <button type="button" disabled="disabled" class="btn btn-outline-primary"><i class="fa-solid fa-cog"></i></button>
               {% endif %}
             </div>
           </div>
@@ -45,7 +45,7 @@
                   {% endif %}
                 </div>
               </div>
-              <button type="button" data-bs-toggle="modal" data-bs-target="#modal-customer" class="btn btn-outline-primary"><i class="fas fa-cog"></i></button>
+              <button type="button" data-bs-toggle="modal" data-bs-target="#modal-customer" class="btn btn-outline-primary"><i class="fa-solid fa-cog"></i></button>
             </div>
           </div>
 
@@ -99,7 +99,7 @@
                 <td class="text-end">{{ order_product.total }}</td>
                 <td class="text-end">
                   <form>
-                    <button type="submit" data-bs-toggle="tooltip" title="{{ button_remove }}" class="btn btn-danger"><i class="fas fa-minus-circle"></i></button>
+                    <button type="submit" data-bs-toggle="tooltip" title="{{ button_remove }}" class="btn btn-danger"><i class="fa-solid fa-minus-circle"></i></button>
                     <input type="hidden" name="key" value="{{ order_product.cart_id }}"/>
                   </form>
                 </td>
@@ -116,7 +116,7 @@
                 <td class="text-end">{{ order_voucher.amount }}</td>
                 <td class="text-end">
                   <form>
-                    <button type="submit" data-bs-toggle="tooltip" title="{{ button_remove }}" class="btn btn-danger"><i class="fas fa-minus-circle"></i></button>
+                    <button type="submit" data-bs-toggle="tooltip" title="{{ button_remove }}" class="btn btn-danger"><i class="fa-solid fa-minus-circle"></i></button>
                     <input type="hidden" name="key" value="{{ order_voucher.key }}"/>
                   </form>
                 </td>
@@ -125,7 +125,7 @@
 
             {% if not order_products and not order_vouchers %}
               <tr>
-                <td colspan="6" class="text-center">{{ text_no_results }}</td
+                <td colspan="6" class="text-center">{{ text_no_results }}</td>
               </tr>
             {% endif %}
 
@@ -133,7 +133,7 @@
           <tfoot>
             <tr>
               <td colspan="5"></td>
-              <td class="text-end"><button type="button" data-bs-toggle="modal" data-bs-target="#modal-cart" class="btn btn-primary"><i class="fas fa-plus-circle"></i></button></td>
+              <td class="text-end"><button type="button" data-bs-toggle="modal" data-bs-target="#modal-cart" class="btn btn-primary"><i class="fa-solid fa-plus-circle"></i></button></td>
             </tr>
           </tfoot>
         </table>
@@ -180,8 +180,9 @@
             <div class="col">
               <form id="form-coupon" class="mb-3">
                 <div class="input-group form-floating">
-                  <input type="text" name="coupon" value="{{ coupon }}" placeholder="{{ entry_coupon }}" id="input-coupon" class="form-control"/> <label for="input-coupon">{{ entry_coupon }}</label>
-                  <button type="submit" id="button-coupon" data-bs-toogle="tooltip" title="{{ button_apply }}" class="btn btn-outline-primary"><i class="fas fa-check"></i></button>
+                  <input type="text" name="coupon" value="{{ total_coupon }}" placeholder="{{ entry_coupon }}" id="input-coupon" class="form-control"/>
+                  <label for="input-coupon">{{ entry_coupon }}</label>
+                  <button type="submit" id="button-coupon" data-bs-toogle="tooltip" title="{{ button_apply }}" class="btn btn-outline-primary"><i class="fa-solid fa-check"></i></button>
                 </div>
               </form>
             </div>
@@ -189,8 +190,8 @@
             <div class="col">
               <form id="form-voucher">
                 <div class="input-group form-floating">
-                  <input type="text" name="voucher" value="{{ voucher }}" placeholder="{{ entry_voucher }}" id="input-voucher" class="form-control"/> <label for="input-voucher">{{ entry_voucher }}</label>
-                  <button type="submit" id="button-voucher" data-bs-toogle="tooltip" title="{{ button_apply }}" class="btn btn-outline-primary"><i class="fas fa-check"></i></button>
+                  <input type="text" name="voucher" value="{{ total_voucher }}" placeholder="{{ entry_voucher }}" id="input-voucher" class="form-control"/> <label for="input-voucher">{{ entry_voucher }}</label>
+                  <button type="submit" id="button-voucher" data-bs-toogle="tooltip" title="{{ button_apply }}" class="btn btn-outline-primary"><i class="fa-solid fa-check"></i></button>
                 </div>
               </form>
             </div>
@@ -198,8 +199,8 @@
             <div class="col">
               <form id="form-reward" class="mb-3">
                 <div class="input-group form-floating">
-                  <input type="text" name="reward" value="{{ reward }}" placeholder="{{ entry_reward }}" id="input-reward" class="form-control"/> <label for="input-reward">{{ entry_reward }}</label>
-                  <button type="submit" id="button-reward" class="btn btn-outline-primary"><i class="fas fa-check"></i></button>
+                  <input type="text" name="reward" value="{{ total_reward }}" placeholder="{{ entry_reward }}" id="input-reward" class="form-control"/> <label for="input-reward">{{ entry_reward }}</label>
+                  <button type="submit" id="button-reward" class="btn btn-outline-primary"><i class="fa-solid fa-check"></i></button>
                 </div>
               </form>
             </div>
@@ -213,9 +214,9 @@
                   </div>
                 </div>
                 {% if not reward_total %}
-                  <button type="button" id="button-reward-add" data-bs-toggle="tooltip" title="{{ button_reward_add }}" class="btn btn-success"{% if not customer_id or not points %} disabled{% endif %}><i class="fas fa-plus-circle"></i></button>
+                  <button type="button" id="button-reward-add" data-bs-toggle="tooltip" title="{{ button_reward_add }}" class="btn btn-success"{% if not customer_id or not points %} disabled{% endif %}><i class="fa-solid fa-plus-circle"></i></button>
                 {% else %}
-                  <button type="button" id="button-reward-remove" data-bs-toggle="tooltip" title="{{ button_reward_remove }}" class="btn btn-danger"><i class="fas fa-minus-circle"></i></button>
+                  <button type="button" id="button-reward-remove" data-bs-toggle="tooltip" title="{{ button_reward_remove }}" class="btn btn-danger"><i class="fa-solid fa-minus-circle"></i></button>
                 {% endif %}
               </div>
             </div>
@@ -232,7 +233,7 @@
                     {% endif %}
                   </div>
                 </div>
-                <button type="button" data-bs-toggle="modal" data-bs-target="#modal-affiliate" class="btn btn-outline-primary"><i class="fas fa-cog"></i></button>
+                <button type="button" data-bs-toggle="modal" data-bs-target="#modal-affiliate" class="btn btn-outline-primary"><i class="fa-solid fa-cog"></i></button>
               </div>
             </div>
 
@@ -249,9 +250,9 @@
                   </div>
                 </div>
                 {% if not commission_total %}
-                  <button type="button" id="button-commission-add" data-bs-toggle="tooltip" title="{{ button_commission_add }}" class="btn btn-success"{% if not affiliate_id %} disabled{% endif %}><i class="fas fa-plus-circle"></i></button>
+                  <button type="button" id="button-commission-add" data-bs-toggle="tooltip" title="{{ button_commission_add }}" class="btn btn-success"{% if not affiliate_id %} disabled{% endif %}><i class="fa-solid fa-plus-circle"></i></button>
                 {% else %}
-                  <button type="button" id="button-commission-remove" data-bs-toggle="tooltip" title="{{ button_commission_remove }}" class="btn btn-danger"><i class="fas fa-minus-circle"></i></button>
+                  <button type="button" id="button-commission-remove" data-bs-toggle="tooltip" title="{{ button_commission_remove }}" class="btn btn-danger"><i class="fa-solid fa-minus-circle"></i></button>
                 {% endif %}
               </div>
             </div>
@@ -259,7 +260,7 @@
           </div>
         </div>
 
-        <button type="button" id="button-collapse" class="btn btn-light btn-lg w-100 mb-3">{{ text_more }} <i class="fas fa-angle-down"></i></button>
+        <button type="button" id="button-collapse" class="btn btn-light btn-lg w-100 mb-3">{{ text_more }} <i class="fa-solid fa-angle-down"></i></button>
 
         <div class="row">
           <div class="col-md">
@@ -308,7 +309,7 @@
                   </div>
                 </div>
               </div>
-              <button type="button" data-bs-toggle="modal" data-bs-target="#modal-payment-address" class="btn btn-outline-primary float-end"><i class="fas fa-cog"></i></button>
+              <button type="button" data-bs-toggle="modal" data-bs-target="#modal-payment-address" class="btn btn-outline-primary float-end"><i class="fa-solid fa-cog"></i></button>
             </div>
           </div>
           <div id="shipping-address" class="col{% if not shipping_method %} d-none{% endif %}">
@@ -351,7 +352,7 @@
                   </div>
                 </div>
               </div>
-              <button type="button" data-bs-toggle="modal" data-bs-target="#modal-shipping-address" class="btn btn-outline-primary float-end"><i class="fas fa-cog"></i></button>
+              <button type="button" data-bs-toggle="modal" data-bs-target="#modal-shipping-address" class="btn btn-outline-primary float-end"><i class="fa-solid fa-cog"></i></button>
             </div>
           </div>
         </div>
@@ -366,7 +367,7 @@
                     <option value="{{ shipping_code }}" selected>{{ shipping_method }}</option>
                   {% endif %}
                 </select> <label for="input-shipping-method">{{ entry_shipping_method }}</label>
-                <button type="button" id="button-shipping-method" class="btn btn-outline-primary"><i class="fas fa-sync"></i></button>
+                <button type="button" id="button-shipping-method" class="btn btn-outline-primary"><i class="fa-solid fa-rotate"></i></button>
               </div>
             </form>
           </div>
@@ -380,7 +381,7 @@
                     <option value="{{ payment_code }}" selected>{{ payment_method }}</option>
                   {% endif %}
                 </select> <label for="input-payment-method">{{ entry_payment_method }}</label>
-                <button type="button" id="button-payment-method" class="btn btn-outline-primary"><i class="fas fa-sync"></i></button>
+                <button type="button" id="button-payment-method" class="btn btn-outline-primary"><i class="fa-solid fa-rotate"></i></button>
               </div>
             </form>
           </div>
@@ -400,7 +401,7 @@
                   {% endif %}
                 </div>
               </div>
-              <button type="button" data-bs-toggle="modal" data-bs-target="#modal-comment" class="btn btn-outline-primary float-end"><i class="fas fa-cog"></i></button>
+              <button type="button" data-bs-toggle="modal" data-bs-target="#modal-comment" class="btn btn-outline-primary float-end"><i class="fa-solid fa-cog"></i></button>
             </div>
           </div>
         </div>
@@ -416,17 +417,14 @@
           </tbody>
         </table>
         <div class="text-end">
-          <button type="button" id="button-refresh" data-bs-toggle="tooltip" title="{{ button_refresh }}" class="btn btn-outline-primary"><i class="fas fa-sync"></i></button>
-          <button type="button" id="button-confirm" class="btn btn-primary"><i class="fas fa-save"></i> {{ button_confirm }}</button>
+          <button type="button" id="button-refresh" data-bs-toggle="tooltip" title="{{ button_refresh }}" class="btn btn-outline-primary"><i class="fa-solid fa-rotate"></i></button>
+          <button type="button" id="button-confirm" class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i> {{ button_confirm }}</button>
         </div>
-
       </div>
-
-
     </div>
 
     <div class="card mb-3">
-      <div class="card-header"><i class="fas fa-comment"></i> {{ text_history }}</div>
+      <div class="card-header"><i class="fa-solid fa-comment"></i> {{ text_history }}</div>
       <div class="card-body">
         <ul class="nav nav-tabs">
           <li class="nav-item"><a href="#tab-history" data-bs-toggle="tab" class="nav-link active">{{ tab_history }}</a></li>
@@ -458,6 +456,7 @@
                   <label for="input-override" class="col-sm-2 col-form-label">{{ entry_override }}</label>
                   <div class="col-sm-10">
                     <div class="form-check form-switch form-switch-lg">
+                      <input type="hidden" name="override" value="0"/>
                       <input type="checkbox" name="override" value="1" id="input-override" class="form-check-input">
                     </div>
                     <div class="form-text">{{ help_override }}</div>
@@ -467,6 +466,7 @@
                   <label for="input-notify" class="col-sm-2 col-form-label">{{ entry_notify }}</label>
                   <div class="col-sm-10">
                     <div class="form-check form-switch form-switch-lg">
+                      <input type="hidden" name="notify" value="0"/>
                       <input type="checkbox" name="notify" value="1" id="input-notify" class="form-check-input"/>
                     </div>
                   </div>
@@ -478,7 +478,7 @@
                   </div>
                 </div>
                 <div class="text-end">
-                  <button type="submit" id="button-history" class="btn btn-primary"><i class="fas fa-plus-circle"></i> {{ button_history_add }}</button>
+                  <button type="submit" id="button-history" class="btn btn-primary"><i class="fa-solid fa-plus-circle"></i> {{ button_history_add }}</button>
                 </div>
               </fieldset>
               <input type="hidden" name="order_id" value="{{ order_id }}" id="input-order-id"/>
@@ -536,7 +536,7 @@
           <div class="mb-3">
             <label for="input-customer" class="form-label">{{ entry_customer }}</label>
             <div class="input-group">
-              <input type="text" name="customer" value="{{ customer }}" placeholder="{{ entry_customer }}" id="input-customer" list="list-customer" class="form-control"/> <a href="{{ customer_add }}" target="_blank" data-bs-toggle="tooltip" title="{{ button_customer_add }}" class="btn btn-outline-secondary"><i class="fas fa-user-plus"></i></a>
+              <input type="text" name="customer" value="{{ customer }}" placeholder="{{ entry_customer }}" id="input-customer" list="list-customer" class="form-control"/> <a href="{{ customer_add }}" target="_blank" data-bs-toggle="tooltip" title="{{ button_customer_add }}" class="btn btn-outline-secondary"><i class="fa-solid fa-user-plus"></i></a>
             </div>
             <input type="hidden" name="customer_id" value="{{ customer_id }}" id="input-customer-id"/>
             <datalist id="list-customer"></datalist>
@@ -559,7 +559,7 @@
           <div class="mb-3 required">
             <label for="input-email" class="form-label">{{ entry_email }}</label>
             <div class="input-group">
-              <input type="text" name="email" value="{{ email }}" placeholder="{{ entry_email }}" id="input-email" class="form-control"/> <a href="mailto:{{ email }}" class="btn btn-outline-secondary"><i class="fa fa-envelope"></i></a>
+              <input type="text" name="email" value="{{ email }}" placeholder="{{ entry_email }}" id="input-email" class="form-control"/> <a href="mailto:{{ email }}" class="btn btn-outline-secondary"><i class="fa-solid fa-envelope"></i></a>
             </div>
             <div id="error-email" class="invalid-feedback"></div>
           </div>
@@ -623,10 +623,10 @@
                 <div class="mb-3 custom-field custom-field-{{ custom_field.custom_field_id }}">
                   <label class="form-label">{{ custom_field.name }}</label>
                   <div class="input-group">
-                    <button type="button" data-oc-toggle="upload" data-oc-target="#input-custom-field-{{ custom_field.custom_field_id }}" data-oc-size-max="{{ config_file_max_size }}" data-oc-size-error="{{ error_upload_size }}" class="btn btn-primary"><i class="fas fa-upload"></i> {{ button_upload }}</button>
+                    <button type="button" data-oc-toggle="upload" data-oc-target="#input-custom-field-{{ custom_field.custom_field_id }}" data-oc-size-max="{{ config_file_max_size }}" data-oc-size-error="{{ error_upload_size }}" class="btn btn-primary"><i class="fa-solid fa-upload"></i> {{ button_upload }}</button>
                     <input type="text" name="custom_field[{{ custom_field.custom_field_id }}]" value="{{ account_custom_field[custom_field.custom_field_id] ? account_custom_field[custom_field.custom_field_id] }}" id="input-custom-field-{{ custom_field.custom_field_id }}" class="form-control" readonly/>
-                    <button type="button" data-oc-toggle="download" data-oc-target="#input-custom-field-{{ custom_field.custom_field_id }}"{% if not account_custom_field[custom_field.custom_field_id] %} disabled{% endif %} class="btn btn-outline-secondary"><i class="fas fa-download"></i> {{ button_download }}</button>
-                    <button type="button" data-oc-toggle="clear" data-bs-toggle="tooltip" title="{{ button_clear }}" data-oc-target="#input-custom-field-{{ custom_field.custom_field_id }}"{% if not account_custom_field[custom_field.custom_field_id] %} disabled{% endif %} class="btn btn-outline-danger"><i class="fas fa-eraser"></i></button>
+                    <button type="button" data-oc-toggle="download" data-oc-target="#input-custom-field-{{ custom_field.custom_field_id }}"{% if not account_custom_field[custom_field.custom_field_id] %} disabled{% endif %} class="btn btn-outline-secondary"><i class="fa-solid fa-download"></i> {{ button_download }}</button>
+                    <button type="button" data-oc-toggle="clear" data-bs-toggle="tooltip" title="{{ button_clear }}" data-oc-target="#input-custom-field-{{ custom_field.custom_field_id }}"{% if not account_custom_field[custom_field.custom_field_id] %} disabled{% endif %} class="btn btn-outline-danger"><i class="fa-solid fa-eraser"></i></button>
                   </div>
                   <div id="error-custom-field-{{ custom_field.custom_field_id }}" class="invalid-feedback"></div>
                 </div>
@@ -637,7 +637,7 @@
                   <label for="input-custom-field-{{ custom_field.custom_field_id }}" class="form-label">{{ custom_field.name }}</label>
                   <div class="input-group">
                     <input type="text" name="custom_field[{{ custom_field.custom_field_id }}]" value="{{ account_custom_field[custom_field.custom_field_id] ? account_custom_field[custom_field.custom_field_id] : custom_field.value }}" placeholder="{{ custom_field.name }}" id="input-custom-field-{{ custom_field.custom_field_id }}" class="form-control date"/>
-                    <div class="input-group-text"><i class="fas fa-calendar"></i></div>
+                    <div class="input-group-text"><i class="fa-regular fa-calendar"></i></div>
                   </div>
                   <div id="error-custom-field-{{ custom_field.custom_field_id }}" class="invalid-feedback"></div>
                 </div>
@@ -647,7 +647,7 @@
                   <label for="input-custom-field-{{ custom_field.custom_field_id }}" class="form-label">{{ custom_field.name }}</label>
                   <div class="input-group">
                     <input type="text" name="custom_field[{{ custom_field.custom_field_id }}]" value="{{ account_custom_field[custom_field.custom_field_id] ? account_custom_field[custom_field.custom_field_id] : custom_field.value }}" placeholder="{{ custom_field.name }}" id="input-custom-field-{{ custom_field.custom_field_id }}" class="form-control time"/>
-                    <div class="input-group-text"><i class="fas fa-calendar"></i></div>
+                    <div class="input-group-text"><i class="fa-regular fa-calendar"></i></div>
                   </div>
                   <div id="error-custom-field-{{ custom_field.custom_field_id }}" class="invalid-feedback"></div>
                 </div>
@@ -657,7 +657,7 @@
                   <label for="input-custom-field-{{ custom_field.custom_field_id }}" class="form-label">{{ custom_field.name }}</label>
                   <div class="input-group">
                     <input type="text" name="custom_field[{{ custom_field.custom_field_id }}]" value="{{ account_custom_field[custom_field.custom_field_id] ? account_custom_field[custom_field.custom_field_id] : custom_field.value }}" placeholder="{{ custom_field.name }}" id="input-custom-field-{{ custom_field.custom_field_id }}" class="form-control datetime"/>
-                    <div class="input-group-text"><i class="fas fa-calendar"></i></div>
+                    <div class="input-group-text"><i class="fa-regular fa-calendar"></i></div>
                   </div>
                   <div id="error-custom-field-{{ custom_field.custom_field_id }}" class="invalid-feedback"></div>
                 </div>
@@ -665,7 +665,7 @@
             {% endif %}
           {% endfor %}
           <div class="text-end">
-            <button type="submit" id="button-customer" class="btn btn-primary"><i class="fas fa-save"></i> {{ button_save }}</button>
+            <button type="submit" id="button-customer" class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i> {{ button_save }}</button>
           </div>
         </form>
       </div>
@@ -701,7 +701,7 @@
               <div id="option"></div>
               <div id="subscription"></div>
               <div class="text-end">
-                <button type="submit" id="button-product-add" class="btn btn-primary"><i class="fas fa-save"></i> {{ button_save }}</button>
+                <button type="submit" id="button-product-add" class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i> {{ button_save }}</button>
               </div>
             </form>
           </div>
@@ -741,7 +741,7 @@
                 </div>
               </fieldset>
               <div class="text-end">
-                <button type="submit" id="button-voucher-add" class="btn btn-primary"><i class="fas fa-save"></i> {{ button_save }}</button>
+                <button type="submit" id="button-voucher-add" class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i> {{ button_save }}</button>
               </div>
             </form>
           </div>
@@ -760,11 +760,12 @@
       <div class="modal-body">
         <form id="form-affiliate">
           <div class="mb-3">
-            <input type="text" name="affiliate" value="{{ affiliate }}" placeholder="{{ entry_affiliate }}" id="input-affiliate" list="list-affiliate" class="form-control"/> <input type="hidden" name="affiliate_id" value="{{ affiliate_id }}" id="input-affiliate-id"/>
+            <input type="text" name="affiliate" value="{{ affiliate }}" placeholder="{{ entry_affiliate }}" id="input-affiliate" list="list-affiliate" class="form-control"/>
+            <input type="hidden" name="affiliate_id" value="{{ affiliate_id }}" id="input-affiliate-id"/>
             <datalist id="list-affiliate"></datalist>
           </div>
           <div class="text-end">
-            <button type="submit" id="button-affiliate" class="btn btn-primary"><i class="fas fa-save"></i> {{ button_save }}</button>
+            <button type="submit" id="button-affiliate" class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i> {{ button_save }}</button>
           </div>
         </form>
       </div>
@@ -886,10 +887,10 @@
                 <div class="mb-3 custom-field custom-field-{{ custom_field.custom_field_id }}">
                   <label class="form-label">{{ custom_field.name }}</label>
                   <div class="input-group">
-                    <button type="button" data-oc-toggle="upload" data-oc-target="#input-payment-custom-field-{{ custom_field.custom_field_id }}" data-oc-size-max="{{ config_file_max_size }}" data-oc-size-error="{{ error_upload_size }}" class="btn btn-primary"><i class="fas fa-upload"></i> {{ button_upload }}</button>
+                    <button type="button" data-oc-toggle="upload" data-oc-target="#input-payment-custom-field-{{ custom_field.custom_field_id }}" data-oc-size-max="{{ config_file_max_size }}" data-oc-size-error="{{ error_upload_size }}" class="btn btn-primary"><i class="fa-solid fa-upload"></i> {{ button_upload }}</button>
                     <input type="text" name="custom_field[{{ custom_field.custom_field_id }}]" value="{{ payment_custom_field[custom_field.custom_field_id] ? payment_custom_field[custom_field.custom_field_id] }}" id="input-payment-custom-field-{{ custom_field.custom_field_id }}" class="form-control" readonly/>
-                    <button type="button" data-oc-toggle="download" data-oc-target="#input-payment-custom-field-{{ custom_field.custom_field_id }}"{% if not payment_custom_field[custom_field.custom_field_id] %} disabled{% endif %} class="btn btn-outline-secondary"><i class="fas fa-download"></i> {{ button_download }}</button>
-                    <button type="button" data-oc-toggle="clear" data-bs-toggle="tooltip" title="{{ button_clear }}" data-oc-target="#input-payment-custom-field-{{ custom_field.custom_field_id }}"{% if not payment_custom_field[custom_field.custom_field_id] %} disabled{% endif %} class="btn btn-outline-danger"><i class="fas fa-eraser"></i></button>
+                    <button type="button" data-oc-toggle="download" data-oc-target="#input-payment-custom-field-{{ custom_field.custom_field_id }}"{% if not payment_custom_field[custom_field.custom_field_id] %} disabled{% endif %} class="btn btn-outline-secondary"><i class="fa-solid fa-download"></i> {{ button_download }}</button>
+                    <button type="button" data-oc-toggle="clear" data-bs-toggle="tooltip" title="{{ button_clear }}" data-oc-target="#input-payment-custom-field-{{ custom_field.custom_field_id }}"{% if not payment_custom_field[custom_field.custom_field_id] %} disabled{% endif %} class="btn btn-outline-danger"><i class="fa-solid fa-eraser"></i></button>
                   </div>
                   <div id="error-payment-custom-field-{{ custom_field.custom_field_id }}" class="invalid-feedback"></div>
                 </div>
@@ -900,7 +901,7 @@
                   <label for="input-payment-custom-field-{{ custom_field.custom_field_id }}" class="form-label">{{ custom_field.name }}</label>
                   <div class="input-group">
                     <input type="text" name="custom_field[{{ custom_field.custom_field_id }}]" value="{{ payment_custom_field[custom_field.custom_field_id] ? payment_custom_field[custom_field.custom_field_id] : custom_field.value }}" placeholder="{{ custom_field.name }}" id="input-payment-custom-field-{{ custom_field.custom_field_id }}" class="form-control date"/>
-                    <div class="input-group-text"><i class="fas fa-calendar"></i></div>
+                    <div class="input-group-text"><i class="fa-regular fa-calendar"></i></div>
                   </div>
                   <div id="error-payment-custom-field-{{ custom_field.custom_field_id }}" class="invalid-feedback"></div>
                 </div>
@@ -910,7 +911,7 @@
                   <label for="input-payment-custom-field-{{ custom_field.custom_field_id }}" class="form-label">{{ custom_field.name }}</label>
                   <div class="input-group">
                     <input type="text" name="custom_field[{{ custom_field.custom_field_id }}]" value="{{ payment_custom_field[custom_field.custom_field_id] ? payment_custom_field[custom_field.custom_field_id] : custom_field.value }}" placeholder="{{ custom_field.name }}" id="input-payment-custom-field-{{ custom_field.custom_field_id }}" class="form-control time"/>
-                    <div class="input-group-text"><i class="fas fa-calendar"></i></div>
+                    <div class="input-group-text"><i class="fa-regular fa-calendar"></i></div>
                   </div>
                   <div id="error-payment-custom-field-{{ custom_field.custom_field_id }}" class="invalid-feedback"></div>
                 </div>
@@ -920,7 +921,7 @@
                   <label for="input-payment-custom-field-{{ custom_field.custom_field_id }}" class="form-label">{{ custom_field.name }}</label>
                   <div class="input-group">
                     <input type="text" name="custom_field[{{ custom_field.custom_field_id }}]" value="{{ payment_custom_field[custom_field.custom_field_id] ? payment_custom_field[custom_field.custom_field_id] : custom_field.value }}" placeholder="{{ custom_field.name }}" id="input-payment-custom-field-{{ custom_field.custom_field_id }}" class="form-control datetime"/>
-                    <div class="input-group-text"><i class="fas fa-calendar"></i></div>
+                    <div class="input-group-text"><i class="fa-regular fa-calendar"></i></div>
                   </div>
                   <div id="error-payment-custom-field-{{ custom_field.custom_field_id }}" class="invalid-feedback"></div>
                 </div>
@@ -928,7 +929,7 @@
             {% endif %}
           {% endfor %}
           <div class="text-end">
-            <button type="submit" id="button-payment-address" class="btn btn-primary"><i class="fas fa-save"></i> {{ button_save }}</button>
+            <button type="submit" id="button-payment-address" class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i> {{ button_save }}</button>
           </div>
         </form>
       </div>
@@ -947,7 +948,8 @@
         <form id="form-shipping-address">
 
           <div class="mb-3">
-            <label for="input-shipping-address" class="form-label">{{ entry_address }}</label> <select name="shipping_address" id="input-shipping-address" class="form-select">
+            <label for="input-shipping-address" class="form-label">{{ entry_address }}</label>
+            <select name="shipping_address" id="input-shipping-address" class="form-select">
               <option value="0" selected="selected">{{ text_none }}</option>
               {% for address in addresses %}
                 <option value="{{ address.address_id }}">{{ address.firstname }} {{ address.lastname }}, {{ address.address_1 }}, {{ address.city }}, {{ address.country }}</option>
@@ -956,26 +958,31 @@
           </div>
 
           <div class="mb-3 required">
-            <label for="input-shipping-firstname" class="form-label">{{ entry_firstname }}</label> <input type="text" name="firstname" value="{{ shipping_firstname }}" placeholder="{{ entry_firstname }}" id="input-shipping-firstname" class="form-control"/>
+            <label for="input-shipping-firstname" class="form-label">{{ entry_firstname }}</label>
+            <input type="text" name="firstname" value="{{ shipping_firstname }}" placeholder="{{ entry_firstname }}" id="input-shipping-firstname" class="form-control"/>
             <div id="error-shipping-firstname" class="invalid-feedback"></div>
           </div>
 
           <div class="mb-3 required">
-            <label for="input-shipping-lastname" class="form-label">{{ entry_lastname }}</label> <input type="text" name="lastname" value="{{ shipping_lastname }}" placeholder="{{ entry_lastname }}" id="input-shipping-lastname" class="form-control"/>
+            <label for="input-shipping-lastname" class="form-label">{{ entry_lastname }}</label>
+            <input type="text" name="lastname" value="{{ shipping_lastname }}" placeholder="{{ entry_lastname }}" id="input-shipping-lastname" class="form-control"/>
             <div id="error-shipping-lastname" class="invalid-feedback"></div>
           </div>
 
           <div class="mb-3">
-            <label for="input-shipping-company" class="form-label">{{ entry_company }}</label> <input type="text" name="company" value="{{ shipping_company }}" placeholder="{{ entry_company }}" id="input-shipping-company" class="form-control"/>
+            <label for="input-shipping-company" class="form-label">{{ entry_company }}</label>
+            <input type="text" name="company" value="{{ shipping_company }}" placeholder="{{ entry_company }}" id="input-shipping-company" class="form-control"/>
           </div>
 
           <div class="mb-3 required">
-            <label for="input-shipping-address-1" class="form-label">{{ entry_address_1 }}</label> <input type="text" name="address_1" value="{{ shipping_address_1 }}" placeholder="{{ entry_address_1 }}" id="input-shipping-address-1" class="form-control"/>
+            <label for="input-shipping-address-1" class="form-label">{{ entry_address_1 }}</label>
+            <input type="text" name="address_1" value="{{ shipping_address_1 }}" placeholder="{{ entry_address_1 }}" id="input-shipping-address-1" class="form-control"/>
             <div id="error-shipping-address-1" class="invalid-feedback"></div>
           </div>
 
           <div class="mb-3">
-            <label for="input-shipping-address-2" class="form-label">{{ entry_address_2 }}</label> <input type="text" name="address_2" value="{{ shipping_address_2 }}" placeholder="{{ entry_address_2 }}" id="input-shipping-address-2" class="form-control"/>
+            <label for="input-shipping-address-2" class="form-label">{{ entry_address_2 }}</label>
+            <input type="text" name="address_2" value="{{ shipping_address_2 }}" placeholder="{{ entry_address_2 }}" id="input-shipping-address-2" class="form-control"/>
           </div>
           <div class="mb-3 required">
             <label for="input-shipping-city" class="form-label">{{ entry_city }}</label> <input type="text" name="city" value="{{ shipping_city }}" placeholder="{{ entry_city }}" id="input-shipping-city" class="form-control"/>
@@ -1068,10 +1075,10 @@
                 <div class="mb-3 custom-field custom-field-{{ custom_field.custom_field_id }}">
                   <label class="form-label">{{ custom_field.name }}</label>
                   <div class="input-group">
-                    <button type="button" data-oc-toggle="upload" data-oc-target="#input-shipping-custom-field-{{ custom_field.custom_field_id }}" data-oc-size-max="{{ config_file_max_size }}" data-oc-size-error="{{ error_upload_size }}" class="btn btn-primary"><i class="fas fa-upload"></i> {{ button_upload }}</button>
+                    <button type="button" data-oc-toggle="upload" data-oc-target="#input-shipping-custom-field-{{ custom_field.custom_field_id }}" data-oc-size-max="{{ config_file_max_size }}" data-oc-size-error="{{ error_upload_size }}" class="btn btn-primary"><i class="fa-solid fa-upload"></i> {{ button_upload }}</button>
                     <input type="text" name="custom_field[{{ custom_field.custom_field_id }}]" value="{{ shipping_custom_field[custom_field.custom_field_id] ? shipping_custom_field[custom_field.custom_field_id] }}" id="input-shipping-custom-field-{{ custom_field.custom_field_id }}" class="form-control" readonly/>
-                    <button type="button" data-oc-toggle="download" data-oc-target="#input-shipping-custom-field-{{ custom_field.custom_field_id }}"{% if not shipping_custom_field[custom_field.custom_field_id] %} disabled{% endif %} class="btn btn-outline-secondary"><i class="fas fa-download"></i> {{ button_download }}</button>
-                    <button type="button" data-oc-toggle="clear" data-bs-toggle="tooltip" title="{{ button_clear }}" data-oc-target="#input-shipping-custom-field-{{ custom_field.custom_field_id }}"{% if not shipping_custom_field[custom_field.custom_field_id] %} disabled{% endif %} class="btn btn-outline-danger"><i class="fas fa-eraser"></i></button>
+                    <button type="button" data-oc-toggle="download" data-oc-target="#input-shipping-custom-field-{{ custom_field.custom_field_id }}"{% if not shipping_custom_field[custom_field.custom_field_id] %} disabled{% endif %} class="btn btn-outline-secondary"><i class="fa-solid fa-download"></i> {{ button_download }}</button>
+                    <button type="button" data-oc-toggle="clear" data-bs-toggle="tooltip" title="{{ button_clear }}" data-oc-target="#input-shipping-custom-field-{{ custom_field.custom_field_id }}"{% if not shipping_custom_field[custom_field.custom_field_id] %} disabled{% endif %} class="btn btn-outline-danger"><i class="fa-solid fa-eraser"></i></button>
                   </div>
                   <div id="error-shipping-custom-field-{{ custom_field.custom_field_id }}" class="invalid-feedback"></div>
                 </div>
@@ -1082,7 +1089,7 @@
                   <label for="input-shipping-custom-field-{{ custom_field.custom_field_id }}" class="form-label">{{ custom_field.name }}</label>
                   <div class="input-group">
                     <input type="text" name="custom_field[{{ custom_field.custom_field_id }}]" value="{{ shipping_custom_field[custom_field.custom_field_id] ? shipping_custom_field[custom_field.custom_field_id] : custom_field.value }}" placeholder="{{ custom_field.name }}" id="input-shipping-custom-field-{{ custom_field.custom_field_id }}" class="form-control date"/>
-                    <div class="input-group-text"><i class="fas fa-calendar"></i></div>
+                    <div class="input-group-text"><i class="fa-regular fa-calendar"></i></div>
                   </div>
                   <div id="error-shipping-custom-field-{{ custom_field.custom_field_id }}" class="invalid-feedback"></div>
                 </div>
@@ -1093,7 +1100,7 @@
                   <label for="input-shipping-custom-field-{{ custom_field.custom_field_id }}" class="form-label">{{ custom_field.name }}</label>
                   <div class="input-group">
                     <input type="text" name="custom_field[{{ custom_field.custom_field_id }}]" value="{{ shipping_custom_field[custom_field.custom_field_id] ? shipping_custom_field[custom_field.custom_field_id] : custom_field.value }}" placeholder="{{ custom_field.name }}" id="input-shipping-custom-field-{{ custom_field.custom_field_id }}" class="form-control time"/>
-                    <div class="input-group-text"><i class="fas fa-calendar"></i></div>
+                    <div class="input-group-text"><i class="fa-regular fa-calendar"></i></div>
                   </div>
                   <div id="error-shipping-custom-field-{{ custom_field.custom_field_id }}" class="invalid-feedback"></div>
                 </div>
@@ -1104,27 +1111,21 @@
                   <label for="input-shipping-custom-field-{{ custom_field.custom_field_id }}" class="form-label">{{ custom_field.name }}</label>
                   <div class="input-group">
                     <input type="text" name="custom_field[{{ custom_field.custom_field_id }}]" value="{{ shipping_custom_field[custom_field.custom_field_id] ? shipping_custom_field[custom_field.custom_field_id] : custom_field.value }}" placeholder="{{ custom_field.name }}" id="input-shipping-custom-field-{{ custom_field.custom_field_id }}" class="form-control datetime"/>
-                    <div class="input-group-text"><i class="fas fa-calendar"></i></div>
+                    <div class="input-group-text"><i class="fa-regular fa-calendar"></i></div>
                   </div>
                   <div id="error-shipping-custom-field-{{ custom_field.custom_field_id }}" class="invalid-feedback"></div>
                 </div>
               {% endif %}
-
             {% endif %}
-
           {% endfor %}
-
           <div class="text-end">
-            <button type="submit" id="button-shipping-address" class="btn btn-primary"><i class="fas fa-save"></i> {{ button_save }}</button>
+            <button type="submit" id="button-shipping-address" class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i> {{ button_save }}</button>
           </div>
-
         </form>
       </div>
-
     </div>
   </div>
 </div>
-
 <div id="modal-comment" class="modal">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -1139,7 +1140,7 @@
           </div>
           <div class="text-end">
 
-            <button type="submit" id="button-comment" class="btn btn-primary"><i class="fas fa-save"></i> {{ button_save }}</button>
+            <button type="submit" id="button-comment" class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i> {{ button_save }}</button>
 
           </div>
         </form>
@@ -1147,7 +1148,6 @@
     </div>
   </div>
 </div>
-
 <script type="text/javascript"><!--
 $('#button-collapse').on('click', function () {
     var element = this;
@@ -1156,11 +1156,11 @@ $('#button-collapse').on('click', function () {
 
     if (!target.is(':hidden')) {
         target.slideUp('400', function () {
-            $(element).html('{{ text_more }} <i class="fas fa-angle-down"></i>');
+            $(element).html('{{ text_more }} <i class="fa-solid fa-angle-down"></i>');
         });
     } else {
         target.slideDown('400', function () {
-            $(element).html('{{ text_less }} <i class="fas fa-angle-up"></i>');
+            $(element).html('{{ text_less }} <i class="fa-solid fa-angle-up"></i>');
         });
     }
 });
@@ -1179,15 +1179,15 @@ $(document).on('click', '#button-invoice', function () {
             $('.alert-dismissible').remove();
 
             if (json['error']) {
-                $('#alert').prepend('<div class="alert alert-danger alert-dismissible"><i class="fas fa-exclamation-circle"></i> ' + json['error'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
+                $('#alert').prepend('<div class="alert alert-danger alert-dismissible"><i class="fa-solid fa-circle-exclamation"></i> ' + json['error'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
             }
 
             if (json['success']) {
-                $('#alert').prepend('<div class="alert alert-success alert-dismissible"><i class="fas fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
+                $('#alert').prepend('<div class="alert alert-success alert-dismissible"><i class="fa-solid fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
 
                 $('#invoice-value').html(json['invoice_no']);
 
-                $('#button-invoice').replaceWith('<button disabled="disabled" class="btn btn-outline-primary"><i class="fas fa-cog"></i></button>');
+                $('#button-invoice').replaceWith('<button disabled="disabled" class="btn btn-outline-primary"><i class="fa-solid fa-cog"></i></button>');
             }
         },
         error: function (xhr, ajaxOptions, thrownError) {
@@ -1320,7 +1320,7 @@ $('#form-customer').on('submit', function (e) {
             // Check for errors
             if (json['error']) {
                 if (json['error']['warning']) {
-                    $('#form-customer').prepend('<div class="alert alert-danger alert-dismissible"><i class="fas fa-exclamation-circle"></i> ' + json['error']['warning'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
+                    $('#form-customer').prepend('<div class="alert alert-danger alert-dismissible"><i class="fa-solid fa-circle-exclamation"></i> ' + json['error']['warning'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
                 }
 
                 for (key in json['error']) {
@@ -1330,7 +1330,7 @@ $('#form-customer').on('submit', function (e) {
             }
 
             if (json['success']) {
-                $('#form-customer').prepend('<div class="alert alert-success alert-dismissible"><i class="fas fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
+                $('#form-customer').prepend('<div class="alert alert-success alert-dismissible"><i class="fa-solid fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
 
                 $('#customer-value').html('<a href="index.php?route=customer/customer|form&user_token={{ user_token }}&customer_id=' + $('#input-customer-id').val() + '">' + $('#input-firstname').val() + ' ' + $('#input-lastname').val() + '</a>');
 
@@ -1493,8 +1493,8 @@ $('#input-product').autocomplete({
                     html += '<div class="mb-3' + (option['required'] == 1 ? ' required' : '') + '">';
                     html += '  <label class="form-label">' + option['name'] + '</label>';
                     html += '  <div>';
-                    html += '    <button type="button" data-oc-toggle="upload" data-oc-url="{{ upload }}" class="btn btn-light"><i class="fas fa-upload"></i> {{ button_upload }}</button>';
-                    html += '    <a href="" class="btn btn-light"><i class="fas fa-download"></i></a>';
+                    html += '    <button type="button" data-oc-toggle="upload" data-oc-url="{{ upload }}" class="btn btn-light"><i class="fa-solid fa-upload"></i> {{ button_upload }}</button>';
+                    html += '    <a href="" class="btn btn-light"><i class="fa-solid fa-download"></i></a>';
                     html += '    <input type="hidden" name="option[' + option['product_option_id'] + ']" value="' + option['value'] + '" id="input-option-' + option['product_option_id'] + '"/>';
                     html += '  </div>';
                     html += '  <div id="error-option-' + option['product_option_id'] + '" class="invalid-feedback"></div>';
@@ -1504,7 +1504,7 @@ $('#input-product').autocomplete({
                 if (option['type'] == 'date') {
                     html += '<div class="mb-3' + (option['required'] == 1 ? ' required' : '') + '">';
                     html += '  <label for="input-option-' + option['product_option_id'] + '" class="form-label">' + option['name'] + '</label>';
-                    html += '  <div class="input-group"><input type="text" name="option[' + option['product_option_id'] + ']" value="' + option['value'] + '" placeholder="' + option['name'] + '"  id="input-option-' + option['product_option_id'] + '" class="form-control date"/><div class="input-group-text"><i class="fas fa-calendar"></i></div></div>';
+                    html += '  <div class="input-group"><input type="text" name="option[' + option['product_option_id'] + ']" value="' + option['value'] + '" placeholder="' + option['name'] + '"  id="input-option-' + option['product_option_id'] + '" class="form-control date"/><div class="input-group-text"><i class="fa-regular fa-calendar"></i></div></div>';
                     html += '  <div id="error-option-' + option['product_option_id'] + '" class="invalid-feedback"></div>';
                     html += '</div>';
                 }
@@ -1512,7 +1512,7 @@ $('#input-product').autocomplete({
                 if (option['type'] == 'datetime') {
                     html += '<div class="mb-3' + (option['required'] == 1 ? ' required' : '') + '">';
                     html += '  <label for="input-option-' + option['product_option_id'] + '" class="form-label">' + option['name'] + '</label>';
-                    html += '  <div class="input-group"><input type="text" name="option[' + option['product_option_id'] + ']" value="' + option['value'] + '" placeholder="' + option['name'] + '" id="input-option-' + option['product_option_id'] + '" class="form-control datetime"/><div class="input-group-text"><i class="fas fa-calendar"></i></div></div>';
+                    html += '  <div class="input-group"><input type="text" name="option[' + option['product_option_id'] + ']" value="' + option['value'] + '" placeholder="' + option['name'] + '" id="input-option-' + option['product_option_id'] + '" class="form-control datetime"/><div class="input-group-text"><i class="fa-regular fa-calendar"></i></div></div>';
                     html += '  <div id="error-option-' + option['product_option_id'] + '" class="invalid-feedback"></div>';
                     html += '</div>';
                 }
@@ -1520,7 +1520,7 @@ $('#input-product').autocomplete({
                 if (option['type'] == 'time') {
                     html += '<div class="mb-3' + (option['required'] == 1 ? ' required' : '') + '">';
                     html += '  <label for="input-option-' + option['product_option_id'] + '" class="form-label">' + option['name'] + '</label>';
-                    html += '  <div class="input-group"><input type="text" name="option[' + option['product_option_id'] + ']" value="' + option['value'] + '" placeholder="' + option['name'] + '" id="input-option-' + option['product_option_id'] + '" class="form-control time"/><div class="input-group-text"><i class="fas fa-calendar"></i></div></div>';
+                    html += '  <div class="input-group"><input type="text" name="option[' + option['product_option_id'] + ']" value="' + option['value'] + '" placeholder="' + option['name'] + '" id="input-option-' + option['product_option_id'] + '" class="form-control time"/><div class="input-group-text"><i class="fa-regular fa-calendar"></i></div></div>';
                     html += '  <div id="error-option-' + option['product_option_id'] + '" class="invalid-feedback"></div>';
                     html += '</div>';
                 }
@@ -1583,7 +1583,7 @@ $('#form-product-add').on('submit', function (e) {
 
             if (json['error']) {
                 if (json['error']['warning']) {
-                    $('#form-product-add').prepend('<div class="alert alert-danger alert-dismissible"><i class="fas fa-exclamation-circle"></i> ' + json['error']['warning'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
+                    $('#form-product-add').prepend('<div class="alert alert-danger alert-dismissible"><i class="fa-solid fa-circle-exclamation"></i> ' + json['error']['warning'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
                 }
 
                 for (key in json['error']) {
@@ -1593,7 +1593,7 @@ $('#form-product-add').on('submit', function (e) {
             }
 
             if (json['success']) {
-                $('#form-product-add').prepend('<div class="alert alert-success alert-dismissible"><i class="fas fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
+                $('#form-product-add').prepend('<div class="alert alert-success alert-dismissible"><i class="fa-solid fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
 
                 // Refresh products, vouchers and totals
                 $('#button-refresh').trigger('click');
@@ -1627,11 +1627,11 @@ $('#order-products').on('submit', 'form', function (e) {
 
             // Check for errors
             if (json['error']) {
-                $('#alert').prepend('<div class="alert alert-danger alert-dismissible"><i class="fas fa-exclamation-circle"></i> ' + json['error'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
+                $('#alert').prepend('<div class="alert alert-danger alert-dismissible"><i class="fa-solid fa-circle-exclamation"></i> ' + json['error'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
             }
 
             if (json['success']) {
-                $('#alert').prepend('<div class="alert alert-success alert-dismissible"><i class="fas fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
+                $('#alert').prepend('<div class="alert alert-success alert-dismissible"><i class="fa-solid fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
 
                 // Refresh products, vouchers and totals
                 $('#button-refresh').trigger('click');
@@ -1665,7 +1665,7 @@ $('#form-voucher-add').on('submit', function (e) {
 
             if (json['error']) {
                 if (json['error']['warning']) {
-                    $('#form-voucher-add').prepend('<div class="alert alert-danger alert-dismissible"><i class="fas fa-exclamation-circle"></i> ' + json['error']['warning'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
+                    $('#form-voucher-add').prepend('<div class="alert alert-danger alert-dismissible"><i class="fa-solid fa-circle-exclamation"></i> ' + json['error']['warning'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
                 }
 
                 if (json['error']) {
@@ -1677,7 +1677,7 @@ $('#form-voucher-add').on('submit', function (e) {
             }
 
             if (json['success']) {
-                $('#alert').prepend('<div class="alert alert-success alert-dismissible"><i class="fas fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
+                $('#alert').prepend('<div class="alert alert-success alert-dismissible"><i class="fa-solid fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
 
                 $('#input-to-name').val('');
                 $('#input-to-email').val('');
@@ -1718,11 +1718,11 @@ $('#order-vouchers').on('submit', 'form', function (e) {
 
             // Check for errors
             if (json['error']) {
-                $('#alert').prepend('<div class="alert alert-danger alert-dismissible"><i class="fas fa-exclamation-circle"></i> ' + json['error'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
+                $('#alert').prepend('<div class="alert alert-danger alert-dismissible"><i class="fa-solid fa-circle-exclamation"></i> ' + json['error'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
             }
 
             if (json['success']) {
-                $('#alert').prepend('<div class="alert alert-success alert-dismissible"><i class="fas fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
+                $('#alert').prepend('<div class="alert alert-success alert-dismissible"><i class="fa-solid fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
 
                 // Refresh products, vouchers and totals
                 $('#button-refresh').trigger('click');
@@ -1752,11 +1752,11 @@ $('#input-store').on('change', function (e) {
             $('.alert-dismissible').remove();
 
             if (json['error']) {
-                $('#alert').prepend('<div class="alert alert-danger alert-dismissible"><i class="fas fa-exclamation-circle"></i> ' + json['error'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
+                $('#alert').prepend('<div class="alert alert-danger alert-dismissible"><i class="fa-solid fa-circle-exclamation"></i> ' + json['error'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
             }
 
             if (json['success']) {
-                $('#alert').prepend('<div class="alert alert-success alert-dismissible"><i class="fas fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
+                $('#alert').prepend('<div class="alert alert-success alert-dismissible"><i class="fa-solid fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
 
                 $('#button-refresh').trigger('click');
             }
@@ -1785,11 +1785,11 @@ $('#input-language').on('change', function (e) {
             $('.alert-dismissible').remove();
 
             if (json['error']) {
-                $('#alert').prepend('<div class="alert alert-danger alert-dismissible"><i class="fas fa-exclamation-circle"></i> ' + json['error'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
+                $('#alert').prepend('<div class="alert alert-danger alert-dismissible"><i class="fa-solid fa-circle-exclamation"></i> ' + json['error'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
             }
 
             if (json['success']) {
-                $('#alert').prepend('<div class="alert alert-success alert-dismissible"><i class="fas fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
+                $('#alert').prepend('<div class="alert alert-success alert-dismissible"><i class="fa-solid fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
 
                 $('#button-refresh').trigger('click');
             }
@@ -1818,11 +1818,11 @@ $('#input-currency').on('change', function (e) {
             $('.alert-dismissible').remove();
 
             if (json['error']) {
-                $('#alert').prepend('<div class="alert alert-danger alert-dismissible"><i class="fas fa-exclamation-circle"></i> ' + json['error'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
+                $('#alert').prepend('<div class="alert alert-danger alert-dismissible"><i class="fa-solid fa-circle-exclamation"></i> ' + json['error'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
             }
 
             if (json['success']) {
-                $('#alert').prepend('<div class="alert alert-success alert-dismissible"><i class="fas fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
+                $('#alert').prepend('<div class="alert alert-success alert-dismissible"><i class="fa-solid fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
 
                 $('#button-refresh').trigger('click');
             }
@@ -1852,11 +1852,11 @@ $('#form-coupon').on('submit', function (e) {
             $('.alert-dismissible').remove();
 
             if (json['error']) {
-                $('#alert').prepend('<div class="alert alert-danger alert-dismissible"><i class="fas fa-exclamation-circle"></i> ' + json['error'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
+                $('#alert').prepend('<div class="alert alert-danger alert-dismissible"><i class="fa-solid fa-circle-exclamation"></i> ' + json['error'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
             }
 
             if (json['success']) {
-                $('#alert').prepend('<div class="alert alert-success alert-dismissible"><i class="fas fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
+                $('#alert').prepend('<div class="alert alert-success alert-dismissible"><i class="fa-solid fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
 
                 // Refresh products, vouchers and totals
                 $('#button-refresh').trigger('click');
@@ -1887,11 +1887,11 @@ $('#form-voucher').on('submit', function (e) {
             $('.alert-dismissible').remove();
 
             if (json['error']) {
-                $('#alert').prepend('<div class="alert alert-danger alert-dismissible"><i class="fas fa-exclamation-circle"></i> ' + json['error'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
+                $('#alert').prepend('<div class="alert alert-danger alert-dismissible"><i class="fa-solid fa-circle-exclamation"></i> ' + json['error'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
             }
 
             if (json['success']) {
-                $('#alert').prepend('<div class="alert alert-success alert-dismissible"><i class="fas fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
+                $('#alert').prepend('<div class="alert alert-success alert-dismissible"><i class="fa-solid fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
 
                 // Refresh products, vouchers and totals
                 $('#button-refresh').trigger('click');
@@ -1922,11 +1922,11 @@ $('#form-reward').on('submit', function (e) {
             $('.alert-dismissible').remove();
 
             if (json['error']) {
-                $('#alert').prepend('<div class="alert alert-danger alert-dismissible"><i class="fas fa-exclamation-circle"></i> ' + json['error'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
+                $('#alert').prepend('<div class="alert alert-danger alert-dismissible"><i class="fa-solid fa-circle-exclamation"></i> ' + json['error'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
             }
 
             if (json['success']) {
-                $('#alert').prepend('<div class="alert alert-success alert-dismissible"><i class="fas fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
+                $('#alert').prepend('<div class="alert alert-success alert-dismissible"><i class="fa-solid fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
 
                 $('#button-refresh').trigger('click');
             }
@@ -1961,18 +1961,18 @@ $(document).on('click', '#button-reward-add, #button-reward-remove', function (e
             $('.alert-dismissible').remove();
 
             if (json['error']) {
-                $('#alert').prepend('<div class="alert alert-danger alert-dismissible"><i class="fas fa-exclamation-circle"></i> ' + json['error'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
+                $('#alert').prepend('<div class="alert alert-danger alert-dismissible"><i class="fa-solid fa-circle-exclamation"></i> ' + json['error'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
             }
 
             if (json['success']) {
-                $('#alert').prepend('<div class="alert alert-success alert-dismissible"><i class="fas fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
+                $('#alert').prepend('<div class="alert alert-success alert-dismissible"><i class="fa-solid fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
 
                 if (action == 'add') {
-                    $(element).replaceWith('<button type="button" id="button-reward-remove" data-bs-toggle="tooltip" title="{{ button_reward_remove }}" class="btn btn-danger"><i class="fas fa-minus-circle"></i></button>');
+                    $(element).replaceWith('<button type="button" id="button-reward-remove" data-bs-toggle="tooltip" title="{{ button_reward_remove }}" class="btn btn-danger"><i class="fa-solid fa-minus-circle"></i></button>');
                 }
 
                 if (action == 'remove') {
-                    $(element).replaceWith('<button type="button" id="button-reward-add" data-bs-toggle="tooltip" title="{{ button_reward_add }}" class="btn btn-success"><i class="fas fa-plus-circle"></i></button>');
+                    $(element).replaceWith('<button type="button" id="button-reward-add" data-bs-toggle="tooltip" title="{{ button_reward_add }}" class="btn btn-success"><i class="fa-solid fa-plus-circle"></i></button>');
                 }
             }
         },
@@ -1986,7 +1986,7 @@ $(document).on('click', '#button-reward-add, #button-reward-remove', function (e
 $('#input-affiliate').autocomplete({
     'source': function (request, response) {
         $.ajax({
-            url: 'index.php?route=customer/customer|autocomplete&user_token={{ user_token }}&filter_affiliate=1&filter_name=' + encodeURIComponent(request),
+            url: 'index.php?route=marketing/affiliate|autocomplete&user_token={{ user_token }}&filter_name=' + encodeURIComponent(request),
             dataType: 'json',
             success: function (json) {
                 json.unshift({
@@ -2027,11 +2027,11 @@ $('#form-affiliate').on('submit', function (e) {
             $('.alert-dismissible').remove();
 
             if (json['error']) {
-                $('#form-affiliate').prepend('<div class="alert alert-danger alert-dismissible"><i class="fas fa-exclamation-circle"></i> ' + json['error'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
+                $('#form-affiliate').prepend('<div class="alert alert-danger alert-dismissible"><i class="fa-solid fa-circle-exclamation"></i> ' + json['error'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
             }
 
             if (json['success']) {
-                $('#form-affiliate').prepend('<div class="alert alert-success alert-dismissible"><i class="fas fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
+                $('#form-affiliate').prepend('<div class="alert alert-success alert-dismissible"><i class="fa-solid fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
 
                 if ($('#input-affiliate-id').val()) {
                     $('#affiliate-value').html('<a href="index.php?route=marketing/affiliate|form&user_token={{ user_token }}&customer_id=' + $('#input-affiliate-id').val() + '" target="_blank">' + $('#input-affiliate').val() + '</a>');
@@ -2070,18 +2070,18 @@ $(document).on('click', '#button-commission-add, #button-commission-remove', fun
             $('.alert-dismissible').remove();
 
             if (json['error']) {
-                $('#alert').prepend('<div class="alert alert-danger alert-dismissible"><i class="fas fa-exclamation-circle"></i> ' + json['error'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
+                $('#alert').prepend('<div class="alert alert-danger alert-dismissible"><i class="fa-solid fa-circle-exclamation"></i> ' + json['error'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
             }
 
             if (json['success']) {
-                $('#alert').prepend('<div class="alert alert-success alert-dismissible"><i class="fas fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
+                $('#alert').prepend('<div class="alert alert-success alert-dismissible"><i class="fa-solid fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
 
                 if (action == 'add') {
-                    $(element).replaceWith('<button type="button" id="button-commission-remove" data-bs-toggle="tooltip" title="{{ button_commission_remove }}" class="btn btn-danger"><i class="fas fa-minus-circle"></i></button>');
+                    $(element).replaceWith('<button type="button" id="button-commission-remove" data-bs-toggle="tooltip" title="{{ button_commission_remove }}" class="btn btn-danger"><i class="fa-solid fa-minus-circle"></i></button>');
                 }
 
                 if (action == 'remove') {
-                    $(element).replaceWith('<button type="button" id="button-commission-add" data-bs-toggle="tooltip" title="{{ button_commission_add }}" class="btn btn-success"><i class="fas fa-plus-circle"></i></button>');
+                    $(element).replaceWith('<button type="button" id="button-commission-add" data-bs-toggle="tooltip" title="{{ button_commission_add }}" class="btn btn-success"><i class="fa-solid fa-plus-circle"></i></button>');
                 }
             }
         },
@@ -2108,7 +2108,7 @@ $('#input-payment-address').on('change', function () {
             $('.alert-dismissible').remove();
 
             if (json['error']) {
-                $('#form-payment-address').prepend('<div class="alert alert-danger alert-dismissible"><i class="fas fa-exclamation-circle"></i> ' + json['error'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
+                $('#form-payment-address').prepend('<div class="alert alert-danger alert-dismissible"><i class="fa-solid fa-circle-exclamation"></i> ' + json['error'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
             }
 
             // Reset all fields
@@ -2167,7 +2167,7 @@ $('#form-payment-address').on('submit', function (e) {
             // Check for errors
             if (json['error']) {
                 if (json['error']['warning']) {
-                    $('#form-payment-address').prepend('<div class="alert alert-danger alert-dismissible"><i class="fas fa-exclamation-circle"></i> ' + json['error']['warning'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
+                    $('#form-payment-address').prepend('<div class="alert alert-danger alert-dismissible"><i class="fa-solid fa-circle-exclamation"></i> ' + json['error']['warning'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
                 }
 
                 for (key in json['error']) {
@@ -2177,7 +2177,7 @@ $('#form-payment-address').on('submit', function (e) {
             }
 
             if (json['success']) {
-                $('#form-payment-address').prepend('<div class="alert alert-success alert-dismissible"><i class="fas fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
+                $('#form-payment-address').prepend('<div class="alert alert-success alert-dismissible"><i class="fa-solid fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
 
                 var address = $('#input-payment-firstname').val() + ' ' + $('#input-payment-lastname').val() + "<br/>";
 
@@ -2281,7 +2281,7 @@ $('#input-shipping-address').on('change', function () {
             $('.alert-dismissible').remove();
 
             if (json['error']) {
-                $('#form-shipping-address').prepend('<div class="alert alert-danger alert-dismissible"><i class="fas fa-exclamation-circle"></i> ' + json['error'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
+                $('#form-shipping-address').prepend('<div class="alert alert-danger alert-dismissible"><i class="fa-solid fa-circle-exclamation"></i> ' + json['error'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
             }
 
             // Reset all fields
@@ -2341,7 +2341,7 @@ $('#form-shipping-address').on('submit', function (e) {
             // Check for errors
             if (json['error']) {
                 if (json['error']['warning']) {
-                    $('#form-shipping-address').prepend('<div class="alert alert-danger alert-dismissible"><i class="fas fa-exclamation-circle"></i> ' + json['error']['warning'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
+                    $('#form-shipping-address').prepend('<div class="alert alert-danger alert-dismissible"><i class="fa-solid fa-circle-exclamation"></i> ' + json['error']['warning'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
                 }
 
                 for (key in json['error']) {
@@ -2351,7 +2351,7 @@ $('#form-shipping-address').on('submit', function (e) {
             }
 
             if (json['success']) {
-                $('#form-shipping-address').prepend('<div class="alert alert-success alert-dismissible"><i class="fas fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
+                $('#form-shipping-address').prepend('<div class="alert alert-success alert-dismissible"><i class="fa-solid fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
 
                 var address = $('#input-shipping-firstname').val() + ' ' + $('#input-shipping-lastname').val() + "<br/>";
 
@@ -2456,7 +2456,7 @@ $('#button-payment-method').on('click', function () {
             $('#alert .alert-dismissible').remove();
 
             if (json['error']) {
-                $('#alert').prepend('<div class="alert alert-danger alert-dismissible"><i class="fas fa-exclamation-circle"></i> ' + json['error'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
+                $('#alert').prepend('<div class="alert alert-danger alert-dismissible"><i class="fa-solid fa-circle-exclamation"></i> ' + json['error'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
             }
 
             html = '<option value="">{{ text_select }}</option>';
@@ -2502,11 +2502,11 @@ $('#input-payment-method').on('change', function (e) {
             $('.alert-dismissible').remove();
 
             if (json['error']) {
-                $('#alert').prepend('<div class="alert alert-danger alert-dismissible"><i class="fas fa-exclamation-circle"></i> ' + json['error'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
+                $('#alert').prepend('<div class="alert alert-danger alert-dismissible"><i class="fa-solid fa-circle-exclamation"></i> ' + json['error'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
             }
 
             if (json['success']) {
-                $('#alert').prepend('<div class="alert alert-success alert-dismissible"><i class="fas fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
+                $('#alert').prepend('<div class="alert alert-success alert-dismissible"><i class="fa-solid fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
 
                 $('#button-refresh').trigger('click');
             }
@@ -2534,7 +2534,7 @@ $('#button-shipping-method').on('click', function () {
             $('.alert-dismissible').remove();
 
             if (json['error']) {
-                $('#alert').prepend('<div class="alert alert-danger alert-dismissible"><i class="fas fa-exclamation-circle"></i> ' + json['error'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
+                $('#alert').prepend('<div class="alert alert-danger alert-dismissible"><i class="fa-solid fa-circle-exclamation"></i> ' + json['error'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
             }
 
             html = '<option value="">{{ text_select }}</option>';
@@ -2588,11 +2588,11 @@ $('#input-shipping-method').on('change', function (e) {
             $('.alert-dismissible').remove();
 
             if (json['error']) {
-                $('#alert').prepend('<div class="alert alert-danger alert-dismissible"><i class="fas fa-exclamation-circle"></i> ' + json['error'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
+                $('#alert').prepend('<div class="alert alert-danger alert-dismissible"><i class="fa-solid fa-circle-exclamation"></i> ' + json['error'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
             }
 
             if (json['success']) {
-                $('#alert').prepend('<div class="alert alert-success alert-dismissible"><i class="fas fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
+                $('#alert').prepend('<div class="alert alert-success alert-dismissible"><i class="fa-solid fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
 
                 $('#button-refresh').trigger('click');
             }
@@ -2625,11 +2625,11 @@ $('#form-comment').on('submit', function (e) {
 
             // Check for errors
             if (json['error']) {
-                $('#form-comment').prepend('<div class="alert alert-danger alert-dismissible"><i class="fas fa-exclamation-circle"></i> ' + json['error'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
+                $('#form-comment').prepend('<div class="alert alert-danger alert-dismissible"><i class="fa-solid fa-circle-exclamation"></i> ' + json['error'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
             }
 
             if (json['success']) {
-                $('#form-comment').prepend('<div class="alert alert-success alert-dismissible"><i class="fas fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
+                $('#form-comment').prepend('<div class="alert alert-success alert-dismissible"><i class="fa-solid fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
 
                 $('#comment-value').html($('#input-comment').val().replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1<br/>$2'));
             }
@@ -2687,7 +2687,7 @@ $('#button-refresh').on('click', function () {
                     html += '  <td class="text-end">' + product['total'] + '</td>';
                     html += '  <td class="text-end">';
                     html += '    <form>';
-                    html += '      <button type="submit" data-bs-toggle="tooltip" title="{{ button_remove }}" class="btn btn-danger"><i class="fas fa-minus-circle"></i></button>';
+                    html += '      <button type="submit" data-bs-toggle="tooltip" title="{{ button_remove }}" class="btn btn-danger"><i class="fa-solid fa-minus-circle"></i></button>';
                     html += '      <input type="hidden" name="key" value="' + product['cart_id'] + '"/>';
                     html += '    </form>';
                     html += '  </td>';
@@ -2711,7 +2711,7 @@ $('#button-refresh').on('click', function () {
                     html += '  <td class="text-end">' + voucher['amount'] + '</td>';
                     html += '  <td class="text-end">';
                     html += '    <form>';
-                    html += '      <button type="submit" data-bs-toggle="tooltip" title="{{ button_remove }}" class="btn btn-danger"><i class="fas fa-minus-circle"></i></button>';
+                    html += '      <button type="submit" data-bs-toggle="tooltip" title="{{ button_remove }}" class="btn btn-danger"><i class="fa-solid fa-minus-circle"></i></button>';
                     html += '      <input type="hidden" name="key" value="' + voucher['key'] + '"/>';
                     html += '    </form>';
                     html += '  </td>';
@@ -2777,12 +2777,12 @@ $('#button-confirm').on('click', function () {
 
             if (json['error']) {
                 for (i in json['error']) {
-                    $('#alert').prepend('<div class="alert alert-danger alert-dismissible"><i class="fas fa-exclamation-circle"></i> ' + json['error'][i] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
+                    $('#alert').prepend('<div class="alert alert-danger alert-dismissible"><i class="fa-solid fa-circle-exclamation"></i> ' + json['error'][i] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
                 }
             }
 
             if (json['success']) {
-                $('#alert').prepend('<div class="alert alert-success alert-dismissible"><i class="fas fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
+                $('#alert').prepend('<div class="alert alert-success alert-dismissible"><i class="fa-solid fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
 
                 if (json['order_id']) {
                     $('#input-order-id').val(json['order_id']);
@@ -2840,11 +2840,11 @@ $('#form-history').on('submit', function (e) {
             $('.alert-dismissible').remove();
 
             if (json['error']) {
-                $('#alert').prepend('<div class="alert alert-danger alert-dismissible"><i class="fas fa-exclamation-circle"></i> ' + json['error'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
+                $('#alert').prepend('<div class="alert alert-danger alert-dismissible"><i class="fa-solid fa-circle-exclamation"></i> ' + json['error'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
             }
 
             if (json['success']) {
-                $('#alert').prepend('<div class="alert alert-success alert-dismissible"><i class="fas fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
+                $('#alert').prepend('<div class="alert alert-success alert-dismissible"><i class="fa-solid fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
 
                 $('#history').load('index.php?route=sale/order|history&user_token={{ user_token }}&order_id=' + $('#input-order-id').val());
 

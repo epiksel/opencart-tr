@@ -1,10 +1,7 @@
 <?php
 namespace Opencart\Catalog\Controller\Api\Sale;
+use \Opencart\System\Helper as Helper;
 class Order extends \Opencart\System\Engine\Controller {
-	public function index(): void {
-
-	}
-
 	/*
 	 * Loads order info
 	 * */
@@ -129,7 +126,7 @@ class Order extends \Opencart\System\Engine\Controller {
 			foreach ($vouchers as $voucher) {
 				$this->session->data['vouchers'][] = [
 					'code'             => $voucher['code'],
-					'description'      => sprintf($this->language->get('text_for'), $this->currency->format($voucher['amount'], $this->session->data['currency'], 1.0),$voucher['to_name']),
+					'description'      => sprintf($this->language->get('text_for'), $this->currency->format($voucher['amount'], $this->session->data['currency'], 1.0), $voucher['to_name']),
 					'to_name'          => $voucher['to_name'],
 					'to_email'         => $voucher['to_email'],
 					'from_name'        => $voucher['from_name'],
@@ -390,7 +387,7 @@ class Order extends \Opencart\System\Engine\Controller {
 				foreach ($this->session->data['vouchers'] as $voucher) {
 					$order_data['vouchers'][] = [
 						'description'      => $voucher['description'],
-						'code'             => token(10),
+						'code'             => Helper\General\token(10),
 						'to_name'          => $voucher['to_name'],
 						'to_email'         => $voucher['to_email'],
 						'from_name'        => $voucher['from_name'],
@@ -542,7 +539,7 @@ class Order extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput(json_encode($json));
 	}
 
-	public function addHistory() {
+	public function addHistory(): void {
 		$this->load->language('api/sale/order');
 
 		$json = [];

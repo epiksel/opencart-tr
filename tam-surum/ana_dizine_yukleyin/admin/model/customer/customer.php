@@ -1,5 +1,6 @@
 <?php
 namespace Opencart\Admin\Model\Customer;
+use \Opencart\System\Helper AS Helper;
 class Customer extends \Opencart\System\Engine\Model {
 	public function addCustomer(array $data): int {
 		$this->db->query("INSERT INTO `" . DB_PREFIX . "customer` SET `store_id` = '" . (int)$data['store_id'] . "', `customer_group_id` = '" . (int)$data['customer_group_id'] . "', `firstname` = '" . $this->db->escape((string)$data['firstname']) . "', `lastname` = '" . $this->db->escape((string)$data['lastname']) . "', `email` = '" . $this->db->escape((string)$data['email']) . "', `telephone` = '" . $this->db->escape((string)$data['telephone']) . "', `custom_field` = '" . $this->db->escape(isset($data['custom_field']) ? json_encode($data['custom_field']) : json_encode([])) . "', `newsletter` = '" . (isset($data['newsletter']) ? (bool)$data['newsletter'] : 0) . "', `password` = '" . $this->db->escape(password_hash(html_entity_decode($data['password'], ENT_QUOTES, 'UTF-8'), PASSWORD_DEFAULT)) . "', `status` = '" . (isset($data['status']) ? (bool)$data['status'] : 0) . "', `safe` = '" . (isset($data['safe']) ? (bool)$data['safe'] : 0) . "', `date_added` = NOW()");
@@ -57,17 +58,13 @@ class Customer extends \Opencart\System\Engine\Model {
 	}
 
 	public function getCustomerByEmail(string $email): array {
-		$query = $this->db->query("SELECT DISTINCT * FROM `" . DB_PREFIX . "customer` WHERE LCASE(`email`) = '" . $this->db->escape(utf8_strtolower($email)) . "'");
+		$query = $this->db->query("SELECT DISTINCT * FROM `" . DB_PREFIX . "customer` WHERE LCASE(`email`) = '" . $this->db->escape(Helper\Utf8\strtolower($email)) . "'");
 
 		return $query->row;
 	}
 
 	public function getCustomers(array $data = []): array {
 		$sql = "SELECT *, CONCAT(c.`firstname`, ' ', c.`lastname`) AS `name`, cgd.`name` AS `customer_group` FROM `" . DB_PREFIX . "customer` c LEFT JOIN `" . DB_PREFIX . "customer_group_description` cgd ON (c.`customer_group_id` = cgd.`customer_group_id`)";
-
-		if (!empty($data['filter_affiliate'])) {
-			$sql .= " LEFT JOIN `" . DB_PREFIX . "customer_affiliate` ca ON (ca.`customer_id` = c.`customer_id`)";
-		}
 
 		$sql .= " WHERE cgd.`language_id` = '" . (int)$this->config->get('config_language_id') . "'";
 
@@ -87,10 +84,6 @@ class Customer extends \Opencart\System\Engine\Model {
 			$sql .= " AND c.`customer_group_id` = '" . (int)$data['filter_customer_group_id'] . "'";
 		}
 
-		if (!empty($data['filter_affiliate'])) {
-			$sql .= " AND (SELECT ca.`customer_id` FROM `" . DB_PREFIX . "customer_affiliate` ca WHERE ca.`customer_id` = c.`customer_id`)";
-		}
-
 		if (!empty($data['filter_ip'])) {
 			$sql .= " AND c.`customer_id` IN (SELECT `customer_id` FROM `" . DB_PREFIX . "customer_ip` WHERE `ip` = '" . $this->db->escape((string)$data['filter_ip']) . "')";
 		}
@@ -99,8 +92,12 @@ class Customer extends \Opencart\System\Engine\Model {
 			$sql .= " AND c.`status` = '" . (int)$data['filter_status'] . "'";
 		}
 
-		if (!empty($data['filter_date_added'])) {
-			$sql .= " AND DATE(c.`date_added`) = DATE('" . $this->db->escape((string)$data['filter_date_added']) . "')";
+		if (!empty($data['filter_date_from'])) {
+			$sql .= " AND DATE(c.`date_added`) >= DATE('" . $this->db->escape((string)$data['filter_date_from']) . "')";
+		}
+
+		if (!empty($data['filter_date_to'])) {
+			$sql .= " AND DATE(c.`date_added`) <= DATE('" . $this->db->escape((string)$data['filter_date_to']) . "')";
 		}
 
 		$sort_data = [
@@ -142,11 +139,7 @@ class Customer extends \Opencart\System\Engine\Model {
 	}
 
 	public function getTotalCustomers(array $data = []): int {
-		$sql = "SELECT COUNT(*) AS `total` FROM `" . DB_PREFIX . "customer` `c`";
-
-		if (!empty($data['filter_affiliate'])) {
-			$sql .= " LEFT JOIN `" . DB_PREFIX . "customer_affiliate` ca ON (ca.`customer_id` = c.`customer_id`)";
-		}
+		$sql = "SELECT COUNT(*) AS `total` FROM `" . DB_PREFIX . "customer` c";
 
 		$implode = [];
 
@@ -166,10 +159,6 @@ class Customer extends \Opencart\System\Engine\Model {
 			$implode[] = "c.`customer_group_id` = '" . (int)$data['filter_customer_group_id'] . "'";
 		}
 
-		if (!empty($data['filter_affiliate'])) {
-			$implode[] = "ca.`status` = '" . (int)$data['filter_affiliate'] . "'";
-		}
-
 		if (!empty($data['filter_ip'])) {
 			$implode[] = "c.`customer_id` IN (SELECT `customer_id` FROM " . DB_PREFIX . "customer_ip WHERE `ip` = '" . $this->db->escape((string)$data['filter_ip']) . "')";
 		}
@@ -178,8 +167,12 @@ class Customer extends \Opencart\System\Engine\Model {
 			$implode[] = "c.`status` = '" . (int)$data['filter_status'] . "'";
 		}
 
-		if (!empty($data['filter_date_added'])) {
-			$implode[] = "DATE(c.`date_added`) = DATE('" . $this->db->escape((string)$data['filter_date_added']) . "')";
+		if (!empty($data['filter_date_from'])) {
+			$implode[] = "DATE(c.`date_added`) >= DATE('" . $this->db->escape((string)$data['filter_date_from']) . "')";
+		}
+
+		if (!empty($data['filter_date_to'])) {
+			$implode[] = "DATE(c.`date_added`) <= DATE('" . $this->db->escape((string)$data['filter_date_to']) . "')";
 		}
 
 		if ($implode) {
@@ -195,7 +188,7 @@ class Customer extends \Opencart\System\Engine\Model {
 		$address_query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "address` WHERE `address_id` = '" . (int)$address_id . "'");
 
 		if ($address_query->num_rows) {
-			$country_query = $this->db->query("SELECT *, c.name FROM `" . DB_PREFIX . "country` `c` LEFT JOIN `" . DB_PREFIX . "address_format` `af` ON (`c`.`address_format_id` = `af`.`address_format_id`) WHERE `country_id` = '" . (int)$address_query->row['country_id'] . "'");
+			$country_query = $this->db->query("SELECT *, c.name FROM `" . DB_PREFIX . "country` c LEFT JOIN `" . DB_PREFIX . "address_format` af ON (c.`address_format_id` = af.`address_format_id`) WHERE `country_id` = '" . (int)$address_query->row['country_id'] . "'");
 
 			if ($country_query->num_rows) {
 				$country = $country_query->row['name'];
@@ -344,7 +337,6 @@ class Customer extends \Opencart\System\Engine\Model {
 	public function getTransactionTotal(int $customer_id): int {
 		$query = $this->db->query("SELECT SUM(`amount`) AS `total` FROM `" . DB_PREFIX . "customer_transaction` WHERE `customer_id` = '" . (int)$customer_id . "'");
 
-
 		return (int)$query->row['total'];
 	}
 
@@ -356,6 +348,10 @@ class Customer extends \Opencart\System\Engine\Model {
 
 	public function deletePaymentMethod(int $customer_payment_id): void {
 		$this->db->query("DELETE `" . DB_PREFIX . "customer_payment` WHERE `customer_payment_id` = '" . (int)$customer_payment_id . "'");
+	}
+
+	public function editPaymentMethodStatus(int $customer_payment_id, bool $status): void {
+		$this->db->query("UPDATE `" . DB_PREFIX . "customer_payment` SET `status` = '" . (int)$status . "' WHERE `customer_payment_id` = '" . (int)$customer_payment_id . "'");
 	}
 
 	public function getPaymentMethod(int $customer_id, int $customer_payment_id): array {
@@ -373,7 +369,7 @@ class Customer extends \Opencart\System\Engine\Model {
 	public function getTotalPaymentMethods(int $customer_id): int {
 		$query = $this->db->query("SELECT COUNT(*) AS `total` FROM `" . DB_PREFIX . "customer_payment` WHERE `customer_id` = '" . (int)$customer_id . "'");
 
-		return $query->row['total'];
+		return (int)$query->row['total'];
 	}
 
 	public function addReward(int $customer_id, string $description = '', int $points = 0, int $order_id = 0): void {
@@ -381,7 +377,7 @@ class Customer extends \Opencart\System\Engine\Model {
 	}
 
 	public function deleteReward(int $order_id): void {
-		$this->db->query("DELETE FROM `" . DB_PREFIX . "customer_reward` WHERE `order_id` = '" . (int)$order_id . "' AND `points` > 0");
+		$this->db->query("DELETE FROM `" . DB_PREFIX . "customer_reward` WHERE `order_id` = '" . (int)$order_id . "' AND `points` > '0'");
 	}
 
 	public function getRewards(int $customer_id, int $start = 0, int $limit = 10): array {
@@ -405,13 +401,13 @@ class Customer extends \Opencart\System\Engine\Model {
 	}
 
 	public function getRewardTotal(int $customer_id): int {
-		$query = $this->db->query("SELECT SUM(points) AS total FROM `" . DB_PREFIX . "customer_reward` WHERE `customer_id` = '" . (int)$customer_id . "'");
+		$query = $this->db->query("SELECT SUM(points) AS `total` FROM `" . DB_PREFIX . "customer_reward` WHERE `customer_id` = '" . (int)$customer_id . "'");
 
 		return (int)$query->row['total'];
 	}
 
 	public function getTotalRewardsByOrderId(int $order_id): int {
-		$query = $this->db->query("SELECT COUNT(*) AS `total` FROM `" . DB_PREFIX . "customer_reward` WHERE `order_id` = '" . (int)$order_id . "' AND `points` > 0");
+		$query = $this->db->query("SELECT COUNT(*) AS `total` FROM `" . DB_PREFIX . "customer_reward` WHERE `order_id` = '" . (int)$order_id . "' AND `points` > '0'");
 
 		return (int)$query->row['total'];
 	}
@@ -442,12 +438,12 @@ class Customer extends \Opencart\System\Engine\Model {
 	}
 
 	public function getTotalLoginAttempts(string $email): array {
-		$query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "customer_login` WHERE `email` = '" . $this->db->escape(utf8_strtolower($email)) . "'");
+		$query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "customer_login` WHERE `email` = '" . $this->db->escape(Helper\Utf8\strtolower($email)) . "'");
 
 		return $query->row;
 	}
 
 	public function deleteLoginAttempts(string $email): void {
-		$this->db->query("DELETE FROM `" . DB_PREFIX . "customer_login` WHERE `email` = '" . $this->db->escape(utf8_strtolower($email)) . "'");
+		$this->db->query("DELETE FROM `" . DB_PREFIX . "customer_login` WHERE `email` = '" . $this->db->escape(Helper\Utf8\strtolower($email)) . "'");
 	}
 }

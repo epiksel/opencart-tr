@@ -1,5 +1,6 @@
 <?php
 namespace Opencart\Admin\Controller\Design;
+use \Opencart\System\Helper as Helper;
 class Translation extends \Opencart\System\Engine\Controller {
 	public function index(): void {
 		$this->load->language('design/translation');
@@ -261,7 +262,7 @@ class Translation extends \Opencart\System\Engine\Controller {
 			$json['error']['warning'] = $this->language->get('error_permission');
 		}
 
-		if ((utf8_strlen($this->request->post['key']) < 3) || (utf8_strlen($this->request->post['key']) > 64)) {
+		if ((Helper\Utf8\strlen($this->request->post['key']) < 3) || (Helper\Utf8\strlen($this->request->post['key']) > 64)) {
 			$json['error']['key'] = $this->language->get('error_key');
 		}
 
@@ -337,7 +338,7 @@ class Translation extends \Opencart\System\Engine\Controller {
 					}
 
 					if (substr($file, -4) == '.php') {
-						$json[] = substr(substr($file, utf8_strlen(DIR_CATALOG . 'language/' . $language_info['code'] . '/')), 0, -4);
+						$json[] = substr(substr($file, strlen(DIR_CATALOG . 'language/' . $language_info['code'] . '/')), 0, -4);
 					}
 				}
 			}
@@ -353,11 +354,11 @@ class Translation extends \Opencart\System\Engine\Controller {
 					}
 
 					if (substr($file, -4) == '.php') {
-						$new_path = substr($file, utf8_strlen(DIR_EXTENSION));
+						$new_path = substr($file, strlen(DIR_EXTENSION));
 
 						$code = substr($new_path, 0, strpos($new_path, '/'));
 
-						$length = utf8_strlen(DIR_EXTENSION . $code . '/catalog/language/' . $language_info['code'] . '/');
+						$length = strlen(DIR_EXTENSION . $code . '/catalog/language/' . $language_info['code'] . '/');
 
 						$route = substr(substr($file, $length), 0, -4);
 
@@ -412,7 +413,7 @@ class Translation extends \Opencart\System\Engine\Controller {
 			$route = implode('/', $part);
 		}
 
-		if ($language_info && is_file($directory . $language_info['code'] . '/' . $route . '.php') && substr(str_replace('\\', '/', realpath($directory . $language_info['code'] . '/' . $route . '.php')), 0, utf8_strlen($directory)) == str_replace('\\', '/', $directory)) {
+		if ($language_info && is_file($directory . $language_info['code'] . '/' . $route . '.php') && substr(str_replace('\\', '/', realpath($directory . $language_info['code'] . '/' . $route . '.php')), 0, strlen($directory)) == str_replace('\\', '/', $directory)) {
 			$_ = [];
 
 			include($directory . $language_info['code'] . '/' . $route . '.php');

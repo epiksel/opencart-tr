@@ -186,12 +186,12 @@ class Order extends \Opencart\System\Engine\Model {
 			$sql .= " AND o.`email` LIKE '" . $this->db->escape('%' . (string)$data['filter_email'] . '%') . "'";
 		}
 
-		if (!empty($data['filter_date_added'])) {
-			$sql .= " AND DATE(o.`date_added`) = DATE('" . $this->db->escape((string)$data['filter_date_added']) . "')";
+		if (!empty($data['filter_date_from'])) {
+			$sql .= " AND DATE(o.`date_added`) >= DATE('" . $this->db->escape((string)$data['filter_date_from']) . "')";
 		}
 
-		if (!empty($data['filter_date_modified'])) {
-			$sql .= " AND DATE(o.`date_modified`) = DATE('" . $this->db->escape((string)$data['filter_date_modified']) . "')";
+		if (!empty($data['filter_date_to'])) {
+			$sql .= " AND DATE(o.`date_added`) <= DATE('" . $this->db->escape((string)$data['filter_date_to']) . "')";
 		}
 
 		if (!empty($data['filter_total'])) {
@@ -314,12 +314,12 @@ class Order extends \Opencart\System\Engine\Model {
 			$sql .= " AND `email` LIKE '" . $this->db->escape('%' . (string)$data['filter_email'] . '%') . "'";
 		}
 
-		if (!empty($data['filter_date_added'])) {
-			$sql .= " AND DATE(`date_added`) = DATE('" . $this->db->escape((string)$data['filter_date_added']) . "')";
+		if (!empty($data['filter_date_from'])) {
+			$sql .= " AND DATE(`date_added`) >= DATE('" . $this->db->escape((string)$data['filter_date_from']) . "')";
 		}
 
-		if (!empty($data['filter_date_modified'])) {
-			$sql .= " AND DATE(`date_modified`) = DATE('" . $this->db->escape((string)$data['filter_date_modified']) . "')";
+		if (!empty($data['filter_date_to'])) {
+			$sql .= " AND DATE(`date_added`) <= DATE('" . $this->db->escape((string)$data['filter_date_to']) . "')";
 		}
 
 		if (!empty($data['filter_total'])) {
@@ -392,7 +392,7 @@ class Order extends \Opencart\System\Engine\Model {
 	}
 
 	public function getTotalSales(array $data = []): float {
-		$sql = "SELECT SUM(total) AS `total` FROM `" . DB_PREFIX . "order`";
+		$sql = "SELECT SUM(`total`) AS `total` FROM `" . DB_PREFIX . "order`";
 
 		if (!empty($data['filter_order_status'])) {
 			$implode = [];
@@ -449,7 +449,7 @@ class Order extends \Opencart\System\Engine\Model {
 		return (int)$query->row['total'];
 	}
 
-	public function createInvoiceNo(int $order_id) {
+	public function createInvoiceNo(int $order_id): string {
 		$order_info = $this->getOrder($order_id);
 
 		if ($order_info && !$order_info['invoice_no']) {
@@ -468,12 +468,12 @@ class Order extends \Opencart\System\Engine\Model {
 	}
 
 	public function getRewardTotal(int $order_id): int {
-		$query = $this->db->query("SELECT SUM(reward * quantity) AS total FROM `" . DB_PREFIX . "order_product` WHERE `order_id` = '" . (int)$order_id . "'");
+		$query = $this->db->query("SELECT SUM(reward * quantity) AS `total` FROM `" . DB_PREFIX . "order_product` WHERE `order_id` = '" . (int)$order_id . "'");
 
 		return (int)$query->row['total'];
 	}
 
-	public function getHistories(int $order_id, int $start = 0, int $limit = 10) {
+	public function getHistories(int $order_id, int $start = 0, int $limit = 10): array {
 		if ($start < 0) {
 			$start = 0;
 		}
@@ -482,7 +482,7 @@ class Order extends \Opencart\System\Engine\Model {
 			$limit = 10;
 		}
 
-		$query = $this->db->query("SELECT oh.`date_added`, os.`name` AS status, oh.`comment`, oh.`notify` FROM `" . DB_PREFIX . "order_history` oh LEFT JOIN `" . DB_PREFIX . "order_status` os ON oh.`order_status_id` = os.`order_status_id` WHERE oh.`order_id` = '" . (int)$order_id . "' AND os.`language_id` = '" . (int)$this->config->get('config_language_id') . "' ORDER BY oh.`date_added` DESC LIMIT " . (int)$start . "," . (int)$limit);
+		$query = $this->db->query("SELECT oh.`date_added`, os.`name` AS `status`, oh.`comment`, oh.`notify` FROM `" . DB_PREFIX . "order_history` oh LEFT JOIN `" . DB_PREFIX . "order_status` os ON oh.`order_status_id` = os.`order_status_id` WHERE oh.`order_id` = '" . (int)$order_id . "' AND os.`language_id` = '" . (int)$this->config->get('config_language_id') . "' ORDER BY oh.`date_added` DESC LIMIT " . (int)$start . "," . (int)$limit);
 
 		return $query->rows;
 	}
@@ -499,7 +499,7 @@ class Order extends \Opencart\System\Engine\Model {
 		return (int)$query->row['total'];
 	}
 
-	public function getEmailsByProductsOrdered(array $products, int $start, int $end) {
+	public function getEmailsByProductsOrdered(array $products, int $start, int $end): array {
 		$implode = [];
 
 		foreach ($products as $product_id) {

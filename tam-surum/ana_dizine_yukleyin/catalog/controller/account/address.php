@@ -1,5 +1,6 @@
 <?php
 namespace Opencart\Catalog\Controller\Account;
+use \Opencart\System\Helper as Helper;
 class Address extends \Opencart\System\Engine\Controller {
 	public function index(): void {
 		$this->load->language('account/address');
@@ -84,6 +85,8 @@ class Address extends \Opencart\System\Engine\Controller {
 	public function form(): void {
 		$this->load->language('account/address');
 
+		$data['language'] = $this->config->get('config_language');
+
 		if (!$this->customer->isLogged() || (!isset($this->request->get['customer_token']) || !isset($this->session->data['customer_token']) || ($this->request->get['customer_token'] != $this->session->data['customer_token']))) {
 			$this->session->data['redirect'] = $this->url->link('account/address', 'language=' . $this->config->get('config_language'));
 
@@ -91,11 +94,6 @@ class Address extends \Opencart\System\Engine\Controller {
 		}
 
 		$this->document->setTitle($this->language->get('heading_title'));
-
-		$this->document->addScript('catalog/view/javascript/jquery/datetimepicker/moment.min.js');
-		$this->document->addScript('catalog/view/javascript/jquery/datetimepicker/moment-with-locales.min.js');
-		$this->document->addScript('catalog/view/javascript/jquery/datetimepicker/daterangepicker.js');
-		$this->document->addStyle('catalog/view/javascript/jquery/datetimepicker/daterangepicker.css');
 
 		$data['text_address'] = !isset($this->request->get['address_id']) ? $this->language->get('text_address_add') : $this->language->get('text_address_edit');
 
@@ -270,19 +268,19 @@ class Address extends \Opencart\System\Engine\Controller {
 				}
 			}
 
-			if ((utf8_strlen($this->request->post['firstname']) < 1) || (utf8_strlen($this->request->post['firstname']) > 32)) {
+			if ((Helper\Utf8\strlen($this->request->post['firstname']) < 1) || (Helper\Utf8\strlen($this->request->post['firstname']) > 32)) {
 				$json['error']['firstname'] = $this->language->get('error_firstname');
 			}
 
-			if ((utf8_strlen($this->request->post['lastname']) < 1) || (utf8_strlen($this->request->post['lastname']) > 32)) {
+			if ((Helper\Utf8\strlen($this->request->post['lastname']) < 1) || (Helper\Utf8\strlen($this->request->post['lastname']) > 32)) {
 				$json['error']['lastname'] = $this->language->get('error_lastname');
 			}
 
-			if ((utf8_strlen($this->request->post['address_1']) < 3) || (utf8_strlen($this->request->post['address_1']) > 128)) {
+			if ((Helper\Utf8\strlen($this->request->post['address_1']) < 3) || (Helper\Utf8\strlen($this->request->post['address_1']) > 128)) {
 				$json['error']['address_1'] = $this->language->get('error_address_1');
 			}
 
-			if ((utf8_strlen($this->request->post['city']) < 2) || (utf8_strlen($this->request->post['city']) > 128)) {
+			if ((Helper\Utf8\strlen($this->request->post['city']) < 2) || (Helper\Utf8\strlen($this->request->post['city']) > 128)) {
 				$json['error']['city'] = $this->language->get('error_city');
 			}
 
@@ -290,7 +288,7 @@ class Address extends \Opencart\System\Engine\Controller {
 
 			$country_info = $this->model_localisation_country->getCountry($this->request->post['country_id']);
 
-			if ($country_info && $country_info['postcode_required'] && (utf8_strlen($this->request->post['postcode']) < 2 || utf8_strlen($this->request->post['postcode']) > 10)) {
+			if ($country_info && $country_info['postcode_required'] && (Helper\Utf8\strlen($this->request->post['postcode']) < 2 || Helper\Utf8\strlen($this->request->post['postcode']) > 10)) {
 				$json['error']['postcode'] = $this->language->get('error_postcode');
 			}
 

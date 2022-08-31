@@ -32,7 +32,8 @@ $_['column_action']     = 'Eylem';
 $_['entry_email']       = 'E-Posta';
 $_['entry_action']      = 'Eylem';
 $_['entry_status']      = 'Durumu';
-$_['entry_date_added']  = 'Ekleme Tarihi';
+$_['entry_date_from']   = 'Başlangıç Tarihi';
+$_['entry_date_to']     = 'Bitiş Tarihi';
 
 // Error
 $_['error_permission']  = 'Uyarı: KVKK İsteklerini düzenleme iznine sahip değilsiniz!';

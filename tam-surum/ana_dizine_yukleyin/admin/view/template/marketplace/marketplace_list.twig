@@ -3,9 +3,9 @@
   <div class="page-header">
     <div class="container-fluid">
       <div class="float-end">{% if not error_signature %}
-          <button type="button" id="button-opencart" data-bs-toggle="tooltip" title="{{ button_opencart }}" class="btn btn-info"><i class="fas fa-cog"></i></button>
+          <button type="button" id="button-opencart" data-bs-toggle="tooltip" title="{{ button_opencart }}" class="btn btn-info"><i class="fa-solid fa-cog"></i></button>
         {% else %}
-          <button type="button" id="button-opencart" data-bs-toggle="tooltip" title="{{ error_signature }}" data-placement="left" class="btn btn-danger"><i class="fas fa-exclamation-triangle"></i></button>
+          <button type="button" id="button-opencart" data-bs-toggle="tooltip" title="{{ error_signature }}" data-placement="left" class="btn btn-danger"><i class="fa-solid fa-triangle-exclamation"></i></button>
         {% endif %}</div>
       <h1>{{ heading_title }}</h1>
       <ol class="breadcrumb">
@@ -17,7 +17,7 @@
   </div>
   <div class="container-fluid">
     <div class="card">
-      <div class="card-header"><i class="fas fa-puzzle-piece"></i> {{ text_list }}</div>
+      <div class="card-header"><i class="fa-solid fa-puzzle-piece"></i> {{ text_list }}</div>
       <div class="card-body">
         <div class="card bg-light">
           <div class="card-body">
@@ -25,15 +25,15 @@
               <input type="text" name="filter_search" value="{{ filter_search }}" placeholder="{{ text_search }}" id="input-search" class="form-control"/>
               {% for category in categories %}
                 {% if category.value == filter_category %}
-                  <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown">{{ text_category }} ({{ category.text }}) <i class="fas fa-caret-down"></i></button>
+                  <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown">{{ text_category }} ({{ category.text }}) <i class="fa-solid fa-caret-down"></i></button>
                 {% endif %}
               {% endfor %}
-              <div class="dropdown-menu dropdown-menu-right">
+              <div class="dropdown-menu dropdown-menu-end">
                 {% for category in categories %}
                   <a href="{{ category.href }}" class="dropdown-item">{{ category.text }}</a>
                 {% endfor %}
               </div>
-              <button type="button" id="button-filter" data-bs-toggle="tooltip" title="{{ button_filter }}" class="btn btn-primary"><i class="fas fa-filter"></i></button>
+              <button type="button" id="button-filter" data-bs-toggle="tooltip" title="{{ button_filter }}" class="btn btn-primary"><i class="fa-solid fa-filter"></i></button>
             </div>
             <input type="hidden" name="filter_category_id" value="{{ filter_category_id }}" class="form-control"/> <input type="hidden" name="filter_download_id" value="{{ filter_download_id }}" class="form-control"/> <input type="hidden" name="filter_rating" value="{{ filter_rating }}" class="form-control"/> <input type="hidden" name="filter_license" value="{{ filter_license }}" class="form-control"/> <input type="hidden" name="filter_partner" value="{{ filter_partner }}" class="form-control"/> <input type="hidden" name="sort" value="{{ sort }}" class="form-control"/>
           </div>
@@ -47,7 +47,7 @@
           </div>
           <div class="col-xl-3 col-lg-5 col-sm-auto">
             <div class="input-group float-end">
-              <div class="input-group-text"><i class="fas fa-sort-amount-down"></i></div>
+              <div class="input-group-text"><i class="fa-solid fa-arrow-down-short-wide"></i></div>
               <select onchange="location = this.value;" class="form-select">
                 {% for sorts in sorts %}
                   <option value="{{ sorts.href }}"{% if sorts.value == sort %} selected{% endif %}>{{ sorts.text }}</option>
@@ -65,22 +65,19 @@
                   <div class="col-lg-3 col-md-4 col-sm-6 col-12">
                     <section>
                       <div class="extension-preview text-center">
-
                         <a href="{{ extension.href }}">
                           <div class="extension-description">
 
                           </div>
-                          <img src="{{ extension.image }}" alt="{{ extension.name }}" title="{{ extension.name }}" class="img-fluid"/></a></div>
-
-
-
+                          <img src="{{ extension.image }}" alt="{{ extension.name }}" title="{{ extension.name }}" class="img-fluid"/></a>
+                      </div>
                       <div class="extension-name">
                         <h4><a href="{{ extension.href }}">{{ extension.name }}</a></h4>
                         {{ extension.price }}</div>
                       <div class="extension-rate">
                         <div class="row">
                           <div class="col-6">{% for i in 1..5 %}
-                              {% if extension.rating >= i %}<i class="fas fa-star"></i>{% else %}<i class="far fa-star"></i>{% endif %}
+                              {% if extension.rating < i %}<i class="fa-regular fa-star"></i>{% else %}<i class="fa-solid fa-star"></i>{% endif %}
                             {% endfor %}</div>
                           <div class="col-6">
                             <div class="text-end">{{ extension.rating_total }} {{ text_reviews }}</div>
@@ -109,7 +106,7 @@
                       <div class="extension-rate">
                         <div class="row">
                           <div class="col-6">{% for i in 1..5 %}
-                              {% if extension.rating >= i %}<i class="fas fa-star"></i>{% else %}<i class="fas fa-star-o"></i>{% endif %}
+                              {% if extension.rating < i %}<i class="fa-regular fa-star"></i>{% else %}<i class="fa-solid fa-star"></i>{% endif %}
                             {% endfor %}</div>
                           <div class="col-6">
                             <div class="text-end">{{ extension.rating_total }} {{ text_reviews }}</div>
@@ -132,37 +129,37 @@
   </div>
 </div>
 <script type="text/javascript"><!--
-$('#button-opencart').on('click', function(e) {
+$('#button-opencart').on('click', function (e) {
     $('#modal-opencart').remove();
 
     $.ajax({
         url: 'index.php?route=marketplace/api&user_token={{ user_token }}',
         dataType: 'html',
-        beforeSend: function() {
+        beforeSend: function () {
             $('#button-opencart').prop('disabled', true).addClass('loading');
         },
-        complete: function() {
+        complete: function () {
             $('#button-opencart').prop('disabled', false).removeClass('loading');
         },
-        success: function(html) {
+        success: function (html) {
             $('body').append(html);
 
             $('#modal-opencart').modal('show');
         },
-        error: function(xhr, ajaxOptions, thrownError) {
+        error: function (xhr, ajaxOptions, thrownError) {
             console.log(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
         }
     });
 });
 //--></script>
 <script type="text/javascript"><!--
-$('#button-filter').on('click', function(e) {
+$('#button-filter').on('click', function (e) {
     var url = 'index.php?route=marketplace/marketplace&user_token={{ user_token }}';
 
     var input = $('#extension-filter :input');
 
     for (i = 0; i < input.length; i++) {
-        if ($(input[i]).val() != '' && $(input[i]).val() != null) {
+        if ($(input[i]).val() !== '') {
             url += '&' + $(input[i]).attr('name') + '=' + $(input[i]).val()
         }
     }
@@ -170,7 +167,7 @@ $('#button-filter').on('click', function(e) {
     location = url;
 });
 
-$('#input-search').keydown(function(e) {
+$('#input-search').keydown(function (e) {
     if (e.keyCode == 13) {
         e.preventDefault();
 

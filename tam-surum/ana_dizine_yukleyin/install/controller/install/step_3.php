@@ -1,7 +1,8 @@
 <?php
 namespace Opencart\Install\Controller\Install;
+use \Opencart\System\Helper as Helper;
 class Step3 extends \Opencart\System\Engine\Controller {
-	private $error = [];
+	private array $error = [];
 
 	public function index(): void {
 		$this->load->language('install/step_3');
@@ -315,7 +316,7 @@ class Step3 extends \Opencart\System\Engine\Controller {
 			$this->error['username'] = $this->language->get('error_username');
 		}
 
-		if ((utf8_strlen($this->request->post['email']) > 96) || !filter_var($this->request->post['email'], FILTER_VALIDATE_EMAIL)) {
+		if ((Helper\Utf8\strlen($this->request->post['email']) > 96) || !filter_var($this->request->post['email'], FILTER_VALIDATE_EMAIL)) {
 			$this->error['email'] = $this->language->get('error_email');
 		}
 

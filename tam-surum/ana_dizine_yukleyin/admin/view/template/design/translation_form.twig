@@ -3,8 +3,8 @@
   <div class="page-header">
     <div class="container-fluid">
       <div class="float-end">
-        <button type="submit" form="form-translation" data-bs-toggle="tooltip" title="{{ button_save }}" class="btn btn-primary"><i class="fas fa-save"></i></button>
-        <a href="{{ back }}" data-bs-toggle="tooltip" title="{{ button_back }}" class="btn btn-light"><i class="fas fa-reply"></i></a></div>
+        <button type="submit" form="form-translation" data-bs-toggle="tooltip" title="{{ button_save }}" class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i></button>
+        <a href="{{ back }}" data-bs-toggle="tooltip" title="{{ button_back }}" class="btn btn-light"><i class="fa-solid fa-reply"></i></a></div>
       <h1>{{ heading_title }}</h1>
       <ol class="breadcrumb">
         {% for breadcrumb in breadcrumbs %}
@@ -15,7 +15,7 @@
   </div>
   <div class="container-fluid">
     <div class="card">
-      <div class="card-header"><i class="fas fa-pencil-alt"></i> {{ text_form }}</div>
+      <div class="card-header"><i class="fa-solid fa-pencil"></i> {{ text_form }}</div>
       <div class="card-body">
         <form id="form-translation" action="{{ save }}" method="post" data-oc-toggle="ajax">
           <div class="row mb-3">
@@ -71,21 +71,21 @@
   </div>
 </div>
 <script type="text/javascript"><!--
-$('#input-language').on('change', function() {
+$('#input-language').on('change', function () {
     $.ajax({
         url: 'index.php?route=design/translation|path&user_token={{ user_token }}&language_id=' + $('#input-language').val(),
         dataType: 'json',
-        beforeSend: function() {
+        beforeSend: function () {
             $('#input-language').prop('disabled', true);
             $('#input-route').prop('disabled', true);
             $('#input-key').prop('disabled', true);
         },
-        complete: function() {
+        complete: function () {
             $('#input-language').prop('disabled', false);
             $('#input-route').prop('disabled', false);
             $('#input-key').prop('disabled', false);
         },
-        success: function(json) {
+        success: function (json) {
             html = '';
 
             if (json) {
@@ -102,27 +102,27 @@ $('#input-language').on('change', function() {
 
             $('#input-route').trigger('change');
         },
-        error: function(xhr, ajaxOptions, thrownError) {
+        error: function (xhr, ajaxOptions, thrownError) {
             console.log(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
         }
     });
 });
 
-$('#input-route').on('change', function() {
+$('#input-route').on('change', function () {
     $.ajax({
         url: 'index.php?route=design/translation|translation&user_token={{ user_token }}&language_id=' + $('#input-language').val() + '&path=' + $('#input-route').val(),
         dataType: 'json',
-        beforeSend: function() {
+        beforeSend: function () {
             $('#input-language').prop('disabled', true);
             $('#input-route').prop('disabled', true);
             $('#input-key').prop('disabled', true);
         },
-        complete: function() {
+        complete: function () {
             $('#input-language').prop('disabled', false);
             $('#input-route').prop('disabled', false);
             $('#input-key').prop('disabled', false);
         },
-        success: function(json) {
+        success: function (json) {
             translation = [];
 
             html = '<option value=""></option>';
@@ -143,13 +143,13 @@ $('#input-route').on('change', function() {
 
             $('#input-key').trigger('change');
         },
-        error: function(xhr, ajaxOptions, thrownError) {
+        error: function (xhr, ajaxOptions, thrownError) {
             console.log(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
         }
     });
 });
 
-$('#input-key').on('change', function() {
+$('#input-key').on('change', function () {
     if (translation[$('#input-key').val()]) {
         $('#input-default').val(translation[$('#input-key').val()]);
 

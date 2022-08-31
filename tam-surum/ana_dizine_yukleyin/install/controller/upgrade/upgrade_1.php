@@ -173,7 +173,7 @@ class Upgrade1 extends \Opencart\System\Engine\Controller {
 		}
 
 		if (!is_writable($file)) {
-			$json['error'] =  sprintf($this->language->get('error_writable'), $file);
+			$json['error'] = sprintf($this->language->get('error_writable'), $file);
 		}
 
 		if (!$json) {
@@ -306,6 +306,17 @@ class Upgrade1 extends \Opencart\System\Engine\Controller {
 		// Merge system/upload to system/storage/upload
 		if (is_dir(DIR_SYSTEM . 'upload')) {
 			$this->recursive_move(DIR_SYSTEM . 'upload', DIR_STORAGE . 'upload');
+		}
+
+		// Merge image/data to image/catalog
+		if (is_dir(DIR_IMAGE . 'data')) {
+			if (!is_dir(DIR_IMAGE . 'catalog')) {
+				rename(DIR_IMAGE . 'data', DIR_IMAGE . 'catalog'); // Rename data to catalog
+			} else {
+				$this->recursive_move(DIR_IMAGE . 'data', DIR_IMAGE . 'catalog');
+
+				@unlink(DIR_IMAGE . 'data');
+			}
 		}
 
 		if (is_dir(DIR_SYSTEM . 'download')) {

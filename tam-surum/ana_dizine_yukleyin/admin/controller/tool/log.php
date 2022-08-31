@@ -26,6 +26,13 @@ class Log extends \Opencart\System\Engine\Controller {
 			$data['error_warning'] = '';
 		}
 
+		$file = DIR_LOGS . $this->config->get('config_error_filename');
+
+		if (!is_file($file)) {
+			file_put_contents($file, '', FILE_APPEND);
+		}
+
+
 		$data['log'] = [];
 
 		$files = glob(DIR_LOGS . '*.log');

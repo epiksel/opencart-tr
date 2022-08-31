@@ -22,31 +22,86 @@ function getURLVar(key) {
     }
 }
 
-// Tooltip
-var tooltip = function () {
-   $('.tooltip').remove();
+$(document).ready(function () {
+    // Tooltip
+    var oc_tooltip = function () {
+        // Apply to all on current page
+        tooltip = bootstrap.Tooltip.getOrCreateInstance(this);
+        tooltip.show();
+    }
 
-    // Apply to all on current page
-    $('[data-bs-toggle=\'tooltip\']').each(function(i, element) {
-        bootstrap.Tooltip.getOrCreateInstance(element);
+    $(document).on('mouseenter', '[data-bs-toggle=\'tooltip\']', oc_tooltip);
+
+    $(document).on('click', 'button', function () {
+        $('.tooltip').remove();
     });
-}
 
-$(document).ready(tooltip);
-// Makes tooltips work on ajax generated content
-$(document).on('click', 'button', tooltip);
-
-// Alert Fade
-var alert = function () {
-    window.setTimeout(function() {
-        $('.alert-dismissible').fadeTo(1000, 0, function() {
-            $(this).remove();
+    // Date
+    var oc_datetimepicker = function () {
+        $(this).daterangepicker({
+            singleDatePicker: true,
+            autoApply: true,
+            autoUpdateInput: false,
+            locale: {
+                format: 'YYYY-MM-DD'
+            }
+        }, function (start, end) {
+            $(this.element).val(start.format('YYYY-MM-DD'));
         });
-    }, 7000);
-}
+    }
 
-$(document).ready(alert);
-$(document).on('click', 'button', alert);
+    $(document).on('focus', '.date', oc_datetimepicker);
+
+    // Time
+    var oc_datetimepicker = function () {
+        $(this).daterangepicker({
+            singleDatePicker: true,
+            datePicker: false,
+            autoApply: true,
+            autoUpdateInput: false,
+            timePicker: true,
+            timePicker24Hour: true,
+            locale: {
+                format: 'HH:mm'
+            }
+        }, function (start, end) {
+            $(this.element).val(start.format('HH:mm'));
+        }).on('show.daterangepicker', function (ev, picker) {
+            picker.container.find('.calendar-table').hide();
+        });
+    }
+
+    $(document).on('focus', '.time', oc_datetimepicker);
+
+    // Date Time
+    var oc_datetimepicker = function () {
+        $('.datetime').daterangepicker({
+            singleDatePicker: true,
+            autoApply: true,
+            autoUpdateInput: false,
+            timePicker: true,
+            timePicker24Hour: true,
+            locale: {
+                format: 'YYYY-MM-DD HH:mm'
+            }
+        }, function (start, end) {
+            $(this.element).val(start.format('YYYY-MM-DD HH:mm'));
+        });
+    }
+
+    $(document).on('focus', '.datetime', oc_datetimepicker);
+
+    // Alert Fade
+    var oc_alert = function () {
+        window.setTimeout(function () {
+            //$('.alert-dismissible').fadeTo(1000, 0, function () {
+            //    $(this).remove();
+            //});
+        }, 7000);
+    }
+
+    $(document).on('click', 'button', oc_alert);
+});
 
 $(document).ready(function () {
     // Currency
@@ -180,7 +235,11 @@ $(document).on('submit', 'form[data-oc-toggle=\'ajax\']', function (e) {
 
     var action = $(form).attr('action');
 
-    var button = e.originalEvent.submitter;
+    if (e.originalEvent !== undefined && e.originalEvent.submitter !== undefined) {
+        var button = e.originalEvent.submitter;
+    } else {
+        var button = '';
+    }
 
     var formaction = $(button).attr('formaction');
 
@@ -227,7 +286,7 @@ $(document).on('submit', 'form[data-oc-toggle=\'ajax\']', function (e) {
             $(button).prop('disabled', true).addClass('loading');
         },
         complete: function () {
-           $(button).prop('disabled', false).removeClass('loading');
+            $(button).prop('disabled', false).removeClass('loading');
         },
         success: function (json) {
             $('.alert-dismissible').remove();
@@ -237,16 +296,16 @@ $(document).on('submit', 'form[data-oc-toggle=\'ajax\']', function (e) {
             console.log(json);
 
             if (json['redirect']) {
-                location = json['redirect'];
+                location = json['redirect'].replaceAll('&amp;', '&');
             }
 
             if (typeof json['error'] == 'string') {
-                $('#alert').prepend('<div class="alert alert-danger alert-dismissible"><i class="fas fa-exclamation-circle"></i> ' + json['error'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
+                $('#alert').prepend('<div class="alert alert-danger alert-dismissible"><i class="fa-solid fa-circle-exclamation"></i> ' + json['error'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
             }
 
             if (typeof json['error'] == 'object') {
                 if (json['error']['warning']) {
-                    $('#alert').prepend('<div class="alert alert-danger alert-dismissible"><i class="fas fa-exclamation-circle"></i> ' + json['error']['warning'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
+                    $('#alert').prepend('<div class="alert alert-danger alert-dismissible"><i class="fa-solid fa-circle-exclamation"></i> ' + json['error']['warning'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
                 }
 
                 for (key in json['error']) {
@@ -256,7 +315,7 @@ $(document).on('submit', 'form[data-oc-toggle=\'ajax\']', function (e) {
             }
 
             if (json['success']) {
-                $('#alert').prepend('<div class="alert alert-success alert-dismissible"><i class="fas fa-exclamation-circle"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
+                $('#alert').prepend('<div class="alert alert-success alert-dismissible"><i class="fa-solid fa-circle-exclamation"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
 
                 // Refresh
                 var url = $(form).attr('data-oc-load');
@@ -366,7 +425,7 @@ class Chain {
 
             var jqxhr = call();
 
-            jqxhr.done(function() {
+            jqxhr.done(function () {
                 chain.execute();
             });
         } else {
@@ -378,9 +437,9 @@ class Chain {
 var chain = new Chain();
 
 // Autocomplete
-(function($) {
-    $.fn.autocomplete = function(option) {
-        return this.each(function() {
+(function ($) {
+    $.fn.autocomplete = function (option) {
+        return this.each(function () {
             var $this = $(this);
             var $dropdown = $('#' + $this.attr('list'));
 
@@ -390,12 +449,12 @@ var chain = new Chain();
             $.extend(this, option);
 
             // Focus
-            $this.on('focus', function() {
+            $this.on('focus', function () {
                 this.request();
             });
 
             // Keydown
-            $this.on('input', function(e) {
+            $this.on('input', function (e) {
                 this.request();
 
                 var value = $this.val();
@@ -406,16 +465,16 @@ var chain = new Chain();
             });
 
             // Request
-            this.request = function() {
+            this.request = function () {
                 clearTimeout(this.timer);
 
-                this.timer = setTimeout(function(object) {
+                this.timer = setTimeout(function (object) {
                     object.source($(object).val(), $.proxy(object.response, object));
                 }, 50, this);
             }
 
             // Response
-            this.response = function(json) {
+            this.response = function (json) {
                 var html = '';
                 var category = {};
                 var name;

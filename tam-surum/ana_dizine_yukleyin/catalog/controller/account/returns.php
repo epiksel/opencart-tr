@@ -1,8 +1,9 @@
 <?php
 namespace Opencart\Catalog\Controller\Account;
+use \Opencart\System\Helper as Helper;
 class Returns extends \Opencart\System\Engine\Controller {
 	public function index(): void {
-		$this->load->language('account/return');
+		$this->load->language('account/returns');
 
 		if (!$this->customer->isLogged() || (!isset($this->request->get['customer_token']) || !isset($this->session->data['customer_token']) || ($this->request->get['customer_token'] != $this->session->data['customer_token']))) {
 			$this->session->data['redirect'] = $this->url->link('account/returns', 'language=' . $this->config->get('config_language'));
@@ -56,7 +57,7 @@ class Returns extends \Opencart\System\Engine\Controller {
 				'name'       => $result['firstname'] . ' ' . $result['lastname'],
 				'status'     => $result['status'],
 				'date_added' => date($this->language->get('date_format_short'), strtotime($result['date_added'])),
-				'href'       => $this->url->link('account/returns|info', 'language=' . $this->config->get('config_language') . '&return_id=' . $result['return_id'] . $url)
+				'href'       => $this->url->link('account/returns|info', 'language=' . $this->config->get('config_language') . '&customer_token=' . $this->session->data['customer_token'] . '&return_id=' . $result['return_id'] . $url)
 			];
 		}
 
@@ -78,14 +79,14 @@ class Returns extends \Opencart\System\Engine\Controller {
 		$data['footer'] = $this->load->controller('common/footer');
 		$data['header'] = $this->load->controller('common/header');
 
-		$this->response->setOutput($this->load->view('account/return_list', $data));
+		$this->response->setOutput($this->load->view('account/returns_list', $data));
 	}
 
 	public function info(): void {
 		$this->load->language('account/returns');
 
 		if (!$this->customer->isLogged() || (!isset($this->request->get['customer_token']) || !isset($this->session->data['customer_token']) || ($this->request->get['customer_token'] != $this->session->data['customer_token']))) {
-			$this->session->data['redirect'] = $this->url->link('account/returns|info', 'language=' . $this->config->get('config_language'));
+			$this->session->data['redirect'] = $this->url->link('account/returns|info', 'language=' . $this->config->get('config_language') . '&customer_token=' . $this->session->data['customer_token']);
 
 			$this->response->redirect($this->url->link('account/login', 'language=' . $this->config->get('config_language')));
 		}
@@ -100,7 +101,7 @@ class Returns extends \Opencart\System\Engine\Controller {
 
 		$this->load->model('account/returns');
 
-		$return_info = $this->model_account_return->getReturn($return_id);
+		$return_info = $this->model_account_returns->getReturn($return_id);
 
 		if ($return_info) {
 			$data['breadcrumbs'] = [];
@@ -149,7 +150,7 @@ class Returns extends \Opencart\System\Engine\Controller {
 
 			$data['histories'] = [];
 
-			$results = $this->model_account_return->getHistories($this->request->get['return_id']);
+			$results = $this->model_account_returns->getHistories($this->request->get['return_id']);
 
 			foreach ($results as $result) {
 				$data['histories'][] = [
@@ -168,7 +169,7 @@ class Returns extends \Opencart\System\Engine\Controller {
 			$data['footer'] = $this->load->controller('common/footer');
 			$data['header'] = $this->load->controller('common/header');
 
-			$this->response->setOutput($this->load->view('account/return_info', $data));
+			$this->response->setOutput($this->load->view('account/returns_info', $data));
 		} else {
 			$data['breadcrumbs'] = [];
 
@@ -212,14 +213,9 @@ class Returns extends \Opencart\System\Engine\Controller {
 	}
 
 	public function add(): void {
-		$this->load->language('account/return');
+		$this->load->language('account/returns');
 
 		$this->document->setTitle($this->language->get('heading_title'));
-
-		$this->document->addScript('catalog/view/javascript/jquery/datetimepicker/moment.min.js');
-		$this->document->addScript('catalog/view/javascript/jquery/datetimepicker/moment-with-locales.min.js');
-		$this->document->addScript('catalog/view/javascript/jquery/datetimepicker/daterangepicker.js');
-		$this->document->addStyle('catalog/view/javascript/jquery/datetimepicker/daterangepicker.css');
 
 		$data['breadcrumbs'] = [];
 
@@ -342,11 +338,11 @@ class Returns extends \Opencart\System\Engine\Controller {
 		$data['footer'] = $this->load->controller('common/footer');
 		$data['header'] = $this->load->controller('common/header');
 
-		$this->response->setOutput($this->load->view('account/return_form', $data));
+		$this->response->setOutput($this->load->view('account/returns_form', $data));
 	}
 
 	public function save(): void {
-		$this->load->language('account/return');
+		$this->load->language('account/returns');
 
 		$json = [];
 
@@ -377,27 +373,27 @@ class Returns extends \Opencart\System\Engine\Controller {
 				$json['error']['order_id'] = $this->language->get('error_order_id');
 			}
 
-			if ((utf8_strlen($this->request->post['firstname']) < 1) || (utf8_strlen($this->request->post['firstname']) > 32)) {
+			if ((Helper\Utf8\strlen($this->request->post['firstname']) < 1) || (Helper\Utf8\strlen($this->request->post['firstname']) > 32)) {
 				$json['error']['firstname'] = $this->language->get('error_firstname');
 			}
 
-			if ((utf8_strlen($this->request->post['lastname']) < 1) || (utf8_strlen($this->request->post['lastname']) > 32)) {
+			if ((Helper\Utf8\strlen($this->request->post['lastname']) < 1) || (Helper\Utf8\strlen($this->request->post['lastname']) > 32)) {
 				$json['error']['lastname'] = $this->language->get('error_lastname');
 			}
 
-			if ((utf8_strlen($this->request->post['email']) > 96) || !filter_var($this->request->post['email'], FILTER_VALIDATE_EMAIL)) {
+			if ((Helper\Utf8\strlen($this->request->post['email']) > 96) || !filter_var($this->request->post['email'], FILTER_VALIDATE_EMAIL)) {
 				$json['error']['email'] = $this->language->get('error_email');
 			}
 
-			if ((utf8_strlen($this->request->post['telephone']) < 3) || (utf8_strlen($this->request->post['telephone']) > 32)) {
+			if ((Helper\Utf8\strlen($this->request->post['telephone']) < 3) || (Helper\Utf8\strlen($this->request->post['telephone']) > 32)) {
 				$json['error']['telephone'] = $this->language->get('error_telephone');
 			}
 
-			if ((utf8_strlen($this->request->post['product']) < 1) || (utf8_strlen($this->request->post['product']) > 255)) {
+			if ((Helper\Utf8\strlen($this->request->post['product']) < 1) || (Helper\Utf8\strlen($this->request->post['product']) > 255)) {
 				$json['error']['product'] = $this->language->get('error_product');
 			}
 
-			if ((utf8_strlen($this->request->post['model']) < 1) || (utf8_strlen($this->request->post['model']) > 64)) {
+			if ((Helper\Utf8\strlen($this->request->post['model']) < 1) || (Helper\Utf8\strlen($this->request->post['model']) > 64)) {
 				$json['error']['model'] = $this->language->get('error_model');
 			}
 
@@ -442,7 +438,7 @@ class Returns extends \Opencart\System\Engine\Controller {
 	}
 
 	public function success(): void {
-		$this->load->language('account/return');
+		$this->load->language('account/returns');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 

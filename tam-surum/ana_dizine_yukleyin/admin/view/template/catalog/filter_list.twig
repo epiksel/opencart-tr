@@ -1,4 +1,4 @@
-<form id="form-filter" method="post" data-oc-load="{{ action }}" data-oc-target="#filter">
+<form id="form-filter" method="post" data-oc-toggle="ajax" data-oc-load="{{ action }}" data-oc-target="#filter">
 	<div class="table-responsive">
 		<table class="table table-bordered table-hover">
 			<thead>
@@ -16,7 +16,7 @@
 							<td class="text-center"><input type="checkbox" name="selected[]" value="{{ filter.filter_group_id }}" class="form-check-input"/></td>
 							<td class="text-start">{{ filter.name }}</td>
 							<td class="text-end">{{ filter.sort_order }}</td>
-							<td class="text-end"><a href="{{ filter.edit }}" data-bs-toggle="tooltip" title="{{ button_edit }}" class="btn btn-primary"><i class="fas fa-pencil-alt"></i></a></td>
+							<td class="text-end"><a href="{{ filter.edit }}" data-bs-toggle="tooltip" title="{{ button_edit }}" class="btn btn-primary"><i class="fa-solid fa-pencil"></i></a></td>
 						</tr>
 					{% endfor %}
 				{% else %}

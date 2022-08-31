@@ -3,7 +3,7 @@
 	<div class="page-header">
 		<div class="container-fluid">
 			<div class="float-end">
-				<button type="submit" form="form-event" formaction="{{ delete }}" data-bs-toggle="tooltip" title="{{ button_delete }}" onclick="return confirm('{{ text_confirm }}');" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+				<button type="submit" form="form-event" formaction="{{ delete }}" data-bs-toggle="tooltip" title="{{ button_delete }}" onclick="return confirm('{{ text_confirm }}');" class="btn btn-danger"><i class="fa-regular fa-trash-can"></i></button>
 			</div>
 			<h1>{{ heading_title }}</h1>
 			<ol class="breadcrumb">
@@ -14,21 +14,21 @@
 		</div>
 	</div>
 	<div class="container-fluid">
-		<div class="alert alert-info"><i class="fas fa-info-circle"></i> {{ text_event }}</div>
+		<div class="alert alert-info"><i class="fa-solid fa-info-circle"></i> {{ text_event }}</div>
 		<div class="card">
-			<div class="card-header"><i class="fas fa-list"></i> {{ text_list }}</div>
+			<div class="card-header"><i class="fa-solid fa-list"></i> {{ text_list }}</div>
 			<div id="event" class="card-body">{{ list }}</div>
 		</div>
 	</div>
 </div>
 <script type="text/javascript"><!--
-$('#event').on('click', 'thead a, .pagination a', function(e) {
+$('#event').on('click', 'thead a, .pagination a', function (e) {
     e.preventDefault();
 
     $('#event').load(this.href);
 });
 
-$('#event').on('click', '.btn-success, .btn-danger', function(e) {
+$('#event').on('click', '.btn-success, .btn-danger', function (e) {
     e.preventDefault();
 
     var element = this;
@@ -38,30 +38,30 @@ $('#event').on('click', '.btn-success, .btn-danger', function(e) {
         type: 'post',
         data: $('#event input[name=\'selected[]\']:checked'),
         dataType: 'json',
-        beforeSend: function() {
+        beforeSend: function () {
             $(element).prop('disabled', true).addClass('loading');
         },
-        complete: function() {
+        complete: function () {
             $(element).prop('disabled', false).removeClass('loading');
         },
-        success: function(json) {
+        success: function (json) {
             if (json['error']) {
-                $('#alert').prepend('<div class="alert alert-danger alert-dismissible"><i class="fas fa-exclamation-circle"></i> ' + json['error'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
+                $('#alert').prepend('<div class="alert alert-danger alert-dismissible"><i class="fa-solid fa-circle-exclamation"></i> ' + json['error'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
             }
 
             if (json['success']) {
-                $('#alert').prepend('<div class="alert alert-success alert-dismissible"><i class="fas fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
+                $('#alert').prepend('<div class="alert alert-success alert-dismissible"><i class="fa-solid fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
 
                 $('#event').load($('#form-event').attr('data-oc-load'));
             }
         },
-        error: function(xhr, ajaxOptions, thrownError) {
+        error: function (xhr, ajaxOptions, thrownError) {
             console.log(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
         }
     });
 });
 
-$('#event').on('click', '.btn-info', function() {
+$('#event').on('click', '.btn-info', function () {
     var element = this;
 
     $('#modal-event').remove();

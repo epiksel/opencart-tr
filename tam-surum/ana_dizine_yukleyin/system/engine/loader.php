@@ -69,16 +69,28 @@ class Loader {
 		$trigger = $route;
 
 		// Trigger the pre events
-		$this->event->trigger('controller/' . $trigger . '/before', [&$route, &$args]);
+		$result = $this->event->trigger('controller/' . $trigger . '/before', [&$route, &$args]);
 
-		// Make sure its only the last event that returns an output if required.
-		$action = new \Opencart\System\Engine\Action($route);
-		$output = $action->execute($this->registry, $args);
+		// Make sure it's only the last event that returns an output if required.
+		if ($result != null && !$result instanceof \Exception) {
+			$output = $result;
+		} else {
+			$action = new \Opencart\System\Engine\Action($route);
+			$output = $action->execute($this->registry, $args);
+		}
 
 		// Trigger the post events
-		$this->event->trigger('controller/' . $trigger . '/after', [&$route, &$args, &$output]);
+		$result = $this->event->trigger('controller/' . $trigger . '/after', [&$route, &$args, &$output]);
 
-		return $output;
+		if ($result && !$result instanceof \Exception) {
+			$output = $result;
+		}
+
+		if (!$output instanceof \Exception) {
+			return $output;
+		}
+
+		return '';
 	}
 	
 	/**
@@ -182,7 +194,7 @@ class Loader {
 
 		$this->event->trigger('library/' . $trigger . '/before', [&$route, &$args]);
 
-		$class = 'Opencart\System\Library\\' . str_replace('/', '\\', $route);
+		$class = 'Opencart\System\Library\\' . str_replace(['_', '/'], ['', '\\'], ucwords($route, '_/'));
 
 		if (class_exists($class)) {
 			$library = new $class(...$args);
@@ -206,9 +218,15 @@ class Loader {
 	public function helper(string $route): void {
 		$route = preg_replace('/[^a-zA-Z0-9_\/]/', '', $route);
 
-		$file = DIR_SYSTEM . 'helper/' . $route . '.php';
+		if (!str_starts_with($route, 'extension/')) {
+			$file = DIR_SYSTEM . 'helper/' . $route . '.php';
+		} else {
+			$parts = explode('/', substr($route, 10));
 
-		//$file = 'Opencart\System\Helper\\' . str_replace('/', '\\', $route);
+			$code = array_shift($parts);
+
+			$file = DIR_EXTENSION . $code . '/system/helper/' . implode('/', $parts) . '.php';
+		}
 
 		if (is_file($file)) {
 			include_once($file);

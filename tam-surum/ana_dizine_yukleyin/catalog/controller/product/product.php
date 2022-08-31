@@ -1,5 +1,6 @@
 <?php
 namespace Opencart\Catalog\Controller\Product;
+use \Opencart\System\Helper as Helper;
 class Product extends \Opencart\System\Engine\Controller {
 	public function index(): void {
 		$this->load->language('product/product');
@@ -221,27 +222,17 @@ class Product extends \Opencart\System\Engine\Controller {
 			$this->document->addScript('catalog/view/javascript/jquery/magnific/jquery.magnific-popup.min.js');
 			$this->document->addStyle('catalog/view/javascript/jquery/magnific/magnific-popup.css');
 
-			$this->document->addScript('catalog/view/javascript/jquery/datetimepicker/moment.min.js');
-			$this->document->addScript('catalog/view/javascript/jquery/datetimepicker/moment-with-locales.min.js');
-			$this->document->addScript('catalog/view/javascript/jquery/datetimepicker/daterangepicker.js');
-			$this->document->addStyle('catalog/view/javascript/jquery/datetimepicker/daterangepicker.css');
-
 			$data['heading_title'] = $product_info['name'];
 
 			$data['text_minimum'] = sprintf($this->language->get('text_minimum'), $product_info['minimum']);
 			$data['text_login'] = sprintf($this->language->get('text_login'), $this->url->link('account/login', 'language=' . $this->config->get('config_language')), $this->url->link('account/register', 'language=' . $this->config->get('config_language')));
+			$data['text_reviews'] = sprintf($this->language->get('text_reviews'), (int)$product_info['reviews']);
 
 			$data['tab_review'] = sprintf($this->language->get('tab_review'), $product_info['reviews']);
 
 			$data['error_upload_size'] = sprintf($this->language->get('error_upload_size'), $this->config->get('config_file_max_size'));
 
 			$data['config_file_max_size'] = ((int)$this->config->get('config_file_max_size') * 1024 * 1024);
-
-			$data['add_to_wishlist'] = $this->url->link('account/wishlist|add', 'language=' . $this->config->get('config_language'));
-			$data['add_to_compare'] = $this->url->link('product/compare|add', 'language=' . $this->config->get('config_language'));
-			$data['upload'] = $this->url->link('tool/upload', 'language=' . $this->config->get('config_language'));
-
-			$data['language'] = $this->config->get('config_language');
 
 			$data['product_id'] = (int)$this->request->get['product_id'];
 			$data['manufacturer'] = $product_info['manufacturer'];
@@ -258,6 +249,17 @@ class Product extends \Opencart\System\Engine\Controller {
 			} else {
 				$data['stock'] = $this->language->get('text_instock');
 			}
+
+			$data['rating'] = (int)$product_info['rating'];
+			$data['review_status'] = (int)$this->config->get('config_review_status');
+
+			$data['review'] = $this->load->controller('product/review');
+
+			$data['add_to_wishlist'] = $this->url->link('account/wishlist|add', 'language=' . $this->config->get('config_language'));
+			$data['add_to_compare'] = $this->url->link('product/compare|add', 'language=' . $this->config->get('config_language'));
+			$data['upload'] = $this->url->link('tool/upload', 'language=' . $this->config->get('config_language'));
+
+			$data['language'] = $this->config->get('config_language');
 
 			$this->load->model('tool/image');
 
@@ -410,33 +412,6 @@ class Product extends \Opencart\System\Engine\Controller {
 				$data['minimum'] = 1;
 			}
 
-			if ($this->config->get('config_review_guest') || $this->customer->isLogged()) {
-				$data['review_guest'] = true;
-			} else {
-				$data['review_guest'] = false;
-			}
-
-			if ($this->customer->isLogged()) {
-				$data['customer_name'] = $this->customer->getFirstName() . '&nbsp;' . $this->customer->getLastName();
-			} else {
-				$data['customer_name'] = '';
-			}
-
-			$data['reviews'] = sprintf($this->language->get('text_reviews'), (int)$product_info['reviews']);
-			$data['rating'] = (int)$product_info['rating'];
-			$data['review_status'] = (int)$this->config->get('config_review_status');
-
-			// Captcha
-			$this->load->model('setting/extension');
-
-			$extension_info = $this->model_setting_extension->getExtensionByCode('captcha', $this->config->get('config_captcha'));
-
-			if ($extension_info && $this->config->get('captcha_' . $this->config->get('config_captcha') . '_status') && in_array('review', (array)$this->config->get('config_captcha_page'))) {
-				$data['captcha'] = $this->load->controller('extension/'  . $extension_info['extension'] . '/captcha/' . $extension_info['code']);
-			} else {
-				$data['captcha'] = '';
-			}
-
 			$data['share'] = $this->url->link('product/product', 'language=' . $this->config->get('config_language') . '&product_id=' . (int)$this->request->get['product_id']);
 
 			$data['attribute_groups'] = $this->model_catalog_product->getAttributes($this->request->get['product_id']);
@@ -474,7 +449,7 @@ class Product extends \Opencart\System\Engine\Controller {
 					'product_id'  => $result['product_id'],
 					'thumb'       => $image,
 					'name'        => $result['name'],
-					'description' => utf8_substr(trim(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8'))), 0, $this->config->get('config_product_description_length')) . '..',
+					'description' => Helper\Utf8\substr(trim(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8'))), 0, $this->config->get('config_product_description_length')) . '..',
 					'price'       => $price,
 					'special'     => $special,
 					'tax'         => $tax,

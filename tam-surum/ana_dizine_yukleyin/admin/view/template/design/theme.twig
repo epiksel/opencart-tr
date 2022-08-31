@@ -12,7 +12,7 @@
 	</div>
 	<div class="container-fluid">
 		<div class="card">
-			<div class="card-header"><i class="fas fa-list"></i> {{ text_edit }}</div>
+			<div class="card-header"><i class="fa-solid fa-list"></i> {{ text_edit }}</div>
 			<div class="card-body">
 				<div class="row">
 					<div class="col-lg-3 col-md-3 col-sm-12">
@@ -37,7 +37,7 @@
 						</div>
 					</div>
 					<div class="col-lg-9 col-md-12">
-						<div class="alert alert-info"><i class="fas fa-info-circle"></i> {{ text_twig }}</div>
+						<div class="alert alert-info"><i class="fa-solid fa-info-circle"></i> {{ text_twig }}</div>
 						<div id="recent">
 							<fieldset>
 								<legend>{{ text_history }}</legend>
@@ -60,36 +60,36 @@
 <script type="text/javascript" src="view/javascript/codemirror/mode/xml.js"></script>
 <script type="text/javascript" src="view/javascript/codemirror/mode/htmlmixed.js"></script>
 <script type="text/javascript"><!--
-$('#input-store').on('change', function(e) {
+$('#input-store').on('change', function (e) {
     var element = this;
 
     $.ajax({
         url: 'index.php?route=design/theme|path&user_token={{ user_token }}&store_id=' + $(element).val(),
         dataType: 'json',
-        beforeSend: function() {
+        beforeSend: function () {
             $(element).prop('disabled', true);
         },
-        complete: function() {
+        complete: function () {
             $(element).prop('disabled', false);
         },
-        success: function(json) {
+        success: function (json) {
             html = '';
 
             if (json['directory']) {
                 for (i = 0; i < json['directory'].length; i++) {
-                    html += '<a href="' + json['directory'][i]['path'] + '" class="list-group-item list-group-item-action directory">' + json['directory'][i]['name'] + ' <i class="fas fa-arrow-right fa-fw float-end"></i></a>';
+                    html += '<a href="' + json['directory'][i]['path'] + '" class="list-group-item list-group-item-action directory">' + json['directory'][i]['name'] + ' <i class="fa-solid fa-arrow-right fa-fw float-end"></i></a>';
                 }
             }
 
             if (json['file']) {
                 for (i = 0; i < json['file'].length; i++) {
-                    html += '<a href="' + json['file'][i]['path'] + '" class="list-group-item list-group-item-action file">' + json['file'][i]['name'] + ' <i class="fas fa-arrow-right fa-fw float-end"></i></a>';
+                    html += '<a href="' + json['file'][i]['path'] + '" class="list-group-item list-group-item-action file">' + json['file'][i]['name'] + ' <i class="fa-solid fa-arrow-right fa-fw float-end"></i></a>';
                 }
             }
 
             $('#path').html(html);
         },
-        error: function(xhr, ajaxOptions, thrownError) {
+        error: function (xhr, ajaxOptions, thrownError) {
             console.log(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
         }
     });
@@ -97,7 +97,7 @@ $('#input-store').on('change', function(e) {
 
 $('#input-store').trigger('change');
 
-$('#path').on('click', 'a.directory', function(e) {
+$('#path').on('click', 'a.directory', function (e) {
     e.preventDefault();
 
     var element = this;
@@ -105,50 +105,50 @@ $('#path').on('click', 'a.directory', function(e) {
     $.ajax({
         url: 'index.php?route=design/theme|path&user_token={{ user_token }}&store_id=' + $('#input-store').val() + '&path=' + $(element).attr('href'),
         dataType: 'json',
-        beforeSend: function() {
+        beforeSend: function () {
             $(element).find('i').removeClass('fa-arrow-right');
             $(element).find('i').addClass('fa-circle-notch fa-spin');
         },
-        complete: function() {
+        complete: function () {
             $(element).find('i').removeClass('fa-circle-notch fa-spin');
             $(element).find('i').addClass('fa-arrow-right');
         },
-        success: function(json) {
+        success: function (json) {
             html = '';
 
             if (json['directory']) {
                 for (i = 0; i < json['directory'].length; i++) {
-                    html += '<a href="' + json['directory'][i]['path'] + '" class="list-group-item list-group-item-action directory">' + json['directory'][i]['name'] + ' <i class="fas fa-arrow-right fa-fw float-end"></i></a>';
+                    html += '<a href="' + json['directory'][i]['path'] + '" class="list-group-item list-group-item-action directory">' + json['directory'][i]['name'] + ' <i class="fa-solid fa-arrow-right fa-fw float-end"></i></a>';
                 }
             }
 
             if (json['file']) {
                 for (i = 0; i < json['file'].length; i++) {
-                    html += '<a href="' + json['file'][i]['path'] + '" class="list-group-item list-group-item-action file">' + json['file'][i]['name'] + ' <i class="fas fa-arrow-right fa-fw float-end"></i></a>';
+                    html += '<a href="' + json['file'][i]['path'] + '" class="list-group-item list-group-item-action file">' + json['file'][i]['name'] + ' <i class="fa-solid fa-arrow-right fa-fw float-end"></i></a>';
                 }
             }
 
             if (json['extension']) {
                 if (json['extension']['directory']) {
                     for (i = 0; i < json['extension']['directory'].length; i++) {
-                        html += '<a href="' + json['extension']['directory'][i]['path'] + '" class="list-group-item list-group-item-action directory">' + json['extension']['directory'][i]['name'] + ' <i class="fas fa-arrow-right fa-fw float-end"></i></a>';
+                        html += '<a href="' + json['extension']['directory'][i]['path'] + '" class="list-group-item list-group-item-action directory">' + json['extension']['directory'][i]['name'] + ' <i class="fa-solid fa-arrow-right fa-fw float-end"></i></a>';
                     }
                 }
 
                 if (json['extension']['file']) {
                     for (i = 0; i < json['extension']['file'].length; i++) {
-                        html += '<a href="' + json['extension']['file'][i]['path'] + '" class="list-group-item list-group-item-action file">' + json['extension']['file'][i]['name'] + ' <i class="fas fa-arrow-right fa-fw float-end"></i></a>';
+                        html += '<a href="' + json['extension']['file'][i]['path'] + '" class="list-group-item list-group-item-action file">' + json['extension']['file'][i]['name'] + ' <i class="fa-solid fa-arrow-right fa-fw float-end"></i></a>';
                     }
                 }
             }
 
             if (json['back']) {
-                html += '<a href="' + json['back']['path'] + '" class="list-group-item list-group-item-action directory">' + json['back']['name'] + ' <i class="fas fa-arrow-left fa-fw float-end"></i></a>';
+                html += '<a href="' + json['back']['path'] + '" class="list-group-item list-group-item-action directory">' + json['back']['name'] + ' <i class="fa-solid fa-arrow-left fa-fw float-end"></i></a>';
             }
 
             $('#path').html(html);
         },
-        error: function(xhr, ajaxOptions, thrownError) {
+        error: function (xhr, ajaxOptions, thrownError) {
             console.log(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
         }
     });
@@ -156,7 +156,7 @@ $('#path').on('click', 'a.directory', function(e) {
 
 var editor = [];
 
-$('#path').on('click', 'a.file', function(e) {
+$('#path').on('click', 'a.file', function (e) {
     e.preventDefault();
 
     var element = this;
@@ -174,29 +174,29 @@ $('#path').on('click', 'a.file', function(e) {
         editor['#tab-' + tab_id] = $.ajax({
             url: 'index.php?route=design/theme|template&user_token={{ user_token }}&store_id=' + $('#input-store').val() + '&path=' + $(element).attr('href'),
             dataType: 'json',
-            beforeSend: function() {
+            beforeSend: function () {
                 $(element).find('i').removeClass('fa-arrow-right');
                 $(element).find('i').addClass('fa-circle-notch fa-spin');
             },
-            complete: function() {
+            complete: function () {
                 $(element).find('i').removeClass('fa-circle-notch fa-spin');
                 $(element).find('i').addClass('fa-arrow-right');
             },
-            success: function(json) {
+            success: function (json) {
                 if (json['code']) {
                     $('#code').show();
                     $('#recent').hide();
 
-                    $('.nav-tabs').append('<li class="nav-item"><a href="#tab-' + tab_id + '" data-bs-toggle="tab" class="nav-link">' + $(element).attr('href').split('/').join(' / ') + '&nbsp;&nbsp;<i class="fas fa-minus-circle"></i></a></li>');
+                    $('.nav-tabs').append('<li class="nav-item"><a href="#tab-' + tab_id + '" data-bs-toggle="tab" class="nav-link">' + $(element).attr('href').split('/').join(' / ') + '&nbsp;&nbsp;<i class="fa-solid fa-minus-circle"></i></a></li>');
 
                     html = '<div class="tab-pane" id="tab-' + tab_id + '">';
                     html += '  <textarea name="code" id="input-code" rows="10" class="form-control"></textarea>';
                     html += '  <input type="hidden" name="store_id" value="' + $('#input-store').val() + '" id="input-' + tab_id + '-store"/>';
                     html += '  <input type="hidden" name="path" value="' + $(element).attr('href') + '" id="input-' + tab_id + '-path"/>';
-                    html += '  <br />';
+                    html += '  <br/>';
                     html += '  <div class="float-end">';
-                    html += '    <button type="button" class="btn btn-primary"><i class="fas fa-save"></i> {{ button_save }}</button>';
-                    html += '    <button class="btn btn-danger"><i class="fas fa-recycle"></i> {{ button_reset }}</button>';
+                    html += '    <button type="button" class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i> {{ button_save }}</button>';
+                    html += '    <button class="btn btn-danger"><i class="fa-solid fa-recycle"></i> {{ button_reset }}</button>';
                     html += '  </div>';
                     html += '</div>';
 
@@ -217,7 +217,7 @@ $('#path').on('click', 'a.file', function(e) {
                     codemirror.setSize('100%', '500px');
                 }
             },
-            error: function(xhr, ajaxOptions, thrownError) {
+            error: function (xhr, ajaxOptions, thrownError) {
                 console.log(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
             }
         });
@@ -226,11 +226,11 @@ $('#path').on('click', 'a.file', function(e) {
     }
 });
 
-$('#code .nav-tabs').on('click', 'i.fas.fa-minus-circle', function(e) {
+$('#code .nav-tabs').on('click', 'i.fas.fa-minus-circle', function (e) {
     e.preventDefault();
 
     // 1. Remove tab functionality
-    $(this).parent().removeAttr('data-toggle');
+    $(this).parent().removeAttr('data-bs-toggle');
 
     var remove = $(this).parent().attr('href');
 
@@ -255,7 +255,7 @@ $('#code .nav-tabs').on('click', 'i.fas.fa-minus-circle', function(e) {
     }
 });
 
-$('.tab-content').on('click', '.btn-primary', function(e) {
+$('.tab-content').on('click', '.btn-primary', function (e) {
     var element = this;
 
     var editor = $('.tab-content .active .CodeMirror')[0].CodeMirror;
@@ -265,53 +265,53 @@ $('.tab-content').on('click', '.btn-primary', function(e) {
         type: 'post',
         data: 'code=' + encodeURIComponent(editor.getValue()),
         dataType: 'json',
-        beforeSend: function() {
+        beforeSend: function () {
             $(element).prop('disabled', true).addClass('loading');
         },
-        complete: function() {
+        complete: function () {
             $(element).prop('disabled', false).removeClass('loading');
         },
-        success: function(json) {
+        success: function (json) {
             $('.alert-dismissible').remove();
 
             if (json['error']) {
-                $('#alert').prepend('<div class="alert alert-danger alert-dismissible"><i class="fas fa-exclamation-circle"></i> ' + json['error'] + '  <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
+                $('#alert').prepend('<div class="alert alert-danger alert-dismissible"><i class="fa-solid fa-circle-exclamation"></i> ' + json['error'] + '  <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
             }
 
             if (json['success']) {
-                $('#alert').prepend('<div class="alert alert-success alert-dismissible"><i class="fas fa-check-circle"></i> ' + json['success'] + '  <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
+                $('#alert').prepend('<div class="alert alert-success alert-dismissible"><i class="fa-solid fa-check-circle"></i> ' + json['success'] + '  <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
 
                 $('#history').load('index.php?route=design/theme|history&user_token={{ user_token }}');
             }
         },
-        error: function(xhr, ajaxOptions, thrownError) {
+        error: function (xhr, ajaxOptions, thrownError) {
             console.log(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
         }
     });
 });
 
-$('.tab-content').on('click', '.btn-danger', function(e) {
+$('.tab-content').on('click', '.btn-danger', function (e) {
     if (confirm('{{ text_confirm }}')) {
         var element = this;
 
         $.ajax({
             url: 'index.php?route=design/theme|reset&user_token={{ user_token }}&store_id=' + $('.tab-content .active #input-store').val() + '&path=' + $('.tab-content .active input[name=\'path\']').val(),
             dataType: 'json',
-            beforeSend: function() {
+            beforeSend: function () {
                 $(element).prop('disabled', true).addClass('loading');
             },
-            complete: function() {
+            complete: function () {
                 $(element).prop('disabled', false).removeClass('loading');
             },
-            success: function(json) {
+            success: function (json) {
                 $('.alert-dismissible').remove();
 
                 if (json['error']) {
-                    $('#alert').prepend('<div class="alert alert-danger alert-dismissible"><i class="fas fa-exclamation-circle"></i> ' + json['error'] + '  <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
+                    $('#alert').prepend('<div class="alert alert-danger alert-dismissible"><i class="fa-solid fa-circle-exclamation"></i> ' + json['error'] + '  <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
                 }
 
                 if (json['success']) {
-                    $('#alert').prepend('<div class="alert alert-success alert-dismissible"><i class="fas fa-check-circle"></i> ' + json['success'] + '  <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
+                    $('#alert').prepend('<div class="alert alert-success alert-dismissible"><i class="fa-solid fa-check-circle"></i> ' + json['success'] + '  <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
                 }
 
                 var codemirror = $('.tab-content .active .CodeMirror')[0].CodeMirror;
@@ -319,14 +319,14 @@ $('.tab-content').on('click', '.btn-danger', function(e) {
                 codemirror.setValue(json['code']);
                 codemirror.setSize('100%', '500px');
             },
-            error: function(xhr, ajaxOptions, thrownError) {
+            error: function (xhr, ajaxOptions, thrownError) {
                 console.log(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
             }
         });
     }
 });
 
-$('#history').on('click', '.pagination a', function(e) {
+$('#history').on('click', '.pagination a', function (e) {
     e.preventDefault();
 
     $('#history').load(this.href);
@@ -334,7 +334,7 @@ $('#history').on('click', '.pagination a', function(e) {
 
 $('#history').load('index.php?route=design/theme|history&user_token={{ user_token }}');
 
-$('#history').on('click', '.btn-primary', function(e) {
+$('#history').on('click', '.btn-primary', function (e) {
     e.preventDefault();
 
     var element = this;
@@ -346,27 +346,27 @@ $('#history').on('click', '.btn-primary', function(e) {
         $.ajax({
             url: 'index.php?route=design/theme|template&user_token={{ user_token }}&store_id=' + $(element).parent().parent().find('input[name=\'store_id\']').val() + '&path=' + $(element).parent().parent().find('input[name=\'path\']').val(),
             dataType: 'json',
-            beforeSend: function() {
+            beforeSend: function () {
                 $(element).prop('disabled', true).addClass('loading');
             },
-            complete: function() {
+            complete: function () {
                 $(element).prop('disabled', false).removeClass('loading');
             },
-            success: function(json) {
+            success: function (json) {
                 if (json['code']) {
                     $('#code').show();
                     $('#recent').hide();
 
-                    $('.nav-tabs').append('<li class="nav-item"><a href="#tab-' + tab_id + '" data-bs-toggle="tab" class="nav-link">' + $(element).parent().parent().find('input[name=\'path\']').val().split('/').join(' / ') + '&nbsp;&nbsp;<i class="fas fa-minus-circle"></i></a></li>');
+                    $('.nav-tabs').append('<li class="nav-item"><a href="#tab-' + tab_id + '" data-bs-toggle="tab" class="nav-link">' + $(element).parent().parent().find('input[name=\'path\']').val().split('/').join(' / ') + '&nbsp;&nbsp;<i class="fa-solid fa-minus-circle"></i></a></li>');
 
                     html = '<div class="tab-pane" id="tab-' + tab_id + '">';
                     html += '  <textarea name="code" rows="10"></textarea>';
                     html += '  <input type="hidden" name="store_id" value="' + $(element).parent().parent().find('input[name=\'store_id\']').val() + '" />';
                     html += '  <input type="hidden" name="path" value="' + $(element).parent().parent().find('input[name=\'path\']').val() + '.twig" />';
-                    html += '  <br />';
+                    html += '  <br/>';
                     html += '  <div class="float-end">';
-                    html += '    <button type="button" class="btn btn-primary"><i class="fas fa-save"></i> {{ button_save }}</button>';
-                    html += '    <button class="btn btn-danger"><i class="fas fa-recycle"></i> {{ button_reset }}</button>';
+                    html += '    <button type="button" class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i> {{ button_save }}</button>';
+                    html += '    <button class="btn btn-danger"><i class="fa-solid fa-recycle"></i> {{ button_reset }}</button>';
                     html += '  </div>';
                     html += '</div>';
 
@@ -387,7 +387,7 @@ $('#history').on('click', '.btn-primary', function(e) {
                     codemirror.setSize('100%', '500px');
                 }
             },
-            error: function(xhr, ajaxOptions, thrownError) {
+            error: function (xhr, ajaxOptions, thrownError) {
                 console.log(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
             }
         });
@@ -396,7 +396,7 @@ $('#history').on('click', '.btn-primary', function(e) {
     }
 });
 
-$('#history').on('click', '.btn-danger', function(e) {
+$('#history').on('click', '.btn-danger', function (e) {
     e.preventDefault();
 
     if (confirm('{{ text_confirm }}')) {
@@ -405,26 +405,26 @@ $('#history').on('click', '.btn-danger', function(e) {
         $.ajax({
             url: $(element).attr('href'),
             dataType: 'json',
-            beforeSend: function() {
+            beforeSend: function () {
                 $(element).prop('disabled', true).addClass('loading');
             },
-            complete: function() {
+            complete: function () {
                 $(element).prop('disabled', false).removeClass('loading');
             },
-            success: function(json) {
+            success: function (json) {
                 $('.alert-dismissible').remove();
 
                 if (json['error']) {
-                    $('#history').before('<div class="alert alert-danger alert-dismissible"><i class="fas fa-exclamation-circle"></i> ' + json['error'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
+                    $('#history').before('<div class="alert alert-danger alert-dismissible"><i class="fa-solid fa-circle-exclamation"></i> ' + json['error'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
                 }
 
                 if (json['success']) {
-                    $('#history').before('<div class="alert alert-success alert-dismissible"><i class="fas fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
+                    $('#history').before('<div class="alert alert-success alert-dismissible"><i class="fa-solid fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
 
                     $('#history').load('index.php?route=design/theme|history&user_token={{ user_token }}');
                 }
             },
-            error: function(xhr, ajaxOptions, thrownError) {
+            error: function (xhr, ajaxOptions, thrownError) {
                 console.log(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
             }
         });

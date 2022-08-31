@@ -1,5 +1,6 @@
 <?php
 namespace Opencart\Admin\Controller\Localisation;
+use \Opencart\System\Helper as Helper;
 class Location extends \Opencart\System\Engine\Controller {
 	public function index(): void {
 		$this->load->language('localisation/location');
@@ -204,7 +205,7 @@ class Location extends \Opencart\System\Engine\Controller {
 		if (!empty($location_info)) {
 			$data['name'] = $location_info['name'];
 		} else {
-			$data['name'] =   '';
+			$data['name'] = '';
 		}
 
 		if (!empty($location_info)) {
@@ -271,15 +272,15 @@ class Location extends \Opencart\System\Engine\Controller {
 			$json['error']['warning'] = $this->language->get('error_permission');
 		}
 
-		if ((utf8_strlen($this->request->post['name']) < 3) || (utf8_strlen($this->request->post['name']) > 32)) {
+		if ((Helper\Utf8\strlen($this->request->post['name']) < 3) || (Helper\Utf8\strlen($this->request->post['name']) > 32)) {
 			$json['error']['name'] = $this->language->get('error_name');
 		}
 
-		if ((utf8_strlen($this->request->post['address']) < 3) || (utf8_strlen($this->request->post['address']) > 128)) {
+		if ((Helper\Utf8\strlen($this->request->post['address']) < 3) || (Helper\Utf8\strlen($this->request->post['address']) > 128)) {
 			$json['error']['address'] = $this->language->get('error_address');
 		}
 
-		if ((utf8_strlen($this->request->post['telephone']) < 3) || (utf8_strlen($this->request->post['telephone']) > 32)) {
+		if ((Helper\Utf8\strlen($this->request->post['telephone']) < 3) || (Helper\Utf8\strlen($this->request->post['telephone']) > 32)) {
 			$json['error']['telephone'] = $this->language->get('error_telephone');
 		}
 

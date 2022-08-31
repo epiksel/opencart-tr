@@ -1,5 +1,6 @@
 <?php
 namespace Opencart\Admin\Controller\Setting;
+use \Opencart\System\Helper as Helper;
 class Setting extends \Opencart\System\Engine\Controller {
 	public function index(): void {
 		$this->load->language('setting/setting');
@@ -107,22 +108,20 @@ class Setting extends \Opencart\System\Engine\Controller {
 
 		$data['timezones'] = [];
 
-		$timestamp = time();
+		$timestamp = date_create('now');
 
 		$timezones = timezone_identifiers_list();
 
 		foreach ($timezones as $timezone) {
-			date_default_timezone_set($timezone);
+			date_timezone_set($timestamp, timezone_open($timezone));
 
-			$hour = ' (' . date('P', $timestamp) . ')';
+			$hour = ' (' . date_format($timestamp, 'P') . ')';
 
 			$data['timezones'][] = [
 				'text'  => $timezone . $hour,
 				'value' => $timezone
 			];
 		}
-
-		date_default_timezone_set($this->config->get('config_timezone'));
 
 		$this->load->model('localisation/language');
 
@@ -194,6 +193,7 @@ class Setting extends \Opencart\System\Engine\Controller {
 		$data['config_product_report_status'] = $this->config->get('config_product_report_status');
 
 		$data['config_review_status'] = $this->config->get('config_review_status');
+		$data['config_review_purchased'] = $this->config->get('config_review_purchased');
 		$data['config_review_guest'] = $this->config->get('config_review_guest');
 
 		$data['config_voucher_min'] = $this->config->get('config_voucher_min');
@@ -304,7 +304,7 @@ class Setting extends \Opencart\System\Engine\Controller {
 		if ($this->config->has('config_affiliate_status')) {
 			$data['config_affiliate_status'] = $this->config->get('config_affiliate_status');
 		} else {
-			$data['config_affiliate_status'] = true;
+			$data['config_affiliate_status'] = '';
 		}
 
 		$data['config_affiliate_group_id'] = $this->config->get('config_affiliate_group_id');
@@ -391,7 +391,7 @@ class Setting extends \Opencart\System\Engine\Controller {
 
 		$data['captcha_pages'][] = [
 			'text'  => $this->language->get('text_return'),
-			'value' => 'return'
+			'value' => 'returns'
 		];
 
 		$data['captcha_pages'][] = [
@@ -582,8 +582,7 @@ class Setting extends \Opencart\System\Engine\Controller {
 		$data['config_mail_alert_email'] = $this->config->get('config_mail_alert_email');
 
 		// Server
-		$data['config_shared'] = $this->config->get('config_shared');
-		$data['config_robots'] = $this->config->get('config_robots');
+		$data['config_maintenance'] = $this->config->get('config_maintenance');
 
 		if ($this->config->has('config_session_expire')) {
 			$data['config_session_expire'] = $this->config->get('config_session_expire');
@@ -591,8 +590,17 @@ class Setting extends \Opencart\System\Engine\Controller {
 			$data['config_session_expire'] = 3600;
 		}
 
+		$data['config_session_samesite'] = $this->config->get('config_session_samesite');
 		$data['config_seo_url'] = $this->config->get('config_seo_url');
+		$data['config_robots'] = $this->config->get('config_robots');
+		$data['config_compression'] = $this->config->get('config_compression');
 
+		// Security
+		$data['config_security'] = $this->config->get('config_security');
+		$data['config_shared'] = $this->config->get('config_shared');
+		$data['config_encryption'] = $this->config->get('config_encryption');
+
+		// Uploads
 		if ($this->config->get('config_file_max_size')) {
 			$data['config_file_max_size'] = $this->config->get('config_file_max_size');
 		} else {
@@ -601,9 +609,8 @@ class Setting extends \Opencart\System\Engine\Controller {
 
 		$data['config_file_ext_allowed'] = $this->config->get('config_file_ext_allowed');
 		$data['config_file_mime_allowed'] = $this->config->get('config_file_mime_allowed');
-		$data['config_maintenance'] = $this->config->get('config_maintenance');
-		$data['config_encryption'] = $this->config->get('config_encryption');
-		$data['config_compression'] = $this->config->get('config_compression');
+
+		// Errors
 		$data['config_error_display'] = $this->config->get('config_error_display');
 		$data['config_error_log'] = $this->config->get('config_error_log');
 		$data['config_error_filename'] = $this->config->get('config_error_filename');
@@ -634,19 +641,19 @@ class Setting extends \Opencart\System\Engine\Controller {
 			$json['error']['name'] = $this->language->get('error_name');
 		}
 
-		if ((utf8_strlen($this->request->post['config_owner']) < 3) || (utf8_strlen($this->request->post['config_owner']) > 64)) {
+		if ((Helper\Utf8\strlen($this->request->post['config_owner']) < 3) || (Helper\Utf8\strlen($this->request->post['config_owner']) > 64)) {
 			$json['error']['owner'] = $this->language->get('error_owner');
 		}
 
-		if ((utf8_strlen($this->request->post['config_address']) < 3) || (utf8_strlen($this->request->post['config_address']) > 256)) {
+		if ((Helper\Utf8\strlen($this->request->post['config_address']) < 3) || (Helper\Utf8\strlen($this->request->post['config_address']) > 256)) {
 			$json['error']['address'] = $this->language->get('error_address');
 		}
 
-		if ((utf8_strlen($this->request->post['config_email']) > 96) || !filter_var($this->request->post['config_email'], FILTER_VALIDATE_EMAIL)) {
+		if ((Helper\Utf8\strlen($this->request->post['config_email']) > 96) || !filter_var($this->request->post['config_email'], FILTER_VALIDATE_EMAIL)) {
 			$json['error']['email'] = $this->language->get('error_email');
 		}
 
-		if ((utf8_strlen($this->request->post['config_telephone']) < 3) || (utf8_strlen($this->request->post['config_telephone']) > 32)) {
+		if ((Helper\Utf8\strlen($this->request->post['config_telephone']) < 3) || (Helper\Utf8\strlen($this->request->post['config_telephone']) > 32)) {
 			$json['error']['telephone'] = $this->language->get('error_telephone');
 		}
 
@@ -730,7 +737,11 @@ class Setting extends \Opencart\System\Engine\Controller {
 			$json['error']['image_location'] = $this->language->get('error_image_location');
 		}
 
-		if ((utf8_strlen($this->request->post['config_encryption']) < 32) || (utf8_strlen($this->request->post['config_encryption']) > 1024)) {
+		if ($this->request->post['config_security'] && !$this->request->post['config_mail_engine']) {
+			$json['error']['warning'] = $this->language->get('error_security');
+		}
+
+		if ((Helper\Utf8\strlen($this->request->post['config_encryption']) < 32) || (Helper\Utf8\strlen($this->request->post['config_encryption']) > 1024)) {
 			$json['error']['encryption'] = $this->language->get('error_encryption');
 		}
 

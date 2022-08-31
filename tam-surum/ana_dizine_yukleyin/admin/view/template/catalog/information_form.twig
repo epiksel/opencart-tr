@@ -3,8 +3,8 @@
   <div class="page-header">
     <div class="container-fluid">
       <div class="float-end">
-        <button type="submit" form="form-information" data-bs-toggle="tooltip" title="{{ button_save }}" class="btn btn-primary"><i class="fas fa-save"></i></button>
-        <a href="{{ back }}" data-bs-toggle="tooltip" title="{{ button_back }}" class="btn btn-light"><i class="fas fa-reply"></i></a></div>
+        <button type="submit" form="form-information" data-bs-toggle="tooltip" title="{{ button_save }}" class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i></button>
+        <a href="{{ back }}" data-bs-toggle="tooltip" title="{{ button_back }}" class="btn btn-light"><i class="fa-solid fa-reply"></i></a></div>
       <h1>{{ heading_title }}</h1>
       <ol class="breadcrumb">
         {% for breadcrumb in breadcrumbs %}
@@ -15,7 +15,7 @@
   </div>
   <div class="container-fluid">
     <div class="card">
-      <div class="card-header"><i class="fas fa-pencil-alt"></i> {{ text_form }}</div>
+      <div class="card-header"><i class="fa-solid fa-pencil"></i> {{ text_form }}</div>
       <div class="card-body">
         <form id="form-information" action="{{ save }}" method="post" data-oc-toggle="ajax">
           <ul class="nav nav-tabs">
@@ -26,9 +26,9 @@
           </ul>
           <div class="tab-content">
             <div id="tab-general" class="tab-pane active">
-              <ul class="nav nav-tabs" id="language">
+              <ul class="nav nav-tabs">
                 {% for language in languages %}
-                  <li class="nav-item"><a href="#language-{{ language.language_id }}" data-bs-toggle="tab" class="nav-link{% if loop.first %} active{% endif %}"><img src="language/{{ language.code }}/{{ language.code }}.png" title="{{ language.name }}"/> {{ language.name }}</a></li>
+                  <li class="nav-item"><a href="#language-{{ language.language_id }}" data-bs-toggle="tab" class="nav-link{% if loop.first %} active{% endif %}"><img src="{{ language.image }}" title="{{ language.name }}"/> {{ language.name }}</a></li>
                 {% endfor %}
               </ul>
               <div class="tab-content">
@@ -89,6 +89,7 @@
                 <label class="col-sm-2 col-form-label">{{ entry_bottom }}</label>
                 <div class="col-sm-10">
                   <div class="form-check form-switch form-switch-lg">
+                    <input type="hidden" name="bottom" value="0"/>
                     <input type="checkbox" name="bottom" value="1" id="input-bottom" class="form-check-input"{% if bottom %} checked{% endif %}/>
                   </div>
                   <div class="form-text">{{ help_bottom }}</div>
@@ -97,10 +98,10 @@
               <div class="row mb-3">
                 <label for="input-status" class="col-sm-2 col-form-label">{{ entry_status }}</label>
                 <div class="col-sm-10">
-                  <select name="status" id="input-status" class="form-select">
-                    <option value="1"{% if status %} selected{% endif %}>{{ text_enabled }}</option>
-                    <option value="0"{% if not status %} selected{% endif %}>{{ text_disabled }}</option>
-                  </select>
+                  <div class="form-check form-switch form-switch-lg">
+                    <input type="hidden" name="status" value="0"/>
+                    <input type="checkbox" name="status" value="1" id="input-status" class="form-check-input"{% if status %} checked{% endif %}/>
+                  </div>
                 </div>
               </div>
               <div class="row mb-3">
@@ -111,7 +112,7 @@
               </div>
             </div>
             <div id="tab-seo" class="tab-pane">
-              <div class="alert alert-info"><i class="fas fa-info-circle"></i> {{ text_keyword }}</div>
+              <div class="alert alert-info"><i class="fa-solid fa-info-circle"></i> {{ text_keyword }}</div>
               <div class="table-responsive">
                 <table class="table table-bordered table-hover">
                   <thead>
@@ -127,7 +128,7 @@
                         <td class="text-start">
                           {% for language in languages %}
                             <div class="input-group">
-                              <div class="input-group-text"><img src="language/{{ language.code }}/{{ language.code }}.png" title="{{ language.name }}"/></div>
+                              <div class="input-group-text"><img src="{{ language.image }}" title="{{ language.name }}"/></div>
                               <input type="text" name="information_seo_url[{{ store.store_id }}][{{ language.language_id }}]" value="{% if information_seo_url[store.store_id][language.language_id] %}{{ information_seo_url[store.store_id][language.language_id] }}{% endif %}" placeholder="{{ entry_keyword }}" id="input-keyword-{{ store.store_id }}-{{ language.language_id }}" class="form-control"/>
                             </div>
                             <div id="error-keyword-{{ store.store_id }}-{{ language.language_id }}" class="invalid-feedback"></div>

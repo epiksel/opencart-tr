@@ -1,5 +1,6 @@
 <?php
 namespace Opencart\Catalog\Controller\Account;
+use \Opencart\System\Helper as Helper;
 class Order extends \Opencart\System\Engine\Controller {
 	public function index(): void {
 		$this->load->language('account/order');
@@ -176,7 +177,7 @@ class Order extends \Opencart\System\Engine\Controller {
 				'country'   => $order_info['payment_country']
 			];
 
-			$data['payment_address'] = str_replace(["\r\n", "\r", "\n"], '<br />', preg_replace(["/\s\s+/", "/\r\r+/", "/\n\n+/"], '<br />', trim(str_replace($find, $replace, $format))));
+			$data['payment_address'] = str_replace(["\r\n", "\r", "\n"], '<br/>', preg_replace(["/\s\s+/", "/\r\r+/", "/\n\n+/"], '<br/>', trim(str_replace($find, $replace, $format))));
 
 			$data['payment_method'] = $order_info['payment_method'];
 
@@ -212,7 +213,7 @@ class Order extends \Opencart\System\Engine\Controller {
 				'country'   => $order_info['shipping_country']
 			];
 
-			$data['shipping_address'] = str_replace(["\r\n", "\r", "\n"], '<br />', preg_replace(["/\s\s+/", "/\r\r+/", "/\n\n+/"], '<br />', trim(str_replace($find, $replace, $format))));
+			$data['shipping_address'] = str_replace(["\r\n", "\r", "\n"], '<br/>', preg_replace(["/\s\s+/", "/\r\r+/", "/\n\n+/"], '<br/>', trim(str_replace($find, $replace, $format))));
 
 			$data['shipping_method'] = $order_info['shipping_method'];
 
@@ -244,7 +245,7 @@ class Order extends \Opencart\System\Engine\Controller {
 
 					$option_data[] = [
 						'name'  => $option['name'],
-						'value' => (utf8_strlen($value) > 20 ? utf8_substr($value, 0, 20) . '..' : $value)
+						'value' => (Helper\Utf8\strlen($value) > 20 ? Helper\Utf8\substr($value, 0, 20) . '..' : $value)
 					];
 				}
 

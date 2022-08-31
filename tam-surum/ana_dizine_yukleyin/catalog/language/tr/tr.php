@@ -13,7 +13,7 @@ $_['decimal_point']         = ',';
 $_['thousand_point']        = '.';
 
 // Text
-$_['text_home']             = '<i class="fa fa-home"></i>';
+$_['text_home']             = '<i class="fas fa-home"></i>';
 $_['text_yes']              = 'Evet';
 $_['text_no']               = 'Hayır';
 $_['text_none']             = ' --- Yok --- ';

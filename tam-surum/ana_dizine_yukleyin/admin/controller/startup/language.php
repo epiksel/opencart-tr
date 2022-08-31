@@ -2,28 +2,35 @@
 namespace Opencart\Admin\Controller\Startup;
 class Language extends \Opencart\System\Engine\Controller {
 	public function index(): void {
-		// Added this code so that backup and restore doesn't show text_restore
-		$code = $this->config->get('config_language_admin');
+		$language_data = [];
 
-		if ($code) {
-			$this->session->data['language_admin'] = $code;
-		} elseif (isset($this->session->data['language_admin'])) {
-			$this->config->set('config_language_admin', $this->session->data['language_admin']);
-		}
-
-		// Language
 		$this->load->model('localisation/language');
 
-		$language_info = $this->model_localisation_language->getLanguageByCode($this->config->get('config_language_admin'));
+		$results = $this->model_localisation_language->getLanguages();
 
-		if ($language_info) {
-			$this->config->set('config_language_id', $language_info['language_id']);
+		foreach ($results as $result) $language_data[$result['code']] = $result;
+
+		// Language not available then use default
+		$code = $this->config->get('config_language_admin');
+
+		if (isset($this->request->cookie['language']) && array_key_exists($this->request->cookie['language'], $language_data)) {
+			$code = $this->request->cookie['language'];
 		}
 
+		// Set the config language_id
+		$this->config->set('config_language_id', $language_data[$code]['language_id']);
+		$this->config->set('config_language_admin', $code);
+
 		// Language
-		$language = new \Opencart\System\Library\Language($this->config->get('config_language_admin'));
-		$language->addPath(DIR_LANGUAGE);
-		$language->load($this->config->get('config_language_admin'));
+		$language = new \Opencart\System\Library\Language($code);
+
+		if (!$language_data[$code]['extension']) {
+			$language->addPath(DIR_LANGUAGE);
+		} else {
+			$language->addPath(DIR_EXTENSION . $language_data[$code]['extension'] . '/admin/language/');
+		}
+
+		$language->load($code);
 		
 		$this->registry->set('language', $language);
 	}

@@ -19,7 +19,8 @@ $_['column_action']      = 'Eylem';
 // Entry
 $_['entry_name']         = 'Yükleme Adı';
 $_['entry_filename']     = 'Dosya Adı';
-$_['entry_date_added']   = 'Ekleme Tarihi';
+$_['entry_date_from']    = 'Başlangıç Tarihi';
+$_['entry_date_to']      = 'Bitiş Tarihi';
 
 // Error
 $_['error_permission']   = 'Uyarı: Yüklemeleri düzenleme iznine sahip değilsiniz!';

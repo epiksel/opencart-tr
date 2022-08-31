@@ -113,7 +113,7 @@ class Marketplace extends \Opencart\System\Engine\Controller {
 
 		$url  = '&username=' . urlencode($this->config->get('opencart_username'));
 		$url .= '&domain=' . $this->request->server['HTTP_HOST'];
-		$url .= '&version=' . urlencode(VERSION);
+		$url .= '&version=' . VERSION;
 		$url .= '&time=' . $time;
 		$url .= '&signature=' . rawurlencode($signature);
 
@@ -210,8 +210,8 @@ class Marketplace extends \Opencart\System\Engine\Controller {
 		if (isset($response_info['promotions']) && $page == 1) {
 			foreach ($response_info['promotions'] as $result) {
 				$data['promotions'][] = [
-					'name'         => utf8_decode($result['name']),
-					'description'  => utf8_decode($result['description']),
+					'name'         => $result['name'],
+					'description'  => $result['description'],
 					'image'        => $result['image'],
 					'license'      => $result['license'],
 					'price'        => $result['price'],
@@ -227,8 +227,8 @@ class Marketplace extends \Opencart\System\Engine\Controller {
 		if (isset($response_info['extensions'])) {
 			foreach ($response_info['extensions'] as $result) {
 				$data['extensions'][] = [
-					'name'         => utf8_decode($result['name']),
-					'description'  => utf8_decode($result['description']),
+					'name'         => $result['name'],
+					'description'  => $result['description'],
 					'image'        => $result['image'],
 					'license'      => $result['license'],
 					'price'        => $result['price'],
@@ -497,7 +497,7 @@ class Marketplace extends \Opencart\System\Engine\Controller {
 			'total' => $extension_total,
 			'page'  => $page,
 			'limit' => 12,
-			'url'   => $this->url->link('marketplace/marketplace|list', 'user_token=' . $this->session->data['user_token'] . $url . '&page={page}')
+			'url'   => $this->url->link('marketplace/marketplace', 'user_token=' . $this->session->data['user_token'] . $url . '&page={page}')
 		]);
 
 		$data['filter_search'] = $filter_search;
@@ -537,7 +537,7 @@ class Marketplace extends \Opencart\System\Engine\Controller {
 
 		$url  = '&username=' . urlencode($this->config->get('opencart_username'));
 		$url .= '&domain=' . $this->request->server['HTTP_HOST'];
-		$url .= '&version=' . urlencode(VERSION);
+		$url .= '&version=' . VERSION;
 		$url .= '&extension_id=' . $extension_id;
 		$url .= '&time=' . $time;
 		$url .= '&signature=' . rawurlencode($signature);
@@ -608,8 +608,6 @@ class Marketplace extends \Opencart\System\Engine\Controller {
 				'text' => $this->language->get('heading_title'),
 				'href' => $this->url->link('marketplace/marketplace', 'user_token=' . $this->session->data['user_token'] . $url)
 			];
-
-			$this->load->helper('bbcode');
 
 			$data['banner'] = $response_info['banner'];
 
@@ -698,32 +696,34 @@ class Marketplace extends \Opencart\System\Engine\Controller {
 
 			foreach ($results as $result) {
 				if (substr($result['filename'], -10) == '.ocmod.zip') {
-					$extension_install_info = $this->model_setting_extension->getInstallByExtensionDownloadId($result['extension_download_id']);
+					$code = basename($result['filename'], '.ocmod.zip');
+
+					$install_info = $this->model_setting_extension->getInstallByCode($code);
 
 					// Download
-					if (!$extension_install_info) {
+					if (!$install_info) {
 						$download = $this->url->link('marketplace/marketplace|download', 'user_token=' . $this->session->data['user_token'] . '&extension_id=' . $extension_id . '&extension_download_id=' . $result['extension_download_id']);
 					} else {
 						$download = '';
 					}
 
 			 		// Install
-					if ($extension_install_info && !$extension_install_info['status']) {
-						$install = $this->url->link('marketplace/installer|install', 'user_token=' . $this->session->data['user_token'] . '&extension_install_id=' . $extension_install_info['extension_install_id']);
+					if ($install_info && !$install_info['status']) {
+						$install = $this->url->link('marketplace/installer|install', 'user_token=' . $this->session->data['user_token'] . '&extension_install_id=' . $install_info['extension_install_id']);
 					} else {
 						$install = '';
 					}
 
 					// Uninstall
-					if ($extension_install_info && $extension_install_info['status']) {
-						$uninstall = $this->url->link('marketplace/installer|uninstall', 'user_token=' . $this->session->data['user_token'] . '&extension_install_id=' . $extension_install_info['extension_install_id']);
+					if ($install_info && $install_info['status']) {
+						$uninstall = $this->url->link('marketplace/installer|uninstall', 'user_token=' . $this->session->data['user_token'] . '&extension_install_id=' . $install_info['extension_install_id']);
 					} else {
 						$uninstall = '';
 					}
 
 					// Delete
-					if ($extension_install_info && !$extension_install_info['status']) {
-						$delete = $this->url->link('marketplace/installer|delete', 'user_token=' . $this->session->data['user_token'] . '&extension_install_id=' . $extension_install_info['extension_install_id']);
+					if ($install_info && !$install_info['status']) {
+						$delete = $this->url->link('marketplace/installer|delete', 'user_token=' . $this->session->data['user_token'] . '&extension_install_id=' . $install_info['extension_install_id']);
 					} else {
 						$delete = '';
 					}
@@ -888,8 +888,6 @@ class Marketplace extends \Opencart\System\Engine\Controller {
 
 					fclose($handle);
 
-					$this->load->model('setting/extension');
-
 					$extension_data = [
 						'extension_id'          => $extension_id,
 						'extension_download_id' => $extension_download_id,
@@ -897,8 +895,10 @@ class Marketplace extends \Opencart\System\Engine\Controller {
 						'code' 				    => basename($response_info['filename'], '.ocmod.zip'),
 						'author'                => $response_info['author'],
 						'version'               => $response_info['version'],
-						'link' 					=> ''
+						'link' 					=> OPENCART_SERVER . 'index.php?route=marketplace/extension|info&extension_id=' . $extension_id
 					];
+
+					$this->load->model('setting/extension');
 
 					$json['extension_install_id'] = $this->model_setting_extension->addInstall($extension_data);
 

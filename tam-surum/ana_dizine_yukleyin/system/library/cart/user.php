@@ -1,12 +1,13 @@
 <?php
 namespace Opencart\System\Library\Cart;
 class User {
-	private $user_id;
-	private $username;
-	private $user_group_id;
-	private $permission = [];
+	private int $user_id = 0;
+	private string $username = '';
+	private int $user_group_id = 0;
+	private string $email = '';
+	private array $permission = [];
 
-	public function __construct($registry) {
+	public function __construct(\Opencart\System\Engine\Registry $registry) {
 		$this->db = $registry->get('db');
 		$this->request = $registry->get('request');
 		$this->session = $registry->get('session');
@@ -18,6 +19,7 @@ class User {
 				$this->user_id = $user_query->row['user_id'];
 				$this->username = $user_query->row['username'];
 				$this->user_group_id = $user_query->row['user_group_id'];
+				$this->email = $user_query->row['email'];
 
 				$this->db->query("UPDATE `" . DB_PREFIX . "user` SET `ip` = '" . $this->db->escape($this->request->server['REMOTE_ADDR']) . "' WHERE `user_id` = '" . (int)$this->session->data['user_id'] . "'");
 
@@ -36,7 +38,7 @@ class User {
 		}
 	}
 
-	public function login($username, $password) {
+	public function login(string $username, string $password): bool {
 		$user_query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "user` WHERE `username` = '" . $this->db->escape($username) . "' AND `status` = '1'");
 
 		if ($user_query->num_rows) {
@@ -59,6 +61,7 @@ class User {
 			$this->user_id = $user_query->row['user_id'];
 			$this->username = $user_query->row['username'];
 			$this->user_group_id = $user_query->row['user_group_id'];
+			$this->email = $user_query->row['email'];
 
 			$user_group_query = $this->db->query("SELECT `permission` FROM `" . DB_PREFIX . "user_group` WHERE `user_group_id` = '" . (int)$user_query->row['user_group_id'] . "'");
 
@@ -76,14 +79,16 @@ class User {
 		}
 	}
 
-	public function logout() {
+	public function logout(): void {
 		unset($this->session->data['user_id']);
 
-		$this->user_id = '';
+		$this->user_id = 0;
 		$this->username = '';
+		$this->user_group_id = 0;
+		$this->email = '';
 	}
 
-	public function hasPermission($key, $value) {
+	public function hasPermission(string $key, mixed $value): bool {
 		if (isset($this->permission[$key])) {
 			return in_array($value, $this->permission[$key]);
 		} else {
@@ -91,19 +96,23 @@ class User {
 		}
 	}
 
-	public function isLogged() {
+	public function isLogged(): bool {
+		return $this->user_id ? true : false;
+	}
+
+	public function getId(): int {
 		return $this->user_id;
 	}
 
-	public function getId() {
-		return $this->user_id;
-	}
-
-	public function getUserName() {
+	public function getUserName(): string {
 		return $this->username;
 	}
 
-	public function getGroupId() {
+	public function getGroupId(): int {
 		return $this->user_group_id;
+	}
+
+	public function getEmail(): string {
+		return $this->email;
 	}
 }

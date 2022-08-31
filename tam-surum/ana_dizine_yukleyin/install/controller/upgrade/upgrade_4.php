@@ -1,5 +1,6 @@
 <?php
 namespace Opencart\Install\Controller\Upgrade;
+use \Opencart\System\Helper as Helper;
 class Upgrade4 extends \Opencart\System\Engine\Controller {
 	public function index(): void {
 		$this->load->language('upgrade/upgrade');
@@ -74,6 +75,15 @@ class Upgrade4 extends \Opencart\System\Engine\Controller {
 				'serialized' => 0
 			];
 
+			if (isset($settings['config_admin_language'])) {
+				$missing[] = [
+					'key'        => 'config_pagination_admin',
+					'value'      => $settings['config_admin_language'],
+					'code'       => 'config',
+					'serialized' => 0
+				];
+			}
+
 			if (isset($settings['config_limit_admin'])) {
 				$missing[] = [
 					'key'        => 'config_pagination_admin',
@@ -85,7 +95,7 @@ class Upgrade4 extends \Opencart\System\Engine\Controller {
 
 			$missing[] = [
 				'key'        => 'config_encryption',
-				'value'      => hash('sha512', token(32)),
+				'value'      => hash('sha512', Helper\General\token(32)),
 				'code'       => 'config',
 				'serialized' => 0
 			];
@@ -285,17 +295,6 @@ class Upgrade4 extends \Opencart\System\Engine\Controller {
 			foreach ($query->rows as $result) {
 				if (!$result['extension'] && in_array($result['code'], $extensions)) {
 					$this->db->query("UPDATE `" . DB_PREFIX . "extension` SET `extension` = 'opencart' WHERE `code` = '" . $this->db->escape($result['code']) . "'");
-				}
-			}
-
-			// Merge image/data to image/catalog
-			if (is_dir(DIR_IMAGE . 'data')) {
-				if (!is_dir(DIR_IMAGE . 'catalog')) {
-					rename(DIR_IMAGE . 'data', DIR_IMAGE . 'catalog'); // Rename data to catalog
-				} else {
-					$this->recursive_move(DIR_IMAGE . 'data', DIR_IMAGE . 'catalog');
-
-					@unlink(DIR_IMAGE . 'data');
 				}
 			}
 
