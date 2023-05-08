@@ -11,7 +11,7 @@ $_['text_success']     = 'Başarılı: Ücretsiz Kargo başarılı bir şekilde 
 $_['text_edit']        = 'Ücretsiz Kargo Düzenle';
 
 // Entry
-$_['entry_total']      = 'Toplam';
+$_['entry_total']      = 'Ara Toplam';
 $_['entry_geo_zone']   = 'Bölge';
 $_['entry_status']     = 'Durumu';
 $_['entry_sort_order'] = 'Sıralama';

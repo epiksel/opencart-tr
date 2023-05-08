@@ -20,12 +20,10 @@ $_['text_year']             = 'Yıl';
 
 // Entry
 $_['entry_name']            = 'Abonelik Plan Adı';
-$_['entry_trial_price']     = 'Deneme fiyatı';
 $_['entry_trial_duration']  = 'Deneme süresi';
 $_['entry_trial_cycle']     = 'Deneme döngüsü';
 $_['entry_trial_frequency'] = 'Deneme sıklığı';
 $_['entry_trial_status']    = 'Deneme durumu';
-$_['entry_price']           = 'Fiyat';
 $_['entry_duration']        = 'Süre';
 $_['entry_cycle']           = 'Döngüsü';
 $_['entry_frequency']       = 'Sıklık';
@@ -38,9 +36,12 @@ $_['column_sort_order']     = 'Sıralama';
 $_['column_action']         = 'Eylem';
 
 // Help
-$_['help_duration']         = 'The duration is the number of times the user will make a payment, set this to 0 if you want payments until they are cancelled.';
-$_['help_cycle']            = 'Subscription amounts are calculated by the frequency and cycles.';
-$_['help_frequency']        = 'If you use a frequency of "week" and a cycle of "2", then the user will be billed every 2 weeks.';
+$_['help_trial_duration']   = 'Süre, kullanıcının kaç kez ödeme yapacağıdır.';
+$_['help_trial_cycle']      = 'Abonelik tutarları, sıklık ve döngülere göre hesaplanır.';
+$_['help_trial_frequency']  = '"Hafta" sıklığını ve "2" döngüsünü kullanırsanız, kullanıcı her 2 haftada bir faturalandırılır.';
+$_['help_duration']         = 'Süre, kullanıcının kaç kez ödeme yapacağıdır, iptal edilene kadar ödeme yapılmasını istiyorsanız 0 olarak ayarlayın.';
+$_['help_cycle']            = 'Abonelik tutarları, sıklık ve döngülere göre hesaplanır.';
+$_['help_frequency']        = '"Hafta" sıklığını ve "2" döngüsünü kullanırsanız, kullanıcı her 2 haftada bir faturalandırılır.';
 
 // Error
 $_['error_warning']         = 'Uyarı: Oluşan hatalar için lütfen formu dikkatli kontrol ediniz!';

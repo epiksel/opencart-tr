@@ -12,9 +12,9 @@ $_['text_add']              = 'Kullanıcı Ekle';
 $_['text_edit']             = 'Kullanıcı Düzenle';
 $_['text_user']             = 'Kullanıcı Detayları';
 $_['text_password']         = 'Parola';
-$_['text_user_login']       = 'Kullanıcı Oturumu';
 $_['text_other']            = 'Diğer';
 $_['text_login']            = 'Oturum Geçmişi';
+$_['text_authorize']        = 'Doğrulama Geçmişi';
 
 // Column
 $_['column_username']       = 'Kullanıcı Adı';
@@ -36,6 +36,7 @@ $_['entry_image']           = 'Resim';
 $_['entry_status']          = 'Durumu';
 
 // Tab
+$_['tab_authorize']         = 'Doğrulama';
 $_['tab_login']             = 'Oturumlar';
 
 // Error

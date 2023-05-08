@@ -4,6 +4,7 @@
 
 // Text
 $_['text_items']                 = '%s ürün - %s';
+$_['text_points']                = 'Ödül Puanı';
 $_['text_subscription']          = 'Abonelik';
 $_['text_subscription_trial']    = '%s için her %d %s %d ödeme ardından ';
 $_['text_subscription_duration'] = '%s için her %d %s da bir %d ödeme';

@@ -105,3 +105,4 @@ $_['error_postcode']        = 'Posta kodu 2 ile 10 karakter arasında olmalı!';
 $_['error_country']         = 'Lütfen bir ülke seçin!';
 $_['error_zone']            = 'Lütfen bir şehir seçin!';
 $_['error_custom_field']    = '%s gerekli!';
+$_['error_regex']           = '%s geçerli bir giriş değil!';
