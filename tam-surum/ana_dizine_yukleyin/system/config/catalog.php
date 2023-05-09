@@ -18,9 +18,9 @@ $_['session_engine']     = 'db'; // db or file
 // Actions
 $_['action_pre_action']  = [
 	'startup/setting',
-	'startup/language',
-	'startup/session',
 	'startup/seo_url',
+	'startup/session',
+	'startup/language',
 	'startup/customer',
 	'startup/currency',
 	'startup/tax',
@@ -38,18 +38,19 @@ $_['action_pre_action']  = [
 // Action Events
 $_['action_event']      = [
 	'controller/*/before' => [
-		0 => 'event/language|before',
-		//1 => 'event/debug|before'
+		0 => 'event/language.before',
+		//1 => 'event/debug.before'
 	],
 	'controller/*/after' => [
-		0 => 'event/language|after',
-		//2 => 'event/debug|after'
+		0 => 'event/language.after',
+		//2 => 'event/debug.after'
 	],
 	'view/*/before' => [
 		500 => 'event/theme',
 		998 => 'event/language'
 	],
 	'language/*/after' => [
-		0 => 'event/translation'
+		0 => 'startup/language.after',
+		1 => 'event/translation'
 	]
 ];

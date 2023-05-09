@@ -1,29 +1,28 @@
 <?php
 namespace Opencart\Catalog\Controller\Startup;
-use \Opencart\System\Helper as Helper;
 class SeoUrl extends \Opencart\System\Engine\Controller {
 	public function index(): void {
 		// Add rewrite to URL class
 		if ($this->config->get('config_seo_url')) {
 			$this->url->addRewrite($this);
-		}
 
-		$this->load->model('design/seo_url');
+			$this->load->model('design/seo_url');
 
-		// Decode URL
-		if (isset($this->request->get['_route_'])) {
-			$parts = explode('/', $this->request->get['_route_']);
+			// Decode URL
+			if (isset($this->request->get['_route_'])) {
+				$parts = explode('/', $this->request->get['_route_']);
 
-			// remove any empty arrays from trailing
-			if (Helper\Utf8\strlen(end($parts)) == 0) {
-				array_pop($parts);
-			}
+				// remove any empty arrays from trailing
+				if (oc_strlen(end($parts)) == 0) {
+					array_pop($parts);
+				}
 
-			foreach ($parts as $part) {
-				$seo_url_info = $this->model_design_seo_url->getSeoUrlByKeyword($part);
+				foreach ($parts as $part) {
+					$seo_url_info = $this->model_design_seo_url->getSeoUrlByKeyword($part);
 
-				if ($seo_url_info) {
-					$this->request->get[$seo_url_info['key']] = html_entity_decode($seo_url_info['value'], ENT_QUOTES, 'UTF-8');
+					if ($seo_url_info) {
+						$this->request->get[$seo_url_info['key']] = html_entity_decode($seo_url_info['value'], ENT_QUOTES, 'UTF-8');
+					}
 				}
 			}
 		}
@@ -86,7 +85,7 @@ class SeoUrl extends \Opencart\System\Engine\Controller {
 
 		// Rebuild the URL query
 		if ($query) {
-			$url .= '?' . str_replace(['%2F', '%7C'], ['/', '|'], http_build_query($query));
+			$url .= '?' . str_replace(['%2F'], ['/'], http_build_query($query));
 		}
 
 		return $url;

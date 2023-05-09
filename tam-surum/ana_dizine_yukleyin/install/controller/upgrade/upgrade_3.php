@@ -1,6 +1,5 @@
 <?php
 namespace Opencart\Install\Controller\Upgrade;
-use \Opencart\System\Helper as Helper;
 class Upgrade3 extends \Opencart\System\Engine\Controller {
 	public function index(): void {
 		$this->load->language('upgrade/upgrade');
@@ -12,7 +11,18 @@ class Upgrade3 extends \Opencart\System\Engine\Controller {
 			// Structure
 			$this->load->helper('db_schema');
 
-			$tables = Helper\DbSchema\db_schema();
+			$tables = oc_db_schema();
+
+			// Clear any old db foreign key constraints
+			/*
+			foreach ($tables as $table) {
+				$foreign_query = $this->db->query("SELECT * FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS WHERE CONSTRAINT_SCHEMA = '" . DB_DATABASE . "' AND TABLE_NAME = '" . DB_PREFIX . $table['name'] . "' AND CONSTRAINT_TYPE = 'FOREIGN KEY'");
+
+				foreach ($foreign_query->rows as $foreign) {
+					$this->db->query("ALTER TABLE `" . DB_PREFIX . $table['name'] . "` DROP FOREIGN KEY `" . $foreign['CONSTRAINT_NAME'] . "`");
+				}
+			}
+			*/
 
 			foreach ($tables as $table) {
 				$table_query = $this->db->query("SELECT * FROM information_schema.COLUMNS WHERE TABLE_SCHEMA = '" . DB_DATABASE . "' AND TABLE_NAME = '" . DB_PREFIX . $table['name'] . "'");
@@ -155,12 +165,23 @@ class Upgrade3 extends \Opencart\System\Engine\Controller {
 					}
 				}
 			}
+
+			/*
+			// Setup foreign keys
+			foreach ($tables as $table) {
+				if (isset($table['foreign'])) {
+					foreach ($table['foreign'] as $foreign) {
+						//$this->db->query("ALTER TABLE `" . DB_PREFIX . $table['name'] . "` ADD FOREIGN KEY (`" . $foreign['key'] . "`) REFERENCES `" . DB_PREFIX . $foreign['table'] . "` (`" . $foreign['field'] . "`)");
+					}
+				}
+			}
+			*/
 		} catch (\ErrorException $exception) {
 			$json['error'] = sprintf($this->language->get('error_exception'), $exception->getCode(), $exception->getMessage(), $exception->getFile(), $exception->getLine());
 		}
 
 		if (!$json) {
-			$json['text'] = sprintf($this->language->get('text_progress'), 3, 3, 8);
+			$json['text'] = sprintf($this->language->get('text_progress'), 3, 3, 9);
 
 			$url = '';
 

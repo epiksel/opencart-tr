@@ -23,14 +23,15 @@
           <div class="card-body">
             <div class="mb-3">
               <label for="input-product" class="form-label">{{ entry_product }}</label>
-							<input type="text" name="filter_product" value="{{ filter_product }}" placeholder="{{ entry_product }}" id="input-product" list="list-product" class="form-control"/>
-							<datalist id="list-product"></datalist>
+              <input type="text" name="filter_product" value="{{ filter_product }}" placeholder="{{ entry_product }}" id="input-product" data-oc-target="autocomplete-product" class="form-control" autocomplete="off"/>
+              <ul id="autocomplete-product" class="dropdown-menu"></ul>
             </div>
             <div class="mb-3">
               <label for="input-author" class="form-label">{{ entry_author }}</label> <input type="text" name="filter_author" value="{{ filter_author }}" placeholder="{{ entry_author }}" id="input-author" class="form-control"/>
             </div>
             <div class="mb-3">
-              <label for="input-status" class="form-label">{{ entry_status }}</label> <select name="filter_status" id="input-status" class="form-select">
+              <label for="input-status" class="form-label">{{ entry_status }}</label>
+              <select name="filter_status" id="input-status" class="form-select">
                 <option value=""></option>
                 <option value="1"{% if filter_status == '1' %} selected{% endif %}>{{ text_enabled }}</option>
                 <option value="0"{% if filter_status == '0' %} selected{% endif %}>{{ text_disabled }}</option>
@@ -105,13 +106,13 @@ $('#button-filter').on('click', function () {
         url += '&filter_date_to=' + encodeURIComponent(filter_date_to);
     }
 
-    $('#review').load('index.php?route=catalog/review|list&user_token={{ user_token }}' + url);
+    $('#review').load('index.php?route=catalog/review.list&user_token={{ user_token }}' + url);
 });
 
 $('#input-product').autocomplete({
     'source': function (request, response) {
         $.ajax({
-            url: 'index.php?route=catalog/product|autocomplete&user_token={{ user_token }}&filter_name=' + encodeURIComponent(request),
+            url: 'index.php?route=catalog/product.autocomplete&user_token={{ user_token }}&filter_name=' + encodeURIComponent(request),
             dataType: 'json',
             success: function (json) {
                 response($.map(json, function (item) {
@@ -123,7 +124,9 @@ $('#input-product').autocomplete({
             }
         });
     },
-    'select': function (item) {}
+    'select': function (item) {
+        $('#input-product').val(item['label']);
+    }
 });
 //--></script>
 {{ footer }}

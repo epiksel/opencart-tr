@@ -1,10 +1,9 @@
 <?php
 namespace Opencart\Catalog\Controller\Api\Sale;
-use \Opencart\System\Helper as Helper;
 class Order extends \Opencart\System\Engine\Controller {
 	/*
 	 * Loads order info
-	 * */
+	 */
 	public function load(): void {
 		$this->load->language('api/sale/order');
 
@@ -39,8 +38,9 @@ class Order extends \Opencart\System\Engine\Controller {
 			];
 
 			// Payment Details
-			if ($this->config->get('config_checkout_address')) {
+			if ($this->config->get('config_checkout_payment_address')) {
 				$this->session->data['payment_address'] = [
+					'address_id'     => $order_info['payment_address_id'],
 					'firstname'      => $order_info['payment_firstname'],
 					'lastname'       => $order_info['payment_lastname'],
 					'company'        => $order_info['payment_company'],
@@ -58,14 +58,15 @@ class Order extends \Opencart\System\Engine\Controller {
 					'address_format' => $order_info['payment_address_format'],
 					'custom_field'   => $order_info['payment_custom_field']
 				];
+			} else {
+				unset($this->session->data['payment_address']);
 			}
 
-			if ($order_info['payment_code']) {
-				$this->session->data['payment_method'] = $order_info['payment_code'];
-			}
+			$this->session->data['payment_method'] = $order_info['payment_method'];
 
-			if ($order_info['shipping_code']) {
+			if ($order_info['shipping_method']) {
 				$this->session->data['shipping_address'] = [
+					'address_id'     => $order_info['shipping_address_id'],
 					'firstname'      => $order_info['shipping_firstname'],
 					'lastname'       => $order_info['shipping_lastname'],
 					'company'        => $order_info['shipping_company'],
@@ -84,13 +85,11 @@ class Order extends \Opencart\System\Engine\Controller {
 					'custom_field'   => $order_info['shipping_custom_field']
 				];
 
-				$this->session->data['shipping_method'] = $order_info['shipping_code'];
+				$this->session->data['shipping_method'] = $order_info['shipping_method'];
 			}
 
-			$this->session->data['comment'] = $order_info['comment'];
-
-			if ($order_info['language_code']) {
-				$this->session->data['language'] = $order_info['language_code'];
+			if ($order_info['comment']) {
+				$this->session->data['comment'] = $order_info['comment'];
 			}
 
 			if ($order_info['currency_code']) {
@@ -110,11 +109,19 @@ class Order extends \Opencart\System\Engine\Controller {
 					} elseif ($option['type'] == 'select' || $option['type'] == 'radio') {
 						$option_data[$option['product_option_id']] = $option['product_option_value_id'];
 					} elseif ($option['type'] == 'checkbox') {
-						$option_data[$option['product_option_id']][] = $option['value'];
+						$option_data[$option['product_option_id']][] = $option['product_option_value_id'];
 					}
 				}
 
-				$this->cart->add($product['product_id'], $product['quantity'], $option_data);
+				$subscription_info = $this->model_checkout_order->getSubscription($order_id, $product['order_product_id']);
+
+				if ($subscription_info) {
+					$subscription_plan_id = $subscription_info['subscription_plan_id'];
+				} else {
+					$subscription_plan_id = 0;
+				}
+
+				$this->cart->add($product['product_id'], $product['quantity'], $option_data, $subscription_plan_id);
 			}
 
 			$this->session->data['vouchers'] = [];
@@ -211,7 +218,7 @@ class Order extends \Opencart\System\Engine\Controller {
 		}
 
 		// Payment Address
-		if ($this->config->get('config_checkout_address') && !isset($this->session->data['payment_address'])) {
+		if ($this->config->get('config_checkout_payment_address') && !isset($this->session->data['payment_address'])) {
 			$json['error']['payment_address'] = $this->language->get('error_payment_address');
 		}
 
@@ -223,13 +230,7 @@ class Order extends \Opencart\System\Engine\Controller {
 			}
 
 			// Validate shipping method
-			if (isset($this->session->data['shipping_method']) && isset($this->session->data['shipping_methods'])) {
-				$shipping = explode('.', $this->session->data['shipping_method']);
-
-				if (!isset($shipping[0]) || !isset($shipping[1]) || !isset($this->session->data['shipping_methods'][$shipping[0]]['quote'][$shipping[1]])) {
-					$json['error']['shipping_method'] = $this->language->get('error_shipping_method');
-				}
-			} else {
+			if (!isset($this->session->data['shipping_method'])) {
 				$json['error']['shipping_method'] = $this->language->get('error_shipping_method');
 			}
 		} else {
@@ -239,8 +240,8 @@ class Order extends \Opencart\System\Engine\Controller {
 		}
 
 		// Payment Method
-		if (!isset($this->session->data['payment_method']) || !isset($this->session->data['payment_methods']) || !isset($this->session->data['payment_methods'][$this->session->data['payment_method']])) {
-			$json['error']['payment_method'] = $this->language->get('error_payment_method');
+		if (!isset($this->session->data['payment_method'])) {
+			$json['error'] = $this->language->get('error_payment_method');
 		}
 
 		if (!$json) {
@@ -263,8 +264,8 @@ class Order extends \Opencart\System\Engine\Controller {
 			$order_data['custom_field'] = $this->session->data['customer']['custom_field'];
 
 			// Payment Details
-			if ($this->config->get('config_checkout_address')) {
-				$order_data['payment_firstname'] = $this->session->data['payment_address']['firstname'];
+			if ($this->config->get('config_checkout_payment_address')) {
+				$order_data['payment_address_id'] = $this->session->data['payment_address']['address_id'];
 				$order_data['payment_lastname'] = $this->session->data['payment_address']['lastname'];
 				$order_data['payment_company'] = $this->session->data['payment_address']['company'];
 				$order_data['payment_address_1'] = $this->session->data['payment_address']['address_1'];
@@ -277,7 +278,10 @@ class Order extends \Opencart\System\Engine\Controller {
 				$order_data['payment_country_id'] = $this->session->data['payment_address']['country_id'];
 				$order_data['payment_address_format'] = $this->session->data['payment_address']['address_format'];
 				$order_data['payment_custom_field'] = isset($this->session->data['payment_address']['custom_field']) ? $this->session->data['payment_address']['custom_field'] : [];
+
+				$order_data['payment_method'] = $this->session->data['payment_method'];
 			} else {
+				$order_data['payment_address_id'] = 0;
 				$order_data['payment_firstname'] = '';
 				$order_data['payment_lastname'] = '';
 				$order_data['payment_company'] = '';
@@ -291,15 +295,13 @@ class Order extends \Opencart\System\Engine\Controller {
 				$order_data['payment_country_id'] = 0;
 				$order_data['payment_address_format'] = '';
 				$order_data['payment_custom_field'] = [];
+
+				$order_data['payment_method'] = [];
 			}
-
-			$payment_method_info = $this->session->data['payment_methods'][$this->session->data['payment_method']];
-
-			$order_data['payment_method'] = $payment_method_info['title'];
-			$order_data['payment_code'] = $payment_method_info['code'];
 
 			// Shipping Details
 			if ($this->cart->hasShipping()) {
+				$order_data['shipping_address_id'] = $this->session->data['shipping_address']['address_id'];
 				$order_data['shipping_firstname'] = $this->session->data['shipping_address']['firstname'];
 				$order_data['shipping_lastname'] = $this->session->data['shipping_address']['lastname'];
 				$order_data['shipping_company'] = $this->session->data['shipping_address']['company'];
@@ -313,7 +315,10 @@ class Order extends \Opencart\System\Engine\Controller {
 				$order_data['shipping_country_id'] = $this->session->data['shipping_address']['country_id'];
 				$order_data['shipping_address_format'] = $this->session->data['shipping_address']['address_format'];
 				$order_data['shipping_custom_field'] = isset($this->session->data['shipping_address']['custom_field']) ? $this->session->data['shipping_address']['custom_field'] : [];
+
+				$order_data['shipping_method'] = $this->session->data['shipping_method'];
 			} else {
+				$order_data['shipping_address_id'] = 0;
 				$order_data['shipping_firstname'] = '';
 				$order_data['shipping_lastname'] = '';
 				$order_data['shipping_company'] = '';
@@ -322,23 +327,13 @@ class Order extends \Opencart\System\Engine\Controller {
 				$order_data['shipping_city'] = '';
 				$order_data['shipping_postcode'] = '';
 				$order_data['shipping_zone'] = '';
-				$order_data['shipping_zone_id'] = '';
+				$order_data['shipping_zone_id'] = 0;
 				$order_data['shipping_country'] = '';
-				$order_data['shipping_country_id'] = '';
+				$order_data['shipping_country_id'] = 0;
 				$order_data['shipping_address_format'] = '';
 				$order_data['shipping_custom_field'] = [];
-			}
 
-			if (isset($this->session->data['shipping_method'])) {
-				$shipping = explode('.', $this->session->data['shipping_method']);
-
-				$shipping_method_info = $this->session->data['shipping_methods'][$shipping[0]]['quote'][$shipping[1]];
-
-				$order_data['shipping_method'] = $shipping_method_info['title'];
-				$order_data['shipping_code'] = $shipping_method_info['code'];
-			} else {
-				$order_data['shipping_method'] = '';
-				$order_data['shipping_code'] = '';
+				$order_data['shipping_method'] = [];
 			}
 
 			$points = 0;
@@ -361,13 +356,30 @@ class Order extends \Opencart\System\Engine\Controller {
 					];
 				}
 
+				$subscription_data = [];
+
+				if ($product['subscription']) {
+					$subscription_data = [
+						'subscription_plan_id' => $product['subscription']['subscription_plan_id'],
+						'name'                 => $product['subscription']['name'],
+						'trial_frequency'      => $product['subscription']['trial_frequency'],
+						'trial_cycle'          => $product['subscription']['trial_cycle'],
+						'trial_duration'       => $product['subscription']['trial_duration'],
+						'trial_remaining'      => $product['subscription']['trial_remaining'],
+						'trial_status'         => $product['subscription']['trial_status'],
+						'frequency'            => $product['subscription']['frequency'],
+						'cycle'                => $product['subscription']['cycle'],
+						'duration'             => $product['subscription']['duration']
+					];
+				}
+
 				$order_data['products'][] = [
 					'product_id'   => $product['product_id'],
 					'master_id'    => $product['master_id'],
 					'name'         => $product['name'],
 					'model'        => $product['model'],
 					'option'       => $option_data,
-					'subscription' => $product['subscription'],
+					'subscription' => $subscription_data,
 					'download'     => $product['download'],
 					'quantity'     => $product['quantity'],
 					'subtract'     => $product['subtract'],
@@ -387,7 +399,7 @@ class Order extends \Opencart\System\Engine\Controller {
 				foreach ($this->session->data['vouchers'] as $voucher) {
 					$order_data['vouchers'][] = [
 						'description'      => $voucher['description'],
-						'code'             => Helper\General\token(10),
+						'code'             => oc_token(10),
 						'to_name'          => $voucher['to_name'],
 						'to_email'         => $voucher['to_email'],
 						'from_name'        => $voucher['from_name'],

@@ -58,7 +58,7 @@ class Activity extends \Opencart\System\Engine\Controller {
 	
 	// catalog/model/account/customer/deleteLoginAttempts/after
 	public function login(string &$route, array &$args, mixed &$output): void {
-		if (isset($this->request->get['route']) && ($this->request->get['route'] == 'account/login' || $this->request->get['route'] == 'checkout/login|save') && $this->config->get('config_customer_activity')) {
+		if (isset($this->request->get['route']) && ($this->request->get['route'] == 'account/login' || $this->request->get['route'] == 'checkout/login.save') && $this->config->get('config_customer_activity')) {
 			$customer_info = $this->model_account_customer->getCustomerByEmail($args[0]);
 
 			if ($customer_info) {
@@ -212,7 +212,7 @@ class Activity extends \Opencart\System\Engine\Controller {
 	// catalog/model/checkout/order/addHistory/before
 	public function addHistory(string &$route, array &$args): void {
 		if ($this->config->get('config_customer_activity')) {
-			// If last order status id is 0 and new order status is not then record as new order
+			// If the last order status id returns 0, and the new order status is not, then we record it as new order
 			$this->load->model('checkout/order');
 			
 			$order_info = $this->model_checkout_order->getOrder($args[0]);

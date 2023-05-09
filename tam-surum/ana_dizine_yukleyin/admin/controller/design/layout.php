@@ -1,6 +1,5 @@
 <?php
 namespace Opencart\Admin\Controller\Design;
-use \Opencart\System\Helper as Helper;
 class Layout extends \Opencart\System\Engine\Controller {
 	public function index(): void {
 		$this->load->language('design/layout');
@@ -33,8 +32,8 @@ class Layout extends \Opencart\System\Engine\Controller {
 			'href' => $this->url->link('design/layout', 'user_token=' . $this->session->data['user_token'] . $url)
 		];
 
-		$data['add'] = $this->url->link('design/layout|form', 'user_token=' . $this->session->data['user_token'] . $url);
-		$data['delete'] = $this->url->link('design/layout|delete', 'user_token=' . $this->session->data['user_token']);
+		$data['add'] = $this->url->link('design/layout.form', 'user_token=' . $this->session->data['user_token'] . $url);
+		$data['delete'] = $this->url->link('design/layout.delete', 'user_token=' . $this->session->data['user_token']);
 
 		$data['list'] = $this->getList();
 
@@ -86,7 +85,7 @@ class Layout extends \Opencart\System\Engine\Controller {
 			$url .= '&page=' . $this->request->get['page'];
 		}
 
-		$data['action'] = $this->url->link('design/layout|list', 'user_token=' . $this->session->data['user_token'] . $url);
+		$data['action'] = $this->url->link('design/layout.list', 'user_token=' . $this->session->data['user_token'] . $url);
 
 		$data['layouts'] = [];
 
@@ -107,7 +106,7 @@ class Layout extends \Opencart\System\Engine\Controller {
 			$data['layouts'][] = [
 				'layout_id' => $result['layout_id'],
 				'name'      => $result['name'],
-				'edit'      => $this->url->link('design/layout|form', 'user_token=' . $this->session->data['user_token'] . '&layout_id=' . $result['layout_id'] . $url)
+				'edit'      => $this->url->link('design/layout.form', 'user_token=' . $this->session->data['user_token'] . '&layout_id=' . $result['layout_id'] . $url)
 			];
 		}
 
@@ -123,7 +122,7 @@ class Layout extends \Opencart\System\Engine\Controller {
 			$url .= '&page=' . $this->request->get['page'];
 		}
 
-		$data['sort_name'] = $this->url->link('design/layout|list', 'user_token=' . $this->session->data['user_token'] . '&sort=name' . $url);
+		$data['sort_name'] = $this->url->link('design/layout.list', 'user_token=' . $this->session->data['user_token'] . '&sort=name' . $url);
 
 		$url = '';
 
@@ -139,7 +138,7 @@ class Layout extends \Opencart\System\Engine\Controller {
 			'total' => $layout_total,
 			'page'  => $page,
 			'limit' => $this->config->get('config_pagination_admin'),
-			'url'   => $this->url->link('design/layout|list', 'user_token=' . $this->session->data['user_token'] . $url . '&page={page}')
+			'url'   => $this->url->link('design/layout.list', 'user_token=' . $this->session->data['user_token'] . $url . '&page={page}')
 		]);
 
 		$data['results'] = sprintf($this->language->get('text_pagination'), ($layout_total) ? (($page - 1) * $this->config->get('config_pagination_admin')) + 1 : 0, ((($page - 1) * $this->config->get('config_pagination_admin')) > ($layout_total - $this->config->get('config_pagination_admin'))) ? $layout_total : ((($page - 1) * $this->config->get('config_pagination_admin')) + $this->config->get('config_pagination_admin')), $layout_total, ceil($layout_total / $this->config->get('config_pagination_admin')));
@@ -183,7 +182,7 @@ class Layout extends \Opencart\System\Engine\Controller {
 			'href' => $this->url->link('design/layout', 'user_token=' . $this->session->data['user_token'] . $url)
 		];
 
-		$data['save'] = $this->url->link('design/layout|save', 'user_token=' . $this->session->data['user_token']);
+		$data['save'] = $this->url->link('design/layout.save', 'user_token=' . $this->session->data['user_token']);
 		$data['back'] = $this->url->link('design/layout', 'user_token=' . $this->session->data['user_token'] . $url);
 
 		if (isset($this->request->get['layout_id'])) {
@@ -299,7 +298,7 @@ class Layout extends \Opencart\System\Engine\Controller {
 			$json['error']['warning'] = $this->language->get('error_permission');
 		}
 
-		if ((Helper\Utf8\strlen($this->request->post['name']) < 3) || (Helper\Utf8\strlen($this->request->post['name']) > 64)) {
+		if ((oc_strlen($this->request->post['name']) < 3) || (oc_strlen($this->request->post['name']) > 64)) {
 			$json['error']['name'] = $this->language->get('error_name');
 		}
 

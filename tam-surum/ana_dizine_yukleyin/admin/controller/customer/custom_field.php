@@ -1,6 +1,5 @@
 <?php
 namespace Opencart\Admin\Controller\Customer;
-use \Opencart\System\Helper as Helper;
 class CustomField extends \Opencart\System\Engine\Controller {
 	public function index(): void {
 		$this->load->language('customer/custom_field');
@@ -33,8 +32,8 @@ class CustomField extends \Opencart\System\Engine\Controller {
 			'href' => $this->url->link('customer/custom_field', 'user_token=' . $this->session->data['user_token'] . $url)
 		];
 
-		$data['add'] = $this->url->link('customer/custom_field|form', 'user_token=' . $this->session->data['user_token'] . $url);
-		$data['delete'] = $this->url->link('customer/custom_field|delete', 'user_token=' . $this->session->data['user_token']);
+		$data['add'] = $this->url->link('customer/custom_field.form', 'user_token=' . $this->session->data['user_token'] . $url);
+		$data['delete'] = $this->url->link('customer/custom_field.delete', 'user_token=' . $this->session->data['user_token']);
 
 		$data['list'] = $this->getList();
 
@@ -86,7 +85,7 @@ class CustomField extends \Opencart\System\Engine\Controller {
 			$url .= '&page=' . $this->request->get['page'];
 		}
 
-		$data['action'] = $this->url->link('customer/custom_field|list', 'user_token=' . $this->session->data['user_token'] . $url);
+		$data['action'] = $this->url->link('customer/custom_field.list', 'user_token=' . $this->session->data['user_token'] . $url);
 
 		$data['custom_fields'] = [];
 
@@ -146,7 +145,7 @@ class CustomField extends \Opencart\System\Engine\Controller {
 				'type'            => $type,
 				'status'          => $result['status'],
 				'sort_order'      => $result['sort_order'],
-				'edit'            => $this->url->link('customer/custom_field|form', 'user_token=' . $this->session->data['user_token'] . '&custom_field_id=' . $result['custom_field_id'] . $url)
+				'edit'            => $this->url->link('customer/custom_field.form', 'user_token=' . $this->session->data['user_token'] . '&custom_field_id=' . $result['custom_field_id'] . $url)
 			];
 		}
 
@@ -162,11 +161,11 @@ class CustomField extends \Opencart\System\Engine\Controller {
 			$url .= '&page=' . $this->request->get['page'];
 		}
 
-		$data['sort_name'] = $this->url->link('customer/custom_field|list', 'user_token=' . $this->session->data['user_token'] . '&sort=cfd.name' . $url);
-		$data['sort_location'] = $this->url->link('customer/custom_field|list', 'user_token=' . $this->session->data['user_token'] . '&sort=cf.location' . $url);
-		$data['sort_type'] = $this->url->link('customer/custom_field|list', 'user_token=' . $this->session->data['user_token'] . '&sort=cf.type' . $url);
-		$data['sort_status'] = $this->url->link('customer/custom_field|list', 'user_token=' . $this->session->data['user_token'] . '&sort=cf.status' . $url);
-		$data['sort_sort_order'] = $this->url->link('customer/custom_field|list', 'user_token=' . $this->session->data['user_token'] . '&sort=cf.sort_order' . $url);
+		$data['sort_name'] = $this->url->link('customer/custom_field.list', 'user_token=' . $this->session->data['user_token'] . '&sort=cfd.name' . $url);
+		$data['sort_location'] = $this->url->link('customer/custom_field.list', 'user_token=' . $this->session->data['user_token'] . '&sort=cf.location' . $url);
+		$data['sort_type'] = $this->url->link('customer/custom_field.list', 'user_token=' . $this->session->data['user_token'] . '&sort=cf.type' . $url);
+		$data['sort_status'] = $this->url->link('customer/custom_field.list', 'user_token=' . $this->session->data['user_token'] . '&sort=cf.status' . $url);
+		$data['sort_sort_order'] = $this->url->link('customer/custom_field.list', 'user_token=' . $this->session->data['user_token'] . '&sort=cf.sort_order' . $url);
 
 		$url = '';
 
@@ -182,7 +181,7 @@ class CustomField extends \Opencart\System\Engine\Controller {
 			'total' => $custom_field_total,
 			'page'  => $page,
 			'limit' => $this->config->get('config_pagination_admin'),
-			'url'   => $this->url->link('customer/custom_field|list', 'user_token=' . $this->session->data['user_token'] . $url . '&page={page}')
+			'url'   => $this->url->link('customer/custom_field.list', 'user_token=' . $this->session->data['user_token'] . $url . '&page={page}')
 		]);
 
 		$data['results'] = sprintf($this->language->get('text_pagination'), ($custom_field_total) ? (($page - 1) * $this->config->get('config_pagination_admin')) + 1 : 0, ((($page - 1) * $this->config->get('config_pagination_admin')) > ($custom_field_total - $this->config->get('config_pagination_admin'))) ? $custom_field_total : ((($page - 1) * $this->config->get('config_pagination_admin')) + $this->config->get('config_pagination_admin')), $custom_field_total, ceil($custom_field_total / $this->config->get('config_pagination_admin')));
@@ -226,7 +225,7 @@ class CustomField extends \Opencart\System\Engine\Controller {
 			'href' => $this->url->link('customer/custom_field', 'user_token=' . $this->session->data['user_token'] . $url)
 		];
 
-		$data['save'] = $this->url->link('customer/custom_field|save', 'user_token=' . $this->session->data['user_token']);
+		$data['save'] = $this->url->link('customer/custom_field.save', 'user_token=' . $this->session->data['user_token']);
 		$data['back'] = $this->url->link('customer/custom_field', 'user_token=' . $this->session->data['user_token'] . $url);
 
 		if (isset($this->request->get['custom_field_id'])) {
@@ -348,7 +347,7 @@ class CustomField extends \Opencart\System\Engine\Controller {
 		}
 
 		foreach ($this->request->post['custom_field_description'] as $language_id => $value) {
-			if ((Helper\Utf8\strlen($value['name']) < 1) || (Helper\Utf8\strlen($value['name']) > 128)) {
+			if ((oc_strlen($value['name']) < 1) || (oc_strlen($value['name']) > 128)) {
 				$json['error']['name_' . $language_id] = $this->language->get('error_name');
 			}
 		}
@@ -361,7 +360,7 @@ class CustomField extends \Opencart\System\Engine\Controller {
 			if (isset($this->request->post['custom_field_value'])) {
 				foreach ($this->request->post['custom_field_value'] as $custom_field_value_id => $custom_field_value) {
 					foreach ($custom_field_value['custom_field_value_description'] as $language_id => $custom_field_value_description) {
-						if ((Helper\Utf8\strlen($custom_field_value_description['name']) < 1) || (Helper\Utf8\strlen($custom_field_value_description['name']) > 128)) {
+						if ((oc_strlen($custom_field_value_description['name']) < 1) || (oc_strlen($custom_field_value_description['name']) > 128)) {
 							$json['error']['custom_field_value_' . $custom_field_value_id . '_' . $language_id] = $this->language->get('error_custom_value');
 						}
 					}

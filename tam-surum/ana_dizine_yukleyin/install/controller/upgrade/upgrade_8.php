@@ -75,91 +75,6 @@ class Upgrade8 extends \Opencart\System\Engine\Controller {
 				}
 			}
 
-			// Config Session Expire
-			$query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "setting` WHERE `key` = 'config_session_expire'");
-
-			if (!$query->num_rows) {
-				$this->db->query("INSERT INTO `" . DB_PREFIX . "setting` SET `store_id` = '0', `code` = 'config', `key` = 'config_session_expire', `value` = '3600000000', `serialized` = '0'");
-			}
-
-			// Config Cookie ID
-			$query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "setting` WHERE `key` = 'config_cookie_id'");
-
-			if (!$query->num_rows) {
-				$this->db->query("INSERT INTO `" . DB_PREFIX . "setting` SET `store_id` = '0', `code` = 'config', `key` = 'config_cookie_id', `value` = '0', `serialized` = '0'");
-			}
-
-			// Config GDPR ID
-			$query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "setting` WHERE `key` = 'config_gdpr_id'");
-
-			if (!$query->num_rows) {
-				$this->db->query("INSERT INTO `" . DB_PREFIX . "setting` SET `store_id` = '0', `code` = 'config', `key` = 'config_gdpr_id', `value` = '0', `serialized` = '0'");
-			}
-
-			$query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "setting` WHERE `key` = 'config_gdpr_limit'");
-
-			if (!$query->num_rows) {
-				$this->db->query("INSERT INTO `" . DB_PREFIX . "setting` SET `store_id` = '0', `code` = 'config', `key` = 'config_gdpr_limit', `value` = '180', `serialized` = '0'");
-			}
-
-			// Config affiliate Status ID
-			$query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "setting` WHERE `key` = 'config_affiliate_status'");
-
-			if (!$query->num_rows) {
-				$this->db->query("INSERT INTO `" . DB_PREFIX . "setting` SET `store_id` = '0', `code` = 'config', `key` = 'config_affiliate_status', `value` = '1', `serialized` = '0'");
-			}
-
-			// Config affiliate expire
-			$query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "setting` WHERE `key` = 'config_affiliate_expire'");
-
-			if (!$query->num_rows) {
-				$this->db->query("INSERT INTO `" . DB_PREFIX . "setting` SET `store_id` = '0', `code` = 'config', `key` = 'config_affiliate_expire', `value` = '3600000000', `serialized` = '0'");
-			}
-
-			// Config Subscriptions
-			$query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "setting` WHERE `key` = 'config_subscription_status_id'");
-
-			if (!$query->num_rows) {
-				$this->db->query("INSERT INTO `" . DB_PREFIX . "setting` SET `store_id` = '0', `code` = 'config', `key` = 'config_subscription_status_id', `value` = '1', `serialized` = '0'");
-			}
-
-			$query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "setting` WHERE `key` = 'config_subscription_active_status_id'");
-
-			if (!$query->num_rows) {
-				$this->db->query("INSERT INTO `" . DB_PREFIX . "setting` SET `store_id` = '0', `code` = 'config', `key` = 'config_subscription_active_status_id', `value` = '2', `serialized` = '0'");
-			}
-
-			$query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "setting` WHERE `key` = 'config_subscription_expired_status_id'");
-
-			if (!$query->num_rows) {
-				$this->db->query("INSERT INTO `" . DB_PREFIX . "setting` SET `store_id` = '0', `code` = 'config', `key` = 'config_subscription_expired_status_id', `value` = '6', `serialized` = '0'");
-			}
-
-			$query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "setting` WHERE `key` = 'config_subscription_canceled_status_id'");
-
-			if (!$query->num_rows) {
-				$this->db->query("INSERT INTO `" . DB_PREFIX . "setting` SET `store_id` = '0', `code` = 'config', `key` = 'config_subscription_canceled_status_id', `value` = '4', `serialized` = '0'");
-			}
-
-			$query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "setting` WHERE `key` = 'config_subscription_failed_status_id'");
-
-			if (!$query->num_rows) {
-				$this->db->query("INSERT INTO `" . DB_PREFIX . "setting` SET `store_id` = '0', `code` = 'config', `key` = 'config_subscription_failed_status_id', `value` = '3', `serialized` = '0'");
-			}
-
-			$query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "setting` WHERE `key` = 'config_subscription_denied_status_id'");
-
-			if (!$query->num_rows) {
-				$this->db->query("INSERT INTO `" . DB_PREFIX . "setting` SET `store_id` = '0', `code` = 'config', `key` = 'config_subscription_denied_status_id', `value` = '5', `serialized` = '0'");
-			}
-
-			// Config - Fraud Status ID
-			$query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "setting` WHERE `key` = 'config_fraud_status_id'");
-
-			if (!$query->num_rows) {
-				$this->db->query("INSERT INTO `" . DB_PREFIX . "setting` SET `store_id` = '0', `code` = 'config', `key` = 'config_fraud_status_id', `value` = '8', `serialized` = '0'");
-			}
-
 			// Country address_format_id
 			$query = $this->db->query("SELECT * FROM information_schema.COLUMNS WHERE TABLE_SCHEMA = '" . DB_DATABASE . "' AND TABLE_NAME = '" . DB_PREFIX . "country' AND COLUMN_NAME = 'address_format_id'");
 
@@ -197,6 +112,13 @@ class Upgrade8 extends \Opencart\System\Engine\Controller {
 				$this->db->query("ALTER TABLE `" . DB_PREFIX . "cart` DROP COLUMN `recurring_id`");
 				$this->db->query("ALTER TABLE `" . DB_PREFIX . "cart` ADD COLUMN `subscription_plan_id` int(11) NOT NULL AFTER `product_id`");
 			}
+			
+			// Addresses
+            $query = $this->db->query("SELECT * FROM information_schema.COLUMNS WHERE TABLE_SCHEMA = '" . DB_DATABASE . "' AND TABLE_NAME = '" . DB_PREFIX . "address' AND COLUMN_NAME = 'default'");
+
+            if (!$query->num_rows) {
+                $this->db->query("ALTER TABLE `" . DB_PREFIX . "address` ADD COLUMN `default` tinyint(1) NOT NULL AFTER `custom_field`");
+            }
 
 			// Drop Fields
 			$remove = [];
@@ -276,6 +198,21 @@ class Upgrade8 extends \Opencart\System\Engine\Controller {
 				'field' => 'salt'
 			];
 
+			$remove[] = [
+				'table' => 'user_login',
+				'field' => 'token'
+			];
+
+			$remove[] = [
+				'table' => 'user_login',
+				'field' => 'total'
+			];
+
+			$remove[] = [
+				'table' => 'user_login',
+				'field' => 'status'
+			];
+
 			foreach ($remove as $result) {
 				$query = $this->db->query("SELECT * FROM information_schema.COLUMNS WHERE TABLE_SCHEMA = '" . DB_DATABASE . "' AND TABLE_NAME = '" . DB_PREFIX . $result['table'] . "' AND COLUMN_NAME = '" . $result['field'] . "'");
 
@@ -295,6 +232,7 @@ class Upgrade8 extends \Opencart\System\Engine\Controller {
 				'banner_image_description',
 				'customer_ban_ip',
 				'customer_field',
+				'customer_payment',
 				'modification',
 				'order_field',
 				'order_custom_field',
@@ -313,15 +251,19 @@ class Upgrade8 extends \Opencart\System\Engine\Controller {
 		}
 
 		if (!$json) {
-			$json['success'] = $this->language->get('text_success');
+			$json['text'] = sprintf($this->language->get('text_progress'), 8, 8, 9);
 
 			$url = '';
+
+			if (isset($this->request->get['version'])) {
+				$url .= '&version=' . $this->request->get['version'];
+			}
 
 			if (isset($this->request->get['admin'])) {
 				$url .= '&admin=' . $this->request->get['admin'];
 			}
 
-			$json['redirect'] = $this->url->link('install/step_4', $url, true);
+			$json['next'] = $this->url->link('upgrade/upgrade_9', $url, true);
 		}
 
 		$this->response->addHeader('Content-Type: application/json');

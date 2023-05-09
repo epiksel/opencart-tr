@@ -7,11 +7,6 @@
 
 OpenCart PHP tabanlı açık kaynak kodlu online alışveriş sepetidir. Tüccarların düşük bir maliyet ile kendi e-ticaret mağazalarını oluşturmada yardımcı olan güçlü bir e-ticaret yazılımıdır.
 
-## Destek - Donate Wallet Address
-**(BTC)**: 1Cw2TguwNdSVHmjQDkAc6wmv1FNnwy1ru9
-
-**(TRX - USDT)**: TH9RyofE7WiDDVVFLMJgFns2ByBRmgQzNB
-
 ## OpenCart Türkçe Destek Forumu
 
 [OpenCart Kurulumu Nasıl Yapılır?](https://weblenti.com/tr/eticaret-yazilimlari/opencart-kurulumu-nasil-yapilir)
@@ -19,6 +14,11 @@ OpenCart PHP tabanlı açık kaynak kodlu online alışveriş sepetidir. Tüccar
 [OpenCart Güncelleme Nasıl Yapılır?](https://weblenti.com/tr/eticaret-yazilimlari/opencart-guncelleme-nasil-yapilir)
 
 [Resmi Türkçe Destek Forumu](http://forum.opencart.com/viewforum.php?f=171)
+
+## Bize Destek için
+[Akıllı Asistan](https://akilliasistan.com?tracking=github_octr)
+
+[Akıllı Saatler](https://akilliasistan.com/giyilebilir-teknoloji?tracking=github_octr)
 
 ## SSL Sertifikaları - SSL Certificates
 E-Ticaret siteleriniz için [SSL Sertifikası](https://openix.io/tr/ssl-sertifikalari?tracking=5b998465b6371) satın alarak bize destek olabilirsiniz.

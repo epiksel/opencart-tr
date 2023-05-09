@@ -28,8 +28,8 @@
           <div class="row mb-3">
             <label class="col-sm-2 col-form-label">{{ entry_product }}</label>
             <div class="col-sm-10">
-              <input type="text" name="product" value="" placeholder="{{ entry_product }}" id="input-product" list="list-product" class="form-control"/>
-              <datalist id="list-product"></datalist>
+              <input type="text" name="product" value="" placeholder="{{ entry_product }}" id="input-product" data-oc-target="autocomplete-product" class="form-control" autocomplete="off"/>
+              <ul id="autocomplete-product" class="dropdown-menu"></ul>
               <div class="form-control p-0" style="height: 150px; overflow: auto;">
                 <table id="featured-product" class="table table-sm m-0">
                   <tbody>
@@ -49,8 +49,8 @@
             <label for="input-axis" class="col-sm-2 col-form-label">{{ entry_axis }}</label>
             <div class="col-sm-10">
               <select name="axis" id="input-axis" class="form-select">
-                <option value="horizontal"{% if axis == 'horizontal' %} selected="selected"{% endif %}>{{ text_horizontal }}</option>
-                <option value="vertical"{% if axis == 'vertical' %} selected="selected"{% endif %}>{{ text_vertical }}</option>
+                <option value="horizontal"{% if axis == 'horizontal' %} selected{% endif %}>{{ text_horizontal }}</option>
+                <option value="vertical"{% if axis == 'vertical' %} selected{% endif %}>{{ text_vertical }}</option>
               </select>
             </div>
           </div>
@@ -77,6 +77,7 @@
               </div>
             </div>
           </div>
+          <input type="hidden" name="module_id" value="{{ module_id }}" id="input-module-id"/>
         </form>
       </div>
     </div>
@@ -86,7 +87,7 @@
 $('#input-product').autocomplete({
     source: function (request, response) {
         $.ajax({
-            url: 'index.php?route=catalog/product|autocomplete&user_token={{ user_token }}&filter_name=' + encodeURIComponent(request),
+            url: 'index.php?route=catalog/product.autocomplete&user_token={{ user_token }}&filter_name=' + encodeURIComponent(request),
             dataType: 'json',
             success: function (json) {
                 response($.map(json, function (item) {

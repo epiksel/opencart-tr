@@ -1,6 +1,5 @@
 <?php
 namespace Opencart\Admin\Controller\Catalog;
-use \Opencart\System\Helper as Helper;
 class Category extends \Opencart\System\Engine\Controller {
 	public function index(): void {
 		$this->load->language('catalog/category');
@@ -33,9 +32,9 @@ class Category extends \Opencart\System\Engine\Controller {
 			'href' => $this->url->link('catalog/category', 'user_token=' . $this->session->data['user_token'] . $url)
 		];
 
-		$data['repair'] = $this->url->link('catalog/category|repair', 'user_token=' . $this->session->data['user_token']);
-		$data['add'] = $this->url->link('catalog/category|form', 'user_token=' . $this->session->data['user_token'] . $url);
-		$data['delete'] = $this->url->link('catalog/category|delete', 'user_token=' . $this->session->data['user_token']);
+		$data['repair'] = $this->url->link('catalog/category.repair', 'user_token=' . $this->session->data['user_token']);
+		$data['add'] = $this->url->link('catalog/category.form', 'user_token=' . $this->session->data['user_token'] . $url);
+		$data['delete'] = $this->url->link('catalog/category.delete', 'user_token=' . $this->session->data['user_token']);
 
 		$data['list'] = $this->getList();
 
@@ -87,7 +86,7 @@ class Category extends \Opencart\System\Engine\Controller {
 			$url .= '&page=' . $this->request->get['page'];
 		}
 
-		$data['action'] = $this->url->link('catalog/category|list', 'user_token=' . $this->session->data['user_token'] . $url);
+		$data['action'] = $this->url->link('catalog/category.list', 'user_token=' . $this->session->data['user_token'] . $url);
 
 		$data['categories'] = [];
 
@@ -109,7 +108,7 @@ class Category extends \Opencart\System\Engine\Controller {
 				'category_id' => $result['category_id'],
 				'name'        => $result['name'],
 				'sort_order'  => $result['sort_order'],
-				'edit'        => $this->url->link('catalog/category|form', 'user_token=' . $this->session->data['user_token'] . '&category_id=' . $result['category_id'] . $url)
+				'edit'        => $this->url->link('catalog/category.form', 'user_token=' . $this->session->data['user_token'] . '&category_id=' . $result['category_id'] . $url)
 			];
 		}
 
@@ -125,8 +124,8 @@ class Category extends \Opencart\System\Engine\Controller {
 			$url .= '&page=' . $this->request->get['page'];
 		}
 
-		$data['sort_name'] = $this->url->link('catalog/category|list', 'user_token=' . $this->session->data['user_token'] . '&sort=name' . $url);
-		$data['sort_sort_order'] = $this->url->link('catalog/category|list', 'user_token=' . $this->session->data['user_token'] . '&sort=sort_order' . $url);
+		$data['sort_name'] = $this->url->link('catalog/category.list', 'user_token=' . $this->session->data['user_token'] . '&sort=name' . $url);
+		$data['sort_sort_order'] = $this->url->link('catalog/category.list', 'user_token=' . $this->session->data['user_token'] . '&sort=sort_order' . $url);
 
 		$url = '';
 
@@ -142,7 +141,7 @@ class Category extends \Opencart\System\Engine\Controller {
 			'total' => $category_total,
 			'page'  => $page,
 			'limit' => $this->config->get('config_pagination_admin'),
-			'url'   => $this->url->link('catalog/category|list', 'user_token=' . $this->session->data['user_token'] . $url . '&page={page}')
+			'url'   => $this->url->link('catalog/category.list', 'user_token=' . $this->session->data['user_token'] . $url . '&page={page}')
 		]);
 
 		$data['results'] = sprintf($this->language->get('text_pagination'), ($category_total) ? (($page - 1) * $this->config->get('config_pagination_admin')) + 1 : 0, ((($page - 1) * $this->config->get('config_pagination_admin')) > ($category_total - $this->config->get('config_pagination_admin'))) ? $category_total : ((($page - 1) * $this->config->get('config_pagination_admin')) + $this->config->get('config_pagination_admin')), $category_total, ceil($category_total / $this->config->get('config_pagination_admin')));
@@ -189,7 +188,7 @@ class Category extends \Opencart\System\Engine\Controller {
 			'href' => $this->url->link('catalog/category', 'user_token=' . $this->session->data['user_token'] . $url)
 		];
 
-		$data['save'] = $this->url->link('catalog/category|save', 'user_token=' . $this->session->data['user_token']);
+		$data['save'] = $this->url->link('catalog/category.save', 'user_token=' . $this->session->data['user_token']);
 		$data['back'] = $this->url->link('catalog/category', 'user_token=' . $this->session->data['user_token'] . $url);
 
 		if (isset($this->request->get['category_id'])) {
@@ -360,11 +359,11 @@ class Category extends \Opencart\System\Engine\Controller {
 		}
 
 		foreach ($this->request->post['category_description'] as $language_id => $value) {
-			if ((Helper\Utf8\strlen(trim($value['name'])) < 1) || (Helper\Utf8\strlen($value['name']) > 255)) {
+			if ((oc_strlen(trim($value['name'])) < 1) || (oc_strlen($value['name']) > 255)) {
 				$json['error']['name_' . $language_id] = $this->language->get('error_name');
 			}
 
-			if ((Helper\Utf8\strlen(trim($value['meta_title'])) < 1) || (Helper\Utf8\strlen($value['meta_title']) > 255)) {
+			if ((oc_strlen(trim($value['meta_title'])) < 1) || (oc_strlen($value['meta_title']) > 255)) {
 				$json['error']['meta_title_' . $language_id] = $this->language->get('error_meta_title');
 			}
 		}
@@ -388,14 +387,14 @@ class Category extends \Opencart\System\Engine\Controller {
 
 			foreach ($this->request->post['category_seo_url'] as $store_id => $language) {
 				foreach ($language as $language_id => $keyword) {
-					if ($keyword) {
-						$seo_url_info = $this->model_design_seo_url->getSeoUrlByKeyword($keyword, $store_id, $language_id);
+					if ((oc_strlen(trim($keyword)) < 1) || (oc_strlen($keyword) > 100)) {
+						$json['error']['keyword_' . $store_id . '_' . $language_id] = $this->language->get('error_keyword');
+					}
 
-						if ($seo_url_info && (!isset($this->request->post['category_id']) || $seo_url_info['key'] != 'path' || $seo_url_info['value'] != $this->model_catalog_category->getPath($this->request->post['category_id']))) {
-							$json['error']['keyword_' . $store_id . '_' . $language_id] = $this->language->get('error_keyword');
-						}
-					} else {
-						$json['error']['keyword_' . $store_id . '_' . $language_id] = $this->language->get('error_seo');
+					$seo_url_info = $this->model_design_seo_url->getSeoUrlByKeyword($keyword, $store_id);
+
+					if ($seo_url_info && (!isset($this->request->post['category_id']) || $seo_url_info['key'] != 'path' || $seo_url_info['value'] != $this->model_catalog_category->getPath($this->request->post['category_id']))) {
+						$json['error']['keyword_' . $store_id . '_' . $language_id] = $this->language->get('error_keyword_exists');
 					}
 				}
 			}
@@ -476,7 +475,7 @@ class Category extends \Opencart\System\Engine\Controller {
 			$this->load->model('catalog/category');
 
 			$filter_data = [
-				'filter_name' => $this->request->get['filter_name'],
+				'filter_name' => '%' . $this->request->get['filter_name'] . '%',
 				'sort'        => 'name',
 				'order'       => 'ASC',
 				'start'       => 0,
@@ -488,7 +487,7 @@ class Category extends \Opencart\System\Engine\Controller {
 			foreach ($results as $result) {
 				$json[] = [
 					'category_id' => $result['category_id'],
-					'name'        => strip_tags(html_entity_decode($result['name'], ENT_QUOTES, 'UTF-8'))
+					'name'        => $result['name']
 				];
 			}
 		}

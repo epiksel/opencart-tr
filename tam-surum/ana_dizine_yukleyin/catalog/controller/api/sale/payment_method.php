@@ -10,45 +10,25 @@ class PaymentMethod extends \Opencart\System\Engine\Controller {
 			$json['error'] = $this->language->get('error_product');
 		}
 
-		// Payment Address
-		if ($this->config->get('config_checkout_address') && !isset($this->session->data['payment_address'])) {
+		if ($this->config->get('config_checkout_payment_address') && !isset($this->session->data['payment_address'])) {
 			$json['error'] = $this->language->get('error_payment_address');
 		}
 
 		if (!$json) {
+			$payment_address = [];
+
 			if (isset($this->session->data['payment_address'])) {
 				$payment_address = $this->session->data['payment_address'];
-			} else {
-				$payment_address = [
-					'address_id'     => 0,
-					'firstname'      => '',
-					'lastname'       => '',
-					'company'        => '',
-					'address_1'      => '',
-					'address_2'      => '',
-					'city'           => '',
-					'postcode'       => '',
-					'zone_id'        => 0,
-					'zone'           => '',
-					'zone_code'      => '',
-					'country_id'     => 0,
-					'country'        => '',
-					'iso_code_2'     => '',
-					'iso_code_3'     => '',
-					'address_format' => '',
-					'custom_field'   => []
-				];
+			} elseif ($this->config->get('config_checkout_shipping_address') && isset($this->session->data['shipping_address'])) {
+				$payment_address = $this->session->data['shipping_address'];
 			}
 
-			// Payment Methods
 			$this->load->model('checkout/payment_method');
 
 			$payment_methods = $this->model_checkout_payment_method->getMethods($payment_address);
 
 			if ($payment_methods) {
-				$this->session->data['payment_methods'] = $payment_methods;
-
-				$json['payment_methods'] = $payment_methods;
+				$json['payment_methods'] = $this->session->data['payment_methods'] = $payment_methods;
 			} else {
 				$json['error'] = $this->language->get('error_no_payment');
 			}
@@ -64,17 +44,23 @@ class PaymentMethod extends \Opencart\System\Engine\Controller {
 		$json = [];
 
 		// Payment Address
-		if ($this->config->get('config_checkout_address') && !isset($this->session->data['payment_address'])) {
+		if ($this->config->get('config_checkout_payment_address') && !isset($this->session->data['payment_address'])) {
 			$json['error'] = $this->language->get('error_payment_address');
 		}
 
 		// Payment Method
-		if (!isset($this->request->post['payment_method']) || !isset($this->session->data['payment_methods']) || !isset($this->session->data['payment_methods'][$this->request->post['payment_method']])) {
+		if (isset($this->request->post['payment_method']) && isset($this->session->data['payment_methods'])) {
+			$payment = explode('.', $this->request->post['payment_method']);
+
+			if (!isset($payment[0]) || !isset($payment[1]) || !isset($this->session->data['payment_methods'][$payment[0]]['option'][$payment[1]])) {
+				$json['error'] = $this->language->get('error_payment_method');
+			}
+		} else {
 			$json['error'] = $this->language->get('error_payment_method');
 		}
 
 		if (!$json) {
-			$this->session->data['payment_method'] = $this->request->post['payment_method'];
+			$this->session->data['payment_method'] = $this->session->data['payment_methods'][$payment[0]]['option'][$payment[1]];
 
 			$json['success'] = $this->language->get('text_success');
 		}

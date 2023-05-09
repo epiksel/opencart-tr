@@ -212,11 +212,11 @@
             </div>
           </div>
         </fieldset>
-        <div class="d-inline-block pt-2 pd-2 w-100">
-          <div class="float-start">
+        <div class="row">
+          <div class="col">
             <a href="{{ back }}" class="btn btn-light">{{ button_back }}</a>
           </div>
-          <div class="float-end">
+          <div class="col text-end">
             <button type="submit" class="btn btn-primary">{{ button_continue }}</button>
           </div>
         </div>
@@ -233,9 +233,11 @@ $('#input-country').on('change', function () {
         dataType: 'json',
         beforeSend: function () {
             $(element).prop('disabled', true);
+            $('#input-zone').prop('disabled', true);
         },
         complete: function () {
             $(element).prop('disabled', false);
+            $('#input-zone').prop('disabled', false);
         },
         success: function (json) {
             if (json['postcode_required'] == '1') {

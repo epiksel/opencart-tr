@@ -22,7 +22,7 @@ h3 {
 h4 {
   font-size: 15px;
 }
-h5 {
+footer h5 {
   font-size: 12px;
 }
 h6 {
@@ -60,6 +60,11 @@ div.required .col-form-label:before, div.required .form-label:before {
   color: #F00;
   font-weight: bold;
 }
+.form-switch-lg {
+  font-size: 20px;
+  min-height: 30px;
+  line-height: 30px;
+}
 @media (min-width: 768px) {
   .col-form-label {
     text-align: right;
@@ -67,10 +72,12 @@ div.required .col-form-label:before, div.required .form-label:before {
 }
 #alert {
   z-index: 9999;
+  pointer-events: all;
 }
 #alert .alert {
   min-width: 400px;
   position: relative;
+  margin-bottom: 15px;
 }
 @media (min-width: 1300px) {
   #alert .alert {
@@ -203,13 +210,10 @@ footer a {
 #header-cart {
   margin-bottom: 10px;
 }
-#header-cart > .btn {
-  font-size: 12px;
-  line-height: 18px;
-  color: #FFF;
-}
 #header-cart .btn-lg {
-  padding: 0.65rem 1rem;
+  color: #FFF;
+  height: 40px;
+  padding: 0 1rem;
 }
 #header-cart .btn:hover {
   color: #FFF;

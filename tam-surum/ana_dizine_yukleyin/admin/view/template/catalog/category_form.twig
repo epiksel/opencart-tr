@@ -74,8 +74,9 @@
               <div class="row mb-3">
                 <label for="input-parent" class="col-sm-2 col-form-label">{{ entry_parent }}</label>
                 <div class="col-sm-10">
-                  <input type="text" name="path" value="{{ path }}" placeholder="{{ entry_parent }}" id="input-parent" list="list-parent" class="form-control"/> <input type="hidden" name="parent_id" value="{{ parent_id }}" id="input-parent-id"/>
-                  <datalist id="list-parent"></datalist>
+                  <input type="text" name="path" value="{{ path }}" placeholder="{{ entry_parent }}" id="input-parent" data-oc-target="autocomplete-parent" class="form-control" autocomplete="off"/>
+                  <ul id="autocomplete-parent" class="dropdown-menu"></ul>
+                  <input type="hidden" name="parent_id" value="{{ parent_id }}" id="input-parent-id"/>
                   <div class="form-text">{{ help_parent }}</div>
                   <div id="error-parent" class="invalid-feedback"></div>
                 </div>
@@ -83,8 +84,8 @@
               <div class="row mb-3">
                 <label class="col-sm-2 col-form-label">{{ entry_filter }}</label>
                 <div class="col-sm-10">
-                  <input type="text" name="filter" value="" placeholder="{{ entry_filter }}" id="input-filter" list="list-filter" class="form-control"/>
-                  <datalist id="list-filter"></datalist>
+                  <input type="text" name="filter" value="" placeholder="{{ entry_filter }}" id="input-filter" data-oc-target="autocomplete-filter" class="form-control" autocomplete="off"/>
+                  <ul id="autocomplete-filter" class="dropdown-menu"></ul>
                   <div class="form-control p-0" style="height: 150px; overflow: auto;">
                     <table id="category-filter" class="table table-sm m-0">
                       <tbody>
@@ -128,8 +129,7 @@
                 <label for="input-top" class="col-sm-2 col-form-label">{{ entry_top }}</label>
                 <div class="col-sm-10">
                   <div class="form-check form-switch form-switch-lg">
-                    <input type="hidden" name="top" value="0"/>
-                    <input type="checkbox" name="top" value="1" id="input-top" class="form-check-input"{% if top %} checked{% endif %}/>
+                    <input type="hidden" name="top" value="0"/> <input type="checkbox" name="top" value="1" id="input-top" class="form-check-input"{% if top %} checked{% endif %}/>
                   </div>
                   <div class="form-text">{{ help_top }}</div>
                 </div>
@@ -151,8 +151,7 @@
                 <label for="input-status" class="col-sm-2 col-form-label">{{ entry_status }}</label>
                 <div class="col-sm-10">
                   <div class="form-check form-switch form-switch-lg">
-                    <input type="hidden" name="status" value="0"/>
-                    <input type="checkbox" name="status" value="1" id="input-status" class="form-check-input"{% if status %} checked{% endif %}/>
+                    <input type="hidden" name="status" value="0"/> <input type="checkbox" name="status" value="1" id="input-status" class="form-check-input"{% if status %} checked{% endif %}/>
                   </div>
                 </div>
               </div>
@@ -202,7 +201,7 @@
                         <td class="text-start"><select name="category_layout[{{ store.store_id }}]" class="form-select">
                             <option value=""></option>
                             {% for layout in layouts %}
-                              <option value="{{ layout.layout_id }}"{% if category_layout[store.store_id] and category_layout[store.store_id] == layout.layout_id %} selected="selected"{% endif %}>{{ layout.name }}</option>
+                              <option value="{{ layout.layout_id }}"{% if category_layout[store.store_id] and category_layout[store.store_id] == layout.layout_id %} selected{% endif %}>{{ layout.name }}</option>
                             {% endfor %}
                           </select></td>
                       </tr>
@@ -219,30 +218,31 @@
 </div>
 <script type="text/javascript"><!--
 $('textarea[data-oc-toggle=\'ckeditor\']').ckeditor({
-    language:'{{ ckeditor }}'
+    language: '{{ ckeditor }}'
 });
 
 $('#input-parent').autocomplete({
     'source': function (request, response) {
         $.ajax({
-            url: 'index.php?route=catalog/category|autocomplete&user_token={{ user_token }}&filter_name=' + encodeURIComponent(request),
+            url: 'index.php?route=catalog/category.autocomplete&user_token={{ user_token }}&filter_name=' + encodeURIComponent(request),
             dataType: 'json',
             success: function (json) {
                 json.unshift({
-                    name: '{{ text_none }}',
-                    category_id: 0
+                    'name': '{{ text_none }}',
+                    'category_id': '0'
                 });
 
                 response($.map(json, function (item) {
                     return {
-                        label: item['name'],
-                        value: item['category_id']
+                        value: item['category_id'],
+                        label: item['name']
                     }
                 }));
             }
         });
     },
     'select': function (item) {
+        $('#input-parent').val(item['label']);
         $('#input-parent-id').val(item['value']);
     }
 });
@@ -250,7 +250,7 @@ $('#input-parent').autocomplete({
 $('#input-filter').autocomplete({
     'source': function (request, response) {
         $.ajax({
-            url: 'index.php?route=catalog/filter|autocomplete&user_token={{ user_token }}&filter_name=' + encodeURIComponent(request),
+            url: 'index.php?route=catalog/filter.autocomplete&user_token={{ user_token }}&filter_name=' + encodeURIComponent(request),
             dataType: 'json',
             success: function (json) {
                 response($.map(json, function (item) {

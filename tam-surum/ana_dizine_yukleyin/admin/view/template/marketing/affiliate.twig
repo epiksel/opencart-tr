@@ -22,8 +22,9 @@
           <div class="card-header"><i class="fa-solid fa-filter"></i> {{ text_filter }}</div>
           <div class="card-body">
             <div class="mb-3">
-              <label class="form-label">{{ entry_customer }}</label> <input type="text" name="filter_customer" value="{{ filter_name }}" placeholder="{{ entry_customer }}" id="input-customer" list="list-customer" class="form-control"/>
-              <datalist id="list-customer"></datalist>
+              <label class="form-label">{{ entry_customer }}</label>
+              <input type="text" name="filter_customer" value="{{ filter_name }}" placeholder="{{ entry_customer }}" id="input-customer" data-oc-target="autocomplete-customer" class="form-control" autocomplete="off"/>
+              <ul id="autocomplete-customer" class="dropdown-menu"></ul>
             </div>
             <div class="mb-3">
               <label for="input-tracking" class="form-label">{{ entry_tracking }}</label> <input type="text" name="filter_tracking" value="{{ filter_tracking }}" placeholder="{{ entry_tracking }}" id="input-tracking" class="form-control"/>
@@ -35,12 +36,12 @@
               <label for="input-status" class="form-label">{{ entry_status }}</label> <select name="filter_status" id="input-status" class="form-select">
                 <option value=""></option>
                 {% if filter_status == '1' %}
-                  <option value="1" selected="selected">{{ text_enabled }}</option>
+                  <option value="1" selected>{{ text_enabled }}</option>
                 {% else %}
                   <option value="1">{{ text_enabled }}</option>
                 {% endif %}
                 {% if filter_status == '0' %}
-                  <option value="0" selected="selected">{{ text_disabled }}</option>
+                  <option value="0" selected>{{ text_disabled }}</option>
                 {% else %}
                   <option value="0">{{ text_disabled }}</option>
                 {% endif %}
@@ -121,13 +122,13 @@ $('#button-filter').on('click', function () {
         url += '&filter_date_to=' + encodeURIComponent(filter_date_to);
     }
 
-    $('#affiliate').load('index.php?route=marketing/affiliate|list&user_token={{ user_token }}' + url);
+    $('#affiliate').load('index.php?route=marketing/affiliate.list&user_token={{ user_token }}' + url);
 });
 
 $('#input-customer').autocomplete({
     'source': function (request, response) {
         $.ajax({
-            url: 'index.php?route=customer/customer|autocomplete&user_token={{ user_token }}&filter_affiliate=1&filter_name=' + encodeURIComponent(request),
+            url: 'index.php?route=customer/customer.autocomplete&user_token={{ user_token }}&filter_affiliate=1&filter_name=' + encodeURIComponent(request),
             dataType: 'json',
             success: function (json) {
                 response($.map(json, function (item) {
@@ -140,6 +141,7 @@ $('#input-customer').autocomplete({
         });
     },
     'select': function (item) {
+        $('#input-customer').val(item['label']);
     }
 });
 //--></script>

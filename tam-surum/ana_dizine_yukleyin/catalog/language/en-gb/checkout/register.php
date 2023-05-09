@@ -11,6 +11,7 @@ $_['text_shipping_address']   = 'Shipping Address';
 $_['text_your_password']      = 'Your Password';
 $_['text_agree']              = 'I have read and agree to the <a href="%s" class="modal-link"><b>%s</b></a>';
 $_['text_success_add']        = 'Success: Your account has been created!';
+$_['text_success_guest']      = 'Success: Your guest account information has been saved!';
 $_['text_success_edit']       = 'Success: Your account has been successfully updated.';
 
 // Entry
@@ -36,7 +37,7 @@ $_['error_guest']             = 'Warning: Items in your shopping cart require yo
 $_['error_firstname']         = 'First Name must be between 1 and 32 characters!';
 $_['error_lastname']          = 'Last Name must be between 1 and 32 characters!';
 $_['error_customer_group']    = 'Customer Group does not appear to be valid!';
-$_['error_customer_approval'] = 'Warning: Your this customer group requires approval and can not be used with guest account.';
+$_['error_customer_approval'] = 'Warning: Your this customer group requires approval and cannot be used with guest account.';
 $_['error_email']             = 'E-Mail address does not appear to be valid!';
 $_['error_exists']            = 'Warning: E-Mail Address is already registered!';
 $_['error_telephone']         = 'Telephone must be between 3 and 32 characters!';

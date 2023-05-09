@@ -9,7 +9,7 @@ class Login extends \Opencart\System\Engine\Controller {
 		}
 
 		// Remove any method call for checking ignore pages.
-		$pos = strrpos($route, '|');
+		$pos = strrpos($route, '.');
 
 		if ($pos !== false) {
 			$route = substr($route, 0, $pos);
@@ -18,7 +18,7 @@ class Login extends \Opencart\System\Engine\Controller {
 		$ignore = [
 			'common/login',
 			'common/forgotten',
-			'cron/cron'
+			'common/language'
 		];
 
 		// User
@@ -32,7 +32,7 @@ class Login extends \Opencart\System\Engine\Controller {
 			'common/login',
 			'common/logout',
 			'common/forgotten',
-			'cron/cron',
+			'common/language',
 			'error/not_found',
 			'error/permission'
 		];

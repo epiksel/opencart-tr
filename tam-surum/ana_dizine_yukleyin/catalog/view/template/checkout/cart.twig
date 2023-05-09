@@ -28,9 +28,9 @@
         </div>
       {% endif %}
       <br/>
-      <div class="d-inline-block pt-2 pd-2 w-100">
-        <div class="float-start"><a href="{{ continue }}" class="btn btn-light">{{ button_shopping }}</a></div>
-        <div class="float-end"><a href="{{ checkout }}" class="btn btn-primary">{{ button_checkout }}</a></div>
+      <div class="row">
+        <div class="col"><a href="{{ continue }}" class="btn btn-light">{{ button_shopping }}</a></div>
+        <div class="col text-end"><a href="{{ checkout }}" class="btn btn-primary">{{ button_checkout }}</a></div>
       </div>
       {{ content_bottom }}</div>
     {{ column_right }}</div>
@@ -53,10 +53,10 @@ $('#shopping-cart').on('submit', 'form', function (e) {
         data: $(element).serialize(),
         dataType: 'json',
         beforeSend: function () {
-            $(button).prop('disabled', true).addClass('loading');
+            $(button).button('loading');
         },
         complete: function () {
-            $(button).prop('disabled', false).removeClass('loading');
+            $(button).button('reset');
         },
         success: function (json) {
             console.log(json);
@@ -73,8 +73,8 @@ $('#shopping-cart').on('submit', 'form', function (e) {
                 $('#alert').prepend('<div class="alert alert-success alert-dismissible"><i class="fa-solid fa-circle-exclamation"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
             }
 
-            $('#shopping-cart').load('index.php?route=checkout/cart|list&language={{ language }}', {}, function () {
-                $('#header-cart').load('index.php?route=common/cart|info&language={{ language }}');
+            $('#shopping-cart').load('index.php?route=checkout/cart.list&language={{ language }}', {}, function () {
+                $('#header-cart').load('index.php?route=common/cart.info&language={{ language }}');
             });
         },
         error: function (xhr, ajaxOptions, thrownError) {

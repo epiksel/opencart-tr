@@ -1,6 +1,5 @@
 <?php
 namespace Opencart\Catalog\Controller\Product;
-use \Opencart\System\Helper as Helper;
 class Product extends \Opencart\System\Engine\Controller {
 	public function index(): void {
 		$this->load->language('product/product');
@@ -98,7 +97,7 @@ class Product extends \Opencart\System\Engine\Controller {
 			if ($manufacturer_info) {
 				$data['breadcrumbs'][] = [
 					'text' => $manufacturer_info['name'],
-					'href' => $this->url->link('product/manufacturer|info', 'language=' . $this->config->get('config_language') . '&manufacturer_id=' . $this->request->get['manufacturer_id'] . $url)
+					'href' => $this->url->link('product/manufacturer.info', 'language=' . $this->config->get('config_language') . '&manufacturer_id=' . $this->request->get['manufacturer_id'] . $url)
 				];
 			}
 		}
@@ -234,9 +233,11 @@ class Product extends \Opencart\System\Engine\Controller {
 
 			$data['config_file_max_size'] = ((int)$this->config->get('config_file_max_size') * 1024 * 1024);
 
+			$data['upload'] = $this->url->link('tool/upload', 'language=' . $this->config->get('config_language'));
+
 			$data['product_id'] = (int)$this->request->get['product_id'];
 			$data['manufacturer'] = $product_info['manufacturer'];
-			$data['manufacturers'] = $this->url->link('product/manufacturer|info', 'language=' . $this->config->get('config_language') . '&manufacturer_id=' . $product_info['manufacturer_id']);
+			$data['manufacturers'] = $this->url->link('product/manufacturer.info', 'language=' . $this->config->get('config_language') . '&manufacturer_id=' . $product_info['manufacturer_id']);
 			$data['model'] = $product_info['model'];
 			$data['reward'] = $product_info['reward'];
 			$data['points'] = $product_info['points'];
@@ -255,11 +256,8 @@ class Product extends \Opencart\System\Engine\Controller {
 
 			$data['review'] = $this->load->controller('product/review');
 
-			$data['add_to_wishlist'] = $this->url->link('account/wishlist|add', 'language=' . $this->config->get('config_language'));
-			$data['add_to_compare'] = $this->url->link('product/compare|add', 'language=' . $this->config->get('config_language'));
-			$data['upload'] = $this->url->link('tool/upload', 'language=' . $this->config->get('config_language'));
-
-			$data['language'] = $this->config->get('config_language');
+			$data['add_to_wishlist'] = $this->url->link('account/wishlist.add', 'language=' . $this->config->get('config_language'));
+			$data['add_to_compare'] = $this->url->link('product/compare.add', 'language=' . $this->config->get('config_language'));
 
 			$this->load->model('tool/image');
 
@@ -379,12 +377,12 @@ class Product extends \Opencart\System\Engine\Controller {
 			foreach ($results as $result) {
 				$description = '';
 
-				$trial_price = $this->currency->format($this->tax->calculate($result['trial_price'], $product_info['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
-				$trial_cycle = $result['trial_cycle'];
-				$trial_frequency = $this->language->get('text_' . $result['trial_frequency']);
-				$trial_duration = $result['trial_duration'];
-
 				if ($result['trial_status']) {
+					$trial_price = $this->currency->format($this->tax->calculate($result['trial_price'], $product_info['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
+					$trial_cycle = $result['trial_cycle'];
+					$trial_frequency = $this->language->get('text_' . $result['trial_frequency']);
+					$trial_duration = $result['trial_duration'];
+
 					$description .= sprintf($this->language->get('text_subscription_trial'), $trial_price, $trial_cycle, $trial_frequency, $trial_duration);
 				}
 
@@ -449,7 +447,7 @@ class Product extends \Opencart\System\Engine\Controller {
 					'product_id'  => $result['product_id'],
 					'thumb'       => $image,
 					'name'        => $result['name'],
-					'description' => Helper\Utf8\substr(trim(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8'))), 0, $this->config->get('config_product_description_length')) . '..',
+					'description' => oc_substr(trim(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8'))), 0, $this->config->get('config_product_description_length')) . '..',
 					'price'       => $price,
 					'special'     => $special,
 					'tax'         => $tax,
@@ -477,6 +475,8 @@ class Product extends \Opencart\System\Engine\Controller {
 			if ($this->config->get('config_product_report_status')) {
 				$this->model_catalog_product->addReport($this->request->get['product_id'], $this->request->server['REMOTE_ADDR']);
 			}
+
+			$data['language'] = $this->config->get('config_language');
 
 			$data['column_left'] = $this->load->controller('common/column_left');
 			$data['column_right'] = $this->load->controller('common/column_right');

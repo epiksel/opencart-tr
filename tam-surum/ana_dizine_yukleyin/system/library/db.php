@@ -2,13 +2,13 @@
 /**
  * @package		OpenCart
  * @author		Daniel Kerr
- * @copyright	Copyright (c) 2005 - 2017, OpenCart, Ltd. (https://www.opencart.com/)
+ * @copyright	Copyright (c) 2005 - 2022, OpenCart, Ltd. (https://www.opencart.com/)
  * @license		https://opensource.org/licenses/GPL-3.0
  * @link		https://www.opencart.com
 */
 
 /**
-* DB
+* DB Adapter
 */
 namespace Opencart\System\Library;
 class DB {
@@ -38,7 +38,7 @@ class DB {
 	/**
      * Query
      *
-     * @param	string	$sql
+     * @param	string	$sql  SQL statement to be executed
 	 * 
 	 * @return	array
      */
@@ -49,9 +49,9 @@ class DB {
 	/**
      * Escape
      *
-     * @param	string	$value
+     * @param	string	$value	Value to be protected against SQL injections
 	 * 
-	 * @return	string
+	 * @return	string	returns escaped value
      */
 	public function escape(string $value): string {
 		return $this->adaptor->escape($value);

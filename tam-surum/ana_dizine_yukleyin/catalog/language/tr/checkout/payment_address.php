@@ -23,7 +23,7 @@ $_['entry_country']         = 'Ülke';
 $_['entry_zone']            = 'Şehir';
 
 // Error
-$_['error_address']         = 'Uyarı: Fatura adresi bulunamadı!';
+$_['error_address']         = 'Fatura adresi bulunamadı!';
 $_['error_firstname']       = 'Ad 1 ile 32 karakter arasında olmalı!';
 $_['error_lastname']        = 'Soyad 1 ile 32 karakter arasında olmalı!';
 $_['error_address_1']       = 'Adres 1, 3 ile 128 karakter arasında olmalı!';

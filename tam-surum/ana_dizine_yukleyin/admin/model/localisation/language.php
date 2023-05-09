@@ -222,7 +222,7 @@ class Language extends \Opencart\System\Engine\Model {
 		/*
 		Do not put any delete code for related tables for languages!
 
-		It is not required as whenever you save to a multi language table then the entries for the deleted language will also be deleted!
+		It is not required since, whenever you save the value to a multi-language table, the entries for the deleted language will also be removed!
 
 		Wasting my time with people adding code here!
 		*/
@@ -231,13 +231,41 @@ class Language extends \Opencart\System\Engine\Model {
 	public function getLanguage(int $language_id): array {
 		$query = $this->db->query("SELECT DISTINCT * FROM `" . DB_PREFIX . "language` WHERE `language_id` = '" . (int)$language_id . "'");
 
-		return $query->row;
+		$language = $query->row;
+
+		if ($language) {
+			$language['image'] = HTTP_CATALOG;
+
+			if (!$language['extension']) {
+				$language['image'] .= 'catalog/';
+			} else {
+				$language['image'] .= 'extension/' . $language['extension'] . '/catalog/';
+			}
+
+			$language['image'] .= 'language/' . $language['code'] . '/' . $language['code'] . '.png';
+		}
+
+		return $language;
 	}
 
 	public function getLanguageByCode(string $code): array {
 		$query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "language` WHERE `code` = '" . $this->db->escape($code) . "'");
 
-		return $query->row;
+		$language = $query->row;
+
+		if ($language) {
+			$language['image'] = HTTP_CATALOG;
+
+			if (!$language['extension']) {
+				$language['image'] .= 'catalog/';
+			} else {
+				$language['image'] .= 'extension/' . $language['extension'] . '/catalog/';
+			}
+
+			$language['image'] .= 'language/' . $language['code'] . '/' . $language['code'] . '.png';
+		}
+
+		return $language;
 	}
 
 	public function getLanguages(array $data = []): array {
@@ -286,10 +314,12 @@ class Language extends \Opencart\System\Engine\Model {
 				$query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "language` ORDER BY `sort_order`, `name`");
 
 				foreach ($query->rows as $result) {
+					$image = HTTP_CATALOG;
+
 					if (!$result['extension']) {
-						$image = HTTP_SERVER;
+						$image .= 'catalog/';
 					} else {
-						$image = HTTP_CATALOG . 'extension/' . $result['extension'] . '/admin/';
+						$image .= 'extension/' . $result['extension'] . '/catalog/';
 					}
 
 					$language_data[$result['code']] = [

@@ -1,6 +1,5 @@
 <?php
 namespace Opencart\Admin\Controller\Marketing;
-use \Opencart\System\Helper as Helper;
 class Marketing extends \Opencart\System\Engine\Controller {
 	public function index(): void {
 		$this->load->language('marketing/marketing');
@@ -73,8 +72,8 @@ class Marketing extends \Opencart\System\Engine\Controller {
 			'href' => $this->url->link('marketing/marketing', 'user_token=' . $this->session->data['user_token'] . $url)
 		];
 
-		$data['add'] = $this->url->link('marketing/marketing|form', 'user_token=' . $this->session->data['user_token'] . $url);
-		$data['delete'] = $this->url->link('marketing/marketing|delete', 'user_token=' . $this->session->data['user_token']);
+		$data['add'] = $this->url->link('marketing/marketing.form', 'user_token=' . $this->session->data['user_token'] . $url);
+		$data['delete'] = $this->url->link('marketing/marketing.delete', 'user_token=' . $this->session->data['user_token']);
 
 		$data['list'] = $this->getList();
 
@@ -171,7 +170,7 @@ class Marketing extends \Opencart\System\Engine\Controller {
 			$url .= '&page=' . $this->request->get['page'];
 		}
 
-		$data['action'] = $this->url->link('marketing/marketing|list', 'user_token=' . $this->session->data['user_token'] . $url);
+		$data['action'] = $this->url->link('marketing/marketing.list', 'user_token=' . $this->session->data['user_token'] . $url);
 
 		$data['marketings'] = [];
 
@@ -200,7 +199,7 @@ class Marketing extends \Opencart\System\Engine\Controller {
 				'clicks'       => $result['clicks'],
 				'orders'       => $result['orders'],
 				'date_added'   => date($this->language->get('date_format_short'), strtotime($result['date_added'])),
-				'edit'         => $this->url->link('marketing/marketing|form', 'user_token=' . $this->session->data['user_token'] . '&marketing_id=' . $result['marketing_id'] . $url)
+				'edit'         => $this->url->link('marketing/marketing.form', 'user_token=' . $this->session->data['user_token'] . '&marketing_id=' . $result['marketing_id'] . $url)
 			];
 		}
 
@@ -231,9 +230,9 @@ class Marketing extends \Opencart\System\Engine\Controller {
 			$url .= '&page=' . $this->request->get['page'];
 		}
 
-		$data['sort_name'] = $this->url->link('marketing/marketing|list', 'user_token=' . $this->session->data['user_token'] . '&sort=m.name' . $url);
-		$data['sort_code'] = $this->url->link('marketing/marketing|list', 'user_token=' . $this->session->data['user_token'] . '&sort=m.code' . $url);
-		$data['sort_date_added'] = $this->url->link('marketing/marketing|list', 'user_token=' . $this->session->data['user_token'] . '&sort=m.date_added' . $url);
+		$data['sort_name'] = $this->url->link('marketing/marketing.list', 'user_token=' . $this->session->data['user_token'] . '&sort=m.name' . $url);
+		$data['sort_code'] = $this->url->link('marketing/marketing.list', 'user_token=' . $this->session->data['user_token'] . '&sort=m.code' . $url);
+		$data['sort_date_added'] = $this->url->link('marketing/marketing.list', 'user_token=' . $this->session->data['user_token'] . '&sort=m.date_added' . $url);
 
 		$url = '';
 
@@ -265,7 +264,7 @@ class Marketing extends \Opencart\System\Engine\Controller {
 			'total' => $marketing_total,
 			'page'  => $page,
 			'limit' => $this->config->get('config_pagination_admin'),
-			'url'   => $this->url->link('marketing/marketing|list', 'user_token=' . $this->session->data['user_token'] . $url . '&page={page}')
+			'url'   => $this->url->link('marketing/marketing.list', 'user_token=' . $this->session->data['user_token'] . $url . '&page={page}')
 		]);
 
 		$data['results'] = sprintf($this->language->get('text_pagination'), ($marketing_total) ? (($page - 1) * $this->config->get('config_pagination_admin')) + 1 : 0, ((($page - 1) * $this->config->get('config_pagination_admin')) > ($marketing_total - $this->config->get('config_pagination_admin'))) ? $marketing_total : ((($page - 1) * $this->config->get('config_pagination_admin')) + $this->config->get('config_pagination_admin')), $marketing_total, ceil($marketing_total / $this->config->get('config_pagination_admin')));
@@ -325,7 +324,7 @@ class Marketing extends \Opencart\System\Engine\Controller {
 			'href' => $this->url->link('marketing/marketing', 'user_token=' . $this->session->data['user_token'] . $url)
 		];
 
-		$data['save'] = $this->url->link('marketing/marketing|save', 'user_token=' . $this->session->data['user_token']);
+		$data['save'] = $this->url->link('marketing/marketing.save', 'user_token=' . $this->session->data['user_token']);
 		$data['back'] = $this->url->link('marketing/marketing', 'user_token=' . $this->session->data['user_token'] . $url);
 
 		if (isset($this->request->get['marketing_id'])) {
@@ -380,7 +379,7 @@ class Marketing extends \Opencart\System\Engine\Controller {
 			$json['error']['warning'] = $this->language->get('error_permission');
 		}
 
-		if ((Helper\Utf8\strlen($this->request->post['name']) < 1) || (Helper\Utf8\strlen($this->request->post['name']) > 32)) {
+		if ((oc_strlen($this->request->post['name']) < 1) || (oc_strlen($this->request->post['name']) > 32)) {
 			$json['error']['name'] = $this->language->get('error_name');
 		}
 
@@ -452,11 +451,13 @@ class Marketing extends \Opencart\System\Engine\Controller {
 			$marketing_id = 0;
 		}
 
-		if (isset($this->request->get['page'])) {
+		if (isset($this->request->get['page']) && $this->request->get['route'] == 'marketing/marketing.report') {
 			$page = (int)$this->request->get['page'];
 		} else {
 			$page = 1;
 		}
+
+		$limit = 10;
 
 		$data['reports'] = [];
 
@@ -464,7 +465,7 @@ class Marketing extends \Opencart\System\Engine\Controller {
 		$this->load->model('customer/customer');
 		$this->load->model('setting/store');
 
-		$results = $this->model_marketing_marketing->getReports($marketing_id, ($page - 1) * 10, 10);
+		$results = $this->model_marketing_marketing->getReports($marketing_id, ($page - 1) * $limit, $limit);
 
 		foreach ($results as $result) {
 			$store_info = $this->model_setting_store->getStore($result['store_id']);
@@ -492,11 +493,11 @@ class Marketing extends \Opencart\System\Engine\Controller {
 		$data['pagination'] = $this->load->controller('common/pagination', [
 			'total' => $report_total,
 			'page'  => $page,
-			'limit' => 10,
-			'url'   => $this->url->link('marketing/marketing|report', 'user_token=' . $this->session->data['user_token'] . '&marketing_id=' . $marketing_id . '&page={page}')
+			'limit' => $limit,
+			'url'   => $this->url->link('marketing/marketing.report', 'user_token=' . $this->session->data['user_token'] . '&marketing_id=' . $marketing_id . '&page={page}')
 		]);
 
-		$data['results'] = sprintf($this->language->get('text_pagination'), ($report_total) ? (($page - 1) * 10) + 1 : 0, ((($page - 1) * 10) > ($report_total - 10)) ? $report_total : ((($page - 1) * 10) + 10), $report_total, ceil($report_total / 10));
+		$data['results'] = sprintf($this->language->get('text_pagination'), ($report_total) ? (($page - 1) * $limit) + 1 : 0, ((($page - 1) * $limit) > ($report_total - $limit)) ? $report_total : ((($page - 1) * $limit) + $limit), $report_total, ceil($report_total / $limit));
 
 		return $this->load->view('marketing/marketing_report', $data);
 	}

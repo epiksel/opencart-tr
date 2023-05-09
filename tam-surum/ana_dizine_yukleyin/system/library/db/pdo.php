@@ -4,7 +4,16 @@ class PDO {
 	private object $connection;
 	private array $data = [];
 	private int $affected;
-
+	
+	/**
+	 * Constructor
+	 *
+	 * @param    string  $hostname
+	 * @param    string  $username
+	 * @param    string  $password
+	 * @param    string  $database
+	 * @param    string  $port
+	 */
 	public function __construct(string $hostname, string $username, string $password, string $database, string $port = '') {
 		if (!$port) {
 			$port = '3306';
@@ -19,9 +28,17 @@ class PDO {
 		if ($pdo) {
 			$this->connection = $pdo;
 			$this->connection->query("SET SESSION sql_mode = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION'");
+			$this->connection->query("SET FOREIGN_KEY_CHECKS = 0");
 		}
 	}
-
+	
+	/**
+	 * Query
+	 *
+	 * @param    string  $sql
+	 *
+	 * @return   bool|object
+	 */
 	public function query(string $sql): bool|object {
 		$sql = preg_replace('/(?:\'\:)([a-z0-9]*.)(?:\')/', ':$1', $sql);
 
@@ -58,6 +75,13 @@ class PDO {
 		return false;
 	}
 
+	/**
+	 * Escape
+	 *
+	 * @param    string  value
+	 *
+	 * @return   string
+	 */
 	public function escape(string $value): string {
 		$key = ':' . count($this->data);
 
@@ -66,14 +90,29 @@ class PDO {
 		return $key;
 	}
 
+	/**
+	 * countAffected
+	 *
+	 * @return   int
+	 */
 	public function countAffected(): int {
 		return $this->affected;
 	}
 
+	/**
+	 * getLastId
+	 *
+	 * @return   int
+	 */
 	public function getLastId(): int {
 		return $this->connection->lastInsertId();
 	}
 
+	/**
+	 * isConnected
+	 *
+	 * @return   bool
+	 */
 	public function isConnected(): bool {
 		if ($this->connection) {
 			return true;
@@ -83,7 +122,7 @@ class PDO {
 	}
 
 	/**
-	 * __destruct
+	 * Destructor
 	 *
 	 * Closes the DB connection when this object is destroyed.
 	 *

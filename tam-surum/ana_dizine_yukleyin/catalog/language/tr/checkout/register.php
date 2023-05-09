@@ -14,6 +14,7 @@ $_['text_shipping_address']   = 'Teslimat Adresi';
 $_['text_your_password']      = 'Parolanız';
 $_['text_agree']              = '<a href="%s" class="modal-link"><b>%s</b></a>\'ı okudum ve kabul ediyorum.';
 $_['text_success_add']        = 'Başarılı: Hesabınız oluşturuldu!';
+$_['text_success_guest']      = 'Başarılı: Misafir hesap bilgileriniz kaydedildi!';
 $_['text_success_edit']       = 'Başarılı: Hesabınız başarıyla güncellendi.';
 
 // Entry

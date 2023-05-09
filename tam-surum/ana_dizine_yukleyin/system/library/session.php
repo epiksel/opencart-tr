@@ -2,7 +2,7 @@
 /**
  * @package		OpenCart
  * @author		Daniel Kerr
- * @copyright	Copyright (c) 2005 - 2017, OpenCart, Ltd. (https://www.opencart.com/)
+ * @copyright	Copyright (c) 2005 - 2022, OpenCart, Ltd. (https://www.opencart.com/)
  * @license		https://opensource.org/licenses/GPL-3.0
  * @link		https://www.opencart.com
 */
@@ -81,6 +81,8 @@ class Session {
 	 * Close
 	 *
 	 * Writes the session data to storage
+	 *
+	 * @return	void
  	*/
 	public function close(): void {
 		$this->adaptor->write($this->session_id, $this->data);
@@ -90,6 +92,8 @@ class Session {
 	 * Destroy
 	 *
 	 * Deletes the current session from storage
+	 *
+	 * @return	void
  	*/
 	public function destroy(): void {
 		$this->data = [];
@@ -101,6 +105,8 @@ class Session {
 	 * GC
 	 *
 	 * Garbage Collection
+	 *
+	 * @return	void
 	 */
 	public function gc(): void {
 		$this->adaptor->gc($this->session_id);

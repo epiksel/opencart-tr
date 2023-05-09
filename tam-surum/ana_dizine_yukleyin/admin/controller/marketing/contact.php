@@ -79,6 +79,8 @@ class Contact extends \Opencart\System\Engine\Controller {
 				$page = 1;
 			}
 
+			$limit = 10;
+
 			$email_total = 0;
 
 			$emails = [];
@@ -87,8 +89,8 @@ class Contact extends \Opencart\System\Engine\Controller {
 				case 'newsletter':
 					$customer_data = [
 						'filter_newsletter' => 1,
-						'start'             => ($page - 1) * 10,
-						'limit'             => 10
+						'start'             => ($page - 1) * $limit,
+						'limit'             => $limit
 					];
 
 					$email_total = $this->model_customer_customer->getTotalCustomers($customer_data);
@@ -101,8 +103,8 @@ class Contact extends \Opencart\System\Engine\Controller {
 					break;
 				case 'customer_all':
 					$customer_data = [
-						'start' => ($page - 1) * 10,
-						'limit' => 10
+						'start' => ($page - 1) * $limit,
+						'limit' => $limit
 					];
 
 					$email_total = $this->model_customer_customer->getTotalCustomers($customer_data);
@@ -116,8 +118,8 @@ class Contact extends \Opencart\System\Engine\Controller {
 				case 'customer_group':
 					$customer_data = [
 						'filter_customer_group_id' => $this->request->post['customer_group_id'],
-						'start'                    => ($page - 1) * 10,
-						'limit'                    => 10
+						'start'                    => ($page - 1) * $limit,
+						'limit'                    => $limit
 					];
 
 					$email_total = $this->model_customer_customer->getTotalCustomers($customer_data);
@@ -132,7 +134,7 @@ class Contact extends \Opencart\System\Engine\Controller {
 					if (!empty($this->request->post['customer'])) {
 						$email_total = count($this->request->post['customer']);
 
-						$customers = array_slice($this->request->post['customer'], ($page - 1) * 10, 10);
+						$customers = array_slice($this->request->post['customer'], ($page - 1) * $limit, $limit);
 
 						foreach ($customers as $customer_id) {
 							$customer_info = $this->model_customer_customer->getCustomer($customer_id);
@@ -146,8 +148,8 @@ class Contact extends \Opencart\System\Engine\Controller {
 				case 'affiliate_all':
 					$affiliate_data = [
 						'filter_affiliate' => 1,
-						'start'            => ($page - 1) * 10,
-						'limit'            => 10
+						'start'            => ($page - 1) * $limit,
+						'limit'            => $limit
 					];
 
 					$email_total = $this->model_customer_customer->getTotalCustomers($affiliate_data);
@@ -160,7 +162,7 @@ class Contact extends \Opencart\System\Engine\Controller {
 					break;
 				case 'affiliate':
 					if (!empty($this->request->post['affiliate'])) {
-						$affiliates = array_slice($this->request->post['affiliate'], ($page - 1) * 10, 10);
+						$affiliates = array_slice($this->request->post['affiliate'], ($page - 1) * $limit, $limit);
 
 						foreach ($affiliates as $affiliate_id) {
 							$affiliate_info = $this->model_customer_customer->getCustomer($affiliate_id);
@@ -177,7 +179,7 @@ class Contact extends \Opencart\System\Engine\Controller {
 					if (isset($this->request->post['product'])) {
 						$email_total = $this->model_sale_order->getTotalEmailsByProductsOrdered($this->request->post['product']);
 
-						$results = $this->model_sale_order->getEmailsByProductsOrdered($this->request->post['product'], ($page - 1) * 10, 10);
+						$results = $this->model_sale_order->getEmailsByProductsOrdered($this->request->post['product'], ($page - 1) * $limit, $limit);
 
 						foreach ($results as $result) {
 							$emails[] = $result['email'];
@@ -189,13 +191,13 @@ class Contact extends \Opencart\System\Engine\Controller {
 			if ($emails) {
 				$json['success'] = $this->language->get('text_success');
 
-				$start = ($page - 1) * 10;
-				$end = $start + 10;
+				$start = ($page - 1) * $limit;
+				$end = $start + $limit;
 
 				$json['success'] = sprintf($this->language->get('text_sent'), $start ? $start : 1, $email_total);
 
 				if ($end < $email_total) {
-					$json['next'] = $this->url->link('marketing/contact|send', 'user_token=' . $this->session->data['user_token'] . '&page=' . ($page + 1), true);
+					$json['next'] = $this->url->link('marketing/contact.send', 'user_token=' . $this->session->data['user_token'] . '&page=' . ($page + 1), true);
 				} else {
 					$json['next'] = '';
 				}
@@ -209,13 +211,16 @@ class Contact extends \Opencart\System\Engine\Controller {
 				$message .= '</html>' . "\n";
 
 				if ($this->config->get('config_mail_engine')) {
-					$mail = new \Opencart\System\Library\Mail($this->config->get('config_mail_engine'));
-					$mail->parameter = $this->config->get('config_mail_parameter');
-					$mail->smtp_hostname = $this->config->get('config_mail_smtp_hostname');
-					$mail->smtp_username = $this->config->get('config_mail_smtp_username');
-					$mail->smtp_password = html_entity_decode($this->config->get('config_mail_smtp_password'), ENT_QUOTES, 'UTF-8');
-					$mail->smtp_port = $this->config->get('config_mail_smtp_port');
-					$mail->smtp_timeout = $this->config->get('config_mail_smtp_timeout');
+					$mail_option = [
+						'parameter'     => $this->config->get('config_mail_parameter'),
+						'smtp_hostname' => $this->config->get('config_mail_smtp_hostname'),
+						'smtp_username' => $this->config->get('config_mail_smtp_username'),
+						'smtp_password' => html_entity_decode($this->config->get('config_mail_smtp_password'), ENT_QUOTES, 'UTF-8'),
+						'smtp_port'     => $this->config->get('config_mail_smtp_port'),
+						'smtp_timeout'  => $this->config->get('config_mail_smtp_timeout')
+					];
+
+					$mail = new \Opencart\System\Library\Mail($this->config->get('config_mail_engine'), $mail_option);
 
 					foreach ($emails as $email) {
 						if (filter_var($email, FILTER_VALIDATE_EMAIL)) {

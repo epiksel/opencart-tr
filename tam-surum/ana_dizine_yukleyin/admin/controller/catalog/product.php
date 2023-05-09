@@ -1,6 +1,5 @@
 <?php
 namespace Opencart\Admin\Controller\Catalog;
-use \Opencart\System\Helper as Helper;
 class Product extends \Opencart\System\Engine\Controller {
 	public function index(): void {
 		$this->load->language('catalog/product');
@@ -83,9 +82,9 @@ class Product extends \Opencart\System\Engine\Controller {
 			'href' => $this->url->link('catalog/product', 'user_token=' . $this->session->data['user_token'] . $url)
 		];
 
-		$data['add'] = $this->url->link('catalog/product|form', 'user_token=' . $this->session->data['user_token'] . $url);
-		$data['copy'] = $this->url->link('catalog/product|copy', 'user_token=' . $this->session->data['user_token']);
-		$data['delete'] = $this->url->link('catalog/product|delete', 'user_token=' . $this->session->data['user_token']);
+		$data['add'] = $this->url->link('catalog/product.form', 'user_token=' . $this->session->data['user_token'] . $url);
+		$data['copy'] = $this->url->link('catalog/product.copy', 'user_token=' . $this->session->data['user_token']);
+		$data['delete'] = $this->url->link('catalog/product.delete', 'user_token=' . $this->session->data['user_token']);
 
 		$data['list'] = $this->getList();
 
@@ -185,7 +184,7 @@ class Product extends \Opencart\System\Engine\Controller {
 			$url .= '&page=' . $this->request->get['page'];
 		}
 
-		$data['action'] = $this->url->link('catalog/product|list', 'user_token=' . $this->session->data['user_token'] . $url);
+		$data['action'] = $this->url->link('catalog/product.list', 'user_token=' . $this->session->data['user_token'] . $url);
 
 		$data['products'] = [];
 
@@ -237,8 +236,8 @@ class Product extends \Opencart\System\Engine\Controller {
 				'special'    => $special,
 				'quantity'   => $result['quantity'],
 				'status'     => $result['status'],
-				'edit'       => $this->url->link('catalog/product|form', 'user_token=' . $this->session->data['user_token'] . '&product_id=' . $result['product_id'] . ($result['master_id'] ? '&master_id=' . $result['master_id'] : '') . $url),
-				'variant'    => (!$result['master_id'] ? $this->url->link('catalog/product|form', 'user_token=' . $this->session->data['user_token'] . '&master_id=' . $result['product_id'] . $url) : '')
+				'edit'       => $this->url->link('catalog/product.form', 'user_token=' . $this->session->data['user_token'] . '&product_id=' . $result['product_id'] . ($result['master_id'] ? '&master_id=' . $result['master_id'] : '') . $url),
+				'variant'    => (!$result['master_id'] ? $this->url->link('catalog/product.form', 'user_token=' . $this->session->data['user_token'] . '&master_id=' . $result['product_id'] . $url) : '')
 			];
 		}
 
@@ -270,11 +269,11 @@ class Product extends \Opencart\System\Engine\Controller {
 			$url .= '&order=ASC';
 		}
 
-		$data['sort_name'] = $this->url->link('catalog/product|list', 'user_token=' . $this->session->data['user_token'] . '&sort=pd.name' . $url);
-		$data['sort_model'] = $this->url->link('catalog/product|list', 'user_token=' . $this->session->data['user_token'] . '&sort=p.model' . $url);
-		$data['sort_price'] = $this->url->link('catalog/product|list', 'user_token=' . $this->session->data['user_token'] . '&sort=p.price' . $url);
-		$data['sort_quantity'] = $this->url->link('catalog/product|list', 'user_token=' . $this->session->data['user_token'] . '&sort=p.quantity' . $url);
-		$data['sort_order'] = $this->url->link('catalog/product|list', 'user_token=' . $this->session->data['user_token'] . '&sort=p.sort_order' . $url);
+		$data['sort_name'] = $this->url->link('catalog/product.list', 'user_token=' . $this->session->data['user_token'] . '&sort=pd.name' . $url);
+		$data['sort_model'] = $this->url->link('catalog/product.list', 'user_token=' . $this->session->data['user_token'] . '&sort=p.model' . $url);
+		$data['sort_price'] = $this->url->link('catalog/product.list', 'user_token=' . $this->session->data['user_token'] . '&sort=p.price' . $url);
+		$data['sort_quantity'] = $this->url->link('catalog/product.list', 'user_token=' . $this->session->data['user_token'] . '&sort=p.quantity' . $url);
+		$data['sort_order'] = $this->url->link('catalog/product.list', 'user_token=' . $this->session->data['user_token'] . '&sort=p.sort_order' . $url);
 
 		$url = '';
 
@@ -310,7 +309,7 @@ class Product extends \Opencart\System\Engine\Controller {
 			'total' => $product_total,
 			'page'  => $page,
 			'limit' => $this->config->get('config_pagination_admin'),
-			'url'   => $this->url->link('catalog/product|list', 'user_token=' . $this->session->data['user_token'] . $url . '&page={page}')
+			'url'   => $this->url->link('catalog/product.list', 'user_token=' . $this->session->data['user_token'] . $url . '&page={page}')
 		]);
 
 		$data['results'] = sprintf($this->language->get('text_pagination'), ($product_total) ? (($page - 1) * $this->config->get('config_pagination_admin')) + 1 : 0, ((($page - 1) * $this->config->get('config_pagination_admin')) > ($product_total - $this->config->get('config_pagination_admin'))) ? $product_total : ((($page - 1) * $this->config->get('config_pagination_admin')) + $this->config->get('config_pagination_admin')), $product_total, ceil($product_total / $this->config->get('config_pagination_admin')));
@@ -333,12 +332,13 @@ class Product extends \Opencart\System\Engine\Controller {
 
 		$data['error_upload_size'] = sprintf($this->language->get('error_upload_size'), $this->config->get('config_file_max_size'));
 
+		$data['upload'] = $this->url->link('tool/upload', 'user_token=' . $this->session->data['user_token']);
 		$data['config_file_max_size'] = ((int)$this->config->get('config_file_max_size') * 1024 * 1024);
 
 		if (isset($this->request->get['master_id'])) {
 			$this->load->model('catalog/product');
 
-			$url = $this->url->link('catalog/product|form', 'user_token=' . $this->session->data['user_token'] . '&product_id=' . $this->request->get['master_id']);
+			$url = $this->url->link('catalog/product.form', 'user_token=' . $this->session->data['user_token'] . '&product_id=' . $this->request->get['master_id']);
 
 			$data['text_variant'] = sprintf($this->language->get('text_variant'), $url, $url);
 		} else {
@@ -429,9 +429,9 @@ class Product extends \Opencart\System\Engine\Controller {
 			$url .= '&page=' . $this->request->get['page'];
 		}
 
-		$data['save'] = $this->url->link('catalog/product|save', 'user_token=' . $this->session->data['user_token']);
+		$data['save'] = $this->url->link('catalog/product.save', 'user_token=' . $this->session->data['user_token']);
 		$data['back'] = $this->url->link('catalog/product', 'user_token=' . $this->session->data['user_token'] . $url);
-		$data['upload'] = $this->url->link('tool/upload|upload', 'user_token=' . $this->session->data['user_token']);
+		$data['upload'] = $this->url->link('tool/upload.upload', 'user_token=' . $this->session->data['user_token']);
 
 		if (isset($this->request->get['product_id'])) {
 			$data['product_id'] = (int)$this->request->get['product_id'];
@@ -439,7 +439,7 @@ class Product extends \Opencart\System\Engine\Controller {
 			$data['product_id'] = 0;
 		}
 
-		// If master_id then we need to get the variant info
+		// If the product_id is the master_id, we need to get the variant info
 		if (isset($this->request->get['product_id'])) {
 			$product_id = (int)$this->request->get['product_id'];
 		} elseif (isset($this->request->get['master_id'])) {
@@ -815,7 +815,7 @@ class Product extends \Opencart\System\Engine\Controller {
 							'name'                    => $option_value_info['name'],
 							'quantity'                => $product_option_value['quantity'],
 							'subtract'                => $product_option_value['subtract'],
-							'price'                   => round($product_option_value['price']),
+							'price'                   => $product_option_value['price'],
 							'price_prefix'            => $product_option_value['price_prefix'],
 							'points'                  => round($product_option_value['points']),
 							'points_prefix'           => $product_option_value['points_prefix'],
@@ -877,7 +877,7 @@ class Product extends \Opencart\System\Engine\Controller {
 							'product_option_value_id' => $product_option_value['product_option_value_id'],
 							'option_value_id'         => $product_option_value['option_value_id'],
 							'name'                    => $option_value_info['name'],
-							'price'                   => (float)$product_option_value['price'] ? $this->currency->format($product_option_value['price'], $this->config->get('config_currency')) : false,
+							'price'                   => (float)$product_option_value['price'] ? $product_option_value['price'] : false,
 							'price_prefix'            => $product_option_value['price_prefix']
 						];
 					}
@@ -1042,16 +1042,16 @@ class Product extends \Opencart\System\Engine\Controller {
 		}
 
 		foreach ($this->request->post['product_description'] as $language_id => $value) {
-			if ((Helper\Utf8\strlen(trim($value['name'])) < 1) || (Helper\Utf8\strlen($value['name']) > 255)) {
+			if ((oc_strlen(trim($value['name'])) < 1) || (oc_strlen($value['name']) > 255)) {
 				$json['error']['name_' . $language_id] = $this->language->get('error_name');
 			}
 
-			if ((Helper\Utf8\strlen(trim($value['meta_title'])) < 1) || (Helper\Utf8\strlen($value['meta_title']) > 255)) {
+			if ((oc_strlen(trim($value['meta_title'])) < 1) || (oc_strlen($value['meta_title']) > 255)) {
 				$json['error']['meta_title_' . $language_id] = $this->language->get('error_meta_title');
 			}
 		}
 
-		if ((Helper\Utf8\strlen($this->request->post['model']) < 1) || (Helper\Utf8\strlen($this->request->post['model']) > 64)) {
+		if ((oc_strlen($this->request->post['model']) < 1) || (oc_strlen($this->request->post['model']) > 64)) {
 			$json['error']['model'] = $this->language->get('error_model');
 		}
 
@@ -1072,14 +1072,14 @@ class Product extends \Opencart\System\Engine\Controller {
 
 			foreach ($this->request->post['product_seo_url'] as $store_id => $language) {
 				foreach ($language as $language_id => $keyword) {
-					if ($keyword) {
-						$seo_url_info = $this->model_design_seo_url->getSeoUrlByKeyword($keyword, $store_id, $language_id);
+					if ((oc_strlen(trim($keyword)) < 1) || (oc_strlen($keyword) > 100)) {
+						$json['error']['keyword_' . $store_id . '_' . $language_id] = $this->language->get('error_keyword');
+					}
 
-						if ($seo_url_info && ($seo_url_info['key'] != 'product_id' || !isset($this->request->post['product_id']) || $seo_url_info['value'] != (int)$this->request->post['product_id'])) {
-							$json['error']['keyword_' . $store_id . '_' . $language_id] = $this->language->get('error_keyword');
-						}
-					} else {
-						$json['error']['keyword_' . $store_id . '_' . $language_id] = $this->language->get('error_seo');
+					$seo_url_info = $this->model_design_seo_url->getSeoUrlByKeyword($keyword, $store_id);
+
+					if ($seo_url_info && ($seo_url_info['key'] != 'product_id' || !isset($this->request->post['product_id']) || $seo_url_info['value'] != (int)$this->request->post['product_id'])) {
+						$json['error']['keyword_' . $store_id . '_' . $language_id] = $this->language->get('error_keyword_exists');
 					}
 				}
 			}
@@ -1189,11 +1189,13 @@ class Product extends \Opencart\System\Engine\Controller {
 			$product_id = 0;
 		}
 
-		if (isset($this->request->get['page'])) {
+		if (isset($this->request->get['page']) && $this->request->get['route'] == 'catalog/product.report') {
 			$page = (int)$this->request->get['page'];
 		} else {
 			$page = 1;
 		}
+
+		$limit = 10;
 
 		$data['reports'] = [];
 
@@ -1201,7 +1203,7 @@ class Product extends \Opencart\System\Engine\Controller {
 		$this->load->model('customer/customer');
 		$this->load->model('setting/store');
 
-		$results = $this->model_catalog_product->getReports($product_id, ($page - 1) * 10, 10);
+		$results = $this->model_catalog_product->getReports($product_id, ($page - 1) * $limit, $limit);
 
 		foreach ($results as $result) {
 			$store_info = $this->model_setting_store->getStore($result['store_id']);
@@ -1227,11 +1229,11 @@ class Product extends \Opencart\System\Engine\Controller {
 		$data['pagination'] = $this->load->controller('common/pagination', [
 			'total' => $report_total,
 			'page'  => $page,
-			'limit' => $this->config->get('config_pagination_admin'),
-			'url'   => $this->url->link('catalog/product|report', 'user_token=' . $this->session->data['user_token'] . '&product_id=' . $product_id . '&page={page}')
+			'limit' => $limit,
+			'url'   => $this->url->link('catalog/product.report', 'user_token=' . $this->session->data['user_token'] . '&product_id=' . $product_id . '&page={page}')
 		]);
 
-		$data['results'] = sprintf($this->language->get('text_pagination'), ($report_total) ? (($page - 1) * 10) + 1 : 0, ((($page - 1) * 10) > ($report_total - 10)) ? $report_total : ((($page - 1) * 10) + 10), $report_total, ceil($report_total / 10));
+		$data['results'] = sprintf($this->language->get('text_pagination'), ($report_total) ? (($page - 1) * $limit) + 1 : 0, ((($page - 1) * $limit) > ($report_total - $limit)) ? $report_total : ((($page - 1) * $limit) + $limit), $report_total, ceil($report_total / $limit));
 
 		return $this->load->view('catalog/product_report', $data);
 	}

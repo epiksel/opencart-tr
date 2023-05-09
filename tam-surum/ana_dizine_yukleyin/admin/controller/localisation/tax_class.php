@@ -1,6 +1,5 @@
 <?php
 namespace Opencart\Admin\Controller\Localisation;
-use \Opencart\System\Helper as Helper;
 class TaxClass extends \Opencart\System\Engine\Controller {
 	public function index(): void {
 		$this->load->language('localisation/tax_class');
@@ -33,8 +32,8 @@ class TaxClass extends \Opencart\System\Engine\Controller {
 			'href' => $this->url->link('localisation/tax_class', 'user_token=' . $this->session->data['user_token'] . $url)
 		];
 
-		$data['add'] = $this->url->link('localisation/tax_class|form', 'user_token=' . $this->session->data['user_token'] . $url);
-		$data['delete'] = $this->url->link('localisation/tax_class|delete', 'user_token=' . $this->session->data['user_token']);
+		$data['add'] = $this->url->link('localisation/tax_class.form', 'user_token=' . $this->session->data['user_token'] . $url);
+		$data['delete'] = $this->url->link('localisation/tax_class.delete', 'user_token=' . $this->session->data['user_token']);
 
 		$data['list'] = $this->getList();
 
@@ -86,7 +85,7 @@ class TaxClass extends \Opencart\System\Engine\Controller {
 			$url .= '&page=' . $this->request->get['page'];
 		}
 
-		$data['action'] = $this->url->link('localisation/tax_class|list', 'user_token=' . $this->session->data['user_token'] . $url);
+		$data['action'] = $this->url->link('localisation/tax_class.list', 'user_token=' . $this->session->data['user_token'] . $url);
 
 		$data['tax_classes'] = [];
 
@@ -107,7 +106,7 @@ class TaxClass extends \Opencart\System\Engine\Controller {
 			$data['tax_classes'][] = [
 				'tax_class_id' => $result['tax_class_id'],
 				'title'        => $result['title'],
-				'edit'         => $this->url->link('localisation/tax_class|form', 'user_token=' . $this->session->data['user_token'] . '&tax_class_id=' . $result['tax_class_id'] . $url)
+				'edit'         => $this->url->link('localisation/tax_class.form', 'user_token=' . $this->session->data['user_token'] . '&tax_class_id=' . $result['tax_class_id'] . $url)
 			];
 		}
 
@@ -123,7 +122,7 @@ class TaxClass extends \Opencart\System\Engine\Controller {
 			$url .= '&page=' . $this->request->get['page'];
 		}
 
-		$data['sort_title'] = $this->url->link('localisation/tax_class|list', 'user_token=' . $this->session->data['user_token'] . '&sort=title' . $url);
+		$data['sort_title'] = $this->url->link('localisation/tax_class.list', 'user_token=' . $this->session->data['user_token'] . '&sort=title' . $url);
 
 		$url = '';
 
@@ -139,7 +138,7 @@ class TaxClass extends \Opencart\System\Engine\Controller {
 			'total' => $tax_class_total,
 			'page'  => $page,
 			'limit' => $this->config->get('config_pagination_admin'),
-			'url'   => $this->url->link('localisation/tax_class|list', 'user_token=' . $this->session->data['user_token'] . $url . '&page={page}')
+			'url'   => $this->url->link('localisation/tax_class.list', 'user_token=' . $this->session->data['user_token'] . $url . '&page={page}')
 		]);
 
 		$data['results'] = sprintf($this->language->get('text_pagination'), ($tax_class_total) ? (($page - 1) * $this->config->get('config_pagination_admin')) + 1 : 0, ((($page - 1) * $this->config->get('config_pagination_admin')) > ($tax_class_total - $this->config->get('config_pagination_admin'))) ? $tax_class_total : ((($page - 1) * $this->config->get('config_pagination_admin')) + $this->config->get('config_pagination_admin')), $tax_class_total, ceil($tax_class_total / $this->config->get('config_pagination_admin')));
@@ -183,7 +182,7 @@ class TaxClass extends \Opencart\System\Engine\Controller {
 			'href' => $this->url->link('localisation/tax_class', 'user_token=' . $this->session->data['user_token'] . $url)
 		];
 
-		$data['save'] = $this->url->link('localisation/tax_class|save', 'user_token=' . $this->session->data['user_token']);
+		$data['save'] = $this->url->link('localisation/tax_class.save', 'user_token=' . $this->session->data['user_token']);
 		$data['back'] = $this->url->link('localisation/tax_class', 'user_token=' . $this->session->data['user_token'] . $url);
 
 		if (isset($this->request->get['tax_class_id'])) {
@@ -236,11 +235,11 @@ class TaxClass extends \Opencart\System\Engine\Controller {
 			$json['error']['warning'] = $this->language->get('error_permission');
 		}
 
-		if ((Helper\Utf8\strlen($this->request->post['title']) < 3) || (Helper\Utf8\strlen($this->request->post['title']) > 32)) {
+		if ((oc_strlen($this->request->post['title']) < 3) || (oc_strlen($this->request->post['title']) > 32)) {
 			$json['error']['title'] = $this->language->get('error_title');
 		}
 
-		if ((Helper\Utf8\strlen($this->request->post['description']) < 3) || (Helper\Utf8\strlen($this->request->post['description']) > 255)) {
+		if ((oc_strlen($this->request->post['description']) < 3) || (oc_strlen($this->request->post['description']) > 255)) {
 			$json['error']['description'] = $this->language->get('error_description');
 		}
 

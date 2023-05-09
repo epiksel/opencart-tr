@@ -1,6 +1,5 @@
 <?php
 namespace Opencart\Admin\Controller\Tool;
-use \Opencart\System\Helper as Helper;
 class Upload extends \Opencart\System\Engine\Controller {
 	public function index(): void {
 		$this->load->language('tool/upload');
@@ -33,8 +32,8 @@ class Upload extends \Opencart\System\Engine\Controller {
 			'href' => $this->url->link('tool/upload', 'user_token=' . $this->session->data['user_token'] . $url)
 		];
 
-		$data['add'] = $this->url->link('tool/upload|form', 'user_token=' . $this->session->data['user_token'] . $url);
-		$data['delete'] = $this->url->link('tool/upload|delete', 'user_token=' . $this->session->data['user_token']);
+		$data['add'] = $this->url->link('tool/upload.form', 'user_token=' . $this->session->data['user_token'] . $url);
+		$data['delete'] = $this->url->link('tool/upload.delete', 'user_token=' . $this->session->data['user_token']);
 
 		$data['list'] = $this->getList();
 
@@ -116,7 +115,7 @@ class Upload extends \Opencart\System\Engine\Controller {
 			$url .= '&page=' . $this->request->get['page'];
 		}
 
-		$data['action'] = $this->url->link('tool/upload|list', 'user_token=' . $this->session->data['user_token'] . $url);
+		$data['action'] = $this->url->link('tool/upload.list', 'user_token=' . $this->session->data['user_token'] . $url);
 
 		$data['uploads'] = [];
 
@@ -142,7 +141,7 @@ class Upload extends \Opencart\System\Engine\Controller {
 				'name'       => $result['name'],
 				'code'       => $result['code'],
 				'date_added' => date($this->language->get('date_format_short'), strtotime($result['date_added'])),
-				'download'   => $this->url->link('tool/upload|download', 'user_token=' . $this->session->data['user_token'] . '&code=' . $result['code'] . $url)
+				'download'   => $this->url->link('tool/upload.download', 'user_token=' . $this->session->data['user_token'] . '&code=' . $result['code'] . $url)
 			];
 		}
 
@@ -170,9 +169,9 @@ class Upload extends \Opencart\System\Engine\Controller {
 			$url .= '&page=' . $this->request->get['page'];
 		}
 
-		$data['sort_name'] = $this->url->link('tool/upload|list', 'user_token=' . $this->session->data['user_token'] . '&sort=name' . $url);
-		$data['sort_code'] = $this->url->link('tool/upload|list', 'user_token=' . $this->session->data['user_token'] . '&sort=code' . $url);
-		$data['sort_date_added'] = $this->url->link('tool/upload|list', 'user_token=' . $this->session->data['user_token'] . '&sort=date_added' . $url);
+		$data['sort_name'] = $this->url->link('tool/upload.list', 'user_token=' . $this->session->data['user_token'] . '&sort=name' . $url);
+		$data['sort_code'] = $this->url->link('tool/upload.list', 'user_token=' . $this->session->data['user_token'] . '&sort=code' . $url);
+		$data['sort_date_added'] = $this->url->link('tool/upload.list', 'user_token=' . $this->session->data['user_token'] . '&sort=date_added' . $url);
 
 		$url = '';
 
@@ -200,7 +199,7 @@ class Upload extends \Opencart\System\Engine\Controller {
 			'total' => $upload_total,
 			'page'  => $page,
 			'limit' => $this->config->get('config_pagination_admin'),
-			'url'   => $this->url->link('tool/upload|list', 'user_token=' . $this->session->data['user_token'] . $url . '&page={page}')
+			'url'   => $this->url->link('tool/upload.list', 'user_token=' . $this->session->data['user_token'] . $url . '&page={page}')
 		]);
 
 		$data['results'] = sprintf($this->language->get('text_pagination'), ($upload_total) ? (($page - 1) * $this->config->get('config_pagination_admin')) + 1 : 0, ((($page - 1) * $this->config->get('config_pagination_admin')) > ($upload_total - $this->config->get('config_pagination_admin'))) ? $upload_total : ((($page - 1) * $this->config->get('config_pagination_admin')) + $this->config->get('config_pagination_admin')), $upload_total, ceil($upload_total / $this->config->get('config_pagination_admin')));
@@ -331,7 +330,7 @@ class Upload extends \Opencart\System\Engine\Controller {
 			$filename = basename(html_entity_decode($this->request->files['file']['name'], ENT_QUOTES, 'UTF-8'));
 
 			// Validate the filename length
-			if ((Helper\Utf8\strlen($filename) < 3) || (Helper\Utf8\strlen($filename) > 128)) {
+			if ((oc_strlen($filename) < 3) || (oc_strlen($filename) > 128)) {
 				$json['error'] = $this->language->get('error_filename');
 			}
 
@@ -372,11 +371,11 @@ class Upload extends \Opencart\System\Engine\Controller {
 		}
 
 		if (!$json) {
-			$file = $filename . '.' . Helper\General\token(32);
+			$file = $filename . '.' . oc_token(32);
 
 			move_uploaded_file($this->request->files['file']['tmp_name'], DIR_UPLOAD . $file);
 
-			// Hide the uploaded file name so people can not link to it directly.
+			// Hide the uploaded file name so people cannot link to it directly.
 			$this->load->model('tool/upload');
 
 			$json['code'] = $this->model_tool_upload->addUpload($filename, $file);

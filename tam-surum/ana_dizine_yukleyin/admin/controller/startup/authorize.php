@@ -15,7 +15,7 @@ class Authorize extends \Opencart\System\Engine\Controller {
 		}
 
 		// Remove any method call for checking ignore pages.
-		$pos = strrpos($route, '|');
+		$pos = strrpos($route, '.');
 
 		if ($pos !== false) {
 			$route = substr($route, 0, $pos);
@@ -25,21 +25,20 @@ class Authorize extends \Opencart\System\Engine\Controller {
 			'common/login',
 			'common/logout',
 			'common/forgotten',
-			'cron/cron',
 			'common/authorize'
 		];
 
 		if ($this->config->get('config_security') && !in_array($route, $ignore)) {
 			$this->load->model('user/user');
 
-			$token_info = $this->model_user_user->getLoginByToken($this->user->getId(), $token);
+			$token_info = $this->model_user_user->getAuthorizeByToken($this->user->getId(), $token);
 
 			if (!$token_info || !$token_info['status'] && $token_info['attempts'] <= 2) {
 				return new \Opencart\System\Engine\Action('common/authorize');
 			}
 
 			if ($token_info && !$token_info['status'] && $token_info['attempts'] > 2) {
-				return new \Opencart\System\Engine\Action('common/authorize|unlock');
+				return new \Opencart\System\Engine\Action('common/authorize.unlock');
 			}
 		}
 

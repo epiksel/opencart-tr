@@ -9,7 +9,7 @@
     </div>
   </div>
   <script type="text/javascript"><!--
-  $('#modal-image .modal-body').load('index.php?route=common/filemanager|list&user_token={{ user_token }}');
+  $('#modal-image .modal-body').load('index.php?route=common/filemanager.list&user_token={{ user_token }}');
 
   $('#modal-image').on('click', '#button-parent', function (e) {
       e.preventDefault();
@@ -30,7 +30,7 @@
   });
 
   $('#modal-image').on('click', '#button-search', function (e) {
-      var url = 'index.php?route=common/filemanager|list&user_token={{ user_token }}';
+      var url = 'index.php?route=common/filemanager.list&user_token={{ user_token }}';
 
       var directory = $('#input-directory').val();
 
@@ -68,7 +68,7 @@
 
       $('#form-upload input[name=\'file[]\']').on('change', function () {
           for (i = 0; i < this.files.length; i++) {
-              if (this.files[i].size > {{ config_file_max_size }}) {
+              if ((this.files[0].size / 1024) > {{ config_file_max_size }}) {
                   $(this).val('');
 
                   alert('{{ error_upload_size }}');
@@ -84,7 +84,7 @@
           if ($('#form-upload input[name=\'file[]\']').val() !== '') {
               clearInterval(timer);
 
-              var url = 'index.php?route=common/filemanager|upload&user_token={{ user_token }}';
+              var url = 'index.php?route=common/filemanager.upload&user_token={{ user_token }}';
 
               var directory = $('#input-directory').val();
 
@@ -101,10 +101,10 @@
                   contentType: false,
                   processData: false,
                   beforeSend: function () {
-                      $('#button-upload').prop('disabled', true).addClass('loading');
+                      $('#button-upload').button('loading');
                   },
                   complete: function () {
-                      $('#button-upload').prop('disabled', false).removeClass('loading');
+                      $('#button-upload').button('reset');
                   },
                   success: function (json) {
                       if (json['error']) {
@@ -130,7 +130,7 @@
   });
 
   $('#modal-image').on('click', '#button-create', function () {
-      var url = 'index.php?route=common/filemanager|folder&user_token={{ user_token }}';
+      var url = 'index.php?route=common/filemanager.folder&user_token={{ user_token }}';
 
       var directory = $('#input-directory').val();
 
@@ -144,10 +144,10 @@
           dataType: 'json',
           data: 'folder=' + encodeURIComponent($('#input-folder').val()),
           beforeSend: function () {
-              $('#button-create').prop('disabled', true).addClass('loading');
+              $('#button-create').button('loading');
           },
           complete: function () {
-              $('#button-create').prop('disabled', false).removeClass('loading');
+              $('#button-create').button('reset');
           },
           success: function (json) {
               if (json['error']) {
@@ -169,15 +169,15 @@
   $('#modal-image').on('click', '#button-delete', function (e) {
       if (confirm('{{ text_confirm }}')) {
           $.ajax({
-              url: 'index.php?route=common/filemanager|delete&user_token={{ user_token }}',
+              url: 'index.php?route=common/filemanager.delete&user_token={{ user_token }}',
               type: 'post',
               dataType: 'json',
               data: $('input[name^=\'path\']:checked'),
               beforeSend: function () {
-                  $('#button-delete').prop('disabled', true).addClass('loading');
+                  $('#button-delete').button('loading');
               },
               complete: function () {
-                  $('#button-delete').prop('disabled', false).removeClass('loading');
+                  $('#button-delete').button('reset');
               },
               success: function (json) {
                   if (json['error']) {
@@ -209,11 +209,11 @@
     {% if thumb %}
       $('{{ thumb|escape('js') }}').attr('src', $(this).find('img').attr('src'));
 
-      $('{{ target|escape('js') }}').val('catalog/' + $(this).parent().find('input').val());
+      $('{{ target|escape('js') }}').val('catalog/' + $(this).parent().parent().find('input').val());
     {% endif %}
 
     {% if ckeditor %}
-      CKEDITOR.instances['{{ ckeditor|escape('js') }}'].insertHtml('<img src="' + $(this).attr('href') + '" alt="" title="" />');
+      CKEDITOR.instances['{{ ckeditor|escape('js') }}'].insertHtml('<img src="' + $(this).attr('href') + '" alt="" title=""/>');
     {% endif %}
 
       $('#modal-image').modal('hide');

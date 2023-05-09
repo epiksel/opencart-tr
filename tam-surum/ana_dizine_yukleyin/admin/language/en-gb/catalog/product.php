@@ -32,9 +32,7 @@ $_['text_image']             = 'Image';
 $_['text_image_additional']  = 'Additional Images';
 $_['text_reward']            = 'Buy Points';
 $_['text_points']            = 'Reward Points';
-$_['text_subscription_trial']    = '%s every %d %s(s) for %d payment(s) then';
-$_['text_subscription_description'] = '%s every %d %s(s) for %d payment(s)';
-$_['text_subscription_cancel']      = '%s every %d %s(s) until canceled';
+$_['text_report']            = 'Product Reports';
 
 // Column
 $_['column_name']            = 'Product Name';
@@ -72,6 +70,7 @@ $_['entry_quantity']         = 'Quantity';
 $_['entry_minimum']          = 'Minimum Quantity';
 $_['entry_stock_status']     = 'Out Of Stock Status';
 $_['entry_price']            = 'Price';
+$_['entry_trial_price']      = 'Trial Price';
 $_['entry_tax_class']        = 'Tax Class';
 $_['entry_points']           = 'Points';
 $_['entry_subtract']         = 'Subtract Stock';
@@ -102,7 +101,7 @@ $_['entry_related']          = 'Related Products';
 $_['entry_tag']              = 'Product Tags';
 $_['entry_reward']           = 'Reward Points';
 $_['entry_layout']           = 'Layout Override';
-$_['entry_subscription']     = 'Subscription Plans';
+$_['entry_subscription']     = 'Subscription Plan';
 
 // Help
 $_['help_tag']               = 'Comma separated';
@@ -128,6 +127,6 @@ $_['error_permission']       = 'Warning: You do not have permission to modify pr
 $_['error_name']             = 'Product Name must be greater than 1 and less than 255 characters!';
 $_['error_meta_title']       = 'Meta Title must be greater than 1 and less than 255 characters!';
 $_['error_model']            = 'Product Model must be greater than 1 and less than 64 characters!';
-$_['error_seo']              = 'SEO URL keyword required!';
-$_['error_keyword']          = 'SEO URL must be unique!';
+$_['error_keyword']          = 'SEO URL must be between 1 and 64 characters!';
+$_['error_keyword_exists']   = 'SEO URL must be unique!';
 $_['error_required']         = '%s required!';

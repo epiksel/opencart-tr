@@ -1,6 +1,5 @@
 <?php
 namespace Opencart\Admin\Controller\Catalog;
-use \Opencart\System\Helper as Helper;
 class SubscriptionPlan extends \Opencart\System\Engine\Controller {
 	public function index(): void {
 		$this->load->language('catalog/subscription_plan');
@@ -33,9 +32,9 @@ class SubscriptionPlan extends \Opencart\System\Engine\Controller {
 			'href' => $this->url->link('catalog/subscription_plan', 'user_token=' . $this->session->data['user_token'] . $url)
 		];
 
-		$data['add'] = $this->url->link('catalog/subscription_plan|form', 'user_token=' . $this->session->data['user_token'] . $url);
-		$data['copy'] = $this->url->link('catalog/subscription_plan|copy', 'user_token=' . $this->session->data['user_token'] . $url);
-		$data['delete'] = $this->url->link('catalog/subscription_plan|delete', 'user_token=' . $this->session->data['user_token']);
+		$data['add'] = $this->url->link('catalog/subscription_plan.form', 'user_token=' . $this->session->data['user_token'] . $url);
+		$data['copy'] = $this->url->link('catalog/subscription_plan.copy', 'user_token=' . $this->session->data['user_token'] . $url);
+		$data['delete'] = $this->url->link('catalog/subscription_plan.delete', 'user_token=' . $this->session->data['user_token']);
 
 		$data['list'] = $this->getList();
 
@@ -87,7 +86,7 @@ class SubscriptionPlan extends \Opencart\System\Engine\Controller {
 			$url .= '&page=' . $this->request->get['page'];
 		}
 
-		$data['action'] = $this->url->link('catalog/subscription_plan|list', 'user_token=' . $this->session->data['user_token'] . $url);
+		$data['action'] = $this->url->link('catalog/subscription_plan.list', 'user_token=' . $this->session->data['user_token'] . $url);
 
 		$data['subscription_plans'] = [];
 
@@ -109,7 +108,7 @@ class SubscriptionPlan extends \Opencart\System\Engine\Controller {
 				'subscription_plan_id' => $result['subscription_plan_id'],
 				'name'                 => $result['name'],
 				'sort_order'           => $result['sort_order'],
-				'edit'                 => $this->url->link('catalog/subscription_plan|form', 'user_token=' . $this->session->data['user_token'] . '&subscription_plan_id=' . $result['subscription_plan_id'] . $url)
+				'edit'                 => $this->url->link('catalog/subscription_plan.form', 'user_token=' . $this->session->data['user_token'] . '&subscription_plan_id=' . $result['subscription_plan_id'] . $url)
 			];
 		}
 
@@ -125,8 +124,8 @@ class SubscriptionPlan extends \Opencart\System\Engine\Controller {
 			$url .= '&page=' . $this->request->get['page'];
 		}
 
-		$data['sort_name'] = $this->url->link('catalog/subscription_plan|list', 'user_token=' . $this->session->data['user_token'] . '&sort=spd.name' . $url);
-		$data['sort_sort_order'] = $this->url->link('catalog/subscription_plan|list', 'user_token=' . $this->session->data['user_token'] . '&sort=sp.sort_order' . $url);
+		$data['sort_name'] = $this->url->link('catalog/subscription_plan.list', 'user_token=' . $this->session->data['user_token'] . '&sort=spd.name' . $url);
+		$data['sort_sort_order'] = $this->url->link('catalog/subscription_plan.list', 'user_token=' . $this->session->data['user_token'] . '&sort=sp.sort_order' . $url);
 
 		$url = '';
 
@@ -142,7 +141,7 @@ class SubscriptionPlan extends \Opencart\System\Engine\Controller {
 			'total' => $subscription_plan_total,
 			'page'  => $page,
 			'limit' => $this->config->get('config_pagination_admin'),
-			'url'   => $this->url->link('catalog/subscription_plan|list', 'user_token=' . $this->session->data['user_token'] . $url . '&page={page}')
+			'url'   => $this->url->link('catalog/subscription_plan.list', 'user_token=' . $this->session->data['user_token'] . $url . '&page={page}')
 		]);
 
 		$data['results'] = sprintf($this->language->get('text_pagination'), ($subscription_plan_total) ? (($page - 1) * $this->config->get('config_pagination_admin')) + 1 : 0, ((($page - 1) * $this->config->get('config_pagination_admin')) > ($subscription_plan_total - $this->config->get('config_pagination_admin'))) ? $subscription_plan_total : ((($page - 1) * $this->config->get('config_pagination_admin')) + $this->config->get('config_pagination_admin')), $subscription_plan_total, ceil($subscription_plan_total / $this->config->get('config_pagination_admin')));
@@ -186,7 +185,7 @@ class SubscriptionPlan extends \Opencart\System\Engine\Controller {
 			'href' => $this->url->link('catalog/subscription_plan', 'user_token=' . $this->session->data['user_token'] . $url)
 		];
 
-		$data['save'] = $this->url->link('catalog/subscription_plan|save', 'user_token=' . $this->session->data['user_token']);
+		$data['save'] = $this->url->link('catalog/subscription_plan.save', 'user_token=' . $this->session->data['user_token']);
 		$data['back'] = $this->url->link('catalog/subscription_plan', 'user_token=' . $this->session->data['user_token'] . $url);
 
 		if (isset($this->request->get['subscription_plan_id'])) {
@@ -239,12 +238,6 @@ class SubscriptionPlan extends \Opencart\System\Engine\Controller {
 		];
 
 		if (!empty($subscription_info)) {
-			$data['trial_price'] = $subscription_info['trial_price'];
-		} else {
-			$data['trial_price'] = 0.00;
-		}
-
-		if (!empty($subscription_info)) {
 			$data['trial_frequency'] = $subscription_info['trial_frequency'];
 		} else {
 			$data['trial_frequency'] = '';
@@ -266,12 +259,6 @@ class SubscriptionPlan extends \Opencart\System\Engine\Controller {
 			$data['trial_status'] = $subscription_info['trial_status'];
 		} else {
 			$data['trial_status'] = 0;
-		}
-
-		if (!empty($subscription_info)) {
-			$data['price'] = $subscription_info['price'];
-		} else {
-			$data['price'] = 0.00;
 		}
 
 		if (!empty($subscription_info)) {
@@ -323,12 +310,12 @@ class SubscriptionPlan extends \Opencart\System\Engine\Controller {
 		}
 
 		foreach ($this->request->post['subscription_plan_description'] as $language_id => $value) {
-			if ((Helper\Utf8\strlen(trim($value['name'])) < 3) || (Helper\Utf8\strlen($value['name']) > 255)) {
+			if ((oc_strlen(trim($value['name'])) < 3) || (oc_strlen($value['name']) > 255)) {
 				$json['error']['name_' . $language_id] = $this->language->get('error_name');
 			}
 		}
 
-		if ((int)$this->request->post['trial_duration'] < 1) {
+		if ($this->request->post['trial_duration'] && (int)$this->request->post['trial_duration'] < 1) {
 			$json['error']['trial_duration'] = $this->language->get('error_trial_duration');
 		}
 

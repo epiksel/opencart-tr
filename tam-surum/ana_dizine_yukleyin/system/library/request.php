@@ -2,7 +2,7 @@
 /**
  * @package		OpenCart
  * @author		Daniel Kerr
- * @copyright	Copyright (c) 2005 - 2017, OpenCart, Ltd. (https://www.opencart.com/)
+ * @copyright	Copyright (c) 2005 - 2022, OpenCart, Ltd. (https://www.opencart.com/)
  * @license		https://opensource.org/licenses/GPL-3.0
  * @link		https://www.opencart.com
 */
@@ -24,7 +24,6 @@ class Request {
 	public function __construct() {
 		$this->get = $this->clean($_GET);
 		$this->post = $this->clean($_POST);
-		$this->request = $this->clean($_REQUEST);
 		$this->cookie = $this->clean($_COOKIE);
 		$this->files = $this->clean($_FILES);
 		$this->server = $this->clean($_SERVER);
@@ -32,9 +31,9 @@ class Request {
 	
 	/**
      * 
-	 * @param	array	$data
+	 * @param	mixed	$data
 	 *
-     * @return	array
+     * @return	mixed
      */
 	public function clean(mixed $data): mixed {
 		if (is_array($data)) {

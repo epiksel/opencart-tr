@@ -1,6 +1,5 @@
 <?php
 namespace Opencart\Catalog\Controller\Api\Sale;
-use \Opencart\System\Helper as Helper;
 class PaymentAddress extends \Opencart\System\Engine\Controller {
 	public function index(): void {
 		$this->load->language('api/sale/payment_address');
@@ -26,19 +25,19 @@ class PaymentAddress extends \Opencart\System\Engine\Controller {
 			}
 		}
 
-		if ((Helper\Utf8\strlen($this->request->post['firstname']) < 1) || (Helper\Utf8\strlen($this->request->post['firstname']) > 32)) {
+		if ((oc_strlen($this->request->post['firstname']) < 1) || (oc_strlen($this->request->post['firstname']) > 32)) {
 			$json['error']['firstname'] = $this->language->get('error_firstname');
 		}
 
-		if ((Helper\Utf8\strlen($this->request->post['lastname']) < 1) || (Helper\Utf8\strlen($this->request->post['lastname']) > 32)) {
+		if ((oc_strlen($this->request->post['lastname']) < 1) || (oc_strlen($this->request->post['lastname']) > 32)) {
 			$json['error']['lastname'] = $this->language->get('error_lastname');
 		}
 
-		if ((Helper\Utf8\strlen($this->request->post['address_1']) < 3) || (Helper\Utf8\strlen($this->request->post['address_1']) > 128)) {
+		if ((oc_strlen($this->request->post['address_1']) < 3) || (oc_strlen($this->request->post['address_1']) > 128)) {
 			$json['error']['address_1'] = $this->language->get('error_address_1');
 		}
 
-		if ((Helper\Utf8\strlen($this->request->post['city']) < 2) || (Helper\Utf8\strlen($this->request->post['city']) > 32)) {
+		if ((oc_strlen($this->request->post['city']) < 2) || (oc_strlen($this->request->post['city']) > 32)) {
 			$json['error']['city'] = $this->language->get('error_city');
 		}
 
@@ -46,7 +45,7 @@ class PaymentAddress extends \Opencart\System\Engine\Controller {
 
 		$country_info = $this->model_localisation_country->getCountry((int)$this->request->post['country_id']);
 
-		if ($country_info && $country_info['postcode_required'] && (Helper\Utf8\strlen($this->request->post['postcode']) < 2 || Helper\Utf8\strlen($this->request->post['postcode']) > 10)) {
+		if ($country_info && $country_info['postcode_required'] && (oc_strlen($this->request->post['postcode']) < 2 || oc_strlen($this->request->post['postcode']) > 10)) {
 			$json['error']['postcode'] = $this->language->get('error_postcode');
 		}
 
@@ -99,6 +98,7 @@ class PaymentAddress extends \Opencart\System\Engine\Controller {
 			}
 
 			$this->session->data['payment_address'] = [
+				'address_id'     => $this->request->post['payment_address_id'],
 				'firstname'      => $this->request->post['firstname'],
 				'lastname'       => $this->request->post['lastname'],
 				'company'        => $this->request->post['company'],
@@ -117,13 +117,7 @@ class PaymentAddress extends \Opencart\System\Engine\Controller {
 				'custom_field'   => isset($this->request->post['custom_field']) ? $this->request->post['custom_field'] : []
 			];
 
-			if ($this->cart->hasShipping() && !isset($this->session->data['shipping_address'])) {
-				$this->session->data['shipping_address'] = $this->session->data['payment_address'];
-			}
-
 			$json['success'] = $this->language->get('text_success');
-
-			unset($this->session->data['payment_methods']);
 		}
 
 		$this->response->addHeader('Content-Type: application/json');

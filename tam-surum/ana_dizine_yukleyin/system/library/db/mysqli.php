@@ -3,6 +3,15 @@ namespace Opencart\System\Library\DB;
 class MySQLi {
 	private object $connection;
 
+	/**
+	 * Constructor
+	 *
+	 * @param    string  $hostname
+	 * @param    string  $username
+	 * @param    string  $password
+	 * @param    string  $database
+	 * @param    string  $port
+	 */
 	public function __construct(string $hostname, string $username, string $password, string $database, string $port = '') {
 		if (!$port) {
 			$port = '3306';
@@ -12,14 +21,21 @@ class MySQLi {
 			$mysqli = @new \MySQLi($hostname, $username, $password, $database, $port);
 
 			$this->connection = $mysqli;
-			$this->connection->report_mode = MYSQLI_REPORT_ERROR;
 			$this->connection->set_charset('utf8mb4');
 			$this->connection->query("SET SESSION sql_mode = 'NO_ZERO_IN_DATE,NO_ENGINE_SUBSTITUTION'");
+			$this->connection->query("SET FOREIGN_KEY_CHECKS = 0");
 		} catch (\mysqli_sql_exception $e) {
-			throw new \Exception('Error: Could not make a database link using ' . $username . '@' . $hostname . '!');
+			throw new \Exception('Error: Could not make a database link using ' . $username . '@' . $hostname . '!<br/>Message: ' . $e->getMessage());
 		}
 	}
 
+	/**
+	 * Query
+	 *
+	 * @param    string  $sql
+	 *
+	 * @return   bool|object
+	 */
 	public function query(string $sql): bool|object {
 		try {
 			$query = $this->connection->query($sql);
@@ -49,18 +65,40 @@ class MySQLi {
 		}
 	}
 
+	/**
+	 * Escape
+	 *
+	 * @param    string  value
+	 *
+	 * @return   string
+	 */
 	public function escape(string $value): string {
 		return $this->connection->real_escape_string($value);
 	}
 	
+	/**
+	 * countAffected
+	 *
+	 * @return   int
+	 */
 	public function countAffected(): int {
 		return $this->connection->affected_rows;
 	}
 
+	/**
+	 * getLastId
+	 *
+	 * @return   int
+	 */
 	public function getLastId(): int {
 		return $this->connection->insert_id;
 	}
 	
+	/**
+	 * isConnected
+	 *
+	 * @return   bool
+	 */
 	public function isConnected(): bool {
 		if ($this->connection) {
 			return $this->connection->ping();
@@ -70,7 +108,7 @@ class MySQLi {
 	}
 
 	/**
-	 * __destruct
+	 * Destructor
 	 *
 	 * Closes the DB connection when this object is destroyed.
 	 *

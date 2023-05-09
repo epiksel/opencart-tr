@@ -29,8 +29,9 @@ $_['entry_default']      = 'Varsayılan Adres';
 
 // Error
 $_['error_token']        = 'Uyarı: Adres belirteci geçersiz!';
+$_['error_subscription'] = 'Uyarı: Adres %s aktif abonelik tarafından kullanılıyor!';
+$_['error_default']      = 'Uyarı: Varsayılan adres gerekli!';
 $_['error_delete']       = 'Uyarı: En az bir adres olmalıdır!';
-$_['error_default']      = 'Uyarı: Varsayılan adresinizi silemezsiniz!';
 $_['error_firstname']    = 'Ad 1 ile 32 karakter arasında olmalı!';
 $_['error_lastname']     = 'Soyad 1 ile 32 karakter arasında olmalı!';
 $_['error_address_1']    = 'Adres 1, 3 ile 128 karakter arasında olmalı!';

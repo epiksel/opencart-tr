@@ -5,8 +5,8 @@
       <div class="card-body">
         <div class="mb-3">
           <label for="input-customer" class="col-form-label">{{ entry_customer }}</label>
-          <input type="text" name="filter_customer" value="{{ filter_customer }}" placeholder="{{ entry_customer }}" id="input-customer" list="list-customer" class="form-control"/>
-          <datalist id="list-customer"></datalist>
+          <input type="text" name="filter_customer" value="{{ filter_customer }}" placeholder="{{ entry_customer }}" id="input-customer" data-oc-target="autocomplete-customer" class="form-control"/>
+          <ul id="autocomplete-customer" class="dropdown-menu"></ul>
         </div>
         <div class="mb-3">
           <label for="input-keyword" class="col-form-label">{{ entry_keyword }}</label>
@@ -83,13 +83,13 @@ $('#button-filter').on('click', function () {
         url += '&filter_ip=' + encodeURIComponent(filter_ip);
     }
 
-    $('#customer-searc').load('index.php?route=extension/opencart/report/customer_search|list&user_token={{ user_token }}' + url);
+    $('#customer-searc').load('index.php?route=extension/opencart/report/customer_search.list&user_token={{ user_token }}' + url);
 });
 
 $('#input-customer').autocomplete({
     'source': function (request, response) {
         $.ajax({
-            url: 'index.php?route=customer/customer|autocomplete&user_token={{ user_token }}&filter_name=' + encodeURIComponent(request),
+            url: 'index.php?route=customer/customer.autocomplete&user_token={{ user_token }}&filter_name=' + encodeURIComponent(request),
             dataType: 'json',
             success: function (json) {
                 response($.map(json, function (item) {

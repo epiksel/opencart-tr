@@ -1,6 +1,5 @@
 <?php
 namespace Opencart\Admin\Controller\Setting;
-use \Opencart\System\Helper as Helper;
 class Setting extends \Opencart\System\Engine\Controller {
 	public function index(): void {
 		$this->load->language('setting/setting');
@@ -24,7 +23,7 @@ class Setting extends \Opencart\System\Engine\Controller {
 			'href' => $this->url->link('setting/setting', 'user_token=' . $this->session->data['user_token'])
 		];
 
-		$data['save'] = $this->url->link('setting/setting|save', 'user_token=' . $this->session->data['user_token']);
+		$data['save'] = $this->url->link('setting/setting.save', 'user_token=' . $this->session->data['user_token']);
 		$data['back'] = $this->url->link('setting/store', 'user_token=' . $this->session->data['user_token']);
 
 		// General
@@ -41,14 +40,12 @@ class Setting extends \Opencart\System\Engine\Controller {
 		$extensions = $this->model_setting_extension->getExtensionsByType('theme');
 
 		foreach ($extensions as $extension) {
-			if ($this->config->get('theme_' . $extension['code'] . '_status')) {
-				$this->load->language('extension/' . $extension['extension'] . '/theme/' . $extension['code'], 'extension');
+			$this->load->language('extension/' . $extension['extension'] . '/theme/' . $extension['code'], 'extension');
 
-				$data['themes'][] = [
-					'text'  => $this->language->get('extension_heading_title'),
-					'value' => $extension['code']
-				];
-			}
+			$data['themes'][] = [
+				'text'  => $this->language->get('extension_heading_title'),
+				'value' => $extension['code']
+			];
 		}
 
 		$data['config_theme'] = $this->config->get('config_theme');
@@ -249,7 +246,8 @@ class Setting extends \Opencart\System\Engine\Controller {
 
 		$data['config_cart_weight'] = $this->config->get('config_cart_weight');
 		$data['config_checkout_guest'] = $this->config->get('config_checkout_guest');
-		$data['config_checkout_address'] = $this->config->get('config_checkout_address');
+		$data['config_checkout_payment_address'] = $this->config->get('config_checkout_payment_address');
+		$data['config_checkout_shipping_address'] = $this->config->get('config_checkout_shipping_address');
 		$data['config_checkout_id'] = $this->config->get('config_checkout_id');
 
 		if ($this->config->get('config_invoice_prefix')) {
@@ -285,6 +283,7 @@ class Setting extends \Opencart\System\Engine\Controller {
 
 		$data['config_subscription_status_id'] = $this->config->get('config_subscription_status_id');
 		$data['config_subscription_active_status_id'] = $this->config->get('config_subscription_active_status_id');
+		$data['config_subscription_suspended_status_id'] = $this->config->get('config_subscription_suspended_status_id');
 		$data['config_subscription_expired_status_id'] = $this->config->get('config_subscription_expired_status_id');
 		$data['config_subscription_canceled_status_id'] = $this->config->get('config_subscription_canceled_status_id');
 		$data['config_subscription_failed_status_id'] = $this->config->get('config_subscription_failed_status_id');
@@ -641,19 +640,19 @@ class Setting extends \Opencart\System\Engine\Controller {
 			$json['error']['name'] = $this->language->get('error_name');
 		}
 
-		if ((Helper\Utf8\strlen($this->request->post['config_owner']) < 3) || (Helper\Utf8\strlen($this->request->post['config_owner']) > 64)) {
+		if ((oc_strlen($this->request->post['config_owner']) < 3) || (oc_strlen($this->request->post['config_owner']) > 64)) {
 			$json['error']['owner'] = $this->language->get('error_owner');
 		}
 
-		if ((Helper\Utf8\strlen($this->request->post['config_address']) < 3) || (Helper\Utf8\strlen($this->request->post['config_address']) > 256)) {
+		if ((oc_strlen($this->request->post['config_address']) < 3) || (oc_strlen($this->request->post['config_address']) > 256)) {
 			$json['error']['address'] = $this->language->get('error_address');
 		}
 
-		if ((Helper\Utf8\strlen($this->request->post['config_email']) > 96) || !filter_var($this->request->post['config_email'], FILTER_VALIDATE_EMAIL)) {
+		if ((oc_strlen($this->request->post['config_email']) > 96) || !filter_var($this->request->post['config_email'], FILTER_VALIDATE_EMAIL)) {
 			$json['error']['email'] = $this->language->get('error_email');
 		}
 
-		if ((Helper\Utf8\strlen($this->request->post['config_telephone']) < 3) || (Helper\Utf8\strlen($this->request->post['config_telephone']) > 32)) {
+		if ((oc_strlen($this->request->post['config_telephone']) < 3) || (oc_strlen($this->request->post['config_telephone']) > 32)) {
 			$json['error']['telephone'] = $this->language->get('error_telephone');
 		}
 
@@ -741,7 +740,7 @@ class Setting extends \Opencart\System\Engine\Controller {
 			$json['error']['warning'] = $this->language->get('error_security');
 		}
 
-		if ((Helper\Utf8\strlen($this->request->post['config_encryption']) < 32) || (Helper\Utf8\strlen($this->request->post['config_encryption']) > 1024)) {
+		if ((oc_strlen($this->request->post['config_encryption']) < 32) || (oc_strlen($this->request->post['config_encryption']) > 1024)) {
 			$json['error']['encryption'] = $this->language->get('error_encryption');
 		}
 
@@ -806,24 +805,18 @@ class Setting extends \Opencart\System\Engine\Controller {
 	}
 
 	public function theme(): void {
-		$image = '';
-
-		$theme = basename($this->request->get['theme']);
-
-		if ($theme == 'basic') {
-			$image = HTTP_CATALOG . 'catalog/view/image/' . $theme . '.png';
+		if (isset($this->request->get['theme'])) {
+			$theme = basename($this->request->get['theme']);
 		} else {
-			$this->load->model('setting/extension');
-
-			$extension_info = $this->model_setting_extension->getExtensionByCode('theme', $theme);
-
-			if ($extension_info) {
-				$image = DIR_EXTENSION . $extension_info['extension'] . '/catalog/view/image/' . $extension_info['code'] . '.png';
-			}
+			$theme = '';
 		}
 
-		if ($image) {
-			$this->response->setOutput($image);
+		$this->load->model('setting/extension');
+
+		$extension_info = $this->model_setting_extension->getExtensionByCode('theme', $theme);
+
+		if ($extension_info) {
+			$this->response->setOutput(HTTP_CATALOG . 'extension/' . $extension_info['extension'] . '/admin/view/image/' . $extension_info['code'] . '.png');
 		} else {
 			$this->response->setOutput(HTTP_CATALOG . 'image/no_image.png');
 		}

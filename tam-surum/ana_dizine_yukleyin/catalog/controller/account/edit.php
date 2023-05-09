@@ -1,6 +1,5 @@
 <?php
 namespace Opencart\Catalog\Controller\Account;
-use \Opencart\System\Helper as Helper;
 class Edit extends \Opencart\System\Engine\Controller {
 	public function index(): void {
 		$this->load->language('account/edit');
@@ -36,7 +35,7 @@ class Edit extends \Opencart\System\Engine\Controller {
 		$data['config_telephone_display'] = $this->config->get('config_telephone_display');
 		$data['config_telephone_required'] = $this->config->get('config_telephone_required');
 
-		$data['save'] = $this->url->link('account/edit|save', 'language=' . $this->config->get('config_language') . '&customer_token=' . $this->session->data['customer_token']);
+		$data['save'] = $this->url->link('account/edit.save', 'language=' . $this->config->get('config_language') . '&customer_token=' . $this->session->data['customer_token']);
 		$data['upload'] = $this->url->link('tool/upload', 'language=' . $this->config->get('config_language'));
 
 		$this->load->model('account/customer');
@@ -68,6 +67,8 @@ class Edit extends \Opencart\System\Engine\Controller {
 		}
 
 		$data['back'] = $this->url->link('account/account', 'language=' . $this->config->get('config_language') . '&customer_token=' . $this->session->data['customer_token']);
+
+		$data['language'] = $this->config->get('config_language');
 
 		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['column_right'] = $this->load->controller('common/column_right');
@@ -104,15 +105,15 @@ class Edit extends \Opencart\System\Engine\Controller {
 				}
 			}
 
-			if ((Helper\Utf8\strlen($this->request->post['firstname']) < 1) || (Helper\Utf8\strlen($this->request->post['firstname']) > 32)) {
+			if ((oc_strlen($this->request->post['firstname']) < 1) || (oc_strlen($this->request->post['firstname']) > 32)) {
 				$json['error']['firstname'] = $this->language->get('error_firstname');
 			}
 
-			if ((Helper\Utf8\strlen($this->request->post['lastname']) < 1) || (Helper\Utf8\strlen($this->request->post['lastname']) > 32)) {
+			if ((oc_strlen($this->request->post['lastname']) < 1) || (oc_strlen($this->request->post['lastname']) > 32)) {
 				$json['error']['lastname'] = $this->language->get('error_lastname');
 			}
 
-			if ((Helper\Utf8\strlen($this->request->post['email']) > 96) || !filter_var($this->request->post['email'], FILTER_VALIDATE_EMAIL)) {
+			if ((oc_strlen($this->request->post['email']) > 96) || !filter_var($this->request->post['email'], FILTER_VALIDATE_EMAIL)) {
 				$json['error']['email'] = $this->language->get('error_email');
 			}
 
@@ -122,7 +123,7 @@ class Edit extends \Opencart\System\Engine\Controller {
 				$json['error']['warning'] = $this->language->get('error_exists');
 			}
 
-			if ($this->config->get('config_telephone_required') && (Helper\Utf8\strlen($this->request->post['telephone']) < 3) || (Helper\Utf8\strlen($this->request->post['telephone']) > 32)) {
+			if ($this->config->get('config_telephone_required') && (oc_strlen($this->request->post['telephone']) < 3) || (oc_strlen($this->request->post['telephone']) > 32)) {
 				$json['error']['telephone'] = $this->language->get('error_telephone');
 			}
 
@@ -158,6 +159,11 @@ class Edit extends \Opencart\System\Engine\Controller {
 				'telephone'         => $this->request->post['telephone'],
 				'custom_field'      => isset($this->request->post['custom_field']) ? $this->request->post['custom_field'] : []
 			];
+
+			unset($this->session->data['shipping_method']);
+			unset($this->session->data['shipping_methods']);
+			unset($this->session->data['payment_method']);
+			unset($this->session->data['payment_methods']);
 
 			$json['redirect'] = $this->url->link('account/account', 'language=' . $this->config->get('config_language') . '&customer_token=' . $this->session->data['customer_token'], true);
 		}

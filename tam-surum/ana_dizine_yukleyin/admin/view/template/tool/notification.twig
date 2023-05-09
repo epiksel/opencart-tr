@@ -63,10 +63,10 @@ $('#notification').on('click', '.btn', function (e) {
         url: $(element).attr('value'),
         dataType: 'html',
         beforeSend: function () {
-            $(element).prop('disabled', true).addClass('loading');
+            $(element).button('loading');
         },
         complete: function () {
-            $(element).prop('disabled', false).removeClass('loading');
+            $(element).button('reset');
         },
         success: function (html) {
             $('body').append(html);
@@ -92,15 +92,15 @@ $('#button-delete').on('click', function (e) {
 
     if (confirm('{{ text_confirm }}')) {
         $.ajax({
-            url: 'index.php?route=tool/notification|delete&user_token={{ user_token }}',
+            url: 'index.php?route=tool/notification.delete&user_token={{ user_token }}',
             type: 'post',
             data: $('#notification input[name^=\'selected\']:checked').serialize(),
             dataType: 'json',
             beforeSend: function () {
-                $(element).prop('disabled', true).addClass('loading');
+                $(element).button('loading');
             },
             complete: function () {
-                $(element).prop('disabled', false).removeClass('loading');
+                $(element).button('reset');
             },
             success: function (json) {
                 $('.alert-dismissible').remove();
@@ -112,7 +112,7 @@ $('#button-delete').on('click', function (e) {
                 if (json['success']) {
                     $('#alert').prepend('<div class="alert alert-success alert-dismissible"><i class="fa-solid fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button</div>');
 
-                    $('#notification').load('index.php?route=tool/notification|list&user_token={{ user_token }}');
+                    $('#notification').load('index.php?route=tool/notification.list&user_token={{ user_token }}');
                 }
             },
             error: function (xhr, ajaxOptions, thrownError) {

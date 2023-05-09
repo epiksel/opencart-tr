@@ -159,7 +159,7 @@
                         <div class="col-sm-10">
 
                           <div class="input-group">
-                            <button type="button" data-oc-toggle="upload" data-oc-target="#input-custom-field-{{ custom_field.custom_field_id }}" data-oc-size-max="{{ config_file_max_size }}" data-oc-size-error="{{ error_upload_size }}" class="btn btn-primary"><i class="fa-solid fa-upload"></i> {{ button_upload }}</button>
+                            <button type="button" data-oc-toggle="upload" data-oc-url="{{ upload }}" data-oc-target="#input-custom-field-{{ custom_field.custom_field_id }}" data-oc-size-max="{{ config_file_max_size }}" data-oc-size-error="{{ error_upload_size }}" class="btn btn-primary"><i class="fa-solid fa-upload"></i> {{ button_upload }}</button>
                             <input type="text" name="custom_field[{{ custom_field.custom_field_id }}]" value="{{ account_custom_field[custom_field.custom_field_id] ? account_custom_field[custom_field.custom_field_id] }}" id="input-custom-field-{{ custom_field.custom_field_id }}" class="form-control" readonly/>
                             <button type="button" data-oc-toggle="download" data-oc-target="#input-custom-field-{{ custom_field.custom_field_id }}"{% if not account_custom_field[custom_field.custom_field_id] %} disabled{% endif %} class="btn btn-outline-secondary"><i class="fa-solid fa-download"></i> {{ button_download }}</button>
                             <button type="button" data-oc-toggle="clear" data-bs-toggle="tooltip" title="{{ button_clear }}" data-oc-target="#input-custom-field-{{ custom_field.custom_field_id }}"{% if not account_custom_field[custom_field.custom_field_id] %} disabled{% endif %} class="btn btn-outline-danger"><i class="fa-solid fa-eraser"></i></button>
@@ -235,8 +235,7 @@
                   <label class="col-sm-2 col-form-label">{{ entry_newsletter }}</label>
                   <div class="col-sm-10">
                     <div class="form-check form-switch form-switch-lg">
-                      <input type="hidden" name="newsletter" value="0"/>
-                      <input type="checkbox" name="newsletter" value="1" id="input-newsletter" class="form-check-input"{% if newsletter %} checked{% endif %}/>
+                      <input type="hidden" name="newsletter" value="0"/> <input type="checkbox" name="newsletter" value="1" id="input-newsletter" class="form-check-input"{% if newsletter %} checked{% endif %}/>
                     </div>
                   </div>
                 </div>
@@ -244,8 +243,7 @@
                   <label class="col-sm-2 col-form-label">{{ entry_status }}</label>
                   <div class="col-sm-10">
                     <div class="form-check form-switch form-switch-lg">
-                      <input type="hidden" name="status" value="0"/>
-                      <input type="checkbox" name="status" value="1" id="input-status" class="form-check-input"{% if status %} checked{% endif %}/>
+                      <input type="hidden" name="status" value="0"/> <input type="checkbox" name="status" value="1" id="input-status" class="form-check-input"{% if status %} checked{% endif %}/>
                     </div>
                   </div>
                 </div>
@@ -253,8 +251,7 @@
                   <label class="col-sm-2 col-form-label">{{ entry_safe }}</label>
                   <div class="col-sm-10">
                     <div class="form-check form-switch form-switch-lg">
-                      <input type="hidden" name="safe" value="0"/>
-                      <input type="checkbox" name="safe" value="1" id="input-safe" class="form-check-input"{% if safe %} checked{% endif %}/>
+                      <input type="hidden" name="safe" value="0"/> <input type="checkbox" name="safe" value="1" id="input-safe" class="form-check-input"{% if safe %} checked{% endif %}/>
                     </div>
                     <div class="form-text">{{ help_safe }}</div>
                   </div>
@@ -266,8 +263,6 @@
               {% for address in addresses %}
                 <fieldset id="address-row-{{ address_row }}">
                   <legend>{{ text_address }} {{ address_row + 1 }} <button type="button" onclick="$('#address-row-{{ address_row }}').remove();" data-bs-toggle="tooltip" title="{{ button_remove }}" class="btn btn-danger btn-sm float-end"><i class="fa-solid fa-minus-circle"></i></button></legend>
-
-
                   <div class="row mb-3 required">
                     <label for="input-address-{{ address_row }}-firstname" class="col-sm-2 col-form-label">{{ entry_firstname }}</label>
                     <div class="col-sm-10">
@@ -275,7 +270,6 @@
                       <div id="error-address-{{ address_row }}-firstname" class="invalid-feedback"></div>
                     </div>
                   </div>
-
                   <div class="row mb-3 required">
                     <label for="input-address-{{ address_row }}-lastname" class="col-sm-2 col-form-label">{{ entry_lastname }}</label>
                     <div class="col-sm-10">
@@ -411,7 +405,7 @@
                           <label class="col-sm-2 col-form-label">{{ custom_field.name }}</label>
                           <div class="col-sm-10">
                             <div class="input-group">
-                              <button type="button" data-oc-toggle="upload" data-oc-target="#input-address-{{ address_row }}-custom-field-{{ custom_field.custom_field_id }}" data-oc-size-max="{{ config_file_max_size }}" data-oc-size-error="{{ error_upload_size }}" class="btn btn-primary"><i class="fa-solid fa-upload"></i> {{ button_upload }}</button>
+                              <button type="button" data-oc-toggle="upload" data-oc-url="{{ upload }}" data-oc-target="#input-address-{{ address_row }}-custom-field-{{ custom_field.custom_field_id }}" data-oc-size-max="{{ config_file_max_size }}" data-oc-size-error="{{ error_upload_size }}" class="btn btn-primary"><i class="fa-solid fa-upload"></i> {{ button_upload }}</button>
                               <input type="text" name="address[{{ address_row }}][custom_field][{{ custom_field.custom_field_id }}]" value="{{ address.custom_field[custom_field.custom_field_id] ? address.custom_field[custom_field.custom_field_id] }}" id="input-address-{{ address_row }}-custom-field-{{ custom_field.custom_field_id }}" class="form-control" readonly/>
                               <button type="button" data-oc-toggle="download" data-oc-target="#input-address-{{ address_row }}-custom-field-{{ custom_field.custom_field_id }}" class="btn btn-outline-secondary"{% if not address.custom_field[custom_field.custom_field_id] %} disabled{% endif %}><i class="fa-solid fa-download"></i> {{ button_download }}</button>
                               <button type="button" data-oc-toggle="clear" data-oc-target="#input-address-{{ address_row }}-custom-field-{{ custom_field.custom_field_id }}" data-bs-toggle="tooltip" title="{{ button_clear }}" class="btn btn-outline-danger"{% if not address.custom_field[custom_field.custom_field_id] %} disabled{% endif %}><i class="fa-solid fa-eraser"></i></button>
@@ -493,73 +487,68 @@
                 <legend>{{ text_history }}</legend>
                 <div id="history">{{ history }}</div>
               </fieldset>
-              <form id="form-history">
-                <fieldset>
-                  <legend>{{ text_history_add }}</legend>
-                  <div class="row mb-3">
-                    <label for="input-history" class="col-sm-2 col-form-label">{{ entry_comment }}</label>
-                    <div class="col-sm-10">
-                      <textarea name="comment" rows="8" placeholder="{{ entry_comment }}" id="input-history" class="form-control"></textarea>
-                    </div>
+              <fieldset>
+                <legend>{{ text_history_add }}</legend>
+                <div class="row mb-3">
+                  <label for="input-history" class="col-sm-2 col-form-label">{{ entry_comment }}</label>
+                  <div class="col-sm-10">
+                    <textarea name="comment" rows="8" placeholder="{{ entry_comment }}" id="input-history" class="form-control"></textarea>
                   </div>
-                  <div class="text-end">
-                    <button type="submit" id="button-history" class="btn btn-primary"><i class="fa-solid fa-plus-circle"></i> {{ button_history_add }}</button>
-                  </div>
-                </fieldset>
-              </form>
+                </div>
+                <div class="text-end">
+                  <button type="button" id="button-history" class="btn btn-primary"><i class="fa-solid fa-plus-circle"></i> {{ button_history_add }}</button>
+                </div>
+              </fieldset>
             </div>
+
             <div id="tab-transaction" class="tab-pane">
               <fieldset>
                 <legend>{{ text_transaction }}</legend>
                 <div id="transaction">{{ transaction }}</div>
               </fieldset>
-              <form id="form-transaction">
-                <fieldset>
-                  <legend>{{ text_transaction_add }}</legend>
-                  <div class="row mb-3">
-                    <label for="input-transaction-description" class="col-sm-2 col-form-label">{{ entry_description }}</label>
-                    <div class="col-sm-10">
-                      <input type="text" name="description" value="" placeholder="{{ entry_description }}" id="input-transaction-description" class="form-control"/>
-                    </div>
+              <fieldset>
+                <legend>{{ text_transaction_add }}</legend>
+                <div class="row mb-3">
+                  <label for="input-transaction" class="col-sm-2 col-form-label">{{ entry_description }}</label>
+                  <div class="col-sm-10">
+                    <input type="text" name="description" value="" placeholder="{{ entry_description }}" id="input-transaction" class="form-control"/>
                   </div>
-                  <div class="row mb-3">
-                    <label for="input-transaction-amount" class="col-sm-2 col-form-label">{{ entry_amount }}</label>
-                    <div class="col-sm-10">
-                      <input type="text" name="amount" value="" placeholder="{{ entry_amount }}" id="input-transaction-amount" class="form-control"/>
-                    </div>
+                </div>
+                <div class="row mb-3">
+                  <label for="input-amount" class="col-sm-2 col-form-label">{{ entry_amount }}</label>
+                  <div class="col-sm-10">
+                    <input type="text" name="amount" value="" placeholder="{{ entry_amount }}" id="input-amount" class="form-control"/>
                   </div>
-                  <div class="text-end">
-                    <button type="submit" id="button-transaction" class="btn btn-primary"><i class="fa-solid fa-plus-circle"></i> {{ button_transaction_add }}</button>
-                  </div>
-                </fieldset>
-              </form>
+                </div>
+                <div class="text-end">
+                  <button type="button" id="button-transaction" class="btn btn-primary"><i class="fa-solid fa-plus-circle"></i> {{ button_transaction_add }}</button>
+                </div>
+              </fieldset>
             </div>
             <div id="tab-reward" class="tab-pane">
               <fieldset>
                 <legend>{{ text_reward }}</legend>
                 <div id="reward">{{ reward }}</div>
               </fieldset>
-              <form id="form-reward">
-                <fieldset>
-                  <legend>{{ text_reward_add }}</legend>
-                  <div class="row mb-3">
-                    <label for="input-reward-description" class="col-sm-2 col-form-label">{{ entry_description }}</label>
-                    <div class="col-sm-10">
-                      <input type="text" name="description" value="" placeholder="{{ entry_description }}" id="input-reward-description" class="form-control"/>
-                    </div>
+              <fieldset>
+                <legend>{{ text_reward_add }}</legend>
+                <div class="row mb-3">
+                  <label for="input-reward" class="col-sm-2 col-form-label">{{ entry_description }}</label>
+                  <div class="col-sm-10">
+                    <input type="text" name="description" value="" placeholder="{{ entry_description }}" id="input-reward" class="form-control"/>
                   </div>
-                  <div class="row mb-3">
-                    <label for="input-reward-points" class="col-sm-2 col-form-label">{{ entry_points }}</label>
-                    <div class="col-sm-10">
-                      <input type="text" name="points" value="" placeholder="{{ entry_points }}" id="input-reward-points" class="form-control"/>
-                      <div class="form-text">{{ help_points }}</div>
-                    </div>
+                </div>
+                <div class="row mb-3">
+                  <label for="input-points" class="col-sm-2 col-form-label">{{ entry_points }}</label>
+                  <div class="col-sm-10">
+                    <input type="text" name="points" value="" placeholder="{{ entry_points }}" id="input-points" class="form-control"/>
+                    <div class="form-text">{{ help_points }}</div>
                   </div>
-                  <div class="text-end">
-                    <button type="submit" id="button-reward" class="btn btn-primary"><i class="fa-solid fa-plus-circle"></i> {{ button_reward_add }}</button>
-                  </div>
-                </fieldset>
-              </form>
+                </div>
+                <div class="text-end">
+                  <button type="button" id="button-reward" class="btn btn-primary"><i class="fa-solid fa-plus-circle"></i> {{ button_reward_add }}</button>
+                </div>
+              </fieldset>
             </div>
             <div id="tab-ip" class="tab-pane">
               <fieldset>
@@ -576,7 +565,7 @@
 <script type="text/javascript"><!--
 $('#input-customer-group').on('change', function () {
     $.ajax({
-        url: 'index.php?route=customer/customer|customfield&user_token={{ user_token }}&customer_group_id=' + this.value,
+        url: 'index.php?route=customer/customer.customfield&user_token={{ user_token }}&customer_group_id=' + this.value,
         dataType: 'json',
         success: function (json) {
             $('.custom-field').hide();
@@ -764,7 +753,7 @@ $('#button-address').on('click', function (e) {
     html += '  <label class="col-sm-2 col-form-label">{{ custom_field.name|e('js') }}</label>';
     html += '  <div class="col-sm-10">';
     html += '    <div class="input-group">';
-    html += '      <button type="button" data-oc-toggle="upload" data-oc-target="#input-address-' + address_row + '-custom-field-{{ custom_field.custom_field_id }}" data-oc-size-max="{{ config_file_max_size }}" data-oc-size-error="{{ error_upload_size }}" class="btn btn-primary"><i class="fa-solid fa-upload"></i> {{ button_upload }}</button>';
+    html += '      <button type="button" data-oc-toggle="upload" data-oc-url="{{ upload }}" data-oc-target="#input-address-' + address_row + '-custom-field-{{ custom_field.custom_field_id }}" data-oc-size-max="{{ config_file_max_size }}" data-oc-size-error="{{ error_upload_size }}" class="btn btn-primary"><i class="fa-solid fa-upload"></i> {{ button_upload }}</button>';
     html += '      <input type="text" name="address[' + address_row + '][custom_field][{{ custom_field.custom_field_id }}]" value="" id="input-address-' + address_row + '-custom-field-{{ custom_field.custom_field_id }}" class="form-control" readonly/>';
     html += '      <button type="button" data-oc-toggle="download" data-oc-target="#input-address-' + address_row + '-custom-field-{{ custom_field.custom_field_id }}" class="btn btn-outline-secondary" disabled><i class="fa-solid fa-download"></i> {{ button_download }}</button>';
     html += '      <button type="button" data-oc-toggle="clear" data-bs-toggle="tooltip" title="{{ button_clear }}" data-oc-target="#input-address-' + address_row + '-custom-field-{{ custom_field.custom_field_id }}" class="btn btn-outline-danger" disabled><i class="fa-solid fa-eraser"></i></button>';
@@ -842,7 +831,7 @@ $('#tab-address').on('change', 'select[name$=\'[country_id]\']', function () {
 
     if (!zone[$(element).val()]) {
         $.ajax({
-            url: 'index.php?route=localisation/country|country&user_token={{ user_token }}&country_id=' + $(element).val(),
+            url: 'index.php?route=localisation/country.country&user_token={{ user_token }}&country_id=' + $(element).val(),
             dataType: 'json',
             beforeSend: function () {
                 $(element).prop('disabled', true);
@@ -866,13 +855,13 @@ $('#tab-address').on('change', 'select[name$=\'[country_id]\']', function () {
                         html += '<option value="' + json['zone'][i]['zone_id'] + '"';
 
                         if (json['zone'][i]['zone_id'] == $(element).attr('data-zone-id')) {
-                            html += ' selected="selected"';
+                            html += ' selected';
                         }
 
                         html += '>' + json['zone'][i]['name'] + '</option>';
                     }
                 } else {
-                    html += '<option value="0">{{ text_none }}</option>';
+                    html += '<option value="0" selected>{{ text_none }}</option>';
                 }
 
                 $('#tab-address select[name=\'address[' + $(element).attr('data-address-row') + '][zone_id]\']').html(html);
@@ -895,7 +884,7 @@ $('#tab-address').on('change', 'select[name$=\'[country_id]\']', function () {
                 html += '<option value="' + zone[$(element).val()]['zone'][i]['zone_id'] + '"';
 
                 if (zone[$(element).val()]['zone'][i]['zone_id'] == $(element).attr('data-zone-id')) {
-                    html += ' selected="selected"';
+                    html += ' selected';
                 }
 
                 html += '>' + zone[$(element).val()]['zone'][i]['name'] + '</option>';
@@ -932,10 +921,10 @@ $('#payment-method').on('click', 'button', function (e) {
         dataType: 'json',
         contentType: 'application/x-www-form-urlencoded',
         beforeSend: function () {
-            $(element).prop('disabled', true).addClass('loading');
+            $(element).button('loading');
         },
         complete: function () {
-            $(element).prop('disabled', false).removeClass('loading');
+            $(element).button('reset');
         },
         success: function (json) {
             $('.alert-dismissible').remove();
@@ -947,7 +936,7 @@ $('#payment-method').on('click', 'button', function (e) {
             if (json['success']) {
                 $('#alert').prepend('<div class="alert alert-success alert-dismissible"><i class="fa-solid fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
 
-                $('#payment-method').load('index.php?route=customer/customer|getPayment&user_token={{ user_token }}&customer_id=' + $('#input-customer-id').val());
+                $('#payment-method').load('index.php?route=customer/customer.getPayment&user_token={{ user_token }}&customer_id=' + $('#input-customer-id').val());
             }
         },
         error: function (xhr, ajaxOptions, thrownError) {
@@ -962,7 +951,7 @@ $('#payment-method').on('change', 'input[name=\'status\']', function (e) {
     var element = this;
 
     $.ajax({
-        url: 'index.php?route=customer/customer|disablePayment&user_token={{ user_token }}&customer_id=' + $('#input-customer-id').val(),
+        url: 'index.php?route=customer/customer.disablePayment&user_token={{ user_token }}&customer_id=' + $('#input-customer-id').val(),
         dataType: 'json',
         contentType: 'application/x-www-form-urlencoded',
         beforeSend: function () {
@@ -981,7 +970,7 @@ $('#payment-method').on('change', 'input[name=\'status\']', function (e) {
             if (json['success']) {
                 $('#alert').prepend('<div class="alert alert-success alert-dismissible"><i class="fa-solid fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
 
-                $('#payment-method').load('index.php?route=customer/customer|getPayment&user_token={{ user_token }}&customer_id=' + $('#input-customer-id').val());
+                $('#payment-method').load('index.php?route=customer/customer.getPayment&user_token={{ user_token }}&customer_id=' + $('#input-customer-id').val());
             }
         },
         error: function (xhr, ajaxOptions, thrownError) {
@@ -996,20 +985,20 @@ $('#history').on('click', '.pagination a', function (e) {
     $('#history').load(this.href);
 });
 
-$('#form-history').on('submit', function (e) {
+$('#button-history').on('click', function (e) {
     e.preventDefault();
 
     $.ajax({
-        url: 'index.php?route=customer/customer|addHistory&user_token={{ user_token }}&customer_id=' + $('#input-customer-id').val(),
+        url: 'index.php?route=customer/customer.addHistory&user_token={{ user_token }}&customer_id=' + $('#input-customer-id').val(),
         type: 'post',
-        data: $('#form-history').serialize(),
+        data: 'comment=' + encodeURIComponent($('#input-history').val()),
         dataType: 'json',
         contentType: 'application/x-www-form-urlencoded',
         beforeSend: function () {
-            $('#button-history').prop('disabled', true).addClass('loading');
+            $('#button-history').button('loading');
         },
         complete: function () {
-            $('#button-history').prop('disabled', false).removeClass('loading');
+            $('#button-history').button('reset');
         },
         success: function (json) {
             $('.alert-dismissible').remove();
@@ -1021,9 +1010,9 @@ $('#form-history').on('submit', function (e) {
             if (json['success']) {
                 $('#alert').prepend('<div class="alert alert-success alert-dismissible"><i class="fa-solid fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
 
-                $('#history').load('index.php?route=customer/customer|history&user_token={{ user_token }}&customer_id={{ customer_id }}');
+                $('#history').load('index.php?route=customer/customer.history&user_token={{ user_token }}&customer_id=' + $('#input-customer-id').val());
 
-                $('#input-comment').val('');
+                $('#input-history').val('');
             }
         },
         error: function (xhr, ajaxOptions, thrownError) {
@@ -1038,20 +1027,20 @@ $('#transaction').on('click', '.pagination a', function (e) {
     $('#transaction').load(this.href);
 });
 
-$('#form-transaction').on('submit', function (e) {
+$('#button-transaction').on('click', function (e) {
     e.preventDefault();
 
     $.ajax({
-        url: 'index.php?route=customer/customer|addTransaction&user_token={{ user_token }}&customer_id=' + $('#input-customer-id').val(),
+        url: 'index.php?route=customer/customer.addTransaction&user_token={{ user_token }}&customer_id=' + $('#input-customer-id').val(),
         type: 'post',
-        data: $('#form-transaction').serialize(),
+        data: 'description=' + encodeURIComponent($('#input-transaction').val()) + '&amount=' + $('#input-amount').val(),
         dataType: 'json',
         contentType: 'application/x-www-form-urlencoded',
         beforeSend: function () {
-            $('#button-transaction').prop('disabled', true).addClass('loading');
+            $('#button-transaction').button('loading');
         },
         complete: function () {
-            $('#button-transaction').prop('disabled', false).removeClass('loading');
+            $('#button-transaction').button('reset');
         },
         success: function (json) {
             $('.alert-dismissible').remove();
@@ -1063,10 +1052,10 @@ $('#form-transaction').on('submit', function (e) {
             if (json['success']) {
                 $('#alert').prepend('<div class="alert alert-success alert-dismissible"><i class="fa-solid fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
 
-                $('#transaction').load('index.php?route=customer/customer|transaction&user_token={{ user_token }}&customer_id=' + $('#input-customer-id').val());
+                $('#transaction').load('index.php?route=customer/customer.transaction&user_token={{ user_token }}&customer_id=' + $('#input-customer-id').val());
 
-                $('#input-transaction-amount').val('');
-                $('#input-transaction-description').val('');
+                $('#input-transaction').val('');
+                $('#input-amount').val('');
             }
         },
         error: function (xhr, ajaxOptions, thrownError) {
@@ -1081,20 +1070,20 @@ $('#reward').on('click', '.pagination a', function (e) {
     $('#reward').load(this.href);
 });
 
-$('#form-reward').on('submit', function (e) {
+$('#button-reward').on('click', function (e) {
     e.preventDefault();
 
     $.ajax({
-        url: 'index.php?route=customer/customer|addReward&user_token={{ user_token }}&customer_id=' + $('#input-customer-id').val(),
+        url: 'index.php?route=customer/customer.addReward&user_token={{ user_token }}&customer_id=' + $('#input-customer-id').val(),
         type: 'post',
-        data: $('#form-reward').serialize(),
+        data: 'description=' + encodeURIComponent($('#input-reward').val()) + '&points=' + $('#input-points').val(),
         dataType: 'json',
         contentType: 'application/x-www-form-urlencoded',
         beforeSend: function () {
-            $('#button-reward').prop('disabled', true).addClass('loading');
+            $('#button-reward').button('loading');
         },
         complete: function () {
-            $('#button-reward').prop('disabled', false).removeClass('loading');
+            $('#button-reward').button('reset');
         },
         success: function (json) {
             $('.alert-dismissible').remove();
@@ -1106,10 +1095,10 @@ $('#form-reward').on('submit', function (e) {
             if (json['success']) {
                 $('#alert').prepend('<div class="alert alert-success alert-dismissible"><i class="fa-solid fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
 
-                $('#reward').load('index.php?route=customer/customer|reward&user_token={{ user_token }}&customer_id=' + $('#input-customer-id').val());
+                $('#reward').load('index.php?route=customer/customer.reward&user_token={{ user_token }}&customer_id=' + $('#input-customer-id').val());
 
-                $('#input-reward-points').val('');
-                $('#input-reward-description').val('');
+                $('#input-reward').val('');
+                $('#input-points').val('');
             }
         },
         error: function (xhr, ajaxOptions, thrownError) {

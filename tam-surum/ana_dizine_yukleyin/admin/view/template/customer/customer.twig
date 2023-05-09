@@ -23,13 +23,13 @@
           <div class="card-body">
             <div class="mb-3">
               <label class="form-label">{{ entry_name }}</label>
-              <input type="text" name="filter_name" value="{{ filter_name }}" placeholder="{{ entry_name }}" id="input-name" list="list-name" class="form-control"/>
-              <datalist id="list-name"></datalist>
+              <input type="text" name="filter_name" value="{{ filter_name }}" placeholder="{{ entry_name }}" id="input-name" data-oc-target="autocomplete-name" class="form-control" autocomplete="off"/>
+              <ul id="autocomplete-name" class="dropdown-menu"></ul>
             </div>
             <div class="mb-3">
               <label class="form-label">{{ entry_email }}</label>
-              <input type="text" name="filter_email" value="{{ filter_email }}" placeholder="{{ entry_email }}" id="input-email" list="list-email" class="form-control"/>
-              <datalist id="list-email"></datalist>
+              <input type="text" name="filter_email" value="{{ filter_email }}" placeholder="{{ entry_email }}" id="input-email" data-oc-target="autocomplete-email" class="form-control" autocomplete="off"/>
+              <ul id="autocomplete-email" class="dropdown-menu"></ul>
             </div>
             <div class="mb-3">
               <label for="input-customer-group" class="form-label">{{ entry_customer_group }}</label> <select name="filter_customer_group_id" id="input-customer-group" class="form-select">
@@ -40,16 +40,14 @@
               </select>
             </div>
             <div class="mb-3">
-              <label for="input-status" class="form-label">{{ entry_status }}</label>
-              <select name="filter_status" id="input-status" class="form-select">
+              <label for="input-status" class="form-label">{{ entry_status }}</label> <select name="filter_status" id="input-status" class="form-select">
                 <option value=""></option>
                 <option value="1"{% if filter_status == '1' %} selected{% endif %}>{{ text_enabled }}</option>
                 <option value="0" {% if filter_status == '0' %} selected{% endif %}>{{ text_disabled }}</option>
               </select>
             </div>
             <div class="mb-3">
-              <label for="input-ip" class="form-label">{{ entry_ip }}</label>
-              <input type="text" name="filter_ip" value="{{ filter_ip }}" placeholder="{{ entry_ip }}" id="input-ip" class="form-control"/>
+              <label for="input-ip" class="form-label">{{ entry_ip }}</label> <input type="text" name="filter_ip" value="{{ filter_ip }}" placeholder="{{ entry_ip }}" id="input-ip" class="form-control"/>
             </div>
             <div class="mb-3">
               <label for="input-date-from" class="form-label">{{ entry_date_from }}</label>
@@ -132,13 +130,13 @@ $('#button-filter').on('click', function () {
         url += '&filter_date_to=' + encodeURIComponent(filter_date_to);
     }
 
-    $('#customer').load('index.php?route=customer/customer|list&user_token={{ user_token }}' + url);
+    $('#customer').load('index.php?route=customer/customer.list&user_token={{ user_token }}' + url);
 });
 
 $('#input-name').autocomplete({
     'source': function (request, response) {
         $.ajax({
-            url: 'index.php?route=customer/customer|autocomplete&user_token={{ user_token }}&filter_name=' + encodeURIComponent(request),
+            url: 'index.php?route=customer/customer.autocomplete&user_token={{ user_token }}&filter_name=' + encodeURIComponent(request),
             dataType: 'json',
             success: function (json) {
                 response($.map(json, function (item) {
@@ -150,13 +148,15 @@ $('#input-name').autocomplete({
             }
         });
     },
-    'select': function (item) {}
+    'select': function (item) {
+        $('#input-name').val(item['label']);
+    }
 });
 
 $('#input-email').autocomplete({
     'source': function (request, response) {
         $.ajax({
-            url: 'index.php?route=customer/customer|autocomplete&user_token={{ user_token }}&filter_email=' + encodeURIComponent(request),
+            url: 'index.php?route=customer/customer.autocomplete&user_token={{ user_token }}&filter_email=' + encodeURIComponent(request),
             dataType: 'json',
             success: function (json) {
                 response($.map(json, function (item) {
@@ -168,7 +168,9 @@ $('#input-email').autocomplete({
             }
         });
     },
-    'select': function (item) {}
+    'select': function (item) {
+        $('#input-email').val(item['label']);
+    }
 });
 //--></script>
 {{ footer }}

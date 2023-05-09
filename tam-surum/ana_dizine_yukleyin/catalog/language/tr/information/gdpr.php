@@ -7,7 +7,7 @@ $_['heading_title']     = 'Kişisel Verileri Koruma Kanunu İsteği';
 
 // Text
 $_['text_account']      = 'Hesabım';
-$_['text_gdpr']         = '%s mağazası için KVKK politikasını <a href="%s" target="_blank">%s<a/> sayfasından görebilirsiniz.';
+$_['text_gdpr']         = '%s mağazası için KVKK politikasını <a href="%s" target="_blank">%s</a> sayfasından görebilirsiniz.';
 $_['text_verification'] = 'Hesap Doğrulama';
 $_['text_email']        = 'Herhangi bir KVKK isteğinde bulunabilmemiz için hesabınızı doğrulamamız gerekir. Lütfen e-posta adresinizi aşağıya girin.';
 $_['text_action']       = 'Bir eylem seçin';

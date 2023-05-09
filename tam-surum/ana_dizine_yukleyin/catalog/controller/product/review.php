@@ -1,6 +1,5 @@
 <?php
 namespace Opencart\Catalog\Controller\Product;
-use \Opencart\System\Helper as Helper;
 class Review extends \Opencart\System\Engine\Controller {
 	public function index(): string {
 		$this->load->language('product/review');
@@ -26,7 +25,7 @@ class Review extends \Opencart\System\Engine\Controller {
 		}
 
 		// Create a login token to prevent brute force attacks
-		$this->session->data['review_token'] = Helper\General\token(32);
+		$this->session->data['review_token'] = oc_token(32);
 
 		$data['review_token'] = $this->session->data['review_token'];
 
@@ -73,11 +72,11 @@ class Review extends \Opencart\System\Engine\Controller {
 			}
 		}
 
-		if ((Helper\Utf8\strlen($this->request->post['name']) < 3) || (Helper\Utf8\strlen($this->request->post['name']) > 25)) {
+		if ((oc_strlen($this->request->post['name']) < 3) || (oc_strlen($this->request->post['name']) > 25)) {
 			$json['error']['name'] = $this->language->get('error_name');
 		}
 
-		if ((Helper\Utf8\strlen($this->request->post['text']) < 25) || (Helper\Utf8\strlen($this->request->post['text']) > 1000)) {
+		if ((oc_strlen($this->request->post['text']) < 25) || (oc_strlen($this->request->post['text']) > 1000)) {
 			$json['error']['text'] = $this->language->get('error_text');
 		}
 
@@ -103,7 +102,7 @@ class Review extends \Opencart\System\Engine\Controller {
 		$extension_info = $this->model_setting_extension->getExtensionByCode('captcha', $this->config->get('config_captcha'));
 
 		if ($extension_info && $this->config->get('captcha_' . $this->config->get('config_captcha') . '_status') && in_array('review', (array)$this->config->get('config_captcha_page'))) {
-			$captcha = $this->load->controller('extension/'  . $extension_info['extension'] . '/captcha/' . $extension_info['code'] . '|validate');
+			$captcha = $this->load->controller('extension/'  . $extension_info['extension'] . '/captcha/' . $extension_info['code'] . '.validate');
 
 			if ($captcha) {
 				$json['error']['captcha'] = $captcha;
@@ -162,7 +161,7 @@ class Review extends \Opencart\System\Engine\Controller {
 			'total' => $review_total,
 			'page'  => $page,
 			'limit' => 5,
-			'url'   => $this->url->link('product/review|list', 'language=' . $this->config->get('config_language') . '&product_id=' . $product_id . '&page={page}')
+			'url'   => $this->url->link('product/review.list', 'language=' . $this->config->get('config_language') . '&product_id=' . $product_id . '&page={page}')
 		]);
 
 		$data['results'] = sprintf($this->language->get('text_pagination'), ($review_total) ? (($page - 1) * 5) + 1 : 0, ((($page - 1) * 5) > ($review_total - 5)) ? $review_total : ((($page - 1) * 5) + 5), $review_total, ceil($review_total / 5));

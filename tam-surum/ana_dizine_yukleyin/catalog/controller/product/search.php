@@ -1,6 +1,5 @@
 <?php
 namespace Opencart\Catalog\Controller\Product;
-use \Opencart\System\Helper as Helper;
 class Search extends \Opencart\System\Engine\Controller {
 	public function index(): void {
 		$this->load->language('product/search');
@@ -219,7 +218,7 @@ class Search extends \Opencart\System\Engine\Controller {
 					'product_id'  => $result['product_id'],
 					'thumb'       => $image,
 					'name'        => $result['name'],
-					'description' => Helper\Utf8\substr(trim(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8'))), 0, $this->config->get('config_product_description_length')) . '..',
+					'description' => oc_substr(trim(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8'))), 0, $this->config->get('config_product_description_length')) . '..',
 					'price'       => $price,
 					'special'     => $special,
 					'tax'         => $tax,
@@ -431,7 +430,6 @@ class Search extends \Opencart\System\Engine\Controller {
 			}
 		}
 
-		$data['language'] = $this->config->get('config_language');
 		$data['search'] = $search;
 		$data['description'] = $description;
 		$data['category_id'] = $category_id;
@@ -440,6 +438,8 @@ class Search extends \Opencart\System\Engine\Controller {
 		$data['sort'] = $sort;
 		$data['order'] = $order;
 		$data['limit'] = $limit;
+
+		$data['language'] = $this->config->get('config_language');
 
 		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['column_right'] = $this->load->controller('common/column_right');

@@ -2,7 +2,7 @@
 /**
  * @package		OpenCart
  * @author		Daniel Kerr
- * @copyright	Copyright (c) 2005 - 2017, OpenCart, Ltd. (https://www.opencart.com/)
+ * @copyright	Copyright (c) 2005 - 2022, OpenCart, Ltd. (https://www.opencart.com/)
  * @license		https://opensource.org/licenses/GPL-3.0
  * @link		https://www.opencart.com
 */
@@ -19,7 +19,7 @@ class Registry {
 	 *
 	 * https://www.php.net/manual/en/language.oop5.overloading.php#object.get
 	 *
-	 * @param    string $key
+	 * @param    string  $key
 	 *
 	 * @return   object
 	 */
@@ -32,20 +32,21 @@ class Registry {
 	 *
 	 * https://www.php.net/manual/en/language.oop5.overloading.php#object.set
 	 *
-	 * @param    string $key
-	 * @param    object $value
+	 * @param    string  $key
+	 * @param    object  $value
 	 *
-	 * @return    object
+	 * @return   null
 	 */
 	public function __set(string $key, object $value): void {
 		$this->set($key, $value);
 	}
+	
 	/**
      * Get
      *
      * @param	string	$key
 	 * 
-	 * @return	mixed
+	 * @return	object
      */
 	public function get(string $key): object|null {
 		return isset($this->data[$key]) ? $this->data[$key] : null;
@@ -55,7 +56,9 @@ class Registry {
      * Set
      *
      * @param	string	$key
-	 * @param	string	$value
+	 * @param	object	$value
+	 *
+	 * @return void
      */	
 	public function set(string $key, object $value): void {
 		$this->data[$key] = $value;
@@ -79,7 +82,7 @@ class Registry {
 	 *
 	 * @param	string	$key
 	 *
-	 * @return	void
+	 * @return	null
 	 */
 	public function unset(string $key): void {
 		if (isset($this->data[$key])) {

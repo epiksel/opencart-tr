@@ -103,8 +103,8 @@ class Customer extends \Opencart\System\Engine\Controller {
 			'href' => $this->url->link('customer/customer', 'user_token=' . $this->session->data['user_token'] . $url)
 		];
 
-		$data['add'] = $this->url->link('customer/customer|form', 'user_token=' . $this->session->data['user_token'] . $url);
-		$data['delete'] = $this->url->link('customer/customer|delete', 'user_token=' . $this->session->data['user_token']);
+		$data['add'] = $this->url->link('customer/customer.form', 'user_token=' . $this->session->data['user_token'] . $url);
+		$data['delete'] = $this->url->link('customer/customer.delete', 'user_token=' . $this->session->data['user_token']);
 
 		$data['list'] = $this->getList();
 
@@ -238,7 +238,7 @@ class Customer extends \Opencart\System\Engine\Controller {
 			$url .= '&page=' . $this->request->get['page'];
 		}
 
-		$data['action'] = $this->url->link('customer/customer|list', 'user_token=' . $this->session->data['user_token'] . $url);
+		$data['action'] = $this->url->link('customer/customer.list', 'user_token=' . $this->session->data['user_token'] . $url);
 
 		$this->load->model('setting/store');
 
@@ -270,7 +270,7 @@ class Customer extends \Opencart\System\Engine\Controller {
 			$login_info = $this->model_customer_customer->getTotalLoginAttempts($result['email']);
 
 			if ($login_info && $login_info['total'] >= $this->config->get('config_login_attempts')) {
-				$unlock = $this->url->link('customer/customer|unlock', 'user_token=' . $this->session->data['user_token'] . '&email=' . $result['email'] . $url);
+				$unlock = $this->url->link('customer/customer.unlock', 'user_token=' . $this->session->data['user_token'] . '&email=' . $result['email'] . $url);
 			} else {
 				$unlock = '';
 			}
@@ -280,14 +280,14 @@ class Customer extends \Opencart\System\Engine\Controller {
 			$store_data[] = [
 				'store_id' => 0,
 				'name'     => $this->config->get('config_name'),
-				'href'     => $this->url->link('customer/customer|login', 'user_token=' . $this->session->data['user_token'] . '&customer_id=' . $result['customer_id'] . '&store_id=0')
+				'href'     => $this->url->link('customer/customer.login', 'user_token=' . $this->session->data['user_token'] . '&customer_id=' . $result['customer_id'] . '&store_id=0')
 			];
 
 			foreach ($stores as $store) {
 				$store_data[] = [
 					'store_id' => $store['store_id'],
 					'name'     => $store['name'],
-					'href'     => $this->url->link('customer/customer|login', 'user_token=' . $this->session->data['user_token'] . '&customer_id=' . $result['customer_id'] . '&store_id=' . $store['store_id'])
+					'href'     => $this->url->link('customer/customer.login', 'user_token=' . $this->session->data['user_token'] . '&customer_id=' . $result['customer_id'] . '&store_id=' . $store['store_id'])
 				];
 			}
 
@@ -301,7 +301,7 @@ class Customer extends \Opencart\System\Engine\Controller {
 				'date_added'     => date($this->language->get('date_format_short'), strtotime($result['date_added'])),
 				'unlock'         => $unlock,
 				'store'          => $store_data,
-				'edit'           => $this->url->link('customer/customer|form', 'user_token=' . $this->session->data['user_token'] . '&customer_id=' . $result['customer_id'] . $url)
+				'edit'           => $this->url->link('customer/customer.form', 'user_token=' . $this->session->data['user_token'] . '&customer_id=' . $result['customer_id'] . $url)
 			];
 		}
 
@@ -345,11 +345,11 @@ class Customer extends \Opencart\System\Engine\Controller {
 			$url .= '&page=' . $this->request->get['page'];
 		}
 
-		$data['sort_name'] = $this->url->link('customer/customer|list', 'user_token=' . $this->session->data['user_token'] . '&sort=name' . $url);
-		$data['sort_email'] = $this->url->link('customer/customer|list', 'user_token=' . $this->session->data['user_token'] . '&sort=c.email' . $url);
-		$data['sort_customer_group'] = $this->url->link('customer/customer|list', 'user_token=' . $this->session->data['user_token'] . '&sort=customer_group' . $url);
-		$data['sort_status'] = $this->url->link('customer/customer|list', 'user_token=' . $this->session->data['user_token'] . '&sort=c.status' . $url);
-		$data['sort_date_added'] = $this->url->link('customer/customer|list', 'user_token=' . $this->session->data['user_token'] . '&sort=c.date_added' . $url);
+		$data['sort_name'] = $this->url->link('customer/customer.list', 'user_token=' . $this->session->data['user_token'] . '&sort=name' . $url);
+		$data['sort_email'] = $this->url->link('customer/customer.list', 'user_token=' . $this->session->data['user_token'] . '&sort=c.email' . $url);
+		$data['sort_customer_group'] = $this->url->link('customer/customer.list', 'user_token=' . $this->session->data['user_token'] . '&sort=customer_group' . $url);
+		$data['sort_status'] = $this->url->link('customer/customer.list', 'user_token=' . $this->session->data['user_token'] . '&sort=c.status' . $url);
+		$data['sort_date_added'] = $this->url->link('customer/customer.list', 'user_token=' . $this->session->data['user_token'] . '&sort=c.date_added' . $url);
 
 		$url = '';
 
@@ -393,7 +393,7 @@ class Customer extends \Opencart\System\Engine\Controller {
 			'total' => $customer_total,
 			'page'  => $page,
 			'limit' => $this->config->get('config_pagination_admin'),
-			'url'   => $this->url->link('customer/customer|list', 'user_token=' . $this->session->data['user_token'] . $url . '&page={page}')
+			'url'   => $this->url->link('customer/customer.list', 'user_token=' . $this->session->data['user_token'] . $url . '&page={page}')
 		]);
 
 		$data['results'] = sprintf($this->language->get('text_pagination'), ($customer_total) ? (($page - 1) * $this->config->get('config_pagination_admin')) + 1 : 0, ((($page - 1) * $this->config->get('config_pagination_admin')) > ($customer_total - $this->config->get('config_pagination_admin'))) ? $customer_total : ((($page - 1) * $this->config->get('config_pagination_admin')) + $this->config->get('config_pagination_admin')), $customer_total, ceil($customer_total / $this->config->get('config_pagination_admin')));
@@ -470,9 +470,9 @@ class Customer extends \Opencart\System\Engine\Controller {
 			'href' => $this->url->link('customer/customer', 'user_token=' . $this->session->data['user_token'] . $url)
 		];
 
-		$data['save'] = $this->url->link('customer/customer|save', 'user_token=' . $this->session->data['user_token']);
+		$data['save'] = $this->url->link('customer/customer.save', 'user_token=' . $this->session->data['user_token']);
 		$data['back'] = $this->url->link('customer/customer', 'user_token=' . $this->session->data['user_token'] . $url);
-		$data['upload'] = $this->url->link('tool/upload|upload', 'user_token=' . $this->session->data['user_token']);
+		$data['upload'] = $this->url->link('tool/upload.upload', 'user_token=' . $this->session->data['user_token']);
 
 		if (isset($this->request->get['customer_id'])) {
 			$data['orders'] = $this->url->link('sale/order', 'user_token=' . $this->session->data['user_token'] . '&filter_customer_id=' . $this->request->get['customer_id']);
@@ -613,7 +613,6 @@ class Customer extends \Opencart\System\Engine\Controller {
 			$data['addresses'] = [];
 		}
 
-		$data['payment_method'] = $this->getPayment();
 		$data['history'] = $this->getHistory();
 		$data['transaction'] = $this->getTransaction();
 		$data['reward'] = $this->getReward();
@@ -637,15 +636,15 @@ class Customer extends \Opencart\System\Engine\Controller {
 			$json['error']['warning'] = $this->language->get('error_permission');
 		}
 
-		if ((Helper\Utf8\strlen($this->request->post['firstname']) < 1) || (Helper\Utf8\strlen($this->request->post['firstname']) > 32)) {
+		if ((oc_strlen($this->request->post['firstname']) < 1) || (oc_strlen($this->request->post['firstname']) > 32)) {
 			$json['error']['firstname'] = $this->language->get('error_firstname');
 		}
 
-		if ((Helper\Utf8\strlen($this->request->post['lastname']) < 1) || (Helper\Utf8\strlen($this->request->post['lastname']) > 32)) {
+		if ((oc_strlen($this->request->post['lastname']) < 1) || (oc_strlen($this->request->post['lastname']) > 32)) {
 			$json['error']['lastname'] = $this->language->get('error_lastname');
 		}
 
-		if ((Helper\Utf8\strlen($this->request->post['email']) > 96) || !filter_var($this->request->post['email'], FILTER_VALIDATE_EMAIL)) {
+		if ((oc_strlen($this->request->post['email']) > 96) || !filter_var($this->request->post['email'], FILTER_VALIDATE_EMAIL)) {
 			$json['error']['email'] = $this->language->get('error_email');
 		}
 
@@ -663,7 +662,7 @@ class Customer extends \Opencart\System\Engine\Controller {
 			}
 		}
 
-		if ($this->config->get('config_telephone_required') && (Helper\Utf8\strlen($this->request->post['telephone']) < 3) || (Helper\Utf8\strlen($this->request->post['telephone']) > 32)) {
+		if ($this->config->get('config_telephone_required') && (oc_strlen($this->request->post['telephone']) < 3) || (oc_strlen($this->request->post['telephone']) > 32)) {
 			$json['error']['telephone'] = $this->language->get('error_telephone');
 		}
 
@@ -683,7 +682,7 @@ class Customer extends \Opencart\System\Engine\Controller {
 		}
 
 		if ($this->request->post['password'] || (!isset($this->request->post['customer_id']))) {
-			if ((Helper\Utf8\strlen(html_entity_decode($this->request->post['password'], ENT_QUOTES, 'UTF-8')) < 4) || (Helper\Utf8\strlen(html_entity_decode($this->request->post['password'], ENT_QUOTES, 'UTF-8')) > 40)) {
+			if ((oc_strlen(html_entity_decode($this->request->post['password'], ENT_QUOTES, 'UTF-8')) < 4) || (oc_strlen(html_entity_decode($this->request->post['password'], ENT_QUOTES, 'UTF-8')) > 40)) {
 				$json['error']['password'] = $this->language->get('error_password');
 			}
 
@@ -694,19 +693,19 @@ class Customer extends \Opencart\System\Engine\Controller {
 
 		if (isset($this->request->post['address'])) {
 			foreach ($this->request->post['address'] as $key => $value) {
-				if ((Helper\Utf8\strlen($value['firstname']) < 1) || (Helper\Utf8\strlen($value['firstname']) > 32)) {
+				if ((oc_strlen($value['firstname']) < 1) || (oc_strlen($value['firstname']) > 32)) {
 					$json['error']['address_' . $key . '_firstname'] = $this->language->get('error_firstname');
 				}
 
-				if ((\Opencart\System\Helper\Utf8\strlen($value['lastname']) < 1) || (\Opencart\System\Helper\Utf8\strlen($value['lastname']) > 32)) {
+				if ((oc_strlen($value['lastname']) < 1) || (oc_strlen($value['lastname']) > 32)) {
 					$json['error']['address_' . $key . '_lastname'] = $this->language->get('error_lastname');
 				}
 
-				if ((\Opencart\System\Helper\Utf8\strlen($value['address_1']) < 3) || (\Opencart\System\Helper\Utf8\strlen($value['address_1']) > 128)) {
+				if ((oc_strlen($value['address_1']) < 3) || (oc_strlen($value['address_1']) > 128)) {
 					$json['error']['address_' . $key . '_address_1'] = $this->language->get('error_address_1');
 				}
 
-				if ((\Opencart\System\Helper\Utf8\strlen($value['city']) < 2) || (\Opencart\System\Helper\Utf8\strlen($value['city']) > 128)) {
+				if ((oc_strlen($value['city']) < 2) || (oc_strlen($value['city']) > 128)) {
 					$json['error']['address_' . $key . '_city'] = $this->language->get('error_city');
 				}
 
@@ -718,7 +717,7 @@ class Customer extends \Opencart\System\Engine\Controller {
 
 					$country_info = $this->model_localisation_country->getCountry($value['country_id']);
 
-					if ($country_info && $country_info['postcode_required'] && (Helper\Utf8\strlen($value['postcode']) < 2 || Helper\Utf8\strlen($value['postcode']) > 10)) {
+					if ($country_info && $country_info['postcode_required'] && (oc_strlen($value['postcode']) < 2 || oc_strlen($value['postcode']) > 10)) {
 						$json['error']['address_' . $key . '_postcode'] = $this->language->get('error_postcode');
 					}
 				}
@@ -773,7 +772,7 @@ class Customer extends \Opencart\System\Engine\Controller {
 		if (!$json) {
 			$this->load->model('customer/customer');
 
-			$this->model_customer_customer->deleteLoginAttempts($this->request->get['email']);
+			$this->model_customer_customer->deleteAuthorizeAttempts($this->request->get['email']);
 
 			$json['success'] = $this->language->get('text_success');
 		}
@@ -824,7 +823,7 @@ class Customer extends \Opencart\System\Engine\Controller {
 
 		if ($customer_info) {
 			// Create token to login with
-			$token = Helper\General\token(64);
+			$token = oc_token(64);
 
 			$this->model_customer_customer->editToken($customer_id, $token);
 
@@ -839,9 +838,9 @@ class Customer extends \Opencart\System\Engine\Controller {
 			$store_info = $this->model_setting_store->getStore($store_id);
 
 			if ($store_info) {
-				$this->response->redirect($store_info['url'] . 'index.php?route=account/login|token&email=' . urlencode($customer_info['email']). '&login_token=' . $token);
+				$this->response->redirect($store_info['url'] . 'index.php?route=account/login.token&email=' . urlencode($customer_info['email']). '&login_token=' . $token);
 			} else {
-				$this->response->redirect(HTTP_CATALOG . 'index.php?route=account/login|token&email=' . urlencode($customer_info['email']) . '&login_token=' . $token);
+				$this->response->redirect(HTTP_CATALOG . 'index.php?route=account/login.token&email=' . urlencode($customer_info['email']) . '&login_token=' . $token);
 			}
 
 			return null;
@@ -853,7 +852,7 @@ class Customer extends \Opencart\System\Engine\Controller {
 	public function payment(): void {
 		$this->load->language('customer/customer');
 
-		$this->response->setOutput($this->getPayment());
+		//$this->response->setOutput($this->getPayment());
 	}
 
 	private function getPayment(): string {
@@ -863,17 +862,19 @@ class Customer extends \Opencart\System\Engine\Controller {
 			$customer_id = 0;
 		}
 
-		if (isset($this->request->get['page'])) {
+		if (isset($this->request->get['page']) && $this->request->get['route'] == 'customer/customer.payment') {
 			$page = (int)$this->request->get['page'];
 		} else {
 			$page = 1;
 		}
 
+		$limit = 10;
+
 		$data['payment_methods'] = [];
 
 		$this->load->model('customer/customer');
 
-		$results = $this->model_customer_customer->getPaymentMethods($customer_id, ($page - 1) * 10, 10);
+		$results = $this->model_customer_customer->getPaymentMethods($customer_id, ($page - 1) * $limit, $limit);
 
 		foreach ($results as $result) {
 			if (isset($result['image'])) {
@@ -889,7 +890,7 @@ class Customer extends \Opencart\System\Engine\Controller {
 				'type'                => $result['type'],
 				'status'              => $result['status'],
 				'date_expire'         => date($this->language->get('date_format_short'), strtotime($result['date_expire'])),
-				'delete'              => $this->url->link('customer/customer|deletePayment', 'user_token=' . $this->session->data['user_token'] . '&customer_payment_id=' . $result['customer_payment_id'])
+				'delete'              => $this->url->link('customer/customer.deletePayment', 'user_token=' . $this->session->data['user_token'] . '&customer_payment_id=' . $result['customer_payment_id'])
 			];
 		}
 
@@ -898,11 +899,11 @@ class Customer extends \Opencart\System\Engine\Controller {
 		$data['pagination'] = $this->load->controller('common/pagination', [
 			'total' => $payment_total,
 			'page'  => $page,
-			'limit' => 10,
-			'url'   => $this->url->link('customer/customer|payment', 'user_token=' . $this->session->data['user_token'] . '&customer_id=' . $customer_id . '&page={page}')
+			'limit' => $limit,
+			'url'   => $this->url->link('customer/customer.payment', 'user_token=' . $this->session->data['user_token'] . '&customer_id=' . $customer_id . '&page={page}')
 		]);
 
-		$data['results'] = sprintf($this->language->get('text_pagination'), ($payment_total) ? (($page - 1) * 10) + 1 : 0, ((($page - 1) * 10) > ($payment_total - 10)) ? $payment_total : ((($page - 1) * 10) + 10), $payment_total, ceil($payment_total / 10));
+		$data['results'] = sprintf($this->language->get('text_pagination'), ($payment_total) ? (($page - 1) * $limit) + 1 : 0, ((($page - 1) * $limit) > ($payment_total - $limit)) ? $payment_total : ((($page - 1) * $limit) + $limit), $payment_total, ceil($payment_total / $limit));
 
 		return $this->load->view('customer/customer_payment', $data);
 	}
@@ -947,17 +948,19 @@ class Customer extends \Opencart\System\Engine\Controller {
 			$customer_id = 0;
 		}
 
-		if (isset($this->request->get['page'])) {
+		if (isset($this->request->get['page']) && $this->request->get['route'] == 'customer/customer.history') {
 			$page = (int)$this->request->get['page'];
 		} else {
 			$page = 1;
 		}
 
+		$limit = 10;
+
 		$data['histories'] = [];
 
 		$this->load->model('customer/customer');
 
-		$results = $this->model_customer_customer->getHistories($customer_id, ($page - 1) * 10, 10);
+		$results = $this->model_customer_customer->getHistories($customer_id, ($page - 1) * $limit, $limit);
 
 		foreach ($results as $result) {
 			$data['histories'][] = [
@@ -971,11 +974,11 @@ class Customer extends \Opencart\System\Engine\Controller {
 		$data['pagination'] = $this->load->controller('common/pagination', [
 			'total' => $history_total,
 			'page'  => $page,
-			'limit' => 10,
-			'url'   => $this->url->link('customer/customer|history', 'user_token=' . $this->session->data['user_token'] . '&customer_id=' . $customer_id . '&page={page}')
+			'limit' => $limit,
+			'url'   => $this->url->link('customer/customer.history', 'user_token=' . $this->session->data['user_token'] . '&customer_id=' . $customer_id . '&page={page}')
 		]);
 
-		$data['results'] = sprintf($this->language->get('text_pagination'), ($history_total) ? (($page - 1) * 10) + 1 : 0, ((($page - 1) * 10) > ($history_total - 10)) ? $history_total : ((($page - 1) * 10) + 10), $history_total, ceil($history_total / 10));
+		$data['results'] = sprintf($this->language->get('text_pagination'), ($history_total) ? (($page - 1) * $limit) + 1 : 0, ((($page - 1) * $limit) > ($history_total - $limit)) ? $history_total : ((($page - 1) * $limit) + $limit), $history_total, ceil($history_total / $limit));
 
 		return $this->load->view('customer/customer_history', $data);
 	}
@@ -1020,17 +1023,19 @@ class Customer extends \Opencart\System\Engine\Controller {
 			$customer_id = 0;
 		}
 
-		if (isset($this->request->get['page'])) {
+		if (isset($this->request->get['page']) && $this->request->get['route'] == 'customer/customer.transaction') {
 			$page = (int)$this->request->get['page'];
 		} else {
 			$page = 1;
 		}
 
+		$limit = 10;
+
 		$data['transactions'] = [];
 
 		$this->load->model('customer/customer');
 
-		$results = $this->model_customer_customer->getTransactions($customer_id, ($page - 1) * 10, 10);
+		$results = $this->model_customer_customer->getTransactions($customer_id, ($page - 1) * $limit, $limit);
 
 		foreach ($results as $result) {
 			$data['transactions'][] = [
@@ -1047,11 +1052,11 @@ class Customer extends \Opencart\System\Engine\Controller {
 		$data['pagination'] = $this->load->controller('common/pagination', [
 			'total' => $transaction_total,
 			'page'  => $page,
-			'limit' => 10,
-			'url'   => $this->url->link('customer/customer|transaction', 'user_token=' . $this->session->data['user_token'] . '&customer_id=' . $customer_id . '&page={page}')
+			'limit' => $limit,
+			'url'   => $this->url->link('customer/customer.transaction', 'user_token=' . $this->session->data['user_token'] . '&customer_id=' . $customer_id . '&page={page}')
 		]);
 
-		$data['results'] = sprintf($this->language->get('text_pagination'), ($transaction_total) ? (($page - 1) * 10) + 1 : 0, ((($page - 1) * 10) > ($transaction_total - 10)) ? $transaction_total : ((($page - 1) * 10) + 10), $transaction_total, ceil($transaction_total / 10));
+		$data['results'] = sprintf($this->language->get('text_pagination'), ($transaction_total) ? (($page - 1) * $limit) + 1 : 0, ((($page - 1) * $limit) > ($transaction_total - $limit)) ? $transaction_total : ((($page - 1) * $limit) + $limit), $transaction_total, ceil($transaction_total / $limit));
 
 		return $this->load->view('customer/customer_transaction', $data);
 	}
@@ -1104,17 +1109,19 @@ class Customer extends \Opencart\System\Engine\Controller {
 			$customer_id = 0;
 		}
 
-		if (isset($this->request->get['page'])) {
+		if (isset($this->request->get['page']) && $this->request->get['route'] == 'customer/customer.reward') {
 			$page = (int)$this->request->get['page'];
 		} else {
 			$page = 1;
 		}
 
+		$limit = 10;
+
 		$data['rewards'] = [];
 
 		$this->load->model('customer/customer');
 
-		$results = $this->model_customer_customer->getRewards($customer_id, ($page - 1) * 10, 10);
+		$results = $this->model_customer_customer->getRewards($customer_id, ($page - 1) * $limit, $limit);
 
 		foreach ($results as $result) {
 			$data['rewards'][] = [
@@ -1131,11 +1138,11 @@ class Customer extends \Opencart\System\Engine\Controller {
 		$data['pagination'] = $this->load->controller('common/pagination', [
 			'total' => $reward_total,
 			'page'  => $page,
-			'limit' => 10,
-			'url'   => $this->url->link('customer/customer|reward', 'user_token=' . $this->session->data['user_token'] . '&customer_id=' . $customer_id . '&page={page}')
+			'limit' => $limit,
+			'url'   => $this->url->link('customer/customer.reward', 'user_token=' . $this->session->data['user_token'] . '&customer_id=' . $customer_id . '&page={page}')
 		]);
 
-		$data['results'] = sprintf($this->language->get('text_pagination'), ($reward_total) ? (($page - 1) * 10) + 1 : 0, ((($page - 1) * 10) > ($reward_total - 10)) ? $reward_total : ((($page - 1) * 10) + 10), $reward_total, ceil($reward_total / 10));
+		$data['results'] = sprintf($this->language->get('text_pagination'), ($reward_total) ? (($page - 1) * $limit) + 1 : 0, ((($page - 1) * $limit) > ($reward_total - $limit)) ? $reward_total : ((($page - 1) * $limit) + $limit), $reward_total, ceil($reward_total / $limit));
 
 		return $this->load->view('customer/customer_reward', $data);
 	}
@@ -1188,18 +1195,20 @@ class Customer extends \Opencart\System\Engine\Controller {
 			$customer_id = 0;
 		}
 
-		if (isset($this->request->get['page'])) {
+		if (isset($this->request->get['page']) && $this->request->get['route'] == 'customer/customer.ip') {
 			$page = (int)$this->request->get['page'];
 		} else {
 			$page = 1;
 		}
+
+		$limit = 10;
 
 		$data['ips'] = [];
 
 		$this->load->model('customer/customer');
 		$this->load->model('setting/store');
 
-		$results = $this->model_customer_customer->getIps($customer_id, ($page - 1) * 10, 10);
+		$results = $this->model_customer_customer->getIps($customer_id, ($page - 1) * $limit, $limit);
 
 		foreach ($results as $result) {
 			$store_info = $this->model_setting_store->getStore($result['store_id']);
@@ -1227,11 +1236,11 @@ class Customer extends \Opencart\System\Engine\Controller {
 		$data['pagination'] = $this->load->controller('common/pagination', [
 			'total' => $ip_total,
 			'page'  => $page,
-			'limit' => 10,
-			'url'   => $this->url->link('customer/customer|ip', 'user_token=' . $this->session->data['user_token'] . '&customer_id=' . $customer_id . '&page={page}')
+			'limit' => $limit,
+			'url'   => $this->url->link('customer/customer.ip', 'user_token=' . $this->session->data['user_token'] . '&customer_id=' . $customer_id . '&page={page}')
 		]);
 
-		$data['results'] = sprintf($this->language->get('text_pagination'), ($ip_total) ? (($page - 1) * 10) + 1 : 0, ((($page - 1) * 10) > ($ip_total - 10)) ? $ip_total : ((($page - 1) * 10) + 10), $ip_total, ceil($ip_total / 10));
+		$data['results'] = sprintf($this->language->get('text_pagination'), ($ip_total) ? (($page - 1) * $limit) + 1 : 0, ((($page - 1) * $limit) > ($ip_total - $limit)) ? $ip_total : ((($page - 1) * $limit) + $limit), $ip_total, ceil($ip_total / $limit));
 
 		return $this->load->view('customer/customer_ip', $data);
 	}

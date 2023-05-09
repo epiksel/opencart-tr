@@ -1,6 +1,5 @@
 <?php
 namespace Opencart\Admin\Controller\Common;
-use \Opencart\System\Helper as Helper;
 class Login extends \Opencart\System\Engine\Controller {
 	public function index(): void {
 		$this->load->language('common/login');
@@ -32,9 +31,9 @@ class Login extends \Opencart\System\Engine\Controller {
 		}
 
 		// Create a login token to prevent brute force attacks
-		$this->session->data['login_token'] = Helper\General\token(32);
+		$this->session->data['login_token'] = oc_token(32);
 
-		$data['login'] = $this->url->link('common/login|login', 'login_token=' . $this->session->data['login_token'], true);
+		$data['login'] = $this->url->link('common/login.login', 'login_token=' . $this->session->data['login_token'], true);
 
 		$data['forgotten'] = $this->url->link('common/forgotten');
 
@@ -96,10 +95,19 @@ class Login extends \Opencart\System\Engine\Controller {
 		}
 
 		if (!$json) {
-			$this->session->data['user_token'] = Helper\General\token(32);
+			$this->session->data['user_token'] = oc_token(32);
 
 			// Remove login token so it cannot be used again.
 			unset($this->session->data['login_token']);
+
+			$login_data = [
+				'ip'         => $this->request->server['REMOTE_ADDR'],
+				'user_agent' => $this->request->server['HTTP_USER_AGENT']
+			];
+
+			$this->load->model('user/user');
+
+			$this->model_user_user->addLogin($this->user->getId(), $login_data);
 
 			if ($this->request->post['redirect'] && (strpos($this->request->post['redirect'], HTTP_SERVER) === 0)) {
 				$json['redirect'] = str_replace('&amp;', '&',  $this->request->post['redirect'] . '&user_token=' . $this->session->data['user_token']);

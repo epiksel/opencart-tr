@@ -1,6 +1,5 @@
 <?php
 namespace Opencart\Admin\Controller\Tool;
-use \Opencart\System\Helper as Helper;
 class Notification extends \Opencart\System\Engine\Controller {
 	public function index(): void {
 		$this->load->language('tool/notification');
@@ -63,15 +62,83 @@ class Notification extends \Opencart\System\Engine\Controller {
 		$results = $this->model_tool_notification->getNotifications($filter_data);
 
 		foreach ($results as $result) {
-			[$code, $date_added] = date_added($result['date_added']);
+			$second = time() - strtotime($result['date_added']);
+
+			if ($second < 10) {
+				$code = 'second';
+				$date_added = $second;
+			} elseif ($second) {
+				$code = 'seconds';
+				$date_added = $second;
+			}
+
+			$minute = floor($second / 60);
+
+			if ($minute == 1) {
+				$code = 'minute';
+				$date_added = $minute;
+			} elseif ($minute) {
+				$code = 'minutes';
+				$date_added = $minute;
+			}
+
+			$hour = floor($minute / 60);
+
+			if ($hour == 1) {
+				$code = 'hour';
+				$date_added = $hour;
+			} elseif ($hour) {
+				$code = 'hours';
+				$date_added = $hour;
+			}
+
+			$day = floor($hour / 24);
+
+			if ($day == 1) {
+				$code = 'day';
+				$date_added = $day;
+			} elseif ($day) {
+				$code = 'days';
+				$date_added = $day;
+			}
+
+			$week = floor($day / 7);
+
+			if ($week == 1) {
+				$code = 'week';
+				$date_added = $week;
+			} elseif ($week) {
+				$code = 'weeks';
+				$date_added = $week;
+			}
+
+			$month = floor($week / 4);
+
+			if ($month == 1) {
+				$code = 'month';
+				$date_added = $month;
+			} elseif ($month) {
+				$code = 'months';
+				$date_added = $month;
+			}
+
+			$year = floor($week / 52.1429);
+
+			if ($year == 1) {
+				$code = 'year';
+				$date_added = $year;
+			} elseif ($year) {
+				$code = 'years';
+				$date_added = $year;
+			}
 
 			$data['notifications'][] = [
 				'notification_id' => $result['notification_id'],
 				'title'           => $result['title'],
 				'status'          => $result['status'],
 				'date_added'      => sprintf($this->language->get('text_' . $code . '_ago'), $date_added),
-				'view'            => $this->url->link('tool/notification|info', 'user_token=' . $this->session->data['user_token'] . '&notification_id=' . $result['notification_id'] . $url),
-				'delete'          => $this->url->link('tool/notification|delete', 'user_token=' . $this->session->data['user_token'] . '&notification_id=' . $result['notification_id'] . $url)
+				'view'            => $this->url->link('tool/notification.info', 'user_token=' . $this->session->data['user_token'] . '&notification_id=' . $result['notification_id'] . $url),
+				'delete'          => $this->url->link('tool/notification.delete', 'user_token=' . $this->session->data['user_token'] . '&notification_id=' . $result['notification_id'] . $url)
 			];
 		}
 
@@ -79,7 +146,7 @@ class Notification extends \Opencart\System\Engine\Controller {
 			'total' => $notification_total,
 			'page'  => $page,
 			'limit' => $this->config->get('config_pagination_admin'),
-			'url'   => $this->url->link('tool/notification|list', 'user_token=' . $this->session->data['user_token'] . '&page={page}')
+			'url'   => $this->url->link('tool/notification.list', 'user_token=' . $this->session->data['user_token'] . '&page={page}')
 		]);
 
 		$data['results'] = sprintf($this->language->get('text_pagination'), ($notification_total) ? (($page - 1) * $this->config->get('config_pagination_admin')) + 1 : 0, ((($page - 1) * $this->config->get('config_pagination_admin')) > ($notification_total - $this->config->get('config_pagination_admin'))) ? $notification_total : ((($page - 1) * $this->config->get('config_pagination_admin')) + $this->config->get('config_pagination_admin')), $notification_total, ceil($notification_total / $this->config->get('config_pagination_admin')));
@@ -103,7 +170,7 @@ class Notification extends \Opencart\System\Engine\Controller {
 
 			$data['title'] = $notification_info['title'];
 
-			$data['text'] = Helper\General\bbcode_decode($notification_info['text']);
+			$data['text'] = oc_bbcode_decode($notification_info['text']);
 
 			$this->model_tool_notification->editStatus($notification_id, 1);
 

@@ -1,4 +1,4 @@
-<div class="d-inline-block pt-2 pd-2 w-100 text-end">
+<div class="text-end">
   <button type="button" id="button-confirm" class="btn btn-primary">{{ button_confirm }}</button>
 </div>
 <script type="text/javascript"><!--
@@ -6,13 +6,13 @@ $('#button-confirm').on('click', function () {
     var element = this;
 
     $.ajax({
-        url: 'index.php?route=extension/opencart/payment/cod|confirm&language={{ language }}',
+        url: 'index.php?route=extension/opencart/payment/cod.confirm&language={{ language }}',
         dataType: 'json',
         beforeSend: function () {
-            $(element).prop('disabled', true).addClass('loading');
+            $(element).button('loading');
         },
         complete: function () {
-            $(element).prop('disabled', false).removeClass('loading');
+            $(element).button('reset');
         },
         success: function (json) {
             if (json['error']) {

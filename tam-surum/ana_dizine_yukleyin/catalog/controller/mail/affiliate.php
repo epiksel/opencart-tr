@@ -1,6 +1,5 @@
 <?php
 namespace Opencart\Catalog\Controller\Mail;
-use \Opencart\System\Helper as Helper;
 class Affiliate extends \Opencart\System\Engine\Controller {
 	public function index(string &$route, array &$args, mixed &$output): void {
 		$this->load->language('mail/affiliate');
@@ -33,13 +32,16 @@ class Affiliate extends \Opencart\System\Engine\Controller {
 		$data['store_url'] = $this->config->get('config_url');
 
 		if ($this->config->get('config_mail_engine')) {
-			$mail = new \Opencart\System\Library\Mail($this->config->get('config_mail_engine'));
-			$mail->parameter = $this->config->get('config_mail_parameter');
-			$mail->smtp_hostname = $this->config->get('config_mail_smtp_hostname');
-			$mail->smtp_username = $this->config->get('config_mail_smtp_username');
-			$mail->smtp_password = html_entity_decode($this->config->get('config_mail_smtp_password'), ENT_QUOTES, 'UTF-8');
-			$mail->smtp_port = $this->config->get('config_mail_smtp_port');
-			$mail->smtp_timeout = $this->config->get('config_mail_smtp_timeout');
+			$mail_option = [
+				'parameter'     => $this->config->get('config_mail_parameter'),
+				'smtp_hostname' => $this->config->get('config_mail_smtp_hostname'),
+				'smtp_username' => $this->config->get('config_mail_smtp_username'),
+				'smtp_password' => html_entity_decode($this->config->get('config_mail_smtp_password'), ENT_QUOTES, 'UTF-8'),
+				'smtp_port'     => $this->config->get('config_mail_smtp_port'),
+				'smtp_timeout'  => $this->config->get('config_mail_smtp_timeout')
+			];
+
+			$mail = new \Opencart\System\Library\Mail($this->config->get('config_mail_engine'), $mail_option);
 
 			if ($this->customer->isLogged()) {
 				$mail->setTo($this->customer->getEmail());
@@ -97,14 +99,16 @@ class Affiliate extends \Opencart\System\Engine\Controller {
 			$data['store_url'] = $this->config->get('config_url');
 
 			if ($this->config->get('config_mail_engine')) {
-				$mail = new \Opencart\System\Library\Mail($this->config->get('config_mail_engine'));
-				$mail->parameter = $this->config->get('config_mail_parameter');
-				$mail->smtp_hostname = $this->config->get('config_mail_smtp_hostname');
-				$mail->smtp_username = $this->config->get('config_mail_smtp_username');
-				$mail->smtp_password = html_entity_decode($this->config->get('config_mail_smtp_password'), ENT_QUOTES, 'UTF-8');
-				$mail->smtp_port = $this->config->get('config_mail_smtp_port');
-				$mail->smtp_timeout = $this->config->get('config_mail_smtp_timeout');
+				$mail_option = [
+					'parameter'     => $this->config->get('config_mail_parameter'),
+					'smtp_hostname' => $this->config->get('config_mail_smtp_hostname'),
+					'smtp_username' => $this->config->get('config_mail_smtp_username'),
+					'smtp_password' => html_entity_decode($this->config->get('config_mail_smtp_password'), ENT_QUOTES, 'UTF-8'),
+					'smtp_port'     => $this->config->get('config_mail_smtp_port'),
+					'smtp_timeout'  => $this->config->get('config_mail_smtp_timeout')
+				];
 
+				$mail = new \Opencart\System\Library\Mail($this->config->get('config_mail_engine'), $mail_option);
 				$mail->setTo($this->config->get('config_email'));
 				$mail->setFrom($this->config->get('config_email'));
 				$mail->setSender($store_name);
@@ -116,7 +120,7 @@ class Affiliate extends \Opencart\System\Engine\Controller {
 				$emails = explode(',', $this->config->get('config_mail_alert_email'));
 
 				foreach ($emails as $email) {
-					if (Helper\Utf8\strlen($email) > 0 && filter_var($email, FILTER_VALIDATE_EMAIL)) {
+					if (oc_strlen($email) > 0 && filter_var($email, FILTER_VALIDATE_EMAIL)) {
 						$mail->setTo(trim($email));
 						$mail->send();
 					}

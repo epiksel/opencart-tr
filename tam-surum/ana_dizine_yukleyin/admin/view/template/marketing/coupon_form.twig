@@ -47,12 +47,12 @@
                 <div class="col-sm-10">
                   <select name="type" id="input-type" class="form-select">
                     {% if type == 'P' %}
-                      <option value="P" selected="selected">{{ text_percent }}</option>
+                      <option value="P" selected>{{ text_percent }}</option>
                     {% else %}
                       <option value="P">{{ text_percent }}</option>
                     {% endif %}
                     {% if type == 'F' %}
-                      <option value="F" selected="selected">{{ text_amount }}</option>
+                      <option value="F" selected>{{ text_amount }}</option>
                     {% else %}
                       <option value="F">{{ text_amount }}</option>
                     {% endif %}
@@ -95,8 +95,8 @@
               <div class="row mb-3">
                 <label class="col-sm-2 col-form-label">{{ entry_product }}</label>
                 <div class="col-sm-10">
-                  <input type="text" name="product" value="" placeholder="{{ entry_product }}" id="input-product" list="list-product" class="form-control"/>
-                  <datalist id="list-product"></datalist>
+                  <input type="text" name="product" value="" placeholder="{{ entry_product }}" id="input-product" data-oc-target="autocomplete-product" class="form-control" autocomplete="off"/>
+                  <ul id="autocomplete-product" class="dropdown-menu"></ul>
                   <div class="form-control p-0" style="height: 150px; overflow: auto;">
                     <table id="coupon-product" class="table table-sm m-0">
                       <tbody>
@@ -115,8 +115,8 @@
               <div class="row mb-3">
                 <label class="col-sm-2 col-form-label">{{ entry_category }}</label>
                 <div class="col-sm-10">
-                  <input type="text" name="category" value="" placeholder="{{ entry_category }}" id="input-category" list="list-category" class="form-control"/>
-                  <datalist id="list-category"></datalist>
+                  <input type="text" name="category" value="" placeholder="{{ entry_category }}" id="input-category" data-oc-target="autocomplete-category" class="form-control" autocomplete="off"/>
+                  <ul id="autocomplete-category" class="dropdown-menu"></ul>
                   <div class="form-control p-0" style="height: 150px; overflow: auto;">
                     <table id="coupon-category" class="table table-sm m-0">
                       <tbody>
@@ -191,7 +191,7 @@
 $('#input-product').autocomplete({
     'source': function (request, response) {
         $.ajax({
-            url: 'index.php?route=catalog/product|autocomplete&user_token={{ user_token }}&filter_name=' + encodeURIComponent(request),
+            url: 'index.php?route=catalog/product.autocomplete&user_token={{ user_token }}&filter_name=' + encodeURIComponent(request),
             dataType: 'json',
             success: function (json) {
                 response($.map(json, function (item) {
@@ -225,7 +225,7 @@ $('#coupon-product').on('click', '.btn', function () {
 $('#input-category').autocomplete({
     'source': function (request, response) {
         $.ajax({
-            url: 'index.php?route=catalog/category|autocomplete&user_token={{ user_token }}&filter_name=' + encodeURIComponent(request),
+            url: 'index.php?route=catalog/category.autocomplete&user_token={{ user_token }}&filter_name=' + encodeURIComponent(request),
             dataType: 'json',
             success: function (json) {
                 response($.map(json, function (item) {

@@ -24,12 +24,13 @@
           <div class="card-body">
             <div class="mb-3">
               <label for="input-name" class="form-label">{{ entry_name }}</label>
-              <input type="text" name="filter_name" value="{{ filter_name }}" placeholder="{{ entry_name }}" id="input-name" list="list-name" class="form-control"/>
-              <datalist id="list-name"></datalist>
+              <input type="text" name="filter_name" value="{{ filter_name }}" placeholder="{{ entry_name }}" id="input-name" data-oc-target="autocomplete-name" class="form-control" autocomplete="off"/>
+              <ul id="autocomplete-name" class="dropdown-menu"></ul>
             </div>
             <div class="mb-3">
-              <label for="input-model" class="form-label">{{ entry_model }}</label> <input type="text" name="filter_model" value="{{ filter_model }}" placeholder="{{ entry_model }}" id="input-model" list="list-model" class="form-control"/>
-              <datalist id="list-model"></datalist>
+              <label for="input-model" class="form-label">{{ entry_model }}</label>
+              <input type="text" name="filter_model" value="{{ filter_model }}" placeholder="{{ entry_model }}" id="input-model" data-oc-target="autocomplete-model" class="form-control" autocomplete="off"/>
+              <ul id="autocomplete-model" class="dropdown-menu"></ul>
             </div>
             <div class="mb-3">
               <label for="input-price" class="form-label">{{ entry_price }}</label> <input type="text" name="filter_price" value="{{ filter_price }}" placeholder="{{ entry_price }}" id="input-price" class="form-control"/>
@@ -38,8 +39,7 @@
               <label for="input-quantity" class="form-label">{{ entry_quantity }}</label> <input type="text" name="filter_quantity" value="{{ filter_quantity }}" placeholder="{{ entry_quantity }}" id="input-quantity" class="form-control"/>
             </div>
             <div class="mb-3">
-              <label for="input-status" class="form-label">{{ entry_status }}</label>
-              <select name="filter_status" id="input-status" class="form-select">
+              <label for="input-status" class="form-label">{{ entry_status }}</label> <select name="filter_status" id="input-status" class="form-select">
                 <option value=""></option>
                 <option value="1"{% if filter_status == '1' %} selected{% endif %}>{{ text_enabled }}</option>
                 <option value="0"{% if filter_status == '0' %} selected{% endif %}>{{ text_disabled }}</option>
@@ -100,13 +100,13 @@ $('#button-filter').on('click', function () {
         url += '&filter_status=' + filter_status;
     }
 
-    $('#product').load('index.php?route=catalog/product|list&user_token={{ user_token }}' + url);
+    $('#product').load('index.php?route=catalog/product.list&user_token={{ user_token }}' + url);
 });
 
 $('#input-name').autocomplete({
     'source': function (request, response) {
         $.ajax({
-            url: 'index.php?route=catalog/product|autocomplete&user_token={{ user_token }}&filter_name=' + encodeURIComponent(request),
+            url: 'index.php?route=catalog/product.autocomplete&user_token={{ user_token }}&filter_name=' + encodeURIComponent(request),
             dataType: 'json',
             success: function (json) {
                 response($.map(json, function (item) {
@@ -119,14 +119,14 @@ $('#input-name').autocomplete({
         });
     },
     'select': function (item) {
-
+        $('#input-name').val(item['label']);
     }
 });
 
 $('#input-model').autocomplete({
     'source': function (request, response) {
         $.ajax({
-            url: 'index.php?route=catalog/product|autocomplete&user_token={{ user_token }}&filter_model=' + encodeURIComponent(request),
+            url: 'index.php?route=catalog/product.autocomplete&user_token={{ user_token }}&filter_model=' + encodeURIComponent(request),
             dataType: 'json',
             success: function (json) {
                 response($.map(json, function (item) {
@@ -139,7 +139,7 @@ $('#input-model').autocomplete({
         });
     },
     'select': function (item) {
-
+        $('#input-model').val(item['label']);
     }
 });
 //--></script>

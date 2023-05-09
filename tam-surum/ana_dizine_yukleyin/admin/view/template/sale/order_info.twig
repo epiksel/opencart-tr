@@ -39,9 +39,9 @@
                 <div class="lead"><strong>{{ text_customer }}</strong>
                   <br/>
                   {% if customer_id %}
-                    <div id="customer-value"><a href="index.php?route=customer/customer|form&user_token={{ user_token }}&customer_id={{ customer_id }}" target="_blank">{{ customer }}</a></div>
+                    <div id="customer-value"><a href="index.php?route=customer/customer.form&user_token={{ user_token }}&customer_id={{ customer_id }}" target="_blank">{{ firstname }} {{ lastname }}</a></div>
                   {% else %}
-                    <div id="customer-value">{{ customer }}</div>
+                    <div id="customer-value">{{ firstname }} {{ lastname }}</div>
                   {% endif %}
                 </div>
               </div>
@@ -73,7 +73,7 @@
           <tbody id="order-products">
             {% for order_product in order_products %}
               <tr>
-                <td class="text-start"><a href="index.php?route=catalog/product|form&user_token={{ user_token }}&product_id={{ order_product.product_id }}" target="_blank">{{ order_product.name }}</a>
+                <td class="text-start"><a href="index.php?route=catalog/product.form&user_token={{ user_token }}&product_id={{ order_product.product_id }}" target="_blank">{{ order_product.name }}</a>
 
                   {% if order_product.option %}
                     {% for option in order_product.option %}
@@ -84,12 +84,12 @@
 
                   {% if order_product.reward %}
                     <br/>
-                    <small> - {{ text_points }} {{ order_product.reward }}</small>
+                    <small> - {{ text_points }}: {{ order_product.reward }}</small>
                   {% endif %}
 
                   {% if order_product.subscription %}
                     <br/>
-                    <small> - {{ text_subscription }}: {{ subscription.description }}</small>
+                    <small> - {{ text_subscription }}: <a href="{{ order_product.subscription }}" target="_blank">{{ order_product.subscription_description }}</a></small>
                   {% endif %}
 
                 </td>
@@ -122,13 +122,11 @@
                 </td>
               </tr>
             {% endfor %}
-
             {% if not order_products and not order_vouchers %}
               <tr>
                 <td colspan="6" class="text-center">{{ text_no_results }}</td>
               </tr>
             {% endif %}
-
           </tbody>
           <tfoot>
             <tr>
@@ -146,7 +144,7 @@
                 <div class="form-floating">
                   <select name="store_id" id="input-store" class="form-select">
                     {% for store in stores %}
-                      <option value="{{ store.store_id }}"{% if store.store_id == store_id %} selected="selected"{% endif %}>{{ store.name }}</option>
+                      <option value="{{ store.store_id }}"{% if store.store_id == store_id %} selected{% endif %}>{{ store.name }}</option>
                     {% endfor %}
                   </select> <label for="input-store">{{ entry_store }}</label>
                 </div>
@@ -158,7 +156,7 @@
                 <div class="form-floating">
                   <select name="language" id="input-language" class="form-select">
                     {% for language in languages %}
-                      <option value="{{ language.code }}"{% if language.code == language_code %} selected="selected"{% endif %}>{{ language.name }}</option>
+                      <option value="{{ language.code }}"{% if language.code == language_code %} selected{% endif %}>{{ language.name }}</option>
                     {% endfor %}
                   </select> <label for="input-language">{{ entry_language }}</label>
                 </div>
@@ -170,7 +168,7 @@
                 <div class="form-floating">
                   <select name="currency" id="input-currency" class="form-select">
                     {% for currency in currencies %}
-                      <option value="{{ currency.code }}"{% if currency.code == currency_code %} selected="selected"{% endif %}>{{ currency.title }}</option>
+                      <option value="{{ currency.code }}"{% if currency.code == currency_code %} selected{% endif %}>{{ currency.title }}</option>
                     {% endfor %}
                   </select> <label for="input-currency">{{ entry_currency }}</label>
                 </div>
@@ -180,8 +178,7 @@
             <div class="col">
               <form id="form-coupon" class="mb-3">
                 <div class="input-group form-floating">
-                  <input type="text" name="coupon" value="{{ total_coupon }}" placeholder="{{ entry_coupon }}" id="input-coupon" class="form-control"/>
-                  <label for="input-coupon">{{ entry_coupon }}</label>
+                  <input type="text" name="coupon" value="{{ total_coupon }}" placeholder="{{ entry_coupon }}" id="input-coupon" class="form-control"/> <label for="input-coupon">{{ entry_coupon }}</label>
                   <button type="submit" id="button-coupon" data-bs-toogle="tooltip" title="{{ button_apply }}" class="btn btn-outline-primary"><i class="fa-solid fa-check"></i></button>
                 </div>
               </form>
@@ -227,7 +224,7 @@
                   <div class="lead"><strong>{{ text_affiliate }}</strong>
                     <br/>
                     {% if affiliate_id %}
-                      <div id="affiliate-value"><a href="index.php?route=marketing/affiliate|form&user_token={{ user_token }}&customer_id={{ affiliate_id }}" target="_blank">{{ affiliate }}</a></div>
+                      <div id="affiliate-value"><a href="index.php?route=marketing/affiliate.form&user_token={{ user_token }}&customer_id={{ affiliate_id }}" target="_blank">{{ affiliate }}</a></div>
                     {% else %}
                       <div id="affiliate-value">&nbsp;</div>
                     {% endif %}
@@ -312,6 +309,7 @@
               <button type="button" data-bs-toggle="modal" data-bs-target="#modal-payment-address" class="btn btn-outline-primary float-end"><i class="fa-solid fa-cog"></i></button>
             </div>
           </div>
+
           <div id="shipping-address" class="col{% if not shipping_method %} d-none{% endif %}">
             <div class="input-group mb-3">
               <div class="form-control border rounded-start">
@@ -355,35 +353,42 @@
               <button type="button" data-bs-toggle="modal" data-bs-target="#modal-shipping-address" class="btn btn-outline-primary float-end"><i class="fa-solid fa-cog"></i></button>
             </div>
           </div>
+
         </div>
-        <div class="row mb-3">
+        <div class="row">
 
           <div id="shipping-method" class="col-md{% if not shipping_method %} d-none{% endif %}">
-            <form id="form-shipping-method">
-              <div class="input-group form-floating">
-                <select name="shipping_method" id="input-shipping-method" class="form-select">
-                  <option value="">{{ text_select }}</option>
-                  {% if shipping_code %}
-                    <option value="{{ shipping_code }}" selected>{{ shipping_method }}</option>
+            <div class="input-group mb-3">
+              <div class="form-control border rounded-start">
+                <div class="lead"><strong>{{ text_shipping_method }}</strong>
+                  <br/>
+                  {% if shipping_method %}
+                    <span id="shipping-method-value">{{ shipping_method }}</span>
+                  {% else %}
+                    <span id="shipping-method-value"></span>
                   {% endif %}
-                </select> <label for="input-shipping-method">{{ entry_shipping_method }}</label>
-                <button type="button" id="button-shipping-method" class="btn btn-outline-primary"><i class="fa-solid fa-rotate"></i></button>
+                </div>
               </div>
-            </form>
+              <input type="hidden" name="shipping_code" value="{{ shipping_code }}" id="input-shipping-code"/>
+              <button type="button" id="button-shipping-methods" class="btn btn-outline-primary"><i class="fa-solid fa-cog"></i></button>
+            </div>
           </div>
 
           <div id="payment-method" class="col-md">
-            <form id="form-payment-method">
-              <div class="input-group form-floating">
-                <select name="payment_method" id="input-payment-method" class="form-select">
-                  <option value="">{{ text_select }}</option>
-                  {% if payment_code %}
-                    <option value="{{ payment_code }}" selected>{{ payment_method }}</option>
+            <div class="input-group mb-3">
+              <div class="form-control border rounded-start">
+                <div class="lead"><strong>{{ text_payment_method }}</strong>
+                  <br/>
+                  {% if payment_method %}
+                    <span id="payment-method-value">{{ payment_method }}</span>
+                  {% else %}
+                    <span id="payment-method-value"></span>
                   {% endif %}
-                </select> <label for="input-payment-method">{{ entry_payment_method }}</label>
-                <button type="button" id="button-payment-method" class="btn btn-outline-primary"><i class="fa-solid fa-rotate"></i></button>
+                </div>
               </div>
-            </form>
+              <input type="hidden" name="payment_code" value="{{ payment_code }}" id="input-payment-code"/>
+              <button type="button" id="button-payment-methods" class="btn btn-outline-primary"><i class="fa-solid fa-cog"></i></button>
+            </div>
           </div>
 
         </div>
@@ -434,6 +439,7 @@
           {% endfor %}
         </ul>
         <div class="tab-content">
+
           <div id="tab-history" class="tab-pane active">
             <fieldset>
               <legend>{{ text_history }}</legend>
@@ -456,8 +462,7 @@
                   <label for="input-override" class="col-sm-2 col-form-label">{{ entry_override }}</label>
                   <div class="col-sm-10">
                     <div class="form-check form-switch form-switch-lg">
-                      <input type="hidden" name="override" value="0"/>
-                      <input type="checkbox" name="override" value="1" id="input-override" class="form-check-input">
+                      <input type="hidden" name="override" value="0"/> <input type="checkbox" name="override" value="1" id="input-override" class="form-check-input">
                     </div>
                     <div class="form-text">{{ help_override }}</div>
                   </div>
@@ -466,13 +471,12 @@
                   <label for="input-notify" class="col-sm-2 col-form-label">{{ entry_notify }}</label>
                   <div class="col-sm-10">
                     <div class="form-check form-switch form-switch-lg">
-                      <input type="hidden" name="notify" value="0"/>
-                      <input type="checkbox" name="notify" value="1" id="input-notify" class="form-check-input"/>
+                      <input type="hidden" name="notify" value="0"/> <input type="checkbox" name="notify" value="1" id="input-notify" class="form-check-input"/>
                     </div>
                   </div>
                 </div>
                 <div class="row mb-3">
-                  <label for="input-comment" class="col-sm-2 col-form-label">{{ entry_comment }}</label>
+                  <label for="input-history" class="col-sm-2 col-form-label">{{ entry_comment }}</label>
                   <div class="col-sm-10">
                     <textarea name="comment" rows="8" placeholder="{{ entry_comment }}" id="input-history" class="form-control"></textarea>
                   </div>
@@ -484,6 +488,7 @@
               <input type="hidden" name="order_id" value="{{ order_id }}" id="input-order-id"/>
             </form>
           </div>
+
           <div id="tab-additional" class="tab-pane">
             <div class="table-responsive">
               <table class="table table-bordered">
@@ -536,10 +541,10 @@
           <div class="mb-3">
             <label for="input-customer" class="form-label">{{ entry_customer }}</label>
             <div class="input-group">
-              <input type="text" name="customer" value="{{ customer }}" placeholder="{{ entry_customer }}" id="input-customer" list="list-customer" class="form-control"/> <a href="{{ customer_add }}" target="_blank" data-bs-toggle="tooltip" title="{{ button_customer_add }}" class="btn btn-outline-secondary"><i class="fa-solid fa-user-plus"></i></a>
+              <input type="text" name="customer" value="{{ firstname }} {{ lastname }}" placeholder="{{ entry_customer }}" id="input-customer" data-oc-target="autocomplete-customer" class="form-control" autocomplete="off"/> <a href="{{ customer_add }}" target="_blank" data-bs-toggle="tooltip" title="{{ button_customer_add }}" class="btn btn-outline-secondary"><i class="fa-solid fa-user-plus"></i></a>
             </div>
             <input type="hidden" name="customer_id" value="{{ customer_id }}" id="input-customer-id"/>
-            <datalist id="list-customer"></datalist>
+            <ul id="autocomplete-customer" class="dropdown-menu"></ul>
           </div>
           <div class="mb-3">
             <label for="input-customer-group" class="form-label">{{ entry_customer_group }}</label> <select name="customer_group_id" id="input-customer-group" class="form-select">
@@ -569,17 +574,19 @@
           </div>
           {% for custom_field in custom_fields %}
             {% if custom_field.location == 'account' %}
+
               {% if custom_field.type == 'select' %}
                 <div class="mb-3 custom-field custom-field-{{ custom_field.custom_field_id }}">
                   <label for="input-custom-field-{{ custom_field.custom_field_id }}" class="form-label">{{ custom_field.name }}</label> <select name="custom_field[{{ custom_field.custom_field_id }}]" id="input-custom-field-{{ custom_field.custom_field_id }}" class="form-select">
                     <option value="">{{ text_select }}</option>
                     {% for custom_field_value in custom_field.custom_field_value %}
-                      <option value="{{ custom_field_value.custom_field_value_id }}"{% if account_custom_field[custom_field.custom_field_id] and custom_field_value.custom_field_value_id == account_custom_field[custom_field.custom_field_id] %} selected="selected"{% endif %}>{{ custom_field_value.name }}</option>
+                      <option value="{{ custom_field_value.custom_field_value_id }}"{% if account_custom_field[custom_field.custom_field_id] and custom_field_value.custom_field_value_id == account_custom_field[custom_field.custom_field_id] %} selected{% endif %}>{{ custom_field_value.name }}</option>
                     {% endfor %}
                   </select>
                   <div id="error-custom-field-{{ custom_field.custom_field_id }}" class="invalid-feedback"></div>
                 </div>
               {% endif %}
+
               {% if custom_field.type == 'radio' %}
                 <div class="mb-3 custom-field custom-field-{{ custom_field.custom_field_id }}">
                   <label class="form-label">{{ custom_field.name }}</label>
@@ -593,6 +600,7 @@
                   <div id="error-custom-field-{{ custom_field.custom_field_id }}" class="invalid-feedback"></div>
                 </div>
               {% endif %}
+
               {% if custom_field.type == 'checkbox' %}
                 <div class="mb-3 custom-field custom-field-{{ custom_field.custom_field_id }}">
                   <label class="form-label">{{ custom_field.name }}</label>
@@ -606,12 +614,14 @@
                   <div id="error-custom-field-{{ custom_field.custom_field_id }}" class="invalid-feedback"></div>
                 </div>
               {% endif %}
+
               {% if custom_field.type == 'text' %}
                 <div class="mb-3 custom-field custom-field-{{ custom_field.custom_field_id }}">
                   <label for="input-custom-field-{{ custom_field.custom_field_id }}" class="form-label">{{ custom_field.name }}</label> <input type="text" name="custom_field[{{ custom_field.custom_field_id }}]" value="{{ account_custom_field[custom_field.custom_field_id] ? account_custom_field[custom_field.custom_field_id] : custom_field.value }}" placeholder="{{ custom_field.name }}" id="input-custom-field-{{ custom_field.custom_field_id }}" class="form-control"/>
                   <div id="error-custom-field-{{ custom_field.custom_field_id }}" class="invalid-feedback"></div>
                 </div>
               {% endif %}
+
               {% if custom_field.type == 'textarea' %}
                 <div class="mb-3 custom-field custom-field-{{ custom_field.custom_field_id }}">
                   <label for="input-custom-field-{{ custom_field.custom_field_id }}" class="form-label">{{ custom_field.name }}</label> <textarea name="custom_field[{{ custom_field.custom_field_id }}]" rows="5" placeholder="{{ custom_field.name }}" id="input-custom-field-{{ custom_field.custom_field_id }}" class="form-control">{{ custom_field.value }}</textarea>
@@ -623,8 +633,8 @@
                 <div class="mb-3 custom-field custom-field-{{ custom_field.custom_field_id }}">
                   <label class="form-label">{{ custom_field.name }}</label>
                   <div class="input-group">
-                    <button type="button" data-oc-toggle="upload" data-oc-target="#input-custom-field-{{ custom_field.custom_field_id }}" data-oc-size-max="{{ config_file_max_size }}" data-oc-size-error="{{ error_upload_size }}" class="btn btn-primary"><i class="fa-solid fa-upload"></i> {{ button_upload }}</button>
-                    <input type="text" name="custom_field[{{ custom_field.custom_field_id }}]" value="{{ account_custom_field[custom_field.custom_field_id] ? account_custom_field[custom_field.custom_field_id] }}" id="input-custom-field-{{ custom_field.custom_field_id }}" class="form-control" readonly/>
+                    <button type="button" data-oc-toggle="upload" data-oc-url="{{ upload }}" data-oc-target="#input-custom-field-{{ custom_field.custom_field_id }}" data-oc-size-max="{{ config_file_max_size }}" data-oc-size-error="{{ error_upload_size }}" class="btn btn-primary"><i class="fa-solid fa-upload"></i> {{ button_upload }}</button>
+                    <input type="text" name="custom_field[{{ custom_field.custom_field_id }}]" value="{{ account_custom_field[custom_field.custom_field_id] ? account_custom_field[custom_field.custom_field_id] : custom_field.value }}" id="input-custom-field-{{ custom_field.custom_field_id }}" class="form-control"/>
                     <button type="button" data-oc-toggle="download" data-oc-target="#input-custom-field-{{ custom_field.custom_field_id }}"{% if not account_custom_field[custom_field.custom_field_id] %} disabled{% endif %} class="btn btn-outline-secondary"><i class="fa-solid fa-download"></i> {{ button_download }}</button>
                     <button type="button" data-oc-toggle="clear" data-bs-toggle="tooltip" title="{{ button_clear }}" data-oc-target="#input-custom-field-{{ custom_field.custom_field_id }}"{% if not account_custom_field[custom_field.custom_field_id] %} disabled{% endif %} class="btn btn-outline-danger"><i class="fa-solid fa-eraser"></i></button>
                   </div>
@@ -642,6 +652,7 @@
                   <div id="error-custom-field-{{ custom_field.custom_field_id }}" class="invalid-feedback"></div>
                 </div>
               {% endif %}
+
               {% if custom_field.type == 'time' %}
                 <div class="mb-3 custom-field custom-field-{{ custom_field.custom_field_id }}">
                   <label for="input-custom-field-{{ custom_field.custom_field_id }}" class="form-label">{{ custom_field.name }}</label>
@@ -652,6 +663,7 @@
                   <div id="error-custom-field-{{ custom_field.custom_field_id }}" class="invalid-feedback"></div>
                 </div>
               {% endif %}
+
               {% if custom_field.type == 'datetime' %}
                 <div class="mb-3 custom-field custom-field-{{ custom_field.custom_field_id }}">
                   <label for="input-custom-field-{{ custom_field.custom_field_id }}" class="form-label">{{ custom_field.name }}</label>
@@ -662,6 +674,7 @@
                   <div id="error-custom-field-{{ custom_field.custom_field_id }}" class="invalid-feedback"></div>
                 </div>
               {% endif %}
+
             {% endif %}
           {% endfor %}
           <div class="text-end">
@@ -690,8 +703,8 @@
               <fieldset class="mb-0">
                 <legend>{{ text_product_add }}</legend>
                 <div class="mb-3">
-                  <label for="input-product" class="form-label">{{ entry_product }}</label> <input type="text" name="product" value="" placeholder="{{ entry_product }}" id="input-product" list="list-product" class="form-control" autocomplete="off"/>
-                  <datalist id="list-product"></datalist>
+                  <label for="input-product" class="form-label">{{ entry_product }}</label> <input type="text" name="product" value="" placeholder="{{ entry_product }}" id="input-product" data-oc-target="autocomplete-product" class="form-control" autocomplete="off"/>
+                  <ul id="autocomplete-product" class="dropdown-menu"></ul>
                   <input type="hidden" name="product_id" value="" id="input-product-id"/>
                 </div>
                 <div class="mb-3">
@@ -760,9 +773,8 @@
       <div class="modal-body">
         <form id="form-affiliate">
           <div class="mb-3">
-            <input type="text" name="affiliate" value="{{ affiliate }}" placeholder="{{ entry_affiliate }}" id="input-affiliate" list="list-affiliate" class="form-control"/>
-            <input type="hidden" name="affiliate_id" value="{{ affiliate_id }}" id="input-affiliate-id"/>
-            <datalist id="list-affiliate"></datalist>
+            <label for="input-affiliate" class="form-label">{{ entry_affiliate }}</label> <input type="text" name="affiliate" value="{{ affiliate }}" placeholder="{{ entry_affiliate }}" id="input-affiliate" data-oc-target="autocomplete-affiliate" class="form-control" autocomplete="off"/> <input type="hidden" name="affiliate_id" value="{{ affiliate_id }}" id="input-affiliate-id"/>
+            <ul id="autocomplete-affiliate" class="dropdown-menu"></ul>
           </div>
           <div class="text-end">
             <button type="submit" id="button-affiliate" class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i> {{ button_save }}</button>
@@ -782,10 +794,11 @@
       <div class="modal-body">
         <form id="form-payment-address">
           <div class="mb-3">
-            <label for="input-payment-address" class="form-label">{{ entry_address }}</label> <select name="payment_address" id="input-payment-address" class="form-select">
-              <option value="0" selected="selected">{{ text_none }}</option>
+            <label for="input-payment-address" class="form-label">{{ entry_address }}</label>
+            <select name="payment_address_id" id="input-payment-address" class="form-select">
+              <option value="0" selected>{{ text_none }}</option>
               {% for address in addresses %}
-                <option value="{{ address.address_id }}">{{ address.firstname }} {{ address.lastname }}, {{ address.address_1 }}, {{ address.city }}, {{ address.country }}</option>
+                <option value="{{ address.address_id }}"{% if address.address_id == payment_address_id %} selected{% endif %}>{{ address.firstname }} {{ address.lastname }},{% if address.company %} {{ address.company }},{% endif %} {{ address.address_1 }}, {{ address.city }}, {{ address.country }}</option>
               {% endfor %}
             </select>
           </div>
@@ -819,7 +832,7 @@
             <label for="input-payment-country" class="form-label">{{ entry_country }}</label> <select name="country_id" id="input-payment-country" class="form-select">
               <option value="">{{ text_select }}</option>
               {% for country in countries %}
-                <option value="{{ country.country_id }}"{% if country.country_id == payment_country_id %} selected="selected"{% endif %}>{{ country.name }}</option>
+                <option value="{{ country.country_id }}"{% if country.country_id == payment_country_id %} selected{% endif %}>{{ country.name }}</option>
               {% endfor %}
             </select>
             <div id="error-payment-country" class="invalid-feedback"></div>
@@ -835,7 +848,7 @@
                   <label for="input-payment-custom-field-{{ custom_field.custom_field_id }}" class="form-label">{{ custom_field.name }}</label> <select name="custom_field[{{ custom_field.custom_field_id }}]" id="input-payment-custom-field-{{ custom_field.custom_field_id }}" class="form-select">
                     <option value="">{{ text_select }}</option>
                     {% for custom_field_value in custom_field.custom_field_value %}
-                      <option value="{{ custom_field_value.custom_field_value_id }}"{% if payment_custom_field[custom_field.custom_field_id] and custom_field_value.custom_field_value_id == payment_custom_field[custom_field.custom_field_id] %} selected="selected"{% endif %}>{{ custom_field_value.name }}</option>
+                      <option value="{{ custom_field_value.custom_field_value_id }}"{% if payment_custom_field[custom_field.custom_field_id] and custom_field_value.custom_field_value_id == payment_custom_field[custom_field.custom_field_id] %} selected{% endif %}>{{ custom_field_value.name }}</option>
                     {% endfor %}
                   </select>
                   <div id="error-payment-custom-field-{{ custom_field.custom_field_id }}" class="invalid-feedback"></div>
@@ -860,8 +873,7 @@
                   <div id="input-payment-custom-field-{{ custom_field.custom_field_id }}" class="form-control" style="height: 150px; overflow: auto;">
                     {% for custom_field_value in custom_field.custom_field_value %}
                       <div class="form-check">
-                        <input type="checkbox" name="custom_field[{{ custom_field.custom_field_id }}][]" value="{{ custom_field_value.custom_field_value_id }}" id="input-payment-custom-value-{{ custom_field_value.custom_field_value_id }}" class="form-check-input"{% if payment_custom_field[custom_field.custom_field_id] and custom_field_value.custom_field_value_id in payment_custom_field[custom_field.custom_field_id] %} checked{% endif %}/>
-                        <label for="input-payment-custom-value-{{ custom_field_value.custom_field_value_id }}" class="form-check-label">{{ custom_field_value.name }}</label>
+                        <input type="checkbox" name="custom_field[{{ custom_field.custom_field_id }}][]" value="{{ custom_field_value.custom_field_value_id }}" id="input-payment-custom-value-{{ custom_field_value.custom_field_value_id }}" class="form-check-input"{% if payment_custom_field[custom_field.custom_field_id] and custom_field_value.custom_field_value_id in payment_custom_field[custom_field.custom_field_id] %} checked{% endif %}/> <label for="input-payment-custom-value-{{ custom_field_value.custom_field_value_id }}" class="form-check-label">{{ custom_field_value.name }}</label>
                       </div>
                     {% endfor %}
                   </div>
@@ -870,24 +882,21 @@
               {% endif %}
               {% if custom_field.type == 'text' %}
                 <div class="mb-3 custom-field custom-field-{{ custom_field.custom_field_id }}">
-                  <label for="input-payment-custom-field-{{ custom_field.custom_field_id }}" class="form-label">{{ custom_field.name }}</label>
-                  <input type="text" name="custom_field[{{ custom_field.custom_field_id }}]" value="{{ payment_custom_field[custom_field.custom_field_id] ? payment_custom_field[custom_field.custom_field_id] : custom_field.value }}" placeholder="{{ custom_field.name }}" id="input-payment-custom-field-{{ custom_field.custom_field_id }}" class="form-control"/>
+                  <label for="input-payment-custom-field-{{ custom_field.custom_field_id }}" class="form-label">{{ custom_field.name }}</label> <input type="text" name="custom_field[{{ custom_field.custom_field_id }}]" value="{{ payment_custom_field[custom_field.custom_field_id] ? payment_custom_field[custom_field.custom_field_id] : custom_field.value }}" placeholder="{{ custom_field.name }}" id="input-payment-custom-field-{{ custom_field.custom_field_id }}" class="form-control"/>
                   <div id="error-payment-custom-field-{{ custom_field.custom_field_id }}" class="invalid-feedback"></div>
                 </div>
               {% endif %}
               {% if custom_field.type == 'textarea' %}
                 <div class="mb-3 custom-field custom-field-{{ custom_field.custom_field_id }}">
-                  <label for="input-payment-custom-field-{{ custom_field.custom_field_id }}" class="form-label">{{ custom_field.name }}</label>
-                  <textarea name="custom_field[{{ custom_field.custom_field_id }}]" rows="5" placeholder="{{ custom_field.name }}" id="input-payment-custom-field-{{ custom_field.custom_field_id }}" class="form-control">{{ payment_custom_field[custom_field.custom_field_id] ? payment_custom_field[custom_field.custom_field_id] : custom_field.value }}</textarea>
+                  <label for="input-payment-custom-field-{{ custom_field.custom_field_id }}" class="form-label">{{ custom_field.name }}</label> <textarea name="custom_field[{{ custom_field.custom_field_id }}]" rows="5" placeholder="{{ custom_field.name }}" id="input-payment-custom-field-{{ custom_field.custom_field_id }}" class="form-control">{{ payment_custom_field[custom_field.custom_field_id] ? payment_custom_field[custom_field.custom_field_id] : custom_field.value }}</textarea>
                   <div id="error-payment-custom-field-{{ custom_field.custom_field_id }}" class="invalid-feedback"></div>
                 </div>
               {% endif %}
-
               {% if custom_field.type == 'file' %}
                 <div class="mb-3 custom-field custom-field-{{ custom_field.custom_field_id }}">
                   <label class="form-label">{{ custom_field.name }}</label>
                   <div class="input-group">
-                    <button type="button" data-oc-toggle="upload" data-oc-target="#input-payment-custom-field-{{ custom_field.custom_field_id }}" data-oc-size-max="{{ config_file_max_size }}" data-oc-size-error="{{ error_upload_size }}" class="btn btn-primary"><i class="fa-solid fa-upload"></i> {{ button_upload }}</button>
+                    <button type="button" data-oc-toggle="upload" data-oc-url="{{ upload }}" data-oc-target="#input-payment-custom-field-{{ custom_field.custom_field_id }}" data-oc-size-max="{{ config_file_max_size }}" data-oc-size-error="{{ error_upload_size }}" class="btn btn-primary"><i class="fa-solid fa-upload"></i> {{ button_upload }}</button>
                     <input type="text" name="custom_field[{{ custom_field.custom_field_id }}]" value="{{ payment_custom_field[custom_field.custom_field_id] ? payment_custom_field[custom_field.custom_field_id] }}" id="input-payment-custom-field-{{ custom_field.custom_field_id }}" class="form-control" readonly/>
                     <button type="button" data-oc-toggle="download" data-oc-target="#input-payment-custom-field-{{ custom_field.custom_field_id }}"{% if not payment_custom_field[custom_field.custom_field_id] %} disabled{% endif %} class="btn btn-outline-secondary"><i class="fa-solid fa-download"></i> {{ button_download }}</button>
                     <button type="button" data-oc-toggle="clear" data-bs-toggle="tooltip" title="{{ button_clear }}" data-oc-target="#input-payment-custom-field-{{ custom_field.custom_field_id }}"{% if not payment_custom_field[custom_field.custom_field_id] %} disabled{% endif %} class="btn btn-outline-danger"><i class="fa-solid fa-eraser"></i></button>
@@ -895,7 +904,6 @@
                   <div id="error-payment-custom-field-{{ custom_field.custom_field_id }}" class="invalid-feedback"></div>
                 </div>
               {% endif %}
-
               {% if custom_field.type == 'date' %}
                 <div class="mb-3 custom-field custom-field-{{ custom_field.custom_field_id }}">
                   <label for="input-payment-custom-field-{{ custom_field.custom_field_id }}" class="form-label">{{ custom_field.name }}</label>
@@ -936,7 +944,25 @@
     </div>
   </div>
 </div>
-
+<div id="modal-payment" class="modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fa fa-credit-card"></i> {{ text_payment_method }}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <form id="form-payment-method">
+          <p>{{ text_payment }}</p>
+          <div id="payment-methods"></div>
+          <div class="text-end">
+            <button type="submit" id="button-payment-method" class="btn btn-primary">{{ button_continue }}</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 <div id="modal-shipping-address" class="modal">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -946,59 +972,46 @@
       </div>
       <div class="modal-body">
         <form id="form-shipping-address">
-
           <div class="mb-3">
             <label for="input-shipping-address" class="form-label">{{ entry_address }}</label>
-            <select name="shipping_address" id="input-shipping-address" class="form-select">
-              <option value="0" selected="selected">{{ text_none }}</option>
+            <select name="shipping_address_id" id="input-shipping-address" class="form-select">
+              <option value="0">{{ text_none }}</option>
               {% for address in addresses %}
-                <option value="{{ address.address_id }}">{{ address.firstname }} {{ address.lastname }}, {{ address.address_1 }}, {{ address.city }}, {{ address.country }}</option>
+                <option value="{{ address.address_id }}"{% if address.address_id == shipping_address_id %} selected{% endif %}>{{ address.firstname }} {{ address.lastname }},{% if address.company %} {{ address.company }},{% endif %} {{ address.address_1 }}, {{ address.city }}, {{ address.country }}</option>
               {% endfor %}
             </select>
           </div>
-
           <div class="mb-3 required">
-            <label for="input-shipping-firstname" class="form-label">{{ entry_firstname }}</label>
-            <input type="text" name="firstname" value="{{ shipping_firstname }}" placeholder="{{ entry_firstname }}" id="input-shipping-firstname" class="form-control"/>
+            <label for="input-shipping-firstname" class="form-label">{{ entry_firstname }}</label> <input type="text" name="firstname" value="{{ shipping_firstname }}" placeholder="{{ entry_firstname }}" id="input-shipping-firstname" class="form-control"/>
             <div id="error-shipping-firstname" class="invalid-feedback"></div>
           </div>
-
           <div class="mb-3 required">
-            <label for="input-shipping-lastname" class="form-label">{{ entry_lastname }}</label>
-            <input type="text" name="lastname" value="{{ shipping_lastname }}" placeholder="{{ entry_lastname }}" id="input-shipping-lastname" class="form-control"/>
+            <label for="input-shipping-lastname" class="form-label">{{ entry_lastname }}</label> <input type="text" name="lastname" value="{{ shipping_lastname }}" placeholder="{{ entry_lastname }}" id="input-shipping-lastname" class="form-control"/>
             <div id="error-shipping-lastname" class="invalid-feedback"></div>
           </div>
-
           <div class="mb-3">
-            <label for="input-shipping-company" class="form-label">{{ entry_company }}</label>
-            <input type="text" name="company" value="{{ shipping_company }}" placeholder="{{ entry_company }}" id="input-shipping-company" class="form-control"/>
+            <label for="input-shipping-company" class="form-label">{{ entry_company }}</label> <input type="text" name="company" value="{{ shipping_company }}" placeholder="{{ entry_company }}" id="input-shipping-company" class="form-control"/>
           </div>
-
           <div class="mb-3 required">
-            <label for="input-shipping-address-1" class="form-label">{{ entry_address_1 }}</label>
-            <input type="text" name="address_1" value="{{ shipping_address_1 }}" placeholder="{{ entry_address_1 }}" id="input-shipping-address-1" class="form-control"/>
+            <label for="input-shipping-address-1" class="form-label">{{ entry_address_1 }}</label> <input type="text" name="address_1" value="{{ shipping_address_1 }}" placeholder="{{ entry_address_1 }}" id="input-shipping-address-1" class="form-control"/>
             <div id="error-shipping-address-1" class="invalid-feedback"></div>
           </div>
-
           <div class="mb-3">
-            <label for="input-shipping-address-2" class="form-label">{{ entry_address_2 }}</label>
-            <input type="text" name="address_2" value="{{ shipping_address_2 }}" placeholder="{{ entry_address_2 }}" id="input-shipping-address-2" class="form-control"/>
+            <label for="input-shipping-address-2" class="form-label">{{ entry_address_2 }}</label> <input type="text" name="address_2" value="{{ shipping_address_2 }}" placeholder="{{ entry_address_2 }}" id="input-shipping-address-2" class="form-control"/>
           </div>
           <div class="mb-3 required">
             <label for="input-shipping-city" class="form-label">{{ entry_city }}</label> <input type="text" name="city" value="{{ shipping_city }}" placeholder="{{ entry_city }}" id="input-shipping-city" class="form-control"/>
             <div id="error-shipping-city" class="invalid-feedback"></div>
           </div>
-
           <div class="mb-3 required">
             <label for="input-shipping-postcode" class="form-label">{{ entry_postcode }}</label> <input type="text" name="postcode" value="{{ shipping_postcode }}" placeholder="{{ entry_postcode }}" id="input-shipping-postcode" class="form-control"/>
             <div id="error-shipping-postcode" class="invalid-feedback"></div>
           </div>
-
           <div class="mb-3 required">
             <label for="input-shipping-country" class="form-label">{{ entry_country }}</label> <select name="country_id" id="input-shipping-country" class="form-select">
               <option value="">{{ text_select }}</option>
               {% for country in countries %}
-                <option value="{{ country.country_id }}"{% if country.country_id == shipping_country_id %} selected="selected"{% endif %}>{{ country.name }}</option>
+                <option value="{{ country.country_id }}"{% if country.country_id == shipping_country_id %} selected{% endif %}>{{ country.name }}</option>
               {% endfor %}
             </select>
             <div id="error-shipping-country" class="invalid-feedback"></div>
@@ -1017,7 +1030,7 @@
                   <label for="input-shipping-custom-field-{{ custom_field.custom_field_id }}" class="form-label">{{ custom_field.name }}</label> <select name="custom_field[{{ custom_field.custom_field_id }}]" id="input-shipping-custom-field-{{ custom_field.custom_field_id }}" class="form-select">
                     <option value="">{{ text_select }}</option>
                     {% for custom_field_value in custom_field.custom_field_value %}
-                      <option value="{{ custom_field_value.custom_field_value_id }}"{% if shipping_custom_field[custom_field.custom_field_id] and custom_field_value.custom_field_value_id == shipping_custom_field[custom_field.custom_field_id] %} selected="selected"{% endif %}>{{ custom_field_value.name }}</option>
+                      <option value="{{ custom_field_value.custom_field_value_id }}"{% if shipping_custom_field[custom_field.custom_field_id] and custom_field_value.custom_field_value_id == shipping_custom_field[custom_field.custom_field_id] %} selected{% endif %}>{{ custom_field_value.name }}</option>
                     {% endfor %}
                   </select>
                   <div id="error-shipping-custom-field-{{ custom_field.custom_field_id }}" class="invalid-feedback"></div>
@@ -1028,13 +1041,11 @@
                 <div class="mb-3 custom-field custom-field-{{ custom_field.custom_field_id }}">
                   <label class="form-label">{{ custom_field.name }}</label>
                   <div id="input-shipping-custom-field-{{ custom_field.custom_field_id }}" class="form-control" style="height: 150px; overflow: auto;">
-
                     {% for custom_field_value in custom_field.custom_field_value %}
                       <div class="form-check">
                         <input type="radio" name="custom_field[{{ custom_field.custom_field_id }}]" value="{{ custom_field_value.custom_field_value_id }}" id="input-shipping-custom-value-{{ custom_field_value.custom_field_value_id }}" class="form-check-input"{% if shipping_custom_field[custom_field.custom_field_id] and custom_field_value.custom_field_value_id == shipping_custom_field[custom_field.custom_field_id] %} checked{% endif %}/> <label for="input-shipping-custom-value-{{ custom_field_value.custom_field_value_id }}" class="form-check-label">{{ custom_field_value.name }}</label>
                       </div>
                     {% endfor %}
-
                   </div>
                   <div id="error-shipping-custom-field-{{ custom_field.custom_field_id }}" class="invalid-feedback"></div>
                 </div>
@@ -1044,13 +1055,11 @@
                 <div class="mb-3 custom-field custom-field-{{ custom_field.custom_field_id }}">
                   <label class="form-label">{{ custom_field.name }}</label>
                   <div id="input-shipping-custom-field-{{ custom_field.custom_field_id }}" class="form-control" style="height: 150px; overflow: auto;">
-
                     {% for custom_field_value in custom_field.custom_field_value %}
                       <div class="form-check">
                         <input type="checkbox" name="custom_field[{{ custom_field.custom_field_id }}][]" value="{{ custom_field_value.custom_field_value_id }}" id="input-shipping-custom-value-{{ custom_field_value.custom_field_value_id }}" class="form-check-input"{% if shipping_custom_field[custom_field.custom_field_id] and custom_field_value.custom_field_value_id in shipping_custom_field[custom_field.custom_field_id] %} checked{% endif %}/> <label for="input-shipping-custom-value-{{ custom_field_value.custom_field_value_id }}" class="form-check-label">{{ custom_field_value.name }}</label>
                       </div>
                     {% endfor %}
-
                   </div>
                   <div id="error-shipping-custom-field-{{ custom_field.custom_field_id }}" class="invalid-feedback"></div>
                 </div>
@@ -1065,8 +1074,7 @@
 
               {% if custom_field.type == 'textarea' %}
                 <div class="mb-3 custom-field custom-field-{{ custom_field.custom_field_id }}">
-                  <label for="input-shipping-custom-field-{{ custom_field.custom_field_id }}" class="form-label">{{ custom_field.name }}</label>
-                  <textarea name="custom_field[{{ custom_field.custom_field_id }}]" rows="5" placeholder="{{ custom_field.name }}" id="input-shipping-custom-field-{{ custom_field.custom_field_id }}" placeholder="{{ custom_field.name }}" class="form-control">{{ shipping_custom_field[custom_field.custom_field_id] ? shipping_custom_field[custom_field.custom_field_id] : custom_field.value }}</textarea>
+                  <label for="input-shipping-custom-field-{{ custom_field.custom_field_id }}" class="form-label">{{ custom_field.name }}</label> <textarea name="custom_field[{{ custom_field.custom_field_id }}]" rows="5" placeholder="{{ custom_field.name }}" id="input-shipping-custom-field-{{ custom_field.custom_field_id }}" placeholder="{{ custom_field.name }}" class="form-control">{{ shipping_custom_field[custom_field.custom_field_id] ? shipping_custom_field[custom_field.custom_field_id] : custom_field.value }}</textarea>
                   <div id="error-shipping-custom-field-{{ custom_field.custom_field_id }}" class="invalid-feedback"></div>
                 </div>
               {% endif %}
@@ -1075,7 +1083,7 @@
                 <div class="mb-3 custom-field custom-field-{{ custom_field.custom_field_id }}">
                   <label class="form-label">{{ custom_field.name }}</label>
                   <div class="input-group">
-                    <button type="button" data-oc-toggle="upload" data-oc-target="#input-shipping-custom-field-{{ custom_field.custom_field_id }}" data-oc-size-max="{{ config_file_max_size }}" data-oc-size-error="{{ error_upload_size }}" class="btn btn-primary"><i class="fa-solid fa-upload"></i> {{ button_upload }}</button>
+                    <button type="button" data-oc-toggle="upload" data-oc-url="{{ upload }}" data-oc-target="#input-shipping-custom-field-{{ custom_field.custom_field_id }}" data-oc-size-max="{{ config_file_max_size }}" data-oc-size-error="{{ error_upload_size }}" class="btn btn-primary"><i class="fa-solid fa-upload"></i> {{ button_upload }}</button>
                     <input type="text" name="custom_field[{{ custom_field.custom_field_id }}]" value="{{ shipping_custom_field[custom_field.custom_field_id] ? shipping_custom_field[custom_field.custom_field_id] }}" id="input-shipping-custom-field-{{ custom_field.custom_field_id }}" class="form-control" readonly/>
                     <button type="button" data-oc-toggle="download" data-oc-target="#input-shipping-custom-field-{{ custom_field.custom_field_id }}"{% if not shipping_custom_field[custom_field.custom_field_id] %} disabled{% endif %} class="btn btn-outline-secondary"><i class="fa-solid fa-download"></i> {{ button_download }}</button>
                     <button type="button" data-oc-toggle="clear" data-bs-toggle="tooltip" title="{{ button_clear }}" data-oc-target="#input-shipping-custom-field-{{ custom_field.custom_field_id }}"{% if not shipping_custom_field[custom_field.custom_field_id] %} disabled{% endif %} class="btn btn-outline-danger"><i class="fa-solid fa-eraser"></i></button>
@@ -1116,10 +1124,30 @@
                   <div id="error-shipping-custom-field-{{ custom_field.custom_field_id }}" class="invalid-feedback"></div>
                 </div>
               {% endif %}
+
             {% endif %}
           {% endfor %}
           <div class="text-end">
             <button type="submit" id="button-shipping-address" class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i> {{ button_save }}</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="modal-shipping" class="modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fa fa-truck"></i> {{ text_shipping_method }}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <form id="form-shipping-method">
+          <p>{{ text_shipping }}</p>
+          <div id="shipping-methods"></div>
+          <div class="text-end">
+            <button type="submit" id="button-shipping-method" class="btn btn-primary">{{ button_continue }}</button>
           </div>
         </form>
       </div>
@@ -1139,9 +1167,7 @@
             <textarea name="comment" rows="5" placeholder="{{ entry_comment }}" id="input-comment" class="form-control">{{ comment }}</textarea>
           </div>
           <div class="text-end">
-
             <button type="submit" id="button-comment" class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i> {{ button_save }}</button>
-
           </div>
         </form>
       </div>
@@ -1149,33 +1175,33 @@
   </div>
 </div>
 <script type="text/javascript"><!--
-$('#button-collapse').on('click', function () {
+$('#button-collapse').on('click', function() {
     var element = this;
 
     var target = $('#collapse-order');
 
     if (!target.is(':hidden')) {
-        target.slideUp('400', function () {
+        target.slideUp('400', function() {
             $(element).html('{{ text_more }} <i class="fa-solid fa-angle-down"></i>');
         });
     } else {
-        target.slideDown('400', function () {
+        target.slideDown('400', function() {
             $(element).html('{{ text_less }} <i class="fa-solid fa-angle-up"></i>');
         });
     }
 });
 
-$(document).on('click', '#button-invoice', function () {
+$(document).on('click', '#button-invoice', function() {
     $.ajax({
-        url: 'index.php?route=sale/order|createInvoiceNo&user_token={{ user_token }}&order_id={{ order_id }}',
+        url: 'index.php?route=sale/order.createInvoiceNo&user_token={{ user_token }}&order_id={{ order_id }}',
         dataType: 'json',
-        beforeSend: function () {
-            $('#button-invoice').prop('disabled', true).addClass('loading');
+        beforeSend: function() {
+            $('#button-invoice').button('loading');
         },
-        complete: function () {
-            $('#button-invoice').prop('disabled', false).removeClass('loading');
+        complete: function() {
+            $('#button-invoice').button('reset');
         },
-        success: function (json) {
+        success: function(json) {
             $('.alert-dismissible').remove();
 
             if (json['error']) {
@@ -1190,7 +1216,7 @@ $(document).on('click', '#button-invoice', function () {
                 $('#button-invoice').replaceWith('<button disabled="disabled" class="btn btn-outline-primary"><i class="fa-solid fa-cog"></i></button>');
             }
         },
-        error: function (xhr, ajaxOptions, thrownError) {
+        error: function(xhr, ajaxOptions, thrownError) {
             console.log(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
         }
     });
@@ -1198,11 +1224,11 @@ $(document).on('click', '#button-invoice', function () {
 
 // Customer
 $('#input-customer').autocomplete({
-    'source': function (request, response) {
+    'source': function(request, response) {
         $.ajax({
-            url: 'index.php?route=customer/customer|autocomplete&user_token={{ user_token }}&filter_name=' + encodeURIComponent(request),
+            url: 'index.php?route=customer/customer.autocomplete&user_token={{ user_token }}&filter_name=' + encodeURIComponent(request),
             dataType: 'json',
-            success: function (json) {
+            success: function(json) {
                 json.unshift({
                     customer_id: 0,
                     customer_group_id: {{ customer_group_id }},
@@ -1216,7 +1242,7 @@ $('#input-customer').autocomplete({
                     address: []
                 });
 
-                response($.map(json, function (item) {
+                response($.map(json, function(item) {
                     return {
                         category: item['customer_group'],
                         label: item['name'],
@@ -1233,7 +1259,7 @@ $('#input-customer').autocomplete({
             }
         });
     },
-    'select': function (item) {
+    'select': function(item) {
         // Reset all custom fields
         $('#form-customer input[type=\'text\'], #form-customer textarea').not('#input-customer, #input-customer-id').val('');
         $('#form-customer select option').removeAttr('selected');
@@ -1261,20 +1287,23 @@ $('#input-customer').autocomplete({
         html = '<option value="0">{{ text_none }}</option>';
 
         for (i in item['address']) {
-            html += '<option value="' + item['address'][i]['address_id'] + '">' + item['address'][i]['firstname'] + ' ' + item['address'][i]['lastname'] + ', ' + item['address'][i]['address_1'] + ', ' + item['address'][i]['city'] + ', ' + item['address'][i]['country'] + '</option>';
+            html += '<option value="' + item['address'][i]['address_id'] + '">' + item['address'][i]['firstname'] + ' ' + item['address'][i]['lastname'] + ', ' + (item['address'][i]['company'] ? item['address'][i]['company'] + ', ' : '') + item['address'][i]['address_1'] + ', ' + item['address'][i]['city'] + ', ' + item['address'][i]['country'] + '</option>';
         }
 
         $('#input-payment-address').html(html);
         $('#input-shipping-address').html(html);
+
+        $('#payment-method-value').html('');
+        $('#shipping-method-value').html('');
     }
 });
 
 // Custom Fields
-$('#input-customer-group').on('change', function () {
+$('#input-customer-group').on('change', function() {
     $.ajax({
-        url: 'index.php?route=customer/customer|customfield&user_token={{ user_token }}&customer_group_id=' + this.value,
+        url: 'index.php?route=customer/customer.customfield&user_token={{ user_token }}&customer_group_id=' + this.value,
         dataType: 'json',
-        success: function (json) {
+        success: function(json) {
             $('.custom-field').hide();
             $('.custom-field').removeClass('required');
 
@@ -1288,7 +1317,7 @@ $('#input-customer-group').on('change', function () {
                 }
             }
         },
-        error: function (xhr, ajaxOptions, thrownError) {
+        error: function(xhr, ajaxOptions, thrownError) {
             console.log(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
         }
     });
@@ -1297,22 +1326,24 @@ $('#input-customer-group').on('change', function () {
 $('#input-customer-group').trigger('change');
 
 // Customer
-$('#form-customer').on('submit', function (e) {
+$('#form-customer').on('submit', function(e) {
     e.preventDefault();
 
     $.ajax({
-        url: 'index.php?route=sale/order|call&user_token={{ user_token }}&action=sale/customer',
+        url: 'index.php?route=sale/order.call&user_token={{ user_token }}&action=sale/customer&store_id=' + $('#input-store').val() + '&language=' + $('#input-language').val(),
         type: 'post',
         data: $('#form-customer').serialize(),
         dataType: 'json',
         contentType: 'application/x-www-form-urlencoded',
-        beforeSend: function () {
-            $('#button-customer').prop('disabled', true).addClass('loading');
+        beforeSend: function() {
+            $('#button-customer').button('loading');
         },
-        complete: function () {
-            $('#button-customer').prop('disabled', false).removeClass('loading');
+        complete: function() {
+            $('#button-customer').button('reset');
         },
-        success: function (json) {
+        success: function(json) {
+            console.log(json);
+
             $('.alert-dismissible').remove();
             $('.is-invalid').removeClass('is-invalid');
             $('.invalid-feedback').removeClass('d-block');
@@ -1332,12 +1363,15 @@ $('#form-customer').on('submit', function (e) {
             if (json['success']) {
                 $('#form-customer').prepend('<div class="alert alert-success alert-dismissible"><i class="fa-solid fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
 
-                $('#customer-value').html('<a href="index.php?route=customer/customer|form&user_token={{ user_token }}&customer_id=' + $('#input-customer-id').val() + '">' + $('#input-firstname').val() + ' ' + $('#input-lastname').val() + '</a>');
+                $('#customer-value').html('<a href="index.php?route=customer/customer.form&user_token={{ user_token }}&customer_id=' + $('#input-customer-id').val() + '">' + $('#input-firstname').val() + ' ' + $('#input-lastname').val() + '</a>');
+
+                $('#payment-method-value').html('');
+                $('#shipping-method-value').html('');
 
                 $('#button-refresh').trigger('click');
             }
         },
-        error: function (xhr, ajaxOptions, thrownError) {
+        error: function(xhr, ajaxOptions, thrownError) {
             console.log(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
         }
     });
@@ -1345,12 +1379,12 @@ $('#form-customer').on('submit', function (e) {
 
 // Product
 $('#input-product').autocomplete({
-    'source': function (request, response) {
+    'source': function(request, response) {
         $.ajax({
-            url: 'index.php?route=catalog/product|autocomplete&user_token={{ user_token }}&filter_name=' + encodeURIComponent(request),
+            url: 'index.php?route=catalog/product.autocomplete&user_token={{ user_token }}&filter_name=' + encodeURIComponent(request),
             dataType: 'json',
-            success: function (json) {
-                response($.map(json, function (item) {
+            success: function(json) {
+                response($.map(json, function(item) {
                     return {
                         label: item['name'],
                         value: item['product_id'],
@@ -1361,13 +1395,14 @@ $('#input-product').autocomplete({
                     }
                 }));
             },
-            error: function (xhr, ajaxOptions, thrownError) {
+            error: function(xhr, ajaxOptions, thrownError) {
                 console.log(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
             }
         });
     },
-    'select': function (item) {
+    'select': function(item) {
         $('#input-product-id').val(item['value']);
+        $('#input-product').val(item['label']);
 
         if (item['option'] != '') {
             html = '<fieldset class="mb-0">';
@@ -1493,7 +1528,7 @@ $('#input-product').autocomplete({
                     html += '<div class="mb-3' + (option['required'] == 1 ? ' required' : '') + '">';
                     html += '  <label class="form-label">' + option['name'] + '</label>';
                     html += '  <div>';
-                    html += '    <button type="button" data-oc-toggle="upload" data-oc-url="{{ upload }}" class="btn btn-light"><i class="fa-solid fa-upload"></i> {{ button_upload }}</button>';
+                    html += '    <button type="button" data-oc-toggle="upload" data-oc-url="{{ upload }}" data-oc-target="#input-option-' + option['product_option_id'] + '" data-oc-size-max="{{ config_file_max_size }}" data-oc-size-error="{{ error_upload_size }}" class="btn btn-light"><i class="fa-solid fa-upload"></i> {{ button_upload }}</button>';
                     html += '    <a href="" class="btn btn-light"><i class="fa-solid fa-download"></i></a>';
                     html += '    <input type="hidden" name="option[' + option['product_option_id'] + ']" value="' + option['value'] + '" id="input-option-' + option['product_option_id'] + '"/>';
                     html += '  </div>';
@@ -1504,7 +1539,7 @@ $('#input-product').autocomplete({
                 if (option['type'] == 'date') {
                     html += '<div class="mb-3' + (option['required'] == 1 ? ' required' : '') + '">';
                     html += '  <label for="input-option-' + option['product_option_id'] + '" class="form-label">' + option['name'] + '</label>';
-                    html += '  <div class="input-group"><input type="text" name="option[' + option['product_option_id'] + ']" value="' + option['value'] + '" placeholder="' + option['name'] + '"  id="input-option-' + option['product_option_id'] + '" class="form-control date"/><div class="input-group-text"><i class="fa-regular fa-calendar"></i></div></div>';
+                    html += '  <div class="input-group"><input type="text" name="option[' + option['product_option_id'] + ']" value="' + option['value'] + '" placeholder="' + option['name'] + '" id="input-option-' + option['product_option_id'] + '" class="form-control date"/><div class="input-group-text"><i class="fa-regular fa-calendar"></i></div></div>';
                     html += '  <div id="error-option-' + option['product_option_id'] + '" class="invalid-feedback"></div>';
                     html += '</div>';
                 }
@@ -1550,8 +1585,8 @@ $('#input-product').autocomplete({
                 html += '  <div id="subscription-description-' + item['subscription'][i]['subscription_plan_id'] + '" class="form-text subscription d-none">' + item['subscription'][i]['description'] + '</div>';
             }
 
-            html += '  <div id="error-subscription" class="invalid-feedback"></div>';
-            html += '</div>';
+            html += '    <div id="error-subscription" class="invalid-feedback"></div>';
+            html += '  </div>';
             html += '</fieldset>';
 
             $('#subscription').html(html);
@@ -1561,22 +1596,22 @@ $('#input-product').autocomplete({
     }
 });
 
-$('#form-product-add').on('submit', function (e) {
+$('#form-product-add').on('submit', function(e) {
     e.preventDefault();
 
     $.ajax({
-        url: 'index.php?route=sale/order|call&user_token={{ user_token }}&action=sale/cart|add',
+        url: 'index.php?route=sale/order.call&user_token={{ user_token }}&action=sale/cart.add&store_id=' + $('#input-store').val() + '&language=' + $('#input-language').val(),
         type: 'post',
         data: $('#form-product-add').serialize(),
         dataType: 'json',
         contentType: 'application/x-www-form-urlencoded',
-        beforeSend: function () {
-            $('#button-product-add').prop('disabled', true).addClass('loading');
+        beforeSend: function() {
+            $('#button-product-add').button('loading');
         },
-        complete: function () {
-            $('#button-product-add').prop('disabled', false).removeClass('loading');
+        complete: function() {
+            $('#button-product-add').button('reset');
         },
-        success: function (json) {
+        success: function(json) {
             $('.alert-dismissible').remove();
             $('.is-invalid').removeClass('is-invalid');
             $('.invalid-feedback').removeClass('d-block');
@@ -1595,34 +1630,37 @@ $('#form-product-add').on('submit', function (e) {
             if (json['success']) {
                 $('#form-product-add').prepend('<div class="alert alert-success alert-dismissible"><i class="fa-solid fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
 
+                $('#payment-method-value').html('');
+                $('#shipping-method-value').html('');
+
                 // Refresh products, vouchers and totals
                 $('#button-refresh').trigger('click');
             }
         },
-        error: function (xhr, ajaxOptions, thrownError) {
+        error: function(xhr, ajaxOptions, thrownError) {
             console.log(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
         }
     });
 });
 
 // Remove product
-$('#order-products').on('submit', 'form', function (e) {
+$('#order-products').on('submit', 'form', function(e) {
     e.preventDefault();
 
     var element = this;
 
     $.ajax({
-        url: 'index.php?route=sale/order|call&user_token={{ user_token }}&action=sale/cart|remove',
+        url: 'index.php?route=sale/order.call&user_token={{ user_token }}&store_id=' + $('#input-store').val() + '&language=' + $('#input-language').val() + '&action=sale/cart.remove',
         type: 'post',
         data: $(element).serialize(),
         dataType: 'json',
-        beforeSend: function () {
-            $(e.target).prop('disabled', true).addClass('loading');
+        beforeSend: function() {
+            $(e.target).button('loading');
         },
-        complete: function () {
-            $(e.target).prop('disabled', false).removeClass('loading');
+        complete: function() {
+            $(e.target).button('reset');
         },
-        success: function (json) {
+        success: function(json) {
             $('.alert-dismissible').remove();
 
             // Check for errors
@@ -1633,32 +1671,35 @@ $('#order-products').on('submit', 'form', function (e) {
             if (json['success']) {
                 $('#alert').prepend('<div class="alert alert-success alert-dismissible"><i class="fa-solid fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
 
+                $('#payment-method-value').html('');
+                $('#shipping-method-value').html('');
+
                 // Refresh products, vouchers and totals
                 $('#button-refresh').trigger('click');
             }
         },
-        error: function (xhr, ajaxOptions, thrownError) {
+        error: function(xhr, ajaxOptions, thrownError) {
             console.log(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
         }
     });
 });
 
 // Voucher
-$('#form-voucher-add').on('submit', function (e) {
+$('#form-voucher-add').on('submit', function(e) {
     e.preventDefault();
 
     $.ajax({
-        url: 'index.php?route=sale/order|call&user_token={{ user_token }}&action=sale/voucher|add',
+        url: 'index.php?route=sale/order.call&user_token={{ user_token }}&store_id=' + $('#input-store').val() + '&language=' + $('#input-language').val() + '&action=sale/voucher.add',
         type: 'post',
         data: $('#form-voucher-add').serialize(),
         dataType: 'json',
-        beforeSend: function () {
-            $('#button-voucher-add').prop('disabled', true).addClass('loading');
+        beforeSend: function() {
+            $('#button-voucher-add').button('loading');
         },
-        complete: function () {
-            $('#button-voucher-add').prop('disabled', false).removeClass('loading');
+        complete: function() {
+            $('#button-voucher-add').button('reset');
         },
-        success: function (json) {
+        success: function(json) {
             $('.alert-dismissible').remove();
             $('.is-invalid').removeClass('is-invalid');
             $('.invalid-feedback').removeClass('d-block');
@@ -1686,34 +1727,37 @@ $('#form-voucher-add').on('submit', function (e) {
                 $('#input-message').val('');
                 $('#input-amount').val('{{ voucher_min|escape('js') }}');
 
+                $('#payment-method-value').html('');
+                $('#shipping-method-value').html('');
+
                 // Refresh products, vouchers and totals
                 $('#button-refresh').trigger('click');
             }
         },
-        error: function (xhr, ajaxOptions, thrownError) {
+        error: function(xhr, ajaxOptions, thrownError) {
             console.log(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
         }
     });
 });
 
 // Remove voucher
-$('#order-vouchers').on('submit', 'form', function (e) {
+$('#order-vouchers').on('submit', 'form', function(e) {
     e.preventDefault();
 
     var element = this;
 
     $.ajax({
-        url: 'index.php?route=sale/order|call&user_token={{ user_token }}&action=sale/voucher|remove',
+        url: 'index.php?route=sale/order.call&user_token={{ user_token }}&store_id=' + $('#input-store').val() + '&language=' + $('#input-language').val() + '&action=sale/voucher.remove',
         type: 'post',
         data: $(element).serialize(),
         dataType: 'json',
-        beforeSend: function () {
-            $(e.target).prop('disabled', true).addClass('loading');
+        beforeSend: function() {
+            $(e.target).button('loading');
         },
-        complete: function () {
-            $(e.target).prop('disabled', false).removeClass('loading');
+        complete: function() {
+            $(e.target).button('reset');
         },
-        success: function (json) {
+        success: function(json) {
             $('.alert-dismissible').remove();
 
             // Check for errors
@@ -1724,97 +1768,52 @@ $('#order-vouchers').on('submit', 'form', function (e) {
             if (json['success']) {
                 $('#alert').prepend('<div class="alert alert-success alert-dismissible"><i class="fa-solid fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
 
+                $('#payment-method-value').html('');
+                $('#shipping-method-value').html('');
+
                 // Refresh products, vouchers and totals
                 $('#button-refresh').trigger('click');
             }
         },
-        error: function (xhr, ajaxOptions, thrownError) {
+        error: function(xhr, ajaxOptions, thrownError) {
             console.log(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
         }
     });
 });
 
-$('#input-store').on('change', function (e) {
+$('#input-store').on('change', function(e) {
     e.preventDefault();
 
-    $.ajax({
-        url: 'index.php?route=sale/order|call&user_token={{ user_token }}&action=localisation/store',
-        type: 'post',
-        data: $('#form-store').serialize(),
-        dataType: 'json',
-        beforeSend: function () {
-            $('#input-store').prop('disabled', true);
-        },
-        complete: function () {
-            $('#input-store').prop('disabled', false);
-        },
-        success: function (json) {
-            $('.alert-dismissible').remove();
+    $('#payment-method-value').html('');
+    $('#shipping-method-value').html('');
 
-            if (json['error']) {
-                $('#alert').prepend('<div class="alert alert-danger alert-dismissible"><i class="fa-solid fa-circle-exclamation"></i> ' + json['error'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
-            }
-
-            if (json['success']) {
-                $('#alert').prepend('<div class="alert alert-success alert-dismissible"><i class="fa-solid fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
-
-                $('#button-refresh').trigger('click');
-            }
-        },
-        error: function (xhr, ajaxOptions, thrownError) {
-            console.log(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-        }
-    });
+    $('#button-refresh').trigger('click');
 });
 
-$('#input-language').on('change', function (e) {
+$('#input-language').on('change', function(e) {
     e.preventDefault();
 
-    $.ajax({
-        url: 'index.php?route=sale/order|call&user_token={{ user_token }}&action=localisation/language',
-        type: 'post',
-        data: $('#form-language').serialize(),
-        dataType: 'json',
-        beforeSend: function () {
-            $('#input-language').prop('disabled', true);
-        },
-        complete: function () {
-            $('#input-language').prop('disabled', false);
-        },
-        success: function (json) {
-            $('.alert-dismissible').remove();
+    $('#payment-method-value').html('');
+    $('#shipping-method-value').html('');
 
-            if (json['error']) {
-                $('#alert').prepend('<div class="alert alert-danger alert-dismissible"><i class="fa-solid fa-circle-exclamation"></i> ' + json['error'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
-            }
-
-            if (json['success']) {
-                $('#alert').prepend('<div class="alert alert-success alert-dismissible"><i class="fa-solid fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
-
-                $('#button-refresh').trigger('click');
-            }
-        },
-        error: function (xhr, ajaxOptions, thrownError) {
-            console.log(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-        }
-    });
+    $('#button-refresh').trigger('click');
 });
 
-$('#input-currency').on('change', function (e) {
+$('#input-currency').on('change', function(e) {
     e.preventDefault();
 
     $.ajax({
-        url: 'index.php?route=sale/order|call&user_token={{ user_token }}&action=localisation/currency',
+        url: 'index.php?route=sale/order.call&user_token={{ user_token }}&store_id=' + $('#input-store').val() + '&language=' + $('#input-language').val() + '&action=localisation/currency',
         type: 'post',
         data: $('#form-currency').serialize(),
         dataType: 'json',
-        beforeSend: function () {
+        beforeSend: function() {
             $('#input-currency').prop('disabled', true);
         },
-        complete: function () {
+        complete: function() {
             $('#input-currency').prop('disabled', false);
         },
-        success: function (json) {
+        success: function(json) {
             $('.alert-dismissible').remove();
 
             if (json['error']) {
@@ -1824,31 +1823,34 @@ $('#input-currency').on('change', function (e) {
             if (json['success']) {
                 $('#alert').prepend('<div class="alert alert-success alert-dismissible"><i class="fa-solid fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
 
+                $('#payment-method-value').html('');
+                $('#shipping-method-value').html('');
+
                 $('#button-refresh').trigger('click');
             }
         },
-        error: function (xhr, ajaxOptions, thrownError) {
+        error: function(xhr, ajaxOptions, thrownError) {
             console.log(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
         }
     });
 });
 
 // Coupon
-$('#form-coupon').on('submit', function (e) {
+$('#form-coupon').on('submit', function(e) {
     e.preventDefault();
 
     $.ajax({
-        url: 'index.php?route=sale/order|call&user_token={{ user_token }}&action=sale/coupon',
+        url: 'index.php?route=sale/order.call&user_token={{ user_token }}&store_id=' + $('#input-store').val() + '&language=' + $('#input-language').val() + '&action=sale/coupon',
         type: 'post',
         data: $('#form-coupon').serialize(),
         dataType: 'json',
-        beforeSend: function () {
-            $('#button-coupon').addClass('loading').prop('disabled', true);
+        beforeSend: function() {
+            $('#button-coupon').button('loading');
         },
-        complete: function () {
-            $('#button-coupon').removeClass('loading').prop('disabled', false);
+        complete: function() {
+            $('#button-coupon').button('reset');
         },
-        success: function (json) {
+        success: function(json) {
             $('.alert-dismissible').remove();
 
             if (json['error']) {
@@ -1858,32 +1860,35 @@ $('#form-coupon').on('submit', function (e) {
             if (json['success']) {
                 $('#alert').prepend('<div class="alert alert-success alert-dismissible"><i class="fa-solid fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
 
+                $('#payment-method-value').html('');
+                $('#shipping-method-value').html('');
+
                 // Refresh products, vouchers and totals
                 $('#button-refresh').trigger('click');
             }
         },
-        error: function (xhr, ajaxOptions, thrownError) {
+        error: function(xhr, ajaxOptions, thrownError) {
             console.log(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
         }
     });
 });
 
 // Voucher
-$('#form-voucher').on('submit', function (e) {
+$('#form-voucher').on('submit', function(e) {
     e.preventDefault();
 
     $.ajax({
-        url: 'index.php?route=sale/order|call&user_token={{ user_token }}&action=sale/voucher',
+        url: 'index.php?route=sale/order.call&user_token={{ user_token }}&store_id=' + $('#input-store').val() + '&language=' + $('#input-language').val() + '&action=sale/voucher',
         type: 'post',
         data: $('#form-voucher').serialize(),
         dataType: 'json',
-        beforeSend: function () {
-            $('#button-voucher').prop('disabled', true).addClass('loading');
+        beforeSend: function() {
+            $('#button-voucher').button('loading');
         },
-        complete: function () {
-            $('#button-voucher').prop('disabled', false).removeClass('loading');
+        complete: function() {
+            $('#button-voucher').button('reset');
         },
-        success: function (json) {
+        success: function(json) {
             $('.alert-dismissible').remove();
 
             if (json['error']) {
@@ -1892,33 +1897,36 @@ $('#form-voucher').on('submit', function (e) {
 
             if (json['success']) {
                 $('#alert').prepend('<div class="alert alert-success alert-dismissible"><i class="fa-solid fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
+
+                $('#payment-method-value').html('');
+                $('#shipping-method-value').html('');
 
                 // Refresh products, vouchers and totals
                 $('#button-refresh').trigger('click');
             }
         },
-        error: function (xhr, ajaxOptions, thrownError) {
+        error: function(xhr, ajaxOptions, thrownError) {
             console.log(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
         }
     });
 });
 
 // Reward
-$('#form-reward').on('submit', function (e) {
+$('#form-reward').on('submit', function(e) {
     e.preventDefault();
 
     $.ajax({
-        url: 'index.php?route=sale/order|call&user_token={{ user_token }}&action=sale/reward',
+        url: 'index.php?route=sale/order.call&user_token={{ user_token }}&store_id=' + $('#input-store').val() + '&language=' + $('#input-language').val() + '&action=sale/reward',
         type: 'post',
         data: $('#form-reward').serialize(),
         dataType: 'json',
-        beforeSend: function () {
-            $('#button-reward').prop('disabled', true).addClass('loading');
+        beforeSend: function() {
+            $('#button-reward').button('loading');
         },
-        complete: function () {
-            $('#button-reward').prop('disabled', false).removeClass('loading');
+        complete: function() {
+            $('#button-reward').button('reset');
         },
-        success: function (json) {
+        success: function(json) {
             $('.alert-dismissible').remove();
 
             if (json['error']) {
@@ -1928,17 +1936,20 @@ $('#form-reward').on('submit', function (e) {
             if (json['success']) {
                 $('#alert').prepend('<div class="alert alert-success alert-dismissible"><i class="fa-solid fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
 
+                $('#payment-method-value').html('');
+                $('#shipping-method-value').html('');
+
                 $('#button-refresh').trigger('click');
             }
         },
-        error: function (xhr, ajaxOptions, thrownError) {
+        error: function(xhr, ajaxOptions, thrownError) {
             console.log(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
         }
     });
 });
 
 // Reward
-$(document).on('click', '#button-reward-add, #button-reward-remove', function (e) {
+$(document).on('click', '#button-reward-add, #button-reward-remove', function(e) {
     var element = this;
 
     if ($(element).hasClass('btn-success')) {
@@ -1948,16 +1959,16 @@ $(document).on('click', '#button-reward-add, #button-reward-remove', function (e
     }
 
     $.ajax({
-        url: 'index.php?route=sale/order|' + action + 'Reward&user_token={{ user_token }}&order_id=' + $('#input-order-id').val(),
+        url: 'index.php?route=sale/order.' + action + 'Reward&user_token={{ user_token }}&order_id=' + $('#input-order-id').val(),
         type: 'post',
         dataType: 'json',
-        beforeSend: function () {
-            $(element).prop('disabled', true).addClass('loading');
+        beforeSend: function() {
+            $(element).button('loading');
         },
-        complete: function () {
-            $(element).prop('disabled', false).removeClass('loading');
+        complete: function() {
+            $(element).button('reset');
         },
-        success: function (json) {
+        success: function(json) {
             $('.alert-dismissible').remove();
 
             if (json['error']) {
@@ -1974,9 +1985,14 @@ $(document).on('click', '#button-reward-add, #button-reward-remove', function (e
                 if (action == 'remove') {
                     $(element).replaceWith('<button type="button" id="button-reward-add" data-bs-toggle="tooltip" title="{{ button_reward_add }}" class="btn btn-success"><i class="fa-solid fa-plus-circle"></i></button>');
                 }
+
+                $('#payment-method-value').html('');
+                $('#shipping-method-value').html('');
+
+                $('#button-refresh').trigger('click');
             }
         },
-        error: function (xhr, ajaxOptions, thrownError) {
+        error: function(xhr, ajaxOptions, thrownError) {
             console.log(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
         }
     });
@@ -1984,17 +2000,17 @@ $(document).on('click', '#button-reward-add, #button-reward-remove', function (e
 
 // Affiliate
 $('#input-affiliate').autocomplete({
-    'source': function (request, response) {
+    'source': function(request, response) {
         $.ajax({
-            url: 'index.php?route=marketing/affiliate|autocomplete&user_token={{ user_token }}&filter_name=' + encodeURIComponent(request),
+            url: 'index.php?route=marketing/affiliate.autocomplete&user_token={{ user_token }}&filter_name=' + encodeURIComponent(request),
             dataType: 'json',
-            success: function (json) {
+            success: function(json) {
                 json.unshift({
                     name: '{{ text_none }}',
                     customer_id: 0
                 });
 
-                response($.map(json, function (item) {
+                response($.map(json, function(item) {
                     return {
                         label: item['name'],
                         value: item['customer_id']
@@ -2003,27 +2019,28 @@ $('#input-affiliate').autocomplete({
             }
         });
     },
-    'select': function (item) {
+    'select': function(item) {
         $('#input-affiliate-id').val(item['value']);
+        $('#input-affiliate').val(item['label']);
     }
 });
 
 // Affiliate
-$('#form-affiliate').on('submit', function (e) {
+$('#form-affiliate').on('submit', function(e) {
     e.preventDefault();
 
     $.ajax({
-        url: 'index.php?route=sale/order|call&user_token={{ user_token }}&action=sale/affiliate',
+        url: 'index.php?route=sale/order.call&user_token={{ user_token }}&store_id=' + $('#input-store').val() + '&language=' + $('#input-language').val() + '&action=sale/affiliate',
         type: 'post',
         data: $('#form-affiliate').serialize(),
         dataType: 'json',
-        beforeSend: function () {
-            $('#button-affiliate').prop('disabled', true).addClass('loading');
+        beforeSend: function() {
+            $('#button-affiliate').button('loading');
         },
-        complete: function () {
-            $('#button-affiliate').prop('disabled', false).removeClass('loading');
+        complete: function() {
+            $('#button-affiliate').button('reset');
         },
-        success: function (json) {
+        success: function(json) {
             $('.alert-dismissible').remove();
 
             if (json['error']) {
@@ -2034,20 +2051,20 @@ $('#form-affiliate').on('submit', function (e) {
                 $('#form-affiliate').prepend('<div class="alert alert-success alert-dismissible"><i class="fa-solid fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
 
                 if ($('#input-affiliate-id').val()) {
-                    $('#affiliate-value').html('<a href="index.php?route=marketing/affiliate|form&user_token={{ user_token }}&customer_id=' + $('#input-affiliate-id').val() + '" target="_blank">' + $('#input-affiliate').val() + '</a>');
+                    $('#affiliate-value').html('<a href="index.php?route=marketing/affiliate.form&user_token={{ user_token }}&customer_id=' + $('#input-affiliate-id').val() + '" target="_blank">' + $('#input-affiliate').val() + '</a>');
                 } else {
                     $('#affiliate-value').html('&nbsp;');
                 }
             }
         },
-        error: function (xhr, ajaxOptions, thrownError) {
+        error: function(xhr, ajaxOptions, thrownError) {
             console.log(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
         }
     });
 });
 
 // Commission
-$(document).on('click', '#button-commission-add, #button-commission-remove', function (e) {
+$(document).on('click', '#button-commission-add, #button-commission-remove', function(e) {
     var element = this;
 
     if ($(element).hasClass('btn-success')) {
@@ -2057,16 +2074,16 @@ $(document).on('click', '#button-commission-add, #button-commission-remove', fun
     }
 
     $.ajax({
-        url: 'index.php?route=sale/order|' + action + 'Commission&user_token={{ user_token }}&order_id=' + $('#input-order-id').val(),
+        url: 'index.php?route=sale/order.' + action + 'Commission&user_token={{ user_token }}&order_id=' + $('#input-order-id').val(),
         type: 'post',
         dataType: 'json',
-        beforeSend: function () {
-            $(element).prop('disabled', true).addClass('loading');
+        beforeSend: function() {
+            $(element).button('loading');
         },
-        complete: function () {
-            $(element).prop('disabled', false).removeClass('loading');
+        complete: function() {
+            $(element).button('reset');
         },
-        success: function (json) {
+        success: function(json) {
             $('.alert-dismissible').remove();
 
             if (json['error']) {
@@ -2085,26 +2102,26 @@ $(document).on('click', '#button-commission-add, #button-commission-remove', fun
                 }
             }
         },
-        error: function (xhr, ajaxOptions, thrownError) {
+        error: function(xhr, ajaxOptions, thrownError) {
             console.log(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
         }
     });
 });
 
 // Payment Address
-$('#input-payment-address').on('change', function () {
+$('#input-payment-address').on('change', function() {
     var element = this;
 
     $.ajax({
-        url: 'index.php?route=customer/customer|address&user_token={{ user_token }}&address_id=' + this.value,
+        url: 'index.php?route=customer/customer.address&user_token={{ user_token }}&address_id=' + this.value,
         dataType: 'json',
-        beforeSend: function () {
+        beforeSend: function() {
             $(element).prop('disabled', true);
         },
-        complete: function () {
+        complete: function() {
             $(element).prop('disabled', false);
         },
-        success: function (json) {
+        success: function(json) {
             $('.alert-dismissible').remove();
 
             if (json['error']) {
@@ -2139,27 +2156,27 @@ $('#input-payment-address').on('change', function () {
                 }
             }
         },
-        error: function (xhr, ajaxOptions, thrownError) {
+        error: function(xhr, ajaxOptions, thrownError) {
             console.log(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
         }
     });
 });
 
-$('#form-payment-address').on('submit', function (e) {
+$('#form-payment-address').on('submit', function(e) {
     e.preventDefault();
 
     $.ajax({
-        url: 'index.php?route=sale/order|call&user_token={{ user_token }}&action=sale/payment_address',
+        url: 'index.php?route=sale/order.call&user_token={{ user_token }}&store_id=' + $('#input-store').val() + '&language=' + $('#input-language').val() + '&action=sale/payment_address',
         type: 'post',
         data: $('#form-payment-address').serialize(),
         dataType: 'json',
-        beforeSend: function () {
-            $('#button-payment-address').prop('disabled', true).addClass('loading');
+        beforeSend: function() {
+            $('#button-payment-address').button('loading');
         },
-        complete: function () {
-            $('#button-payment-address').prop('disabled', false).removeClass('loading');
+        complete: function() {
+            $('#button-payment-address').button('reset');
         },
-        success: function (json) {
+        success: function(json) {
             $('.alert-dismissible').remove();
             $('.is-invalid').removeClass('is-invalid');
             $('.invalid-feedback').removeClass('d-block');
@@ -2208,10 +2225,13 @@ $('#form-payment-address').on('submit', function (e) {
 
                 $('#payment-address-value').html(address);
 
+                $('#payment-method-value').html('');
+                $('#shipping-method-value').html('');
+
                 $('#button-refresh').trigger('click');
             }
         },
-        error: function (xhr, ajaxOptions, thrownError) {
+        error: function(xhr, ajaxOptions, thrownError) {
             console.log(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
         }
     });
@@ -2219,19 +2239,19 @@ $('#form-payment-address').on('submit', function (e) {
 
 var payment_zone_id = '{{ payment_zone_id }}';
 
-$('#input-payment-country').on('change', function () {
+$('#input-payment-country').on('change', function() {
     var element = this;
 
     $.ajax({
-        url: 'index.php?route=localisation/country|country&user_token={{ user_token }}&country_id=' + this.value,
+        url: 'index.php?route=localisation/country.country&user_token={{ user_token }}&country_id=' + this.value,
         dataType: 'json',
-        beforeSend: function () {
+        beforeSend: function() {
             $(element).prop('disabled', true);
         },
-        complete: function () {
+        complete: function() {
             $(element).prop('disabled', false);
         },
-        success: function (json) {
+        success: function(json) {
             if (json['postcode_required'] == '1') {
                 $('#input-payment-postcode').parent().addClass('required');
             } else {
@@ -2245,18 +2265,18 @@ $('#input-payment-country').on('change', function () {
                     html += '<option value="' + json['zone'][i]['zone_id'] + '"';
 
                     if (json['zone'][i]['zone_id'] == payment_zone_id) {
-                        html += ' selected="selected"';
+                        html += ' selected';
                     }
 
                     html += '>' + json['zone'][i]['name'] + '</option>';
                 }
             } else {
-                html += '<option value="0" selected="selected">{{ text_none }}</option>';
+                html += '<option value="0" selected>{{ text_none }}</option>';
             }
 
             $('#input-payment-zone').html(html);
         },
-        error: function (xhr, ajaxOptions, thrownError) {
+        error: function(xhr, ajaxOptions, thrownError) {
             console.log(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
         }
     });
@@ -2265,19 +2285,19 @@ $('#input-payment-country').on('change', function () {
 $('#input-payment-country').trigger('change');
 
 // Shipping Address
-$('#input-shipping-address').on('change', function () {
+$('#input-shipping-address').on('change', function() {
     var element = this;
 
     $.ajax({
-        url: 'index.php?route=customer/customer|address&user_token={{ user_token }}&address_id=' + this.value,
+        url: 'index.php?route=customer/customer.address&user_token={{ user_token }}&address_id=' + this.value,
         dataType: 'json',
-        beforeSend: function () {
+        beforeSend: function() {
             $(element).prop('disabled', true);
         },
-        complete: function () {
+        complete: function() {
             $(element).prop('disabled', false);
         },
-        success: function (json) {
+        success: function(json) {
             $('.alert-dismissible').remove();
 
             if (json['error']) {
@@ -2312,28 +2332,28 @@ $('#input-shipping-address').on('change', function () {
                 }
             }
         },
-        error: function (xhr, ajaxOptions, thrownError) {
+        error: function(xhr, ajaxOptions, thrownError) {
             console.log(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
         }
     });
 });
 
-$('#form-shipping-address').on('submit', function (e) {
+$('#form-shipping-address').on('submit', function(e) {
     e.preventDefault();
 
     $.ajax({
-        url: 'index.php?route=sale/order|call&user_token={{ user_token }}&action=sale/shipping_address',
+        url: 'index.php?route=sale/order.call&user_token={{ user_token }}&action=sale/shipping_address&store_id=' + $('#input-store').val() + '&language=' + $('#input-language').val(),
         type: 'post',
         data: $('#form-shipping-address').serialize(),
         dataType: 'json',
         contentType: 'application/x-www-form-urlencoded',
-        beforeSend: function () {
-            $('#button-shipping-address').prop('disabled', true).addClass('loading');
+        beforeSend: function() {
+            $('#button-shipping-address').button('loading');
         },
-        complete: function () {
-            $('#button-shipping-address').prop('disabled', false).removeClass('loading');
+        complete: function() {
+            $('#button-shipping-address').button('reset');
         },
-        success: function (json) {
+        success: function(json) {
             $('#form-shipping-address .alert-dismissible').remove();
             $('#form-shipping-address .is-invalid').removeClass('is-invalid');
             $('#form-shipping-address .invalid-feedback').removeClass('d-block');
@@ -2382,11 +2402,14 @@ $('#form-shipping-address').on('submit', function (e) {
 
                 $('#shipping-address-value').html(address);
 
+                $('#payment-method-value').html('');
+                $('#shipping-method-value').html('');
+
                 // Refresh products, vouchers and totals
                 $('#button-refresh').trigger('click');
             }
         },
-        error: function (xhr, ajaxOptions, thrownError) {
+        error: function(xhr, ajaxOptions, thrownError) {
             console.log(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
         }
     });
@@ -2394,19 +2417,19 @@ $('#form-shipping-address').on('submit', function (e) {
 
 var shipping_zone_id = '{{ shipping_zone_id }}';
 
-$('#input-shipping-country').on('change', function () {
+$('#input-shipping-country').on('change', function() {
     var element = this;
 
     $.ajax({
-        url: 'index.php?route=localisation/country|country&user_token={{ user_token }}&country_id=' + this.value,
+        url: 'index.php?route=localisation/country.country&user_token={{ user_token }}&country_id=' + this.value,
         dataType: 'json',
-        beforeSend: function () {
+        beforeSend: function() {
             $(element).prop('disabled', true);
         },
-        complete: function () {
+        complete: function() {
             $(element).prop('disabled', false);
         },
-        success: function (json) {
+        success: function(json) {
             if (json['postcode_required'] == '1') {
                 $('#input-shipping-postcode').parent().addClass('required');
             } else {
@@ -2420,18 +2443,18 @@ $('#input-shipping-country').on('change', function () {
                     html += '<option value="' + json['zone'][i]['zone_id'] + '"';
 
                     if (json['zone'][i]['zone_id'] == shipping_zone_id) {
-                        html += ' selected="selected"';
+                        html += ' selected';
                     }
 
                     html += '>' + json['zone'][i]['name'] + '</option>';
                 }
             } else {
-                html += '<option value="0" selected="selected">{{ text_none }}</option>';
+                html += '<option value="0" selected>{{ text_none }}</option>';
             }
 
             $('#input-shipping-zone').html(html);
         },
-        error: function (xhr, ajaxOptions, thrownError) {
+        error: function(xhr, ajaxOptions, thrownError) {
             console.log(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
         }
     });
@@ -2439,188 +2462,224 @@ $('#input-shipping-country').on('change', function () {
 
 $('#input-shipping-country').trigger('change');
 
-// Payment Method
-$('#button-payment-method').on('click', function () {
+// Shipping Method
+$('#button-shipping-methods').on('click', function() {
     var element = this;
 
     $.ajax({
-        url: 'index.php?route=sale/order|call&user_token={{ user_token }}&action=sale/payment_method',
+        url: 'index.php?route=sale/order.call&user_token={{ user_token }}&action=sale/shipping_method&store_id=' + $('#input-store').val() + '&language=' + $('#input-language').val(),
         dataType: 'json',
-        beforeSend: function () {
-            $(element).prop('disabled', true).addClass('loading');
+        beforeSend: function() {
+            $(element).button('loading');
         },
-        complete: function () {
-            $(element).prop('disabled', false).removeClass('loading');
+        complete: function() {
+            $(element).button('reset');
         },
-        success: function (json) {
-            $('#alert .alert-dismissible').remove();
+        success: function(json) {
+            $('.alert-dismissible').remove();
 
             if (json['error']) {
                 $('#alert').prepend('<div class="alert alert-danger alert-dismissible"><i class="fa-solid fa-circle-exclamation"></i> ' + json['error'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
             }
 
-            html = '<option value="">{{ text_select }}</option>';
+            if (json['shipping_methods']) {
+                html = '';
 
-            if (json['payment_methods']) {
-                for (i in json['payment_methods']) {
-                    if (json['payment_methods'][i]['code'] == $('#input-payment-method').val()) {
-                        html += '<option value="' + json['payment_methods'][i]['code'] + '" selected>' + json['payment_methods'][i]['title'] + '</option>';
+                for (i in json['shipping_methods']) {
+                    html += '<p><strong>' + json['shipping_methods'][i]['name'] + '</strong></p>';
+
+                    if (!json['shipping_methods'][i]['error']) {
+                        for (j in json['shipping_methods'][i]['quote']) {
+                            html += '<div class="form-check">';
+
+                            var code = i + '-' + j.replaceAll('_', '-');
+
+                            html += '<input type="radio" name="shipping_method" value="' + json['shipping_methods'][i]['quote'][j]['code'] + '" id="input-shipping-method-' + code + '"';
+
+                            if (json['shipping_methods'][i]['quote'][j]['code'] == $('#input-shipping-code').val()) {
+                                html += ' checked';
+                            }
+
+                            html += '/>';
+                            html += '  <label for="input-shipping-method-' + code + '">' + json['shipping_methods'][i]['quote'][j]['name'] + ' - ' + json['shipping_methods'][i]['quote'][j]['text'] + '</label>';
+                            html += '</div>';
+                        }
                     } else {
-                        html += '<option value="' + json['payment_methods'][i]['code'] + '">' + json['payment_methods'][i]['title'] + '</option>';
+                        html += '<div class="alert alert-danger">' + json['shipping_methods'][i]['error'] + '</div>';
                     }
                 }
+
+                $('#shipping-methods').html(html);
+
+                $('#modal-shipping').modal('show');
             }
-
-            $('#input-payment-method').html(html);
-
-            $('#button-refresh').trigger('click');
         },
-        error: function (xhr, ajaxOptions, thrownError) {
+        error: function(xhr, ajaxOptions, thrownError) {
             console.log(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
         }
     });
 });
 
-$('#input-payment-method').on('change', function (e) {
+$('#form-shipping-method').on('submit', function(e) {
     e.preventDefault();
 
     var element = this;
 
     $.ajax({
-        url: 'index.php?route=sale/order|call&user_token={{ user_token }}&action=sale/payment_method|save',
-        type: 'post',
-        data: $('#form-payment-method').serialize(),
-        dataType: 'json',
-        contentType: 'application/x-www-form-urlencoded',
-        beforeSend: function () {
-            $(element).prop('disabled', true);
-        },
-        complete: function () {
-            $(element).prop('disabled', false);
-        },
-        success: function (json) {
-            $('.alert-dismissible').remove();
-
-            if (json['error']) {
-                $('#alert').prepend('<div class="alert alert-danger alert-dismissible"><i class="fa-solid fa-circle-exclamation"></i> ' + json['error'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
-            }
-
-            if (json['success']) {
-                $('#alert').prepend('<div class="alert alert-success alert-dismissible"><i class="fa-solid fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
-
-                $('#button-refresh').trigger('click');
-            }
-        },
-        error: function (xhr, ajaxOptions, thrownError) {
-            console.log(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-        }
-    });
-});
-
-// Shipping Method
-$('#button-shipping-method').on('click', function () {
-    var element = this;
-
-    $.ajax({
-        url: 'index.php?route=sale/order|call&user_token={{ user_token }}&action=sale/shipping_method',
-        dataType: 'json',
-        beforeSend: function () {
-            $(element).prop('disabled', true).addClass('loading');
-        },
-        complete: function () {
-            $(element).prop('disabled', false).removeClass('loading');
-        },
-        success: function (json) {
-            $('.alert-dismissible').remove();
-
-            if (json['error']) {
-                $('#alert').prepend('<div class="alert alert-danger alert-dismissible"><i class="fa-solid fa-circle-exclamation"></i> ' + json['error'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
-            }
-
-            html = '<option value="">{{ text_select }}</option>';
-
-            if (json['shipping_methods']) {
-                for (i in json['shipping_methods']) {
-                    html += '<optgroup label="' + json['shipping_methods'][i]['title'] + '">';
-
-                    if (!json['shipping_methods'][i]['error']) {
-                        for (j in json['shipping_methods'][i]['quote']) {
-                            if (json['shipping_methods'][i]['quote'][j]['code'] == $('#input-shipping-method').val()) {
-                                html += '<option value="' + json['shipping_methods'][i]['quote'][j]['code'] + '" selected>' + json['shipping_methods'][i]['quote'][j]['title'] + ' - ' + json['shipping_methods'][i]['quote'][j]['text'] + '</option>';
-                            } else {
-                                html += '<option value="' + json['shipping_methods'][i]['quote'][j]['code'] + '">' + json['shipping_methods'][i]['quote'][j]['title'] + ' - ' + json['shipping_methods'][i]['quote'][j]['text'] + '</option>';
-                            }
-                        }
-                    } else {
-                        html += '<option value="" class="text-danger" disabled>' + json['shipping_methods'][i]['error'] + '</span></li>';
-                    }
-
-                    html += '</optgroup>';
-                }
-            }
-
-            $('#input-shipping-method').html(html);
-
-            $('#button-refresh').trigger('click');
-        },
-        error: function (xhr, ajaxOptions, thrownError) {
-            console.log(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-        }
-    });
-});
-
-$('#input-shipping-method').on('change', function (e) {
-    var element = this;
-
-    $.ajax({
-        url: 'index.php?route=sale/order|call&user_token={{ user_token }}&action=sale/shipping_method|save',
+        url: 'index.php?route=sale/order.call&user_token={{ user_token }}&action=sale/shipping_method.save&store_id=' + $('#input-store').val() + '&language=' + $('#input-language').val(),
         type: 'post',
         data: $('#form-shipping-method').serialize(),
         dataType: 'json',
         contentType: 'application/x-www-form-urlencoded',
-        beforeSend: function () {
-            $(element).prop('disabled', true);
+        beforeSend: function() {
+            $('#button-shipping-method').button('loading');
         },
-        complete: function () {
-            $(element).prop('disabled', false);
+        complete: function() {
+            $('#button-shipping-method').button('reset');
         },
-        success: function (json) {
+        success: function(json) {
+            console.log(json);
+
+            $('.alert-dismissible').remove();
+
+            if (json['error']) {
+                $('#form-shipping-method').prepend('<div class="alert alert-danger alert-dismissible"><i class="fa-solid fa-circle-exclamation"></i> ' + json['error'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
+            }
+
+            if (json['success']) {
+                $('#alert').prepend('<div class="alert alert-success alert-dismissible"><i class="fa-solid fa-circle-check"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
+
+                $('#shipping-method-value').html($('input[name=\'shipping_method\']:checked').parent().find('label').text());
+                $('#input-shipping-code').val($('input[name=\'shipping_method\']:checked').val());
+
+                $('#payment-method-value').html('');
+
+                $('#button-refresh').trigger('click');
+            }
+        },
+        error: function(xhr, ajaxOptions, thrownError) {
+            console.log(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+        }
+    });
+});
+
+// Payment Method
+$('#button-payment-methods').on('click', function() {
+    var element = this;
+
+    $.ajax({
+        url: 'index.php?route=sale/order.call&user_token={{ user_token }}&action=sale/payment_method&store_id=' + $('#input-store').val() + '&language=' + $('#input-language').val(),
+        dataType: 'json',
+        beforeSend: function() {
+            $(element).button('loading');
+        },
+        complete: function() {
+            $(element).button('reset');
+        },
+        success: function(json) {
             $('.alert-dismissible').remove();
 
             if (json['error']) {
                 $('#alert').prepend('<div class="alert alert-danger alert-dismissible"><i class="fa-solid fa-circle-exclamation"></i> ' + json['error'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
             }
 
-            if (json['success']) {
-                $('#alert').prepend('<div class="alert alert-success alert-dismissible"><i class="fa-solid fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
+            if (json['payment_methods']) {
+                var html = '';
 
-                $('#button-refresh').trigger('click');
+                for (i in json['payment_methods']) {
+                    html += '<p><strong>' + json['payment_methods'][i]['name'] + '</strong></p>';
+
+                    if (!json['payment_methods'][i]['error']) {
+                        for (j in json['payment_methods'][i]['option']) {
+                            html += '<div class="form-check">';
+
+                            var code = i + '-' + j.replaceAll('_', '-');
+
+                            html += '<input type="radio" name="payment_method" value="' + json['payment_methods'][i]['option'][j]['code'] + '" id="input-payment-method-' + code + '"';
+
+                            if (json['payment_methods'][i]['option'][j]['code'] == $('#input-payment-code').val()) {
+                                html += ' checked';
+                            }
+
+                            html += '/>';
+                            html += '  <label for="input-payment-method-' + code + '">' + json['payment_methods'][i]['option'][j]['name'] + '</label>';
+                            html += '</div>';
+                        }
+                    } else {
+                        html += '<div class="alert alert-danger">' + json['payment_methods'][i]['error'] + '</div>';
+                    }
+                }
+
+                $('#payment-methods').html(html);
+
+                $('#modal-payment').modal('show');
             }
         },
-        error: function (xhr, ajaxOptions, thrownError) {
+        error: function(xhr, ajaxOptions, thrownError) {
             console.log(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
         }
     });
 });
 
-$('#form-comment').on('submit', function (e) {
+$('#form-payment-method').on('submit', function(e) {
     e.preventDefault();
 
     var element = this;
 
     $.ajax({
-        url: 'index.php?route=sale/order|call&user_token={{ user_token }}&action=sale/order|comment',
+        url: 'index.php?route=sale/order.call&user_token={{ user_token }}&action=sale/payment_method.save&store_id=' + $('#input-store').val() + '&language=' + $('#input-language').val(),
+        type: 'post',
+        data: $('#form-payment-method').serialize(),
+        dataType: 'json',
+        contentType: 'application/x-www-form-urlencoded',
+        beforeSend: function() {
+            $('#button-payment-method').button('loading');
+        },
+        complete: function() {
+            $('#button-payment-method').button('reset');
+        },
+        success: function(json) {
+            console.log(json);
+
+            $('.alert-dismissible').remove();
+
+            if (json['error']) {
+                $('#form-payment-method').prepend('<div class="alert alert-danger alert-dismissible"><i class="fa-solid fa-circle-exclamation"></i> ' + json['error'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
+            }
+
+            if (json['success']) {
+                $('#alert').prepend('<div class="alert alert-success alert-dismissible"><i class="fa-solid fa-circle-check"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
+
+                $('#payment-method-value').html($('input[name=\'payment_method\']:checked').parent().find('label').text());
+                $('#input-payment-code').val($('input[name=\'payment_method\']:checked').val());
+
+                $('#button-refresh').trigger('click');
+            }
+        },
+        error: function(xhr, ajaxOptions, thrownError) {
+            console.log(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+        }
+    });
+});
+
+$('#form-comment').on('submit', function(e) {
+    e.preventDefault();
+
+    var element = this;
+
+    $.ajax({
+        url: 'index.php?route=sale/order.call&user_token={{ user_token }}&action=sale/order.comment&store_id=' + $('#input-store').val() + '&language=' + $('#input-language').val(),
         type: 'post',
         data: $('#form-comment').serialize(),
         dataType: 'json',
         contentType: 'application/x-www-form-urlencoded',
-        beforeSend: function () {
-            $('#button-comment').prop('disabled', true).addClass('loading');
+        beforeSend: function() {
+            $('#button-comment').button('loading');
         },
-        complete: function () {
-            $('#button-comment').prop('disabled', false).removeClass('loading');
+        complete: function() {
+            $('#button-comment').button('reset');
         },
-        success: function (json) {
+        success: function(json) {
             $('.alert-dismissible').remove();
 
             // Check for errors
@@ -2634,24 +2693,26 @@ $('#form-comment').on('submit', function (e) {
                 $('#comment-value').html($('#input-comment').val().replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1<br/>$2'));
             }
         },
-        error: function (xhr, ajaxOptions, thrownError) {
+        error: function(xhr, ajaxOptions, thrownError) {
             console.log(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
         }
     });
 });
 
 // Refresh all products, vouchers and totals
-$('#button-refresh').on('click', function () {
+$('#button-refresh').on('click', function() {
     $.ajax({
-        url: 'index.php?route=sale/order|call&user_token={{ user_token }}&action=sale/cart',
+        url: 'index.php?route=sale/order.call&user_token={{ user_token }}&action=sale/cart&store_id=' + $('#input-store').val() + '&language=' + $('#input-language').val(),
         dataType: 'json',
-        beforeSend: function () {
-            $('#button-confirm').prop('disabled', true).addClass('loading');
+        beforeSend: function() {
+            $('#button-refresh').button('loading');
+            $('#button-confirm').prop('disabled', true);
         },
-        complete: function () {
-            $('#button-confirm').prop('disabled', false).removeClass('loading');
+        complete: function() {
+            $('#button-refresh').button('reset');
+            $('#button-confirm').prop('disabled', false);
         },
-        success: function (json) {
+        success: function(json) {
             html = '';
 
             if (json['products'].length) {
@@ -2659,7 +2720,7 @@ $('#button-refresh').on('click', function () {
                     product = json['products'][i];
 
                     html += '<tr>';
-                    html += '  <td class="text-start"><a href="index.php?route=catalog/product|form&user_token={{ user_token }}&product_id=' + product['product_id'] + '" target="_blank">' + product['name'] + '</a>' + (!product['stock'] ? ' <span class="text-danger">***</span>' : '');
+                    html += '  <td class="text-start"><a href="index.php?route=catalog/product.form&user_token={{ user_token }}&product_id=' + product['product_id'] + '" target="_blank">' + product['name'] + '</a>' + (!product['stock'] ? ' <span class="text-danger">***</span>' : '');
 
                     if (product['option']) {
                         for (j = 0; j < product['option'].length; j++) {
@@ -2672,12 +2733,12 @@ $('#button-refresh').on('click', function () {
 
                     if (product['reward']) {
                         html += '<br/>';
-                        html += '  - <small>{{ text_points }} ' + product['reward'] + '</small>';
+                        html += '  - <small>{{ text_points }}: ' + product['reward'] + '</small>';
                     }
 
                     if (product['subscription']) {
                         html += '<br/>';
-                        html += '  - <small>{{ text_subscription }} ' + product['subscription'] + '</small>';
+                        html += '  - <small>{{ text_subscription }}: <a href="index.php?route=sale/subscription.info&user_token={{ user_token }}&subscription_id={{ order_product.subscription_id }}" target="_blank">' + product['subscription'] + '</small>';
                     }
 
                     html += '  </td>';
@@ -2753,26 +2814,28 @@ $('#button-refresh').on('click', function () {
                 $('#button-shipping').prop('disabled', true);
             }
         },
-        error: function (xhr, ajaxOptions, thrownError) {
+        error: function(xhr, ajaxOptions, thrownError) {
             console.log(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
         }
     });
 });
 
 // Checkout
-$('#button-confirm').on('click', function () {
+$('#button-confirm').on('click', function() {
     var element = this;
 
     $.ajax({
-        url: 'index.php?route=sale/order|call&user_token={{ user_token }}&action=sale/order|confirm',
+        url: 'index.php?route=sale/order.call&user_token={{ user_token }}&action=sale/order.confirm&store_id=' + $('#input-store').val() + '&language=' + $('#input-language').val(),
         dataType: 'json',
-        beforeSend: function () {
-            $(element).prop('disabled', true).addClass('loading');
+        beforeSend: function() {
+            $(element).button('loading');
         },
-        complete: function () {
-            $(element).prop('disabled', false).removeClass('loading');
+        complete: function() {
+            $(element).button('reset');
         },
-        success: function (json) {
+        success: function(json) {
+            console.log(json);
+
             $('.alert-dismissible').remove();
 
             if (json['error']) {
@@ -2809,34 +2872,34 @@ $('#button-confirm').on('click', function () {
                 }
             }
         },
-        error: function (xhr, ajaxOptions, thrownError) {
+        error: function(xhr, ajaxOptions, thrownError) {
             console.log(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
         }
     });
 });
 
-$('#history').on('click', '.pagination a', function (e) {
+$('#history').on('click', '.pagination a', function(e) {
     e.preventDefault();
 
     $('#history').load(this.href);
 });
 
-$('#form-history').on('submit', function (e) {
+$('#form-history').on('submit', function(e) {
     e.preventDefault();
 
     $.ajax({
-        url: 'index.php?route=sale/order|call&user_token={{ user_token }}&action=sale/order|addHistory&order_id=' + $('#input-order-id').val(),
+        url: 'index.php?route=sale/order.call&user_token={{ user_token }}&action=sale/order.addHistory&store_id=' + $('#input-store').val() + '&language=' + $('#input-language').val() + '&order_id=' + $('#input-order-id').val(),
         type: 'post',
         dataType: 'json',
         data: $('#form-history').serialize(),
         contentType: 'application/x-www-form-urlencoded',
-        beforeSend: function () {
-            $('#button-history').prop('disabled', true).addClass('loading');
+        beforeSend: function() {
+            $('#button-history').button('loading');
         },
-        complete: function () {
-            $('#button-history').prop('disabled', false).removeClass('loading');
+        complete: function() {
+            $('#button-history').button('reset');
         },
-        success: function (json) {
+        success: function(json) {
             $('.alert-dismissible').remove();
 
             if (json['error']) {
@@ -2846,12 +2909,12 @@ $('#form-history').on('submit', function (e) {
             if (json['success']) {
                 $('#alert').prepend('<div class="alert alert-success alert-dismissible"><i class="fa-solid fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
 
-                $('#history').load('index.php?route=sale/order|history&user_token={{ user_token }}&order_id=' + $('#input-order-id').val());
+                $('#history').load('index.php?route=sale/order.history&user_token={{ user_token }}&order_id=' + $('#input-order-id').val());
 
                 $('#input-history').val('');
             }
         },
-        error: function (xhr, ajaxOptions, thrownError) {
+        error: function(xhr, ajaxOptions, thrownError) {
             console.log(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
         }
     });

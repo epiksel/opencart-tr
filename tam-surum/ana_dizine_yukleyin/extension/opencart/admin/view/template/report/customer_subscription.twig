@@ -4,15 +4,16 @@
       <div class="card-header"><i class="fa-solid fa-filter"></i> {{ text_filter }}</div>
       <div class="card-body">
         <div class="mb-3">
+          <label for="input-customer" class="form-label">{{ entry_customer }}</label>
+          <input type="text" name="filter_customer" value="{{ filter_customer }}" placeholder="{{ entry_customer }}" id="input-customer" data-oc-target="autocomplete-customer" class="form-control" autocomplete="off"/>
+          <ul id="autocomplete-customer" class="dropdown-menu"></ul>
+        </div>
+        <div class="mb-3">
           <label for="input-date-start" class="form-label">{{ entry_date_start }}</label>
           <div class="input-group date">
             <input type="text" name="filter_date_start" value="{{ filter_date_start }}" placeholder="{{ entry_date_start }}" id="input-date-start" class="form-control"/>
             <div class="input-group-text"><i class="fa-regular fa-calendar"></i></div>
           </div>
-        </div>
-        <div class="mb-3">
-          <label for="input-customer" class="form-label">{{ entry_customer }}</label>
-          <input type="text" name="filter_customer" value="{{ filter_customer }}" placeholder="{{ entry_customer }}" id="input-customer" class="form-control"/>
         </div>
         <div class="mb-3">
           <label for="input-date-end" class="form-label">{{ entry_date_end }}</label>
@@ -62,13 +63,13 @@ $('#button-filter').on('click', function () {
         url += '&filter_date_end=' + encodeURIComponent(filter_date_end);
     }
 
-    $('#customer-subscription').load('index.php?route=extension/opencart/report/customer_search|list&user_token={{ user_token }}' + url);
+    $('#customer-subscription').load('index.php?route=extension/opencart/report/customer_subscription.list&user_token={{ user_token }}' + url);
 });
 
 $('#input-customer').autocomplete({
     'source': function (request, response) {
         $.ajax({
-            url: 'index.php?route=customer/customer|autocomplete&user_token={{ user_token }}&filter_name=' + encodeURIComponent(request),
+            url: 'index.php?route=customer/customer.autocomplete&user_token={{ user_token }}&filter_name=' + encodeURIComponent(request),
             dataType: 'json',
             success: function (json) {
                 response($.map(json, function (item) {

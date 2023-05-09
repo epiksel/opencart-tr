@@ -1,6 +1,5 @@
 <?php
 namespace Opencart\Admin\Controller\Setting;
-use \Opencart\System\Helper as Helper;
 class Store extends \Opencart\System\Engine\Controller {
 	public function index(): void {
 		$this->load->language('setting/store');
@@ -25,8 +24,8 @@ class Store extends \Opencart\System\Engine\Controller {
 			'href' => $this->url->link('setting/store', 'user_token=' . $this->session->data['user_token'] . $url)
 		];
 
-		$data['add'] = $this->url->link('setting/store|form', 'user_token=' . $this->session->data['user_token'] . $url);
-		$data['delete'] = $this->url->link('setting/store|delete', 'user_token=' . $this->session->data['user_token']);
+		$data['add'] = $this->url->link('setting/store.form', 'user_token=' . $this->session->data['user_token'] . $url);
+		$data['delete'] = $this->url->link('setting/store.delete', 'user_token=' . $this->session->data['user_token']);
 
 		$data['list'] = $this->getList();
 
@@ -58,7 +57,7 @@ class Store extends \Opencart\System\Engine\Controller {
 			$url .= '&page=' . $this->request->get['page'];
 		}
 
-		$data['action'] = $this->url->link('setting/store|list', 'user_token=' . $this->session->data['user_token'] . $url);
+		$data['action'] = $this->url->link('setting/store.list', 'user_token=' . $this->session->data['user_token'] . $url);
 
 		$data['stores'] = [];
 
@@ -88,7 +87,7 @@ class Store extends \Opencart\System\Engine\Controller {
 				'store_id' => $result['store_id'],
 				'name'     => $result['name'],
 				'url'      => $result['url'],
-				'edit'     => $this->url->link('setting/store|form', 'user_token=' . $this->session->data['user_token'] . '&store_id=' . $result['store_id'])
+				'edit'     => $this->url->link('setting/store.form', 'user_token=' . $this->session->data['user_token'] . '&store_id=' . $result['store_id'])
 			];
 		}
 
@@ -96,7 +95,7 @@ class Store extends \Opencart\System\Engine\Controller {
 			'total' => $store_total,
 			'page'  => $page,
 			'limit' => $this->config->get('config_pagination_admin'),
-			'url'   => $this->url->link('setting/store|list', 'user_token=' . $this->session->data['user_token'] . $url . '&page={page}')
+			'url'   => $this->url->link('setting/store.list', 'user_token=' . $this->session->data['user_token'] . $url . '&page={page}')
 		]);
 
 		$data['results'] = sprintf($this->language->get('text_pagination'), ($store_total) ? (($page - 1) * $this->config->get('config_pagination_admin')) + 1 : 0, ((($page - 1) * $this->config->get('config_pagination_admin')) > ($store_total - $this->config->get('config_pagination_admin'))) ? $store_total : ((($page - 1) * $this->config->get('config_pagination_admin')) + $this->config->get('config_pagination_admin')), $store_total, ceil($store_total / $this->config->get('config_pagination_admin')));
@@ -131,10 +130,10 @@ class Store extends \Opencart\System\Engine\Controller {
 
 		$data['breadcrumbs'][] = [
 			'text' => $this->language->get('text_settings'),
-			'href' => $this->url->link('setting/store|form', 'user_token=' . $this->session->data['user_token'] . (isset($this->request->post['store_id']) ? '&store_id=' . $this->request->get['store_id'] : '') . $url)
+			'href' => $this->url->link('setting/store.form', 'user_token=' . $this->session->data['user_token'] . (isset($this->request->post['store_id']) ? '&store_id=' . $this->request->get['store_id'] : '') . $url)
 		];
 
-		$data['save'] = $this->url->link('setting/store|save', 'user_token=' . $this->session->data['user_token']);
+		$data['save'] = $this->url->link('setting/store.save', 'user_token=' . $this->session->data['user_token']);
 		$data['back'] = $this->url->link('setting/store', 'user_token=' . $this->session->data['user_token']);
 
 		if (isset($this->request->get['store_id'])) {
@@ -180,14 +179,12 @@ class Store extends \Opencart\System\Engine\Controller {
 		$extensions = $this->model_setting_extension->getExtensionsByType('theme');
 
 		foreach ($extensions as $extension) {
-			if ($this->config->get('theme_' . $extension['code'] . '_status')) {
-				$this->load->language('extension/' . $extension['extension'] . '/theme/' . $extension['code'], 'extension');
+			$this->load->language('extension/' . $extension['extension'] . '/theme/' . $extension['code'], 'extension');
 
-				$data['themes'][] = [
-					'text'  => $this->language->get('extension_heading_title'),
-					'value' => $extension['code']
-				];
-			}
+			$data['themes'][] = [
+				'text'  => $this->language->get('extension_heading_title'),
+				'value' => $extension['code']
+			];
 		}
 
 		if (isset($store_info['config_theme'])) {
@@ -594,19 +591,19 @@ class Store extends \Opencart\System\Engine\Controller {
 			$json['error']['name'] = $this->language->get('error_name');
 		}
 
-		if ((Helper\Utf8\strlen($this->request->post['config_owner']) < 3) || (Helper\Utf8\strlen($this->request->post['config_owner']) > 64)) {
+		if ((oc_strlen($this->request->post['config_owner']) < 3) || (oc_strlen($this->request->post['config_owner']) > 64)) {
 			$json['error']['owner'] = $this->language->get('error_owner');
 		}
 
-		if ((Helper\Utf8\strlen($this->request->post['config_address']) < 3) || (Helper\Utf8\strlen($this->request->post['config_address']) > 256)) {
+		if ((oc_strlen($this->request->post['config_address']) < 3) || (oc_strlen($this->request->post['config_address']) > 256)) {
 			$json['error']['address'] = $this->language->get('error_address');
 		}
 
-		if ((Helper\Utf8\strlen($this->request->post['config_email']) > 96) || !filter_var($this->request->post['config_email'], FILTER_VALIDATE_EMAIL)) {
+		if ((oc_strlen($this->request->post['config_email']) > 96) || !filter_var($this->request->post['config_email'], FILTER_VALIDATE_EMAIL)) {
 			$json['error']['email'] = $this->language->get('error_email');
 		}
 
-		if ((Helper\Utf8\strlen($this->request->post['config_telephone']) < 3) || (Helper\Utf8\strlen($this->request->post['config_telephone']) > 32)) {
+		if ((oc_strlen($this->request->post['config_telephone']) < 3) || (oc_strlen($this->request->post['config_telephone']) > 32)) {
 			$json['error']['telephone'] = $this->language->get('error_telephone');
 		}
 
@@ -704,16 +701,23 @@ class Store extends \Opencart\System\Engine\Controller {
 		}
 
 		$this->load->model('sale/order');
+		$this->load->model('sale/subscription');
 
 		foreach ($selected as $store_id) {
 			if (!$store_id) {
 				$json['error'] = $this->language->get('error_default');
 			}
 
-			$store_total = $this->model_sale_order->getTotalOrdersByStoreId($store_id);
+			$order_total = $this->model_sale_order->getTotalOrdersByStoreId($store_id);
 
-			if ($store_total) {
-				$json['error'] = sprintf($this->language->get('error_store'), $store_total);
+			if ($order_total) {
+				$json['error'] = sprintf($this->language->get('error_store'), $order_total);
+			}
+
+			$subscription_total = $this->model_sale_subscription->getTotalSubscriptionsByStoreId($store_id);
+
+			if ($subscription_total) {
+				$json['error'] = sprintf($this->language->get('error_store'), $subscription_total);
 			}
 		}
 

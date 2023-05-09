@@ -43,13 +43,13 @@ $('#button-send').on('click', function (e) {
     e.preventDefault();
 
     $.ajax({
-        url: 'index.php?route=common/authorize|send&user_token={{ user_token }}',
+        url: 'index.php?route=common/authorize.send&user_token={{ user_token }}',
         dataType: 'json',
         beforeSend: function () {
-            $('#button-send').prop('disabled', true).addClass('loading');
+            $('#button-send').button('loading');
         },
         complete: function () {
-            $('#button-send').prop('disabled', false).removeClass('loading');
+            $('#button-send').button('reset');
         },
         success: function (json) {
             console.log(json);

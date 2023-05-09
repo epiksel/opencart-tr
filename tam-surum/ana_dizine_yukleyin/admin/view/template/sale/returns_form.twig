@@ -45,8 +45,8 @@
                 <div class="row mb-3">
                   <label class="col-sm-2 col-form-label">{{ entry_customer }}</label>
                   <div class="col-sm-10">
-                    <input type="text" name="customer" value="{{ customer }}" placeholder="{{ entry_customer }}" id="input-customer" list="list-customer" class="form-control"/>
-                    <datalist id="list-customer"></datalist>
+                    <input type="text" name="customer" value="{{ customer }}" placeholder="{{ entry_customer }}" id="input-customer" data-oc-target="autocomplete-customer" class="form-control" autocomplete="off"/>
+                    <ul id="autocomplete-customer" class="dropdown-menu"></ul>
                     <input type="hidden" name="customer_id" value="{{ customer_id }}"/>
                   </div>
                 </div>
@@ -84,8 +84,8 @@
                 <div class="row mb-3 required">
                   <label class="col-sm-2 col-form-label">{{ entry_product }}</label>
                   <div class="col-sm-10">
-                    <input type="text" name="product" value="{{ product }}" placeholder="{{ entry_product }}" id="input-product" list="list-product" class="form-control"/>
-                    <datalist id="list-product"></datalist>
+                    <input type="text" name="product" value="{{ product }}" placeholder="{{ entry_product }}" id="input-product" data-oc-target="autocomplete-product" class="form-control" autocomplete="off"/>
+                    <ul id="autocomplete-product" class="dropdown-menu"></ul>
                     <input type="hidden" name="product_id" value="{{ product_id }}" id="input-product-id"/>
                     <div class="form-text">{{ help_product }}</div>
                     <div id="error-product" class="invalid-feedback"></div>
@@ -175,7 +175,9 @@
                 <div class="row mb-3">
                   <label for="input-notify" class="col-sm-2 col-form-label">{{ entry_notify }}</label>
                   <div class="col-sm-10">
-                    <input type="checkbox" name="notify" value="1" id="input-notify" class="form-check-input"/>
+                    <div class="form-check form-switch form-switch-lg">
+                      <input type="hidden" name="notify" value="0"/> <input type="checkbox" name="notify" value="1" id="input-notify" class="form-check-input"/>
+                    </div>
                   </div>
                 </div>
                 <div class="row mb-3">
@@ -200,7 +202,7 @@
 $('#input-customer').autocomplete({
     'source': function (request, response) {
         $.ajax({
-            url: 'index.php?route=customer/customer|autocomplete&user_token={{ user_token }}&filter_name=' + encodeURIComponent(request),
+            url: 'index.php?route=customer/customer.autocomplete&user_token={{ user_token }}&filter_name=' + encodeURIComponent(request),
             dataType: 'json',
             success: function (json) {
                 response($.map(json, function (item) {
@@ -230,7 +232,7 @@ $('#input-customer').autocomplete({
 $('#input-product').autocomplete({
     'source': function (request, response) {
         $.ajax({
-            url: 'index.php?route=catalog/product|autocomplete&user_token={{ user_token }}&filter_name=' + encodeURIComponent(request),
+            url: 'index.php?route=catalog/product.autocomplete&user_token={{ user_token }}&filter_name=' + encodeURIComponent(request),
             dataType: 'json',
             success: function (json) {
                 response($.map(json, function (item) {
@@ -260,15 +262,15 @@ $('#button-history').on('click', function (e) {
     e.preventDefault();
 
     $.ajax({
-        url: 'index.php?route=sale/returns|addHistory&user_token={{ user_token }}&return_id=' + $('#input-return-id').val(),
+        url: 'index.php?route=sale/returns.addHistory&user_token={{ user_token }}&return_id=' + $('#input-return-id').val(),
         type: 'post',
         dataType: 'json',
-        data: 'return_status_id=' + $('#input-return-status').val() + '&notify=' + ($('#input-notify').prop('checked') ? 1 : 0) + '&comment=' + encodeURIComponent($('#input-comment').val()),
+        data: 'return_status_id=' + $('#input-return-status').val() + '&notify=' + ($('#input-notify').prop('checked') ? 1 : 0) + '&comment=' + encodeURIComponent($('#input-history').val()),
         beforeSend: function () {
-            $('#button-history').prop('disabled', true).addClass('loading');
+            $('#button-history').button('loading');
         },
         complete: function () {
-            $('#button-history').prop('disabled', false).removeClass('loading');
+            $('#button-history').button('reset');
         },
         success: function (json) {
             $('.alert-dismissible').remove();
@@ -278,11 +280,11 @@ $('#button-history').on('click', function (e) {
             }
 
             if (json['success']) {
-                $('#history').load('index.php?route=sale/returns|history&user_token={{ user_token }}&return_id=' + $('#input-return-id').val());
+                $('#history').load('index.php?route=sale/returns.history&user_token={{ user_token }}&return_id=' + $('#input-return-id').val());
 
                 $('#alert').prepend('<div class="alert alert-success alert-dismissible"><i class="fa-solid fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>');
 
-                $('#input-history-comment').val('');
+                $('#input-history').val('');
             }
         }
     });

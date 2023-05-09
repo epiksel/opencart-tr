@@ -32,9 +32,9 @@ class Special extends \Opencart\System\Engine\Controller {
 		}
 
 		if (!isset($this->request->get['module_id'])) {
-			$data['save'] = $this->url->link('extension/opencart/module/special|save', 'user_token=' . $this->session->data['user_token']);
+			$data['save'] = $this->url->link('extension/opencart/module/special.save', 'user_token=' . $this->session->data['user_token']);
 		} else {
-			$data['save'] = $this->url->link('extension/opencart/module/special|save', 'user_token=' . $this->session->data['user_token'] . '&module_id=' . $this->request->get['module_id']);
+			$data['save'] = $this->url->link('extension/opencart/module/special.save', 'user_token=' . $this->session->data['user_token'] . '&module_id=' . $this->request->get['module_id']);
 		}
 
 		$data['back'] = $this->url->link('marketplace/extension', 'user_token=' . $this->session->data['user_token'] . '&type=module');
@@ -80,6 +80,12 @@ class Special extends \Opencart\System\Engine\Controller {
 		} else {
 			$data['status'] = '';
 		}
+		
+		if (isset($this->request->get['module_id'])) {
+			$data['module_id'] = (int)$this->request->get['module_id'];
+		} else {
+			$data['module_id'] = 0;
+		}
 
 		$data['header'] = $this->load->controller('common/header');
 		$data['column_left'] = $this->load->controller('common/column_left');
@@ -97,7 +103,7 @@ class Special extends \Opencart\System\Engine\Controller {
 			$json['error']['warning'] = $this->language->get('error_permission');
 		}
 
-		if ((Helper\Utf8\strlen($this->request->post['name']) < 3) || (Helper\Utf8\strlen($this->request->post['name']) > 64)) {
+		if ((oc_strlen($this->request->post['name']) < 3) || (oc_strlen($this->request->post['name']) > 64)) {
 			$json['error']['name'] = $this->language->get('error_name');
 		}
 
@@ -112,10 +118,10 @@ class Special extends \Opencart\System\Engine\Controller {
 		if (!$json) {
 			$this->load->model('setting/module');
 
-			if (!isset($this->request->get['module_id'])) {
-				$this->model_setting_module->addModule('opencart.special', $this->request->post);
+			if (!$this->request->post['module_id']) {
+				$json['module_id'] = $this->model_setting_module->addModule('opencart.special', $this->request->post);
 			} else {
-				$this->model_setting_module->editModule($this->request->get['module_id'], $this->request->post);
+				$this->model_setting_module->editModule($this->request->post['module_id'], $this->request->post);
 			}
 
 			$this->cache->delete('product');
