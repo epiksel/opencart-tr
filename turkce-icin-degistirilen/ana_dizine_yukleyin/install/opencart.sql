@@ -619,7 +619,7 @@ INSERT INTO `oc_cron` (`cron_id`, `code`, `cycle`, `action`, `status`, `date_add
 --
 
 INSERT INTO `oc_currency` (`currency_id`, `title`, `code`, `symbol_left`, `symbol_right`, `decimal_place`, `value`, `status`, `date_modified`) VALUES
-(1, 'Türk Lirası', 'TRY', '', '₺', '2', 1.00000000, 1, '2015-09-20 14:30:52'),
+(1, 'Türk Lirası', 'TRY', '', 'TL', '2', 1.00000000, 1, '2015-09-20 14:30:52'),
 (2, 'US Dollar', 'USD', '$', '', '2', 0.33280000, 1, '2015-09-20 14:30:52'),
 (3, 'Euro', 'EUR', '', '€', '2', 0.29429999, 1, '2015-09-20 14:30:52');
 
