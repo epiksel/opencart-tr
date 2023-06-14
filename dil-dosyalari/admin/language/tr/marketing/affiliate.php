@@ -43,7 +43,7 @@ $_['column_action']             = 'Eylem';
 // Entry
 $_['entry_customer']            = 'Müşteri';
 $_['entry_status']              = 'Durumu';
-$_['entry_company']             = 'Ülke';
+$_['entry_company']             = 'Şirket Adı';
 $_['entry_tracking']            = 'Takip Kodu';
 $_['entry_website']             = 'Web Sitesi';
 $_['entry_commission']          = 'Komisyon Oranı (%)';
@@ -52,7 +52,7 @@ $_['entry_payment']             = 'Ödeme Metotu';
 $_['entry_cheque']              = 'Alacaklı Adı';
 $_['entry_paypal']              = 'E-Posta adresi';
 $_['entry_bank_name']           = 'Banka Adı';
-$_['entry_bank_branch_number']  = 'ABA/BSB Numarası (Şube Sayısı)';
+$_['entry_bank_branch_number']  = 'Şube Numarası';
 $_['entry_bank_swift_code']     = 'SWIFT Kodu';
 $_['entry_bank_account_name']   = 'Hesap Adı';
 $_['entry_bank_account_number'] = 'Hesap Numarası';
