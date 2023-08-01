@@ -20,6 +20,7 @@ $_['column_action']     = 'Eylem';
 // Entry
 $_['entry_name']        = 'Dil Adı';
 $_['entry_code']        = 'Kodu';
+$_['entry_extension']   = 'Eklenti';
 $_['entry_locale']      = 'Yerel';
 $_['entry_status']      = 'Durumu';
 $_['entry_sort_order']  = 'Sıralama';

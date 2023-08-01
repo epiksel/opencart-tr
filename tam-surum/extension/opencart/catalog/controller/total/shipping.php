@@ -1,12 +1,9 @@
 <?php
 namespace Opencart\Catalog\Controller\Extension\Opencart\Total;
-use \Opencart\System\Helper AS Helper;
 class Shipping extends \Opencart\System\Engine\Controller {
 	public function index(): string {
 		if ($this->config->get('total_shipping_status') && $this->config->get('total_shipping_estimator') && $this->cart->hasShipping()) {
 			$this->load->language('extension/opencart/total/shipping');
-
-            $data['language'] = $this->config->get('config_language');
 
 			if (isset($this->session->data['shipping_address'])) {
 				$data['postcode'] = $this->session->data['shipping_address']['postcode'];
@@ -27,6 +24,8 @@ class Shipping extends \Opencart\System\Engine\Controller {
 			$this->load->model('localisation/country');
 
 			$data['countries'] = $this->model_localisation_country->getCountries();
+
+			$data['language'] = $this->config->get('config_language');
 
 			return $this->load->view('extension/opencart/total/shipping', $data);
 		}
@@ -101,22 +100,14 @@ class Shipping extends \Opencart\System\Engine\Controller {
 			}
 
 			$this->session->data['shipping_address'] = [
-				'firstname'      => '',
-				'lastname'       => '',
-				'company'        => '',
-				'address_1'      => '',
-				'address_2'      => '',
-				'postcode'       => $this->request->post['postcode'],
-				'city'           => '',
-				'zone_id'        => $this->request->post['zone_id'],
-				'zone'           => $zone,
-				'zone_code'      => $zone_code,
-				'country_id'     => $this->request->post['country_id'],
-				'country'        => $country,
-				'iso_code_2'     => $iso_code_2,
-				'iso_code_3'     => $iso_code_3,
-				'address_format' => $address_format,
-				'custom_field'   => []
+				'postcode'   => $this->request->post['postcode'],
+				'zone_id'    => $this->request->post['zone_id'],
+				'zone'       => $zone,
+				'zone_code'  => $zone_code,
+				'country_id' => $this->request->post['country_id'],
+				'country'    => $country,
+				'iso_code_2' => $iso_code_2,
+				'iso_code_3' => $iso_code_3
 			];
 
 			$this->tax->setShippingAddress($this->request->post['country_id'], $this->request->post['zone_id']);

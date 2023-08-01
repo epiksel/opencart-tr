@@ -37,3 +37,4 @@ $_['entry_rating']               = 'Oylama';
 // Tabs
 $_['tab_description']            = 'Açıklama';
 $_['tab_attribute']              = 'Özellikler';
+$_['tab_review']                 = 'Yorumlar (%s)';

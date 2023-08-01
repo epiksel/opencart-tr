@@ -36,9 +36,12 @@ class Cart {
 				$this->db->query("DELETE FROM `" . DB_PREFIX . "cart` WHERE `cart_id` = '" . (int)$cart['cart_id'] . "'");
 
 				// The advantage of using $this->add is that it will check if the products already exist and increase the quantity if necessary.
-				$this->add($cart['product_id'], $cart['quantity'], json_decode($cart['option'], true), $cart['subscription_plan_id']);
+				$this->add($cart['product_id'], $cart['quantity'], json_decode($cart['option'], true), $cart['subscription_plan_id'], $cart['override'], $cart['price']);
 			}
 		}
+
+		// Populate the cart data
+		$this->data = $this->getProducts();
 	}
 
 	/**
@@ -289,7 +292,11 @@ class Cart {
                         ];
 					}
 
-					$this->data[] = [
+					if ($cart['override']) {
+						$price = $cart['price'];
+					}
+
+					$this->data[$cart['cart_id']] = [
 						'cart_id'         => $cart['cart_id'],
 						'product_id'      => $product_query->row['product_id'],
 						'master_id'       => $product_query->row['master_id'],
@@ -335,16 +342,17 @@ class Cart {
 	 *
 	 * @return	void
 	 */
-	public function add(int $product_id, int $quantity = 1, array $option = [], int $subscription_plan_id = 0): void {
+	public function add(int $product_id, int $quantity = 1, array $option = [], int $subscription_plan_id = 0, bool $override = false, float $price = 0): void {
 		$query = $this->db->query("SELECT COUNT(*) AS `total` FROM `" . DB_PREFIX . "cart` WHERE `api_id` = '" . (isset($this->session->data['api_id']) ? (int)$this->session->data['api_id'] : 0) . "' AND `customer_id` = '" . (int)$this->customer->getId() . "' AND `session_id` = '" . $this->db->escape($this->session->getId()) . "' AND `product_id` = '" . (int)$product_id . "' AND `subscription_plan_id` = '" . (int)$subscription_plan_id . "' AND `option` = '" . $this->db->escape(json_encode($option)) . "'");
 
 		if (!$query->row['total']) {
-			$this->db->query("INSERT INTO `" . DB_PREFIX . "cart` SET `api_id` = '" . (isset($this->session->data['api_id']) ? (int)$this->session->data['api_id'] : 0) . "', `customer_id` = '" . (int)$this->customer->getId() . "', `session_id` = '" . $this->db->escape($this->session->getId()) . "', `product_id` = '" . (int)$product_id . "', `subscription_plan_id` = '" . (int)$subscription_plan_id . "', `option` = '" . $this->db->escape(json_encode($option)) . "', `quantity` = '" . (int)$quantity . "', `date_added` = NOW()");
+			$this->db->query("INSERT INTO `" . DB_PREFIX . "cart` SET `api_id` = '" . (isset($this->session->data['api_id']) ? (int)$this->session->data['api_id'] : 0) . "', `customer_id` = '" . (int)$this->customer->getId() . "', `session_id` = '" . $this->db->escape($this->session->getId()) . "', `product_id` = '" . (int)$product_id . "', `subscription_plan_id` = '" . (int)$subscription_plan_id . "', `option` = '" . $this->db->escape(json_encode($option)) . "', `quantity` = '" . (int)$quantity . "', `override` = '" . (bool)$override . "', `price` = '" . (float)($override ? $price : 0) . "', `date_added` = NOW()");
 		} else {
 			$this->db->query("UPDATE `" . DB_PREFIX . "cart` SET `quantity` = (`quantity` + " . (int)$quantity . ") WHERE `api_id` = '" . (isset($this->session->data['api_id']) ? (int)$this->session->data['api_id'] : 0) . "' AND `customer_id` = '" . (int)$this->customer->getId() . "' AND `session_id` = '" . $this->db->escape($this->session->getId()) . "' AND `product_id` = '" . (int)$product_id . "' AND `subscription_plan_id` = '" . (int)$subscription_plan_id . "' AND `option` = '" . $this->db->escape(json_encode($option)) . "'");
 		}
 
-		$this->data = [];
+		// Populate the cart data
+		$this->data = $this->getProducts();
 	}
 
 	/**
@@ -358,7 +366,19 @@ class Cart {
 	public function update(int $cart_id, int $quantity): void {
 		$this->db->query("UPDATE `" . DB_PREFIX . "cart` SET `quantity` = '" . (int)$quantity . "' WHERE `cart_id` = '" . (int)$cart_id . "' AND `api_id` = '" . (isset($this->session->data['api_id']) ? (int)$this->session->data['api_id'] : 0) . "' AND `customer_id` = '" . (int)$this->customer->getId() . "' AND `session_id` = '" . $this->db->escape($this->session->getId()) . "'");
 
-		$this->data = [];
+		// Populate the cart data
+		$this->data = $this->getProducts();
+	}
+
+	/**
+	 * Has
+	 *
+	 * @param	int	 $cart_id
+	 *
+	 * @return	bool
+	 */
+	public function has(int $cart_id): bool {
+		return isset($this->data[$cart_id]);
 	}
 
 	/**
@@ -371,7 +391,7 @@ class Cart {
 	public function remove(int $cart_id): void {
 		$this->db->query("DELETE FROM `" . DB_PREFIX . "cart` WHERE `cart_id` = '" . (int)$cart_id . "' AND `api_id` = '" . (isset($this->session->data['api_id']) ? (int)$this->session->data['api_id'] : 0) . "' AND `customer_id` = '" . (int)$this->customer->getId() . "' AND `session_id` = '" . $this->db->escape($this->session->getId()) . "'");
 
-		$this->data = [];
+		unset($this->data[$cart_id]);
 	}
 
 	/**
@@ -390,7 +410,7 @@ class Cart {
 	 *
 	 * @return	array
 	 */
-	public function getSubscription(): array {
+	public function getSubscriptions(): array {
 		$product_data = [];
 
 		foreach ($this->getProducts() as $value) {
@@ -497,7 +517,7 @@ class Cart {
 	 * @return	bool
 	 */
 	public function hasProducts(): bool {
-		return count($this->getProducts());
+		return (bool)count($this->getProducts());
 	}
 
 	/**
@@ -506,7 +526,7 @@ class Cart {
 	 * @return	bool
 	 */
 	public function hasSubscription(): bool {
-		return count($this->getSubscription());
+		return (bool)count($this->getSubscriptions());
 	}
 
 	/**

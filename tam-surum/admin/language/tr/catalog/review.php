@@ -7,6 +7,7 @@ $_['heading_title']     = 'Yorumlar';
 
 // Text
 $_['text_success']      = 'Başarılı: Yorumlar başarılı bir şekilde değiştirildi!';
+$_['text_next']         = 'Başarılı: %s üründen %s tanesi değiştirildi!';
 $_['text_list']         = 'Yorum Listesi';
 $_['text_add']          = 'Yorum Ekle';
 $_['text_edit']         = 'Yorum Düzenle';
@@ -31,6 +32,9 @@ $_['entry_date_to']     = 'Bitiş Tarihi';
 
 // Help
 $_['help_product']      = '(Otomatik Tamamlama)';
+
+// Button
+$_['button_rating']     = 'Ürün Puanlarını Senkronize Et';
 
 // Error
 $_['error_warning']     = 'Uyarı: Oluşan hatalar için lütfen formu dikkatli kontrol ediniz!';

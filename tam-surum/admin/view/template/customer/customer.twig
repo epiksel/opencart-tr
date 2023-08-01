@@ -130,6 +130,8 @@ $('#button-filter').on('click', function () {
         url += '&filter_date_to=' + encodeURIComponent(filter_date_to);
     }
 
+    window.history.pushState({}, null, 'index.php?route=customer/customer&user_token={{ user_token }}' + url);
+
     $('#customer').load('index.php?route=customer/customer.list&user_token={{ user_token }}' + url);
 });
 

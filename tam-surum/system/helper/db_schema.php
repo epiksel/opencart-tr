@@ -525,6 +525,16 @@ function oc_db_schema() {
 				'not_null' => true
 			],
 			[
+				'name' => 'override',
+				'type' => 'tinyint(1)',
+				'not_null' => true
+			],
+			[
+				'name' => 'price',
+				'type' => 'decimal(15,4)',
+				'not_null' => true
+			],
+			[
 				'name' => 'date_added',
 				'type' => 'datetime',
 				'not_null' => true
@@ -839,7 +849,8 @@ function oc_db_schema() {
 			]
 		],
 		'primary' => [
-			'category_id'
+			'category_id',
+			'store_id',
 		],
 		'foreign' => [
 			[
@@ -4428,18 +4439,23 @@ function oc_db_schema() {
 				'not_null' => true
 			],
 			[
+				'name' => 'product_id',
+				'type' => 'int(11)',
+				'not_null' => true
+			],
+			[
 				'name' => 'subscription_plan_id',
 				'type' => 'int(11)',
 				'not_null' => true
 			],
 			[
-				'name' => 'name',
-				'type' => 'varchar(255)',
+				'name' => 'trial_price',
+				'type' => 'decimal(10,4)',
 				'not_null' => true
 			],
 			[
-				'name' => 'trial_price',
-				'type' => 'decimal(10,4)',
+				'name' => 'trial_tax',
+				'type' => 'decimal(15,4)',
 				'not_null' => true
 			],
 			[
@@ -4470,6 +4486,11 @@ function oc_db_schema() {
 			[
 				'name' => 'price',
 				'type' => 'decimal(10,4)',
+				'not_null' => true
+			],
+			[
+				'name' => 'tax',
+				'type' => 'decimal(15,4)',
 				'not_null' => true
 			],
 			[
@@ -4874,6 +4895,11 @@ function oc_db_schema() {
 				'type' => 'int(11)',
 				'not_null' => true,
 				'default' => '1'
+			],
+			[
+				'name' => 'rating',
+				'type' => 'int(1)',
+				'not_null' => true
 			],
 			[
 				'name' => 'sort_order',
@@ -6457,11 +6483,6 @@ function oc_db_schema() {
 				'not_null' => true
 			],
 			[
-				'name' => 'customer_group_id',
-				'type' => 'int(11)',
-				'not_null' => true
-			],
-			[
 				'name' => 'payment_address_id',
 				'type' => 'int(11)',
 				'not_null' => true
@@ -6494,11 +6515,6 @@ function oc_db_schema() {
 			[
 				'name' => 'subscription_plan_id',
 				'type' => 'int(11)',
-				'not_null' => true
-			],
-			[
-				'name' => 'name',
-				'type' => 'varchar(255)',
 				'not_null' => true
 			],
 			[
@@ -6574,11 +6590,6 @@ function oc_db_schema() {
 			[
 				'name' => 'affiliate_id',
 				'type' => 'int(11)',
-				'not_null' => true
-			],
-			[
-				'name' => 'commission',
-				'type' => 'decimal(10,4)',
 				'not_null' => true
 			],
 			[
@@ -6739,11 +6750,6 @@ function oc_db_schema() {
 				'type' => 'int(11)',
 				'not_null' => true,
 				'auto_increment' => true
-			],
-			[
-				'name' => 'trial_price',
-				'type' => 'decimal(10,4)',
-				'not_null' => true
 			],
 			[
 				'name' => 'trial_frequency',
@@ -7225,7 +7231,7 @@ function oc_db_schema() {
 			],
 			[
 				'name' => 'keyword',
-				'type' => 'varchar(255)',
+				'type' => 'varchar(768)',
 				'not_null' => true
 			],
 			[

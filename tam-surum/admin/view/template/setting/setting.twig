@@ -315,7 +315,7 @@
                       </div>
 
                       <div class="row mb-3 required">
-                        <label for="input-product-report" class="col-sm-2 col-form-label">{{ entry_product_report }}</label>
+                        <label class="col-sm-2 col-form-label">{{ entry_product_report }}</label>
                         <div class="col-sm-10">
                           <div class="form-check form-switch form-switch-lg">
                             <input type="hidden" name="config_product_report_status" value="0"/>
@@ -1403,7 +1403,7 @@ $('#input-country').on('change', function () {
             $('#input-zone').prop('disabled', false);
         },
         success: function (json) {
-            html = '<option value="">{{ text_select }}</option>';
+            html = '<option value="">{{ text_select|escape('js') }}</option>';
 
             if (json['zone'] && json['zone'] != '') {
                 for (i = 0; i < json['zone'].length; i++) {
@@ -1416,7 +1416,7 @@ $('#input-country').on('change', function () {
                     html += '>' + json['zone'][i]['name'] + '</option>';
                 }
             } else {
-                html += '<option value="0" selected>{{ text_none }}</option>';
+                html += '<option value="0" selected>{{ text_none|escape('js') }}</option>';
             }
 
             $('#input-zone').html(html);

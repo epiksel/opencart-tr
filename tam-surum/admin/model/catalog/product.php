@@ -332,6 +332,9 @@ class Product extends \Opencart\System\Engine\Model {
 			$product_data['sku'] = '';
 			$product_data['upc'] = '';
 			$product_data['status'] = '0';
+			
+			$product_data['variant'] = json_decode($product_info['variant'], true);
+			$product_data['override'] = json_decode($product_info['override'], true);
 
 			$product_data['product_attribute'] = $this->model_catalog_product->getAttributes($product_id);
 			$product_data['product_category'] = $this->model_catalog_product->getCategories($product_id);
@@ -773,6 +776,10 @@ class Product extends \Opencart\System\Engine\Model {
 
 			$this->model_catalog_product->editProduct($product['product_id'], $product_data);
 		}
+	}
+
+	public function editRating(int $product_id, int $rating): void {
+		$this->db->query("UPDATE `" . DB_PREFIX . "product` SET `rating` = '" . (int)$rating . "', `date_modified` = NOW() WHERE `product_id` = '" . (int)$product_id . "'");
 	}
 
 	public function getProduct(int $product_id): array {

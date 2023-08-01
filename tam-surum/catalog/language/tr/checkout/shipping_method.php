@@ -14,6 +14,7 @@ $_['text_success']           = 'Başarılı: Kargo metotu değiştirildi!';
 $_['entry_shipping_method']  = 'Kargo metotu seçin...';
 
 // Error
+$_['error_customer']         = 'Müşteri gerekli!';
 $_['error_payment_address']  = 'Fatura adresi gerekli!';
 $_['error_shipping_address'] = 'Kargo adresi gerekli!';
 $_['error_shipping_method']  = 'Kargo metotu gerekli!';

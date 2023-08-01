@@ -7,15 +7,15 @@ $_['heading_title']              = 'Siparişlerim';
 
 // Text
 $_['text_account']               = 'Hesabım';
-$_['text_order']                 = 'Sipariş Bilgileri';
-$_['text_order_detail']          = 'Sipariş Detayları';
+$_['text_order']                 = 'Sipariş #%s';
 $_['text_invoice_no']            = 'Fatura No:';
 $_['text_order_id']              = 'Sipariş No:';
+$_['text_order_status']          = 'Sipariş Durumu';
+$_['text_shipping_method']       = 'Kargo Metotu:';
+$_['text_payment_method']        = 'Ödeme Metotu:';
 $_['text_date_added']            = 'Ekleme Tarihi:';
 $_['text_shipping_address']      = 'Teslimat Adresi';
-$_['text_shipping_method']       = 'Kargo Metotu:';
 $_['text_payment_address']       = 'Fatura Adresi';
-$_['text_payment_method']        = 'Ödeme Metotu:';
 $_['text_subscription']          = 'Abonelik';
 $_['text_subscription_trial']    = '%s için her %d %s %d ödeme ardından ';
 $_['text_subscription_duration'] = '%s için her %d %s da bir %d ödeme';
@@ -41,9 +41,9 @@ $_['column_quantity']            = 'Adet';
 $_['column_price']               = 'Birim Fiyatı';
 $_['column_total']               = 'Tutarı';
 $_['column_action']              = 'Eylem';
-$_['column_date_added']          = 'Tarih';
 $_['column_status']              = 'Durumu';
 $_['column_comment']             = 'Açıklama';
+$_['column_date_added']          = 'Tarih';
 
 // Error
 $_['error_reorder']              = '%s is not currently available to be reordered.';

@@ -20,7 +20,7 @@ $_['entry_email']                  = 'E-Posta Adresi';
 $_['entry_password']               = 'Parola';
 
 // Error
-$_['error_token']                  = 'Uyarı: Oturum açma belirteci geçersiz!';
+$_['error_token']                  = 'Uyarı: Oturum belirteci geçersiz! Lütfen tekrar giriş yapın.';
 $_['error_login']                  = 'Uyarı: E-Posta adresiniz ya da parolanız yanlış!';
 $_['error_attempts']               = 'Uyarı: Oturum açma deneme sınırına ulaştınız. Lütfen 1 saat içinde tekrar deneyiniz!';
 $_['error_approved']               = 'Uyarı: Giriş yapabilmeniz için önce hesabınızın onaylanması gerekiyor!';

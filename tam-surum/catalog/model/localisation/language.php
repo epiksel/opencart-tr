@@ -56,35 +56,39 @@ class Language extends \Opencart\System\Engine\Model {
 	}
 
 	public function getLanguages(): array {
-		$language_data = $this->cache->get('catalog.language');
+		$sql = "SELECT * FROM `" . DB_PREFIX . "language` WHERE `status` = '1' ORDER BY `sort_order`, `name`";
 
-		if (!$language_data) {
-			$language_data = [];
+		$results = (array)$this->cache->get('language.' . md5($sql));
 
-			$query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "language` WHERE `status` = '1' ORDER BY `sort_order`, `name`");
+		if (!$results) {
+			$query = $this->db->query($sql);
 
-			foreach ($query->rows as $result) {
-				$image = HTTP_SERVER;
+			$results = $query->rows;
 
-				if (!$result['extension']) {
-					$image .= 'catalog/';
-				} else {
-					$image .= 'extension/' . $result['extension'] . '/catalog/';
-				}
+			$this->cache->set('language.' . md5($sql), $results);
+		}
 
-				$language_data[] = [
-					'language_id' => $result['language_id'],
-					'name'        => $result['name'],
-					'code'        => $result['code'],
-					'image'       => $image . 'language/' . $result['code'] . '/' . $result['code'] . '.png',
-					'locale'      => $result['locale'],
-					'extension'   => $result['extension'],
-					'sort_order'  => $result['sort_order'],
-					'status'      => $result['status']
-				];
+		$language_data = [];
+
+		foreach ($results as $result) {
+			$image = HTTP_SERVER;
+
+			if (!$result['extension']) {
+				$image .= 'catalog/';
+			} else {
+				$image .= 'extension/' . $result['extension'] . '/catalog/';
 			}
 
-			$this->cache->set('catalog.language', $language_data);
+			$language_data[$result['code']] = [
+				'language_id' => $result['language_id'],
+				'name'        => $result['name'],
+				'code'        => $result['code'],
+				'image'       => $image . 'language/' . $result['code'] . '/' . $result['code'] . '.png',
+				'locale'      => $result['locale'],
+				'extension'   => $result['extension'],
+				'sort_order'  => $result['sort_order'],
+				'status'      => $result['status']
+			];
 		}
 
 		return $language_data;

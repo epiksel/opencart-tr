@@ -26,8 +26,29 @@ class Store extends \Opencart\System\Engine\Model {
 
 	public function deleteStore(int $store_id): void {
 		$this->db->query("DELETE FROM `" . DB_PREFIX . "store` WHERE `store_id` = '" . (int)$store_id . "'");
+
+		$this->db->query("DELETE FROM `" . DB_PREFIX . "category_to_layout` WHERE `store_id` = '" . (int)$store_id . "'");
+		$this->db->query("DELETE FROM `" . DB_PREFIX . "category_to_store` WHERE `store_id` = '" . (int)$store_id . "'");
+		$this->db->query("DELETE FROM `" . DB_PREFIX . "customer` WHERE `store_id` = '" . (int)$store_id . "'");
+		$this->db->query("DELETE FROM `" . DB_PREFIX . "customer_affiliate_report` WHERE `store_id` = '" . (int)$store_id . "'");
+		$this->db->query("DELETE FROM `" . DB_PREFIX . "customer_ip` WHERE `store_id` = '" . (int)$store_id . "'");
+		$this->db->query("DELETE FROM `" . DB_PREFIX . "customer_search` WHERE `store_id` = '" . (int)$store_id . "'");
+		$this->db->query("DELETE FROM `" . DB_PREFIX . "download_report` WHERE `store_id` = '" . (int)$store_id . "'");
+		$this->db->query("DELETE FROM `" . DB_PREFIX . "gdpr` WHERE `store_id` = '" . (int)$store_id . "'");
+		$this->db->query("DELETE FROM `" . DB_PREFIX . "information_to_layout` WHERE `store_id` = '" . (int)$store_id . "'");
+		$this->db->query("DELETE FROM `" . DB_PREFIX . "information_to_store` WHERE `store_id` = '" . (int)$store_id . "'");
 		$this->db->query("DELETE FROM `" . DB_PREFIX . "layout_route` WHERE `store_id` = '" . (int)$store_id . "'");
+		$this->db->query("DELETE FROM `" . DB_PREFIX . "manufacturer_to_layout` WHERE `store_id` = '" . (int)$store_id . "'");
+		$this->db->query("DELETE FROM `" . DB_PREFIX . "manufacturer_to_store` WHERE `store_id` = '" . (int)$store_id . "'");
+		$this->db->query("DELETE FROM `" . DB_PREFIX . "marketing_report` WHERE `store_id` = '" . (int)$store_id . "'");
+		$this->db->query("DELETE FROM `" . DB_PREFIX . "order` WHERE `store_id` = '" . (int)$store_id . "'");
+		$this->db->query("DELETE FROM `" . DB_PREFIX . "product_report` WHERE `store_id` = '" . (int)$store_id . "'");
+		$this->db->query("DELETE FROM `" . DB_PREFIX . "product_to_layout` WHERE `store_id` = '" . (int)$store_id . "'");
+		$this->db->query("DELETE FROM `" . DB_PREFIX . "product_to_store` WHERE `store_id` = '" . (int)$store_id . "'");
 		$this->db->query("DELETE FROM `" . DB_PREFIX . "setting` WHERE `store_id` = '" . (int)$store_id . "'");
+		$this->db->query("DELETE FROM `" . DB_PREFIX . "subscription` WHERE `store_id` = '" . (int)$store_id . "'");
+		$this->db->query("DELETE FROM `" . DB_PREFIX . "theme` WHERE `store_id` = '" . (int)$store_id . "'");
+		$this->db->query("DELETE FROM `" . DB_PREFIX . "translation` WHERE `store_id` = '" . (int)$store_id . "'");
 		$this->db->query("DELETE FROM `" . DB_PREFIX . "seo_url` WHERE `store_id` = '" . (int)$store_id . "'");
 
 		$this->cache->delete('store');
@@ -40,14 +61,16 @@ class Store extends \Opencart\System\Engine\Model {
 	}
 
 	public function getStores(array $data = []): array {
-		$store_data = $this->cache->get('store');
+		$sql = "SELECT * FROM `" . DB_PREFIX . "store` ORDER BY `url`";
+
+		$store_data = $this->cache->get('store.' . md5($sql));
 
 		if (!$store_data) {
-			$query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "store` ORDER BY `url`");
+			$query = $this->db->query($sql);
 
 			$store_data = $query->rows;
 
-			$this->cache->set('store', $store_data);
+			$this->cache->set('store.' . md5($sql), $store_data);
 		}
 
 		return $store_data;
@@ -68,6 +91,7 @@ class Store extends \Opencart\System\Engine\Model {
 		// Load the default config
 		$config->addPath(DIR_CONFIG);
 		$config->load('default');
+		$config->load('catalog');
 		$config->set('application', 'Catalog');
 
 		// Store
@@ -93,7 +117,7 @@ class Store extends \Opencart\System\Engine\Model {
 		$loader = new \Opencart\System\Engine\Loader($registry);
 		$registry->set('load', $loader);
 
-		// Create a dummy request class so we can feed the data to the order editor
+		// Create a dummy request class, so we can feed the data to the order editor
 		$request = new \stdClass();
 		$request->get = [];
 		$request->post = [];
@@ -125,30 +149,14 @@ class Store extends \Opencart\System\Engine\Model {
 		$template->addPath(DIR_CATALOG . 'view/template/');
 		$registry->set('template', $template);
 
+		// Adding language var to the GET variable so there is a default language
+		$registry->request->get['language'] = $language;
+
 		// Language
-		$this->load->model('localisation/language');
-
-		$language_info = $this->model_localisation_language->getLanguageByCode($language);
-
-		if ($language_info) {
-			$config->set('config_language_id', $language_info['language_id']);
-			$config->set('config_language', $language_info['code']);
-		} else {
-			$config->set('config_language_id', $this->config->get('config_language_id'));
-			$config->set('config_language', $this->config->get('config_language'));
-		}
-
-		$language = new \Opencart\System\Library\Language($config->get('config_language'));
-		$registry->set('language', $language);
-
-		if (!$language_info['extension']) {
-			$language->addPath(DIR_CATALOG . 'language/');
-		} else {
-			$language->addPath(DIR_EXTENSION . $language_info['extension'] . '/catalog/language/');
-		}
-
-		// Load default language file
+		$language = new \Opencart\System\Library\Language($config->get('language_code'));
+		$language->addPath(DIR_CATALOG . 'language/');
 		$language->load('default');
+		$registry->set('language', $language);
 
 		// Url
 		$registry->set('url', new \Opencart\System\Library\Url($config->get('site_url')));
@@ -159,6 +167,7 @@ class Store extends \Opencart\System\Engine\Model {
 		// Run pre actions to load key settings and classes.
 		$pre_actions = [
 			'startup/setting',
+			'startup/language',
 			'startup/extension',
 			'startup/customer',
 			'startup/tax',

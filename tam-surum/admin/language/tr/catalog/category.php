@@ -47,6 +47,6 @@ $_['error_permission']        = 'Uyarı: Kategorileri değiştirme iznine sahip 
 $_['error_name']              = 'Kategori adı 1 ile 255 karakter arasında olmalı!';
 $_['error_meta_title']        = 'Meta başlığı 1 ile 255 karakter arasında olmalı!';
 $_['error_parent']            = 'Kategorinin kendisi ana kategori olarak seçilemez!';
-$_['error_seo']               = 'SEO Bağlantısı gerekli!';
 $_['error_keyword']           = 'SEO Bağlantısı 1 ile 64 karakter arasında olmalı!';
 $_['error_keyword_exists']    = 'SEO URL\'si benzersiz olmalıdır!';
+$_['error_keyword_character'] = 'SEO Bağlantısı sadece a-z, 0-9, - ve _ karakteri içerebilir!';

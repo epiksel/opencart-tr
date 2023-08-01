@@ -30,5 +30,6 @@ $_['help_items']       = 'Slayt başına gösterilecek öğe sayısı.';
 // Error
 $_['error_permission'] = 'Uyarı: Afişler modülünü değiştirme iznine sahip değilsiniz!';
 $_['error_name']       = 'Modül Adı 3 ile 64 karakter arasında olmalıdır!';
+$_['error_interval']   = 'Aralık gerekli!';
 $_['error_width']      = 'Genişlik gerekli!';
 $_['error_height']     = 'Yükseklik gerekli!';

@@ -1,6 +1,6 @@
 <?php
 namespace Opencart\System\Library\Cache;
-class APC {
+class APCu {
 	private int $expire;
 	private bool $active;
 
@@ -11,7 +11,7 @@ class APC {
 	 */
 	public function __construct(int $expire = 3600) {
 		$this->expire = $expire;
-		$this->active = function_exists('apc_cache_info') && ini_get('apc.enabled');
+		$this->active = function_exists('apcu_cache_info') && ini_get('apc.enabled');
 	}
 
 	/**
@@ -22,7 +22,7 @@ class APC {
 	 * @return	 array|string|null
      */
 	public function get(string $key): array|string|null {
-		return $this->active ? apc_fetch(CACHE_PREFIX . $key) : [];
+		return $this->active ? apcu_fetch(CACHE_PREFIX . $key) : [];
 	}
 
 	/**
@@ -39,7 +39,7 @@ class APC {
 		}
 
 		if ($this->active) {
-			apc_store(CACHE_PREFIX . $key, $value, $expire);
+			apcu_store(CACHE_PREFIX . $key, $value, $expire);
 		}
 	}
 
@@ -52,7 +52,7 @@ class APC {
      */
 	public function delete(string $key): void {
 		if ($this->active) {
-			$cache_info = apc_cache_info('user');
+			$cache_info = apcu_cache_info();
 
 			$cache_list = $cache_info['cache_list'];
 
@@ -62,5 +62,22 @@ class APC {
 				}
 			}
 		}
+	}
+
+	/**
+     * Delete all cache
+     *
+     * @param	 null
+	 * 
+	 * @return	 bool
+     */
+	public function flush(): bool {
+		$status = false;
+
+		if (function_exists('apcu_clear_cache')) {
+			$status = apcu_clear_cache();
+		}
+
+		return $status;
 	}
 }
