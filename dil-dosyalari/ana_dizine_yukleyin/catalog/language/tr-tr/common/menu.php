@@ -1,3 +1,4 @@
 <?php
 // Text
-$_['text_all'] = 'Tümünü Göster';
+$_['text_category']  = 'Kategoriler';
+$_['text_all']       = 'Tümünü Göster';
