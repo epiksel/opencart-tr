@@ -1,16 +1,16 @@
 <?php
 // Heading
-$_['heading_title']    = 'Marketplaces';
+$_['heading_title']    = 'Pazaryerleri';
 
 // Text
-$_['text_success']     = 'Success: You have modified marketplaces!';
-$_['text_list']        = 'Marketplace List';
+$_['text_success']     = 'Başarılı: Pazaryerleri başarılı bir şekilde değiştirildi!';
+$_['text_list']        = 'Pazaryeri Listesi';
 
 // Column
-$_['column_name']      = 'Marketplace Name';
-$_['column_status']    = 'Status';
-$_['column_action']    = 'Action';
+$_['column_name']      = 'Pazaryeri Adı';
+$_['column_status']    = 'Durumu';
+$_['column_action']    = 'Eylem';
 
 // Error
-$_['error_permission'] = 'Warning: You do not have permission to modify marketplaces!';
-$_['error_extension']  = 'Warning: Extension does not exist!';
+$_['error_permission'] = 'Uyarı: Pazaryerlerini düzenleme iznine sahip değilsiniz!';
+$_['error_extension']  = 'Uyarı: Eklenti mevcut değil!';
