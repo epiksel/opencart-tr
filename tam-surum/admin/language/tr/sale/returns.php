@@ -61,5 +61,5 @@ $_['error_firstname']      = 'Ad 1 ile 32 karakter arasında olmalı!';
 $_['error_lastname']       = 'Soyadı 1 ile 32 karakter arasında olmalı!';
 $_['error_email']          = 'E-Posta adresi geçersiz!';
 $_['error_telephone']      = 'Telefon 3 ile 32 karakter arasında olmalı!';
-$_['error_product']        = 'Ürün Adı 3 ile 255 karakter arasında olmalı!';
-$_['error_model']          = 'Ürün Kodu 3 ile 64 karakter arasında olmalı!';
+$_['error_product']        = 'Ürün Adı 1 ile 255 karakter arasında olmalı!';
+$_['error_model']          = 'Ürün Kodu 1 ile 64 karakter arasında olmalı!';

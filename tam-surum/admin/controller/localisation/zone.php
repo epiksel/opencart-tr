@@ -1,6 +1,14 @@
 <?php
 namespace Opencart\Admin\Controller\Localisation;
+/**
+ * Class Zone
+ *
+ * @package Opencart\Admin\Controller\Localisation
+ */
 class Zone extends \Opencart\System\Engine\Controller {
+	/**
+	 * @return void
+	 */
 	public function index(): void {
 		$this->load->language('localisation/zone');
 
@@ -68,12 +76,18 @@ class Zone extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput($this->load->view('localisation/zone', $data));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function list(): void {
 		$this->load->language('localisation/zone');
 
 		$this->response->setOutput($this->getList());
 	}
 
+	/**
+	 * @return string
+	 */
 	protected function getList(): string {
 		if (isset($this->request->get['filter_name'])) {
 			$filter_name = (string)$this->request->get['filter_name'];
@@ -94,13 +108,13 @@ class Zone extends \Opencart\System\Engine\Controller {
 		}
 
 		if (isset($this->request->get['sort'])) {
-			$sort = $this->request->get['sort'];
+			$sort = (string)$this->request->get['sort'];
 		} else {
 			$sort = 'c.name';
 		}
 
 		if (isset($this->request->get['order'])) {
-			$order = $this->request->get['order'];
+			$order = (string)$this->request->get['order'];
 		} else {
 			$order = 'ASC';
 		}
@@ -163,6 +177,7 @@ class Zone extends \Opencart\System\Engine\Controller {
 				'country' => $result['country'],
 				'name'    => $result['name'] . (($result['zone_id'] == $this->config->get('config_zone_id')) ? $this->language->get('text_default') : ''),
 				'code'    => $result['code'],
+				'status'  => $result['status'],
 				'edit'    => $this->url->link('localisation/zone.form', 'user_token=' . $this->session->data['user_token'] . '&zone_id=' . $result['zone_id'] . $url)
 			];
 		}
@@ -185,10 +200,6 @@ class Zone extends \Opencart\System\Engine\Controller {
 			$url .= '&order=DESC';
 		} else {
 			$url .= '&order=ASC';
-		}
-
-		if (isset($this->request->get['page'])) {
-			$url .= '&page=' . $this->request->get['page'];
 		}
 
 		$data['sort_country'] = $this->url->link('localisation/zone.list', 'user_token=' . $this->session->data['user_token'] . '&sort=c.name' . $url);
@@ -232,6 +243,9 @@ class Zone extends \Opencart\System\Engine\Controller {
 		return $this->load->view('localisation/zone_list', $data);
 	}
 
+	/**
+	 * @return void
+	 */
 	public function form(): void {
 		$this->load->language('localisation/zone');
 
@@ -327,6 +341,9 @@ class Zone extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput($this->load->view('localisation/zone_form', $data));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function save(): void {
 		$this->load->language('localisation/zone');
 
@@ -356,6 +373,9 @@ class Zone extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput(json_encode($json));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function delete(): void {
 		$this->load->language('localisation/zone');
 

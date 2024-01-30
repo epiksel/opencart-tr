@@ -1,13 +1,20 @@
 <?php
 namespace Opencart\Catalog\Controller\Extension\Opencart\Module;
+/**
+ * Class Special
+ *
+ * @package
+ */
 class Special extends \Opencart\System\Engine\Controller {
+	/**
+	 * @param array $setting
+	 *
+	 * @return string
+	 */
 	public function index(array $setting): string {
 		$this->load->language('extension/opencart/module/special');
 
 		$data['axis'] = $setting['axis'];
-
-		$this->load->model('catalog/product');
-		$this->load->model('tool/image');
 
 		$data['products'] = [];
 
@@ -17,6 +24,9 @@ class Special extends \Opencart\System\Engine\Controller {
 			'start' => 0,
 			'limit' => $setting['limit']
 		];
+
+		$this->load->model('catalog/product');
+		$this->load->model('tool/image');
 
 		$results = $this->model_catalog_product->getSpecials($filter_data);
 

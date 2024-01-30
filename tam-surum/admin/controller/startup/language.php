@@ -1,8 +1,19 @@
 <?php
 namespace Opencart\Admin\Controller\Startup;
+/**
+ * Class Language
+ *
+ * @package Opencart\Admin\Controller\Startup
+ */
 class Language extends \Opencart\System\Engine\Controller {
+	/**
+	 * @var array
+	 */
 	private static array $languages = [];
 
+	/**
+	 * @return void
+	 */
 	public function index(): void {
 		if (isset($this->request->cookie['language'])) {
 			$code = (string)$this->request->cookie['language'];
@@ -31,9 +42,18 @@ class Language extends \Opencart\System\Engine\Controller {
 	}
 
 	// Fill the language up with default values
+
+	/**
+	 * @param $route
+	 * @param $prefix
+	 * @param $code
+	 * @param $output
+	 *
+	 * @return void
+	 */
 	public function after(&$route, &$prefix, &$code, &$output): void {
 		if (!$code) {
-			$code = $this->config->get('config_language');
+			$code = $this->config->get('config_language_admin');
 		}
 
 		// Use $this->language->load so it's not triggering infinite loops

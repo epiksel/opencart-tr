@@ -5,13 +5,17 @@
 // Text
 $_['text_address_format']      = 'Adres Biçimleri';
 $_['text_affiliate']           = 'Ortaklar';
+$_['text_antispam']            = 'Anti-Spam';
 $_['text_api']                 = 'API';
+$_['text_article']             = 'Makaleler';
 $_['text_attribute']           = 'Özellikler';
 $_['text_attribute_group']     = 'Özellik Grupları';
 $_['text_backup']              = 'Yedekle / Geri Yükle';
 $_['text_banner']              = 'Afişler';
 $_['text_catalog']             = 'Katalog';
 $_['text_category']            = 'Kategoriler';
+$_['text_cms']                 = 'CMS';
+$_['text_comment']             = 'Yorumlar';
 $_['text_contact']             = 'E-Posta Gönder';
 $_['text_country']             = 'Ülkeler';
 $_['text_coupon']              = 'Kuponlar';
@@ -71,6 +75,7 @@ $_['text_tax']                 = 'Vergiler';
 $_['text_tax_class']           = 'Vergi Sınıfları';
 $_['text_tax_rate']            = 'Vergi Oranları';
 $_['text_theme']               = 'Tema Editörü';
+$_['text_topic']               = 'Konular';
 $_['text_translation']         = 'Çeviriler';
 $_['text_upgrade']             = 'Güncelleme';
 $_['text_upload']              = 'Yüklemeler';

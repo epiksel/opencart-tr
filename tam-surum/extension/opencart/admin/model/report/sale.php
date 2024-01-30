@@ -1,6 +1,16 @@
 <?php
 namespace Opencart\Admin\Model\Extension\Opencart\Report;
+/**
+ * Class Sale
+ *
+ * @package Opencart\Admin\Model\Extension\Opencart\Report
+ */
 class Sale extends \Opencart\System\Engine\Model {
+	/**
+	 * @param array $data
+	 *
+	 * @return float
+	 */
 	public function getTotalSales(array $data = []): float {
 		$sql = "SELECT SUM(`total`) AS `total` FROM `" . DB_PREFIX . "order` WHERE `order_status_id` > '0'";
 
@@ -13,12 +23,18 @@ class Sale extends \Opencart\System\Engine\Model {
 		return (float)$query->row['total'];
 	}
 
+	/**
+	 * @return array
+	 */
 	public function getTotalOrdersByCountry(): array {
 		$query = $this->db->query("SELECT COUNT(*) AS total, SUM(o.`total`) AS amount, c.`iso_code_2` FROM `" . DB_PREFIX . "order` o LEFT JOIN `" . DB_PREFIX . "country` c ON (o.`payment_country_id` = c.`country_id`) WHERE o.`order_status_id` > '0' GROUP BY o.`payment_country_id`");
 
 		return $query->rows;
 	}
 
+	/**
+	 * @return array
+	 */
 	public function getTotalOrdersByDay(): array {
 		$implode = [];
 
@@ -47,6 +63,9 @@ class Sale extends \Opencart\System\Engine\Model {
 		return $order_data;
 	}
 
+	/**
+	 * @return array
+	 */
 	public function getTotalOrdersByWeek(): array {
 		$implode = [];
 
@@ -79,6 +98,9 @@ class Sale extends \Opencart\System\Engine\Model {
 		return $order_data;
 	}
 
+	/**
+	 * @return array
+	 */
 	public function getTotalOrdersByMonth(): array {
 		$implode = [];
 
@@ -109,6 +131,9 @@ class Sale extends \Opencart\System\Engine\Model {
 		return $order_data;
 	}
 
+	/**
+	 * @return array
+	 */
 	public function getTotalOrdersByYear(): array {
 		$implode = [];
 
@@ -137,8 +162,13 @@ class Sale extends \Opencart\System\Engine\Model {
 		return $order_data;
 	}
 
+	/**
+	 * @param array $data
+	 *
+	 * @return array
+	 */
 	public function getOrders(array $data = []): array {
-		$sql = "SELECT MIN(o.`date_added`) AS date_start, MAX(o.`date_added`) AS date_end, COUNT(*) AS orders, SUM((SELECT SUM(op.`quantity`) FROM `" . DB_PREFIX . "order_product` op WHERE op.`order_id` = o.`order_id` GROUP BY op.`order_id`)) AS products, SUM((SELECT SUM(ot.`value`) FROM `" . DB_PREFIX . "order_total` ot WHERE ot.`order_id` = o.`order_id` AND ot.`code` = 'tax' GROUP BY ot.`order_id`)) AS tax, SUM(o.`total`) AS `total` FROM `" . DB_PREFIX . "order` o";
+		$sql = "SELECT MIN(o.`date_added`) AS date_start, MAX(o.`date_added`) AS date_end, COUNT(*) AS orders, SUM((SELECT SUM(op.`quantity`) FROM `" . DB_PREFIX . "order_product` `op` WHERE `op`.`order_id` = `o`.`order_id` GROUP BY `op`.`order_id`)) AS products, SUM((SELECT SUM(`ot`.`value`) FROM `" . DB_PREFIX . "order_total` ot WHERE ot.`order_id` = o.`order_id` AND ot.`code` = 'tax' GROUP BY ot.`order_id`)) AS tax, SUM(o.`total`) AS `total` FROM `" . DB_PREFIX . "order` o";
 
 		if (!empty($data['filter_order_status_id'])) {
 			$sql .= " WHERE o.`order_status_id` = '" . (int)$data['filter_order_status_id'] . "'";
@@ -195,6 +225,11 @@ class Sale extends \Opencart\System\Engine\Model {
 		return $query->rows;
 	}
 
+	/**
+	 * @param array $data
+	 *
+	 * @return int
+	 */
 	public function getTotalOrders(array $data = []): int {
 		if (!empty($data['filter_group'])) {
 			$group = $data['filter_group'];
@@ -237,13 +272,18 @@ class Sale extends \Opencart\System\Engine\Model {
 		return (int)$query->row['total'];
 	}
 
+	/**
+	 * @param array $data
+	 *
+	 * @return array
+	 */
 	public function getTaxes(array $data = []): array {
 		$sql = "SELECT MIN(o.`date_added`) AS date_start, MAX(o.`date_added`) AS date_end, ot.`title`, SUM(ot.`value`) AS total, COUNT(o.`order_id`) AS `orders` FROM `" . DB_PREFIX . "order` o LEFT JOIN `" . DB_PREFIX . "order_total` ot ON (ot.`order_id` = o.`order_id`) WHERE ot.`code` = 'tax'";
 
 		if (!empty($data['filter_order_status_id'])) {
-			$sql .= " AND o.`order_status_id` = '" . (int)$data['filter_order_status_id'] . "'";
+			$sql .= " AND `o`.`order_status_id` = '" . (int)$data['filter_order_status_id'] . "'";
 		} else {
-			$sql .= " AND o.`order_status_id` > '0'";
+			$sql .= " AND `o`.`order_status_id` > '0'";
 		}
 
 		if (!empty($data['filter_date_start'])) {
@@ -262,17 +302,17 @@ class Sale extends \Opencart\System\Engine\Model {
 
 		switch ($group) {
 			case 'day';
-				$sql .= " GROUP BY YEAR(o.`date_added`), MONTH(o.`date_added`), DAY(o.`date_added`), ot.`title`";
+				$sql .= " GROUP BY YEAR(`o`.`date_added`), MONTH(`o`.`date_added`), DAY(`o`.`date_added`), `ot`.`title`";
 				break;
 			default:
 			case 'week':
-				$sql .= " GROUP BY YEAR(o.`date_added`), WEEK(o.`date_added`), ot.`title`";
+				$sql .= " GROUP BY YEAR(`o`.`date_added`), WEEK(`o`.`date_added`), `ot`.`title`";
 				break;
 			case 'month':
-				$sql .= " GROUP BY YEAR(o.`date_added`), MONTH(o.`date_added`), ot.`title`";
+				$sql .= " GROUP BY YEAR(`o`.`date_added`), MONTH(`o`.`date_added`), `ot`.`title`";
 				break;
 			case 'year':
-				$sql .= " GROUP BY YEAR(o.`date_added`), ot.`title`";
+				$sql .= " GROUP BY YEAR(`o`.`date_added`), ot.`title`";
 				break;
 		}
 
@@ -293,6 +333,11 @@ class Sale extends \Opencart\System\Engine\Model {
 		return $query->rows;
 	}
 
+	/**
+	 * @param array $data
+	 *
+	 * @return int
+	 */
 	public function getTotalTaxes(array $data = []): int {
 		if (!empty($data['filter_group'])) {
 			$group = $data['filter_group'];
@@ -302,34 +347,34 @@ class Sale extends \Opencart\System\Engine\Model {
 
 		switch ($group) {
 			case 'day';
-				$sql = "SELECT COUNT(DISTINCT YEAR(o.`date_added`), MONTH(o.`date_added`), DAY(o.`date_added`), ot.`title`) AS `total` FROM `" . DB_PREFIX . "order` o";
+				$sql = "SELECT COUNT(DISTINCT YEAR(o.`date_added`), MONTH(`o`.`date_added`), DAY(`o`.`date_added`), `ot`.`title`) AS `total` FROM `" . DB_PREFIX . "order` `o`";
 				break;
 			default:
 			case 'week':
-				$sql = "SELECT COUNT(DISTINCT YEAR(o.`date_added`), WEEK(o.`date_added`), ot.`title`) AS `total` FROM `" . DB_PREFIX . "order` o";
+				$sql = "SELECT COUNT(DISTINCT YEAR(`o`.`date_added`), WEEK(`o`.`date_added`), `ot`.`title`) AS `total` FROM `" . DB_PREFIX . "order` `o`";
 				break;
 			case 'month':
-				$sql = "SELECT COUNT(DISTINCT YEAR(o.`date_added`), MONTH(o.`date_added`), ot.`title`) AS `total` FROM `" . DB_PREFIX . "order` o";
+				$sql = "SELECT COUNT(DISTINCT YEAR(`o`.`date_added`), MONTH(`o`.`date_added`), `ot`.`title`) AS `total` FROM `" . DB_PREFIX . "order` `o`";
 				break;
 			case 'year':
-				$sql = "SELECT COUNT(DISTINCT YEAR(o.`date_added`), ot.`title`) AS `total` FROM `" . DB_PREFIX . "order` o";
+				$sql = "SELECT COUNT(DISTINCT YEAR(`o`.`date_added`), `ot`.`title`) AS `total` FROM `" . DB_PREFIX . "order` `o`";
 				break;
 		}
 
-		$sql .= " LEFT JOIN `" . DB_PREFIX . "order_total` ot ON (o.`order_id` = ot.`order_id`) WHERE ot.`code` = 'tax'";
+		$sql .= " LEFT JOIN `" . DB_PREFIX . "order_total` `ot` ON (`o`.`order_id` = `ot`.`order_id`) WHERE `ot`.`code` = 'tax'";
 
 		if (!empty($data['filter_order_status_id'])) {
-			$sql .= " AND o.`order_status_id` = '" . (int)$data['filter_order_status_id'] . "'";
+			$sql .= " AND `o`.`order_status_id` = '" . (int)$data['filter_order_status_id'] . "'";
 		} else {
-			$sql .= " AND o.`order_status_id` > '0'";
+			$sql .= " AND `o`.`order_status_id` > '0'";
 		}
 
 		if (!empty($data['filter_date_start'])) {
-			$sql .= " AND DATE(o.`date_added`) >= DATE('" . $this->db->escape((string)$data['filter_date_start']) . "')";
+			$sql .= " AND DATE(`o`.`date_added`) >= DATE('" . $this->db->escape((string)$data['filter_date_start']) . "')";
 		}
 
 		if (!empty($data['filter_date_end'])) {
-			$sql .= " AND DATE(o.`date_added`) <= DATE('" . $this->db->escape((string)$data['filter_date_end']) . "')";
+			$sql .= " AND DATE(`o`.`date_added`) <= DATE('" . $this->db->escape((string)$data['filter_date_end']) . "')";
 		}
 
 		$query = $this->db->query($sql);
@@ -337,21 +382,26 @@ class Sale extends \Opencart\System\Engine\Model {
 		return (int)$query->row['total'];
 	}
 
+	/**
+	 * @param array $data
+	 *
+	 * @return array
+	 */
 	public function getShipping(array $data = []): array {
 		$sql = "SELECT MIN(o.`date_added`) AS date_start, MAX(o.`date_added`) AS date_end, ot.`title`, SUM(ot.`value`) AS total, COUNT(o.`order_id`) AS orders FROM `" . DB_PREFIX . "order` o LEFT JOIN `" . DB_PREFIX . "order_total` ot ON (o.`order_id` = ot.`order_id`) WHERE ot.`code` = 'shipping'";
 
 		if (!empty($data['filter_order_status_id'])) {
-			$sql .= " AND o.`order_status_id` = '" . (int)$data['filter_order_status_id'] . "'";
+			$sql .= " AND `o`.`order_status_id` = '" . (int)$data['filter_order_status_id'] . "'";
 		} else {
-			$sql .= " AND o.`order_status_id` > '0'";
+			$sql .= " AND `o`.`order_status_id` > '0'";
 		}
 
 		if (!empty($data['filter_date_start'])) {
-			$sql .= " AND DATE(o.`date_added`) >= DATE('" . $this->db->escape((string)$data['filter_date_start']) . "')";
+			$sql .= " AND DATE(`o`.`date_added`) >= DATE('" . $this->db->escape((string)$data['filter_date_start']) . "')";
 		}
 
 		if (!empty($data['filter_date_end'])) {
-			$sql .= " AND DATE(o.`date_added`) <= DATE('" . $this->db->escape((string)$data['filter_date_end']) . "')";
+			$sql .= " AND DATE(`o`.`date_added`) <= DATE('" . $this->db->escape((string)$data['filter_date_end']) . "')";
 		}
 
 		if (!empty($data['filter_group'])) {
@@ -362,17 +412,17 @@ class Sale extends \Opencart\System\Engine\Model {
 
 		switch ($group) {
 			case 'day';
-				$sql .= " GROUP BY YEAR(o.`date_added`), MONTH(o.`date_added`), DAY(o.`date_added`), ot.`title`";
+				$sql .= " GROUP BY YEAR(`o`.`date_added`), MONTH(`o`.`date_added`), DAY(`o`.`date_added`), `ot`.`title`";
 				break;
 			default:
 			case 'week':
-				$sql .= " GROUP BY YEAR(o.`date_added`), WEEK(o.`date_added`), ot.`title`";
+				$sql .= " GROUP BY YEAR(`o`.`date_added`), WEEK(`o`.`date_added`), `ot`.`title`";
 				break;
 			case 'month':
-				$sql .= " GROUP BY YEAR(o.`date_added`), MONTH(o.`date_added`), ot.`title`";
+				$sql .= " GROUP BY YEAR(`o`.`date_added`), MONTH(`o`.`date_added`), `ot`.`title`";
 				break;
 			case 'year':
-				$sql .= " GROUP BY YEAR(o.`date_added`), ot.`title`";
+				$sql .= " GROUP BY YEAR(`o`.`date_added`), `ot`.`title`";
 				break;
 		}
 
@@ -393,6 +443,11 @@ class Sale extends \Opencart\System\Engine\Model {
 		return $query->rows;
 	}
 
+	/**
+	 * @param array $data
+	 *
+	 * @return int
+	 */
 	public function getTotalShipping(array $data = []): int {
 		if (!empty($data['filter_group'])) {
 			$group = $data['filter_group'];

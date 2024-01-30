@@ -1,6 +1,14 @@
 <?php
 namespace Opencart\Admin\Controller\Catalog;
+/**
+ * Class Category
+ *
+ * @package Opencart\Admin\Controller\Catalo
+ */
 class Category extends \Opencart\System\Engine\Controller {
+	/**
+	 * @return void
+	 */
 	public function index(): void {
 		$this->load->language('catalog/category');
 
@@ -47,21 +55,27 @@ class Category extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput($this->load->view('catalog/category', $data));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function list(): void {
 		$this->load->language('catalog/category');
 
 		$this->response->setOutput($this->getList());
 	}
 
+	/**
+	 * @return string
+	 */
 	protected function getList(): string {
 		if (isset($this->request->get['sort'])) {
-			$sort = $this->request->get['sort'];
+			$sort = (string)$this->request->get['sort'];
 		} else {
 			$sort = 'name';
 		}
 
 		if (isset($this->request->get['order'])) {
-			$order = $this->request->get['order'];
+			$order = (string)$this->request->get['order'];
 		} else {
 			$order = 'ASC';
 		}
@@ -107,6 +121,7 @@ class Category extends \Opencart\System\Engine\Controller {
 			$data['categories'][] = [
 				'category_id' => $result['category_id'],
 				'name'        => $result['name'],
+				'status'      => $result['status'],
 				'sort_order'  => $result['sort_order'],
 				'edit'        => $this->url->link('catalog/category.form', 'user_token=' . $this->session->data['user_token'] . '&category_id=' . $result['category_id'] . $url)
 			];
@@ -118,10 +133,6 @@ class Category extends \Opencart\System\Engine\Controller {
 			$url .= '&order=DESC';
 		} else {
 			$url .= '&order=ASC';
-		}
-
-		if (isset($this->request->get['page'])) {
-			$url .= '&page=' . $this->request->get['page'];
 		}
 
 		$data['sort_name'] = $this->url->link('catalog/category.list', 'user_token=' . $this->session->data['user_token'] . '&sort=name' . $url);
@@ -152,6 +163,9 @@ class Category extends \Opencart\System\Engine\Controller {
 		return $this->load->view('catalog/category_list', $data);
 	}
 
+	/**
+	 * @return void
+	 */
 	public function form(): void {
 		$this->load->language('catalog/category');
 
@@ -246,15 +260,15 @@ class Category extends \Opencart\System\Engine\Controller {
 			}
 		}
 
-		$this->load->model('setting/store');
-
 		$data['stores'] = [];
 		
 		$data['stores'][] = [
 			'store_id' => 0,
 			'name'     => $this->language->get('text_default')
 		];
-		
+
+		$this->load->model('setting/store');
+
 		$stores = $this->model_setting_store->getStores();
 
 		foreach ($stores as $store) {
@@ -349,6 +363,9 @@ class Category extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput($this->load->view('catalog/category_form', $data));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function save(): void {
 		$this->load->language('catalog/category');
 
@@ -422,6 +439,9 @@ class Category extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput(json_encode($json));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function repair(): void {
 		$this->load->language('catalog/category');
 
@@ -443,6 +463,9 @@ class Category extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput(json_encode($json));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function delete(): void {
 		$this->load->language('catalog/category');
 
@@ -472,6 +495,9 @@ class Category extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput(json_encode($json));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function autocomplete(): void {
 		$json = [];
 

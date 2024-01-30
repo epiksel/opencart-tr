@@ -72,6 +72,7 @@ $_['entry_image_popup']                = 'Ürün Sayfası Büyük Boyutu (G x Y)
 $_['entry_image_product']              = 'Liste Resim Boyutu (G x Y)';
 $_['entry_image_additional']           = 'Ürün Sayfası Ek Resim Boyutu (G x Y)';
 $_['entry_image_related']              = 'Benzer Ürünler Resim Boyutu (G x Y)';
+$_['entry_image_blog']                 = 'Blog Resim Boyutu (G x Y)';
 $_['entry_image_compare']              = 'Karşılaştırma Resim Boyutu (G x Y)';
 $_['entry_image_wishlist']             = 'Alışveriş Listem Resim Boyutu (G x Y)';
 $_['entry_image_cart']                 = 'Sepetim Sayfası Resim Boyutu (G x Y)';

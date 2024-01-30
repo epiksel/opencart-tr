@@ -1,6 +1,14 @@
 <?php
 namespace Opencart\Admin\Controller\Localisation;
+/**
+ * Class Geo Zone
+ *
+ * @package Opencart\Admin\Controller\Localisation
+ */
 class GeoZone extends \Opencart\System\Engine\Controller {
+	/**
+	 * @return void
+	 */
 	public function index(): void {
 		$this->load->language('localisation/geo_zone');
 
@@ -46,21 +54,27 @@ class GeoZone extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput($this->load->view('localisation/geo_zone', $data));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function list(): void {
 		$this->load->language('localisation/geo_zone');
 
 		$this->response->setOutput($this->getList());
 	}
 
+	/**
+	 * @return string
+	 */
 	protected function getList(): string {
 		if (isset($this->request->get['sort'])) {
-			$sort = $this->request->get['sort'];
+			$sort = (string)$this->request->get['sort'];
 		} else {
 			$sort = 'name';
 		}
 
 		if (isset($this->request->get['order'])) {
-			$order = $this->request->get['order'];
+			$order = (string)$this->request->get['order'];
 		} else {
 			$order = 'ASC';
 		}
@@ -119,10 +133,6 @@ class GeoZone extends \Opencart\System\Engine\Controller {
 			$url .= '&order=ASC';
 		}
 
-		if (isset($this->request->get['page'])) {
-			$url .= '&page=' . $this->request->get['page'];
-		}
-
 		$data['sort_name'] = $this->url->link('localisation/geo_zone.list', 'user_token=' . $this->session->data['user_token'] . '&sort=name' . $url);
 		$data['sort_description'] = $this->url->link('localisation/geo_zone.list', 'user_token=' . $this->session->data['user_token'] . '&sort=description' . $url);
 
@@ -151,6 +161,9 @@ class GeoZone extends \Opencart\System\Engine\Controller {
 		return $this->load->view('localisation/geo_zone_list', $data);
 	}
 
+	/**
+	 * @return void
+	 */
 	public function form(): void {
 		$this->load->language('localisation/geo_zone');
 
@@ -230,6 +243,9 @@ class GeoZone extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput($this->load->view('localisation/geo_zone_form', $data));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function save(): void {
 		$this->load->language('localisation/geo_zone');
 
@@ -263,6 +279,9 @@ class GeoZone extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput(json_encode($json));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function delete(): void {
 		$this->load->language('localisation/geo_zone');
 

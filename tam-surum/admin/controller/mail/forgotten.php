@@ -1,7 +1,22 @@
 <?php
 namespace Opencart\Admin\Controller\Mail;
+/**
+ * Class Forgotten
+ *
+ * @package Opencart\Admin\Controller\Mail
+ */
 class Forgotten extends \Opencart\System\Engine\Controller {
-	// admin/model/user/user/editCode/after
+	/**
+	 *
+	 * admin/model/user/user/editCode/after
+	 *
+	 * @param string $route
+	 * @param array  $args
+	 * @param mixed  $output
+	 *
+	 * @return void
+	 * @throws \Exception
+	 */
 	public function index(string &$route, array &$args, mixed &$output): void {
 		if (isset($this->request->get['route'])) {
 			$route = (string)$this->request->get['route'];
@@ -21,7 +36,7 @@ class Forgotten extends \Opencart\System\Engine\Controller {
 			$code = '';
 		}
 
-		if ($email && $code && ($route == 'common/forgotten.reset') && filter_var($email, FILTER_VALIDATE_EMAIL)) {
+		if ($email && $code && ($route == 'common/forgotten.confirm') && filter_var($email, FILTER_VALIDATE_EMAIL)) {
 			$this->load->language('mail/forgotten');
 
 			$store_name = html_entity_decode($this->config->get('config_name'), ENT_QUOTES, 'UTF-8');

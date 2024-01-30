@@ -1,6 +1,14 @@
 <?php
 namespace Opencart\Admin\Controller\Localisation;
+/**
+ * Class Language
+ *
+ * @package Opencart\Admin\Controller\Localisation
+ */
 class Language extends \Opencart\System\Engine\Controller {
+	/**
+	 * @return void
+	 */
 	public function index(): void {
 		$this->load->language('localisation/language');
 
@@ -46,21 +54,27 @@ class Language extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput($this->load->view('localisation/language', $data));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function list(): void {
 		$this->load->language('localisation/language');
 
 		$this->response->setOutput($this->getList());
 	}
 
+	/**
+	 * @return string
+	 */
 	protected function getList(): string {
 		if (isset($this->request->get['sort'])) {
-			$sort = $this->request->get['sort'];
+			$sort = (string)$this->request->get['sort'];
 		} else {
 			$sort = 'name';
 		}
 
 		if (isset($this->request->get['order'])) {
-			$order = $this->request->get['order'];
+			$order = (string)$this->request->get['order'];
 		} else {
 			$order = 'ASC';
 		}
@@ -107,6 +121,7 @@ class Language extends \Opencart\System\Engine\Controller {
 				'language_id' => $result['language_id'],
 				'name'        => $result['name'] . (($result['code'] == $this->config->get('config_language')) ? $this->language->get('text_default') : ''),
 				'code'        => $result['code'],
+				'status'      => $result['status'],
 				'sort_order'  => $result['sort_order'],
 				'edit'        => $this->url->link('localisation/language.form', 'user_token=' . $this->session->data['user_token'] . '&language_id=' . $result['language_id'] . $url)
 			];
@@ -118,10 +133,6 @@ class Language extends \Opencart\System\Engine\Controller {
 			$url .= '&order=DESC';
 		} else {
 			$url .= '&order=ASC';
-		}
-
-		if (isset($this->request->get['page'])) {
-			$url .= '&page=' . $this->request->get['page'];
 		}
 
 		$data['sort_name'] = $this->url->link('localisation/language.list', 'user_token=' . $this->session->data['user_token'] . '&sort=name' . $url);
@@ -153,6 +164,9 @@ class Language extends \Opencart\System\Engine\Controller {
 		return $this->load->view('localisation/language_list', $data);
 	}
 
+	/**
+	 * @return void
+	 */
 	public function form(): void {
 		$this->load->language('localisation/language');
 
@@ -244,6 +258,9 @@ class Language extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput($this->load->view('localisation/language_form', $data));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function save(): void {
 		$this->load->language('localisation/language');
 
@@ -293,6 +310,9 @@ class Language extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput(json_encode($json));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function delete(): void {
 		$this->load->language('localisation/language');
 

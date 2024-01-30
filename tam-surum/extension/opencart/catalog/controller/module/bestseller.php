@@ -1,15 +1,25 @@
 <?php
 namespace Opencart\Catalog\Controller\Extension\Opencart\Module;
+/**
+ * Class BestSeller
+ *
+ * @package
+ */
 class BestSeller extends \Opencart\System\Engine\Controller {
+	/**
+	 * @param array $setting
+	 *
+	 * @return string
+	 */
 	public function index(array $setting): string {
 		$this->load->language('extension/opencart/module/bestseller');
 
 		$data['axis'] = $setting['axis'];
 
+		$data['products'] = [];
+
 		$this->load->model('extension/opencart/module/bestseller');
 		$this->load->model('tool/image');
-
-		$data['products'] = [];
 
 		$results = $this->model_extension_opencart_module_bestseller->getBestSellers($setting['limit']);
 

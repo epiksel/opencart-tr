@@ -1,6 +1,14 @@
 <?php
 namespace Opencart\Admin\Controller\Sale;
+/**
+ * Class Subscription
+ *
+ * @package Opencart\Admin\Controller\Sale
+ */
 class Subscription extends \Opencart\System\Engine\Controller {
+	/**
+	 * @return void
+	 */
 	public function index(): void {
 		$this->load->language('sale/subscription');
 
@@ -117,12 +125,18 @@ class Subscription extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput($this->load->view('sale/subscription', $data));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function list(): void {
 		$this->load->language('sale/subscription');
 
 		$this->response->setOutput($this->getList());
 	}
 
+	/**
+	 * @return string
+	 */
 	protected function getList(): string {
 		if (isset($this->request->get['filter_subscription_id'])) {
 			$filter_subscription_id = (int)$this->request->get['filter_subscription_id'];
@@ -161,13 +175,13 @@ class Subscription extends \Opencart\System\Engine\Controller {
 		}
 
 		if (isset($this->request->get['sort'])) {
-			$sort = $this->request->get['sort'];
+			$sort = (string)$this->request->get['sort'];
 		} else {
 			$sort = 's.subscription_id';
 		}
 
 		if (isset($this->request->get['order'])) {
-			$order = $this->request->get['order'];
+			$order = (string)$this->request->get['order'];
 		} else {
 			$order = 'DESC';
 		}
@@ -281,10 +295,6 @@ class Subscription extends \Opencart\System\Engine\Controller {
 			$url .= '&order=ASC';
 		}
 
-		if (isset($this->request->get['page'])) {
-			$url .= '&page=' . $this->request->get['page'];
-		}
-
 		$data['sort_subscription'] = $this->url->link('sale/subscription.list', 'user_token=' . $this->session->data['user_token'] . '&sort=s.subscription_id' . $url);
 		$data['sort_order'] = $this->url->link('sale/subscription.list', 'user_token=' . $this->session->data['user_token'] . '&sort=s.order_id' . $url);
 		$data['sort_customer'] = $this->url->link('sale/subscription.list', 'user_token=' . $this->session->data['user_token'] . '&sort=customer' . $url);
@@ -340,6 +350,9 @@ class Subscription extends \Opencart\System\Engine\Controller {
 		return $this->load->view('sale/subscription_list', $data);
 	}
 
+	/**
+	 * @return void
+	 */
 	public function info(): void {
 		$this->load->language('sale/subscription');
 
@@ -752,6 +765,9 @@ class Subscription extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput($this->load->view('sale/subscription_info', $data));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function save(): void {
 		$this->load->language('sale/subscription');
 
@@ -803,12 +819,18 @@ class Subscription extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput(json_encode($json));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function history(): void {
 		$this->load->language('sale/subscription');
 
 		$this->response->setOutput($this->getHistory());
 	}
 
+	/**
+	 * @return string
+	 */
 	public function getHistory(): string {
 		if (isset($this->request->get['subscription_id'])) {
 			$subscription_id = (int)$this->request->get['subscription_id'];
@@ -853,6 +875,9 @@ class Subscription extends \Opencart\System\Engine\Controller {
 		return $this->load->view('sale/subscription_history', $data);
 	}
 
+	/**
+	 * @return void
+	 */
 	public function addHistory(): void {
 		$this->load->language('sale/subscription');
 
@@ -896,12 +921,18 @@ class Subscription extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput(json_encode($json));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function order(): void {
 		$this->load->language('sale/subscription');
 
 		$this->response->setOutput($this->getOrder());
 	}
 
+	/**
+	 * @return string
+	 */
 	public function getOrder(): string {
 		if (isset($this->request->get['subscription_id'])) {
 			$subscription_id = (int)$this->request->get['subscription_id'];

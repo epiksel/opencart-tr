@@ -1,15 +1,25 @@
 <?php
 namespace Opencart\Catalog\Controller\Extension\Opencart\Module;
+/**
+ * Class Featured
+ *
+ * @package
+ */
 class Featured extends \Opencart\System\Engine\Controller {
+	/**
+	 * @param array $setting
+	 *
+	 * @return string
+	 */
 	public function index(array $setting): string {
 		$this->load->language('extension/opencart/module/featured');
 
 		$data['axis'] = $setting['axis'];
 
+		$data['products'] = [];
+
 		$this->load->model('catalog/product');
 		$this->load->model('tool/image');
-
-		$data['products'] = [];
 
 		if (!empty($setting['product'])) {
 			$products = [];

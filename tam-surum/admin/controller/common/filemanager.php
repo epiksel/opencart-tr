@@ -1,6 +1,14 @@
 <?php
 namespace Opencart\Admin\Controller\Common;
+/**
+ * Class File Manager
+ *
+ * @package Opencart\Admin\Controller\Common
+ */
 class FileManager extends \Opencart\System\Engine\Controller {
+	/**
+	 * @return void
+	 */
 	public function index(): void {
 		$this->load->language('common/filemanager');
 
@@ -33,6 +41,9 @@ class FileManager extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput($this->load->view('common/filemanager', $data));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function list(): void {
 		$this->load->language('common/filemanager');
 
@@ -75,19 +86,20 @@ class FileManager extends \Opencart\System\Engine\Controller {
 
 		$this->load->model('tool/image');
 
-		// Get directories
-		$paths = glob($directory . $filter_name . '*{/,.ico,.jpg,.jpeg,.png,.gif,.webp,.JPG,.JPEG,.PNG,.GIF}', GLOB_BRACE);
+		// Get directories and files
+        $paths = array_merge(
+            glob($directory . $filter_name . '*', GLOB_ONLYDIR),
+            glob($directory . $filter_name . '*{' . implode(',', $allowed) . '}', GLOB_BRACE)
+        );
 
 		$total = count($paths);
 		$limit = 16;
-
 		$start = ($page - 1) * $limit;
-		$end = $start > ($total - $limit) ? $total : ($start + $limit);
 
 		if ($paths) {
 			// Split the array based on current page number and max number of items per page of 10
-			foreach (array_slice($paths, $start, $end) as $path) {
-				$path = str_replace('\\', '/', realpath($path));
+            foreach (array_slice($paths, $start, $limit) as $path) {
+                $path = str_replace('\\', '/', realpath($path));
 
 				if (substr($path, 0, strlen($path)) == $path) {
 					$name = basename($path);
@@ -225,6 +237,9 @@ class FileManager extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput($this->load->view('common/filemanager_list', $data));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function upload(): void {
 		$this->load->language('common/filemanager');
 
@@ -330,6 +345,9 @@ class FileManager extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput(json_encode($json));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function folder(): void {
 		$this->load->language('common/filemanager');
 
@@ -383,6 +401,9 @@ class FileManager extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput(json_encode($json));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function delete(): void {
 		$this->load->language('common/filemanager');
 

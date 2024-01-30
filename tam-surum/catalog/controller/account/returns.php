@@ -1,6 +1,14 @@
 <?php
 namespace Opencart\Catalog\Controller\Account;
+/**
+ * Class Returns
+ *
+ * @package Opencart\Catalog\Controller\Account
+ */
 class Returns extends \Opencart\System\Engine\Controller {
+	/**
+	 * @return void
+	 */
 	public function index(): void {
 		$this->load->language('account/returns');
 
@@ -83,7 +91,10 @@ class Returns extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput($this->load->view('account/returns_list', $data));
 	}
 
-	public function info(): void {
+	/**
+	 * @return void
+	 */
+	public function info(): object|null {
 		$this->load->language('account/returns');
 
 		if (!$this->customer->isLogged() || (!isset($this->request->get['customer_token']) || !isset($this->session->data['customer_token']) || ($this->request->get['customer_token'] != $this->session->data['customer_token']))) {
@@ -98,13 +109,13 @@ class Returns extends \Opencart\System\Engine\Controller {
 			$return_id = 0;
 		}
 
-		$this->document->setTitle($this->language->get('text_return'));
-
 		$this->load->model('account/returns');
 
 		$return_info = $this->model_account_returns->getReturn($return_id);
 
 		if ($return_info) {
+			$this->document->setTitle($this->language->get('text_return'));
+
 			$data['breadcrumbs'] = [];
 
 			$data['breadcrumbs'][] = [
@@ -172,47 +183,15 @@ class Returns extends \Opencart\System\Engine\Controller {
 
 			$this->response->setOutput($this->load->view('account/returns_info', $data));
 		} else {
-			$data['breadcrumbs'] = [];
-
-			$data['breadcrumbs'][] = [
-				'text' => $this->language->get('text_home'),
-				'href' => $this->url->link('common/home', 'language=' . $this->config->get('config_language'))
-			];
-
-			$data['breadcrumbs'][] = [
-				'text' => $this->language->get('text_account'),
-				'href' => $this->url->link('account/account', 'language=' . $this->config->get('config_language'))
-			];
-
-			$data['breadcrumbs'][] = [
-				'text' => $this->language->get('heading_title'),
-				'href' => $this->url->link('account/returns', 'language=' . $this->config->get('config_language'))
-			];
-
-			$url = '';
-
-			if (isset($this->request->get['page'])) {
-				$url .= '&page=' . $this->request->get['page'];
-			}
-
-			$data['breadcrumbs'][] = [
-				'text' => $this->language->get('text_return'),
-				'href' => $this->url->link('account/returns.info', 'language=' . $this->config->get('config_language') . '&return_id=' . $return_id . $url)
-			];
-
-			$data['continue'] = $this->url->link('account/returns', 'language=' . $this->config->get('config_language'));
-
-			$data['column_left'] = $this->load->controller('common/column_left');
-			$data['column_right'] = $this->load->controller('common/column_right');
-			$data['content_top'] = $this->load->controller('common/content_top');
-			$data['content_bottom'] = $this->load->controller('common/content_bottom');
-			$data['footer'] = $this->load->controller('common/footer');
-			$data['header'] = $this->load->controller('common/header');
-
-			$this->response->setOutput($this->load->view('error/not_found', $data));
+			return new \Opencart\System\Engine\Action('error/not_found');
 		}
+
+		return null;
 	}
 
+	/**
+	 * @return void
+	 */
 	public function add(): void {
 		$this->load->language('account/returns');
 
@@ -342,6 +321,9 @@ class Returns extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput($this->load->view('account/returns_form', $data));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function save(): void {
 		$this->load->language('account/returns');
 
@@ -438,6 +420,9 @@ class Returns extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput(json_encode($json));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function success(): void {
 		$this->load->language('account/returns');
 

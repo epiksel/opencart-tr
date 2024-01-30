@@ -1,6 +1,14 @@
 <?php
 namespace Opencart\Admin\Controller\Sale;
+/**
+ * Class Returns
+ *
+ * @package Opencart\Admin\Controller\Sale
+ */
 class Returns extends \Opencart\System\Engine\Controller {
+	/**
+	 * @return void
+	 */
 	public function index(): void {
 		$this->load->language('sale/returns');
 
@@ -139,12 +147,18 @@ class Returns extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput($this->load->view('sale/returns', $data));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function list(): void {
 		$this->load->language('sale/returns');
 
 		$this->response->setOutput($this->getList());
 	}
 
+	/**
+	 * @return string
+	 */
 	protected function getList(): string {
 		if (isset($this->request->get['filter_return_id'])) {
 			$filter_return_id = (int)$this->request->get['filter_return_id'];
@@ -195,13 +209,13 @@ class Returns extends \Opencart\System\Engine\Controller {
 		}
 
 		if (isset($this->request->get['sort'])) {
-			$sort = $this->request->get['sort'];
+			$sort = (string)$this->request->get['sort'];
 		} else {
 			$sort = 'r.return_id';
 		}
 
 		if (isset($this->request->get['order'])) {
-			$order = $this->request->get['order'];
+			$order = (string)$this->request->get['order'];
 		} else {
 			$order = 'DESC';
 		}
@@ -337,10 +351,6 @@ class Returns extends \Opencart\System\Engine\Controller {
 			$url .= '&order=ASC';
 		}
 
-		if (isset($this->request->get['page'])) {
-			$url .= '&page=' . $this->request->get['page'];
-		}
-
 		$data['sort_return_id'] = $this->url->link('sale/returns.list', 'user_token=' . $this->session->data['user_token'] . '&sort=r.return_id' . $url);
 		$data['sort_order_id'] = $this->url->link('sale/returns.list', 'user_token=' . $this->session->data['user_token'] . '&sort=r.order_id' . $url);
 		$data['sort_customer'] = $this->url->link('sale/returns.list', 'user_token=' . $this->session->data['user_token'] . '&sort=customer' . $url);
@@ -407,6 +417,9 @@ class Returns extends \Opencart\System\Engine\Controller {
 		return $this->load->view('sale/returns_list', $data);
 	}
 
+	/**
+	 * @return void
+	 */
 	public function form(): void {
 		$this->load->language('sale/returns');
 
@@ -612,6 +625,9 @@ class Returns extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput($this->load->view('sale/returns_form', $data));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function save(): void {
 		$this->load->language('sale/returns');
 
@@ -673,6 +689,9 @@ class Returns extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput(json_encode($json));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function delete(): void {
 		$this->load->language('sale/returns');
 
@@ -702,12 +721,18 @@ class Returns extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput(json_encode($json));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function history(): void {
 		$this->load->language('sale/returns');
 
 		$this->response->setOutput($this->getHistory());
 	}
 
+	/**
+	 * @return string
+	 */
 	public function getHistory(): string {
 		if (isset($this->request->get['return_id'])) {
 			$return_id = (int)$this->request->get['return_id'];
@@ -752,6 +777,9 @@ class Returns extends \Opencart\System\Engine\Controller {
 		return $this->load->view('sale/returns_history', $data);
 	}
 
+	/**
+	 * @return void
+	 */
 	public function addHistory(): void {
 		$this->load->language('sale/returns');
 

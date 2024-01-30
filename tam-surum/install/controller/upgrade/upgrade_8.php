@@ -1,6 +1,14 @@
 <?php
 namespace Opencart\Install\Controller\Upgrade;
+/**
+ * Class Upgrade8
+ *
+ * @package Opencart\Install\Controller\Upgrade
+ */
 class Upgrade8 extends \Opencart\System\Engine\Controller {
+	/**
+	 * @return void
+	 */
 	public function index(): void {
 		$this->load->language('upgrade/upgrade');
 
@@ -60,7 +68,7 @@ class Upgrade8 extends \Opencart\System\Engine\Controller {
 					$customer_query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "customer_affiliate` WHERE `customer_id` = '" . (int)$customer_id . "'");
 
 					if (!$customer_query->num_rows) {
-						$this->db->query("INSERT INTO `" . DB_PREFIX . "customer_affiliate` SET `customer_id` = '" . (int)$customer_id . "', `company` = '" . $this->db->escape($affiliate['company']) . "', `tracking` = '" . $this->db->escape($affiliate['code']) . "', `commission` = '" . (float)$affiliate['commission'] . "', `tax` = '" . $this->db->escape($affiliate['tax']) . "', `payment` = '" . $this->db->escape($affiliate['payment']) . "', `cheque` = '" . $this->db->escape($affiliate['cheque']) . "', `paypal` = '" . $this->db->escape($affiliate['paypal']) . "', `bank_name` = '" . $this->db->escape($affiliate['bank_name']) . "', `bank_branch_number` = '" . $this->db->escape($affiliate['bank_branch_number']) . "', `bank_account_name` = '" . $this->db->escape($affiliate['bank_account_name']) . "', `bank_account_number` = '" . $this->db->escape($affiliate['bank_account_number']) . "', `status` = '" . (int)(isset($affiliate['approved']) ? $affiliate['approved'] : $affiliate['status']) . "', `date_added` = '" . $this->db->escape($affiliate['date_added']) . "'");
+						$this->db->query("INSERT INTO `" . DB_PREFIX . "customer_affiliate` SET `customer_id` = '" . (int)$customer_id . "', `company` = '" . $this->db->escape($affiliate['company']) . "', `tracking` = '" . $this->db->escape($affiliate['code']) . "', `commission` = '" . (float)$affiliate['commission'] . "', `tax` = '" . $this->db->escape($affiliate['tax']) . "', `payment_method` = '" . $this->db->escape($affiliate['payment_method']) . "', `cheque` = '" . $this->db->escape($affiliate['cheque']) . "', `paypal` = '" . $this->db->escape($affiliate['paypal']) . "', `bank_name` = '" . $this->db->escape($affiliate['bank_name']) . "', `bank_branch_number` = '" . $this->db->escape($affiliate['bank_branch_number']) . "', `bank_account_name` = '" . $this->db->escape($affiliate['bank_account_name']) . "', `bank_account_number` = '" . $this->db->escape($affiliate['bank_account_number']) . "', `status` = '" . (int)(isset($affiliate['approved']) ? $affiliate['approved'] : $affiliate['status']) . "', `date_added` = '" . $this->db->escape($affiliate['date_added']) . "'");
 					}
 
 					$affiliate_transaction_query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "affiliate_transaction` WHERE `affiliate_id` = '" . (int)$affiliate['affiliate_id'] . "'");
@@ -73,6 +81,15 @@ class Upgrade8 extends \Opencart\System\Engine\Controller {
 
 					$this->db->query("UPDATE `" . DB_PREFIX . "order` SET `affiliate_id` = '" . (int)$customer_id . "' WHERE `affiliate_id` = '" . (int)$affiliate['affiliate_id'] . "'");
 				}
+			}
+
+			// affiliate payment > payment_method
+			$query = $this->db->query("SELECT * FROM information_schema.COLUMNS WHERE TABLE_SCHEMA = '" . DB_DATABASE . "' AND TABLE_NAME = '" . DB_PREFIX . "customer_affiliate' AND COLUMN_NAME = 'payment'");
+
+			if ($query->num_rows) {
+				$this->db->query("UPDATE `" . DB_PREFIX . "customer_affiliate` SET `payment_method` = `payment`");
+
+				$this->db->query("ALTER TABLE `" . DB_PREFIX . "customer_affiliate` DROP COLUMN `payment`");
 			}
 
 			// Country address_format_id
@@ -122,6 +139,11 @@ class Upgrade8 extends \Opencart\System\Engine\Controller {
 
 			// Drop Fields
 			$remove = [];
+
+			$remove[] = [
+				'table' => 'affiliate',
+				'field' => 'payment'
+			];
 
 			$remove[] = [
 				'table' => 'api',
@@ -227,8 +249,6 @@ class Upgrade8 extends \Opencart\System\Engine\Controller {
 				'affiliate_activity',
 				'affiliate_login',
 				'affiliate_transaction',
-				'banner_image_description',
-				'banner_image_description',
 				'banner_image_description',
 				'customer_ban_ip',
 				'customer_field',

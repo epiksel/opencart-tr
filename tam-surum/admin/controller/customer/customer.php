@@ -1,6 +1,14 @@
 <?php
 namespace Opencart\Admin\Controller\Customer;
+/**
+ * Class Customer
+ *
+ * @package Opencart\Admin\Controller\Customer
+ */
 class Customer extends \Opencart\System\Engine\Controller {
+	/**
+	 * @return void
+	 */
 	public function index(): void {
 		$this->load->language('customer/customer');
 
@@ -128,12 +136,18 @@ class Customer extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput($this->load->view('customer/customer', $data));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function list(): void {
 		$this->load->language('customer/customer');
 
 		$this->response->setOutput($this->getList());
 	}
 
+	/**
+	 * @return string
+	 */
 	protected function getList(): string {
 		if (isset($this->request->get['filter_name'])) {
 			$filter_name = $this->request->get['filter_name'];
@@ -154,37 +168,37 @@ class Customer extends \Opencart\System\Engine\Controller {
 		}
 
 		if (isset($this->request->get['filter_status'])) {
-			$filter_status = $this->request->get['filter_status'];
+			$filter_status = (bool)$this->request->get['filter_status'];
 		} else {
 			$filter_status = '';
 		}
 
 		if (isset($this->request->get['filter_ip'])) {
-			$filter_ip = $this->request->get['filter_ip'];
+			$filter_ip = (string)$this->request->get['filter_ip'];
 		} else {
 			$filter_ip = '';
 		}
 
 		if (isset($this->request->get['filter_date_from'])) {
-			$filter_date_from = $this->request->get['filter_date_from'];
+			$filter_date_from = (string)$this->request->get['filter_date_from'];
 		} else {
 			$filter_date_from = '';
 		}
 
 		if (isset($this->request->get['filter_date_to'])) {
-			$filter_date_to = $this->request->get['filter_date_to'];
+			$filter_date_to = (string)$this->request->get['filter_date_to'];
 		} else {
 			$filter_date_to = '';
 		}
 
 		if (isset($this->request->get['sort'])) {
-			$sort = $this->request->get['sort'];
+			$sort = (string)$this->request->get['sort'];
 		} else {
 			$sort = 'name';
 		}
 
 		if (isset($this->request->get['order'])) {
-			$order = $this->request->get['order'];
+			$order = (string)$this->request->get['order'];
 		} else {
 			$order = 'ASC';
 		}
@@ -296,7 +310,7 @@ class Customer extends \Opencart\System\Engine\Controller {
 				'email'          => $result['email'],
 				'store_id'       => $result['store_id'],
 				'customer_group' => $result['customer_group'],
-				'status'         => ($result['status'] ? $this->language->get('text_enabled') : $this->language->get('text_disabled')),
+				'status'         => $result['status'],
 				'date_added'     => date($this->language->get('date_format_short'), strtotime($result['date_added'])),
 				'unlock'         => $unlock,
 				'store'          => $store_data,
@@ -338,10 +352,6 @@ class Customer extends \Opencart\System\Engine\Controller {
 			$url .= '&order=DESC';
 		} else {
 			$url .= '&order=ASC';
-		}
-
-		if (isset($this->request->get['page'])) {
-			$url .= '&page=' . $this->request->get['page'];
 		}
 
 		$data['sort_name'] = $this->url->link('customer/customer.list', 'user_token=' . $this->session->data['user_token'] . '&sort=name' . $url);
@@ -403,6 +413,9 @@ class Customer extends \Opencart\System\Engine\Controller {
 		return $this->load->view('customer/customer_list', $data);
 	}
 
+	/**
+	 * @return void
+	 */
 	public function form(): void {
 		$this->load->language('customer/customer');
 
@@ -491,14 +504,14 @@ class Customer extends \Opencart\System\Engine\Controller {
 			$data['customer_id'] = 0;
 		}
 
-		$this->load->model('setting/store');
-
 		$data['stores'] = [];
 
 		$data['stores'][] = [
 			'store_id' => 0,
 			'name'     => $this->language->get('text_default')
 		];
+
+		$this->load->model('setting/store');
 
 		$stores = $this->model_setting_store->getStores();
 
@@ -626,6 +639,9 @@ class Customer extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput($this->load->view('customer/customer_form', $data));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function save(): void {
 		$this->load->language('customer/customer');
 
@@ -755,6 +771,9 @@ class Customer extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput(json_encode($json));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function unlock(): void {
 		$this->load->language('customer/customer');
 
@@ -780,6 +799,9 @@ class Customer extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput(json_encode($json));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function delete(): void {
 		$this->load->language('customer/customer');
 
@@ -809,6 +831,9 @@ class Customer extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput(json_encode($json));
 	}
 
+	/**
+	 * @return object|\Opencart\System\Engine\Action|null
+	 */
 	public function login(): object|null {
 		if (isset($this->request->get['customer_id'])) {
 			$customer_id = (int)$this->request->get['customer_id'];
@@ -848,12 +873,18 @@ class Customer extends \Opencart\System\Engine\Controller {
 		}
 	}
 
+	/**
+	 * @return void
+	 */
 	public function payment(): void {
 		$this->load->language('customer/customer');
 
 		//$this->response->setOutput($this->getPayment());
 	}
 
+	/**
+	 * @return string
+	 */
 	private function getPayment(): string {
 		if (isset($this->request->get['customer_id'])) {
 			$customer_id = (int)$this->request->get['customer_id'];
@@ -907,6 +938,9 @@ class Customer extends \Opencart\System\Engine\Controller {
 		return $this->load->view('customer/customer_payment', $data);
 	}
 
+	/**
+	 * @return void
+	 */
 	public function deletePayment(): void {
 		$this->load->language('customer/customer');
 
@@ -934,12 +968,18 @@ class Customer extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput(json_encode($json));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function history(): void {
 		$this->load->language('customer/customer');
 
 		$this->response->setOutput($this->getHistory());
 	}
 
+	/**
+	 * @return string
+	 */
 	public function getHistory(): string {
 		if (isset($this->request->get['customer_id'])) {
 			$customer_id = (int)$this->request->get['customer_id'];
@@ -982,6 +1022,9 @@ class Customer extends \Opencart\System\Engine\Controller {
 		return $this->load->view('customer/customer_history', $data);
 	}
 
+	/**
+	 * @return void
+	 */
 	public function addHistory(): void {
 		$this->load->language('customer/customer');
 
@@ -1009,12 +1052,18 @@ class Customer extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput(json_encode($json));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function transaction(): void {
 		$this->load->language('customer/customer');
 
 		$this->response->setOutput($this->getTransaction());
 	}
 
+	/**
+	 * @return string
+	 */
 	public function getTransaction(): string {
 		if (isset($this->request->get['customer_id'])) {
 			$customer_id = (int)$this->request->get['customer_id'];
@@ -1060,6 +1109,9 @@ class Customer extends \Opencart\System\Engine\Controller {
 		return $this->load->view('customer/customer_transaction', $data);
 	}
 
+	/**
+	 * @return void
+	 */
 	public function addTransaction(): void {
 		$this->load->language('customer/customer');
 
@@ -1095,12 +1147,18 @@ class Customer extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput(json_encode($json));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function reward(): void {
 		$this->load->language('customer/customer');
 
 		$this->response->setOutput($this->getReward());
 	}
 
+	/**
+	 * @return string
+	 */
 	public function getReward(): string {
 		if (isset($this->request->get['customer_id'])) {
 			$customer_id = (int)$this->request->get['customer_id'];
@@ -1146,6 +1204,9 @@ class Customer extends \Opencart\System\Engine\Controller {
 		return $this->load->view('customer/customer_reward', $data);
 	}
 
+	/**
+	 * @return void
+	 */
 	public function addReward(): void {
 		$this->load->language('customer/customer');
 
@@ -1181,12 +1242,18 @@ class Customer extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput(json_encode($json));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function ip(): void {
 		$this->load->language('customer/customer');
 
 		$this->response->setOutput($this->getIp());
 	}
 
+	/**
+	 * @return string
+	 */
 	public function getIp(): string {
 		if (isset($this->request->get['customer_id'])) {
 			$customer_id = (int)$this->request->get['customer_id'];
@@ -1244,6 +1311,9 @@ class Customer extends \Opencart\System\Engine\Controller {
 		return $this->load->view('customer/customer_ip', $data);
 	}
 
+	/**
+	 * @return void
+	 */
 	public function autocomplete(): void {
 		$json = [];
 
@@ -1299,6 +1369,9 @@ class Customer extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput(json_encode($json));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function address(): void {
 		$this->load->language('customer/customer');
 
@@ -1326,6 +1399,9 @@ class Customer extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput(json_encode($json));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function customfield(): void {
 		$json = [];
 

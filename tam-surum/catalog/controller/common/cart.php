@@ -1,6 +1,14 @@
 <?php
 namespace Opencart\Catalog\Controller\Common;
+/**
+ * Class Cart
+ *
+ * @package Opencart\Catalog\Controller\Common
+ */
 class Cart extends \Opencart\System\Engine\Controller {
+	/**
+	 * @return string
+	 */
 	public function index(): string {
 		$this->load->language('common/cart');
 
@@ -22,6 +30,12 @@ class Cart extends \Opencart\System\Engine\Controller {
 		$products = $this->model_checkout_cart->getProducts();
 
 		foreach ($products as $product) {
+			if ($product['option']) {
+				foreach ($product['option'] as $key => $option) {
+					$product['option'][$key]['value'] = (oc_strlen($option['value']) > 20 ? oc_substr($option['value'], 0, 20) . '..' : $option['value']);
+				}
+			}
+
 			// Display prices
 			if ($this->customer->isLogged() || !$this->config->get('config_customer_price')) {
 				$unit_price = (float)$this->tax->calculate($product['price'], $product['tax_class_id'], $this->config->get('config_tax'));
@@ -108,10 +122,16 @@ class Cart extends \Opencart\System\Engine\Controller {
 		return $this->load->view('common/cart', $data);
 	}
 
+	/**
+	 * @return void
+	 */
 	public function info(): void {
 		$this->response->setOutput($this->index());
 	}
 
+	/**
+	 * @return void
+	 */
 	public function removeProduct(): void {
 		$this->load->language('checkout/cart');
 
@@ -143,6 +163,9 @@ class Cart extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput(json_encode($json));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function removeVoucher(): void {
 		$this->load->language('checkout/cart');
 

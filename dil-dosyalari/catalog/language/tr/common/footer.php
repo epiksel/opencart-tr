@@ -4,6 +4,7 @@
 
 // Text
 $_['text_information']  = 'Bilgiler';
+$_['text_blog']         = 'Blog';
 $_['text_service']      = 'Müşteri Servisi';
 $_['text_extra']        = 'Ekstralar';
 $_['text_contact']      = 'İletişim';

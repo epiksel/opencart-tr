@@ -1,6 +1,14 @@
 <?php
 namespace Opencart\Admin\Controller\Catalog;
+/**
+ * Class Review
+ *
+ * @package Opencart\Admin\Controller\Catalog
+ */
 class Review extends \Opencart\System\Engine\Controller {
+	/**
+	 * @return void
+	 */
 	public function index(): void {
 		$this->load->language('catalog/review');
 
@@ -96,12 +104,18 @@ class Review extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput($this->load->view('catalog/review', $data));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function list(): void {
 		$this->load->language('catalog/review');
 
 		$this->response->setOutput($this->getList());
 	}
 
+	/**
+	 * @return string
+	 */
 	protected function getList(): string {
 		if (isset($this->request->get['filter_product'])) {
 			$filter_product = $this->request->get['filter_product'];
@@ -134,13 +148,13 @@ class Review extends \Opencart\System\Engine\Controller {
 		}
 
 		if (isset($this->request->get['order'])) {
-			$order = $this->request->get['order'];
+			$order = (string)$this->request->get['order'];
 		} else {
 			$order = 'DESC';
 		}
 
 		if (isset($this->request->get['sort'])) {
-			$sort = $this->request->get['sort'];
+			$sort = (string)$this->request->get['sort'];
 		} else {
 			$sort = 'r.date_added';
 		}
@@ -213,7 +227,7 @@ class Review extends \Opencart\System\Engine\Controller {
 				'name'       => $result['name'],
 				'author'     => $result['author'],
 				'rating'     => $result['rating'],
-				'status'     => ($result['status']) ? $this->language->get('text_enabled') : $this->language->get('text_disabled'),
+				'status'     => $result['status'],
 				'date_added' => date($this->language->get('date_format_short'), strtotime($result['date_added'])),
 				'edit'       => $this->url->link('catalog/review.form', 'user_token=' . $this->session->data['user_token'] . '&review_id=' . $result['review_id'] . $url)
 			];
@@ -247,14 +261,9 @@ class Review extends \Opencart\System\Engine\Controller {
 			$url .= '&order=ASC';
 		}
 
-		if (isset($this->request->get['page'])) {
-			$url .= '&page=' . $this->request->get['page'];
-		}
-
 		$data['sort_product'] = $this->url->link('catalog/review.list', 'user_token=' . $this->session->data['user_token'] . '&sort=pd.name' . $url);
 		$data['sort_author'] = $this->url->link('catalog/review.list', 'user_token=' . $this->session->data['user_token'] . '&sort=r.author' . $url);
 		$data['sort_rating'] = $this->url->link('catalog/review.list', 'user_token=' . $this->session->data['user_token'] . '&sort=r.rating' . $url);
-		$data['sort_status'] = $this->url->link('catalog/review.list', 'user_token=' . $this->session->data['user_token'] . '&sort=r.status' . $url);
 		$data['sort_date_added'] = $this->url->link('catalog/review.list', 'user_token=' . $this->session->data['user_token'] . '&sort=r.date_added' . $url);
 
 		$url = '';
@@ -308,6 +317,9 @@ class Review extends \Opencart\System\Engine\Controller {
 		return $this->load->view('catalog/review_list', $data);
 	}
 
+	/**
+	 * @return void
+	 */
 	public function form(): void {
 		$this->load->language('catalog/review');
 
@@ -376,8 +388,6 @@ class Review extends \Opencart\System\Engine\Controller {
 			$data['review_id'] = 0;
 		}
 
-		$this->load->model('catalog/product');
-
 		if (!empty($review_info)) {
 			$data['product_id'] = $review_info['product_id'];
 		} else {
@@ -429,6 +439,9 @@ class Review extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput($this->load->view('catalog/review_form', $data));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function save(): void {
 		$this->load->language('catalog/review');
 
@@ -474,6 +487,9 @@ class Review extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput(json_encode($json));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function delete(): void {
 		$this->load->language('catalog/review');
 
@@ -503,6 +519,9 @@ class Review extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput(json_encode($json));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function sync(): void {
 		$this->load->language('catalog/review');
 

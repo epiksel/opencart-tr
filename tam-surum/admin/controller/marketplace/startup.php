@@ -1,6 +1,14 @@
 <?php
 namespace Opencart\Admin\Controller\Marketplace;
+/**
+ * Class Startup
+ *
+ * @package Opencart\Admin\Controller\Marketplace
+ */
 class Startup extends \Opencart\System\Engine\Controller {
+	/**
+	 * @return void
+	 */
 	public function index(): void {
 		$this->load->language('marketplace/startup');
 
@@ -45,21 +53,27 @@ class Startup extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput($this->load->view('marketplace/startup', $data));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function list(): void {
 		$this->load->language('marketplace/startup');
 
 		$this->response->setOutput($this->getList());
 	}
 
+	/**
+	 * @return string
+	 */
 	public function getList(): string {
 		if (isset($this->request->get['sort'])) {
-			$sort = $this->request->get['sort'];
+			$sort = (string)$this->request->get['sort'];
 		} else {
 			$sort = 'code';
 		}
 
 		if (isset($this->request->get['order'])) {
-			$order = $this->request->get['order'];
+			$order = (string)$this->request->get['order'];
 		} else {
 			$order = 'ASC';
 		}
@@ -121,10 +135,6 @@ class Startup extends \Opencart\System\Engine\Controller {
 			$url .= '&order=ASC';
 		}
 
-		if (isset($this->request->get['page'])) {
-			$url .= '&page=' . $this->request->get['page'];
-		}
-
 		$data['sort_code'] = $this->url->link('marketplace/startup.list', 'user_token=' . $this->session->data['user_token'] . '&sort=code' . $url);
 		$data['sort_action'] = $this->url->link('marketplace/startup.list', 'user_token=' . $this->session->data['user_token'] . '&sort=action' . $url);
 		$data['sort_sort_order'] = $this->url->link('marketplace/startup.list', 'user_token=' . $this->session->data['user_token'] . '&sort=sort_order' . $url);
@@ -154,6 +164,9 @@ class Startup extends \Opencart\System\Engine\Controller {
 		return $this->load->view('marketplace/startup_list', $data);
 	}
 
+	/**
+	 * @return void
+	 */
 	public function enable(): void {
 		$this->load->language('marketplace/startup');
 
@@ -181,6 +194,9 @@ class Startup extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput(json_encode($json));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function disable(): void {
 		$this->load->language('marketplace/startup');
 
@@ -208,6 +224,9 @@ class Startup extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput(json_encode($json));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function delete(): void {
 		$this->load->language('marketplace/startup');
 

@@ -1,49 +1,57 @@
 <?php
 namespace Opencart\Admin\Controller\Marketplace;
+/**
+ * Class Marketplace
+ *
+ * @package Opencart\Admin\Controller\Marketplace
+ */
 class Marketplace extends \Opencart\System\Engine\Controller {
+	/**
+	 * @return void
+	 */
 	public function index(): void {
 		$this->load->language('marketplace/marketplace');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 
 		if (isset($this->request->get['filter_search'])) {
-			$filter_search = $this->request->get['filter_search'];
+			$filter_search = (string)$this->request->get['filter_search'];
 		} else {
 			$filter_search = '';
 		}
 
 		if (isset($this->request->get['filter_category'])) {
-			$filter_category = $this->request->get['filter_category'];
+			$filter_category = (string)$this->request->get['filter_category'];
 		} else {
 			$filter_category = '';
 		}
 
 		if (isset($this->request->get['filter_license'])) {
-			$filter_license = $this->request->get['filter_license'];
+			$filter_license = (string)$this->request->get['filter_license'];
 		} else {
 			$filter_license = '';
 		}
 
 		if (isset($this->request->get['filter_rating'])) {
-			$filter_rating = $this->request->get['filter_rating'];
+			$filter_rating = (int)$this->request->get['filter_rating'];
 		} else {
 			$filter_rating = '';
 		}
 
 		if (isset($this->request->get['filter_member_type'])) {
-			$filter_member_type = $this->request->get['filter_member_type'];
+			$filter_member_type = (string)$this->request->get['filter_member_type'];
 		} else {
 			$filter_member_type = '';
 		}
 
 		if (isset($this->request->get['filter_member'])) {
-			$filter_member = $this->request->get['filter_member'];
+			$filter_member = (string)$this->request->get['filter_member'];
 		} else {
 			$filter_member = '';
 		}
 
 		if (isset($this->request->get['sort'])) {
-			$sort = $this->request->get['sort'];
+			$sort = (string)$this->request->get['sort'];
 		} else {
 			$sort = 'date_modified';
 		}
@@ -239,10 +247,14 @@ class Marketplace extends \Opencart\System\Engine\Controller {
 			}
 		}
 
-		if (isset($response_info['error'])) {
-			$data['error_signature'] = $response_info['error'];
+		$data['signature'] = $this->config->get('opencart_username') && $this->config->get('opencart_secret');
+
+		if (!$this->config->get('opencart_username') || !$this->config->get('opencart_secret')) {
+			$data['error_warning'] = $this->language->get('error_api');
+		} elseif (isset($response_info['error'])) {
+			$data['error_warning'] = $response_info['error'];
 		} else {
-			$data['error_signature'] = '';
+			$data['error_warning'] = '';
 		}
 
 		// Categories
@@ -516,6 +528,9 @@ class Marketplace extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput($this->load->view('marketplace/marketplace_list', $data));
 	}
 
+	/**
+	 * @return object|\Opencart\System\Engine\Action|null
+	 */
 	public function info(): object|null {
 		if (isset($this->request->get['extension_id'])) {
 			$extension_id = (int)$this->request->get['extension_id'];
@@ -563,10 +578,14 @@ class Marketplace extends \Opencart\System\Engine\Controller {
 
 			$this->document->setTitle($this->language->get('heading_title'));
 
-			if (isset($response_info['error'])) {
-				$data['error_signature'] = $response_info['error'];
+			$data['signature'] = $this->config->get('opencart_username') && $this->config->get('opencart_secret');
+
+			if (!$this->config->get('opencart_username') || !$this->config->get('opencart_secret')) {
+				$data['error_warning'] = $this->language->get('error_api');
+			} elseif (isset($response_info['error'])) {
+				$data['error_warning'] = $response_info['error'];
 			} else {
-				$data['error_signature'] = '';
+				$data['error_warning'] = '';
 			}
 
 			$url = '';
@@ -616,7 +635,6 @@ class Marketplace extends \Opencart\System\Engine\Controller {
 			$data['description'] = $response_info['description'];
 			$data['documentation'] = $response_info['documentation'];
 			$data['price'] = $response_info['price'];
-
 			$data['license'] = $response_info['license'];
 			$data['license_period'] = $response_info['license_period'];
 			$data['purchased'] = $response_info['purchased'];
@@ -679,6 +697,9 @@ class Marketplace extends \Opencart\System\Engine\Controller {
 		}
 	}
 
+	/**
+	 * @return void
+	 */
 	public function extension(): void {
 		$this->load->language('marketplace/marketplace');
 
@@ -744,6 +765,9 @@ class Marketplace extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput($this->load->view('marketplace/marketplace_extension', $data));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function purchase(): void {
 		$this->load->language('marketplace/marketplace');
 
@@ -760,7 +784,7 @@ class Marketplace extends \Opencart\System\Engine\Controller {
 		}
 
 		if (!$this->config->get('opencart_username') || !$this->config->get('opencart_secret')) {
-			$json['error'] = $this->language->get('error_opencart');
+			$json['error'] = $this->language->get('error_api');
 		}
 
 		if (!$this->request->post['pin']) {
@@ -823,6 +847,9 @@ class Marketplace extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput(json_encode($json));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function download(): void {
 		$this->load->language('marketplace/marketplace');
 
@@ -918,6 +945,9 @@ class Marketplace extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput(json_encode($json));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function addComment(): void {
 		$this->load->language('marketplace/marketplace');
 
@@ -994,6 +1024,9 @@ class Marketplace extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput(json_encode($json));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function comment(): void {
 		$this->load->language('marketplace/marketplace');
 
@@ -1065,6 +1098,9 @@ class Marketplace extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput($this->load->view('marketplace/marketplace_comment', $data));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function reply(): void {
 		$this->load->language('marketplace/marketplace');
 
@@ -1099,9 +1135,13 @@ class Marketplace extends \Opencart\System\Engine\Controller {
 
 		$data['replies'] = [];
 
-		$reply_total = $json['reply_total'];
+		if (isset($json['reply_total'])) {
+			$reply_total = $json['reply_total'];
+		} else {
+			$reply_total = 0;
+		}
 
-		if ($json['replies']) {
+		if (isset($json['replies'])) {
 			$results = $json['replies'];
 
 			foreach ($results as $result) {

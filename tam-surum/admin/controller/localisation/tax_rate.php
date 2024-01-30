@@ -1,6 +1,14 @@
 <?php
 namespace Opencart\Admin\Controller\Localisation;
+/**
+ * Class Tax Rate
+ *
+ * @package Opencart\Admin\Controller\Localisation
+ */
 class TaxRate extends \Opencart\System\Engine\Controller {
+	/**
+	 * @return void
+	 */
 	public function index(): void {
 		$this->load->language('localisation/tax_rate');
 
@@ -46,21 +54,27 @@ class TaxRate extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput($this->load->view('localisation/tax_rate', $data));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function list(): void {
 		$this->load->language('localisation/tax_rate');
 
 		$this->response->setOutput($this->getList());
 	}
 
+	/**
+	 * @return string
+	 */
 	protected function getList(): string {
 		if (isset($this->request->get['sort'])) {
-			$sort = $this->request->get['sort'];
+			$sort = (string)$this->request->get['sort'];
 		} else {
 			$sort = 'tr.name';
 		}
 
 		if (isset($this->request->get['order'])) {
-			$order = $this->request->get['order'];
+			$order = (string)$this->request->get['order'];
 		} else {
 			$order = 'ASC';
 		}
@@ -123,10 +137,6 @@ class TaxRate extends \Opencart\System\Engine\Controller {
 			$url .= '&order=ASC';
 		}
 
-		if (isset($this->request->get['page'])) {
-			$url .= '&page=' . $this->request->get['page'];
-		}
-
 		$data['sort_name'] = $this->url->link('localisation/tax_rate.list', 'user_token=' . $this->session->data['user_token'] . '&sort=tr.name' . $url);
 		$data['sort_rate'] = $this->url->link('localisation/tax_rate.list', 'user_token=' . $this->session->data['user_token'] . '&sort=tr.rate' . $url);
 		$data['sort_type'] = $this->url->link('localisation/tax_rate.list', 'user_token=' . $this->session->data['user_token'] . '&sort=tr.type' . $url);
@@ -159,6 +169,9 @@ class TaxRate extends \Opencart\System\Engine\Controller {
 		return $this->load->view('localisation/tax_rate_list', $data);
 	}
 
+	/**
+	 * @return void
+	 */
 	public function form(): void {
 		$this->load->language('localisation/tax_rate');
 
@@ -252,6 +265,9 @@ class TaxRate extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput($this->load->view('localisation/tax_rate_form', $data));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function save(): void {
 		$this->load->language('localisation/tax_rate');
 
@@ -285,6 +301,9 @@ class TaxRate extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput(json_encode($json));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function delete(): void {
 		$this->load->language('localisation/tax_rate');
 

@@ -1,6 +1,14 @@
 <?php
 namespace Opencart\Admin\Controller\Catalog;
+/**
+ * Class Subscription Plan
+ *
+ * @package Opencart\Admin\Controller\Catalog
+ */
 class SubscriptionPlan extends \Opencart\System\Engine\Controller {
+	/**
+	 * @return void
+	 */
 	public function index(): void {
 		$this->load->language('catalog/subscription_plan');
 
@@ -47,21 +55,27 @@ class SubscriptionPlan extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput($this->load->view('catalog/subscription_plan', $data));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function list(): void {
 		$this->load->language('catalog/subscription_plan');
 
 		$this->response->setOutput($this->getList());
 	}
 
+	/**
+	 * @return string
+	 */
 	protected function getList(): string {
 		if (isset($this->request->get['sort'])) {
-			$sort = $this->request->get['sort'];
+			$sort = (string)$this->request->get['sort'];
 		} else {
 			$sort = 'rd.name';
 		}
 
 		if (isset($this->request->get['order'])) {
-			$order = $this->request->get['order'];
+			$order = (string)$this->request->get['order'];
 		} else {
 			$order = 'ASC';
 		}
@@ -107,6 +121,7 @@ class SubscriptionPlan extends \Opencart\System\Engine\Controller {
 			$data['subscription_plans'][] = [
 				'subscription_plan_id' => $result['subscription_plan_id'],
 				'name'                 => $result['name'],
+				'status'               => $result['status'],
 				'sort_order'           => $result['sort_order'],
 				'edit'                 => $this->url->link('catalog/subscription_plan.form', 'user_token=' . $this->session->data['user_token'] . '&subscription_plan_id=' . $result['subscription_plan_id'] . $url)
 			];
@@ -118,10 +133,6 @@ class SubscriptionPlan extends \Opencart\System\Engine\Controller {
 			$url .= '&order=DESC';
 		} else {
 			$url .= '&order=ASC';
-		}
-
-		if (isset($this->request->get['page'])) {
-			$url .= '&page=' . $this->request->get['page'];
 		}
 
 		$data['sort_name'] = $this->url->link('catalog/subscription_plan.list', 'user_token=' . $this->session->data['user_token'] . '&sort=spd.name' . $url);
@@ -152,6 +163,9 @@ class SubscriptionPlan extends \Opencart\System\Engine\Controller {
 		return $this->load->view('catalog/subscription_plan_list', $data);
 	}
 
+	/**
+	 * @return void
+	 */
 	public function form(): void {
 		$this->load->language('catalog/subscription_plan');
 
@@ -300,6 +314,9 @@ class SubscriptionPlan extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput($this->load->view('catalog/subscription_plan_form', $data));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function save(): void {
 		$this->load->language('catalog/subscription_plan');
 
@@ -339,6 +356,9 @@ class SubscriptionPlan extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput(json_encode($json));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function copy(): void {
 		$this->load->language('catalog/subscription_plan');
 
@@ -368,6 +388,9 @@ class SubscriptionPlan extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput(json_encode($json));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function delete(): void {
 		$this->load->language('catalog/subscription_plan');
 

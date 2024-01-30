@@ -1,6 +1,14 @@
 <?php
 namespace Opencart\Admin\Controller\Design;
+/**
+ * Class Banner
+ *
+ * @package Opencart\Admin\Controller\Design
+ */
 class Banner extends \Opencart\System\Engine\Controller {
+	/**
+	 * @return void
+	 */
 	public function index(): void {
 		$this->load->language('design/banner');
 
@@ -46,21 +54,27 @@ class Banner extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput($this->load->view('design/banner', $data));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function list(): void {
 		$this->load->language('design/banner');
 
 		$this->response->setOutput($this->getList());
 	}
 
+	/**
+	 * @return string
+	 */
 	protected function getList(): string {
 		if (isset($this->request->get['sort'])) {
-			$sort = $this->request->get['sort'];
+			$sort = (string)$this->request->get['sort'];
 		} else {
 			$sort = 'name';
 		}
 
 		if (isset($this->request->get['order'])) {
-			$order = $this->request->get['order'];
+			$order = (string)$this->request->get['order'];
 		} else {
 			$order = 'ASC';
 		}
@@ -106,7 +120,7 @@ class Banner extends \Opencart\System\Engine\Controller {
 			$data['banners'][] = [
 				'banner_id' => $result['banner_id'],
 				'name'      => $result['name'],
-				'status'    => ($result['status'] ? $this->language->get('text_enabled') : $this->language->get('text_disabled')),
+				'status'    => $result['status'],
 				'edit'      => $this->url->link('design/banner.form', 'user_token=' . $this->session->data['user_token'] . '&banner_id=' . $result['banner_id'] . $url)
 			];
 		}
@@ -119,12 +133,7 @@ class Banner extends \Opencart\System\Engine\Controller {
 			$url .= '&order=ASC';
 		}
 
-		if (isset($this->request->get['page'])) {
-			$url .= '&page=' . $this->request->get['page'];
-		}
-
 		$data['sort_name'] = $this->url->link('design/banner.list', 'user_token=' . $this->session->data['user_token'] . '&sort=name' . $url);
-		$data['sort_status'] = $this->url->link('design/banner.list', 'user_token=' . $this->session->data['user_token'] . '&sort=status' . $url);
 
 		$url = '';
 
@@ -151,6 +160,9 @@ class Banner extends \Opencart\System\Engine\Controller {
 		return $this->load->view('design/banner_list', $data);
 	}
 
+	/**
+	 * @return void
+	 */
 	public function form(): void {
 		$this->load->language('design/banner');
 
@@ -256,6 +268,9 @@ class Banner extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput($this->load->view('design/banner_form', $data));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function save(): void {
 		$this->load->language('design/banner');
 
@@ -295,6 +310,9 @@ class Banner extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput(json_encode($json));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function delete(): void {
 		$this->load->language('design/banner');
 

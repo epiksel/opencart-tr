@@ -1,6 +1,14 @@
 <?php
 namespace Opencart\Catalog\Controller\Common;
+/**
+ * Class Column Left
+ *
+ * @package Opencart\Catalog\Controller\Common
+ */
 class ColumnLeft extends \Opencart\System\Engine\Controller {
+	/**
+	 * @return string
+	 */
 	public function index(): string {
 		$this->load->model('design/layout');
 
@@ -36,6 +44,12 @@ class ColumnLeft extends \Opencart\System\Engine\Controller {
 			$this->load->model('catalog/information');
 
 			$layout_id = $this->model_catalog_information->getLayoutId((int)$this->request->get['information_id']);
+		}
+
+		if ($route == 'cms/blog.info' && isset($this->request->get['blog_id'])) {
+			$this->load->model('cms/blog');
+
+			$layout_id = $this->model_cms_blog->getLayoutId((int)$this->request->get['blog_id']);
 		}
 
 		if (!$layout_id) {

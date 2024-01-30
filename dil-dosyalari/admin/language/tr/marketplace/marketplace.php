@@ -54,7 +54,6 @@ $_['text_install']       = 'Kur';
 $_['text_uninstall']     = 'Kaldır';
 $_['text_delete']        = 'Sil';
 $_['text_more']          = 'daha fazla yanıt göster...';
-$_['text_leave']         = 'daha fazla yanıt göster...';
 $_['text_refresh']       = 'Yenile';
 
 // Entry
@@ -67,7 +66,7 @@ $_['tab_download']       = 'Dosyalar';
 $_['tab_comment']        = 'Yorum';
 
 // Button
-$_['button_opencart']    = 'Pazaryeri API';
+$_['button_api']         = 'Pazaryeri API';
 $_['button_purchase']    = 'Satın Al';
 $_['button_view_all']    = 'Tüm Eklentileri';
 $_['button_support']     = 'Destek Al';
@@ -77,6 +76,6 @@ $_['button_forgot_pin']  = 'PIN\'i Unuttun Mu?';
 
 // Error
 $_['error_permission']   = 'Uyarı: Eklentileri değiştirme iznine sahip değilsiniz!';
-$_['error_opencart']     = 'Uyarı: Satın alma işlemi yapabilmek için OpenCart API bilgilerinizi girmelisiniz!';
+$_['error_api']          = 'Uyarı: Uzantıları indirebilmeniz veya herhangi bir satın alma işlemi gerçekleştirebilmeniz için önce <i class="fa-solid fa-triangle-exclamation"></i> işaretine tıklayarak OpenCart API bilgilerinizi girmelisiniz!';
 $_['error_purchase']     = 'Uzantı satın alınamadı!';
 $_['error_download']     = 'Uzantı indirilemedi!';

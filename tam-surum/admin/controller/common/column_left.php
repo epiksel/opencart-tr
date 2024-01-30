@@ -1,6 +1,14 @@
 <?php
 namespace Opencart\Admin\Controller\Common;
+/**
+ * Class Column Left
+ *
+ * @package Opencart\Admin\Controller\Common
+ */
 class ColumnLeft extends \Opencart\System\Engine\Controller {
+	/**
+	 * @return string
+	 */
 	public function index(): string {
 		if (isset($this->request->get['user_token']) && isset($this->session->data['user_token']) && ((string)$this->request->get['user_token'] == $this->session->data['user_token'])) {
 			$this->load->language('common/column_left');
@@ -122,12 +130,56 @@ class ColumnLeft extends \Opencart\System\Engine\Controller {
 			if ($catalog) {
 				$data['menus'][] = [
 					'id'       => 'menu-catalog',
-					'icon'	   => 'fas fa-tag',
+					'icon'	   => 'fa-solid fa-tag',
 					'name'	   => $this->language->get('text_catalog'),
 					'href'     => '',
 					'children' => $catalog
 				];
 			}
+
+			$cms = [];
+
+			if ($this->user->hasPermission('access', 'cms/topic')) {
+				$cms[] = [
+					'name'	   => $this->language->get('text_topic'),
+					'href'     => $this->url->link('cms/topic', 'user_token=' . $this->session->data['user_token']),
+					'children' => []
+				];
+			}
+
+			if ($this->user->hasPermission('access', 'cms/article')) {
+				$cms[] = [
+					'name'	   => $this->language->get('text_article'),
+					'href'     => $this->url->link('cms/article', 'user_token=' . $this->session->data['user_token']),
+					'children' => []
+				];
+			}
+
+			if ($this->user->hasPermission('access', 'cms/comment')) {
+				$cms[] = [
+					'name'	   => $this->language->get('text_comment'),
+					'href'     => $this->url->link('cms/comment', 'user_token=' . $this->session->data['user_token']),
+					'children' => []
+				];
+			}
+
+			if ($this->user->hasPermission('access', 'cms/antispam')) {
+				$cms[] = [
+					'name'	   => $this->language->get('text_antispam'),
+					'href'     => $this->url->link('cms/antispam', 'user_token=' . $this->session->data['user_token']),
+					'children' => []
+				];
+			}
+			// Still in development
+			//if ($cms) {
+			//	$data['menus'][] = [
+			//		'id'       => 'menu-cms',
+			//		'icon'	   => 'fa-regular fa-newspaper',
+			//		'name'	   => $this->language->get('text_cms'),
+			//		'href'     => '',
+			//		'children' => $cms
+			//	];
+			//}
 
 			// Extension
 			$marketplace = [];

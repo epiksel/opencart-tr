@@ -1,10 +1,21 @@
 <?php
 namespace Opencart\Admin\Controller\Extension;
+/**
+ * Class Language
+ *
+ * @package Opencart\Admin\Controller\Extension
+ */
 class Language extends \Opencart\System\Engine\Controller {
+	/**
+	 * @return void
+	 */
 	public function index(): void {
 		$this->response->setOutput($this->getList());
 	}
 
+	/**
+	 * @return string
+	 */
 	public function getList(): string {
 		$this->load->language('extension/language');
 
@@ -56,19 +67,22 @@ class Language extends \Opencart\System\Engine\Controller {
 		return $this->load->view('extension/language', $data);
 	}
 
+	/**
+	 * @return void
+	 */
 	public function install(): void {
 		$this->load->language('extension/language');
 
 		$json = [];
 
 		if (isset($this->request->get['extension'])) {
-			$extension = basename($this->request->get['extension']);
+			$extension = basename((string)$this->request->get['extension']);
 		} else {
 			$extension = '';
 		}
 
 		if (isset($this->request->get['code'])) {
-			$code = basename($this->request->get['code']);
+			$code = basename((string)$this->request->get['code']);
 		} else {
 			$code = '';
 		}
@@ -111,14 +125,15 @@ class Language extends \Opencart\System\Engine\Controller {
 			$this->load->controller('extension/' . $extension . '/language/' . $code . '.install');
 
 			$json['success'] = $this->language->get('text_success');
-
-			$this->cache->delete('language');
 		}
 
 		$this->response->addHeader('Content-Type: application/json');
 		$this->response->setOutput(json_encode($json));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function uninstall(): void {
 		$this->load->language('extension/language');
 
@@ -137,8 +152,6 @@ class Language extends \Opencart\System\Engine\Controller {
 			$this->load->controller('extension/' . $this->request->get['extension'] . '/language/' . $this->request->get['code'] . '.uninstall');
 
 			$json['success'] = $this->language->get('text_success');
-
-			$this->cache->delete('language');
 		}
 
 		$this->response->addHeader('Content-Type: application/json');

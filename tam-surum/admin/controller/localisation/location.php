@@ -1,6 +1,14 @@
 <?php
 namespace Opencart\Admin\Controller\Localisation;
+/**
+ * Class Location
+ *
+ * @package Opencart\Admin\Controller\Localisation
+ */
 class Location extends \Opencart\System\Engine\Controller {
+	/**
+	 * @return void
+	 */
 	public function index(): void {
 		$this->load->language('localisation/location');
 
@@ -46,21 +54,27 @@ class Location extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput($this->load->view('localisation/location', $data));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function list(): void {
 		$this->load->language('localisation/location');
 
 		$this->response->setOutput($this->getList());
 	}
 
+	/**
+	 * @return string
+	 */
 	protected function getList(): string {
 		if (isset($this->request->get['sort'])) {
-			$sort = $this->request->get['sort'];
+			$sort = (string)$this->request->get['sort'];
 		} else {
 			$sort = 'name';
 		}
 
 		if (isset($this->request->get['order'])) {
-			$order = $this->request->get['order'];
+			$order = (string)$this->request->get['order'];
 		} else {
 			$order = 'ASC';
 		}
@@ -119,10 +133,6 @@ class Location extends \Opencart\System\Engine\Controller {
 			$url .= '&order=ASC';
 		}
 
-		if (isset($this->request->get['page'])) {
-			$url .= '&page=' . $this->request->get['page'];
-		}
-
 		$data['sort_name'] = $this->url->link('localisation/location.list', 'user_token=' . $this->session->data['user_token'] . '&sort=name' . $url);
 		$data['sort_address'] = $this->url->link('localisation/location.list', 'user_token=' . $this->session->data['user_token'] . '&sort=address' . $url);
 
@@ -151,6 +161,9 @@ class Location extends \Opencart\System\Engine\Controller {
 		return $this->load->view('localisation/location_list', $data);
 	}
 
+	/**
+	 * @return void
+	 */
 	public function form(): void {
 		$this->load->language('localisation/location');
 
@@ -262,6 +275,9 @@ class Location extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput($this->load->view('localisation/location_form', $data));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function save(): void {
 		$this->load->language('localisation/location');
 
@@ -299,6 +315,9 @@ class Location extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput(json_encode($json));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function delete(): void {
 		$this->load->language('localisation/location');
 

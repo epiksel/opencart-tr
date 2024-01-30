@@ -23,6 +23,9 @@ $_['text_transaction']          = 'İşlemler';
 $_['text_transaction_add']      = 'İşlem Ekle';
 $_['text_report']               = 'Raporlar';
 $_['text_filter']               = 'Filtrele';
+$_['text_payment_cheque']       = 'Çek ile Ödeme';
+$_['text_payment_paypal']       = 'PayPal ile Ödeme';
+$_['text_payment_bank']         = 'Havale/EFT ile Ödeme';
 
 // Column
 $_['column_name']               = 'Müşteri';
@@ -48,7 +51,7 @@ $_['entry_tracking']            = 'Takip Kodu';
 $_['entry_website']             = 'Web Sitesi';
 $_['entry_commission']          = 'Komisyon Oranı (%)';
 $_['entry_tax']                 = 'T.C. / Vergi No';
-$_['entry_payment']             = 'Ödeme Metotu';
+$_['entry_payment_method']      = 'Ödeme Metotu';
 $_['entry_cheque']              = 'Alacaklı Adı';
 $_['entry_paypal']              = 'E-Posta adresi';
 $_['entry_bank_name']           = 'Banka Adı';
@@ -61,6 +64,8 @@ $_['entry_description']         = 'Açıklama';
 $_['entry_amount']              = 'Tutar';
 $_['entry_date_from']           = 'Başlangıç Tarihi';
 $_['entry_date_to']             = 'Bitiş Tarihi';
+$_['entry_status']              = 'Durumu';
+$_['entry_limit']               = 'Limit';
 
 // Help
 $_['help_tracking']             = 'Ürün yönlendirmelerini izlemek için kullanılacak takip kodu.';
@@ -73,6 +78,7 @@ $_['error_customer']            = 'Uyarı: Müşteri gerekli!';
 $_['error_already']             = 'Uyarı: Müşteri zaten ortak olarak kayıtlı!';
 $_['error_tracking']            = 'Takip Kodu gerekli!';
 $_['error_exists']              = 'Takip Kodu başka ortak tarafından kullanılıyor!';
+$_['error_payment_method']      = 'Ödeme metodu gerekli!';
 $_['error_cheque']              = 'Alacaklı Adı gerekli!';
 $_['error_paypal']              = 'PayPal E-posta Adresi geçersiz!';
 $_['error_bank_account_name']   = 'Hesap Adı gerekli!';

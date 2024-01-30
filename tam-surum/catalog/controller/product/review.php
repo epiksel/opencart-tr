@@ -1,13 +1,23 @@
 <?php
 namespace Opencart\Catalog\Controller\Product;
+/**
+ * Class Review
+ *
+ * @package Opencart\Catalog\Controller\Product
+ */
 class Review extends \Opencart\System\Engine\Controller {
+	/**
+	 * @return string
+	 */
 	public function index(): string {
 		$this->load->language('product/review');
+
+		$data['text_login'] = sprintf($this->language->get('text_login'), $this->url->link('account/login', 'language=' . $this->config->get('config_language')), $this->url->link('account/register', 'language=' . $this->config->get('config_language')));
 
 		$data['list'] = $this->getList();
 
 		if (isset($this->request->get['product_id'])) {
-			$data['product_id'] = $this->request->get['product_id'];
+			$data['product_id'] = (int)$this->request->get['product_id'];
 		} else {
 			$data['product_id'] = 0;
 		}
@@ -41,17 +51,20 @@ class Review extends \Opencart\System\Engine\Controller {
 		}
 
 		$data['language'] = $this->config->get('config_language');
-		$data['text_login'] = sprintf($this->language->get('text_login'), $this->url->link('account/login', 'language=' . $this->config->get('config_language')), $this->url->link('account/register', 'language=' . $this->config->get('config_language')));
+
 		return $this->load->view('product/review', $data);
 	}
 
+	/**
+	 * @return void
+	 */
 	public function write(): void {
 		$this->load->language('product/review');
 
 		$json = [];
 
 		if (isset($this->request->get['product_id'])) {
-			$product_id = $this->request->get['product_id'];
+			$product_id = (int)$this->request->get['product_id'];
 		} else {
 			$product_id = 0;
 		}
@@ -70,6 +83,14 @@ class Review extends \Opencart\System\Engine\Controller {
 			if (!isset($this->request->post[$key])) {
 				$this->request->post[$key] = '';
 			}
+		}
+
+		$this->load->model('product/product');
+
+		$product_info = $this->model_product_product->getProduct($product_id);
+
+		if (!$product_info) {
+			$json['error']['warning'] = $this->language->get('error_product');
 		}
 
 		if ((oc_strlen($this->request->post['name']) < 3) || (oc_strlen($this->request->post['name']) > 25)) {
@@ -121,15 +142,21 @@ class Review extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput(json_encode($json));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function list(): void {
 		$this->load->language('product/review');
 
 		$this->response->setOutput($this->getList());
 	}
 
+	/**
+	 * @return string
+	 */
 	public function getList(): string {
 		if (isset($this->request->get['product_id'])) {
-			$product_id = $this->request->get['product_id'];
+			$product_id = (int)$this->request->get['product_id'];
 		} else {
 			$product_id = 0;
 		}

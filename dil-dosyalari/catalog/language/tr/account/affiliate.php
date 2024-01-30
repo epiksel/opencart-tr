@@ -20,7 +20,7 @@ $_['text_agree']                = '<a href="%s" class="modal-link"><b>%s</b></a>
 $_['entry_company']             = 'Şirket Adı';
 $_['entry_website']             = 'Web Siteniz';
 $_['entry_tax']                 = 'T.C. / Vergi No';
-$_['entry_payment']             = 'Ödeme Methodu';
+$_['entry_payment_method']      = 'Ödeme Methodu';
 $_['entry_cheque']              = 'Alacaklı Adı';
 $_['entry_paypal']              = 'PayPal E-Posta Adresi';
 $_['entry_bank_name']           = 'Banka Adı';
@@ -32,6 +32,7 @@ $_['entry_bank_account_number'] = 'Hesap Numarası';
 // Error
 $_['error_token']               = 'Uyarı: Ortak belirteci geçersiz!';
 $_['error_agree']               = 'Uyarı: %s kabul etmelisiniz!';
+$_['error_payment_method']      = 'Ödeme metodu gerekli!';
 $_['error_cheque']              = 'Alacaklı adı gerekli!';
 $_['error_paypal']              = 'PayPal e-posta adresi geçersiz!';
 $_['error_bank_account_name']   = 'Hesap adı gerekli!';

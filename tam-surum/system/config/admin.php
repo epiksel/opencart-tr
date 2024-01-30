@@ -53,5 +53,8 @@ $_['action_event']       = [
 	//],
 	'view/*/before' => [
 		999 => 'event/language'
-	]
+	],
+    'language/*/after' => [
+        0 => 'startup/language.after'
+    ]
 ];

@@ -125,6 +125,9 @@ $_['button_backup']                 = 'Yedek Al';
 $_['button_developer']              = 'Geliştirici Ayarları';
 $_['button_master']                 = 'Ana Ürün';
 $_['button_resend']                 = 'Yeniden Gönder';
+$_['button_calculate']              = 'Ödemeleri Hesapla';
+$_['button_csv']                    = 'CSV İndir';
+$_['button_complete']               = 'Ödemeleri Tamamla';
 
 // Tab
 $_['tab_address']                   = 'Adresler';

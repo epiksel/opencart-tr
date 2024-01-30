@@ -1,6 +1,14 @@
 <?php
 namespace Opencart\Catalog\Controller\Checkout;
+/**
+ * Class Confirm
+ *
+ * @package Opencart\Catalog\Controller\Checkout
+ */
 class Confirm extends \Opencart\System\Engine\Controller {
+	/**
+	 * @return string
+	 */
 	public function index(): string {
 		$this->load->language('checkout/confirm');
 
@@ -322,6 +330,12 @@ class Confirm extends \Opencart\System\Engine\Controller {
 		$data['products'] = [];
 
 		foreach ($products as $product) {
+			if ($product['option']) {
+				foreach ($product['option'] as $key => $option) {
+					$product['option'][$key]['value'] = (oc_strlen($option['value']) > 20 ? oc_substr($option['value'], 0, 20) . '..' : $option['value']);
+				}
+			}
+
 			$description = '';
 
 			if ($product['subscription']) {
@@ -401,6 +415,9 @@ class Confirm extends \Opencart\System\Engine\Controller {
 		return $this->load->view('checkout/confirm', $data);
 	}
 
+	/**
+	 * @return void
+	 */
 	public function confirm(): void {
 		$this->response->setOutput($this->index());
 	}

@@ -17,6 +17,7 @@ $_['text_comment']           = 'Başarılı: Açıklama eklendi!';
 $_['entry_payment_method']   = 'Ödeme metotu seçin...';
 
 // Error
+$_['error_customer']         = 'Müşteri gerekli!';
 $_['error_payment_address']  = 'Fatura adresi gerekli!';
 $_['error_shipping_address'] = 'Kargo adresi gerekli!';
 $_['error_shipping_method']  = 'Kargo metotu gerekli!';

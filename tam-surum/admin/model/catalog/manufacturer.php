@@ -1,14 +1,20 @@
 <?php
 namespace Opencart\Admin\Model\Catalog;
+/**
+ * Class Manufacturer
+ *
+ * @package Opencart\Admin\Model\Catalog
+ */
 class Manufacturer extends \Opencart\System\Engine\Model {
+	/**
+	 * @param array $data
+	 *
+	 * @return int
+	 */
 	public function addManufacturer(array $data): int {
-		$this->db->query("INSERT INTO `" . DB_PREFIX . "manufacturer` SET `name` = '" . $this->db->escape((string)$data['name']) . "', `sort_order` = '" . (int)$data['sort_order'] . "'");
+		$this->db->query("INSERT INTO `" . DB_PREFIX . "manufacturer` SET `name` = '" . $this->db->escape((string)$data['name']) . "', `image` = '" . $this->db->escape((string)$data['image']) . "', `sort_order` = '" . (int)$data['sort_order'] . "'");
 
 		$manufacturer_id = $this->db->getLastId();
-
-		if (isset($data['image'])) {
-			$this->db->query("UPDATE `" . DB_PREFIX . "manufacturer` SET `image` = '" . $this->db->escape((string)$data['image']) . "' WHERE `manufacturer_id` = '" . (int)$manufacturer_id . "'");
-		}
 
 		if (isset($data['manufacturer_store'])) {
 			foreach ($data['manufacturer_store'] as $store_id) {
@@ -36,12 +42,14 @@ class Manufacturer extends \Opencart\System\Engine\Model {
 		return $manufacturer_id;
 	}
 
+	/**
+	 * @param int   $manufacturer_id
+	 * @param array $data
+	 *
+	 * @return void
+	 */
 	public function editManufacturer(int $manufacturer_id, array $data): void {
-		$this->db->query("UPDATE `" . DB_PREFIX . "manufacturer` SET `name` = '" . $this->db->escape((string)$data['name']) . "', `sort_order` = '" . (int)$data['sort_order'] . "' WHERE `manufacturer_id` = '" . (int)$manufacturer_id . "'");
-
-		if (isset($data['image'])) {
-			$this->db->query("UPDATE `" . DB_PREFIX . "manufacturer` SET `image` = '" . $this->db->escape((string)$data['image']) . "' WHERE `manufacturer_id` = '" . (int)$manufacturer_id . "'");
-		}
+		$this->db->query("UPDATE `" . DB_PREFIX . "manufacturer` SET `name` = '" . $this->db->escape((string)$data['name']) . "', `image` = '" . $this->db->escape((string)$data['image']) . "', `sort_order` = '" . (int)$data['sort_order'] . "' WHERE `manufacturer_id` = '" . (int)$manufacturer_id . "'");
 
 		$this->db->query("DELETE FROM `" . DB_PREFIX . "manufacturer_to_store` WHERE `manufacturer_id` = '" . (int)$manufacturer_id . "'");
 
@@ -72,6 +80,11 @@ class Manufacturer extends \Opencart\System\Engine\Model {
 		$this->cache->delete('manufacturer');
 	}
 
+	/**
+	 * @param int $manufacturer_id
+	 *
+	 * @return void
+	 */
 	public function deleteManufacturer(int $manufacturer_id): void {
 		$this->db->query("DELETE FROM `" . DB_PREFIX . "manufacturer` WHERE `manufacturer_id` = '" . (int)$manufacturer_id . "'");
 		$this->db->query("DELETE FROM `" . DB_PREFIX . "manufacturer_to_store` WHERE `manufacturer_id` = '" . (int)$manufacturer_id . "'");
@@ -81,12 +94,22 @@ class Manufacturer extends \Opencart\System\Engine\Model {
 		$this->cache->delete('manufacturer');
 	}
 
+	/**
+	 * @param int $manufacturer_id
+	 *
+	 * @return array
+	 */
 	public function getManufacturer(int $manufacturer_id): array {
 		$query = $this->db->query("SELECT DISTINCT * FROM `" . DB_PREFIX . "manufacturer` WHERE `manufacturer_id` = '" . (int)$manufacturer_id . "'");
 
 		return $query->row;
 	}
 
+	/**
+	 * @param array $data
+	 *
+	 * @return array
+	 */
 	public function getManufacturers(array $data = []): array {
 		$sql = "SELECT * FROM `" . DB_PREFIX . "manufacturer`";
 
@@ -100,7 +123,7 @@ class Manufacturer extends \Opencart\System\Engine\Model {
 		];
 
 		if (isset($data['sort']) && in_array($data['sort'], $sort_data)) {
-			$sql .= " ORDER BY `" . $data['sort'] . "`";
+			$sql .= " ORDER BY " . $data['sort'];
 		} else {
 			$sql .= " ORDER BY `name`";
 		}
@@ -128,6 +151,11 @@ class Manufacturer extends \Opencart\System\Engine\Model {
 		return $query->rows;
 	}
 
+	/**
+	 * @param int $manufacturer_id
+	 *
+	 * @return array
+	 */
 	public function getStores(int $manufacturer_id): array {
 		$manufacturer_store_data = [];
 
@@ -140,6 +168,11 @@ class Manufacturer extends \Opencart\System\Engine\Model {
 		return $manufacturer_store_data;
 	}
 
+	/**
+	 * @param int $manufacturer_id
+	 *
+	 * @return array
+	 */
 	public function getSeoUrls(int $manufacturer_id): array {
 		$manufacturer_seo_url_data = [];
 
@@ -152,6 +185,11 @@ class Manufacturer extends \Opencart\System\Engine\Model {
 		return $manufacturer_seo_url_data;
 	}
 
+	/**
+	 * @param int $manufacturer_id
+	 *
+	 * @return array
+	 */
 	public function getLayouts(int $manufacturer_id): array {
 		$manufacturer_layout_data = [];
 
@@ -164,12 +202,20 @@ class Manufacturer extends \Opencart\System\Engine\Model {
 		return $manufacturer_layout_data;
 	}
 
+	/**
+	 * @return int
+	 */
 	public function getTotalManufacturers(): int {
 		$query = $this->db->query("SELECT COUNT(*) AS `total` FROM `" . DB_PREFIX . "manufacturer`");
 
 		return (int)$query->row['total'];
 	}
 
+	/**
+	 * @param int $layout_id
+	 *
+	 * @return int
+	 */
 	public function getTotalManufacturersByLayoutId(int $layout_id): int {
 		$query = $this->db->query("SELECT COUNT(*) AS `total` FROM `" . DB_PREFIX . "manufacturer_to_layout` WHERE `layout_id` = '" . (int)$layout_id . "'");
 

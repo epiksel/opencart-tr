@@ -1,6 +1,14 @@
 <?php
 namespace Opencart\Admin\Controller\Catalog;
+/**
+ * Class Information
+ *
+ * @package Opencart\Admin\Controller\Catalog
+ */
 class Information extends \Opencart\System\Engine\Controller {
+	/**
+	 * @return void
+	 */
 	public function index(): void {
 		$this->load->language('catalog/information');
 
@@ -46,21 +54,27 @@ class Information extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput($this->load->view('catalog/information', $data));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function list(): void {
 		$this->load->language('catalog/information');
 
 		$this->response->setOutput($this->getList());
 	}
 
+	/**
+	 * @return string
+	 */
 	protected function getList(): string {
 		if (isset($this->request->get['sort'])) {
-			$sort = $this->request->get['sort'];
+			$sort = (string)$this->request->get['sort'];
 		} else {
 			$sort = 'id.title';
 		}
 
 		if (isset($this->request->get['order'])) {
-			$order = $this->request->get['order'];
+			$order = (string)$this->request->get['order'];
 		} else {
 			$order = 'ASC';
 		}
@@ -106,6 +120,7 @@ class Information extends \Opencart\System\Engine\Controller {
 			$data['informations'][] = [
 				'information_id' => $result['information_id'],
 				'title'          => $result['title'],
+				'status'         => $result['status'],
 				'sort_order'     => $result['sort_order'],
 				'edit'           => $this->url->link('catalog/information.form', 'user_token=' . $this->session->data['user_token'] . '&information_id=' . $result['information_id'] . $url)
 			];
@@ -117,10 +132,6 @@ class Information extends \Opencart\System\Engine\Controller {
 			$url .= '&order=DESC';
 		} else {
 			$url .= '&order=ASC';
-		}
-
-		if (isset($this->request->get['page'])) {
-			$url .= '&page=' . $this->request->get['page'];
 		}
 
 		$data['sort_title'] = $this->url->link('catalog/information.list', 'user_token=' . $this->session->data['user_token'] . '&sort=id.title' . $url);
@@ -151,6 +162,9 @@ class Information extends \Opencart\System\Engine\Controller {
 		return $this->load->view('catalog/information_list', $data);
 	}
 
+	/**
+	 * @return void
+	 */
 	public function form(): void {
 		$this->load->language('catalog/information');
 
@@ -212,14 +226,14 @@ class Information extends \Opencart\System\Engine\Controller {
 			$data['information_description'] = [];
 		}
 
-		$this->load->model('setting/store');
-
 		$data['stores'] = [];
 
 		$data['stores'][] = [
 			'store_id' => 0,
 			'name'     => $this->language->get('text_default')
 		];
+
+		$this->load->model('setting/store');
 
 		$stores = $this->model_setting_store->getStores();
 
@@ -279,6 +293,9 @@ class Information extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput($this->load->view('catalog/information_form', $data));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function save(): void {
 		$this->load->language('catalog/information');
 
@@ -340,6 +357,9 @@ class Information extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput(json_encode($json));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function delete(): void {
 		$this->load->language('catalog/information');
 

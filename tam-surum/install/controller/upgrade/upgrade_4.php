@@ -1,6 +1,14 @@
 <?php
 namespace Opencart\Install\Controller\Upgrade;
+/**
+ * Class Upgrade4
+ *
+ * @package Opencart\Install\Controller\Upgrade
+ */
 class Upgrade4 extends \Opencart\System\Engine\Controller {
+	/**
+	 * @return void
+	 */
 	public function index(): void {
 		$this->load->language('upgrade/upgrade');
 
@@ -182,6 +190,27 @@ class Upgrade4 extends \Opencart\System\Engine\Controller {
 			}
 
 			$missing[] = [
+				'key'        => 'config_article_description_length',
+				'value'      => 100,
+				'code'       => 'config',
+				'serialized' => 0
+			];
+
+			$missing[] = [
+				'key'        => 'config_image_blog_width',
+				'value'      => 90,
+				'code'       => 'config',
+				'serialized' => 0
+			];
+
+			$missing[] = [
+				'key'        => 'config_image_blog_height',
+				'value'      => 90,
+				'code'       => 'config',
+				'serialized' => 0
+			];
+
+			$missing[] = [
 				'key'        => 'config_session_expire',
 				'value'      => 3600000000,
 				'code'       => 'config',
@@ -244,7 +273,6 @@ class Upgrade4 extends \Opencart\System\Engine\Controller {
 				'code'       => 'config',
 				'serialized' => 0
 			];
-
 
 			$missing[] = [
 				'key'        => 'config_subscription_canceled_status_id',

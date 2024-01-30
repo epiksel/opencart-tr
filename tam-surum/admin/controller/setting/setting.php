@@ -1,6 +1,14 @@
 <?php
 namespace Opencart\Admin\Controller\Setting;
+/**
+ * Class Setting
+ *
+ * @package Opencart\Admin\Controller\Setting
+ */
 class Setting extends \Opencart\System\Engine\Controller {
+	/**
+	 * @return void
+	 */
 	public function index(): void {
 		$this->load->language('setting/setting');
 
@@ -167,11 +175,7 @@ class Setting extends \Opencart\System\Engine\Controller {
 		$data['config_weight_class_id'] = $this->config->get('config_weight_class_id');
 
 		// Options
-		if ($this->config->get('config_product_description_length')) {
-			$data['config_product_description_length'] = $this->config->get('config_product_description_length');
-		} else {
-			$data['config_product_description_length'] = 100;
-		}
+		$data['config_product_description_length'] = $this->config->get('config_product_description_length');
 
 		if ($this->config->get('config_pagination')) {
 			$data['config_pagination'] = $this->config->get('config_pagination');
@@ -192,6 +196,11 @@ class Setting extends \Opencart\System\Engine\Controller {
 		$data['config_review_status'] = $this->config->get('config_review_status');
 		$data['config_review_purchased'] = $this->config->get('config_review_purchased');
 		$data['config_review_guest'] = $this->config->get('config_review_guest');
+
+		// CMS
+		$data['config_article_description_length'] = $this->config->get('config_article_description_length');
+		$data['config_comment_status'] = $this->config->get('config_comment_status');
+		$data['config_comment_guest'] = $this->config->get('config_comment_guest');
 
 		$data['config_voucher_min'] = $this->config->get('config_voucher_min');
 		$data['config_voucher_max'] = $this->config->get('config_voucher_max');
@@ -389,6 +398,11 @@ class Setting extends \Opencart\System\Engine\Controller {
 		];
 
 		$data['captcha_pages'][] = [
+			'text'  => $this->language->get('text_comment'),
+			'value' => 'comment'
+		];
+
+		$data['captcha_pages'][] = [
 			'text'  => $this->language->get('text_return'),
 			'value' => 'returns'
 		];
@@ -493,6 +507,18 @@ class Setting extends \Opencart\System\Engine\Controller {
 			$data['config_image_compare_height'] = $this->config->get('config_image_compare_height');
 		} else {
 			$data['config_image_compare_height'] = 90;
+		}
+
+		if ($this->config->get('config_image_blog_width')) {
+			$data['config_image_blog_width'] = $this->config->get('config_image_blog_width');
+		} else {
+			$data['config_image_blog_width'] = 90;
+		}
+
+		if ($this->config->get('config_image_blog_height')) {
+			$data['config_image_blog_height'] = $this->config->get('config_image_blog_height');
+		} else {
+			$data['config_image_blog_height'] = 90;
 		}
 
 		if ($this->config->get('config_image_wishlist_width')) {
@@ -623,6 +649,9 @@ class Setting extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput($this->load->view('setting/setting', $data));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function save(): void {
 		$this->load->language('setting/setting');
 
@@ -668,6 +697,10 @@ class Setting extends \Opencart\System\Engine\Controller {
 			$json['error']['pagination_admin'] = $this->language->get('error_pagination');
 		}
 
+		if (!$this->request->post['config_article_description_length']) {
+			$json['error']['article_description_length'] = $this->language->get('error_article_description_length');
+		}
+
 		if (!empty($this->request->post['config_customer_group_display']) && !in_array($this->request->post['config_customer_group_id'], $this->request->post['config_customer_group_display'])) {
 			$json['error']['customer_group_display'] = $this->language->get('error_customer_group_display');
 		}
@@ -676,16 +709,16 @@ class Setting extends \Opencart\System\Engine\Controller {
 			$json['error']['login_attempts'] = $this->language->get('error_login_attempts');
 		}
 
+		if (!$this->request->post['config_customer_online_expire']) {
+			$json['error']['customer_online_expire'] = $this->language->get('error_customer_online_expire');
+		}
+
 		if (!$this->request->post['config_voucher_min']) {
 			$json['error']['voucher_min'] = $this->language->get('error_voucher_min');
 		}
 
 		if (!$this->request->post['config_voucher_max']) {
 			$json['error']['voucher_max'] = $this->language->get('error_voucher_max');
-		}
-
-		if (!$this->request->post['config_customer_online_expire']) {
-			$json['error']['customer_online_expire'] = $this->language->get('error_customer_online_expire');
 		}
 
 		if (!isset($this->request->post['config_processing_status'])) {
@@ -804,6 +837,9 @@ class Setting extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput(json_encode($json));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function theme(): void {
 		if (isset($this->request->get['theme'])) {
 			$theme = basename($this->request->get['theme']);

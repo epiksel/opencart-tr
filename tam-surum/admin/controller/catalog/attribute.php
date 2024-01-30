@@ -1,6 +1,14 @@
 <?php
 namespace Opencart\Admin\Controller\Catalog;
+/**
+ * Class Attribute
+ *
+ * @package Opencart\Admin\Controller\Catalog
+ */
 class Attribute extends \Opencart\System\Engine\Controller {
+	/**
+	 * @return void
+	 */
 	public function index(): void {
 		$this->load->language('catalog/attribute');
 
@@ -9,15 +17,15 @@ class Attribute extends \Opencart\System\Engine\Controller {
 		$url = '';
 
 		if (isset($this->request->get['sort'])) {
-			$url .= '&sort=' . $this->request->get['sort'];
+			$url .= '&sort=' . (string)$this->request->get['sort'];
 		}
 
 		if (isset($this->request->get['order'])) {
-			$url .= '&order=' . $this->request->get['order'];
+			$url .= '&order=' . (string)$this->request->get['order'];
 		}
 
 		if (isset($this->request->get['page'])) {
-			$url .= '&page=' . $this->request->get['page'];
+			$url .= '&page=' . (int)$this->request->get['page'];
 		}
 
 		$data['breadcrumbs'] = [];
@@ -46,21 +54,27 @@ class Attribute extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput($this->load->view('catalog/attribute', $data));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function list(): void {
 		$this->load->language('catalog/attribute');
 
 		$this->response->setOutput($this->getList());
 	}
 
+	/**
+	 * @return string
+	 */
 	public function getList(): string {
 		if (isset($this->request->get['sort'])) {
-			$sort = $this->request->get['sort'];
+			$sort = (string)$this->request->get['sort'];
 		} else {
 			$sort = 'ad.name';
 		}
 
 		if (isset($this->request->get['order'])) {
-			$order = $this->request->get['order'];
+			$order = (string)$this->request->get['order'];
 		} else {
 			$order = 'ASC';
 		}
@@ -149,6 +163,9 @@ class Attribute extends \Opencart\System\Engine\Controller {
 		return $this->load->view('catalog/attribute_list', $data);
 	}
 
+	/**
+	 * @return void
+	 */
 	public function form(): void {
 		$this->load->language('catalog/attribute');
 
@@ -232,6 +249,9 @@ class Attribute extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput($this->load->view('catalog/attribute_form', $data));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function save(): void {
 		$this->load->language('catalog/attribute');
 
@@ -271,6 +291,9 @@ class Attribute extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput(json_encode($json));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function delete(): void {
 		$this->load->language('catalog/attribute');
 
@@ -310,6 +333,9 @@ class Attribute extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput(json_encode($json));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function autocomplete(): void {
 		$json = [];
 
@@ -317,10 +343,10 @@ class Attribute extends \Opencart\System\Engine\Controller {
 			$this->load->model('catalog/attribute');
 
 			$filter_data = [
-                'filter_name' => $this->request->get['filter_name'],
-                'start'       => 0,
-                'limit'       => 5
-            ];
+				'filter_name' => $this->request->get['filter_name'],
+				'start'       => 0,
+				'limit'       => 5
+			];
 
 			$results = $this->model_catalog_attribute->getAttributes($filter_data);
 

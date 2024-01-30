@@ -87,12 +87,12 @@
                   <input type="text" name="filter" value="" placeholder="{{ entry_filter }}" id="input-filter" data-oc-target="autocomplete-filter" class="form-control" autocomplete="off"/>
                   <ul id="autocomplete-filter" class="dropdown-menu"></ul>
                   <div class="form-control p-0" style="height: 150px; overflow: auto;">
-                    <table id="category-filter" class="table table-sm m-0">
+                    <table id="category-filter" class="table m-0">
                       <tbody>
                         {% for category_filter in category_filters %}
                           <tr id="category-filter-{{ category_filter.filter_id }}">
                             <td>{{ category_filter.name }}<input type="hidden" name="category_filter[]" value="{{ category_filter.filter_id }}"/></td>
-                            <td class="text-end"><button type="button" class="btn btn-danger btn-sm"><i class="fa-solid fa-minus-circle"></i></button></td>
+                            <td class="text-end"><button type="button" class="btn btn-danger"><i class="fa-solid fa-minus-circle"></i></button></td>
                           </tr>
                         {% endfor %}
                       </tbody>
@@ -126,10 +126,11 @@
                 </div>
               </div>
               <div class="row mb-3">
-                <label for="input-top" class="col-sm-2 col-form-label">{{ entry_top }}</label>
+                <label class="col-sm-2 col-form-label">{{ entry_top }}</label>
                 <div class="col-sm-10">
                   <div class="form-check form-switch form-switch-lg">
-                    <input type="hidden" name="top" value="0"/> <input type="checkbox" name="top" value="1" id="input-top" class="form-check-input"{% if top %} checked{% endif %}/>
+                    <input type="hidden" name="top" value="0"/>
+                    <input type="checkbox" name="top" value="1" id="input-top" class="form-check-input"{% if top %} checked{% endif %}/>
                   </div>
                   <div class="form-text">{{ help_top }}</div>
                 </div>
@@ -148,10 +149,11 @@
                 </div>
               </div>
               <div class="row mb-3">
-                <label for="input-status" class="col-sm-2 col-form-label">{{ entry_status }}</label>
+                <label class="col-sm-2 col-form-label">{{ entry_status }}</label>
                 <div class="col-sm-10">
                   <div class="form-check form-switch form-switch-lg">
-                    <input type="hidden" name="status" value="0"/> <input type="checkbox" name="status" value="1" id="input-status" class="form-check-input"{% if status %} checked{% endif %}/>
+                    <input type="hidden" name="status" value="0"/>
+                    <input type="checkbox" name="status" value="1" id="input-status" class="form-check-input"{% if status %} checked{% endif %}/>
                   </div>
                 </div>
               </div>

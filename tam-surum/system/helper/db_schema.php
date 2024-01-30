@@ -481,6 +481,430 @@ function oc_db_schema() {
 	];
 
 	$tables[] = [
+		'name' => 'antispam',
+		'field' => [
+			[
+				'name' => 'antispam_id',
+				'type' => 'int(11)',
+				'not_null' => true,
+				'auto_increment' => true
+			],
+			[
+				'name' => 'keyword',
+				'type' => 'varchar(64)',
+				'not_null' => true
+			]
+		],
+		'primary' => [
+			'antispam_id'
+		],
+		'index' => [
+			[
+				'name' => 'keyword',
+				'key' => [
+					'keyword'
+				]
+			]
+		],
+		'engine' => 'InnoDB',
+		'charset' => 'utf8mb4',
+		'collate' => 'utf8mb4_general_ci'
+	];
+
+	$tables[] = [
+		'name' => 'article',
+		'field' => [
+			[
+				'name' => 'article_id',
+				'type' => 'int(11)',
+				'not_null' => true,
+				'auto_increment' => true
+			],
+			[
+				'name' => 'topic_id',
+				'type' => 'int(11)',
+				'not_null' => true
+			],
+			[
+				'name' => 'author',
+				'type' => 'varchar(64)',
+				'not_null' => true
+			],
+			[
+				'name' => 'status',
+				'type' => 'tinyint(1)',
+				'not_null' => true
+			],
+			[
+				'name' => 'date_added',
+				'type' => 'datetime',
+				'not_null' => true
+			],
+			[
+				'name' => 'date_modified',
+				'type' => 'datetime',
+				'not_null' => true
+			]
+		],
+		'primary' => [
+			'article_id'
+		],
+		'engine' => 'InnoDB',
+		'charset' => 'utf8mb4',
+		'collate' => 'utf8mb4_general_ci'
+	];
+
+	$tables[] = [
+		'name' => 'article_comment',
+		'field' => [
+			[
+				'name' => 'article_comment_id',
+				'type' => 'int(11)',
+				'not_null' => true,
+				'auto_increment' => true
+			],
+			[
+				'name' => 'article_id',
+				'type' => 'int(11)',
+				'not_null' => true
+			],
+			[
+				'name' => 'customer_id',
+				'type' => 'int(11)',
+				'not_null' => true
+			],
+			[
+				'name' => 'comment',
+				'type' => 'text',
+				'not_null' => true
+			],
+			[
+				'name' => 'status',
+				'type' => 'varchar(255)',
+				'not_null' => true
+			],
+			[
+				'name' => 'date_added',
+				'type' => 'datetime',
+				'not_null' => true
+			]
+		],
+		'primary' => [
+			'article_comment_id'
+		],
+		'foreign' => [
+			[
+				'key'   => 'article_id',
+				'table' => 'article',
+				'field' => 'article_id'
+			],
+			[
+				'key'   => 'customer_id',
+				'table' => 'customer',
+				'field' => 'customer_id'
+			]
+		],
+		'index' => [
+			[
+				'name' => 'article_id',
+				'key' => [
+					'article_id'
+				]
+			]
+		],
+		'engine' => 'InnoDB',
+		'charset' => 'utf8mb4',
+		'collate' => 'utf8mb4_general_ci'
+	];
+
+	$tables[] = [
+		'name' => 'article_description',
+		'field' => [
+			[
+				'name' => 'article_id',
+				'type' => 'int(11)',
+				'not_null' => true
+			],
+			[
+				'name' => 'language_id',
+				'type' => 'int(11)',
+				'not_null' => true
+			],
+			[
+				'name' => 'image',
+				'type' => 'varchar(255)',
+				'not_null' => true
+			],
+			[
+				'name' => 'name',
+				'type' => 'varchar(255)',
+				'not_null' => true
+			],
+			[
+				'name' => 'description',
+				'type' => 'text',
+				'not_null' => true
+			],
+			[
+				'name' => 'tag',
+				'type' => 'text',
+				'not_null' => true
+			],
+			[
+				'name' => 'meta_title',
+				'type' => 'varchar(255)',
+				'not_null' => true
+			],
+			[
+				'name' => 'meta_description',
+				'type' => 'varchar(255)',
+				'not_null' => true
+			],
+			[
+				'name' => 'meta_keyword',
+				'type' => 'varchar(255)',
+				'not_null' => true
+			]
+		],
+		'primary' => [
+			'article_id',
+			'language_id'
+		],
+		'foreign' => [
+			[
+				'key'   => 'language_id',
+				'table' => 'language',
+				'field' => 'language_id'
+			]
+		],
+		'index' => [
+			[
+				'name' => 'name',
+				'key' => [
+					'name'
+				]
+			]
+		],
+		'engine' => 'InnoDB',
+		'charset' => 'utf8mb4',
+		'collate' => 'utf8mb4_general_ci'
+	];
+
+	$tables[] = [
+		'name' => 'article_to_layout',
+		'field' => [
+			[
+				'name' => 'article_id',
+				'type' => 'int(11)',
+				'not_null' => true
+			],
+			[
+				'name' => 'store_id',
+				'type' => 'int(11)',
+				'not_null' => true
+			],
+			[
+				'name' => 'layout_id',
+				'type' => 'int(11)',
+				'not_null' => true
+			]
+		],
+		'primary' => [
+			'article_id',
+			'store_id'
+		],
+		'foreign' => [
+			[
+				'key'   => 'article_id',
+				'table' => 'article',
+				'field' => 'article_id'
+			],
+			[
+				'key'   => 'store_id',
+				'table' => 'store',
+				'field' => 'store_id'
+			],
+			[
+				'key'   => 'layout_id',
+				'table' => 'layout',
+				'field' => 'layout_id'
+			]
+		],
+		'engine' => 'InnoDB',
+		'charset' => 'utf8mb4',
+		'collate' => 'utf8mb4_general_ci'
+	];
+
+	$tables[] = [
+		'name' => 'article_to_store',
+		'field' => [
+			[
+				'name' => 'article_id',
+				'type' => 'int(11)',
+				'not_null' => true
+			],
+			[
+				'name' => 'store_id',
+				'type' => 'int(11)',
+				'not_null' => true,
+				'default' => '0'
+			]
+		],
+		'primary' => [
+			'article_id',
+			'store_id',
+		],
+		'foreign' => [
+			[
+				'key'   => 'article_id',
+				'table' => 'article',
+				'field' => 'article_id'
+			],
+			[
+				'key'   => 'store_id',
+				'table' => 'store',
+				'field' => 'store_id'
+			]
+		],
+		'engine' => 'InnoDB',
+		'charset' => 'utf8mb4',
+		'collate' => 'utf8mb4_general_ci'
+	];
+
+	$tables[] = [
+		'name' => 'topic',
+		'field' => [
+			[
+				'name' => 'topic_id',
+				'type' => 'int(11)',
+				'not_null' => true,
+				'auto_increment' => true
+			],
+			[
+				'name' => 'sort_order',
+				'type' => 'int(3)',
+				'not_null' => true,
+				'default' => '0'
+			],
+			[
+				'name' => 'status',
+				'type' => 'tinyint(1)',
+				'not_null' => true
+			]
+		],
+		'primary' => [
+			'topic_id'
+		],
+		'engine' => 'InnoDB',
+		'charset' => 'utf8mb4',
+		'collate' => 'utf8mb4_general_ci'
+	];
+
+	$tables[] = [
+		'name' => 'topic_description',
+		'field' => [
+			[
+				'name' => 'topic_id',
+				'type' => 'int(11)',
+				'not_null' => true
+			],
+			[
+				'name' => 'language_id',
+				'type' => 'int(11)',
+				'not_null' => true
+			],
+			[
+				'name' => 'image',
+				'type' => 'varchar(255)',
+				'not_null' => true
+			],
+			[
+				'name' => 'name',
+				'type' => 'varchar(255)',
+				'not_null' => true
+			],
+			[
+				'name' => 'description',
+				'type' => 'text',
+				'not_null' => true
+			],
+			[
+				'name' => 'meta_title',
+				'type' => 'varchar(255)',
+				'not_null' => true
+			],
+			[
+				'name' => 'meta_description',
+				'type' => 'varchar(255)',
+				'not_null' => true
+			],
+			[
+				'name' => 'meta_keyword',
+				'type' => 'varchar(255)',
+				'not_null' => true
+			]
+		],
+		'primary' => [
+			'topic_id',
+			'language_id'
+		],
+		'foreign' => [
+			[
+				'key'   => 'language_id',
+				'table' => 'language',
+				'field' => 'language_id'
+			]
+		],
+		'index' => [
+			[
+				'name' => 'name',
+				'key' => [
+					'name'
+				]
+			]
+		],
+		'engine' => 'InnoDB',
+		'charset' => 'utf8mb4',
+		'collate' => 'utf8mb4_general_ci'
+	];
+
+	$tables[] = [
+		'name' => 'topic_to_store',
+		'field' => [
+			[
+				'name' => 'topic_id',
+				'type' => 'int(11)',
+				'not_null' => true
+			],
+			[
+				'name' => 'store_id',
+				'type' => 'int(11)',
+				'not_null' => true,
+				'default' => '0'
+			]
+		],
+		'primary' => [
+			'topic_id',
+			'store_id',
+		],
+		'foreign' => [
+			[
+				'key'   => 'topic_id',
+				'table' => 'topic',
+				'field' => 'topic_id'
+			],
+			[
+				'key'   => 'store_id',
+				'table' => 'store',
+				'field' => 'store_id'
+			]
+		],
+		'engine' => 'InnoDB',
+		'charset' => 'utf8mb4',
+		'collate' => 'utf8mb4_general_ci'
+	];
+
+	$tables[] = [
 		'name' => 'cart',
 		'field' => [
 			[
@@ -1438,6 +1862,11 @@ function oc_db_schema() {
 				'not_null' => true
 			],
 			[
+				'name' => 'balance',
+				'type' => 'decimal(15,4)',
+				'not_null' => true
+			],
+			[
 				'name' => 'commission',
 				'type' => 'decimal(4,2)',
 				'not_null' => true,
@@ -1449,7 +1878,7 @@ function oc_db_schema() {
 				'not_null' => true
 			],
 			[
-				'name' => 'payment',
+				'name' => 'payment_method',
 				'type' => 'varchar(6)',
 				'not_null' => true
 			],

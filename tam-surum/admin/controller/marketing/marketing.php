@@ -1,6 +1,14 @@
 <?php
 namespace Opencart\Admin\Controller\Marketing;
+/**
+ * Class Marketing
+ *
+ * @package Opencart\Admin\Controller\Marketing
+ */
 class Marketing extends \Opencart\System\Engine\Controller {
+	/**
+	 * @return void
+	 */
 	public function index(): void {
 		$this->load->language('marketing/marketing');
 
@@ -91,12 +99,18 @@ class Marketing extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput($this->load->view('marketing/marketing', $data));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function list(): void {
 		$this->load->language('marketing/marketing');
 
 		$this->response->setOutput($this->getList());
 	}
 
+	/**
+	 * @return string
+	 */
 	protected function getList(): string {
 		if (isset($this->request->get['filter_name'])) {
 			$filter_name = $this->request->get['filter_name'];
@@ -111,25 +125,25 @@ class Marketing extends \Opencart\System\Engine\Controller {
 		}
 
 		if (isset($this->request->get['filter_date_from'])) {
-			$filter_date_from = $this->request->get['filter_date_from'];
+			$filter_date_from = (string)$this->request->get['filter_date_from'];
 		} else {
 			$filter_date_from = '';
 		}
 
 		if (isset($this->request->get['filter_date_to'])) {
-			$filter_date_to = $this->request->get['filter_date_to'];
+			$filter_date_to = (string)$this->request->get['filter_date_to'];
 		} else {
 			$filter_date_to = '';
 		}
 
 		if (isset($this->request->get['sort'])) {
-			$sort = $this->request->get['sort'];
+			$sort = (string)$this->request->get['sort'];
 		} else {
 			$sort = 'm.name';
 		}
 
 		if (isset($this->request->get['order'])) {
-			$order = $this->request->get['order'];
+			$order = (string)$this->request->get['order'];
 		} else {
 			$order = 'ASC';
 		}
@@ -220,14 +234,11 @@ class Marketing extends \Opencart\System\Engine\Controller {
 		if (isset($this->request->get['filter_date_to'])) {
 			$url .= '&filter_date_to=' . $this->request->get['filter_date_to'];
 		}
+
 		if ($order == 'ASC') {
 			$url .= '&order=DESC';
 		} else {
 			$url .= '&order=ASC';
-		}
-
-		if (isset($this->request->get['page'])) {
-			$url .= '&page=' . $this->request->get['page'];
 		}
 
 		$data['sort_name'] = $this->url->link('marketing/marketing.list', 'user_token=' . $this->session->data['user_token'] . '&sort=m.name' . $url);
@@ -275,6 +286,9 @@ class Marketing extends \Opencart\System\Engine\Controller {
 		return $this->load->view('marketing/marketing_list', $data);
 	}
 
+	/**
+	 * @return void
+	 */
 	public function form(): void {
 		$this->load->language('marketing/marketing');
 
@@ -370,6 +384,9 @@ class Marketing extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput($this->load->view('marketing/marketing_form', $data));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function save(): void {
 		$this->load->language('marketing/marketing');
 
@@ -409,6 +426,9 @@ class Marketing extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput(json_encode($json));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function delete(): void {
 		$this->load->language('marketing/marketing');
 
@@ -438,12 +458,18 @@ class Marketing extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput(json_encode($json));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function report(): void {
 		$this->load->language('marketing/marketing');
 
 		$this->response->setOutput($this->getReport());
 	}
 
+	/**
+	 * @return string
+	 */
 	public function getReport(): string {
 		if (isset($this->request->get['marketing_id'])) {
 			$marketing_id = (int)$this->request->get['marketing_id'];

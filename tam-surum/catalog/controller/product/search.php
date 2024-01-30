@@ -1,6 +1,14 @@
 <?php
 namespace Opencart\Catalog\Controller\Product;
+/**
+ * Class Search
+ *
+ * @package Opencart\Catalog\Controller\Product
+ */
 class Search extends \Opencart\System\Engine\Controller {
+	/**
+	 * @return void
+	 */
 	public function index(): void {
 		$this->load->language('product/search');
 
@@ -172,9 +180,9 @@ class Search extends \Opencart\System\Engine\Controller {
 
 		$data['products'] = [];
 
-		if (isset($this->request->get['search']) || isset($this->request->get['tag'])) {
+		if ($search || $tag) {
 			$filter_data = [
-				'filter_name'         => $search,
+				'filter_search'       => $search,
 				'filter_tag'          => $tag,
 				'filter_description'  => $description,
 				'filter_category_id'  => $category_id,

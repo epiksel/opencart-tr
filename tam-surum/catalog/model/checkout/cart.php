@@ -1,6 +1,14 @@
 <?php
 namespace Opencart\Catalog\Model\Checkout;
+/**
+ * Class Cart
+ *
+ * @package Opencart\Catalog\Model\Checkout
+ */
 class Cart extends \Opencart\System\Engine\Model {
+	/**
+	 * @return array
+	 */
 	public function getProducts(): array {
 		$this->load->model('tool/image');
 		$this->load->model('tool/upload');
@@ -38,7 +46,7 @@ class Cart extends \Opencart\System\Engine\Model {
 					'option_id'               => $option['option_id'],
 					'option_value_id'         => $option['option_value_id'],
 					'name'                    => $option['name'],
-					'value'                   => (oc_strlen($value) > 20 ? oc_substr($value, 0, 20) . '..' : $value),
+					'value'                   => $value,
 					'type'                    => $option['type']
 				];
 			}
@@ -82,6 +90,9 @@ class Cart extends \Opencart\System\Engine\Model {
 		return $product_data;
 	}
 
+	/**
+	 * @return array
+	 */
 	public function getVouchers(): array {
 		$voucher_data = [];
 
@@ -104,6 +115,13 @@ class Cart extends \Opencart\System\Engine\Model {
 		return $voucher_data;
 	}
 
+	/**
+	 * @param array $totals
+	 * @param array $taxes
+	 * @param int   $total
+	 *
+	 * @return void
+	 */
 	public function getTotals(array &$totals, array &$taxes, int &$total): void {
 		$sort_order = [];
 

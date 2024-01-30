@@ -1,6 +1,14 @@
 <?php
 namespace Opencart\Admin\Controller\Setting;
+/**
+ * Class Store
+ *
+ * @package Opencart\Admin\Controller\Setting
+ */
 class Store extends \Opencart\System\Engine\Controller {
+	/**
+	 * @return void
+	 */
 	public function index(): void {
 		$this->load->language('setting/store');
 
@@ -38,12 +46,18 @@ class Store extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput($this->load->view('setting/store', $data));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function list(): void {
 		$this->load->language('setting/store');
 
 		$this->response->setOutput($this->getList());
 	}
 
+	/**
+	 * @return string
+	 */
 	protected function getList(): string {
 		if (isset($this->request->get['page'])) {
 			$page = (int)$this->request->get['page'];
@@ -103,6 +117,9 @@ class Store extends \Opencart\System\Engine\Controller {
 		return $this->load->view('setting/store_list', $data);
 	}
 
+	/**
+	 * @return void
+	 */
 	public function form(): void {
 		$this->load->language('setting/store');
 
@@ -513,6 +530,18 @@ class Store extends \Opencart\System\Engine\Controller {
 			$data['config_image_related_height'] = 80;
 		}
 
+		if (isset($store_info['config_image_blog_width'])) {
+			$data['config_image_blog_width'] = $store_info['config_image_blog_width'];
+		} else {
+			$data['config_image_blog_width'] = 90;
+		}
+
+		if (isset($store_info['config_image_blog_height'])) {
+			$data['config_image_blog_height'] = $store_info['config_image_blog_height'];
+		} else {
+			$data['config_image_blog_height'] = 90;
+		}
+
 		if (isset($store_info['config_image_compare_width'])) {
 			$data['config_image_compare_width'] = $store_info['config_image_compare_width'];
 		} else {
@@ -570,6 +599,9 @@ class Store extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput($this->load->view('setting/store_form', $data));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function save(): void {
 		$this->load->language('setting/store');
 
@@ -685,6 +717,9 @@ class Store extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput(json_encode($json));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function delete(): void {
 		$this->load->language('setting/store');
 

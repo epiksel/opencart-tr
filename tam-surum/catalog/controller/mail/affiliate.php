@@ -1,6 +1,19 @@
 <?php
 namespace Opencart\Catalog\Controller\Mail;
+/**
+ * Class Affiliate
+ *
+ * @package Opencart\Catalog\Controller\Mail
+ */
 class Affiliate extends \Opencart\System\Engine\Controller {
+	/**
+	 * @param string $route
+	 * @param array  $args
+	 * @param mixed  $output
+	 *
+	 * @return void
+	 * @throws \Exception
+	 */
 	public function index(string &$route, array &$args, mixed &$output): void {
 		$this->load->language('mail/affiliate');
 
@@ -26,7 +39,7 @@ class Affiliate extends \Opencart\System\Engine\Controller {
 			$data['approval'] = '';
 		}
 
-		$data['login'] = $this->url->link('affiliate/login', 'language=' . $this->config->get('config_language'), true);
+		$data['login'] = $this->url->link('account/affiliate', 'language=' . $this->config->get('config_language'), true);
 
 		$data['store'] = $store_name;
 		$data['store_url'] = $this->config->get('config_url');
@@ -57,6 +70,14 @@ class Affiliate extends \Opencart\System\Engine\Controller {
 		}
 	}
 
+	/**
+	 * @param string $route
+	 * @param array  $args
+	 * @param mixed  $output
+	 *
+	 * @return void
+	 * @throws \Exception
+	 */
 	public function alert(string &$route, array &$args, mixed &$output): void {
 		// Send to main admin email if new affiliate email is enabled
 		if (in_array('affiliate', (array)$this->config->get('config_mail_alert'))) {

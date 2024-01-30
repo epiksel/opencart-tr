@@ -1,6 +1,14 @@
 <?php
 namespace Opencart\Admin\Controller\Sale;
+/**
+ * Class Voucher
+ *
+ * @package Opencart\Admin\Controller\Sale
+ */
 class Voucher extends \Opencart\System\Engine\Controller {
+	/**
+	 * @return void
+	 */
 	public function index(): void {
 		$this->load->language('sale/voucher');
 
@@ -46,21 +54,27 @@ class Voucher extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput($this->load->view('sale/voucher', $data));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function list(): void {
 		$this->load->language('sale/voucher');
 
 		$this->response->setOutput($this->getList());
 	}
 
+	/**
+	 * @return string
+	 */
 	protected function getList(): string {
 		if (isset($this->request->get['sort'])) {
-			$sort = $this->request->get['sort'];
+			$sort = (string)$this->request->get['sort'];
 		} else {
 			$sort = 'v.date_added';
 		}
 
 		if (isset($this->request->get['order'])) {
-			$order = $this->request->get['order'];
+			$order = (string)$this->request->get['order'];
 		} else {
 			$order = 'DESC';
 		}
@@ -112,11 +126,11 @@ class Voucher extends \Opencart\System\Engine\Controller {
 			$data['vouchers'][] = [
 				'voucher_id' => $result['voucher_id'],
 				'code'       => $result['code'],
+				'status'     => $result['status'],
 				'from'       => $result['from_name'],
 				'to'         => $result['to_name'],
 				'theme'      => $result['theme'],
 				'amount'     => $this->currency->format($result['amount'], $this->config->get('config_currency')),
-				'status'     => ($result['status'] ? $this->language->get('text_enabled') : $this->language->get('text_disabled')),
 				'date_added' => date($this->language->get('date_format_short'), strtotime($result['date_added'])),
 				'edit'       => $this->url->link('sale/voucher.form', 'user_token=' . $this->session->data['user_token'] . '&voucher_id=' . $result['voucher_id'] . $url),
 				'order'      => $order_href
@@ -129,10 +143,6 @@ class Voucher extends \Opencart\System\Engine\Controller {
 			$url .= '&order=DESC';
 		} else {
 			$url .= '&order=ASC';
-		}
-
-		if (isset($this->request->get['page'])) {
-			$url .= '&page=' . $this->request->get['page'];
 		}
 
 		$data['sort_code'] = $this->url->link('sale/voucher.list', 'user_token=' . $this->session->data['user_token'] . '&sort=v.code' . $url);
@@ -168,6 +178,9 @@ class Voucher extends \Opencart\System\Engine\Controller {
 		return $this->load->view('sale/voucher_list', $data);
 	}
 
+	/**
+	 * @return void
+	 */
 	public function form(): void {
 		$this->load->language('sale/voucher');
 
@@ -285,6 +298,9 @@ class Voucher extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput($this->load->view('sale/voucher_form', $data));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function save(): void {
 		$this->load->language('sale/voucher');
 
@@ -344,6 +360,9 @@ class Voucher extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput(json_encode($json));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function delete(): void {
 		$this->load->language('sale/voucher');
 
@@ -385,12 +404,18 @@ class Voucher extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput(json_encode($json));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function history(): void {
 		$this->load->language('sale/voucher');
 
 		$this->response->setOutput($this->getHistory());
 	}
 
+	/**
+	 * @return string
+	 */
 	public function getHistory(): string {
 		if (isset($this->request->get['voucher_id'])) {
 			$voucher_id = (int)$this->request->get['voucher_id'];
@@ -435,6 +460,9 @@ class Voucher extends \Opencart\System\Engine\Controller {
 		return $this->load->view('sale/voucher_history', $data);
 	}
 
+	/**
+	 * @return void
+	 */
 	public function send(): void {
 		$this->load->language('mail/voucher');
 

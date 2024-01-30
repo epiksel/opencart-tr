@@ -18,7 +18,6 @@ $_['text_subscription_plan']     = 'Abonelik Planı';
 $_['text_product']               = 'Ürün Detayları';
 $_['text_quantity']              = 'Adet';
 $_['text_trial']                 = 'Deneme';
-$_['text_subscription']          = 'Abonelik';
 $_['text_subscription_trial']    = '%s için her %d %s %d ödeme ardından ';
 $_['text_subscription_duration'] = '%s için her %d %s da bir %d ödeme';
 $_['text_subscription_cancel']   = '%s için her %d %s iptal ediline dek';

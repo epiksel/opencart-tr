@@ -1,6 +1,14 @@
 <?php
 namespace Opencart\Catalog\Controller\Account;
+/**
+ * Class Tracking
+ *
+ * @package Opencart\Catalog\Controller\Account
+ */
 class Tracking extends \Opencart\System\Engine\Controller {
+	/**
+	 * @return void
+	 */
 	public function index(): void {
 		if (!$this->customer->isLogged() || (!isset($this->request->get['customer_token']) || !isset($this->session->data['customer_token']) || ($this->request->get['customer_token'] != $this->session->data['customer_token']))) {
 			$this->session->data['redirect'] = $this->url->link('account/tracking', 'language=' . $this->config->get('config_language'));
@@ -61,13 +69,16 @@ class Tracking extends \Opencart\System\Engine\Controller {
 		$this->response->setOutput($this->load->view('account/tracking', $data));
 	}
 
+	/**
+	 * @return void
+	 */
 	public function autocomplete(): void {
 		$json = [];
 
-		if (isset($this->request->get['filter_name'])) {
-			$filter_name = $this->request->get['filter_name'];
+		if (isset($this->request->get['search'])) {
+			$search = $this->request->get['search'];
 		} else {
-			$filter_name = '';
+			$search = '';
 		}
 
 		if (isset($this->request->get['tracking'])) {
@@ -83,13 +94,13 @@ class Tracking extends \Opencart\System\Engine\Controller {
 		}
 
 		if (!$json) {
-			$this->load->model('catalog/product');
-
 			$filter_data = [
-				'filter_name' => $this->request->get['filter_name'],
-				'start' => 0,
-				'limit' => 5
+				'filter_search' => $search,
+				'start'         => 0,
+				'limit'         => 5
 			];
+
+			$this->load->model('catalog/product');
 
 			$results = $this->model_catalog_product->getProducts($filter_data);
 
