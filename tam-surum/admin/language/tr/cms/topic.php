@@ -1,37 +1,40 @@
 <?php
+// Translator : Ekrem KAYA
+// Website    : https://e-piksel.com
+
 // Heading
-$_['heading_title']           = 'Topics';
+$_['heading_title']           = 'Konular';
 
 // Text
-$_['text_success']            = 'Success: You have modified topics!';
-$_['text_list']               = 'Topic List';
-$_['text_add']                = 'Add Topic';
-$_['text_edit']               = 'Edit Topic';
-$_['text_default']            = 'Default';
-$_['text_keyword']            = 'Do not use spaces, instead replace spaces with - and make sure the SEO URL is globally unique.';
+$_['text_success']            = 'Başarılı: Konular başarılı bir şekilde değiştirildi!';
+$_['text_list']               = 'Konu Listesi';
+$_['text_add']                = 'Konu Ekle';
+$_['text_edit']               = 'Konu Düzenle';
+$_['text_default']            = 'Varsayılan';
+$_['text_keyword']            = 'Boşluk kullanmayın, bunun yerine boşlukları - ile değiştirin ve SEO URL\'nin benzersiz olduğundan emin olun.';
 
 // Column
-$_['column_name']             = 'Topic Name';
-$_['column_sort_order']       = 'Sort Order';
-$_['column_action']           = 'Action';
+$_['column_name']             = 'Konu Adı';
+$_['column_sort_order']       = 'Sıralama';
+$_['column_action']           = 'Eylem';
 
 // Entry
-$_['entry_image']             = 'Image';
-$_['entry_name']              = 'Topic Name';
-$_['entry_description']       = 'Description';
-$_['entry_meta_title']        = 'Meta Tag Title';
-$_['entry_meta_keyword']      = 'Meta Tag Keywords';
-$_['entry_meta_description']  = 'Meta Tag Description';
-$_['entry_store']             = 'Stores';
-$_['entry_sort_order']        = 'Sort Order';
-$_['entry_status']            = 'Status';
-$_['entry_keyword']           = 'Keyword';
+$_['entry_image']             = 'Resim';
+$_['entry_name']              = 'Konu Adı';
+$_['entry_description']       = 'Açıklama';
+$_['entry_meta_title']        = 'Meta Başlığı';
+$_['entry_meta_keyword']      = 'Meta Kelimeleri';
+$_['entry_meta_description']  = 'Meta Açıklaması';
+$_['entry_store']             = 'Mağazalar';
+$_['entry_sort_order']        = 'Sıralama';
+$_['entry_status']            = 'Durumu';
+$_['entry_keyword']           = 'SEO Bağlantısı';
 
 // Error
-$_['error_warning']           = 'Warning: Please check the form carefully for errors!';
-$_['error_permission']        = 'Warning: You do not have permission to modify topics!';
-$_['error_name']              = 'Topic Name must be between 1 and 255 characters!';
-$_['error_meta_title']        = 'Meta Title must be greater than 1 and less than 255 characters!';
-$_['error_keyword']           = 'SEO URL must be between 1 and 64 characters!';
-$_['error_keyword_exists']    = 'SEO URL must be unique!';
-$_['error_keyword_character'] = 'Keyword can only use characters a-z, 0-9, - and _!';
+$_['error_warning']           = 'Uyarı: Oluşan hatalar için lütfen formu dikkatli kontrol ediniz!';
+$_['error_permission']        = 'Uyarı: Konuları düzenleme iznine sahip değilsiniz!';
+$_['error_name']              = 'Konu adı 1 ile 255 karakter arasında olmalıdır!';
+$_['error_meta_title']        = 'Meta başlığı 1 ile 255 karakter arasında olmalıdır!';
+$_['error_keyword']           = 'Kelime 1 ile 64 karakter arasında olmalı!';
+$_['error_keyword_exists']    = 'SEO URL\'si benzersiz olmalıdır!';
+$_['error_keyword_character'] = 'SEO Bağlantısı sadece a-z, 0-9, - ve _ karakteri içerebilir!';

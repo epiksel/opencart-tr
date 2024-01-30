@@ -1,22 +1,25 @@
 <?php
+// Translator : Ekrem KAYA
+// Website    : https://e-piksel.com
+
 // Heading
 $_['heading_title']        = 'Anti-Spam';
 
 // Text
-$_['text_success']         = 'Success: You have modified anti-spam!';
-$_['text_list']            = 'Anti-Spam List';
-$_['text_add']             = 'Add Anti-Spam';
-$_['text_edit']            = 'Edit Anti-Spam';
+$_['text_success']         = 'Başarılı: Anti-Spam başarılı bir şekilde değiştirildi!';
+$_['text_list']            = 'Anti-Spam Listesi';
+$_['text_add']             = 'Anti-Spam Ekle';
+$_['text_edit']            = 'Anti-Spam Düzenle';
 
 // Column
-$_['column_keyword']       = 'Keyword';
-$_['column_action']        = 'Action';
+$_['column_keyword']       = 'Kelime';
+$_['column_action']        = 'Eylem';
 
 // Entry
-$_['entry_keyword']        = 'Keyword';
+$_['entry_keyword']        = 'Kelime';
 
 // Error
-$_['error_warning']        = 'Warning: Please check the form carefully for errors!';
-$_['error_permission']     = 'Warning: You do not have permission to modify anti-spam!';
-$_['error_keyword']        = 'Keyword must be between 1 and 64 characters!';
-$_['error_keyword_exists'] = 'Keyword must be unique!';
+$_['error_warning']        = 'Uyarı: Oluşan hatalar için lütfen formu dikkatli kontrol ediniz!';
+$_['error_permission']     = 'Uyarı: Anti-Spam düzenleme iznine sahip değilsiniz!';
+$_['error_keyword']        = 'Kelime 1 ile 64 karakter arasında olmalı!';
+$_['error_keyword_exists'] = 'Anahtar kelime benzersiz olmalıdır!';
