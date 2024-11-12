@@ -38,3 +38,4 @@ $_['error_firstname']       = 'Ad 1 ile 32 karakter arasında olmalı!';
 $_['error_lastname']        = 'Soyadı 1 ile 32 karakter arasında olmalı!';
 $_['error_email']           = 'E-Posta adresi geçersiz!';
 $_['error_exists_email']    = 'Uyarı: E-Posta adresiyle kayıtlı bir kullanıcı var!';
+$_['error_single_user']     = 'Uyarı: Kendi hesabınızı devre dışı bırakamazsınız!';

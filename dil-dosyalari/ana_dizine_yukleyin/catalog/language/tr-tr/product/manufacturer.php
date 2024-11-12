@@ -9,6 +9,7 @@ $_['text_brand']        = 'Markalar';
 $_['text_index']        = 'Marka İndeksi:';
 $_['text_error']        = 'Marka bulunamadı!';
 $_['text_empty']        = 'Listelenecek bir ürün yok';
+$_['text_no_results']   = 'Listelenecek bir marka yok';
 $_['text_quantity']     = 'Adet:';
 $_['text_manufacturer'] = 'Marka:';
 $_['text_model']        = 'Ürün Kodu:';

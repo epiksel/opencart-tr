@@ -1,6 +1,6 @@
 <?php
 namespace Mail;
-class Smtp {
+class Smtp extends \stdClass {
 	public $smtp_hostname;
 	public $smtp_username;
 	public $smtp_password;
@@ -38,7 +38,7 @@ class Smtp {
 			$message = '--' . $boundary . PHP_EOL;
 			$message .= 'Content-Type: text/plain; charset="utf-8"' . PHP_EOL;
 			$message .= 'Content-Transfer-Encoding: base64' . PHP_EOL . PHP_EOL;
-			$message .= base64_encode($this->text) . PHP_EOL;
+			$message .= chunk_split(base64_encode($this->text)) . PHP_EOL;
 		} else {
 			$message = '--' . $boundary . PHP_EOL;
 			$message .= 'Content-Type: multipart/alternative; boundary="' . $boundary . '_alt"' . PHP_EOL . PHP_EOL;
@@ -47,15 +47,15 @@ class Smtp {
 			$message .= 'Content-Transfer-Encoding: base64' . PHP_EOL . PHP_EOL;
 
 			if ($this->text) {
-				$message .= base64_encode($this->text) . PHP_EOL;
+				$message .= chunk_split(base64_encode($this->text)) . PHP_EOL;
 			} else {
-				$message .= base64_encode('This is a HTML email and your email client software does not support HTML email!') . PHP_EOL;
+				$message .= chunk_split(base64_encode('This is a HTML email and your email client software does not support HTML email!')) . PHP_EOL;
 			}
 
 			$message .= '--' . $boundary . '_alt' . PHP_EOL;
 			$message .= 'Content-Type: text/html; charset="utf-8"' . PHP_EOL;
 			$message .= 'Content-Transfer-Encoding: base64' . PHP_EOL . PHP_EOL;
-			$message .= base64_encode($this->html) . PHP_EOL;
+			$message .= chunk_split(base64_encode($this->html)) . PHP_EOL;
 			$message .= '--' . $boundary . '_alt--' . PHP_EOL;
 		}
 
@@ -126,14 +126,16 @@ class Smtp {
 
 				$this->handleReply($handle, 220, 'Error: STARTTLS not accepted from server!');
 
-				stream_socket_enable_crypto($handle, true, STREAM_CRYPTO_METHOD_TLS_CLIENT);
-			}
+				if (stream_socket_enable_crypto($handle, true, STREAM_CRYPTO_METHOD_TLS_CLIENT) !== true) {
+					throw new \Exception('Error: TLS could not be established!');
+				}
 
-			if (!empty($this->smtp_username) && !empty($this->smtp_password)) {
 				fputs($handle, 'EHLO ' . getenv('SERVER_NAME') . "\r\n");
 
 				$this->handleReply($handle, 250, 'Error: EHLO not accepted from server!');
+			}
 
+			if (!empty($this->smtp_username) && !empty($this->smtp_password)) {
 				fputs($handle, 'AUTH LOGIN' . "\r\n");
 
 				$this->handleReply($handle, 334, 'Error: AUTH LOGIN not accepted from server!');
@@ -188,19 +190,15 @@ class Smtp {
 			$message = str_replace("\r\n", "\n", $header . $message);
 			$message = str_replace("\r", "\n", $message);
 
-			$length = (mb_detect_encoding($message, mb_detect_order(), true) == 'ASCII') ? 998 : 249;
-
 			$lines = explode("\n", $message);
 
 			foreach ($lines as $line) {
-				$results = str_split($line, $length);
+				// $results = str_split($line, $length);
+				// see https://php.watch/versions/8.2/str_split-empty-string-empty-array
+				$results = ($line === '') ? [''] : str_split($line, 998);
 
 				foreach ($results as $result) {
-					if (substr(PHP_OS, 0, 3) != 'WIN') {
-						fputs($handle, $result . "\r\n");
-					} else {
-						fputs($handle, str_replace("\n", "\r\n", $result) . "\r\n");
-					}
+					fputs($handle, $result . "\r\n");
 				}
 			}
 

@@ -6,13 +6,14 @@ class MySQLi {
 	public function __construct($hostname, $username, $password, $database, $port = '3306') {
 		try {
 			$mysqli = @new \MySQLi($hostname, $username, $password, $database, $port);
-		} catch (mysqli_sql_exception $e) {
+		} catch (\mysqli_sql_exception $e) {
 			throw new \Exception('Error: Could not make a database link using ' . $username . '@' . $hostname . '!');
 		}
 
 		if (!$mysqli->connect_errno) {
+			mysqli_report(MYSQLI_REPORT_ERROR);
 			$this->connection = $mysqli;
-			$this->connection->report_mode = MYSQLI_REPORT_ERROR;
+//			$this->connection->report_mode = MYSQLI_REPORT_ERROR;
 			$this->connection->set_charset('utf8');
 			$this->connection->query("SET SESSION sql_mode = 'NO_ZERO_IN_DATE,NO_ENGINE_SUBSTITUTION'");
 		} else {
@@ -50,7 +51,7 @@ class MySQLi {
 	}
 
 	public function escape($value) {
-		return $this->connection->real_escape_string($value);
+		return $this->connection->real_escape_string(($value===null) ? '' : $value);
 	}
 
 	public function countAffected() {

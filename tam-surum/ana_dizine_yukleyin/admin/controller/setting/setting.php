@@ -12,11 +12,11 @@ class ControllerSettingSetting extends Controller {
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
 			$this->model_setting_setting->editSetting('config', $this->request->post);
 
-			if ($this->config->get('config_currency_auto')) {
-				$this->load->model('localisation/currency');
-
-				$this->model_localisation_currency->refresh();
-			}
+//			if ($this->config->get('config_currency_auto')) {
+//				$this->load->model('localisation/currency');
+//
+//				$this->model_localisation_currency->refresh();
+//			}
 
 			$this->session->data['success'] = $this->language->get('text_success');
 
@@ -312,9 +312,9 @@ class ControllerSettingSetting extends Controller {
 		$data['countries'] = $this->model_localisation_country->getCountries();
 
 		if (isset($this->request->post['config_zone_id'])) {
-			$data['config_zone_id'] = $this->request->post['config_zone_id'];
+			$data['config_zone_id'] = (int)$this->request->post['config_zone_id'];
 		} else {
-			$data['config_zone_id'] = $this->config->get('config_zone_id');
+			$data['config_zone_id'] = (int)$this->config->get('config_zone_id');
 		}
 
 		if (isset($this->request->post['config_timezone'])) {
@@ -370,9 +370,29 @@ class ControllerSettingSetting extends Controller {
 			$data['config_currency_auto'] = $this->config->get('config_currency_auto');
 		}
 
+		if (isset($this->request->post['config_currency_engine'])) {
+			$data['config_currency_engine'] = $this->request->post['config_currency_engine'];
+		} else {
+			$data['config_currency_engine'] = $this->config->get('config_currency_engine');
+		}
+
 		$this->load->model('localisation/currency');
 
 		$data['currencies'] = $this->model_localisation_currency->getCurrencies();
+
+		$data['currency_engines'] = array();
+
+		$extension_codes = $this->model_setting_extension->getInstalled('currency');
+
+		foreach ($extension_codes as $extension_code) {
+			if ($this->config->get('currency_' . $extension_code . '_status')) {
+				$this->load->language('extension/currency/' . $extension_code, 'currency_engine');
+				$data['currency_engines'][] = array(
+					'text'  => $this->language->get('currency_engine')->get('heading_title'),
+					'value' => $extension_code
+				);
+			}
+		}
 
 		if (isset($this->request->post['config_length_class_id'])) {
 			$data['config_length_class_id'] = $this->request->post['config_length_class_id'];

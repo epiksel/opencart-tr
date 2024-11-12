@@ -3,12 +3,12 @@ $(document).ready(function() {
 	$('[data-toggle=\'summernote\']').each(function() {
 		var element = this;
 
-		if ($(this).attr('data-lang') && $(this).attr('data-lang')!='en') {
-			$('head').append('<script type="text/javascript" src="view/javascript/summernote/lang/summernote-' + $(this).attr('data-lang') + '-' + $(this).attr('data-lang').toUpperCase() + '.min.js"></script>');
+		if ($(this).attr('data-lang') && $(this).attr('data-lang')!='en-gb') {
+			$('head').append('<script type="text/javascript" src="view/javascript/summernote/lang/summernote-' + $(this).attr('data-lang') + '.min.js"></script>');
 		}
 
 		$(element).summernote({
-			lang: $(this).attr('data-lang') + '-' + $(this).attr('data-lang').toUpperCase(),
+			lang: $(this).attr('data-lang'),
 			disableDragAndDrop: true,
 			height: 300,
 			emptyPara: '',
@@ -18,10 +18,10 @@ $(document).ready(function() {
 				lineNumbers: true,
 				theme: 'monokai'
 			},
-			fontSizes: ['8', '9', '10', '11', '12', '14', '16', '18', '20', '24', '30', '36', '48' , '64'],
+			fontSizes: ['8', '9', '10', '11', '12', '13', '14', '16', '18', '20', '24', '30', '36', '48' , '64'],
 			toolbar: [
 				['style', ['style']],
-				['font', ['bold', 'underline', 'clear']],
+				['font', ['bold', 'underline', 'italic', 'clear']],
 				['fontname', ['fontname']],
 				['fontsize', ['fontsize']],
 				['color', ['color']],
@@ -37,6 +37,7 @@ $(document).ready(function() {
 					['float', ['floatLeft', 'floatRight', 'floatNone']],
 					['remove', ['removeMedia']]
 				],
+				link: [['link', ['linkDialogShow', 'unlink']]],
 				table: [
 					['add', ['addRowDown', 'addRowUp', 'addColLeft', 'addColRight']],
 					['delete', ['deleteRow', 'deleteCol', 'deleteTable']]
@@ -84,6 +85,14 @@ $(document).ready(function() {
 					return button.render();
 				}
   			}
+		});
+	});
+
+	$(document).on('submit', 'form', function() {
+		$('[data-toggle=\'summernote\']').each(function() {
+			if ($(this).summernote('codeview.isActivated')) {
+				$(this).summernote('codeview.deactivate'); 
+			}
 		});
 	});
 });
