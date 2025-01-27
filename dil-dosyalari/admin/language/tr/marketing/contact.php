@@ -8,7 +8,7 @@ $_['heading_title']        = 'E-Posta Gönder';
 // Text
 $_['text_mail']            = 'Müşterilere e-posta gönder';
 $_['text_success']         = 'Mesaj başarılı bir şekilde gönderildi!';
-$_['text_sent']            = 'Mesajınız başarılı bir şekilde %s ile %s arasında alıcıya gönderildi!';
+$_['text_sent']            = 'Mesajınız başarılı bir şekilde %s ile %s alıcıya gönderildi! Toplam alıcı %s';
 $_['text_default']         = 'Varsayılan';
 $_['text_newsletter']      = 'Tüm Bülten Aboneleri';
 $_['text_customer_all']    = 'Tüm Müşteriler';
