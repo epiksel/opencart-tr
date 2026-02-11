@@ -6,7 +6,7 @@
 $_['heading_title']       = 'Kuponlar';
 
 // Text
-$_['text_success']        = 'Başarılı: Kupon başarılı bir şekilde değiştirildi!';
+$_['text_success']        = 'Başarılı: Kupon güncellendi.';
 $_['text_list']           = 'Kupon Listesi';
 $_['text_add']            = 'Kupon Ekle';
 $_['text_edit']           = 'Kupon Düzenle';
@@ -20,7 +20,7 @@ $_['column_code']         = 'Kod';
 $_['column_discount']     = 'İndirim';
 $_['column_date_start']   = 'Başlangıç';
 $_['column_date_end']     = 'Bitiş';
-$_['column_status']       = 'Durumu';
+$_['column_status']       = 'Durum';
 $_['column_order_id']     = 'Sipariş No';
 $_['column_customer']     = 'Müşteri';
 $_['column_amount']       = 'Tutar';
@@ -37,8 +37,7 @@ $_['entry_shipping']      = 'Ücretsiz Kargo';
 $_['entry_total']         = 'Toplam Tutar';
 $_['entry_category']      = 'Kategori';
 $_['entry_product']       = 'Ürünler';
-$_['entry_date_start']    = 'Başlangıç Tarihi';
-$_['entry_date_end']      = 'Bitiş Tarihi';
+$_['entry_date']          = 'Tarihler';
 $_['entry_uses_total']    = 'Kupon Başına Kullanım';
 $_['entry_uses_customer'] = 'Müşteri Başına Kullanım';
 $_['entry_status']        = 'Durumu';

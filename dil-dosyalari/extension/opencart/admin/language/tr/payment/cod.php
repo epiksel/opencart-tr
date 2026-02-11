@@ -7,7 +7,7 @@ $_['heading_title']      = 'Kapıda Ödeme';
 
 // Text
 $_['text_extension']     = 'Eklentiler';
-$_['text_success']       = 'Başarılı: Kapıda ödeme hesap detayları başarılı bir şekilde değiştirildi!';
+$_['text_success']       = 'Başarılı: Kapıda Ödeme modülü güncellendi.';
 $_['text_edit']          = 'Kapıda Ödeme Düzenle';
 
 // Entry
@@ -17,4 +17,4 @@ $_['entry_status']       = 'Durumu';
 $_['entry_sort_order']   = 'Sıralama';
 
 // Error
-$_['error_permission']   = 'Uyarı: Kapıda ödeme ile ödeme metotunu düzenleme iznine sahip değilsiniz!';
+$_['error_permission']   = 'Uyarı: Kapıda Ödeme metodunu düzenleme iznine sahip değilsiniz!';

@@ -6,7 +6,7 @@
 $_['heading_title']     = 'Olaylar';
 
 // Text
-$_['text_success']      = 'Başarılı: Olaylar güncellendi!';
+$_['text_success']      = 'Başarılı: Olaylar güncellendi.';
 $_['text_list']         = 'Olaylar Listesi';
 $_['text_event']        = 'Olaylar mağaza varsayılan işlevselliğini geçersiz kılmak için uzantılar tarafından kullanılmaktadır. Eğer hatalar oluşursa buradan olayları devre dışı bırakabilir ya da etkinleştirebilirsiniz.';
 $_['text_info']         = 'Olay Bilgileri';

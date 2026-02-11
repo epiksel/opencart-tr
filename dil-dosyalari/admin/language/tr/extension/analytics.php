@@ -6,12 +6,12 @@
 $_['heading_title']    = 'Analitik Araçları';
 
 // Text
-$_['text_success']     = 'Başarılı: Analitik araçları güncellendi!';
+$_['text_success']     = 'Başarılı: Analitik araçları güncellendi.';
 $_['text_list']        = 'Analitik Araçlar Listesi';
 
 // Column
 $_['column_name']      = 'Analitik Adı';
-$_['column_status']    = 'Durumu';
+$_['column_status']    = 'Durum';
 $_['column_action']    = 'Eylem';
 
 // Error

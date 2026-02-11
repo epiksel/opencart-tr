@@ -12,7 +12,6 @@ $_['text_return']       = 'Ürün İadesi';
 $_['text_sitemap']      = 'Site Haritası';
 $_['text_gdpr']         = 'KVKK İstekleri';
 $_['text_manufacturer'] = 'Markalar';
-$_['text_voucher']      = 'Hediye Çeki';
 $_['text_affiliate']    = 'Ortaklık Programı';
 $_['text_special']      = 'Kampanyalar';
 $_['text_account']      = 'Hesabım';

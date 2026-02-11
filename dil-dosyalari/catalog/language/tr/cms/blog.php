@@ -3,26 +3,24 @@
 // Website    : https://e-piksel.com
 
 // Heading
-$_['heading_title']   = 'Blog';
+$_['heading_title'] = 'Blog';
 
 // Text
-$_['text_blog']       = 'Blog';
-$_['text_comments']   = '%s yorum';
-$_['text_write']      = 'Yorum Yaz';
-$_['text_login']      = 'Yorum yapmak için lütfen <a href="%s">giriş yapın</a> ya da <a href="%s">kaydolun</a>';
+$_['text_refine'] = 'Alt Kategoriler';
+$_['text_all'] = 'Tümü';
+$_['text_blog'] = 'Blog';
+$_['text_by'] = 'Tarafından';
+$_['text_tags'] = 'Etiketler:';
+$_['text_comment'] = 'yorum';
 $_['text_no_results'] = 'Bu makaleye yorum yapılmadı.';
-$_['text_queue']      = 'Yorumunuz moderasyon sıramıza eklendi!';
-$_['text_success']    = 'Yorumun için teşekkür ederim. Onay için yöneticiye gönderildi.';
+$_['text_sort'] = 'Sırala';
+$_['text_rating_asc'] = 'Oylama (En Düşük)';
+$_['text_rating_desc'] = 'Oylama (En Yüksek)';
+$_['text_date_added_asc'] = 'Eklenme Tarihi (En Eski)';
+$_['text_date_added_desc'] = 'Eklenme Tarihi (En Yeni)';
 
 // Entry
-$_['entry_author']    = 'Adınız';
-$_['entry_comment']   = 'Yorum';
+$_['entry_search'] = 'Ara..';
 
 // Button
 $_['button_continue'] = 'Okumaya Devam Et';
-
-// Error
-$_['error_token']     = 'Uyarı: Yorum jetonu geçersiz!';
-$_['error_article']   = 'Uyarı: Makale bulunamadı!';
-$_['error_comment']   = 'Yorum 25 ile 1000 karakter arasında olmalı!';
-$_['error_guest']     = 'Makaleye yorum yapmak için giriş yapmalısınız!';

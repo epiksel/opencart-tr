@@ -7,7 +7,7 @@ $_['heading_title']    = 'Varsayılan Mağaza Teması';
 
 // Text
 $_['text_extension']   = 'Eklentiler';
-$_['text_success']     = 'Başarılı: Varsayılan mağaza teması başarılı bir şekilde değiştirildi!';
+$_['text_success']     = 'Başarılı: Varsayılan mağaza teması güncellendi.';
 $_['text_edit']        = 'Varsayılan Mağaza Temasını Düzenle';
 
 // Entry

@@ -1,4 +1,7 @@
 <?php
+// Translator : Ekrem KAYA
+// Website    : https://e-piksel.com
+
 // Text
 $_['text_subject']   = '%s - GDPR talebi işlendi!';
 $_['text_request']   = 'Hesap Silme Talebi';

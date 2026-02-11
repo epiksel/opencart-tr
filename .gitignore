@@ -40,3 +40,6 @@
 # /tam-surum/ana_dizine_yukleyin/backup.install/*
 # /tam-surum/ana_dizine_yukleyin/install/*
 
+
+# macOS
+.DS_Store

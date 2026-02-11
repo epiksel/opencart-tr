@@ -7,7 +7,7 @@ $_['heading_title']    = 'Kampanyalı Ürünler';
 
 // Text
 $_['text_extension']   = 'Eklentiler';
-$_['text_success']     = 'Başarılı: Kampanyalar modülü güncellendi!';
+$_['text_success']     = 'Başarılı: Kampanyalar modülü güncellendi.';
 $_['text_edit']        = 'Kampanyalı Ürün Modülünü Düzenle';
 $_['text_horizontal']  = 'Yatay';
 $_['text_vertical']    = 'Dikey';

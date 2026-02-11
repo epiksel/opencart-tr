@@ -7,7 +7,7 @@ $_['heading_title']    = 'Bilgiler';
 
 // Text
 $_['text_extension']   = 'Eklentiler';
-$_['text_success']     = 'Başarılı: Bilgiler modülü güncellendi!';
+$_['text_success']     = 'Başarılı: Bilgiler modülü güncellendi.';
 $_['text_edit']        = 'Bilgiler Modülünü Düzenle';
 
 // Entry

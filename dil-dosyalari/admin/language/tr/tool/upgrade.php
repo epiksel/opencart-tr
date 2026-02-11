@@ -6,7 +6,7 @@
 $_['heading_title']        = 'Güncelleme';
 
 // Text
-$_['text_success']         = 'Başarılı: En son %s sürümünü kullanıyorsunuz!';
+$_['text_success']         = 'Başarılı: En son %s sürümünü kullanıyorsunuz.';
 $_['text_upgrade']         = 'Son Sürümü Kontrol Et';
 $_['text_information']     = 'Versiyon Bilgileri';
 $_['text_current_version'] = 'Geçerli Versiyon';

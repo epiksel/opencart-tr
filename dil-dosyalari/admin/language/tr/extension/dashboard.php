@@ -6,13 +6,13 @@
 $_['heading_title']     = 'Gösterge Panelleri';
 
 // Text
-$_['text_success']      = 'Başarılı: Gösterge panelleri başarılı bir şekilde değiştirildi!';
+$_['text_success']      = 'Başarılı: Gösterge panelleri güncellendi.';
 $_['text_list']         = 'Gösterge Panel Listesi';
 
 // Column
 $_['column_name']       = 'Panel Adı';
 $_['column_width']      = 'Genişlik';
-$_['column_status']     = 'Durumu';
+$_['column_status']     = 'Durum';
 $_['column_sort_order'] = 'Sıralama';
 $_['column_action']     = 'Eylem';
 

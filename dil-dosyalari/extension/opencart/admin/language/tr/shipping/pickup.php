@@ -7,12 +7,12 @@ $_['heading_title']    = 'Mağazadan Teslim Al';
 
 // Text
 $_['text_extension']   = 'Eklentiler';
-$_['text_success']     = 'Başarılı: Mağazadan teslim al başarılı bir şekilde değiştirildi!';
+$_['text_success']     = 'Başarılı: Mağazadan teslim al güncellendi.';
 $_['text_edit']        = 'Mağazadan Teslim Al Düzenle';
 
 // Entry
 $_['entry_geo_zone']   = 'Bölge';
-$_['entry_status']     = 'Durum';
+$_['entry_status']     = 'Durumu';
 $_['entry_sort_order'] = 'Sıralama';
 
 // Error

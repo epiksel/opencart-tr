@@ -7,7 +7,7 @@ $_['heading_title']    = 'Ortaklık Takip Kodu';
 
 // Text
 $_['text_account']     = 'Hesabım';
-$_['text_description'] = 'Takip kodu oluşturma aracı dışında oluşturduğunuz bağlantılar ile gelen müşterilerden gelir elde edemezsiniz. Bu yüzden %s web sitesine gönderdiğiniz müşterilerden gelir elde etmek için aşağıdaki takip kodu oluşturma aracını kullanarak takip kodu oluşturunuz.';
+$_['text_description'] = 'Yönlendirdiğiniz ziyaretçilerden kazanç elde edebilmeniz için bağlantılara takip kodu eklenmelidir! Aşağıdaki aracı kullanarak %s web sitesi için özel bağlantılar oluşturabilirsiniz.';
 
 // Entry
 $_['entry_code']       = 'Takip Kodunuz';

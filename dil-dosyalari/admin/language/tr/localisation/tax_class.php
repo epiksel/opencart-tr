@@ -6,7 +6,7 @@
 $_['heading_title']     = 'Vergi Sınıfları';
 
 // Text
-$_['text_success']      = 'Başarılı: Vergi oranları başarılı bir şekilde değiştirildi!';
+$_['text_success']      = 'Başarılı: Vergi oranları güncellendi.';
 $_['text_list']         = 'Vergi Sınıfı Listesi';
 $_['text_add']          = 'Vergi Sınıfı Ekle';
 $_['text_edit']         = 'Vergi Sınıfı Düzenle';

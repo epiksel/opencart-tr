@@ -6,7 +6,7 @@
 $_['heading_title']           = 'SEO Bağlantıları';
 
 // Text
-$_['text_success']            = 'Başarılı: SEO Bağlantıları başarılı bir şekilde değiştirildi!';
+$_['text_success']            = 'Başarılı: SEO Bağlantıları güncellendi.';
 $_['text_list']               = 'SEO Bağlantı Listesi';
 $_['text_add']                = 'SEO Bağlantı Ekle';
 $_['text_edit']               = 'SEO Bağlantı Düzenle';
@@ -42,4 +42,4 @@ $_['error_value']             = 'Değer 1 ile 255 karakter arasında olmalı!';
 $_['error_value_exists']      = 'Değer zaten kullanılıyor!';
 $_['error_keyword']           = 'Kelime 1 ile 64 karakter arasında olmalı!';
 $_['error_keyword_exists']    = 'Kelime zaten kullanılıyor!';
-$_['error_keyword_character'] = 'SEO Bağlantısı sadece a-z, 0-9, - ve _ karakteri içerebilir!';
+$_['error_keyword_character'] = 'SEO bağlantısı sadece a-z, 0-9, - ve _ karakteri içerebilir!';

@@ -9,7 +9,7 @@ $_['heading_title'] = 'Ödeme Başarısız!';
 $_['text_basket']   = 'Alışveriş Sepetim';
 $_['text_checkout'] = 'Kasaya Git';
 $_['text_failure']  = 'Ödeme Başarısız';
-$_['text_message']  = '<p>Ödeme işlemi sırasında bir sorun oluştu ve siparişiniz tamamlanamadı.</p>
+$_['text_message']  = '<p>Ödeme işlemi sırasında bir sorun oluştu!</p>
 
 <p>Olası nedenler:</p>
 <ul>
@@ -19,5 +19,5 @@ $_['text_message']  = '<p>Ödeme işlemi sırasında bir sorun oluştu ve sipari
 
 <p>Lütfen başka bir ödeme yöntemi kullanarak yeniden sipariş vermeyi deneyin.</p>
 
-<p>Eğer sorun devam ederse, lütfen <a href="%s">iletişim sayfasından</a> sipariş detaylarınız ile birlikte bizimle irtibata geçiniz.</p>
+<p>Eğer sorun devam ederse, sipariş detaylarınız ile birlikte bizimle <a href="%s">iletişime</a> geçiniz.</p>
 ';

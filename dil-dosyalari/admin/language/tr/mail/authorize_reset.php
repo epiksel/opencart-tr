@@ -1,4 +1,7 @@
 <?php
+// Translator : Ekrem KAYA
+// Website    : https://e-piksel.com
+
 // Text
 $_['text_subject'] = 'Güvenlik kodu denemelerini sıfırla';
 $_['text_reset']   = 'Birisi güvenlik kodunu 3 defadan fazla yanlış girmiş.';

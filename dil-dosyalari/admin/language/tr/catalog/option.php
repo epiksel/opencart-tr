@@ -6,7 +6,7 @@
 $_['heading_title']      = 'Seçenekler';
 
 // Text
-$_['text_success']       = 'Başarılı: Seçenekler başarılı bir şekilde değiştirildi!';
+$_['text_success']       = 'Başarılı: Seçenekler güncellendi.';
 $_['text_list']          = 'Seçenek Listesi';
 $_['text_add']           = 'Seçenek Ekle';
 $_['text_edit']          = 'Seçenek Düzenle';
@@ -21,6 +21,7 @@ $_['text_file']          = 'Dosya';
 $_['text_date']          = 'Tarih';
 $_['text_datetime']      = 'Tarih &amp; Zaman';
 $_['text_time']          = 'Zaman';
+$_['text_regex']         = 'Regex';
 $_['text_option']        = 'Seçenek';
 $_['text_value']         = 'Seçenek Değeri';
 
@@ -32,9 +33,13 @@ $_['column_action']      = 'Eylem';
 // Entry
 $_['entry_name']         = 'Seçenek Adı';
 $_['entry_type']         = 'Türü';
+$_['entry_validation']   = 'Doğrulama';
 $_['entry_option_value'] = 'Seçenek Değer Adı';
 $_['entry_image']        = 'Resim';
 $_['entry_sort_order']   = 'Sıralama';
+
+// Help
+$_['help_regex']         = 'Regex Kulanımı. Örneğin: [^a-zA-Z0-9_-]';
 
 // Error
 $_['error_warning']      = 'Uyarı: Oluşan hatalar için lütfen formu dikkatli kontrol ediniz!';

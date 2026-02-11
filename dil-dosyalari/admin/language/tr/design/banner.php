@@ -6,7 +6,7 @@
 $_['heading_title']    = 'Afişler';
 
 // Text
-$_['text_success']     = 'Başarılı: Afiş başarılı bir şekilde değiştirildi!';
+$_['text_success']     = 'Başarılı: Afiş güncellendi.';
 $_['text_list']        = 'Afiş Listesi';
 $_['text_add']         = 'Afiş Ekle';
 $_['text_edit']        = 'Afiş Düzenle';
@@ -14,7 +14,7 @@ $_['text_default']     = 'Varsayılan';
 
 // Column
 $_['column_name']      = 'Afiş Adı';
-$_['column_status']    = 'Durumu';
+$_['column_status']    = 'Durum';
 $_['column_action']    = 'Eylem';
 
 // Entry

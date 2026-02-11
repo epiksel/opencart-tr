@@ -6,5 +6,5 @@
 $_['heading_title']        = 'Kapıda Ödeme';
 
 // Error
-$_['error_order_id']       = 'Oturumda sipariş kimliği yok!';
-$_['error_payment_method'] = 'Ödeme metotu yanlış!';
+$_['error_order_id']       = 'Oturumda sipariş numarası yok!';
+$_['error_payment_method'] = 'Ödeme metodu yanlış!';

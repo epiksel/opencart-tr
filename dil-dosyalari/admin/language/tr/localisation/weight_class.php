@@ -6,7 +6,7 @@
 $_['heading_title']    = 'Ağırlık Birimleri';
 
 // Text
-$_['text_success']     = 'Başarılı: Ağırlık Birimleri başarılı bir şekilde değiştirildi!';
+$_['text_success']     = 'Başarılı: Ağırlık Birimleri güncellendi.';
 $_['text_list']        = 'Ağırlık Birimi Listesi';
 $_['text_add']         = 'Ağırlık Birimi Ekle';
 $_['text_edit']        = 'Ağırlık Birimi Düzenle';

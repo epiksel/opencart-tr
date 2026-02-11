@@ -6,17 +6,18 @@
 $_['heading_title']        = 'APIler';
 
 // Text
-$_['text_success']         = 'Başarılı: APIler başarıyla değiştirildi!';
+$_['text_success']         = 'Başarılı: APIler başarıyla güncellendi.';
 $_['text_list']            = 'API Listesi';
 $_['text_add']             = 'API Ekle';
 $_['text_edit']            = 'API Düzenle';
 $_['text_ip']              = 'API erişmesine izin verilen IP listesi oluşturabilirsiniz. Geçerli IP adresiniz %s';
+$_['text_history']         = 'Geçmiş';
 
 // Column
 $_['column_username']      = 'API Kullanıcı Adı';
-$_['column_status']        = 'Durumu';
-$_['column_token']         = 'Simge';
+$_['column_status']        = 'Durum';
 $_['column_ip']            = 'IP';
+$_['column_call']          = 'Çağrı';
 $_['column_date_added']    = 'Ekleme Tarihi';
 $_['column_date_modified'] = 'Değiştirme Tarihi';
 $_['column_action']        = 'Eylem';

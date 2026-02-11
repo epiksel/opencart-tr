@@ -9,7 +9,7 @@ $_['heading_title']      = 'Hesap Bilgilerim';
 $_['text_account']       = 'Hesabım';
 $_['text_edit']          = 'Bilgilerimi Düzenle';
 $_['text_your_details']  = 'Kişisel Bilgileriniz';
-$_['text_success']       = 'Başarılı: Hesabınız başarılı bir şekilde güncellendi!';
+$_['text_success']       = 'Başarılı: Hesabınız güncellendi.';
 
 // Entry
 $_['entry_firstname']    = 'Adınız';
@@ -18,8 +18,8 @@ $_['entry_email']        = 'E-Posta';
 $_['entry_telephone']    = 'Telefon';
 
 // Error
-$_['error_token']        = 'Uyarı: Düzenleme belirteci geçersiz!';
-$_['error_exists']       = 'Uyarı: E-Posta adresi ile daha önce kayıt olunmuştur!';
+$_['error_token']        = 'Uyarı: Düzenleme güvenlik anahtarı geçersiz!';
+$_['error_exists']       = 'Uyarı: Bu e-posta adresi zaten kayıtlı!';
 $_['error_firstname']    = 'Ad 1 ile 32 karakter arasında olmalı!';
 $_['error_lastname']     = 'Soyad 1 ile 32 karakter arasında olmalı!';
 $_['error_email']        = 'Geçerli bir E-Posta adresi yazınız!';

@@ -4,22 +4,20 @@
 
 // Heading
 $_['heading_title']     = 'Yükseltme';
-$_['heading_success']   = 'Yükseltme - Tamamlandı!';
 
 // Text
-$_['text_upgrade']      = 'Prepare for your upgrade';
-$_['text_server']       = 'Check your server is set-up correctly';
-$_['text_steps']        = 'Yükseltme İşlemleri';
-$_['text_error']        = 'Post any upgrade script errors problems in the forums';
-$_['text_clear']        = 'After upgrade, clear any cookies in your browser to avoid getting token errors.';
-$_['text_server']       = 'Check your server is set-up correctly';
-$_['text_admin']        = 'Please enter admin directory name';
-$_['text_refresh']      = 'Load the admin page & press Ctrl+F5 twice to force the browser to update the css changes.';
-$_['text_user']         = 'Goto Admin -> Users -> User Groups and Edit the Top Adminstrator group. Check All boxes.';
-$_['text_setting']      = 'Goto Admin and Edit the main System Settings. Update all fields and click save, even if nothing changed.';
-$_['text_store']        = 'Load the store front & press Ctrl+F5 twice to force the browser to update the css changes.';
-$_['text_progress']     = 'Patch %s has been applied (%s of %s)';
-$_['text_success']      = 'Congratulations! You have successfully upgraded your OpenCart installation!';
+$_['text_upgrade']      = 'Yükseltmeye hazırlanın';
+$_['text_server']       = 'Sunucunuzun doğru yapılandırıldığını kontrol edin';
+$_['text_steps']        = 'Yükseltme İlerlemesi';
+$_['text_error']        = 'Yükseltme betiği hatalarını forumlarda paylaşın';
+$_['text_clear']        = 'Yükseltmeden sonra güvenlik anahtarı hatalarını önlemek için tarayıcı çerezlerini temizleyin.';
+$_['text_admin']        = 'Lütfen admin klasörünün adını yazın';
+$_['text_refresh']      = 'Yönetim panelini açın ve CSS güncellensin diye Ctrl+F5 tuşuna iki kez basın.';
+$_['text_user']         = 'Yönetim > Kullanıcılar > Kullanıcı Grupları\'na gidin. Üst Yönetici grubunu düzenle ekranına girin ve tüm kutucukları işaretleyin.';
+$_['text_setting']      = 'Yönetim panelinden Sistem Ayarları\'nı açın. Alanları gözden geçirin ve değişiklik yapmasanız bile kaydedin.';
+$_['text_store']        = 'Mağazayı açın ve CSS güncellensin diye Ctrl+F5 tuşuna iki kez basın.';
+$_['text_success']      = 'Tebrikler! OpenCart kurulumunuzu başarıyla yükselttiniz!';
+$_['text_patch']        = 'Yama %s uygulandı (%s / %s)';
 
 // Entry
 $_['entry_admin']       = 'Admin Adı';
@@ -29,7 +27,7 @@ $_['entry_progress']    = 'İlerleme';
 $_['error_admin']       = 'Hata: %s yapılandırma dosyası bulunamadı. Yönetici dizin adının doğru olduğundan emin olun!';
 $_['error_file']        = 'Hata: %s yapılandırma dosyası bulunamadı!';
 $_['error_writable']    = 'Hata: %s yapılandırma dosyası yazılabilir değil!';
-$_['error_upgrade']     = 'Hata: Yükseltme dosyası ayarlanmadı!';
+$_['error_upgrade']     = 'Hata: Yükseltme dosyaları ayarlanmadı!';
 $_['error_server']      = 'Hata: HTTP_SERVER sabiti bulunamadı!';
 $_['error_catalog']     = 'Hata: HTTP_CATALOG sabiti bulunamadı!';
 $_['error_db_driver']   = 'Hata: DB_DRIVER sabiti bulunamadı!';

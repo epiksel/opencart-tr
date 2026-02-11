@@ -6,7 +6,7 @@
 $_['heading_title']    = 'Stok Durumları';
 
 // Text
-$_['text_success']     = 'Başarılı: Stok durumu başarılı bir şekilde değiştirildi!';
+$_['text_success']     = 'Başarılı: Stok durumu güncellendi.';
 $_['text_list']        = 'Stok Durumu Listesi';
 $_['text_add']         = 'Stok Durumu Ekle';
 $_['text_edit']        = 'Stok Durumu Düzenle';

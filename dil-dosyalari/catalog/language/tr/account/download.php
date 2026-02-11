@@ -18,4 +18,4 @@ $_['column_date_added']  = 'Ekleme Tarihi';
 
 // Error
 $_['error_not_found']    = 'Hata: %s dosyası bulunamadı!';
-$_['error_headers_sent'] = 'Hata: Başlıklar zaten gönderildi!';
+$_['error_headers_sent'] = 'Hata: İndirme başlatılamadı. Lütfen tekrar deneyin!';

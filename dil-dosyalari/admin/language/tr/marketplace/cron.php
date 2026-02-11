@@ -6,7 +6,7 @@
 $_['heading_title']        = 'Zamanlanmış Görevler';
 
 // Text
-$_['text_success']         = 'Başarılı: Zamanlanmış Görevler başarılı bir şekilde değiştirildi!';
+$_['text_success']         = 'Başarılı: Zamanlanmış Görevler güncellendi.';
 $_['text_instruction']     = 'Görev Talimatları';
 $_['text_list']            = 'Görev Listesi';
 $_['text_cron_1']          = 'Cron İşleri, periyodik olarak çalıştırılan zamanlanmış görevlerdir. Sunucularınızı Zamanlanmış Görevleri kullanacak şekilde ayarlamak için <a href="https://docs.opencart.com/extension/cron/" target="_blank" class="alert-link">opencart dokümantasyon</a> sayfasını okuyabilirsiniz.';
@@ -23,7 +23,7 @@ $_['column_date_added']    = 'Ekleme Tarihi';
 $_['column_date_modified'] = 'Düzenleme Tarihi';
 $_['column_action']        = 'Eylem';
 
-// entry
+// Entry
 $_['entry_cron']           = 'Görev Adresi';
 $_['entry_description']    = 'Açıklama';
 

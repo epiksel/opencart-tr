@@ -3,12 +3,12 @@
 // Website    : https://e-piksel.com
 
 // Heading
-$_['heading_title']      = 'Satış Raporu';
+$_['heading_title']     = 'Satış Raporu';
 
 // Text
 $_['text_extension']     = 'Eklentiler';
 $_['text_edit']          = 'Satış Raporu Düzenle';
-$_['text_success']       = 'Başarılı: Satış raporu güncellendi!';
+$_['text_success']       = 'Başarılı: Satış raporu güncellendi.';
 $_['text_filter']        = 'Filtrele';
 $_['text_year']          = 'Yıllar';
 $_['text_month']         = 'Aylar';

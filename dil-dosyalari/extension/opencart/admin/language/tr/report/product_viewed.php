@@ -8,7 +8,7 @@ $_['heading_title']    = 'Ürün Görüntüleme Raporu';
 // Text
 $_['text_extension']   = 'Eklentiler';
 $_['text_edit']        = 'Ürün Görüntüleme Raporu Düzenle';
-$_['text_success']     = 'Başarılı: Ürün Görüntüleme raporu sıfırlandı!';
+$_['text_success']     = 'Başarılı: Ürün görüntüleme raporu sıfırlandı.';
 $_['text_progress']    = '%s için %s ilerledi!';
 
 // Column

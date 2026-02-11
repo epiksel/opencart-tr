@@ -6,7 +6,7 @@
 $_['heading_title']             = 'Ortaklar';
 
 // Text
-$_['text_success']              = 'Başarılı: Ortaklar başarılı bir şekilde değiştirildi!';
+$_['text_success']              = 'Başarılı: Ortaklar güncellendi.';
 $_['text_list']                 = 'Ortak Listesi';
 $_['text_add']                  = 'Ortak Ekle';
 $_['text_edit']                 = 'Ortak Düzenle';
@@ -16,10 +16,10 @@ $_['text_other']                = 'Diğer';
 $_['text_balance']              = 'Bakiye';
 $_['text_cheque']               = 'Çek';
 $_['text_paypal']               = 'PayPal';
-$_['text_bank']                 = 'Havale / EFT';
+$_['text_bank']                 = 'Havale/EFT';
 $_['text_history']              = 'Geçmiş';
 $_['text_history_add']          = 'Geçmiş Ekle';
-$_['text_transaction']          = 'İşlemler';
+$_['text_transaction']          = 'Bakiye İşlemleri';
 $_['text_transaction_add']      = 'İşlem Ekle';
 $_['text_report']               = 'Raporlar';
 $_['text_filter']               = 'Filtrele';
@@ -32,26 +32,25 @@ $_['column_name']               = 'Müşteri';
 $_['column_tracking']           = 'Takip Kodu';
 $_['column_commission']         = 'Komisyon';
 $_['column_balance']            = 'Bakiye';
-$_['column_status']             = 'Durumu';
+$_['column_status']             = 'Durum';
 $_['column_ip']                 = 'IP';
 $_['column_account']            = 'Hesaplar';
 $_['column_store']              = 'Mağaza';
 $_['column_country']            = 'Ülke';
 $_['column_date_added']         = 'Ekleme Tarihi';
-$_['column_comment']            = 'Yorum';
+$_['column_comment']            = 'Açıklama';
 $_['column_description']        = 'Açıklama';
 $_['column_amount']             = 'Tutar';
 $_['column_action']             = 'Eylem';
 
 // Entry
 $_['entry_customer']            = 'Müşteri';
-$_['entry_status']              = 'Durumu';
 $_['entry_company']             = 'Şirket Adı';
 $_['entry_tracking']            = 'Takip Kodu';
 $_['entry_website']             = 'Web Sitesi';
 $_['entry_commission']          = 'Komisyon Oranı (%)';
-$_['entry_tax']                 = 'T.C. / Vergi No';
-$_['entry_payment_method']      = 'Ödeme Metotu';
+$_['entry_tax']                 = 'T.C./Vergi No';
+$_['entry_payment_method']      = 'Ödeme Metodu';
 $_['entry_cheque']              = 'Alacaklı Adı';
 $_['entry_paypal']              = 'E-Posta adresi';
 $_['entry_bank_name']           = 'Banka Adı';

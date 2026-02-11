@@ -6,7 +6,7 @@
 $_['heading_title']      = 'Bölgeler';
 
 // Text
-$_['text_success']       = 'Başarılı: Bölgeler başarılı bir şekilde değiştirildi!';
+$_['text_success']       = 'Başarılı: Bölgeler güncellendi.';
 $_['text_list']          = 'Bölge Listesi';
 $_['text_add']           = 'Bölge Ekle';
 $_['text_edit']          = 'Bölge Düzenle';

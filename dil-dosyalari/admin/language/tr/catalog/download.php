@@ -6,13 +6,12 @@
 $_['heading_title']            = 'Dosyalar';
 
 // Text
-$_['text_success']             = 'Başarılı: Dosyalar başarılı bir şekilde değiştirildi!';
+$_['text_success']             = 'Başarılı: Dosyalar güncellendi.';
 $_['text_list']                = 'Dosya Listesi';
 $_['text_add']                 = 'Dosya Ekle';
 $_['text_edit']                = 'Dosya Düzenle';
 $_['text_upload']              = 'Dosyanız başarılı bir şekilde yüklendi!';
 $_['text_report']              = 'Rapor';
-
 
 // Column
 $_['column_name']              = 'İndirme Adı';

@@ -7,7 +7,7 @@ $_['heading_title']    = 'Sabit Kargo Fiyatı';
 
 // Text
 $_['text_extension']   = 'Eklentiler';
-$_['text_success']     = 'Başarılı: Sabit Kargo Fiyatı başarılı bir şekilde değiştirildi!';
+$_['text_success']     = 'Başarılı: Sabit Kargo Fiyatı güncellendi.';
 $_['text_edit']        = 'Sabit Kargo Fiyatını Düzenle';
 
 // Entry

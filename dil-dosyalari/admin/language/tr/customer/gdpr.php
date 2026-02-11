@@ -6,9 +6,9 @@
 $_['heading_title']     = 'KVKK İstekleri';
 
 // Text
-$_['text_success']      = 'Başarılı: KVKK İstekleri başarılı bir şekilde değiştirildi!';
+$_['text_success']      = 'Başarılı: KVKK İstekleri güncellendi.';
 $_['text_list']         = 'KVKK İstek Listesi';
-$_['text_info']         = '<strong>KVKK</strong> hesabı silme istekleri, herhangi bir sahtekarlık tespiti, ters ibrazlar veya geri ödeme işlemeleri için <strong>%s günden</strong> sonra işlenecektir.';
+$_['text_info']         = '<strong>KVKK</strong> hesabı silme istekleri, herhangi bir sahtekârlık tespiti, ters ibrazlar veya geri ödeme işlemeleri için <strong>%s günden</strong> sonra işlenecektir.';
 $_['text_approve']      = 'Onayla';
 $_['text_deny']         = 'Reddet';
 $_['text_delete']       = 'Sil';
@@ -24,7 +24,7 @@ $_['text_filter']       = 'Filtrele';
 // Column
 $_['column_email']      = 'E-Posta';
 $_['column_request']    = 'İstek';
-$_['column_status']     = 'Durumu';
+$_['column_status']     = 'Durum';
 $_['column_date_added'] = 'Ekleme Tarihi';
 $_['column_action']     = 'Eylem';
 

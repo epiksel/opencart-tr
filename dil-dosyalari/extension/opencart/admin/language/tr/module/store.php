@@ -7,7 +7,7 @@ $_['heading_title']    = 'Mağazalar';
 
 // Text
 $_['text_extension']   = 'Eklentiler';
-$_['text_success']     = 'Başarılı: Mağazalar modülü güncellendi!';
+$_['text_success']     = 'Başarılı: Mağazalar modülü güncellendi.';
 $_['text_edit']        = 'Mağaza Modülünü Düzenle';
 
 // Entry

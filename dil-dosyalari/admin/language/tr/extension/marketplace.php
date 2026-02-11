@@ -6,12 +6,12 @@
 $_['heading_title']    = 'Pazaryerleri';
 
 // Text
-$_['text_success']     = 'Başarılı: Pazaryerleri başarılı bir şekilde değiştirildi!';
+$_['text_success']     = 'Başarılı: Pazaryerleri güncellendi.';
 $_['text_list']        = 'Pazaryeri Listesi';
 
 // Column
 $_['column_name']      = 'Pazaryeri Adı';
-$_['column_status']    = 'Durumu';
+$_['column_status']    = 'Durum';
 $_['column_action']    = 'Eylem';
 
 // Error
