@@ -7,7 +7,7 @@ $_['heading_title']    = 'Filtreler';
 
 // Text
 $_['text_extension']   = 'Eklentiler';
-$_['text_success']     = 'Başarılı: Filtreler modülü güncellendi!';
+$_['text_success']     = 'Başarılı: Filtreler modülü güncellendi.';
 $_['text_edit']        = 'Filtre Modülünü Düzenle';
 
 // Entry

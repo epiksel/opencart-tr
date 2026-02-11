@@ -6,7 +6,7 @@
 $_['heading_title']         = 'Müşteri Onayları';
 
 // Text
-$_['text_success']          = 'Başarılı: Müşteri onayları başarılı bir şekilde değiştirildi!';
+$_['text_success']          = 'Başarılı: Müşteri onayları güncellendi.';
 $_['text_list']             = 'Müşteri Onay Listesi';
 $_['text_default']          = 'Varsayılan';
 $_['text_customer']         = 'Müşteri';

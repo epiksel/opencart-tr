@@ -7,10 +7,11 @@ $_['heading_title']    = 'Kupon';
 
 // Text
 $_['text_extension']   = 'Eklentiler';
-$_['text_success']     = 'Başarılı: Kupon Toplamı başarılı bir şekilde değiştirildi!';
+$_['text_success']     = 'Başarılı: Kupon toplamı güncellendi.';
 $_['text_edit']        = 'Kupon Düzenle';
 
 // Entry
+$_['entry_coupon']     = 'Kupon';
 $_['entry_status']     = 'Durumu';
 $_['entry_sort_order'] = 'Sıralama';
 

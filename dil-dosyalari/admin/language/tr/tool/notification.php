@@ -6,7 +6,7 @@
 $_['heading_title']    = 'Bildirimler';
 
 // Text
-$_['text_success']     = 'Başarılı: Bildirimler başarılı bir şekilde değiştirildi!';
+$_['text_success']     = 'Başarılı: Bildirimler güncellendi.';
 $_['text_list']        = 'Bildirim Listesi';
 
 // Column

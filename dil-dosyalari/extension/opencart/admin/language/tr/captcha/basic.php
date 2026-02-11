@@ -7,7 +7,7 @@ $_['heading_title']    = 'Basit Doğrulama';
 
 // Text
 $_['text_extension']   = 'Eklentiler';
-$_['text_success']     = 'Başarılı: Basit Doğrulama başarılı bir şekilde değiştirildi!';
+$_['text_success']     = 'Başarılı: Basit Doğrulama güncellendi.';
 $_['text_edit']        = 'Basit Doğrulama Düzenle';
 
 // Entry

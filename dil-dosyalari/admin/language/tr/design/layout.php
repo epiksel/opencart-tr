@@ -6,7 +6,7 @@
 $_['heading_title']       = 'Bölümler';
 
 // Text
-$_['text_success']        = 'Başarılı: Bölüm başarılı bir şekilde değiştirildi!';
+$_['text_success']        = 'Başarılı: Bölüm güncellendi.';
 $_['text_list']           = 'Bölüm Listesi';
 $_['text_add']            = 'Bölüm Ekle';
 $_['text_edit']           = 'Bölüm Düzenle';
@@ -39,3 +39,5 @@ $_['error_product']       = 'Uyarı: Bu bölümü silemezsiniz, %s ürün taraf�
 $_['error_category']      = 'Uyarı: Bu bölümü silemezsiniz, %s kategori tarafından kullanılıyor!';
 $_['error_manufacturer']  = 'Uyarı: Bu bölümü silemezsiniz, %s üretici tarafından kullanılıyor!';
 $_['error_information']   = 'Uyarı: Bu bölümü silemezsiniz, %s bilgi sayfası tarafından kullanılıyor!';
+$_['error_article']       = 'Uyarı: Bu düzen şu anda %s makale sayfasına atandığı için silinemez!';
+$_['error_topic']         = 'Uyarı: Bu düzen şu anda %s konu sayfasına atandığı için silinemez!';

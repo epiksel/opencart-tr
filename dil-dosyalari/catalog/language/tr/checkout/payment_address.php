@@ -8,7 +8,7 @@ $_['heading_title']         = 'Fatura Adresi';
 // Text
 $_['text_address_new']      = 'Yeni adres ekleyiniz';
 $_['text_address_existing'] = 'Varolan bir adres seçiniz.';
-$_['text_success']          = 'Başarılı: Fatura adresini değiştirdiniz!';
+$_['text_success']          = 'Başarılı: Fatura adresini değiştirdiniz.';
 
 // Entry
 $_['entry_address']         = 'Adres Seçin';
@@ -18,7 +18,7 @@ $_['entry_company']         = 'Firma Adı';
 $_['entry_address_1']       = 'Adres 1';
 $_['entry_address_2']       = 'Adres 2';
 $_['entry_postcode']        = 'Posta Kodu';
-$_['entry_city']            = 'İlçe / Semt';
+$_['entry_city']            = 'İlçe';
 $_['entry_country']         = 'Ülke';
 $_['entry_zone']            = 'Şehir';
 
@@ -27,8 +27,8 @@ $_['error_customer']        = 'Müşteri gerekli!';
 $_['error_address']         = 'Fatura adresi bulunamadı!';
 $_['error_firstname']       = 'Ad 1 ile 32 karakter arasında olmalı!';
 $_['error_lastname']        = 'Soyad 1 ile 32 karakter arasında olmalı!';
-$_['error_address_1']       = 'Adres 1, 3 ile 128 karakter arasında olmalı!';
-$_['error_city']            = 'İlçe / Semt 2 ile 128 karakter arasında olmalı!';
+$_['error_address_1']       = 'Adres 1 alanı, 3 ile 128 karakter arasında olmalı!';
+$_['error_city']            = 'İlçe 2 ile 128 karakter arasında olmalı!';
 $_['error_postcode']        = 'Posta Kodu 2 ile 10 karakter arasında olmalı!';
 $_['error_country']         = 'Lütfen bir ülke seçiniz!';
 $_['error_zone']            = 'Lütfen bir şehir seçiniz!';

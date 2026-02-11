@@ -7,8 +7,8 @@ $_['heading_title']    = 'En Çok Satılanlar';
 
 // Text
 $_['text_extension']   = 'Eklentiler';
-$_['text_success']     = 'Başarılı: En çok satılanlar modülü güncellendi!';
-$_['text_next']        = 'Başarılı: %s çok satandan %s değiştirildi!';
+$_['text_success']     = 'Başarılı: En çok satılanlar modülü güncellendi.';
+$_['text_next']        = 'Başarılı: %s çok satandan %s güncellendi.';
 $_['text_edit']        = 'Çok Satılanlar Modülünü Düzenle';
 $_['text_horizontal']  = 'Yatay';
 $_['text_vertical']    = 'Dikey';
@@ -27,7 +27,7 @@ $_['entry_height']     = 'Resim Yüksekliği';
 $_['entry_status']     = 'Durumu';
 
 // Button
-$_['button_sync']      = 'Çok Satılanları Senkronize Et';
+$_['button_sync']      = 'Çok Satanları Yeniden Hesapla';
 
 // Error
 $_['error_permission'] = 'Uyarı: En çok satılanlar modülünü değiştirme iznine sahip değilsiniz!';

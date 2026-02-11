@@ -6,7 +6,7 @@
 $_['heading_title']      = 'Yüklemeler';
 
 // Text
-$_['text_success']       = 'Başarılı: Yüklemeler başarılı bir şekilde değiştirildi!';
+$_['text_success']       = 'Başarılı: Yüklemeler güncellendi.';
 $_['text_list']          = 'Yükleme Listesi';
 $_['text_filter']        = 'Filtrele';
 

@@ -6,12 +6,12 @@
 $_['heading_title']      = 'Yedekle &amp; Geri Yükle';
 
 // Text
-$_['text_success']       = 'Başarılı: Veri tabanı başarı bir şekilde değiştirildi!';
+$_['text_success']       = 'Başarılı: Veri tabanı güncellendi.';
+$_['text_progress']      = 'İlerleme';
 $_['text_backup']        = 'Yedeklenen %s tablosunda %s ile %s arasındaki kayıtlar';
 $_['text_restore']       = 'Geri Yükleniyor %s ile %s';
 $_['text_option']        = 'Yedekleme Seçenekleri';
 $_['text_history']       = 'Ydekleme Geçmişi';
-$_['text_progress']      = 'İlerleme';
 $_['text_import']        = 'Büyük boyutlu SQL yedekleme dosyalarını FTP ile <strong>~/storage/backup/</strong> dizinine yüklemek daha iyidir.';
 
 // Column

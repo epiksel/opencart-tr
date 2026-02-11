@@ -6,7 +6,7 @@
 $_['heading_title']    = 'OpenCart Pazaryeri API';
 
 // Text
-$_['text_success']     = 'Başarılı: API bilgileri başarılı bir şekilde değiştirildi!!';
+$_['text_success']     = 'Başarılı: API bilgileri değiştirildi.';
 $_['text_signup']      = 'Lütfen <a href="https://www.opencart.com/index.php?route=account/store" target="_blank" class="alert-link">buradan</a> edinebileceğiniz OpenCart API bilgisini giriniz.';
 
 // Entry

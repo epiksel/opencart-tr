@@ -6,7 +6,7 @@
 $_['heading_title']      = 'Pazaryeri';
 
 // Text
-$_['text_success']       = 'Başarılı: Eklentiler başarılı bir şekilde değiştirildi!';
+$_['text_success']       = 'Başarılı: Eklentiler güncellendi.';
 $_['text_list']          = 'Eklenti Listesi';
 $_['text_filter']        = 'Filtrele';
 $_['text_search']        = 'Uzantıları ve temaları ara';
@@ -41,7 +41,7 @@ $_['text_documentation'] = 'Dokümantasyon Eklendi';
 $_['text_sales']         = 'Satışlar';
 $_['text_comment']       = 'Yorumlar';
 $_['text_download']      = 'İndiriliyor';
-$_['text_install']       = 'Kuruluyor';
+$_['text_install']       = 'Kur';
 $_['text_comment_add']   = 'Yorum yazın';
 $_['text_write']         = 'Yorumunuzu buraya yazınız.';
 $_['text_purchase']      = 'Lütfen kim olduğunuzu teyit edin!';
@@ -59,13 +59,13 @@ $_['text_refresh']       = 'Yenile';
 // Entry
 $_['entry_pin']          = 'PIN';
 
-// Tab
+// Tabs
 $_['tab_description']    = 'Açıklama';
 $_['tab_documentation']  = 'Dokümantasyon';
 $_['tab_download']       = 'Dosyalar';
 $_['tab_comment']        = 'Yorum';
 
-// Button
+// Buttons
 $_['button_api']         = 'Pazaryeri API';
 $_['button_purchase']    = 'Satın Al';
 $_['button_view_all']    = 'Tüm Eklentileri';

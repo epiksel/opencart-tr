@@ -7,7 +7,8 @@ $_['heading_title']      = 'Engelli IP\'ler';
 
 // Text
 $_['text_extension']     = 'Eklentiler';
-$_['text_success']       = 'Başarılı: Engelli IP\'ler güncellendi!';
+$_['text_fraud']         = 'Sahtecilik Önleme';
+$_['text_success']       = 'Başarılı: Engelli IP\'ler güncellendi.';
 $_['text_edit']          = 'Engelli IP\'leri Düzenle';
 $_['text_ip_add']        = 'IP Adresi Ekle';
 $_['text_ip_list']       = 'Sahte IP Adres Listesi';
@@ -24,7 +25,7 @@ $_['entry_status']       = 'Durumu';
 $_['entry_order_status'] = 'Sipariş Durumu';
 
 // Help
-$_['help_order_status']  = 'Engelli IP adresine sahip müşteri hesapları sipariş oluşturduklarında bu sipariş durumuna atanacak ve otomatik olarak tamamlandı durumuna ulaşmasına izin verilmeyecektir.';
+$_['help_order_status']  = 'Engelli IP adresine sahip müşteri hesapları sipariş oluşturduklarında, bu sipariş durumuna atanacak ve otomatik olarak tamamlandı durumuna ulaşmasına izin verilmeyecektir.';
 
 // Error
 $_['error_permission']   = 'Uyarı: Engelli IP\'leri düzenleme iznine sahip değilsiniz!';

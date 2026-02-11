@@ -6,10 +6,14 @@
 $_['heading_title']          = 'Eklenti Yükleyicisi';
 
 // Text
-$_['text_upload']            = 'Başarılı: Eklenti başarılı bir şekilde yüklendi!';
-$_['text_success']           = 'Başarılı: Eklentiler başarılı bir şekilde değiştirildi!';
+$_['text_upload']            = 'Başarılı: Eklenti yüklendi.';
+$_['text_success']           = 'Başarılı: Eklentiler güncellendi.';
 $_['text_progress']          = 'Yükleme İlerlemesi';
 $_['text_installed']         = 'Kurulan Eklentiler';
+$_['text_info']              = 'Eklenti Bilgileri';
+$_['text_install']           = 'Dosyalar yükleniyor: %s ile %s arası (toplam %s)';
+$_['text_vendor']            = 'Satıcı dosyalarını yenile';
+$_['text_xml']               = 'OCMOD dosyalarını yükle';
 
 // Column
 $_['column_image']           = 'Resim';
@@ -20,10 +24,13 @@ $_['column_action']          = 'Eylem';
 
 // Entry
 $_['entry_progress']         = 'İlerleme';
+$_['entry_name']             = 'Eklenti Adı';
+$_['entry_description']      = 'Açıklama';
+$_['entry_code']             = 'Kod';
 
 // Error
 $_['error_permission']       = 'Uyarı: Eklentileri değiştirme iznine sahip değilsiniz!';
-$_['error_install']          = 'Kurulum bulunamadı!';
+$_['error_install']          = 'Uyarı: Kurulum bulunamadı!';
 $_['error_default']          = 'Varsayılan uzantı kaldırılamadı veya silinemedi!';
 $_['error_extension']        = 'Yüklü uzantı bulunamadı!';
 $_['error_installed']        = 'Eklenti zaten yüklü!';
@@ -40,3 +47,15 @@ $_['error_directory']        = '%s kurulum dizini bulunamadı!';
 $_['error_directory_exists'] = '%s yolu zaten var!';
 $_['error_unzip']            = 'Zip dosyası açılamadı!';
 $_['error_upload']           = 'Dosya yüklenemedi!';
+$_['error_unknown']          = 'Bilinmeyen bir hata oluştu!';
+
+// Zip errors
+$_['zip_error_exists']       = 'Dosya zaten mevcut!';
+$_['zip_error_incons']       = 'Zip arşivi tutarsız!';
+$_['zip_error_inval']        = 'Geçersiz argüman!';
+$_['zip_error_memory']       = 'Bellek tahsis hatası!';
+$_['zip_error_noent']        = 'Böyle bir dosya yok!';
+$_['zip_error_nozip']        = 'Bir zip arşivi değil!';
+$_['zip_error_open']         = 'Dosya açılamadı!';
+$_['zip_error_read']         = 'Okuma hatası!';
+$_['zip_error_seek']         = 'Arama hatası!';

@@ -1,9 +1,12 @@
 <?php
+// Translator : Ekrem KAYA
+// Website    : https://e-piksel.com
+
 // Heading
 $_['heading_title']         = 'İstatistikler';
 
 // Text
-$_['text_success']          = 'Başarılı: İstatistikler başarılı bir şekilde değiştirildi!';
+$_['text_success']          = 'Başarılı: İstatistikler güncellendi.';
 $_['text_list']             = 'İstatistik Listesi';
 $_['text_order_sale']       = 'Satışlar';
 $_['text_order_processing'] = 'Devam Eden Siparişler';

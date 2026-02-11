@@ -6,12 +6,12 @@
 $_['heading_title']     = 'Raporlar';
 
 // Text
-$_['text_success']      = 'Başarılı: Raporlar güncellendi!';
+$_['text_success']      = 'Başarılı: Raporlar güncellendi.';
 $_['text_list']         = 'Raporlar Listesi';
 
 // Column
 $_['column_name']       = 'Raporlar Adı';
-$_['column_status']     = 'Durumu';
+$_['column_status']     = 'Durum';
 $_['column_sort_order'] = 'Sıralama';
 $_['column_action']     = 'Eylem';
 

@@ -6,7 +6,7 @@
 $_['heading_title']        = 'Para Birimleri';
 
 // Text
-$_['text_success']         = 'Başarılı: Para birimi başarılı bir şekilde değiştirildi!';
+$_['text_success']         = 'Başarılı: Para birimi güncellendi.';
 $_['text_list']            = 'Para Birimi Listesi';
 $_['text_add']             = 'Para Birimi Ekle';
 $_['text_edit']            = 'Para Birimi Düzenle';
@@ -16,7 +16,7 @@ $_['text_iso']             = 'ISO para birimi kodları tam listesini ve ayarlar�
 $_['column_title']         = 'Para Birimi Adı';
 $_['column_code']          = 'Kodu';
 $_['column_value']         = 'Değeri';
-$_['column_status']        = 'Durumu';
+$_['column_status']        = 'Durum';
 $_['column_date_modified'] = 'Son Güncelleme';
 $_['column_action']        = 'Eylem';
 

@@ -6,7 +6,7 @@
 $_['heading_title']    = 'Hata Kayıtları';
 
 // Text
-$_['text_success']     = 'Başarılı: Hata kayıtları başarılı bir şekilde temizlendi!';
+$_['text_success']     = 'Başarılı: Hata kayıtları temizlendi.';
 $_['text_list']        = 'Hata Kayıt Listesi';
 
 // Error

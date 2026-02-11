@@ -6,7 +6,7 @@
 $_['heading_title']      = 'Abonelik Durumları';
 
 // Text
-$_['text_success']       = 'Başarılı: Abonelik durumları başarılı bir şekilde değiştirildi!';
+$_['text_success']       = 'Başarılı: Abonelik durumları güncellendi.';
 $_['text_list']          = 'Abonelik Durum Listesi';
 $_['text_add']           = 'Abonelik Durumu Ekle';
 $_['text_edit']          = 'Abonelik Durumu Düzenle';

@@ -6,11 +6,11 @@
 $_['heading_title']     = 'Kargo Metotları';
 
 // Text
-$_['text_success']      = 'Başarılı: Kargo metotları güncellendi!';
+$_['text_success']      = 'Başarılı: Kargo metotları güncellendi.';
 $_['text_list']         = 'Kargo Metot Listesi';
 
 // Column
-$_['column_name']       = 'Kargo Metotu';
+$_['column_name']       = 'Kargo Metodu';
 $_['column_status']     = 'Durum';
 $_['column_sort_order'] = 'Sıralama';
 $_['column_action']     = 'Eylem';

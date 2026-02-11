@@ -1,4 +1,7 @@
 <?php
+// Translator : Ekrem KAYA
+// Website    : https://e-piksel.com
+
 // Text
 $_['text_subject']  = '%s - Ortaklık Komisyonu';
 $_['text_received'] = 'Tebrikler! %s ortaklı programından komisyon ödemesi aldınız.';

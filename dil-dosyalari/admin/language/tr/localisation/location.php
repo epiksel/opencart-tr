@@ -6,7 +6,7 @@
 $_['heading_title']    = 'Mağaza Konumları';
 
 // Text
-$_['text_success']     = 'Başarılı: Mağaza konumu başarılı bir şekilde değiştirildi!';
+$_['text_success']     = 'Başarılı: Mağaza konumu güncellendi.';
 $_['text_list']        = 'Mağaza Konum Listesi';
 $_['text_add']         = 'Mağaza Konum Ekle';
 $_['text_edit']        = 'Mağaza Konum Düzenle';
@@ -20,16 +20,17 @@ $_['column_action']    = 'Eylem';
 // Entry
 $_['entry_name']       = 'Mağaza Adı';
 $_['entry_address']    = 'Adres';
-$_['entry_geocode']    = 'Çoğrafi Kod';
+$_['entry_geocode']    = 'Coğrafi Kod';
 $_['entry_telephone']  = 'Telefon';
 $_['entry_image']      = 'Resim';
 $_['entry_open']       = 'Çalışma Saatleri';
 $_['entry_comment']    = 'Açıklama';
 
 // Help
-$_['help_geocode']     = 'Mağazanızın çoğrafi konum kodunu elle giriniz.';
+$_['help_telephone']   = 'Lütfen mağazanıza ait telefon numarasını girin.';
+$_['help_geocode']     = 'Mağazanızın coğrafi konum kodunu elle giriniz.';
 $_['help_open']        = 'Mağazanızın çalışma saatlerini yazınız.';
-$_['help_comment']     = 'Bu alana müşterileriniz için özel bir not yazabilirsiniz. Örneğin: Mağazamızda çek kabul edilir gibi.';
+$_['help_comment']     = 'Bu alana müşterileriniz için özel bir not yazabilirsiniz. Örneğin: Mağazamızda kredi kartı ile ödeme kabul edilir gibi.';
 
 // Error
 $_['error_permission'] = 'Uyarı: Mağaza konumlarını düzenleme iznine sahip değilsiniz!';

@@ -1,9 +1,12 @@
 <?php
+// Translator : Ekrem KAYA
+// Website    : https://e-piksel.com
+
 // Heading
 $_['heading_title']           = 'Adres Biçimleri';
 
 // Text
-$_['text_success']            = 'Başarılı: Adres biçimleri başarılı bir şekilde değiştirildi!';
+$_['text_success']            = 'Başarılı: Adres biçimleri güncellendi.';
 $_['text_list']               = 'Adres Biçim Listesi';
 $_['text_add']                = 'Adres Biçimi Ekle';
 $_['text_edit']               = 'Adres Biçimi Düzenle';
@@ -18,7 +21,7 @@ $_['entry_name']              = 'Adres Biçim Adı';
 $_['entry_address_format']    = 'Adres Biçimi';
 
 // Help
-$_['help_address_format']     = 'Ad = {firstname}<br />Soyad = {lastname}<br />Şirket Adı = {company}<br />Adres 1 = {address_1}<br />Adres 2 = {address_2}<br />İlçe / Semt = {city}<br />Posta Kodu = {postcode}<br />Şehir = {zone}<br />Şehir Kodu = {zone_code}<br />Ülke = {country}';
+$_['help_address_format']     = 'Ad = {firstname}<br />Soyad = {lastname}<br />Şirket Adı = {company}<br />Adres 1 = {address_1}<br />Adres 2 = {address_2}<br />İlçe = {city}<br />Posta Kodu = {postcode}<br />Şehir = {zone}<br />Şehir Kodu = {zone_code}<br />Ülke = {country}';
 
 // Error
 $_['error_permission']        = 'Uyarı: Adres Biçimlerini düzenleme iznine sahip değilsiniz!';

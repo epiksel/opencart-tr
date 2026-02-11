@@ -6,7 +6,7 @@
 $_['heading_title']        = 'Anti-Spam';
 
 // Text
-$_['text_success']         = 'Başarılı: Anti-Spam başarılı bir şekilde değiştirildi!';
+$_['text_success']         = 'Başarılı: Anti-Spam güncellendi.';
 $_['text_list']            = 'Anti-Spam Listesi';
 $_['text_add']             = 'Anti-Spam Ekle';
 $_['text_edit']            = 'Anti-Spam Düzenle';

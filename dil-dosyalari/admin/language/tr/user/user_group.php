@@ -6,7 +6,7 @@
 $_['heading_title']    = 'Kullanıcı Grupları';
 
 // Text
-$_['text_success']     = 'Başarılı: Kullanıcı grupları değiştirildi!';
+$_['text_success']     = 'Başarılı: Kullanıcı grupları güncellendi.';
 $_['text_list']        = 'Kullanıcı Grup Listesi';
 $_['text_add']         = 'Kullanıcı Grubu Ekle';
 $_['text_edit']        = 'Kullanıcı Grubu Düzenle';

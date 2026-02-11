@@ -6,7 +6,7 @@
 $_['heading_title']     = 'Müşteri Grupları';
 
 // Text
-$_['text_success']      = 'Başarılı: Müşteri grupları değiştirildi!';
+$_['text_success']      = 'Başarılı: Müşteri grupları güncellendi.';
 $_['text_list']         = 'Müşteri Grup Listesi';
 $_['text_add']          = 'Müşteri Grubu Ekle';
 $_['text_edit']         = 'Müşteri Grubu Düzenle';

@@ -6,9 +6,9 @@
 $_['heading_title']    = 'Resim Yönetimi';
 
 // Text
-$_['text_uploaded']    = 'Başarılı: Dosyanız yüklendi!';
-$_['text_directory']   = 'Başarılı: Dizin oluşturuldu!';
-$_['text_delete']      = 'Başarılı: Dosya ya da dizin silindi!';
+$_['text_uploaded']    = 'Başarılı: Dosyanız yüklendi.';
+$_['text_directory']   = 'Başarılı: Dizin oluşturuldu.';
+$_['text_delete']      = 'Başarılı: Dosya ya da dizin silindi.';
 
 // Entry
 $_['entry_search']     = 'Ara..';

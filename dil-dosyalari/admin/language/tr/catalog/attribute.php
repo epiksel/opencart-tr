@@ -6,7 +6,7 @@
 $_['heading_title']          = 'Özellikler';
 
 // Text
-$_['text_success']           = 'Başarılı: Özellikler başarılı bir şekilde değiştirildi!';
+$_['text_success']           = 'Başarılı: Özellikler güncellendi.';
 $_['text_list']              = 'Özellik Listesi';
 $_['text_add']               = 'Özellik Ekle';
 $_['text_edit']              = 'Özellik Düzenle';

@@ -6,7 +6,7 @@
 $_['heading_title']    = 'Dil Editörü';
 
 // Text
-$_['text_success']     = 'Başarılı: Dil çevirisi başarılı bir şekilde değiştirildi!';
+$_['text_success']     = 'Başarılı: Dil çevirisi güncellendi.';
 $_['text_list']        = 'Çeviri Listesi';
 $_['text_add']         = 'Çeviri Ekle';
 $_['text_edit']        = 'Çeviriyi Düzenle';
@@ -31,5 +31,5 @@ $_['entry_default']    = 'Varsayılan';
 $_['entry_value']      = 'Değer';
 
 // Error
-$_['error_permission'] = 'Warning: Dil editörünü düzenleme iznine sahip değilsiniz!';
+$_['error_permission'] = 'Uyarı: Dil editörünü düzenleme iznine sahip değilsiniz!';
 $_['error_key']        = 'Anahtar 3 ile 64 karakter arasında olmalı!';

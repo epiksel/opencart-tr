@@ -6,7 +6,8 @@
 $_['heading_title']           = 'Makaleler';
 
 // Text
-$_['text_success']            = 'Başarılı: Makaleler başarılı bir şekilde değiştirildi!';
+$_['text_success']            = 'Başarılı: Makaleler güncellendi.';
+$_['text_next']               = 'Başarılı: %s ile %s arasındaki %s makale oylamasını güncellediniz.';
 $_['text_list']               = 'Makale Listesi';
 $_['text_add']                = 'Makale Ekle';
 $_['text_edit']               = 'Makale Düzenle';
@@ -16,6 +17,7 @@ $_['text_keyword']            = 'Boşluk kullanmayın, bunun yerine boşlukları
 // Column
 $_['column_name']             = 'Makale Adı';
 $_['column_author']           = 'Yazar';
+$_['column_rating']           = 'Puan';
 $_['column_date_added']       = 'Ekleme Tarihi';
 $_['column_action']           = 'Eylem';
 
@@ -35,12 +37,15 @@ $_['entry_status']            = 'Durumu';
 $_['entry_keyword']           = 'SEO Bağlantısı';
 $_['entry_layout']            = 'Bu Bölüm Gibi Davran';
 
+// Button
+$_['button_rating']           = 'Puanları Hesapla';
+
 // Error
 $_['error_warning']           = 'Uyarı: Oluşan hatalar için lütfen formu dikkatli kontrol ediniz!';
 $_['error_permission']        = 'Uyarı: Makaleleri düzenleme iznine sahip değilsiniz!';
 $_['error_name']              = 'Makale adı 1 ile 255 karakter arasında olmalıdır!';
 $_['error_meta_title']        = 'Meta başlığı 1 ile 255 karakter arasında olmalıdır!';
+$_['error_author']            = 'Yazar 3 ile 64 karakter arasında olmalı!';
 $_['error_keyword']           = 'Kelime 1 ile 64 karakter arasında olmalı!';
 $_['error_keyword_exists']    = 'SEO URL\'si benzersiz olmalıdır!';
-$_['error_keyword_character'] = 'SEO Bağlantısı sadece a-z, 0-9, - ve _ karakteri içerebilir!';
-$_['error_author']            = 'Yazar 3 ile 64 karakter arasında olmalı!';
+$_['error_keyword_character'] = 'SEO bağlantısı sadece a-z, 0-9, - ve _ karakteri içerebilir!';

@@ -7,7 +7,7 @@ $_['heading_title']      = 'Ücretsiz Ödeme';
 
 // Text
 $_['text_extension']     = 'Eklentiler';
-$_['text_success']       = 'Başarılı: Ücretsiz Ödeme başarılı bir şekilde değiştirildi!';
+$_['text_success']       = 'Başarılı: Ücretsiz Ödeme modülü güncellendi.';
 $_['text_edit']          = 'Ücretsiz Ödeme Düzenle';
 
 // Entry
@@ -16,4 +16,4 @@ $_['entry_status']       = 'Durumu';
 $_['entry_sort_order']   = 'Sıralama';
 
 // Error
-$_['error_permission']   = 'Uyarı: Ücretsiz ödeme metotunu düzenleme iznine sahip değilsiniz!';
+$_['error_permission']   = 'Uyarı: Ücretsiz Ödeme metodunu düzenleme iznine sahip değilsiniz!';

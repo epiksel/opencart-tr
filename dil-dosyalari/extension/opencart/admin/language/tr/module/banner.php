@@ -7,9 +7,9 @@ $_['heading_title']    = 'Afişler';
 
 // Text
 $_['text_extension']   = 'Eklentiler';
-$_['text_success']     = 'Başarılı: Afişler modülü güncellendi!';
+$_['text_success']     = 'Başarılı: Afişler modülü güncellendi.';
 $_['text_edit']        = 'Afiş Modülünü Düzenle';
-$_['text_slide']       = 'Slide';
+$_['text_slide']       = 'Slayt';
 $_['text_fade']        = 'Fade';
 
 // Entry

@@ -6,12 +6,12 @@
 $_['heading_title']    = 'Döviz Kurları';
 
 // Text
-$_['text_success']     = 'Başarılı: Döviz Kurları başarılı bir şekilde değiştirildi!';
+$_['text_success']     = 'Başarılı: Döviz Kurları güncellendi.';
 $_['text_list']        = 'Döviz Kur Listesi';
 
 // Column
 $_['column_name']      = 'Döviz Kur Adı';
-$_['column_status']    = 'Durumu';
+$_['column_status']    = 'Durum';
 $_['column_action']    = 'Eylem';
 
 // Error

@@ -6,7 +6,7 @@
 $_['heading_title']        = 'Vergi Oranları';
 
 // Text
-$_['text_success']         = 'Başarılı: Vergi oranları başarılı bir şekilde değiştirildi!';
+$_['text_success']         = 'Başarılı: Vergi oranları güncellendi.';
 $_['text_list']            = 'Vergi Oranı Listesi';
 $_['text_add']             = 'Vergi Oranı Ekle';
 $_['text_edit']            = 'Vergi Oranı Düzenle';
@@ -18,8 +18,6 @@ $_['column_name']          = 'Vergi Adı';
 $_['column_rate']          = 'Vergi Oranı';
 $_['column_type']          = 'Türü';
 $_['column_geo_zone']      = 'Bölge';
-$_['column_date_added']    = 'Ekleme Tarihi';
-$_['column_date_modified'] = 'Değiştirme Tarihi';
 $_['column_action']        = 'Eylem';
 
 // Entry

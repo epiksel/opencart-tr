@@ -12,6 +12,6 @@ $_['text_contact']  = 'Bu isteği siz oluşturmadıysanız, lütfen mağaza sahi
 $_['text_thanks']   = 'Teşekkürler,';
 $_['text_ignore']   = 'Bu isteği siz oluşturmadıysanız, lütfen bu e-postayı dikkate almayın.';
 
-// Button
+// Buttons
 $_['button_export'] = 'Verilerimi dışa aktarmayı onaylıyorum';
 $_['button_remove'] = 'Hesabımı silmeyi onaylıyorum';

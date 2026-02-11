@@ -6,7 +6,7 @@
 $_['heading_title']        = 'Özel Alanlar';
 
 // Text
-$_['text_success']         = 'Başarılı: Özel alan başarılı bir şekilde değiştirildi!';
+$_['text_success']         = 'Başarılı: Özel alan güncellendi.';
 $_['text_list']            = 'Özel Alan Listesi';
 $_['text_add']             = 'Özel Alan Ekle';
 $_['text_edit']            = 'Özel Alan Düzenle';
@@ -32,7 +32,7 @@ $_['text_value']           = 'Özel Alan Değeri';
 $_['column_name']          = 'Özel Alan Adı';
 $_['column_location']      = 'Konum';
 $_['column_type']          = 'Türü';
-$_['column_status']        = 'Durumu';
+$_['column_status']        = 'Durum';
 $_['column_sort_order']    = 'Sıralama';
 $_['column_action']        = 'Eylem';
 
@@ -45,7 +45,7 @@ $_['entry_validation']     = 'Doğrulama';
 $_['entry_custom_value']   = 'Özel Alan Değer Adı';
 $_['entry_customer_group'] = 'Müşteri Grubu';
 $_['entry_required']       = 'Gerekli';
-$_['entry_status']         = 'Durum';
+$_['entry_status']         = 'Durumu';
 $_['entry_sort_order']     = 'Sıralama';
 
 // Help

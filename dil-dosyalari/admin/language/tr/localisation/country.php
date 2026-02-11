@@ -6,7 +6,7 @@
 $_['heading_title']           = 'Ülkeler';
 
 // Text
-$_['text_success']            = 'Başarılı: Ülkeler başarılı bir şekilde değiştirildi!';
+$_['text_success']            = 'Başarılı: Ülkeler güncellendi.';
 $_['text_list']               = 'Ülke Listesi';
 $_['text_add']                = 'Ülke Ekle';
 $_['text_edit']               = 'Ülke Düzenle';
@@ -29,8 +29,10 @@ $_['entry_status']            = 'Durumu';
 // Error
 $_['error_permission']        = 'Uyarı: Ülkeleri düzenleme iznine sahip değilsiniz!';
 $_['error_name']              = 'Ülke Adı 1 ile 128 karakter arasında olmalı!';
-$_['error_default']           = 'Uyarı: Bu ülkeyi silemezsiniz, varsayılan mağaza tarafından kullanılıyor!';
-$_['error_store']             = 'Uyarı: Bu ülkeyi silemezsiniz, %s mağaza tarafından kullanılıyor!';
-$_['error_address']           = 'Uyarı: Bu ülkeyi silemezsiniz, %s adres defterinde kullanılıyor!';
+$_['error_iso_code_2']        = 'ISO Kodu 2 iki karakter olmalıdır!';
+$_['error_iso_code_3']        = 'ISO Kodu 3 üç karakter olmalıdır!';
+$_['error_default']           = 'Uyarı: Bu ülkeyi silemezsiniz, varsayılan mağazada kullanılıyor!';
+$_['error_store']             = 'Uyarı: Bu ülkeyi silemezsiniz, %s mağazada kullanılıyor!';
+$_['error_address']           = 'Uyarı: Bu ülkeyi silemezsiniz, %s adreste kullanılıyor!';
 $_['error_zone']              = 'Uyarı: Bu ülkeyi silemezsiniz, %s şehirde kullanılıyor!';
 $_['error_zone_to_geo_zone']  = 'Uyarı: Bu ülkeyi silemezsiniz, %s bölgede kullanılıyor!';

@@ -6,11 +6,11 @@
 $_['heading_title']     = 'Ödeme Metotları';
 
 // Text
-$_['text_success']      = 'Başarılı: Ödeme metotları güncellendi!';
+$_['text_success']      = 'Başarılı: Ödeme metotları güncellendi.';
 $_['text_list']         = 'Ödeme Metot Listesi';
 
 // Column
-$_['column_name']       = 'Ödeme Metotu';
+$_['column_name']       = 'Ödeme Metodu';
 $_['column_vendor']     = 'Sağlayıcı';
 $_['column_status']     = 'Durum';
 $_['column_sort_order'] = 'Sıralama';

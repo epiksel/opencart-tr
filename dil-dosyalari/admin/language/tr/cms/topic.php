@@ -6,7 +6,7 @@
 $_['heading_title']           = 'Konular';
 
 // Text
-$_['text_success']            = 'Başarılı: Konular başarılı bir şekilde değiştirildi!';
+$_['text_success']            = 'Başarılı: Konular güncellendi.';
 $_['text_list']               = 'Konu Listesi';
 $_['text_add']                = 'Konu Ekle';
 $_['text_edit']               = 'Konu Düzenle';
@@ -29,6 +29,7 @@ $_['entry_store']             = 'Mağazalar';
 $_['entry_sort_order']        = 'Sıralama';
 $_['entry_status']            = 'Durumu';
 $_['entry_keyword']           = 'SEO Bağlantısı';
+$_['entry_layout']            = 'Bu Bölüm Gibi Davran';
 
 // Error
 $_['error_warning']           = 'Uyarı: Oluşan hatalar için lütfen formu dikkatli kontrol ediniz!';
@@ -37,4 +38,4 @@ $_['error_name']              = 'Konu adı 1 ile 255 karakter arasında olmalıd
 $_['error_meta_title']        = 'Meta başlığı 1 ile 255 karakter arasında olmalıdır!';
 $_['error_keyword']           = 'Kelime 1 ile 64 karakter arasında olmalı!';
 $_['error_keyword_exists']    = 'SEO URL\'si benzersiz olmalıdır!';
-$_['error_keyword_character'] = 'SEO Bağlantısı sadece a-z, 0-9, - ve _ karakteri içerebilir!';
+$_['error_keyword_character'] = 'SEO bağlantısı sadece a-z, 0-9, - ve _ karakteri içerebilir!';

@@ -7,7 +7,7 @@ $_['heading_title']      = 'Banka Havale/EFT';
 
 // Text
 $_['text_extension']     = 'Eklentiler';
-$_['text_success']       = 'Başarılı: Banka havalesi detayları güncellendi!';
+$_['text_success']       = 'Başarılı: Banka Havale/EFT modülü güncellendi.';
 $_['text_edit']          = 'Banka Havale/EFT Düzenle';
 
 // Entry
@@ -18,5 +18,5 @@ $_['entry_status']       = 'Durumu';
 $_['entry_sort_order']   = 'Sıralama';
 
 // Error
-$_['error_permission']   = 'Uyarı: Banka Havale/EFT ödeme metotunu düzenleme iznine sahip değilsiniz!';
+$_['error_permission']   = 'Uyarı: Banka Havale/EFT metodunu düzenleme iznine sahip değilsiniz!';
 $_['error_bank']         = 'Banka Havale/EFT hesapları gerekli!';
